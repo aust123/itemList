@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" href="css/swiper.min.css">
+		<script type="text/javascript">
+			(function() {
+				var html = document.documentElement;
+				var width = html.getBoundingClientRect().width;
+				console.log(width)
+				html.style.fontSize = width / 15 + 'px';
+				//1rem=50;
+			})()
+		</script>
+		<style>
+			body {
+				font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+				color: #000;
+				margin: 0;
+				padding: 0;
+			}
+			
+			.swiper-container {
+				width: 100%;
+				margin: 0;
+				position: relative;
+			}
+			
+			.swiper-slide {
+				-webkit-transition: transform 1.0s;
+				-moz-transition: transform 1.0s;
+				-ms-transition: transform 1.0s;
+				-o-transition: transform 1.0s;
+				-webkit-transform: scale(0.7);
+				transform: scale(0.7);
+			}
+			
+			@media screen and (max-width: 668px) {
+				.swiper-slide {
+					-webkit-transform: scale(0.97);
+					transform: scale(0.97);
+				}
+			}
+			
+			.swiper-slide-active,
+			.swiper-slide-duplicate-active {
+				-webkit-transform: scale(1);
+				transform: scale(1);
+			}
+			
+			@media screen and (max-width: 668px) {
+				.swiper-slide-active,
+				.swiper-slide-duplicate-active {
+					-webkit-transform: scale(0.97);
+					transform: scale(0.97);
+				}
+			}
+			
+			.none-effect {
+				-webkit-transition: none;
+				-moz-transition: none;
+				-ms-transition: none;
+				-o-transition: none;
+			}
+			
+			.swiper-slide a {
+				background: #fff;
+				padding: 0px;
+				display: block;
+				border-radius: 0;
+			}
+			
+			.swiper-slide-active a:after {
+				background: none;
+			}
+			
+			.swiper-slide img {
+				width: 100%;
+				border-radius: 0px;
+				display: block;
+			}
+			
+			.swiper-pagination {
+				position: absolute;
+			}
+			
+			.swiper-pagination-bullet {
+				background: #00a0e9;
+				margin-left: 0.08rem;
+				margin-right:0.08rem;
+				width: 0.34rem;
+				height: 0.34rem;
+				opacity: 1;				
+			}			
+			.swiper-pagination-bullet-active {
+				width: 0.24rem;
+				height: 0.24rem;
+				background: #FFF;
+				border: 0.12rem solid #00a0e9;
+			}
+		</style>
+	</head>
+
+	<body>
+		<!-- Swiper -->
+		<section class="pc-banner">
+			<div class="swiper-container">
+				<div class="swiper-wrapper">
+					<div class="swiper-slide swiper-slide-center none-effect">
+						<a href="#"><img src="img/1.jpg"></a>
+					</div>
+					<div class="swiper-slide">
+						<a href="#"><img src="img/2.jpg"></a>
+					</div>
+					<div class="swiper-slide">
+						<a href="#"><img src="img/3.jpg"></a>
+					</div>
+					<div class="swiper-slide">
+						<a href="#"><img src="img/4.jpg"></a>
+					</div>
+					<div class="swiper-slide">
+						<a href="#"><img src="img/5.jpg"></a>
+					</div>
+				</div>
+				<div class="swiper-pagination"></div>
+			</div>
+		</section>
+		<script src="js/swiper.min.js"></script>
+		<script type="text/javascript">
+			window.onload = function() {
+				var swiper = new Swiper('.swiper-container', {
+					autoplay: 3000,
+					speed: 1000,
+					autoplayDisableOnInteraction: false,
+					loop: true,
+					centeredSlides: true,
+					slidesPerView: 2,
+					pagination: '.swiper-pagination',
+					paginationClickable: true,
+					prevButton: '.swiper-button-prev',
+					nextButton: '.swiper-button-next',
+					onInit: function(swiper) {
+						swiper.slides[2].className = "swiper-slide swiper-slide-active"; //第一次打开不要动画
+					},
+					breakpoints: {
+						668: {
+							slidesPerView: 1,
+						}
+					}
+				});
+			}
+		</script>
+	</body>
+
+</html>
