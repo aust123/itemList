@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" href="../css/reciveOrder.css" />
+		<script type="text/javascript">
+			/*js计算html初始font-size值为100px*/
+			(function(doc, win) {
+				var docEl = doc.documentElement,
+					resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+					recalc = function() {
+						var clientWidth = docEl.clientWidth;
+						if(!clientWidth) return;
+						//设置字体font-size:100px
+						if(clientWidth >= 640) {
+							docEl.style.fontSize = '100px';
+						} else {
+							docEl.style.fontSize = 100 * (clientWidth / 640) + 'px';
+							// 这个640（iphone6）就是根据设计稿的横向宽度来确定的，假如你的设计稿是750(iphone6s)
+						}
+					};
+				if(!doc.addEventListener) return;
+				win.addEventListener(resizeEvt, recalc, false);
+				doc.addEventListener('DOMContentLoaded', recalc, false);
+			})(document, window);
+		</script>
+	</head>
+
+	<body>
+		<header>
+			<a class="cancel" onclick="javascript:window.history.go(-1)" href="###"><img src="../img/jiantou_left.png" /></a>
+			<span class="title">爱东阳爱回收</span>
+		</header>
+		<div id="detail" class="content"></div>
+		<script type="text/html" id="detail_tpl">
+			<section>
+				<div id="order_status">
+					<img src="../img/order_yiyuyue.png" />
+					<p>已预约</p>
+				</div>
+				<p>正在为您指派回收人员，请耐心等待...</p>
+				<p><span>预约时间：</span>{{data.appiontment_date}}&nbsp;&nbsp;{{data.appiontment_week}}&nbsp;&nbsp;{{data.appiontment_time_quantum}}</p>
+
+			</section>
+			<section>
+				<p><span>订单号：</span>{{data.order_num}}</p>
+				<p><span>回收纸品：</span>{{data.goods_name}}</p>
+				<p><span>接单人联系方式：</span>{{data.jiedan_phone}}</p>
+				<div id="adress">
+					<span>上门地址：</span>
+					<p>{{data.province}}&nbsp;&nbsp;{{data.city}}&nbsp;&nbsp;{{data.dist}}&nbsp;&nbsp;{{data.street}}&nbsp;&nbsp;{{data.detail}}</p>
+				</div>
+			</section>
+
+		</script>
+
+		<script src="../js/jquery.min.js"></script>
+		<script type="text/javascript" src="../js/dropload.min.js"></script>
+		<script src="../js/reciveOrder.js"></script>
+		<script type="text/javascript" src="../js/template-web.js"></script>
+		<script type="text/javascript" src="../js/md5.js"></script>
+		<script type="text/javascript">
+			var pathname = 'get_manage_order_detail';
+			var obj = {
+				uid: localStorage.id,
+				order_id: localStorage.order_id
+			};
+			GetList(obj, pathname, Detail);
+
+			function Detail(_data) {
+				console.log(_data);
+				if(_data.code = '10000') {
+					if(_data.data['appiontment_date']){
+						_data.data['appiontment_date'] = getLocalTime(_data.data['appiontment_date']);
+					}
+					var html = template('detail_tpl', _data);
+					document.getElementById('detail').innerHTML += html;
+				}
+			}
+		</script>
+
+	</body>
+
+</html>

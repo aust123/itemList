@@ -1,0 +1,372 @@
+ *{
+     margin: 0;
+     padding: 0;
+ }
+ html,body{
+     width: 100%;
+     height: 100%;
+     font: 12px 'microsoft yahei';
+     background: #F2F2F2;
+ }
+ img{
+     vertical-align: middle;
+ }
+ ul{
+     list-style: none;
+     overflow: hidden;
+ }
+ a{
+     text-decoration: none;
+     color: #333333;
+ }
+
+ .fix{
+     position: fixed;
+     top: 0;
+     left: 0;
+     width: 100%;
+     z-index: 999;
+ }
+ .title{
+     width:100%;
+     height: 56px;
+     line-height: 56px;
+     background: #373B3E;
+     text-align: center;
+     font-size: 22px;
+     color: #fff;
+     position: relative;
+ }
+ .title a{
+     position: absolute;
+     left: 20px;
+     top: 0;
+ }
+ .title a img{
+     width: 13px;
+ }
+ .module{
+     background: #fff;
+ }
+ .module ul{
+     border-bottom: 1px solid #D2D2D2;
+ }
+ .module li{
+     width: 33%;
+     border-right: 1px solid #D2D2D2;
+     float: left;
+     text-align: center;
+     font-size: 18px;
+     height: 50px;
+     line-height: 50px;
+     color: #333;
+ }
+ .module li.on{
+     background: #208DF0;
+     color: #fff;
+ }
+ .container{
+     position: relative;
+     z-index: 50;
+     min-height: 100%;
+ }
+.result{
+    position: absolute;
+    top: 48px;
+    left: 0;
+    width: 100%;
+    min-height: 81%;
+    padding-top: 8px;
+    background: #f2f2f2;
+    z-index: 80;
+}
+.resList li{
+    border-bottom: 1px solid #DDDDDD;
+    padding: 20px;
+    position: relative;
+    background: #fff;
+}
+.resList li h3{
+    width: 93%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 20px;
+    color: #333;
+    font-weight: normal;
+}
+.resList li p{
+    width: 93%;
+    color: #999;
+    font-size: 18px;
+    padding-left: 25px;
+    margin-top: 12px;
+    background: url('../img/shijian_icon.png') no-repeat left center;
+}
+.resList li img{
+    position: absolute;
+    right: 20px;
+    top: 36px;
+    width: 12px;
+}
+ .addMore{
+     padding: 0;
+     background: transparent;
+     border: 0;
+     text-align: center;
+ }
+ .addMore a{
+     display: inline-block;
+     width: 120px;
+     margin-top: 30px;
+     height: 44px;
+     line-height: 44px;
+     font-size: 18px;
+     border-radius: 5px;
+ }
+ /*选择条件*/
+ .alternative{
+     position: absolute;
+     top: 48px;
+     left: 0;
+     width: 100%;
+     min-height: 82%;
+     z-index: 50;
+ }
+.paper,.city,.calendar{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: none;
+}
+.ppList{
+    background: #fff;
+}
+.ppList li{
+    border-bottom: 1px solid #D2D2D2;
+    text-align: center;
+    font-size: 18px;
+    color: #666;
+    padding: 15px 0;
+}
+.ppList li.cur{
+    color: #ff5000;
+}
+.city{
+    background: #f2f2f2;
+}
+.city .tip{
+    padding: 15px 8px 0;
+    font-size: 14px;
+    color: #666;
+}
+.city .letter p,.city .letter li{
+    padding: 12px 15px;
+    font-size: 18px;
+    color: #666;
+    border-bottom: 1px solid #DBDBDB;
+}
+.city .letter li{
+    background: #fff;
+    color: #333;
+}
+.lters{
+    position: fixed;
+    top: 50px;
+    right: 7px;
+    width: 30px;
+    height: 87%;
+    overflow: scroll;
+}
+.lters ul{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+.lters li{
+    font-size: 14px;
+    color: #666;
+    margin-top: 5px;
+    text-align: center;
+    width: 100%;
+}
+/*日历*/
+ em,i{
+     font-style: normal;
+     font-size: .2rem;
+ }
+ .calendar{
+     display: block;
+ }
+ .calendar .out-wrap{
+     background: #fff;
+ }
+ .buxian{
+     display: inline-block;
+     width: 100%;
+     text-align: center;
+     height: 50px;
+     line-height: 50px;
+     font-size: 20px;
+     color: #333;
+     background: #e5e5e5;
+ }
+
+ .grid{
+     width: 94%;
+     margin: 0 auto;
+ }
+ .header-main{
+     width: 100%;
+ }
+ .day{
+     height: .5rem;
+     background: #e5e5e5;
+     color: #333;
+ }
+ .day .grid{
+     width: 94%;
+     height: 100%;
+     padding: 0 3%;
+     display: flex;
+     display: -webkit-flex;
+     display: -ms-flexbox;
+     align-items: center;
+ }
+ .day-left {
+     display: flex;
+     display: -webkit-flex;
+     display: -ms-flexbox;
+     flex: 0;
+     flex-grow: 0;
+     flex-shrink: 0;
+     flex-basis: 56%;
+     -webkit-flex: 0;
+     -webkit-flex-grow: 0;
+     -webkit-flex-shrink: 0;
+     -webkit-flex-basis: 56%;
+ }
+ .day-right {
+     display: flex;
+     display: -webkit-flex;
+     display: -ms-flexbox;
+     flex: 0;
+     flex-grow: 0;
+     flex-shrink: 0;
+     flex-basis: 44%;
+     -webkit-flex: 0;
+     -webkit-flex-grow: 0;
+     -webkit-flex-shrink: 0;
+     -webkit-flex-basis: 44%;
+     align-items: center;
+     justify-content: flex-end;
+     -webkit-justify-content: flex-end;
+     -ms-justify-content: flex-end;
+ }
+ .day-right .yun {
+     height: 100%;
+     display: flex;
+     display: -webkit-flex;
+     display: -ms-flexbox;
+     align-items: center;
+     -webkit-align-items: center;
+ }
+ .day-right .yun span{
+     display: inline-block;
+     width: .3rem;
+     height: .3rem;
+     line-height: .3rem;
+     text-align: center;
+     border: 2px solid #ec5252;
+     border-radius: 50%;
+     margin-left: .15rem;
+     font-size: .16rem;
+     /*align-self:center;*/
+ }
+
+ .week ul{
+     width: 98%;
+     padding: 0 1%;
+     display: flex;
+     display: -webkit-flex;
+     display: -ms-flexbox;
+     height: .48rem;
+ }
+ .week ul li{
+     display: flex;
+     display: -webkit-flex;
+     display: -ms-flexbox;
+     flex: auto;
+     -ms-flex: auto;
+     -webkit-flex: auto;
+     justify-content: center;
+     align-items: center;
+     font-size: .18rem;
+ }
+ .tables{
+     font-size: .14rem;
+     color: #666;
+     display: flex;
+     display: -webkit-flex;
+     display: -ms-flexbox;
+ }
+ .tables tbody{
+     width: 100%;
+ }
+ .tables tbody tr{
+     width: 98%;
+     padding: 0 1%;
+     display: flex;
+     display: -webkit-flex;
+     display: -ms-flexbox;
+     flex-wrap: wrap;
+     -webkit-flex-wrap: wrap;
+ }
+ .tables tbody tr td{
+     border: 2px solid transparent;
+     flex: 0;
+     flex-grow: 0;
+     flex-shrink: 0;
+     flex-basis: 13%;
+     justify-content: center;
+     padding: .08rem 0;
+     position: relative;
+     border-radius: 50%;
+ }
+ .tables .list i{
+     display: flex;
+     display: -webkit-flex;
+     display: -ms-flexbox;
+     font-size: .2rem;
+     justify-content: center;
+ }
+ .tables .list em{
+     display: flex;
+     display: -webkit-flex;
+     display: -ms-flexbox;
+     font-size: .12rem;
+     justify-content: center;
+
+ }
+ .swiper-slide table tr{
+     text-align: center;
+ }
+ tr .not_this{
+     color: #ccc !important;
+ }
+ .today{
+     background: #ec5252;
+     color: #fff;
+ }
+ .xuanzhong{
+     border: 2px solid #f20 !important;
+     border-radius: 8px;
+ }
+ tr td:first-child{color: #f00;}
+ tr td:last-child{color: #f00;}
+ td{position: relative;}
+

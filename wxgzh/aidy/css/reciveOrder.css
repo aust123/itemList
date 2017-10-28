@@ -1,0 +1,294 @@
+body,
+div,
+ul,
+li,
+ol,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+input,
+textarea,
+select,
+p,
+dl,
+dt,
+dd,
+a,
+img,
+button,
+form,
+table,
+th,
+tr,
+td,
+tbody,
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+	margin: 0;
+	padding: 0;
+}
+
+a {
+	text-decoration: none;
+}
+
+ul ol {
+	list-style: none;
+}
+
+body {
+	font-family: "microsoft yahei", '宋体', Tahoma, Arial, sans-serif;
+	background-color: #f2f2f2;
+}
+/*-----------------订单详情---------*/
+header {
+	width: 100%;
+	height: 44px;
+	line-height: 44px;
+	background: url(../img/leftbar_p.png) repeat-x;
+	text-align: center;
+	font-size: 0.3rem;
+	color: #fff;
+	overflow: hidden;
+	padding: 0px 0.25rem;
+	box-sizing: border-box;
+}
+
+a.cancel {
+	position: relative;
+	float: left;
+	height: 18px;
+}
+
+.cancel>img {
+	height: 100%;
+}
+
+span.title {
+	margin-left: 0.35rem;
+}
+
+section {
+	background-color: #fff;
+	width: 100%;
+	margin-top: 12px;
+	color: #333;
+	font-size: 0.28rem;
+}
+
+div#order_status {
+	padding: 0.4rem 0px 0.3rem;
+	text-align: center;
+	border-bottom: 1px solid #d2d2d2;
+}
+div#order_status>img{
+	height: 65px;
+}
+div#order_status>p {
+	margin-top: 0.1rem;
+}
+
+section>p {
+	padding: 0px 0.25rem;
+	box-sizing: border-box;
+	height: 59px;
+	line-height: 59px;
+	border-bottom: 1px solid #d2d2d2;
+}
+
+section.complete_order>p {
+	padding: 0px 0.25rem;
+	box-sizing: border-box;
+	height: 70px;
+	line-height: 70px;
+	border-bottom: 1px solid #d2d2d2;
+}
+section>p>span {
+	color: #666;
+}
+
+div#adress>span {
+	color: #666;	
+}
+div#adress{
+	width: 100%;
+	height: 83px;
+	position: relative;
+	padding: 0.3rem 0.25rem 0px;
+	box-sizing: border-box;
+	display: inline-block;
+}
+div#adress>p{
+	position: absolute;
+	top: 0.3rem;
+	left: 1.65rem;
+	
+}
+/*----------接单页面--------------*/
+/*订单id*/
+span#order_id{
+	display: none;
+}
+
+
+a.back{
+	height: 100%;
+}
+a.back img{
+	height: 50%;
+	margin-top: 0.18rem;
+	
+}
+section.order_list{
+	background-color: #fafafa;
+	font-size: 0.30rem;
+}
+.order_list>p{
+	background: #fff;
+	height: 48px;	
+	line-height: 48px;
+	border: 0px;
+}
+p.order_num{
+	padding-left:1rem ;
+	background:#fff url(../img/jiedan_order.png) no-repeat;
+	background-position: 0.28rem center;
+	background-size: 0.50rem 0.54rem;
+}
+p.order_num>a{
+	color: #333;
+}
+.order_num span{
+	margin-left: 0.15rem;
+	color: #333;
+}
+div.order_detail{
+	padding: 0.2rem 0.28rem;
+	height: 98px;
+	
+}
+.order_detail>p span{
+	margin-left: 0.1rem;
+}
+div.ad_box{
+	margin-top: 0.2rem;
+	position: relative;
+}
+p.adress{
+	margin-left: 1.6rem;
+	position: absolute;
+	top: 0;
+	line-height: 0.5rem;
+
+}
+a.btn{
+	display: inline-block;
+	width: 1.56rem;
+	height: 35px;
+	float: right;
+	font-size: 0.29rem;
+	color: #ff5000;
+	margin-top: 0.1rem;
+	border: 1px solid #FF5000 !important;
+	border-radius: 0.1rem;
+	text-align: center;
+	line-height: 35px;
+}
+/*接单按钮*/
+/*确认按钮*/
+a.recive_btn,a.sure_btn{
+	background: #FF5000;
+	color: #fff;
+}
+/*加载更多*/
+
+#load_btn,
+#load_img{
+	padding-top: 9px;
+	color: #d2d2d2;
+	font-size: 0.28rem;
+	width: 100%;
+	text-align: center;
+	background-color: #F2F2F2;
+}
+/*下拉加载样式*/
+
+.dropload-up,
+.dropload-down {
+	position: relative;
+	height: 0;
+	overflow: hidden;
+	font-size: 12px;
+	/* 开启硬件加速 */
+	-webkit-transform: translateZ(0);
+	transform: translateZ(0);
+}
+
+.dropload-down {
+	height: 50px;
+}
+
+.dropload-refresh,
+.dropload-update,
+.dropload-load,
+.dropload-noData {
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+}
+
+.dropload-load .dropload-load {
+	text-align: center;
+}
+
+span.loading {
+	display: inline-block;
+	height: 15px;
+	width: 15px;
+	border-radius: 100%;
+	margin: 6px;
+	border: 2px solid #666;
+	border-bottom-color: transparent;
+	vertical-align: middle;
+	-webkit-animation: rotate 0.75s linear infinite;
+	animation: rotate 0.75s linear infinite;
+}
+
+@-webkit-keyframes rotate {
+	0% {
+		-webkit-transform: rotate(0deg);
+	}
+	50% {
+		-webkit-transform: rotate(180deg);
+	}
+	100% {
+		-webkit-transform: rotate(360deg);
+	}
+}
+
+@keyframes rotate {
+	0% {
+		transform: rotate(0deg);
+	}
+	50% {
+		transform: rotate(180deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+
+

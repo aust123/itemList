@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../css/login.css" />
+		<script type="text/javascript">
+			(function() {
+				var html = document.documentElement;
+				var width = html.getBoundingClientRect().width;
+				html.style.fontSize = width / 15 + 'px';
+				//1rem=50;
+			})()
+		</script>
+	</head>
+
+	<body>
+		<header class="logo_img">
+			<img src="../img/login_logo.png" />
+		</header>
+		<section id="login">
+			<div><input type="text" placeholder="账号" id="uname" value="" /></div>
+			<div><input type="password" name="" id="pwd" placeholder="密码" value="" /></div>
+			<div><input type="button" name="" id="btn" value="登录" /></div>
+		</section>
+		<script src="../js/jquery.min.js"></script>
+		<script src="../js/dropload.min.js"></script>
+		<script src="../js/reciveOrder.js"></script>
+		<script type="text/javascript" src="../js/template-web.js"></script>
+		<script type="text/javascript" src="../js/md5.js"></script>
+		<script type="text/javascript">
+			$('#btn').click(function() {
+				if($('#uname').val()!=''&&$('#pwd').val()!=''){
+					var pathname = 'manage_login';
+				var obj = {
+					username: $('#uname').val(),
+					password: $('#pwd').val()
+				};
+				GetList(obj, pathname, Login);
+				}
+				
+			})
+
+			function Login(_data) {
+				console.log(_data);
+				if(_data.data){
+					localStorage.id = _data.data;
+					window.location = 'reciveOrder.html'
+				}
+			}
+		</script>
+	</body>
+
+</html>

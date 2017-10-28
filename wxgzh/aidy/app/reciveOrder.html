@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../css/reciveOrder.css" />
+		<script type="text/javascript">
+			/*js计算html初始font-size值为100px*/
+			(function(doc, win) {
+				var docEl = doc.documentElement,
+					resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+					recalc = function() {
+						var clientWidth = docEl.clientWidth;
+						if(!clientWidth) return;
+						//设置字体font-size:100px
+						if(clientWidth >= 640) {
+							docEl.style.fontSize = '100px';
+						} else {
+							docEl.style.fontSize = 100 * (clientWidth / 640) + 'px';
+							// 这个640（iphone6）就是根据设计稿的横向宽度来确定的，假如你的设计稿是750(iphone6s)
+						}
+					};
+				if(!doc.addEventListener) return;
+				win.addEventListener(resizeEvt, recalc, false);
+				doc.addEventListener('DOMContentLoaded', recalc, false);
+			})(document, window);
+		</script>
+	</head>
+
+	<body>
+		<header>
+			<a class="cancel back" href="###"><img src="../img/jiantou_left.png" /></a>
+			<span class="title">接单</span>
+		</header>
+		<div id="allList" class="content"></div>
+		<div id="load_btn" onclick="LoadMore(this)">点击加载更多</div>
+		<script type="text/html" id="list_tpl">
+			{{each data as value}}
+			<section class="order_list">
+				<p class="order_num"><a href="###" onclick="Detail(this)">订单号&nbsp;:<span>{{value.order_num}}</span></a></p>
+				<div class="order_detail">
+					<p>回收物品：<span>{{value.goods_name}}</span></p>
+					<div class="ad_box"><span>上门地址：</span>
+						<p class="adress">{{value.province}}{{value.city}}{{value.dist}}{{value.street}}{{value.detail}}</p>
+					</div>
+				</div>
+				<p>
+					<span id="order_id">{{value.id}}</span>
+					{{if value.order_state==1}}
+					<a  class="recive_btn btn" onclick="Recive(this)" href="###">接单</a>
+					{{else if value.order_state==4}}
+					<a class="sure_btn btn" href="###" onclick="Sure(this)">确认回收</a>
+					{{else if value.order_state== 3}}
+					<a class="btn" href="###" >已完成</a>
+					{{/if}}
+				</p>
+			</section>
+			{{/each}}
+		</script>
+		<script src="../js/jquery.min.js"></script>
+		<script type="text/javascript" src="../js/dropload.min.js"></script>
+		<script src="../js/reciveOrder.js"></script>
+		<script type="text/javascript" src="../js/template-web.js"></script>
+		<script type="text/javascript" src="../js/md5.js"></script>
+		
+		<script type="text/javascript">
+			/*渲染接单列表页面*/
+			var obj;
+			function AllList() {
+				 obj = {
+					uid: localStorage.id,
+					pageNum: 1,
+					size: 10
+				};
+				var pathname = 'get_orders_of_manage';
+				GetList(obj, pathname, CallBack);
+			}
+			AllList();
+			function CallBack(_data) {
+				console.log(_data);
+				if(_data.code=='10000'){					
+					var html = template('list_tpl', _data);
+					document.getElementById('allList').innerHTML += html;	
+					$('body #load_img').remove();
+					$("#load_btn").css("display", "block");
+				} else {
+					$('body #load_img').remove();
+					$("#load_btn").css("display", "block").html("没有更多内容...")
+				}				
+			}
+			/*订单id*/
+			function Detail(pe) {
+				var nID = $(pe).parents('p').siblings('p').children('#order_id').html();
+				localStorage.order_id = nID;				
+				window.location.href = 'reciveDetail.html';
+			}
+		/*点击接单*/
+			function Recive(_this) {
+				var pathname = 'accept_order';
+				var recive_obj = {
+					uid: localStorage.id,
+					order_id: $(_this).siblings('span').html()
+				}
+				GetList(recive_obj, pathname, resolveData)
+			}
+
+			function resolveData(_data) {
+				if(_data.code=='10000'){
+					AllList();
+					window.location.reload(true);
+				}
+			}
+			/*确认订单完成*/
+			function Sure(_this){
+				var pathname = 'sure_to_end';
+				var complete_obj = {
+					uid: localStorage.id,
+					order_id: $(_this).siblings('span').html()
+				}
+				GetList(complete_obj, pathname, resolveData);
+			}
+			
+		</script>
+	</body>
+
+</html>
