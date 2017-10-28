@@ -1,0 +1,145 @@
+body,
+ul,
+li,
+ol,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+input,
+textarea,
+select,
+p,
+dl,
+dt,
+dd,
+a,
+img,
+button,
+form,
+table,
+th,
+tr,
+td,
+tbody,
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+	margin: 0;
+	padding: 0;
+}
+
+a {
+	text-decoration: none;
+}
+
+ul ol {
+	list-style: none;
+}
+
+body {
+	font-family: "microsoft yahei", '宋体', Tahoma, Arial, sans-serif;
+}
+
+header.logo_img{
+	width: 100%;
+	text-align: center;
+	padding-top: 2.78rem;
+}
+header.logo_img img{
+	width: 13.46rem;
+}
+#login{
+	width: 100%;
+	text-align: center;
+	margin-top: 2.38rem;
+}
+#login div{
+	margin-bottom: 0.8rem;
+}
+#login input{
+	width: 13rem;
+	height: 1.88rem;
+	border-radius: 0.92rem;
+	outline: none;
+	font-size: 0.84rem;
+	border: 1px solid #999;
+	text-align: center;
+	box-sizing: border-box;
+}
+#uname{
+	background: url(../img/user_icon.png) no-repeat;
+	background-position: 0.72rem center;
+	background-size: 0.8rem;
+}
+#pwd{
+	background: url(../img/lock_icon.png) no-repeat;
+	background-position: 0.72rem center;
+	background-size: 0.64rem 0.94rem;
+}
+#login input::-webkit-input-placeholder {
+	color: #999;
+	text-align: center;
+}
+
+#login input:-moz-placeholder {
+	color: #999;
+	text-align: center;
+}
+
+#login input:-ms-input-placeholder {
+	color: #999;
+}
+input#btn{
+	background-color: #00dfb9;
+	color: #fff;
+	border: 0px;
+}
+
+/*---------选择角色页面样式---------*/
+#role_body{
+	background: url(../img/bg-all.png) no-repeat;
+	background-size:cover;
+}
+div#content{
+	box-sizing: border-box;
+	padding: 0 1.52rem;
+	margin-top: 5rem;/*3.4rem*/
+}
+div#content div{
+	margin-bottom:1.44rem;
+}
+#content a{
+	color: #fff;
+	font-size: 0.72rem;
+}
+#content a {
+	display: block;
+}
+#content .role{
+	margin-top:0.5rem;
+	display: block;
+	text-align: center;
+}
+#content a img{
+	width: 4.98rem;
+}
+.left{
+	float: left;
+}
+.right{
+	float: right;
+}
+.clear{
+	clear: both;
+}
