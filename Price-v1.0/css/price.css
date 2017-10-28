@@ -1,0 +1,351 @@
+body,
+ul,
+li,
+ol,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+input,
+textarea,
+select,
+p,
+dl,
+dt,
+dd,
+a,
+img,
+button,
+form,
+table,
+th,
+tr,
+td,
+tbody,
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+	margin: 0;
+	padding: 0;
+}
+
+a {
+	text-decoration: none;
+}
+
+ul ol {
+	list-style: none;
+}
+
+body {
+	font-family: helvetica, '宋体', Tahoma, Arial, sans-serif;
+	position: relative;
+}
+
+.left {
+	float: left;
+}
+
+.right {
+	float: right;
+}
+
+.clear {
+	clear: both;
+}
+
+
+/*--------头部公共模块-------*/
+
+header {
+	width: 100%;
+	text-align: center;
+	height: 1.76rem;
+	line-height: 1.76rem;
+	position: relative;
+}
+
+header>span {
+	display: inline-block;
+	font-size: 0.8rem;
+	color: #333;
+	margin-top:0.3rem ;
+	
+}
+
+header>a {
+	position: absolute;
+	top: 0.2rem;
+	right: 1rem;
+	color: #00d3af;
+	height: 100%;
+}
+
+header>a img {
+	width: 0.9rem;
+}
+
+header b {
+	display: block;
+	font-weight: normal;
+	margin-top: -1rem;
+	font-size: 0.36rem;
+}
+
+
+/*----内容区域-----*/
+
+.content {
+	padding-bottom: 1.96rem;
+	display: none;
+}
+div.current_option{
+	display: block;
+}
+
+/*-------banner-------*/
+
+#banner {
+	width: 100%;
+	margin-top: 0.3rem;
+	height: 6rem;
+}
+
+#banner img {
+	width: 100%;
+	height: 100%;
+}
+.pc-banner{
+	width: 100%;
+	height: 100%;
+}
+.swiper-container {
+	width: 100%;
+	height: 100%;
+	position: relative;
+}
+
+.swiper-slide {
+	-webkit-transition: transform 1.0s;
+	-moz-transition: transform 1.0s;
+	-ms-transition: transform 1.0s;
+	-o-transition: transform 1.0s;
+	-webkit-transform: scale(0.7);
+	transform: scale(0.7);
+}
+
+@media screen and (max-width: 668px) {
+	.swiper-slide {
+		-webkit-transform: scale(0.97);
+		transform: scale(0.97);
+	}
+}
+
+.swiper-slide-active,
+.swiper-slide-duplicate-active {
+	-webkit-transform: scale(1);
+	transform: scale(1);
+}
+
+@media screen and (max-width: 668px) {
+	.swiper-slide-active,
+	.swiper-slide-duplicate-active {
+		-webkit-transform: scale(0.97);
+		transform: scale(0.97);
+	}
+}
+
+.none-effect {
+	-webkit-transition: none;
+	-moz-transition: none;
+	-ms-transition: none;
+	-o-transition: none;
+}
+
+.swiper-slide a {
+	background: #fff;	
+	display: block;	
+	height: 100%;
+}
+
+.swiper-slide-active a:after {
+	background: none;
+}
+
+.swiper-slide img {
+	display: block;
+}
+
+.swiper-pagination-bullet {
+	background: #00a0e9 !important;
+	margin-left: 0.08rem;
+	margin-right: 0.08rem;
+	width: 0.34rem;
+	height: 0.34rem;
+	opacity: 1 !important;
+}
+
+.swiper-pagination-bullet-active {
+	width: 0.24rem;
+	height: 0.24rem;
+	background: #FFF !important;
+	border: 0.12rem solid #00a0e9 !important;
+}
+
+
+/*实时价格内容样式*/
+
+.flex {
+	display: flex;
+	padding: 0px 0.64rem;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+#area {
+	margin-top: 0.52rem;
+}
+
+#area a {
+	font-size: 0.6rem;
+	color: #6e6d6d;
+}
+
+.current_area {
+	font-weight: bold;
+	border-bottom: 0.04rem solid #ef7d40;
+	padding-bottom: 0.24rem;
+}
+
+.province {
+	margin-top: 0.58rem;
+	display: none;
+}
+section.current_area_province{
+	display: flex;
+}
+.province a {
+	font-size: 0.56rem;
+	color: #858484;
+}
+
+.province .current_province {
+	color: #ef7d40;
+}
+
+#price_detail {
+	margin-top: 1.04rem;
+	padding: 0 1.12rem;
+}
+
+#price_detail p:nth-of-type(1) {
+	font-size: 0.64rem;
+	color: #333;
+	line-height: 1;
+	margin-bottom: 0.52rem;
+	font-weight: bold;
+}
+
+#price_detail p:nth-of-type(2) {
+	margin: 0;
+}
+
+#price_detail p,
+#msg_list p,
+#factory_list p {
+	font-size: 0.64rem;
+	color: #7d7d7d;
+	line-height: 1.6;
+	margin-bottom: 0.88rem;
+}
+
+#price_detail b,
+#msg_list b,
+#factory_list b {
+	font-weight: normal;
+	color: #f00808;
+}
+
+
+/*----底部公共模块-----*/
+
+.flex_box {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
+
+#footer {
+	border-top: 0.02rem solid #ddd;
+	padding: 0 1.48rem;
+	box-sizing: border-box;
+	height: 1.96rem;
+	width: 100%;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	background-color: #fff;
+}
+
+#footer img {
+	width: 0.88rem;
+	margin-bottom: 0.1rem;
+}
+
+#footer a {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	font-size: 0.48rem;
+	color: #bababa;
+}
+
+#footer .current_btn {
+	color: #00D3AF;
+}
+
+
+/*--------调价信息页面-----------*/
+
+#price_msg {
+	font-size: 0.72rem;
+	color: #676767;
+	font-weight: bold;
+	width: 100%;
+	text-align: center;
+	margin-top: 0.76rem;
+}
+
+#price_msg::after {
+	content: "";
+	display: block;
+	width: 100%;
+	height: 0.16rem;
+	margin-top: 0.52rem;
+	background: url(../img/xiantiao.png) no-repeat;
+	background-position: center;
+	background-size: 10.74rem 0.16rem;
+}
+
+#msg_list {
+	margin-top: 0.8rem;
+	padding: 0 1.12rem;
+}
+
+#msg_list .area_name {
+	font-size: 0.64rem;
+	color: #333;
+	font-weight: bold;
+	margin-bottom: 0.52rem;
+}

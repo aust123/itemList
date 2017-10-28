@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+
+		<link rel="stylesheet" type="text/css" href="css/DateTimePicker.css" />
+
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<script type="text/javascript" src="js/DateTimePicker.js"></script>
+
+		<!--[if lt IE 9]>
+			<link rel="stylesheet" type="text/css" href="../src/DateTimePicker-ltie9.css" />
+			<script type="text/javascript" src="../src/DateTimePicker-ltie9.js"></script>
+		<![endif]-->
+
+		<style>
+			p {
+				margin-left: 20px;
+			}
+			
+			.pickerButton {
+				background: #FFFFFF;
+				color: #A3A3CC;
+				border: 2px solid #A3A3CC;
+				border-radius: 5px;
+				padding: 10px 20px;
+				margin: 20px;
+				cursor: pointer;
+			}
+			
+			.pickerButton:hover {
+				color: #CCA3A3;
+				border-color: #CCA3A3;
+			}
+		</style>
+
+	</head>
+
+	<body>
+		<div id="datePicker">
+			<p></p>
+			<span class="pickerButton">Show</span>
+		</div>
+		<div id="dtBox"></div>
+		<script type="text/javascript">		
+			
+			$(document).ready(function() {
+				Date.prototype.format = function(fmt) { //author: meizz   
+				var o = {
+					"M+": this.getMonth() + 1, //月份   
+					"d+": this.getDate(), //日   
+					"h+": this.getHours(), //小时   
+					"m+": this.getMinutes(), //分   
+					"s+": this.getSeconds(), //秒   
+					"q+": Math.floor((this.getMonth() + 3) / 3), //季度   
+					"S": this.getMilliseconds() //毫秒   
+				};
+				if(/(y+)/.test(fmt))
+					fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+				for(var k in o)
+					if(new RegExp("(" + k + ")").test(fmt))
+						fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+				return fmt;
+			}
+			
+			var time2 = new Date().format("yyyy-MM-dd");
+			console.log(time2);
+			$('#datePicker p').html(time2);
+				
+				$("#dtBox").DateTimePicker({
+					addEventHandlers: function() {
+						var dtPickerObj = this;
+						$("#datePicker .pickerButton").click(function(e) {
+							e.stopPropagation();
+							dtPickerObj.showDateTimePicker($("#datePicker p"));
+						});
+					}
+				});
+			});
+		</script>
+
+	</body>
+
+</html>
