@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>分页插件</title>
+		<style>
+			.pages {
+				list-style: none;
+				overflow: hidden;
+				display: inline;
+			}
+			
+			.pages a,
+			.pages .pre-page,
+			.pages .next-page,
+			.pages .first-page,
+			.pages .last-page {
+				display: inline-block;
+				float: left;
+				width: 30px;
+				height: 30px;
+				background: #fff;
+				border: 1px solid #ddd;
+				text-align: center;
+				line-height: 30px;
+				border-radius: 3px;
+				margin-right: 10px;
+				cursor: pointer;
+				text-decoration: none;
+				color: #333;
+			}
+			
+			.pages a.active {
+				color: #FF5000;
+			}
+			
+			.pages .pre-page,
+			.pages .next-page,
+			.pages .first-page,
+			.pages .last-page {
+				width: 66px;
+				display: inline-block;
+			}
+			
+			ul li {
+				height: 25px;
+				line-height: 25px;
+				list-style: none;
+			}
+		</style>
+	</head>
+
+	<body>
+		<ul>
+			<li>aaa</li>
+			<li>bbbbbb</li>
+			<li>ccccc</li>
+			<li>ddddddddd</li>
+			<li>eeeeee</li>
+			<li>ffffffff</li>
+			<li>ggggggg</li>
+			<li>hhhhhhh</li>
+			<li>111111</li>
+			<li>22222</li>
+			<li>33333</li>
+			<li>4444</li>
+			<li>55555555</li>
+			<li>666666</li>
+			<li>77777777</li>
+			<li>888888888</li>
+			<li>99999999</li>
+			<li>22222</li>
+			<li>33333</li>
+			<li>4444</li>
+			<li>55555555</li>
+			<li>666666</li>
+			<li>77777777</li>
+			<li>888888888</li>
+			<li>99999999</li>
+		</ul>
+		<div id="pages" class="pages" style="margin-top: 20px"></div>
+		<div id="pages2" class="pages" style="margin-top: 20px"></div>
+		<script src="js/jquery-1.8.3.min.js"></script>
+		<script src="js/pagination.js"></script>
+		<script>
+			var count=$('ul li').length;
+			//分页
+			$('#pages').initPagenation({
+				totalCount: count, //数据总个数,
+				showBtnFirst: true, //是否显示 首页按钮
+				showCount: 5, //每页显示多少个,默认10个
+				showBtnsCount: 5 //数字按钮数量,最多10个,默认10个
+			});
+			//var PageSize = 5; //设置每页示数目  
+			//var page = Math.ceil($('ul li').length / PageSize);
+			//console.log(page);
+			console.log($('ul li').length);
+			$('.link-wrapper a').click(function() {
+				console.log($(this).html())
+			})
+			
+			var page;
+			$('.pre-page').click(function() {				
+				if(parseInt($('.active').html()) == 1) {
+					page = 1;
+				} else {
+					page = parseInt($('.active').html()) - 1;
+				}
+				console.log(page)
+			})
+			$('.next-page').click(function() {
+				page = parseInt($('.active').html()) + 1;
+				console.log(page)
+			})
+			$('.first-page').click(function() {
+				 page = 1;
+				console.log(page)
+			})
+			$('.last-page').click(function() {
+				 page =Math.ceil(count/5);
+				console.log(page)
+			})
+		</script>
