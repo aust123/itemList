@@ -1,0 +1,104 @@
+html{
+    font-size: 14px;
+}
+body{
+    background-color: #e0e0e0;
+}
+body,p{
+    margin: 0;
+    padding: 0;
+}
+.header,.footer{
+    width: 100%;
+    height: 130px;
+    background-color: crimson;
+    color: #fff;
+    font-size: 2.5rem;
+    text-align: center;
+    line-height: 130px;
+}
+.header{
+    top: 0px;
+    left: 0px;
+    position: absolute;
+}
+.header>span{
+    position: absolute;
+    left: 6%;
+    top: 0px;
+}
+.content{
+    background-color: #fff;
+    width: 100%;
+    padding-top: 120px;
+}
+.money{
+    width: 100%;
+}
+.m_input{
+    width: 100%;
+    border-bottom: 2px solid #b0b0b0;
+}
+.m_input>img{
+    width: 6%;
+    vertical-align: -15px;
+    margin-left: 4%;
+}
+.m_input>input{
+    width: 80%;
+    font-size: 2.7rem;
+    border: 0px;
+    padding: 6% 6% 4%;
+    box-sizing: border-box;
+}
+.m_input>input::placeholder{
+    color: #b0b0b0;
+}
+.money>p{
+    width: 100%;
+    font-size: 2.3rem;
+    padding-left: 6%;
+    margin-top: 50px;
+    padding-bottom: 10px;
+    box-sizing: border-box;
+}
+.user{
+    width: 100%;
+    margin-top: 30px;
+    padding: 0 1% 10px;
+    box-sizing: border-box;
+    border-bottom: 1px solid #b0b0b0;
+}
+.user>span{
+    display: inline-block;
+    padding-left: 4%;
+    box-sizing: border-box;
+    width: 80%;
+    font-size: 2.3rem;
+}
+.user>img{
+    width:6%;
+    vertical-align: -18px;
+}
+.msg{
+    margin-top: 10px;
+    width: 100%;
+    padding: 2% 4%;
+    background-color: whitesmoke ;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+.msg>p{
+    width: 100%;
+    padding: 6px 0;
+    font-size: 2rem;
+}
+.user>span{
+    color: crimson;
+}
+.footer{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    font-size: 2.7rem;
+}

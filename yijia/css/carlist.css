@@ -1,0 +1,85 @@
+html{
+    font-size: 14px;
+}
+body{
+    background-color: #e0e0e0;
+}
+body,p{
+    margin: 0;
+    padding: 0;
+}
+a{
+    text-decoration: none;
+    color: #ffffff;
+}
+.header,.footer{
+    width: 100%;
+    height: 130px;
+    background-color: crimson;
+    color: #fff;
+    font-size: 2.5rem;
+    text-align: center;
+    line-height: 130px;
+}
+.header{
+    top: 0px;
+    left: 0px;
+    position: absolute;
+}
+.header>a{
+    position: absolute;
+    left: 6%;
+    top: 0px;
+    font-size: 2.2rem;
+}
+.content{
+    background-color: #fff;
+    width: 100%;
+    padding-top: 120px;
+}
+
+.user{
+    width: 100%;
+    margin-top: 50px;
+    padding: 0 3% 25px;
+    box-sizing: border-box;
+    border-bottom: 1px solid #b0b0b0;
+}
+.user>span{
+    display: inline-block;
+    padding-left: 4%;
+    box-sizing: border-box;
+    width: 80%;
+    font-size: 2.1rem;
+}
+.user>a{
+    width:6%;
+    padding: 1.2% 2.2%;
+    font-size: 2rem;
+    color: crimson;
+    border: 2px solid crimson;
+    border-radius: 15px;
+}
+.msg{
+    margin-top: 25px;
+    width: 100%;
+    padding: 1% 4%;
+    background-color: whitesmoke ;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+.msg>p{
+    width: 100%;
+    padding: 5px 0;
+    font-size: 1.8rem;
+    color: gray;
+}
+.user>span{
+    color: crimson;
+}
+.footer{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    font-size: 2.7rem;
+}
