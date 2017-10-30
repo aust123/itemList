@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/fenxiang.css" />
+		<script type="text/javascript">
+			(function() {
+				var html = document.documentElement;
+				var width = html.getBoundingClientRect().width;
+				html.style.fontSize = width / 15 + 'px';
+				//1rem=50;
+			})()
+		</script>
+	</head>
+	<body>
+		<header>
+			<img src="img/blue/top.png" />
+			<i class="change_color">更换颜色</i>
+			<div class="color">
+				<span class="blue" data_color='blue' data_attr='#6e7fee'></span>
+				<span class="yellow" data_color='yellow' data_attr='#f2e000'></span>
+				<span class="black" data_color='black' data_attr='#3f4140'></span>
+				<span class="green" data_color='green' data_attr='#2cca9f'></span>
+				<span class="pink" data_color='pink' data_attr='#f2d3ea'></span>
+			</div>
+		</header>
+		<script type="text/html" id="paper_tpl">			
+			<p class="title">纸厂信息<img src="img/blue/title_btn.png" alt="" /></p>
+			<div class="company_name">
+				<p>公司名称：{{paper_info.co_name}}</p>
+				<p id="company_adress">公司地址：<span>{{paper_info.co_address}}</span></p>
+				<p>联系方式：{{paper_info.co_phone}}</p>
+			</div>
+			<p class="title price">废纸价格<img src="img/blue/title_btn.png" alt="" /></p>
+			<div class="company_price">
+				<p class="update_time">更新于{{update_time.updated_at}}</p>
+				<div id="price_list">
+					{{each paper_standard as value}}
+					<p class="first_msg">{{value.ps_paper_stage}}<b>{{value.ps_price}}元/吨</b></p>
+					{{/each}}
+					<p id="more" onclick="LoadMore(this)">......</p>
+				</div>
+			</div>
+		</script>
+		
+		<section class="content" id="papers">
+			
+		</section>
+		<section id="footer">
+			<img src="img/blue/bottom.png" />
+			<p>信息来源于“纸去哪了”，想要了解更多，请关注“纸去哪了”公众号！</p>
+		</section>
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<script type="text/javascript" src="js/md5.js"></script>
+		<script type="text/javascript" src="js/template-web.js"></script>
+		<script type="text/javascript" src="js/fenxiang.js"></script>
+		<script type="text/javascript">
+			console.log(window.location.search.split('=')[1])
+			var obj = {
+				uid: 3,
+				pageNum: 0,
+				size: 5
+			};
+			var pathname = '/api/salesman/getsharepagedata';
+			GetList(obj, pathname, CallBack);
+
+			function CallBack(_data) {
+				console.log(_data);
+				if(_data.status_code==10000){
+					if(_data.update_time.updated_at){
+						_data['update_time']['updated_at'] = getLocalTimes(_data['update_time']['updated_at']);
+					}
+					if(_data.paper_standard.length !=0){
+						var html = template('paper_tpl', _data);
+						document.getElementById('papers').innerHTML += html;
+					}
+										
+				}				
+			}
+			
+			/*$('.change_color').click(function(){
+				
+			})*/
+			$('.color span').click(function(){
+				console.log($('.title img'))
+				var path = $(this).attr('data_color');
+				var $color = $(this).attr('data_attr');
+				$('.title').css('color',$color)
+				$('header img').attr('src','img/'+path+'/top.png');
+				$('.title img').attr('src','img/'+path+'/title_btn.png');
+				$('#footer img').attr('src','img/'+path+'/bottom.png');
+			})
+		</script>
+	</body>
+
+</html>
