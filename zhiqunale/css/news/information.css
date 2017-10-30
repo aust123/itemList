@@ -1,0 +1,154 @@
+
+.infor_bar{
+    height:72px;
+    line-height:72px;
+    border-top:1px solid #e0e0e0;
+    box-shadow: 0 3px 3px #d9d9d9;
+    -webkit-box-shadow: 0 3px 3px #d9d9d9;
+    -moz-box-shadow: 0 3px 3px #d9d9d9;
+}
+.infor_bar ul{
+    width:1182px;
+    margin:0 auto;
+    padding:0 80px;
+}
+.infor_bar li{
+    float:left;
+    font-size:24px;
+    margin-right:330px;
+}
+.infor_bar li a{
+    color:#333;
+}
+.infor_bar li.on a{
+    color:#ff5000;
+}
+#infor_box{
+    width:1342px;
+    margin:0 auto 100px;
+}
+#infor_box li{
+    border-bottom:1px solid #d2d2d2;
+    padding:40px 15px;
+}
+#infor_box .txt{
+    width:90%;
+}
+#infor_box h3{
+    font-size:24px;
+    color:#333;
+    margin-bottom:25px;
+}
+#infor_box  p,
+div#details p{
+    font-size:18px;
+    color:#666;
+    line-height:34px !important;
+}
+#infor_box .time{
+    float:right;
+    text-align:center;
+    font-size:16px;
+    color:#999;
+}
+/*详情*/
+.infor_detail{
+    width:1342px;
+    margin:0 auto;
+    margin-bottom: 100px;
+}
+.infor_detail .bread{
+    margin:50px 20px;
+    font-size:20px;
+}
+.bread a{
+    color:#666;
+}
+.detail .til{
+    padding:0 20px;
+    border-bottom:1px solid #e9e9e9;
+}
+.til h3{
+    font-size:22px;
+    font-weight:bold;
+    margin-bottom:20px;
+}
+.til span{
+    font-size:18px;
+    color:#666;
+}
+.til .share{
+    margin:25px 0;
+    font-size:22px;
+}
+.bshare-custom{
+    display: inline-block;
+}
+.bshare-custom a{
+    width: 32px!important;
+    height: 32px!important;
+    padding: 0!important;
+    overflow: hidden!important;
+    margin-left: 25px;
+}
+.detail .txt{
+    padding:40px 20px;
+    font-size:18px;
+    color:#666;
+    line-height:36px;
+}
+
+span.nId{
+	display: none;
+}
+/*咨询详情页面样式*/
+div#details span{
+	font-size: 18px !important;
+}
+div#details{
+	margin-top: 50px;
+}
+/*div#details {
+	text-align: center;
+}*/
+
+/*分页按钮样式*/
+
+.pages {
+	list-style: none;
+	overflow: hidden;
+	display: block;
+	text-align: center;
+	font-size: 16px;
+}
+
+.pages a,
+.pages .pre-page,
+.pages .next-page,
+.pages .first-page,
+.pages .last-page {
+	display: inline-block;	
+	width: 30px;
+	height: 30px;
+	background: #fff;
+	border: 1px solid #ddd;
+	text-align: center;
+	line-height: 30px;
+	border-radius: 3px;
+	margin-right: 10px;
+	cursor: pointer;
+	text-decoration: none;
+	color: #333;
+}
+
+.pages a.active {
+	color: #FF5000;
+}
+
+.pages .pre-page,
+.pages .next-page,
+.pages .first-page,
+.pages .last-page {
+	width: 66px;
+	display: inline-block;
+}

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+
+	<head lang="en">
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<title>纸去哪了-废纸交易平台</title>
+		<link rel="stylesheet" href="../../css/account/certificate.css" />
+	</head>
+
+	<body>
+
+		<div class="container">
+			<div class="header">
+				<div id="top_bar"></div>
+				<div id="nav_bar"></div>
+				<div id="search"></div>
+			</div>
+			<div class="main_box">
+				<div id="certificate">
+					<div class="myLeft"></div>
+					<div class="myRight">
+						<div id="certiFirmChk">
+							<h2 class="til">企业认证</h2>
+							<div id="co_check_show"></div>
+							<!--后台数据渲染至页面-->
+							<script type="text/html" id="co_all_list">
+								{{if data.co_auth_state==0}}
+								<h3 class="chking">认证被拒绝</h3>
+								<div class="block">
+									<a href="certificate_firm.html">编辑</a>
+									{{else if data.co_auth_state==1}}
+									<div class="block">
+										{{else if data.co_auth_state==2}}
+										<h3 class="chking">正在审核中...</h3>
+										<div class="block">
+											<a href="certificate_firm.html">编辑</a>
+											{{/if}}
+											<div class="msg">
+												<span>企业名字：</span>
+												<b>{{data.co_name}}</b>
+											</div>
+											<div class="msg">
+												<span>法人名字：</span>
+												<b>{{data.co_legal_person_name}}</b>
+											</div>
+											<div class="msg">
+												<span>营业执照编码：</span>
+												<b>{{data.co_licence_code}}</b>
+											</div>
+											<div class="msg">
+												<span>营业执照有效期：</span>
+												<b>{{data.co_licence_expiry_date}}</b>
+											</div>
+										</div>
+										<div class="block" id="ed_msg">
+											{{if data.co_auth_state==1}}
+											<a href="###" class="co_edit " onclick="firmEdit()">编辑</a>
+											{{/if}}
+											<div class="msg edit_msg">
+												<span>业务联系人：</span>
+												<b class="per">{{data.co_business_contacts_name}}</b>
+												<input class="edit_nm edit_input" name="edit_co_name" onfocus="fConn()" type="text" value="" />
+												<em>请输入业务联系人</em>
+											</div>
+											<div class="msg edit_msg">
+												<span>联系方式：</span>
+												<b class="conn">{{data.co_business_contacts_phone}}</b>
+												<input class="edit_tel edit_input" name="edit_co_tel" onfocus="fTel()" type="text" value="" />
+												<em>请输入联系方式</em>
+											</div>
+										</div>
+										<div class="block" style="border:0;">
+											<h3>上传营业执照</h3>
+											<div class="msg">
+												<img src="{{data.co_licence_photo}}" alt="企业营业执照" />
+											</div><br/>
+											<h3>上传企业LOGO</h3>
+											<div class="msg">
+												<img src="{{data.co_logo}}" alt="企业logo" />
+											</div>
+										</div>
+							</script>
+
+							</div>
+							<div id="firm_submit" class="submit">
+								<input type="button" value="确 定" />
+								<b class="cancleEdit">取&nbsp;&nbsp;消</b>
+							</div>
+							</div>
+
+						</div>
+					</div>
+					<div id="footer"></div>
+				</div>
+				<input class="hidden" data-id="firm" type="hidden" />
+				<script src="../../lib/jquery-1.8.3.min.js"></script>
+				<script type="text/javascript" src="../../lib/template-web.js"></script>
+				<script type="text/javascript" src="../../lib/md5.js"></script>
+				<script type="text/javascript" src="../../js/secret.js"></script>
+				<script>
+					$(function() {
+							$('#top_bar').load('../public/topBar.html');
+							$('#nav_bar').load('../public/navBar.html');
+							$('#search').load('../public/search.html');
+							$('#footer').load('../public/footer.html');
+							$('.myLeft').load('../public/accLeft.html');
+					})
+						/*-----------获取企业认证信息------*/
+						! function() {
+							var pathname = '/api/paper/get/company/auth/data';
+							var obj = {
+								pe_id: localStorage.userId, //用户id值，本地缓存读取
+								pe_phone:localStorage.userPhone,
+							}
+							GetList(obj, pathname, DealData);
+						}()
+
+					function DealData(_data) {
+						console.log(_data);
+						if(_data.status_code == 10000) {
+							/*获取个人信息渲染至页面*/
+							var datalist = {};
+							for(var i in _data.data) {
+								datalist[i] = unescape(_data.data[i]); //将请求返回的汉字解码										
+							}
+							//当企业未通过认证时，将信息存储到缓存文件
+							if(_data.data.co_auth_state != 1) {								
+								localStorage.certicate_Msg = JSON.stringify(datalist); //将获取的收纸标准存放在localStorage							
+								//console.log(localStorage.certicate_Msg)
+							}
+							var Data = {
+								data: datalist
+							};
+							var html = template('co_all_list', Data);
+							document.getElementById('co_check_show').innerHTML = html;
+						} else if(_data.status_code == 10002) {
+							//如果企业未认证，跳转页面去编辑信息
+							window.location.href = 'certificate_firm.html';
+						}
+					}
+
+					/*已完成认证的企业点击编辑按钮*/
+					function firmEdit() {
+						$('.co_edit').hide(); //编辑按钮
+						$('.edit_msg b').hide().siblings('input').show();
+						$('.edit_tel').val($('.conn').html());
+						$('.edit_nm').val($('.per').html());
+						$('#firm_submit').show(); //底部提交按钮
+					}
+					$('.cancleEdit').click(function() {
+						$('#firm_submit').hide();
+						$('.co_edit').show();
+						$('.edit_msg b').show().siblings('input').hide();
+					})
+
+					/*提交已认证企业编辑后的信息*/
+					$('#firm_submit input').click(function() {
+						if($('.edit_nm').val() != '' && $('.edit_tel').val() != '') {
+							var pathname = '/api/paper/edit/company/auth/data';
+							var obj = {
+								pe_id: localStorage.userId, //用户id值，本地缓存读取
+								pe_phone:localStorage.userPhone,
+								co_business_contacts_name: escape($('.edit_nm').val()),
+								co_business_contacts_phone: escape($('.edit_tel').val())
+							}
+							GetList(obj, pathname, firmBack);
+						} else {
+							$('#ed_msg em').show();
+						}
+					})
+
+					function firmBack(_data) {
+						console.log(_data)
+						if(_data.status_code == 10000) {
+							window.location.reload(true);
+						} else {
+							window.confirm('提交信息失败，请从新提交！')
+						}
+					}
+					/*编辑信息提示内容*/
+					function fConn() {
+						$('.edit_nm').next('em').hide();
+					}
+
+					function fTel() {
+						$('.edit_tel').next('em').hide();
+					}
+				</script>
+	</body>
+
+</html>

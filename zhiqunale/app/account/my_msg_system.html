@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv = "X-UA-Compatible" content = "IE=edge,chrome=1" />
+    <title>纸去哪了-废纸交易平台</title>
+    <link rel="stylesheet" href="../../css/account/my_msg.css"/>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <div id="top_bar"></div>
+        <div id="nav_bar"></div>
+        <div id="search"></div>
+    </div>
+    <div class="main_box">
+        <div id="my_msg">
+            <div class="bread">
+                <span>您的位置：</span>
+                <a href="http://localhost:63342/template/app/">首页</a> ＞
+                <i>我的消息</i>
+            </div>
+            <ul class="condi">
+                <li>
+                    <a href="my_msg.html">业务交易消息</a>
+                </li>
+                <li class="on">
+                    <a href="javascript:;">系统消息</a>
+                </li>
+                <li>
+                    <a href="my_msg_personal.html">个人消息</a>
+                </li>
+            </ul>
+            <div class="message">
+                <ul class="msgList">
+                </ul>
+                <div class="pages"></div>
+            </div>
+        </div>
+    </div>
+    <div id="footer"></div>
+</div>
+<script type="text/html" id="msgList">
+    {{each data as value i}}
+    {{if value.read_state==0}}
+    <li class="notYet">
+        <div class="lf" data-id="{{value.sm_id}}">
+            <p>{{value.title}}</p>
+            <p>{{value.content}}</p>
+            <p>
+                <span class="date">{{value.send_time}}</span>
+            </p>
+        </div>
+        <div class="rt">
+            <a data-id="{{value.sm_id}}" onclick="del(this)" href="javascript:;"><img src="../../img/message_cancel.png" alt=""/></a>
+        </div>
+    </li>
+    {{else}}
+    <li>
+        <div class="lf" data-id="{{value.sm_id}}">
+            <p>{{value.title}}</p>
+            <p>{{value.content}}</p>
+            <p>
+                <span class="date">{{value.send_time}}</span>
+            </p>
+        </div>
+        <div class="rt">
+            <a data-id="{{value.sm_id}}" onclick="del(this)" href="javascript:;"><img src="../../img/message_cancel.png" alt=""/></a>
+        </div>
+    </li>
+    {{/if}}
+    {{/each}}
+</script>
+<script src="../../lib/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="../../lib/md5.js"></script>
+<script type="text/javascript" src="../../js/secret.js"></script>
+<script type="text/javascript" src="../../lib/template-web.js"></script>
+<script type="text/javascript" src="../../lib/pagination.js"></script>
+<script>
+    $(function(){
+        $('#top_bar').load('../public/topBar.html');
+        $('#search').load('../public/search.html');
+        $('#nav_bar').load('../public/navBar.html');
+        $('#footer').load('../public/footer.html');
+        //获取系统消息
+        var page= 1;
+        ajax(page,true);
+        function ajax(pg,can){
+            var obj={
+                pe_id:localStorage.getItem("userId"),
+                pe_phone:localStorage.getItem("userPhone"),
+                page:pg
+            }
+            var msgname='/api/paper/get/sys/message';
+            GetList(obj,msgname,getMsg);
+            function getMsg(_data){
+                if(_data.status_code=='10000'){
+                    var html=template('msgList',_data);
+                    $('.msgList').html(html);
+                    if(can){
+                        //分页
+                        $('.pages').html('');
+                        $('.pages').initPagenation({
+                            totalCount: _data.totalRecord,     //数据总个数,
+                            showBtnFirst: true,     //是否显示 首页按钮
+                            showCount: 15,          //每页显示多少个,默认10个
+                            showBtnsCount: 8      //数字按钮数量,最多10个,默认10个
+                        });
+                    }
+                }else{
+                    $('.msgList').html(_data.msg).css({'text-align':'center','font-size':'18px'});
+                }
+            }
+        }
+        $('.pages').delegate('a','click',function(){
+            ajax($(this).html(),false);
+        });
+        $('.pages').delegate('.pre-page','click',function(){
+            var page=$(this).siblings('a.active').html();
+            if(page!=1){
+                ajax(page-1,false);
+            }
+        });
+        $('.pages').delegate('.next-page','click',function(){
+            var page=$(this).siblings('a.active').html();
+            if(page!=$(this).prev().prev().html()){
+                ajax(parseInt(page)+1,false);
+            }
+        });
+        $('.pages').delegate('.first-page','click',function(){
+            var page=$(this).next().html();
+            ajax(page,false);
+        });
+        $('.pages').delegate('.last-page','click',function(){
+            var page=$(this).prev().html();
+            ajax(page,false);
+        });
+//      点击变成已读
+        $('.msgList').delegate('.lf','click',function(){
+            var mid=$(this).attr('data-id');
+            var obj={
+                pe_id:localStorage.getItem("userId"),
+                pe_phone:localStorage.getItem("userPhone"),
+                msg_id:mid
+            }
+            var pathname='/api/paper/click/to/change/sys/msg/state';
+            GetList(obj,pathname,getYet);
+            function getYet(data){
+                if(data.status_code=='10000'){
+                    location.reload();
+                }
+            }
+        });
+
+    })
+
+    function del(This){
+        var mid=$(This).attr('data-id');
+        var obj={
+            pe_id:localStorage.getItem("userId"),
+            pe_phone:localStorage.getItem("userPhone"),
+            msg_id:mid
+        }
+        var delname='/api/paper/delete/message';
+        GetList(obj,delname,getDel);
+        function getDel(data){
+            if(data.status_code=='10000'){
+                alert(data.msg);
+                location.reload();
+            }else{
+                alert(data.mag);
+            }
+        }
+    }
+</script>
+</body>
+</html>

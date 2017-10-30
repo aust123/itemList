@@ -1,0 +1,658 @@
+
+body,html{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+#search,.search,.main_box{
+    background:#f2f2f2;
+}
+#account_comp,#account_paper{
+    width:1342px;
+    margin:0 auto;
+    overflow:hidden;
+    padding-bottom:60px;
+}
+.myLeft{
+    float:left;
+}
+.accCompRight{
+    width:1080px;
+    background:#fff;
+    float:left;
+    padding: 0 20px;
+    min-height: 733px;
+}
+
+/*ֽ����ó�׹�˾--������Ϣ*/
+#perMsg .til,#compMsg .til,#compMsgEdit .til,#ppStand .til{
+    border-bottom: 1px solid #D2D2D2;
+    font-size: 22px;
+    color: #333;
+    padding: 20px 10px;
+}
+#perMsg .til a,#compMsg .til a,#ppStand .til a{
+    float: right;
+    font-size: 18px;
+    color: #999;
+}
+#perMsg .perBox{
+    padding: 40px 30px 0;
+}
+#perMsg .perBox h3{
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 20px;
+}
+#perMsg .perBox h3 span{
+    color: #333;
+    margin-left: 20px;
+}
+#perMsg .perBox h3 a{
+    font-size: 14px;
+    color: #208df0;
+    margin-left: 30px;
+    position: relative;
+    top: -2px;
+}
+#perMsg .perBox h3.tel input{
+    width: 200px;
+    padding: 0 10px;
+    height: 30px;
+    line-height: 30px;
+    border: 1px solid #d2d2d2;
+    border-radius: 5px;
+    font-size: 18px;
+    color: #333;
+}
+#perMsg .perBox h3.area textarea{
+    width: 300px;
+    padding: 0 10px;
+    height: 150px;
+    line-height: 32px;
+    border: 1px solid #d2d2d2;
+    border-radius: 5px;
+    font-size: 18px;
+    color: #333;
+    margin-top: 10px;
+    resize: none;
+}
+#perMsg .perBox h3.submit input{
+    width: 314px;
+    height: 44px;
+    border: none;
+    border-radius: 5px;
+    background: #ff5000;
+    font-size: 18px;
+    color: #fff;
+    margin-top: 50px;
+}
+
+/*ֽ����ó�׹�˾--��ҵ��Ϣ*/
+#compMsg h3,#compMsgEdit h3{
+    font-size:20px;
+    color:#333;
+    margin-bottom:30px;
+}
+#compMsg .intro{
+    padding: 40px 30px;
+    border-bottom: 1px solid #d2d2d2;
+}
+#compMsg .pics,#compMsgEdit .introEdit,#compMsgEdit .picEdit,#ppStand .standard{
+    padding: 40px 30px;
+}
+#compMsg .intro h3 a,#compMsg .pics h3 a{
+    float:right;
+    font-size:18px;
+    color:#999;
+}
+#compMsg .intro p{
+    font-size:18px;
+    color:#666;
+    line-height:38px;
+}
+#compMsg .pics .picList{
+    margin-left: 18px;
+}
+#compMsg .pics .picList img{
+    width: 294px;
+    height: 210px;
+    margin-right: 37px;
+    margin-bottom: 20px;
+}
+/*暂无公司信息时和收纸标准的提示*/
+.msgTip{
+	font-size: 18px;
+	color: #666;
+}
+/*��ҵ��Ϣ--�༭��˾���*/
+#compMsgEdit .introEdit textarea{
+    padding: 25px 20px;
+    width: 1014px;
+    height: 260px;
+    border: 1px solid #d2d2d2;
+    border-radius: 10px;
+    resize: none;
+    font-size: 18px;
+    color: #999;
+    outline: medium;
+}
+#compMsgEdit .introEdit input.submit{
+    width: 140px;
+    height: 44px;
+    color: #fff;
+    font-size: 18px;
+    background: #ff5000;
+    border-radius: 5px;
+    border: 0;
+    margin-top: 60px;
+    cursor: pointer;
+}
+
+/*��ҵ��Ϣ--�༭��˾ͼƬ*/
+#compMsgEdit .picEdit .msg{
+    margin-left: 20px;
+}
+#compMsgEdit .picEdit .imgs .file{
+    position: relative;
+    display: inline-block;
+    width: 297px;
+    height: 214px;
+    text-align:center;
+    background: url('../../img/qiyexinxi_shangchuang.png') no-repeat center center;
+    background-size: 100% 100%;
+}
+#compMsgEdit .picEdit .file input {
+    position: absolute;
+    right: 0;
+    top: 0;
+    opacity: 0;
+    filter:alpha(opacity=0);
+    display: inline-block;
+    width: 297px;
+    height: 214px;
+}
+#compMsgEdit .picEdit .imgs{
+    overflow:hidden;
+    display: inline-block;
+}
+#compMsgEdit .picEdit .imgs li{
+    width: 297px;
+    height: 234px;
+    float: left;
+    margin-bottom: 20px;
+    margin-right: 36px;
+}
+#compMsgEdit .picEdit .imgs li>img{
+    width: 297px;
+    height: 210px;
+}
+#compMsgEdit .picEdit .imgs p{
+    text-align: right;
+    margin-top: 6px;
+    margin-right: 6px;
+}
+#compMsgEdit .picEdit .imgs p img{
+    cursor: pointer;
+}
+#compMsgEdit .picEdit .submit input{
+    margin-top: 50px;
+    width: 140px;
+    height: 44px;
+    background: #ff5000;
+    border: 0;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 18px;
+}
+/*ֽ��--��ֽ��׼*/
+#ppStand .standList{
+    border-bottom: 1px solid #d2d2d2;
+    padding-bottom: 10px;
+    margin-bottom: 40px;
+}
+#ppStand .standList h4{
+    font-size: 18px;
+    color: #ff5000;
+    margin-bottom: 20px;
+}
+#ppStand .standList h4 span{
+    margin-right: 100px;
+}
+#ppStand .standList h4 a{
+    color:#ff5000;
+    float:right;
+    margin-left: 20px;
+}
+#ppStand .standList>div{
+    margin-bottom: 30px;
+}
+#ppStand .standList>div p{
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 10px;
+}
+#ppStand .standList>div h5{
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 10px;
+}
+.delStand,.delPaper,.delAddr{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    text-align: center;
+    display: none;
+}
+.delStand .delBox,.delPaper .delBox{
+    width: 420px;
+    height: 262px;
+    background: #fff;
+    border-radius: 20px;
+    display: inline-block;
+    position: relative;
+    top: 30%;
+}
+.delStand .delBox p,.delPaper .delBox p{
+    font-size: 20px;
+    color: #666;
+    margin-top: 70px;
+}
+.delStand .delBox a,.delPaper .delBox a{
+    width: 130px;
+    height: 44px;
+    line-height: 44px;
+    border-radius: 5px;
+    background: #ff5000;
+    display: inline-block;
+    color: #fff;
+}
+.delStand .delBox .cancel,.delPaper .delBox .cancel{
+    margin-left: 50px;
+    background: #B2B2B2;
+}
+/*ֽ��--�����ֽ��׼*/
+#ppStandAdd .til{
+    border-bottom: 1px solid #D2D2D2;
+    font-size: 22px;
+    color: #333;
+    padding: 20px 10px;
+}
+#ppStandAdd .add{
+    padding: 22px 30px;
+}
+#ppStandAdd .add  p{
+    font-size: 18px;
+    color: #666;
+    margin-right: 10px;
+    margin-top: 12px;
+}
+select#paper_stage{
+	width: 223px;
+    padding: 0 10px;
+    height: 34px;
+    line-height: 34px;
+    font-size: 16px;
+    color: #333;
+    border: 1px solid #d2d2d2;
+    border-radius: 5px;
+    outline: medium;
+}
+#ppStandAdd .add input[type=text]{
+    width: 200px;
+    padding: 0 10px;
+    height: 32px;
+    line-height: 32px;
+    font-size: 16px;
+    color: #333;
+    border: 1px solid #d2d2d2;
+    border-radius: 5px;
+    outline: medium;
+}
+#ppStandAdd .add textarea{
+    padding: 20px 25px;
+    width: 1000px;
+    margin-top: 10px;
+    height: 200px;
+    border: 1px solid #d2d2d2;
+    border-radius: 10px;
+    outline: medium;
+    font-size: 18px;
+    color: #666;
+    resize: none;
+}
+#ppStandAdd .add .submit input{
+    width: 140px;
+    height: 44px;
+    color: #fff;
+    font-size: 18px;
+    background: #FF5A00;
+    border: 0;
+    border-radius: 5px;
+    margin: 50px 0 100px;
+}
+/*��ַ����*/
+#addrManage .til,#addrManageEdit .til,#cooperPaper .til,#cooperEdit .til,#cooperAdd .til{
+    border-bottom: 1px solid #D2D2D2;
+    font-size: 22px;
+    color: #333;
+    padding: 20px 10px;
+}
+#addrManage .addrBox,#addrManageEdit .addrBox{
+    margin: 0 30px;
+    padding: 35px 0;
+    border-bottom: 1px solid #d2d2d2;
+}
+#addrManageEdit .addrBox{
+    border: 0;
+}
+#addrManage .addrBox h3,#addrManageEdit .addrBox h3,
+#cooperPaper .cooperBox h3,#cooperEdit .cooperEdit h3,
+#cooperAdd .addBox h3{
+    color: #333;
+    font-size: 20px;
+}
+#addrManage .addrBox h3 a,#cooperPaper .cooperBox h3 a{
+    float:right;
+    font-size:18px;
+    color:#999;
+}
+#addrManage .addrBox li{
+    margin-top: 20px;
+    font-size: 18px;
+    color: #666;
+}
+#addrManage .addrBox li span:first-child{
+    margin-right: 50px;
+}
+#addrManage .addrBox li span.nm{
+    margin-right: 0;
+}
+#addrManage .addrBox li a{
+    float: right;
+    margin-left: 20px;
+}
+.delAddr{
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#7f000000,endColorstr=#7f000000);
+    position: fixed;
+    top: 0;
+    left: 0;
+    text-align: center;
+    display: none;
+}
+.delAddr .delBox{
+    width: 420px;
+    height: 260px;
+    display: inline-block;
+    background: #fff;
+    border-radius: 20px;
+    position: relative;
+    top: 30%;
+}
+.delAddr .delBox p{
+    margin-top: 70px;
+    color: #666;
+    font-size: 20px;
+}
+.delAddr .delBox a{
+    color: #fff;
+    font-size: 18px;
+    background: #ff5a00;
+    display: inline-block;
+    width: 140px;
+    height: 44px;
+    border-radius: 5px;
+    line-height: 44px;
+    margin-right: 50px;
+}
+.delAddr .delBox a.cancel{
+    background: #b2b2b2;
+    margin: 0;
+}
+/*��ַ����--�༭��ַ*/
+#addrManageEdit .addrBox form{
+    margin-top: 30px;
+}
+#addrManageEdit .addrBox form p{
+    margin-bottom: 12px;
+}
+#addrManageEdit .addrBox form span{
+    font-size: 18px;
+    color: #666;
+}
+#addrManageEdit .addrBox form select{
+    font-size: 18px;
+    color: #333;
+    border: 1px solid #d2d2d2;
+    border-radius: 5px;
+    width: 200px;
+    height: 32px;
+    line-height: 32px;
+    padding-left: 6px;
+    outline: none;
+}
+#addrManageEdit .addrBox form label{
+    color: #208df0;
+    position: relative;
+}
+#addrManageEdit .addrBox form input[type=checkbox]{
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+#addrManageEdit .addrBox form .checkbox{
+    position: absolute;
+    left: 0;
+    display: none;
+}
+#addrManageEdit .addrBox form .checkbox.on{
+    display: inline;
+}
+#addrManageEdit .addrBox form textarea{
+    font-size: 18px;
+    color: #666;
+    border: 1px solid #d2d2d2;
+    resize: none;
+    margin-top: 10px;
+    border-radius: 5px;
+    width: 300px;
+    height: 130px;
+    padding: 10px;
+    outline: none;
+}
+#addrManageEdit .addrBox form input.submit{
+    width: 314px;
+    height: 44px;
+    background: #ff5000;
+    color: #fff;
+    border-radius: 5px;
+    font-size: 18px;
+    border: 0;
+    margin-top: 50px;
+}
+/*����ֽ������*/
+#cooperPaper .cooperBox,#cooperEdit .cooperEdit,#cooperAdd .addBox{
+    padding: 40px 30px;
+}
+#cooperPaper .cooperBox ul{
+    margin-top: 20px;
+}
+#cooperPaper .cooperBox li{
+    margin-top: 20px;
+}
+#cooperPaper .cooperBox li span{
+    font-size: 18px;
+    color: #666;
+    margin-right: 40px;
+}
+#cooperPaper .cooperBox li i{
+    font-size: 16px;
+    color: #999;
+    font-style: normal;
+}
+#cooperPaper .cooperBox li a{
+    float: right;
+    margin-left: 20px;
+}
+/*����ֽ������--�༭δ��ֽ֤��*/
+#cooperEdit .cooperEdit h3{
+    margin-bottom: 20px;
+}
+#cooperEdit .cooperEdit h3 span{
+    font-size: 16px;
+    color: #999;
+    margin-left: 30px;
+}
+#cooperEdit .cooperEdit>div{
+    padding: 30px 0;
+    border-top: 1px solid #d2d2d2;
+}
+#cooperEdit .cooperEdit>div p{
+    color: #666;
+    font-size: 18px;
+}
+#cooperEdit .cooperEdit>div a{
+    color: #999;
+    float: right;
+    margin-left: 20px;
+    font-size: 18px;
+}
+#cooperEdit .cooperEdit>div h4{
+    color: #FF5000;
+    font-size: 18px;
+}
+#cooperEdit .cooperEdit>div h4 span{
+    float: right;
+}
+#cooperEdit .cooperEdit>div p{
+    margin-top: 10px;
+}
+#cooperEdit .cooperEdit>div p input{
+    width: 200px;
+    padding: 0 10px;
+    height: 30px;
+    line-height: 30px;
+    border: 1px solid #d2d2d2;
+    border-radius: 5px;
+    font-size: 18px;
+    color: #333;
+    outline: none;
+    display: none;
+}
+#cooperEdit .cooperEdit>div p .sub{
+    width: 70px;
+    height: 30px;
+    border: none;
+    border-radius: 5px;
+    background: #ff5000;
+    font-size: 18px;
+    color: #fff;
+    text-align: center;
+    line-height: 28px;
+    display: none;
+}
+#cooperEdit .cooperEdit>div h5{
+    color: #333;
+    font-size: 18px;
+    margin-top: 10px;
+}
+#cooperEdit .cooperEdit>div ul{
+    margin: 0 30px;
+}
+#cooperEdit .cooperEdit>div li{
+    float: left;
+    margin-right: 26px;
+}
+#cooperEdit .cooperEdit>div li img{
+    width: 294px;
+    height: 210px;
+}
+/*����ֽ������--���ֽ��*/
+#cooperAdd .addBox form p{
+    margin-top: 20px;
+    color: #666;
+    font-size: 18px;
+}
+#cooperAdd .addBox form select{
+    font-size: 18px;
+    color: #333;
+    width: 210px;
+    height: 32px;
+    border: 1px solid #d2d2d2;
+    border-radius: 5px;
+    outline: none;
+    padding: 0 5px;
+}
+#cooperAdd .addBox form a{
+    color: #208df0;
+    font-size: 16px;
+    margin-left: 10px;
+}
+#cooperAdd .addBox form span{
+    color: #333;
+}
+#cooperAdd .addBox form h4{
+    margin-top: 30px;
+    color: #666;
+    font-size: 18px;
+}
+#cooperAdd .addBox form h4 span{
+    margin-top: 10px;
+    display: inline-block;
+    line-height: 30px;
+}
+#cooperAdd .addBox form .submit{
+    display: inline-block;
+    width: 140px;
+    text-align: center;
+    line-height: 44px;
+    height: 44px;
+    background: #ff5000;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 18px;
+    margin-top: 60px;
+}
+#cooperAdd .addBox form .back{
+    color: #666;
+    font-size: 18px;
+    margin-left: 50px;
+}
+#cooperAdd .addBox form input[type=text]{
+    width: 200px;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 10px;
+    border: 1px solid #d2d2d2;
+    border-radius: 5px;
+    outline: none;
+    font-size: 18px;
+    color: #666;
+}
+#cooperAdd .addBox form textarea{
+    width: 300px;
+    padding: 10px;
+    height: 150px;
+    resize: none;
+    border: 1px solid #d2d2d2;
+    border-radius: 10px;
+    margin-top: 10px;
+    font-size: 18px;
+    color: #666;
+    outline: none;
+}
+#cooperAdd .addBox form em,#cooperEdit .cooperEdit>div p em{
+    color: #f10505;
+    font-size: 14px;
+    margin-left: 10px;
+    font-style: normal;
+    display: none;
+    background: url('../../img/prompt.png') no-repeat left center;
+    padding-left: 18px;
+}

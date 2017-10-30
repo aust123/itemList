@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+
+	<head lang="en">
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<title>纸去哪了-废纸交易平台</title>
+		<link rel="stylesheet" href="../../css/account/balance.css" />
+	</head>
+	<body>
+		<div class="container">
+			<div class="header">
+				<div id="top_bar"></div>
+				<div id="nav_bar"></div>
+				<div id="search"></div>
+			</div>
+			<div class="main_box">
+				<div id="balance">
+					<div class="myLeft"></div>
+					<div class="balBox" style="min-height:720px;">
+						<div class="bal">
+							<h3 style="border-bottom: 1px solid #d2d2d2;">提现</h3>
+							<div class="to_cash">
+								<div id="bank_cardNum">
+									<span>选择提现账号&nbsp;：</span>
+									<input class="get_acount" type="text" /><em>请输入提现银行账号</em>
+
+									<div id="all_card"></div>
+									<!--将可提现的银行卡渲染至页面-->
+									<script type="text/html" id="card_tpl">
+										<ul class="card_list">
+											{{each data as value}}
+											<li onclick="selectBankcard(this)"><span>{{value.bank_name}}</span>尾号为（{{value.bankcard_code.slice(-4)}}）<i id="fullNumber">{{value.bankcard_code}}</i><em id="bank_id">{{value.cb_id}}</em><b id="phone">{{value.phone}}</b></li>
+
+											{{/each}}
+										</ul>
+									</script>
+								</div>
+
+								<p><span>提现金额（元）：</span><input class="get_count" type="text" /><em>请输入提现金额</em></p>
+								<p><span>支付密码&nbsp;：</span><input type="password" /><em>请输入支付密码</em></p>
+								<p>
+									<a id="cash_btn" href="###">发起提现</a>
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="footer"></div>
+		</div>
+		<input class="hidden" data-id="balance" type="hidden" />
+		<script src="../../lib/jquery-1.8.3.min.js"></script>
+		<script src="../../lib/es5-sham.min.js"></script>
+		<script src="../../lib/es5-shim.min.js"></script>
+		<script src="../../lib/json3.min.js"></script>
+		<script src="../../lib/template-web.js"></script>
+		<script src="../../lib/md5.js"></script>
+		<script src="../../js/secret.js"></script>
+		<script>
+			$(function() {
+					$('#top_bar').load('../public/topBar.html');
+					$('#nav_bar').load('../public/navBar.html');
+					$('#search').load('../public/search.html');
+					$('#footer').load('../public/footer.html');
+					$('.myLeft').load('../public/accLeft.html');
+				})
+
+				/*申请提现时获取银行卡账号*/
+				! function() {
+					var pathname = '/api/paper/get/account/before/apply/cash';
+					var obj = {
+						pe_id: localStorage.userId, //用户id值，本地缓存读取
+						pe_phone: localStorage.userPhone
+					}
+					GetList(obj, pathname, CashCard);
+				}()
+
+			function CashCard(_data) {
+				console.log(_data);
+				if(_data.status_code == 10000) {
+					var html = template('card_tpl', _data);
+					document.getElementById('all_card').innerHTML += html;
+				}else if(_data.status_code == 10002){
+					//window.confirm
+					$('.get_acount').attr('disabled','disabled')
+					window.confirm('你还未添加银行卡，暂时不能提现');
+					
+				}
+
+				/*cb_id,bankcard_code,bank_name返回的数据*/
+			}
+
+			/*选择提现银行卡账号*/
+			$('.get_acount').focus(function() {
+				$('#all_card').show();
+			});
+			
+			$(window).click(function(ev){
+				if(ev.target.tagName!='LI'&&ev.target.className!='get_acount'){
+					$('#all_card').hide();
+				}
+			})
+			//选择提现的银行卡
+			function selectBankcard(_this) {
+				$('.get_acount').val($(_this).children('#fullNumber').text()).attr('bId', $(_this).children('#bank_id').text());
+				$('#all_card').hide();
+				localStorage.phone = $(_this).children('#phone').text();
+			}
+
+			//提现申请提交按钮
+			$('#cash_btn').click(function() {
+				if($('.get_acount').val() != '' && $('.get_count').val() != '' && $('input[type="password"]').val() != '') {
+					localStorage.bankcard_code = $('.get_acount').val();
+					localStorage.bank_id = $('.get_acount').attr('bId'); //银行卡id
+					localStorage.money = $('.get_count').val();
+					localStorage.pay_password = $('input[type="password"]').val();
+					var pathname = '/api/paper/apply/cash';
+					var obj = {
+						pe_id: localStorage.userId, //用户id值，本地缓存读取
+						pe_phone: localStorage.userPhone,
+						tips: 1,
+						bankcard_code: $('.get_acount').val(),
+						bank_id: $('.get_acount').attr('bId'),
+						money: $('.get_count').val(),
+						pay_password: $('input[type="password"]').val()
+					}
+					GetList(obj, pathname, DealData);
+				} else {
+					$('.to_cash input').each(function() {
+						if(typeof($(this).siblings('em').attr("fill")) == "undefined") {
+							$(this).siblings('em').show();
+						}
+					})
+				}
+			})
+
+			function DealData(_data) {
+				console.log(_data);
+				if(_data.status_code == 12000) {
+					localStorage.step = _data.data.step;
+					//第一步成功后，跳转至提现第二步
+					window.location.href = 'balance_toCash_code.html';
+				} else if(_data.status_code == 10009) {
+					$('.get_count').siblings('em').show().html('提现金额不能超过账户余额');
+				} else if(_data.status_code == 10011) {
+					$('input[type="password"]').siblings('em').show().html('支付密码不正确');
+				}
+			}
+
+			//银行卡验证  
+			$('input.get_acount').focus(function() {
+				$(this).siblings('em').hide();
+			}).keyup(function() {
+				if($(this).val() == '') {
+					$(this).siblings('em').show().html('请输银行卡号码');
+				} else if(!(/^(\d{16}|\d{19})$/.test($(this).val()))) {
+					$(this).siblings('em').show().html('请输入正确的银行卡号码');
+				} else {
+					$(this).siblings('em').hide().attr('fill', 'right');
+				}
+			}).blur(function() {
+				if($(this).val() != '') {
+					$(this).siblings('em').hide().attr('fill', 'right');
+				}
+			});
+
+			/*输入支付密码验证*/
+			$('input[type="password"]').focus(function() {
+				$(this).siblings('em').hide().removeAttr('fill');
+			}).keyup(function() {
+				if($(this).val() == '') {
+					$(this).siblings('em').show().html('请输入当前支付密码');
+				} else if(!(/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,20}$/.test($(this).val()))) {
+					$(this).siblings('em').show().html('密码格式不正确');
+				} else {
+					$(this).siblings('em').hide().attr('fill', 'right');
+				}
+			});
+
+			//
+
+			//提现金额验证
+			$('input.get_count').focus(function() {
+				$(this).siblings('em').hide();
+			}).keyup(function() {
+				if($(this).val() == '') {
+					$(this).siblings('em').show().html('请输入取款金额');
+				} else if(!(/^[0-9]*$/.test($(this).val()))) {
+					$(this).siblings('em').show().html('请输入正确的金额');
+				} else {
+					$(this).siblings('em').hide().attr('fill', 'right');
+				}
+			});
+		</script>
+	</body>
+
+</html>

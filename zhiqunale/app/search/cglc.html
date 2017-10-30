@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv = "X-UA-Compatible" content = "IE=edge,chrome=1" />
+    <title>纸去哪了-废纸交易平台</title>
+    <link rel="stylesheet" href="../../css/searchList.css"/>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div id="top_bar"></div>
+            <div id="nav_bar"></div>
+        </div>
+        <!-- 采购流程-->
+        <div class="main_box">
+            <div id="foot_detail">
+                <div class="bread">您的位置：商城直售纸厂 > <a href="javascript:;">采购流程</a></div>
+                <div class="foot_detail_left"></div>
+                <div class="foot_detail_right">
+                    <h2>采购流程</h2>
+                    <div>
+                        <h4>1、询价、议价</h4>
+                        <p><img src="../../img/cgfz_yijia.png"></p>
+                        <h4>2、提交购买信息</h4>
+                        <p><img src="../../img/cglc_tjxx.png"></p>
+                        <h4>3、等待确认订单</h4>
+                        <p><img src="../../img/cglc_ddqr.png"></p>
+                        <h4>4、支付预付款</h4>
+                        <p><img src="../../img/cglc_zf.png"></p>
+                        <h4>5、验收</h4>
+                        <p><img src="../../img/cglc_ys.png"></p>
+                        <h4>6、平台结算</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="footer"></div>
+    </div>
+    <input type="hidden" class="foot_hidden" data-hidden="cglc"/>
+    <script src="../../lib/jquery-1.8.3.min.js"></script>
+    <script>
+        $(function() {
+            $('#top_bar').load('../public/topBar.html');
+            $('#nav_bar').load('../public/navBar.html');
+            $('#footer').load('../public/footer.html');
+            $('.foot_detail_left').load('foot_detail.html');
+        })
+    </script>
+</body>
+</html>

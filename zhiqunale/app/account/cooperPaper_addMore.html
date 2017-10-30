@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv = "X-UA-Compatible" content = "IE=edge,chrome=1" />
+    <title>纸去哪了-废纸交易平台</title>
+    <link rel="stylesheet" href="../../css/account/accountMsg.css"/>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <div id="top_bar"></div>
+            <div id="nav_bar"></div>
+            <div id="search"></div>
+        </div>
+        <div class="main_box">
+            <div id="account_paper">
+                <div class="myLeft"></div>
+                <div class="accCompRight">
+                    <div id="cooperAdd">
+                        <h2 class="til">合作纸厂管理</h2>
+                        <div class="addBox">
+                            <h3>添加其他纸厂</h3>
+                            <form action="">
+                                <!--切换城市开始代码-->
+                                <p>
+                                    <span>所&nbsp;&nbsp;在&nbsp;&nbsp;省：</span>
+                                    <select id="seachprov" name="seachprov" onChange="changeComplexProvince(this.value, sub_array, 'seachcity', 'seachdistrict');">
+                                    </select>
+                                </p>
+                                <p>
+                                    <span>所在城市：</span>&nbsp;
+                                    <select id="seachcity" name="homecity" onChange="changeCity(this.value,'seachdistrict','seachdistrict');">
+                                    </select>
+                                </p>
+                                <p>
+                                    <span>所在市区：</span>&nbsp;
+                                    <span id="seachdistrict_div">
+                                         <select name="district" id="seachdistrict">
+                                         </select>
+                                    </span>
+                                </p>
+                                <!--切换城市结束代码-->
+                                <p>
+                                    <label>纸厂姓名：</label>
+                                    <input id="name" name="name" type="text"/>
+                                </p>
+                                <p>
+                                    <label>联系方式：</label>
+                                    <input id="tel" name="tel" type="text" autocomplete="off"/>
+                                    <em></em>
+                                </p>
+                                <p>
+                                    <label>纸厂地址：</label>
+                                    <input id="address" name="address" type="text"/>
+                                </p>
+                                <p>
+                                    <label>纸厂简介：</label><br/>
+                                    <textarea placeholder="请输入纸厂简介..." class="discribe" cols="30" rows="10"></textarea>
+                                </p>
+                                <p>
+                                    <a class="submit" href="javascript:;">确定</a>
+                                    <a class="back" href="javascript:history.go(-1)">取消</a>
+                                </p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="footer"></div>
+    </div>
+    <input class="hidden" data-id="papers" type="hidden"/>
+    <script src="../../lib/jquery-1.8.3.min.js"></script>
+    <!-- 切换城市-->
+    <script type="text/javascript" src="../../lib/Area.js"></script>
+    <script type="text/javascript" src="../../lib/AreaData_min.js"></script>
+
+    <script type="text/javascript" src="../../lib/md5.js"></script>
+    <script type="text/javascript" src="../../js/secret.js"></script>
+    <script type="text/javascript" src="../../lib/template-web.js"></script>
+    <script>
+        $(function(){
+            $('#top_bar').load('../public/topBar.html');
+            $('#search').load('../public/search.html');
+            $('#nav_bar').load('../public/navBar.html');
+            $('#footer').load('../public/footer.html');
+            $('.myLeft').load('../public/accLeft.html');
+            //切换城市
+            initComplexArea('seachprov', 'seachcity', 'seachdistrict', area_array, sub_array, '0', '0', '0');
+            if(location.search.length!=0){
+                var parameter=unescape(location.search.substring(1)).split('&');
+                var proOpts=$('#seachprov option'),proVal;
+                for(var i=0;i<proOpts.length;i++){
+                    if($(proOpts[i]).html()==parameter[0]){
+                        proVal=$(proOpts[i]).val();
+                        $('#seachprov').val(proVal);
+                    }
+                }
+                changeComplexProvince(proVal, sub_array, 'seachcity', 'seachdistrict');
+                var ctyOpts=$('#seachcity option'),ctyVal;
+                for(var j=0;j<ctyOpts.length;j++){
+                    if($(ctyOpts[j]).html()==parameter[1]){
+                        ctyVal=$(ctyOpts[j]).val();
+                        $('#seachcity').val(ctyVal);
+                    }
+                }
+                changeCity(ctyVal,'seachdistrict','seachdistrict');
+                var distOpts=$('#seachdistrict option'),distVal;
+                for(var k=0;k<distOpts.length;k++){
+                    if($(distOpts[k]).html()==parameter[2]){
+                        distVal=$(distOpts[k]).val();
+                        $('#seachdistrict').val(distVal);
+                    }
+                }
+                $('#detail').html(parameter[3]);
+            }
+
+            //验证手机号
+            var ok1=false;
+            $('#tel').focus(function() {
+                $(this).siblings('em').hide();
+            }).keyup(function() {
+                if($(this).val() == '') {
+                    $(this).siblings('em').show().html('手机号码不能为空');
+                    ok1 = false;
+                } else if(!(/^1[34578]\d{9}$/.test($(this).val()))) {
+                    $(this).siblings('em').show().html('请输入正确的手机号码');
+                    ok1 = false;
+                } else {
+                    ok1 = true;
+                    $(this).siblings('em').hide();
+                }
+            });
+//          提交添加的线下纸厂
+            $('.submit').click(function(){
+                var prov=$('#seachprov option:selected').html();
+                if(prov=='请选择'){
+                    prov='';
+                }else{
+                    prov=escape(prov);
+                }
+                var city=$('#seachcity option:selected').html();
+                if(city=='请选择'){
+                    city='';
+                }else{
+                    city=escape(city);
+                }
+                var dist=$('#seachdistrict option:selected').val();
+                if(dist==0){
+                    dist='';
+                }else{
+                    dist=escape($('#seachdistrict option:selected').html());
+                }
+                if(ok1&&$('#name').val()!=''&&prov!=''&&city!=''&&$('#address').val()!=''&&$('.discribe').val()!=''){
+                    var pathname='/api/paper/add/trade/cooperate/paper';
+                    var sub={
+                        pe_id:localStorage.getItem("userId"),
+                        pe_phone:localStorage.getItem("userPhone"),
+                        paper_type:2,
+                        op_name:escape($('#name').val()),
+                        op_phone:$('#tel').val(),
+                        op_province:prov,
+                        op_city:city,
+                        op_dist:dist,
+                        op_address:escape($('#address').val()),
+                        op_info:escape($('.discribe').val())
+                    }
+                    GetList(sub,pathname);
+                }else{
+                    alert("添加纸厂失败，请将信息补充完整");
+                }
+            });
+        })
+        function CallBack(_data){
+            if(_data.status_code=='10000'){
+                window.location.href='cooperPaper.html';
+            }
+        }
+    </script>
+</body>
+</html>

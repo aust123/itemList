@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+	<head lang="en">
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<title>纸去哪了-废纸交易平台</title>
+		<link rel="stylesheet" href="../../css/account/accountMsg.css" />
+	</head>
+
+	<body>
+
+		<div class="container">
+			<div class="header">
+				<div id="top_bar"></div>
+				<div id="nav_bar"></div>
+				<div id="search"></div>
+			</div>
+			<div class="main_box">
+				<div id="account_paper">
+					<div class="myLeft"></div>
+					<div class="accCompRight">
+						<div id="ppStandAdd">
+							<h2 class="til">收纸标准</h2>
+							<div class="add">
+								<form action="">
+									<p>
+										<span>纸品品类：</span>
+										<select name="paper_stage" id="paper_stage"></select>
+									</p>
+									<p>
+										<span>价&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;格：</span>
+										<input type="text" name="ps_price" />&nbsp;元
+									</p>
+									<p>
+										<textarea class="stard_detail" placeholder="请输入标准详情......" name="stard_detail" cols="30" rows="10"></textarea>
+									</p>
+									<p>
+										<textarea class="pack_stard" placeholder="请输入打包标准......" name="pack_stard" cols="30" rows="10"></textarea>
+									</p>
+									<p>
+										<textarea class="remark" placeholder="请输入备注......" name="remark" cols="30" rows="10"></textarea>
+									</p>
+									<p class="submit">
+										<input type="button" value="确定" />
+									</p>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="footer"></div>
+		</div>
+		<input class="hidden" data-id="standard" type="hidden" />
+		<script src="../../lib/jquery-1.8.3.min.js"></script>
+		<script type="text/javascript" src="../../lib/md5.js"></script>
+		<script type="text/javascript" src="../../js/secret.js"></script>
+		<script>
+			$(function() {
+				$('#top_bar').load('../public/topBar.html');
+				$('#search').load('../public/search.html');
+				$('#nav_bar').load('../public/navBar.html');
+				$('#footer').load('../public/footer.html');
+				$('.myLeft').load('../public/accLeft.html');
+
+				//select动态添加option   $("#bank_name").append("<option value='Value'>Text</option>"); //为Select追加一个Option(下拉项)
+				//添加银行卡前获取开户行信息
+				! function() {
+					var pathname = '/api/paper/get/paper/stage/before/submit/purchase/apply';
+					var obj = {
+						pe_id: localStorage.userId, //用户id值，本地缓存读取
+						pe_phone: localStorage.userPhone
+					};
+					GetList(obj, pathname, PaperStandard)
+				}()
+
+				function PaperStandard(_data) {
+					for(var i in _data.data) {
+						$("#paper_stage").append("<option value=" + _data.data[i]["name"] + ">" + _data.data[i]["name"] + "</option>");
+					}
+				}
+
+				/*提交增加的纸标准信息*/
+				$('input[type="button"]').click(function() {
+					if($('input[name="paper_stage"]').val() != '' && $('input[name="ps_price"]').val() != '' && $('.stard_detail').val() != '' && $('.pack_stard').val() != '' && $('.remark').val() != '') {
+						var pathname = '/api/paper/add/paper/recover/standard';
+						var obj = {
+							pe_id: localStorage.userId, //用户id值，本地缓存读取
+							pe_phone: localStorage.userPhone,
+							ps_paper_stage: escape($('#paper_stage').val()),
+							ps_price: $('input[name="ps_price"]').val(),
+							ps_detail: escape($('.stard_detail').val()),
+							ps_pack_standard: escape($('.pack_stard').val()),
+							ps_remark: escape($('.remark').val())
+						}
+						GetList(obj, pathname, DealData);
+					} else {
+						window.confirm("请将信息填写完整！");
+					}
+				})
+
+				function DealData(_data) {
+					console.log(_data)
+					//注册状态判断
+					if(_data.status_code == '10000') {
+						window.confirm("添加收纸标准成功！");
+						window.location.href = "paperStandard.html";
+					} else if(_data.status_code == '10002' || _data.status_code == '10001' || _data.status_code == '10004' || _data.status_code == '10003' || _data.status_code == '10005') {
+						window.confirm("添加收纸标准失败！");
+					} else if(_data.status_code == '10007') {
+						window.confirm("未通过企业认证，无法添加收纸标准！");
+					} else if(_data.status_code == '10006') {
+						window.confirm("不是纸厂，无法添加收纸标准！");
+					}else if(_data.status_code == '10009') {
+						window.confirm("该纸品等级已添加，请勿重复添加！");
+					}
+				}
+			})
+		</script>
+	</body>
+
+</html>

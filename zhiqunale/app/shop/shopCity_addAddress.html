@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../../css/shop/shoppingCity.css" />
+	</head>
+	<body>
+		<div class="container">
+	        <div class="header">
+	            <div id="top_bar"></div>
+	            <div id="nav_bar"></div>
+	            <div id="search"></div>
+	        </div>
+	        <div class="main_box">
+	            <div class="content">
+	            	<div class="add_address">
+					<h2>添加地址</h2>
+					<div class="address_msg">
+						<ul>
+							<li>
+								<span>所在省：</span>
+								&nbsp;&nbsp;&nbsp;<select id="cmbProvince" name="cmbProvince"></select>
+							</li>
+							<li>
+								<span>所在城市：</span>
+								<select id="cmbCity" name="cmbCity"></select>								
+							</li>
+							<li>
+								<span>所在市区：</span>
+								<select id="cmbArea" name="cmbArea"></select>								
+							</li>
+							<li id="detail_address">
+								<span>详细地址:</span></br>
+								<textarea name="input_address" cols="20" rows="20"></textarea>
+							</li>
+							<li id="make_default"><input type="checkbox" value="address" id="check" ><label for="check">设为默认地址</label></li>
+						</ul>				
+					</div>
+					<div id="complete_add">
+						<a href="###">完成</a>
+					</div>
+				</div>
+			
+	            </div>
+	        </div>
+			<div id="footer"></div>
+        </div>
+		<input type="hidden" class="hidden" data-id="shopCity"/>
+		<script type="text/javascript" src="../../js/jsAddress.js"></script>
+		<script src="../../lib/jquery-1.8.3.min.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				$('#top_bar').load('../public/topBar.html');
+            	$('#search').load('../public/search.html');
+            	$('#nav_bar').load('../public/navBar.html');
+            	$('#footer').load('../public/footer.html');
+            	
+            	addressInit('cmbProvince', 'cmbCity', 'cmbArea');
+			})
+				
+		</script>
+		
+	</body>
+</html>

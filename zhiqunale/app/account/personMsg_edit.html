@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv = "X-UA-Compatible" content = "IE=edge,chrome=1" />
+    <title>纸去哪了-废纸交易平台</title>
+    <link rel="stylesheet" href="../../css/account/accountMsg.css"/>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <div id="top_bar"></div>
+            <div id="nav_bar"></div>
+            <div id="search"></div>
+        </div>
+        <div class="main_box">
+            <div id="account_comp">
+                <div class="myLeft"></div>
+                <div class="accCompRight">
+                    <div id="perMsg">
+                        <h2 class="til">个人信息</h2>
+                        <div class="perBox">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="footer"></div>
+    </div>
+    <input class="hidden" data-id="personal" type="hidden"/>
+<script type="text/html" id="perMsgEdit">
+    <form>
+        <h3>
+            真实姓名：
+            {{if (pe_realname!='null')}}
+            <span class="name">{{pe_realname}}</span>
+            {{/if}}
+        </h3>
+        <h3>
+            身份证号码：<span class="id">{{pe_idcard_code}}</span>
+        </h3>
+        <h3>
+            所属公司：
+            {{if (pe_part_company!='null')}}
+            <span>{{pe_part_company}}</span>
+            {{/if}}
+        </h3>
+        <h3 class="tel">
+            电话号码：
+            <input value="{{pe_phone}}" name="tel" type="text"/>
+        </h3>
+        <h3 class="area">
+            个人所在地：<br/>
+            <textarea name="area" cols="30" rows="10">{{pe_address}}</textarea>
+        </h3>
+        <h3 class="submit">
+            <input onclick="sub()" type="button" value="确定"/>
+        </h3>
+    </form>
+</script>
+    <script src="../../lib/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="../../lib/md5.js"></script>
+    <script type="text/javascript" src="../../js/secret.js"></script>
+    <script type="text/javascript" src="../../lib/template-web.js"></script>
+    <script>
+        $(function(){
+            $('#top_bar').load('../public/topBar.html');
+            $('#search').load('../public/search.html');
+            $('#nav_bar').load('../public/navBar.html');
+            $('#footer').load('../public/footer.html');
+            $('.myLeft').load('../public/accLeft.html');
+            GetData();
+
+        })
+        //获取个人信息
+        function GetData() {
+            var da={
+                pe_id:localStorage.getItem("userId"),
+                pe_phone:localStorage.getItem("userPhone")
+            }
+            var pername='/api/paper/get/personal/data';
+            GetList(da,pername,getPer);
+            function getPer(data){
+                data.data.pe_realname=unescape(data.data.pe_realname);
+                data.data.pe_address=unescape(data.data.pe_address);
+                data.data.pe_part_company=unescape(data.data.pe_part_company);
+                var html=template('perMsgEdit',data.data);
+                $('.perBox').html(html);
+            }
+        }
+        // 点击提交
+        function sub(){
+            var pathname='/api/paper/edit/personal/data';
+            var obj={
+                pe_id:localStorage.getItem("userId"),
+                pe_phone:localStorage.getItem("userPhone"),
+                e_phone:$('.tel input').val(),
+                e_address:escape($('.area textarea').val()),
+                pe_realname:escape($('.name').html()),
+                pe_idcard_code:$('.id').html(),
+                pe_idcard_front_img:'dfdg',
+                pe_idcard_back_img:'dssg'
+            }
+            GetList(obj,pathname,getSub);
+            function getSub(_data){
+                if(_data.status_code=="10000"){
+                    window.localStorage.setItem("userPhone",$('.tel input').val());
+                    window.location.href='personMsg.html';
+                }else{
+                    alert("信息错误，请重新输入！");
+                }
+            }
+        }
+
+    </script>
+</body>
+</html>

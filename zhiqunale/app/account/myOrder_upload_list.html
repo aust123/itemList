@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../../css/account/myOrder.css"/>
+	</head>
+
+	<body>
+		<div class="container">
+			<div class="header">
+				<div id="top_bar"></div>
+				<div id="nav_bar"></div>
+				<div id="search"></div>
+			</div>
+			<div class="main_box">
+				<div id="checkorder">
+					<div class="myLeft"></div>
+					<div class="content">
+						<div class="list_box">
+							<h2>上传结算清单 <a href="myOrder_write_list.html" id="add_settle">添加</a></h2>
+							<!------------第二个清单--------->
+							<div id="tpl_list"></div>
+							<script id="tpl_data" type="text/html">
+								<p class="uploadTips">请认真核实清单内容，确保全部提交，全部成功提交后，不可修改。</p>
+								{{each data as value}}
+								<div class="list_content check_content" id="upload_content">
+									<div class="car_number">车号选择&nbsp;&nbsp;:<span>{{value.plate_number}}</span>
+										<i id="settle_id">{{value.settle_id}}</i>
+										<a id="edit_settle" onclick="eidtSettle(this)" href="###">
+											<img src="../../img/bianji_icon.png" alt="" />
+										</a>
+									</div>
+									<div class="select_date">日期选择&nbsp;&nbsp;:<span>{{value.bill_settle_date}}</span></div>
+									<div>水分折扣（%）&nbsp;:<span>{{value.moisture_discount}}</span></div>
+									<div>杂量折扣（%）&nbsp;:<span>{{value.impurity_discount}}</span></div>
+									<div>结算重量（吨）&nbsp;:<span>{{value.settle_weight}}</span></div>
+									<div>结算单价（元）&nbsp;:<span>{{value.settle_unit_price}}</span></div>
+									<div>结算金额（元）&nbsp;:<span>{{value.settle_price}}</span></div>
+									<p class="upload_listText">上传结算清单</p>
+									<div class="list_img"><img src="{{value.bill_photo}}" /></div>
+								</div>
+								{{/each}}
+								<div class="list_sure check">
+									<a href="###" id="submit_settle">提&nbsp;&nbsp;交</a>
+								</div>
+							</script>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="footer"></div>
+		</div>
+		<input class="hidden" data-id="myOrder" type="hidden" />
+		<script src="../../lib/jquery-1.8.3.min.js"></script>
+		<script type="text/javascript" src="../../lib/template-web.js"></script>
+		<script type="text/javascript" src="../../lib/md5.js"></script>
+		<script type="text/javascript" src="../../js/secret.js"></script>
+		<script>
+			$(function() {
+					$('#top_bar').load('../public/topBar.html');
+					$('#nav_bar').load('../public/navBar.html');
+					$('#search').load('../public/search.html');
+					$('#footer').load('../public/footer.html');
+					$('.myLeft').load('../public/accLeft.html');
+				})
+
+				//页面加载时渲染结算清单列表信息
+				! function() {
+					var pathname = '/api/paper/get/order/settle/list';
+					var obj = {
+						pe_id: localStorage.userId, //用户id值，本地缓存读取
+						pe_phone: localStorage.userPhone,
+						order_id: localStorage.orderId, //我的订单页面 pod_id 传值过来
+						order_type: localStorage.orderType //我的订单页面 传值过来1：直销，2：采购
+					}			
+					GetList(obj, pathname, DealData);
+				}()
+
+			function DealData(_data) {
+				console.log(_data);
+				if(_data.status_code == 10000) {
+					var html = template('tpl_data', _data);
+					document.getElementById('tpl_list').innerHTML += html;
+				}
+			}
+
+			//编辑按钮——页面跳转到编辑清单页面并传值
+			function eidtSettle(pointer) {
+				var key = $(pointer).siblings('#settle_id').html();
+				localStorage.sId = key;
+				var href = 'myOrder_edit_list.html' + '?' + encodeURIComponent('sd=' + key); //通过url传递纸标准id
+				$(pointer).attr('href', href);
+			}
+
+			//点击提交按钮
+			$('#submit_settle').click(function() {
+				var pathname = '/api/paper/submit/all/settle/list ';
+				var obj = {
+					pe_id: localStorage.userId, //用户id值，本地缓存读取
+					pe_phone: localStorage.userPhone,
+					order_id: localStorage.orderId, //我的订单页面 pod_id 传值过来
+					order_type: localStorage.orderType //我的订单页面 传值过来1：直销，2：采购
+				}
+				GetList(obj, pathname, SubmitBack);
+			})
+
+			function SubmitBack(_data) {
+				console.log(_data);
+				if(_data.status_code == 10000) {
+					window.location.href = 'myOrder_check_list.html';
+				} else if(_data.status_code == 10007) {
+					window.confirm('结算清单尚未上传完成，无法执行提交 ');
+				}
+			}
+		</script>
+	</body>
+
+</html>

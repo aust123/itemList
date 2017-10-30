@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv = "X-UA-Compatible" content = "IE=edge,chrome=1" />
+    <title>纸去哪了-废纸交易平台</title>
+    <link rel="stylesheet" href="../../css/account/accountMsg.css"/>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div id="top_bar"></div>
+            <div id="nav_bar"></div>
+            <div id="search"></div>
+        </div>
+        <div class="main_box">
+            <div id="account_paper">
+                <div class="myLeft"></div>
+                <div class="accCompRight">
+                    <div id="addrManageEdit">
+                        <h2 class="til">地址管理</h2>
+                        <div class="addrBox">
+                            <h3>编辑地址</h3>
+                            <form>
+                                <!--切换城市开始代码-->
+                                <p>
+                                    <span>所&nbsp;&nbsp;在&nbsp;&nbsp;省：</span>
+                                    <select id="seachprov" name="seachprov" onChange="changeComplexProvince(this.value, sub_array, 'seachcity', 'seachdistrict');">
+                                    </select>
+                                </p>
+                                <p>
+                                    <span>所在城市：</span>&nbsp;
+                                    <select id="seachcity" name="homecity" onChange="changeCity(this.value,'seachdistrict','seachdistrict');">
+                                    </select>
+                                </p>
+                                <p>
+                                    <span>所在市区：</span>&nbsp;
+                                    <span id="seachdistrict_div">
+                                         <select name="district" id="seachdistrict">
+                                         </select>
+                                    </span>
+                                </p>
+                                <!--切换城市结束代码-->
+                                <p>
+                                    <span>详细地址：</span><br/>
+                                    <textarea id="detail" name="" cols="30" rows="10"></textarea>
+                                </p>
+                                <p>
+                                    <input class="submit" type="button" value="完成"/>
+                                </p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="footer"></div>
+    </div>
+    <input class="hidden" data-id="address" type="hidden"/>
+
+    <script src="../../lib/jquery-1.8.3.min.js"></script>
+    <!-- 切换城市-->
+    <script type="text/javascript" src="../../lib/Area.js"></script>
+    <script type="text/javascript" src="../../lib/AreaData_min.js"></script>
+
+    <script type="text/javascript" src="../../lib/md5.js"></script>
+    <script type="text/javascript" src="../../js/secret.js"></script>
+    <script type="text/javascript" src="../../lib/template-web.js"></script>
+    <script>
+        $(function(){
+            $('#top_bar').load('../public/topBar.html');
+            $('#search').load('../public/search.html');
+            $('#nav_bar').load('../public/navBar.html');
+            $('#footer').load('../public/footer.html');
+            $('.myLeft').load('../public/accLeft.html');
+            //切换城市
+            initComplexArea('seachprov', 'seachcity', 'seachdistrict', area_array, sub_array, '0', '0', '0');
+            if(location.search.length!=0){
+                var parameter=unescape(location.search.substring(1)).split('&');
+                if(parameter[1]==''){
+                    parameter[1]=parameter[2];
+                    parameter[2]=parameter[3];
+                    parameter[3]='';
+                }
+                var proOpts=$('#seachprov option'),proVal;
+                for(var i=0;i<proOpts.length;i++){
+                    if($(proOpts[i]).html()==parameter[1]){
+                        proVal=$(proOpts[i]).val();
+                        $('#seachprov').val(proVal);
+                    }
+                }
+                changeComplexProvince(proVal, sub_array, 'seachcity', 'seachdistrict');
+                var ctyOpts=$('#seachcity option'),ctyVal;
+                for(var j=0;j<ctyOpts.length;j++){
+                    if($(ctyOpts[j]).html()==parameter[2]){
+                        ctyVal=$(ctyOpts[j]).val();
+                        $('#seachcity').val(ctyVal);
+                    }
+                }
+                changeCity(ctyVal,'seachdistrict','seachdistrict');
+                var distOpts=$('#seachdistrict option'),distVal;
+                for(var k=0;k<distOpts.length;k++){
+                    if($(distOpts[k]).html()==parameter[3]){
+                        distVal=$(distOpts[k]).val();
+                        $('#seachdistrict').val(distVal);
+                    }
+                }
+                $('#detail').html(parameter[4]);
+            }
+
+
+//          编辑贸易公司合作纸厂地址
+            $('.submit').click(function(){
+                var prov=$('#seachprov option:selected').html();
+                if(prov=='请选择'){
+                    prov='';
+                }else{
+                    prov=escape(prov);
+                }
+                var city=$('#seachcity option:selected').html();
+                if(city=='请选择'){
+                    city='';
+                }else{
+                    city=escape(city);
+                }
+                var disc=$('#seachdistrict option:selected').val();
+                if(disc==0){
+                    disc='';
+                }else{
+                    disc=escape($('#seachdistrict option:selected').html());
+                }
+                var pathname='/api/paper/edit/cooperate/paper/address';
+                var obj={
+                    pe_id:localStorage.getItem("userId"),
+                    pe_phone:localStorage.getItem("userPhone"),
+                    op_id:parameter[0],
+                    op_province:prov,
+                    op_city:city,
+                    op_dist:disc,
+                    op_address:escape($('#detail').val())
+                }
+                GetList(obj,pathname,getEdit);
+                function getEdit(_data){
+                    if(_data.status_code=='10000'){
+                        window.location.href='addressManage.html';
+                    }else{
+                        alert("编辑信息失败，请重新提交！");
+                    }
+                }
+            });
+        })
+
+
+    </script>
+</body>
+</html>

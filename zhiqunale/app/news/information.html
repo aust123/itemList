@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+
+	<head lang="en">
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<title>纸去哪了-废纸交易平台</title>
+		<link rel="stylesheet" href="../../css/news/information.css" />
+	</head>
+
+	<body>
+		<div class="container">
+			<div class="header">
+				<div id="top_bar"></div>
+				<div id="nav_bar"></div>
+				<div id="search"></div>
+			</div>
+			<div class="main_box">
+				<div class="infor_bar">
+					<ul>
+						<li class="on">
+							<a href="#">报价</a>
+						</li>
+						<li>
+							<a href="infor_policy.html">政策</a>
+						</li>
+						<li>
+							<a href="infor_analyze.html">分析</a>
+						</li>
+						<li style="margin:0;">
+							<a href="infor_figure.html">人物</a>
+						</li>
+					</ul>
+				</div>
+				<div id="infor_box">
+					<ul class="price">
+					</ul>
+				</div>
+				<div id="pages" class="pages" style="margin-bottom: 30px"></div>
+			</div>
+			<div id="footer"></div>
+		</div>
+		<input class="hidden" data-id="news" type="hidden" />
+		<script type="text/javascript" src="../../lib/jquery-1.8.3.min.js"></script>
+		<script type="text/javascript" src="../../lib/template-web.js"></script>
+		<script type="text/javascript" src="../../lib/md5.js"></script>
+		<script type="text/javascript" src="../../js/secret.js"></script>
+		<script type="text/javascript" src="../../lib/pagination.js"></script>
+		<script id="price_list" type="text/html">
+			{{each data as value}}
+			{{if value.n_video==''}}
+			<li onclick="Detail(this)">
+				<span class="nId">{{value.n_id}}</span>
+				<div class="txt">
+					<a href="infor_detail.html">
+						<h3>{{value.n_title}}</h3>
+						<p>{{value.n_info}}</p>
+					</a>
+				</div>
+				<div class="time">{{value.created_at}}</div>
+			</li>
+			{{/if}}
+			{{/each}}
+		</script>
+		<script>
+			$(function() {
+				$('#top_bar').load('../public/topBar.html');
+				$('#search').load('../public/search.html');
+				$('#nav_bar').load('../public/navBar.html');
+				$('#footer').load('../public/footer.html');
+				//资讯-报价 列表
+				/*category_id: 4 是报价页面*/
+				var page= 1;
+				news(page,true);
+				function news(page,can){
+					var obj = {
+						category_id: 4,
+						page: page,
+						size: 10
+					};
+					var pathname = "/api/news/list";
+					GetList(obj, pathname, BackNews);
+					//请求新闻列表回调函数
+					function BackNews(_data) {
+						if(_data.status_code == 10000) {
+							//时间戳转换成年月日
+							if(_data.data['created_at']) {
+								_data.data['created_at'] = getLocalTime(_data.data['created_at']);
+							} else {
+								for(var i in _data.data) {
+									for(var k in _data.data[i]) {
+										if(k = 'created_at') {
+											times = getLocalTime(_data.data[i][k]);
+										}
+									}
+									_data.data[i]['created_at'] = times;
+								}
+							}
+							var html = template('price_list', _data);
+							$('.price').html(html);
+							if(can){
+								//分页
+								$('#pages').html('');
+								/*分页按钮*/
+								$('#pages').initPagenation({
+									totalCount: _data.totalRecord, //数据总个数,
+									showBtnFirst: true, //是否显示 首页按钮
+									showCount: 4, //每页显示多少个,默认10个
+									showBtnsCount: 5 //数字按钮数量,最多10个,默认10个
+
+								})
+							}
+						}
+
+					}
+				}
+				$('#pages').delegate('a','click',function(){
+					news($(this).html(),false);
+				});
+				$('#pages').delegate('.pre-page','click',function(){
+					var page=$(this).siblings('a.active').html();
+					if(page!=1){
+						news(page-1,false);
+					}
+				});
+				$('#pages').delegate('.next-page','click',function(){
+					var page=$(this).siblings('a.active').html();
+					if(page!=$(this).prev().prev().html()){
+						news(parseInt(page)+1,false);
+					}
+				});
+				$('#pages').delegate('.first-page','click',function(){
+					var page=$(this).next().html();
+					news(page,false);
+				});
+				$('#pages').delegate('.last-page','click',function(){
+					var page=$(this).prev().html();
+					news(page,false);
+				});
+			})
+
+			//单击新闻跳转至新闻详情页面
+			function Detail(pe) {
+				var nID = $(pe).children('span').html();
+				localStorage.n_id = nID;
+				console.log(nID);
+				window.location.href = 'infor_detail.html';
+			}
+		</script>
+	</body>
+
+</html>

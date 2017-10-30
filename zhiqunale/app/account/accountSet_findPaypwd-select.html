@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../../css/account/accountSet_pwd.css"/>
+	</head>
+	<body>
+	<div class="container">
+		<div class="header">
+			<div id="top_bar"></div>
+			<div id="nav_bar"></div>
+			<div id="search"></div>
+		</div>
+		<div class="main_box">
+			<div id="accountFind">
+				<div class="myLeft"></div>
+				<div class="content">
+					<div id="find_password" class="setting_box">
+						<h2>找回支付密码</h2>
+
+						<div class="set_content" style="margin-top: 56px;">
+							<div>你真在找回支付密码的账号是&nbsp;:&nbsp;<span>张三</span></div>
+							<div class="find_method">
+								<img src="../../img/shouji_icon.png"/>
+								<span>用手机号码找回</span>
+								<a href="accountSet_findPaypwd-reciveCode.html">立即找回</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="footer"></div>
+	</div>
+	<input class="hidden" data-id="findpwd" type="hidden"/>
+
+		<script src="../../lib/jquery-1.8.3.min.js"></script>
+		<script>
+			$(function(){
+				$('#top_bar').load('../public/topBar.html');
+				$('#nav_bar').load('../public/navBar.html');
+				$('#search').load('../public/search.html');
+				$('#footer').load('../public/footer.html');
+				$('.myLeft').load('../public/accLeft.html');
+
+			})
+		</script>
+	</body>
+</html>

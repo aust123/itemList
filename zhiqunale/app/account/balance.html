@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html>
+
+	<head lang="en">
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<title>纸去哪了-废纸交易平台</title>
+		<link rel="stylesheet" href="../../css/account/balance.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/account/jquery-ui.min.css" />
+	</head>
+
+	<body>
+
+		<div class="container">
+			<div class="header">
+				<div id="top_bar"></div>
+				<div id="nav_bar"></div>
+				<div id="search"></div>
+			</div>
+			<div class="main_box">
+				<div id="balance">
+					<div class="myLeft"></div>
+					<div class="balBox">
+						<div class="bal">
+							<h3>账户余额</h3>
+							<script type="text/html" id="account_balance">
+								<div>
+									<h4>{{data.account_balance}}<a id="rule" href="balance_payRules.html"><img src="../../img/shouzhiguize.png"/>收支规则</a></h4>
+									<p>
+										<a id="cath_btn" href="balance_toCash.html">提现</a>
+									</p>
+									<h5><img src="../../img/zhanghu_tishi.png" alt=""/>为保证您的账户安全，需要您通过身份证才能使用余额进行付款。</h5>
+								</div>
+							</script>
+							<div id="balance_count"></div>
+						</div>
+						<div class="card">
+							<h3 style="border-bottom: 1px solid #d2d2d2;">我的银行卡</h3>
+							<!--获取的账户银行信息渲染至页面上-->
+							<script type="text/html" id="account_card">
+								<ul class="cardList">
+									{{each data.bankcard as value}}
+									<li>
+										<img src="{{value.bank_img}}" alt="" />
+										<b class="account_number">{{value.bankcard_code.substr(0,4)+"************"+value.bankcard_code.substr(-3)}}</b>
+										<b class="numbers">{{value.bankcard_code}}</b>
+										<span class="cardId">{{value.cb_id}}</span>
+										<a class="delete" onclick="DeleteCard(this)" href="###">删除</a>
+									</li>
+									{{/each}}
+									<li>
+										<a class="add" href="addCard.html">
+											<img src="../../img/zhanghu_add.png" alt="" />
+											<span>添加银行卡</span>
+										</a>
+									</li>
+								</ul>
+
+							</script>
+							<div id="balance_card"></div>
+
+						</div>
+						<div class="record">
+							<h3>交易记录</h3>
+							<div id="trade_type">
+								<span class="type type_incom">收支</span><span class="type_cash">提现</span>
+
+								<div class="query_date">
+									<!--日期插件-->
+									<p id="date_select"><input type="text" id="start">至<input type="text" id="end"></p>
+								</div>
+							</div>
+							<!--收支记录-->
+							<div class="trade_data current_data">
+								<table class="type_table" id="sz_data"></table>
+								<div id="pages_sz" class="pages" style="margin-top: 40px"></div>
+							</div>
+							<!--提现记录-->
+							<div class='trade_data'>
+								<table class="type_table" id="tx_data"></table>
+								<div id="pages_tx" class="pages" style="margin-top: 40px"></div>
+							</div>
+
+							<script type="text/html" id="trade_tpl">
+								<!--------------收支记录------------>
+								<thead>
+									<tr>
+										<th>日期</th>
+										<th>流水号</th>
+										<th>金额（元）</th>
+										<th>账户余额（元）</th>
+										<th>交易类型</th>
+										<th>详情</th>
+									</tr>
+								</thead>
+								{{each data as value}} {{if value.pay_reason}}
+								<tr>
+									<td>{{value.created_at}}</td>
+									<td>{{value.stream_number}}</td>
+									<td>{{value.money}}</td>
+									<td>{{value.account_balance}}</td>
+									<td>{{value.trade_type}}</td>
+									<td>
+										<a class="detail" onclick="ShowTradeDetail(this)" href="javascript:;">详情<img src="../../img/xiala.png" alt="" /></a>
+									</td>
+								</tr>
+								<tr class="detail_tr">
+									<td id="card_num" colspan="6">
+										<div id="trade_detail">
+											{{if value.company_pay_type==1}}
+											<p><span>支付账号&nbsp;:</span>银行卡 {{value.bankcard_code}}</p>
+											{{else if value.company_pay_type==2}}
+											<p><span>支付账号&nbsp;:</span>支付宝 {{value.bankcard_code}}</p>
+											{{else if value.company_pay_type==3}}
+											<p><span>支付账号&nbsp;:</span>微信 {{value.bankcard_code}}</p>
+											{{else if value.company_pay_type==4}}
+											<p><span>支付账号&nbsp;:</span>余额 {{value.bankcard_code}}</p>
+											{{/if}} {{if value.pay_reason==1}}
+											<p><span>原因说明&nbsp;:</span>支付订单号为{{value.order_number}}的订单货款</p>
+											{{else if value.pay_reason==2}}
+											<p><span>原因说明&nbsp;:</span>支付订单号为{{value.order_number}}的订单补差额</p>
+											{{else if value.pay_reason==3}}
+											<p><span>原因说明&nbsp;:</span>支付订单号为{{value.order_number}}的订单退款</p>
+											{{/if}}
+										</div>
+									</td>
+								</tr>
+								{{else}}
+								<tr>
+									<td>{{value.created_at}}</td>
+									<td>{{value.stream_number}}</td>
+									<td>{{value.money}}</td>
+									<td>{{value.account_balance}}</td>
+									<td>{{value.trade_type}}</td>
+									<td>
+										<a class="detail" onclick="ShowTradeDetail(this)" href="javascript:;">详情<img src="../../img/xiala.png" alt="" /></a>
+									</td>
+								</tr>
+								<tr class="detail_tr">
+									<td id="card_num" colspan="6">
+										<div id="trade_detail">
+											<p><span>提现账号&nbsp;:</span>{{value.bankcard_code.substr(0,4)+"**** **** ****"+value.bankcard_code.substr(-3)}}</p>
+
+											<p><span>原因说明&nbsp;:</span>您在{{value.created_at}}发起的提现，平台已打款</p>
+										</div>
+									</td>
+								</tr>
+								{{/if}} {{/each}}
+
+							</script>
+						</div>
+
+					</div>
+				</div>
+			</div>
+			<div id="footer"></div>
+		</div>
+		<input class="hidden" data-id="balance" type="hidden" />
+		<script type="text/javascript" src="../../lib/jquery-1.8.3.min.js"></script>
+		<script type="text/javascript" src="../../lib/jquery-ui.js"></script>
+		<script type="text/javascript" src="../../lib/jquery.ui.datepicker-zh-CN.js"></script>
+		<script type="text/javascript" src="../../lib/template-web.js"></script>
+		<script type="text/javascript" src="../../lib/md5.js"></script>
+		<script type="text/javascript" src="../../js/secret.js"></script>
+		<script type="text/javascript" src="../../lib/pagination.js"></script>
+		<script>
+			$(function() {
+
+				$('#top_bar').load('../public/topBar.html');
+				$('#nav_bar').load('../public/navBar.html');
+				$('#search').load('../public/search.html');
+				$('#footer').load('../public/footer.html');
+				$('.myLeft').load('../public/accLeft.html');
+			})
+			//查询时间				
+			var dates = $('#start,#end');
+			dates.datepicker({
+				showOtherMonths: true,
+				selectOtherMonths: true,
+				maxDate: new Date(),
+				format: 'yyyy-mm-dd',
+				todayHighlight: true,
+				onSelect: function(selectedDate) {
+					var option = this.id == "start" ? "minDate" : "maxDate";
+					if(this.id == "start") {
+						//选择查询开始及结束时间，
+						startTime = timetamp(selectedDate); //点击开始日期修改后的时间
+						endTime = timetamp($(this).next().val());
+						//时间改变后发送请求数据
+						page = 1;
+						Income(page, true);
+						Tocash(page, true);
+					} else {
+						//选择查询开始及结束时间，时间改变后发送请求数据
+						startTime = timetamp($(this).prev().val());
+						endTime = timetamp(selectedDate); //点击结束日期修改后的时间
+						//查询时间改变后发送请求数据
+						page = 1;
+						Income(page, true);
+						Tocash(page, true);
+					}
+					dates.not(this).datepicker("option", option, selectedDate);
+				}
+			});
+
+			/*查询时间框内显示默认时间*/
+			var dta = function getNowFormatDate(x) {
+				var date = new Date();
+				var seperator1 = "-";
+				var seperator2 = ":";
+				var month = date.getMonth() + 1;
+				var strDate = date.getDate();
+				if(month >= 1 && month <= 9) {
+					month = "0" + (month - x);
+				}
+				if(strDate >= 0 && strDate <= 9) {
+					strDate = "0" + strDate;
+				}
+				var currentdate = date.getFullYear() + seperator1 + month + seperator1 + strDate;
+				return currentdate;
+			}
+			$("#start").val(dta(1));
+			$("#end").val(dta(0));
+
+			var startTime = timetamp(dta(1)); //查询的开始时间
+			var endTime = timetamp(dta(0)); //查询结束时间
+
+			//将日期转换成时间戳的函数
+			function timetamp(time) {
+				return(new Date(time.replace(/-/g, '/')).getTime() / 1000);
+			}
+			//点击查看交易详情页
+			function ShowTradeDetail(_this) {
+				if($(_this).children('img').attr("src") == "../../img/xiala.png") {
+					$(_this).children('img').attr("src", "../../img/shangla.png");
+				} else {
+					$(_this).children('img').attr("src", "../../img/xiala.png");
+				}
+				$(_this).parents('tr').next('.detail_tr').toggle();
+			};
+
+			/*点击切换 提现————收支*/
+			$('#trade_type span').each(function(i) {
+					$(this).click(function() {
+						$(this).addClass('type').siblings().removeClass('type');
+						$('.trade_data').eq(i).addClass('current_data').siblings().removeClass('current_data');
+					})
+				})
+				/*---------获取用户资金信息----------*/
+				! function() {
+					var pathname = '/api/paper/get/capital/info';
+					var obj = {
+						pe_id: localStorage.userId, //用户id值，本地缓存读取
+						pe_phone: localStorage.userPhone
+					}
+					GetList(obj, pathname, CardMsg);
+				}();
+
+			//处理资金信息的函数
+			function CardMsg(_data) {
+				if(_data.status_code == 10000) {
+					var html = template('account_balance', _data);
+					document.getElementById('balance_count').innerHTML += html;
+					var htmls = template('account_card', _data);
+					document.getElementById('balance_card').innerHTML += htmls;
+				} else if(_data.status_code == 10006) {
+					$('#balance_count').append('<p class="msgTip" style="margin-left:-50px ;">你还未通过企业认证，暂无账户相关信息</p>');
+					$('#balance_card').append('<p class="msgTip" style="margin-left:-10px ;">你还未通过企业认证，暂无银行卡相关信息</p>');
+				}
+			}
+
+			/*-------获取资金信息后的点击银行卡删除按钮----------*/
+			function DeleteCard(name) {
+				localStorage.bankcard_id = $(name).siblings('.cardId').html();
+				localStorage.card_number = $(name).siblings('.numbers').html()
+				$(name).attr('href', 'delCard.html');
+			}
+
+			/*------------获取交易记录--------*/
+			//获取收支记录
+			var page = 1;
+			Income(page, true);
+
+			function Income(pg, pages) {
+				var obj = {
+					pe_id: localStorage.userId, //用户id值，本地缓存读取
+					pe_phone: localStorage.userPhone,
+					tip: 1,
+					start: startTime, //开始时间
+					end: endTime, //结束时间
+					page: pg
+				};
+				var pathname = '/api/paper/get/trade/note';
+				GetList(obj, pathname, IncomeData);
+
+				function IncomeData(data) {
+					if(data.status_code == '10000' && data.data.length != 0) {
+						var html = template('trade_tpl', data);
+						$('#sz_data').html(html);
+						if(pages) {
+							$('#pages_sz').html('');
+							//分页
+							$('#pages_sz').initPagenation({
+								totalCount: data.totalRecord, //数据总个数,
+								showBtnFirst: true, //是否显示 首页按钮
+								showCount: 10, //每页显示多少个
+								showBtnsCount: 8 //数字按钮数量
+							});
+						}
+					} else {
+						$('#sz_data').html('');
+						$('#pages_sz').html('');
+						$('#sz_data').append('<p class="msgTip" style="padding-top: 10px;">暂无交易记录</p>')
+
+					}
+				}
+			}
+			$('#pages_sz').delegate('a', 'click', function() {
+				Income($(this).html(), false);
+			});
+			$('#pages_sz').delegate('.pre-page', 'click', function() {
+				var page = $(this).siblings('a.active').html();
+				if(page != 1) {
+					Income(page - 1, false);
+				}
+			});
+			$('#pages_sz').delegate('.next-page', 'click', function() {
+				var page = $(this).siblings('a.active').html();
+				if(page != $(this).prev().prev().html()) {
+					Income(parseInt(page) + 1, false);
+				}
+			});
+			$('#pages_sz').delegate('.first-page', 'click', function() {
+				var page = $(this).next().html();
+				Income(page, false);
+			});
+			$('#pages_sz').delegate('.last-page', 'click', function() {
+				var page = $(this).prev().html();
+				Income(page, false);
+			});
+
+			//提现记录
+			Tocash(page, true);
+
+			function Tocash(pg, pages) {
+				var obj = {
+					pe_id: localStorage.userId, //用户id值，本地缓存读取
+					pe_phone: localStorage.userPhone,
+					tip: 2,
+					start: startTime, //开始时间
+					end: endTime, //结束时间
+					page: pg
+				};
+				var pathname = '/api/paper/get/trade/note';
+				GetList(obj, pathname, TocashData);
+
+				function TocashData(data) {
+					if(data.status_code == '10000' && data.data.length != 0) {
+						var html = template('trade_tpl', data);
+						$('#tx_data').html(html);
+						if(pages) {
+							$('#pages_tx').html('');
+							//分页
+							$('#pages_tx').initPagenation({
+								totalCount: data.totalRecord, //数据总个数,
+								showBtnFirst: true, //是否显示 首页按钮
+								showCount: 10, //每页显示多少个
+								showBtnsCount: 8 //数字按钮数量
+							});
+						}
+					} else {
+						$('#tx_data').html('');
+						$('#pages_tx').html('');
+						$('#tx_data').append('<p class="msgTip" style="padding-top: 10px;">暂无交易记录</p>')
+					}
+				}
+			}
+
+			$('#pages_tx').delegate('a', 'click', function() {
+				Tocash($(this).html(), false);
+			});
+			$('#pages_tx').delegate('.pre-page', 'click', function() {
+				var page = $(this).siblings('.active').html();
+				if(page != 0) {
+					Tocash(page - 1, false);
+				}
+			});
+			$('#pages_tx').delegate('.next-page', 'click', function() {
+				var page = $(this).siblings('.active').html() - 1;
+				if(page != $(this).prev().prev().html()) {
+					Tocash(parseInt(page) + 1, false);
+				}
+			});
+			$('#pages_tx').delegate('.first-page', 'click', function() {
+				var page = $(this).next().html();
+				Tocash(page, false);
+			});
+
+			$('#pages_tx').delegate('.last-page', 'click', function() {
+				var page = $(this).prev().html();
+				Tocash(page, false);
+			});
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,136 @@
+<link rel="stylesheet" href="../../css/public.css" />
+<!--页面导航条! -->
+<div class="top_bar">
+	<div class="bar_box">
+		<div class="welcome">
+			<img src="" alt="zhiqunale.com" title="纸去哪了" />
+			<span>欢迎来到纸去哪了！</span>
+		</div>
+		<ul class="basic_msg">
+			<li>
+				<span class="login"><a href="http://192.168.1.107:8020/zhiqunale/myReposities/app/login/login.html">登录</a></span>
+				<div class="myList">
+					<ul>
+						<li>
+							<a href="###" class="certificated">认证</a>
+						</li>
+						<li>
+							<a href="http://localhost:63342/zhiqunale/app/account/personMsg.html">账户信息</a>
+						</li>
+						<li>
+							<a onclick="loginOff()">退出登录</a>
+						</li>
+					</ul>
+				</div>
+			</li>
+			<li>
+				<a class="mMsg" href="http://localhost:63342/zhiqunale/app/login/login.html">我的消息</a>
+			</li>
+			<li>
+				<a class="mOrder" href="http://192.168.1.107:8020/zhiqunale/myReposities/app/account/myOrder.html">我的订单</a>
+			</li>
+			<li>
+				<span class="service">客户服务 <img class="on" src="http://localhost:63342/zhiqunale/img/jiantou_bottom.png"/><img src="http://localhost:63342/zhiqunale/img/jiantou_up.png"/></span>
+				<div class="hotline">
+					<ul>
+						<li class="hotline_li">
+							<p>电话客服</p>
+							<div class="hotline_number">
+								<p><img src="http://localhost:63342/zhiqunale/img/iphone.png" />021-8888888</p>
+								<p>09:00-22:00</p>
+							</div>
+						</li>
+						<li>在线客服</li>
+					</ul>
+				</div>
+			</li>
+			<li style="border:none;">
+				<span class="download">
+                    下载APP
+                    <img class="on" src="http://localhost:63342/zhiqunale/img/jiantou_bottom.png"/>
+                    <img src="http://localhost:63342/zhiqunale/img/jiantou_up.png"/>
+                </span>
+				<div class="app">
+					<img src="http://localhost:63342/zhiqunale/img/erweima.png" />
+				</div>
+			</li>
+		</ul>
+	</div>
+</div>
+<script>
+	$(function() {
+		//        判断是否登录
+		if(localStorage.getItem("isLogin")) {
+			$('.mMsg').attr('href', 'http://localhost:63342/zhiqunale/app/account/my_msg.html');
+			$('.mOrder').attr('href', 'http://localhost:63342/zhiqunale/app/account/myOrder.html');
+			var userPhone = localStorage.getItem("userPhone");
+			var login = userPhone + ' <img class="on" src="http://localhost:63342/zhiqunale/img/jiantou_bottom.png" alt=""/><img src="http://localhost:63342/zhiqunale/img/jiantou_up.png" alt=""/>';
+			$('.login').html(login);
+			$('.login').click(function() {
+				$(this).children('img.on').removeClass('on').siblings('img').addClass('on');
+				$('.myList').toggle();
+			});
+			$('.mMsg').attr('href', 'http://localhost:63342/zhiqunale/app/account/my_msg.html');
+			$('.mOrder').attr('href', 'http://192.168.1.107:8020/zhiqunale/myReposities/app/account/myOrder.html');
+		}
+		$('.service').click(function() {
+			$(this).children('img.on').removeClass('on').siblings('img').addClass('on');
+			$('.hotline').toggle(function() {
+				$('.hotline_li').mouseenter(function() {
+					$('.hotline_number').show();
+				}).mouseout(function() {
+					$('.hotline_number').hide();
+				});
+			});
+		});
+		$('.download').click(function() {
+			$(this).children('img.on').removeClass('on').siblings('img').addClass('on');
+			$('.app').toggle();
+		});
+
+	})
+	//根据实名认证状态,确定点击'认证'时跳转的页面
+	var pe = localStorage.userState;
+	if(pe == 0) {
+		$('.certificated').attr('href', 'http://localhost:63342/zhiqunale/app/account/certificate_name.html');
+	} else if(pe == 1) {
+		$('.certificated').attr('href', 'http://localhost:63342/zhiqunale/app/account/certificate_name_ed.html')
+	} else {
+		$('.certificated').attr('href', 'http://localhost:63342/zhiqunale/app/account/certificate_name_check.html')
+	}
+
+	//    退出登录清除缓存
+	function loginOff() {
+		localStorage.clear();
+		window.location.href = 'http://192.168.1.107:8020/zhiqunale/myReposities/app/index.html';
+	}
+									
+	window.onmousemove = function() {
+		var newTime = new Date().getTime();
+		if(localStorage.userId) {
+			var duration = JSON.parse(localStorage.duration);
+			var current_time = JSON.parse(localStorage.current_time); // 将 JSON 字符串转成对象
+			if((parseInt(duration) + parseInt(current_time)) < newTime) {
+				localStorage.clear();
+				window.confirm('你已退出登录，请重新登录');
+				window.location.href = "http://192.168.1.107:8020/zhiqunale/myReposities/app/login/login.html";
+			} else {
+				localStorage.current_time = new Date().getTime();
+			}
+		}
+
+	}
+	
+	window.onload = function() {
+		if(localStorage.userId) {
+			localStorage.current_time = new Date().getTime();
+		}else{
+			delete window.confirm;
+		}
+
+	}
+	
+	/*window.onbeforeunload = function() {		
+			localStorage.clear();		
+	}*/
+</script>

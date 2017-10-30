@@ -1,0 +1,137 @@
+
+body{
+	background: #f2f2f2!important;
+}
+#buyapply{
+	width: 1342px;
+	margin: 0px auto 50px;
+	overflow: hidden;
+}
+.content{
+	background-color: #fff;
+	width: 1110px;
+	float: right;
+	min-height: 750px;
+}
+/*左侧积分、订单、账户等公共部分*/
+.msg_title li{
+	margin-bottom: 14px;
+	font-size:20px ;
+}
+li.now_title>a{
+	color: #FF5A00;
+}
+.login_out{
+	margin-top: 60px;
+}
+.msg_title a{
+	display: block;
+	font-size:20px ;
+	color: #666;
+}
+.touxiang>img{
+	height: 110px;
+}
+
+
+/*右侧采购申请部分*/
+#buy_box{
+	font-size: 18px;
+	color: #666;
+}
+.buy_title{
+	font-size: 22px;
+	color: #333;
+	height:62px;
+	line-height: 62px;
+	border-bottom: 1px solid #d2d2d2;
+	margin: 0px 12px;
+	padding-left:8px ;
+}
+/*采购申请内容区域*/
+.apply_content{
+	margin: 0px 44px;
+}
+.apply_content>ul{
+	margin-top: 10px;
+}
+.buy_apply li{
+	overflow: hidden;
+	border-bottom: 1px solid #D2D2D2;
+}
+.apply_msg{
+	margin: 27px 0px;
+	position: relative;
+	overflow: hidden;
+}
+.apply_msg p{
+	display: inline-block;
+	width: 26%;
+}
+.apply_msg p:nth-child(4){
+	text-align: right;
+	width: 20%;
+}
+.apply_msg .btn,.apply_msg .pay_state{
+	width: 20%;
+	text-align: right;
+	cursor: pointer;
+}
+
+/*右侧按钮*/
+button{
+	background-color:transparent;
+	border: none;
+	font-size: 18px;
+	color: #666;
+	outline: none;
+	cursor: pointer;
+	position: absolute;
+	right: 0px;
+}
+.to_pay{
+	color: #208DF0;
+}
+
+.buy_state{
+	color: #FF5A00;
+}
+
+b.apply_connect{
+	margin-left: 268px;
+}
+b.paper_class{
+	margin-left: 15px;
+}
+/*分页*/
+.pages{
+	list-style: none;
+	overflow: hidden;
+	text-align: center;
+	margin: 25px 0;
+}
+.pages .link-wrapper{
+	display: inline-block;
+}
+.pages .link-wrapper a,.pages .link-wrapper span{
+	display: inline-block;
+	float: left;
+	width: 30px;
+	height: 30px;
+	background: #fff;
+	border: 1px solid #ddd;
+	text-align: center;
+	line-height: 30px;
+	border-radius: 3px;
+	margin-right: 10px;
+	cursor: pointer;
+	text-decoration: none;
+	color: #333;
+}
+.pages .link-wrapper a.active{
+	color: #FF5000;
+}
+.pages .link-wrapper span{
+	width: 66px;
+	display: inline-block;
+}

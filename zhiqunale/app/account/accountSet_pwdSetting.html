@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../../css/account/accountSet_pwd.css"/>
+	</head>
+	<body>
+		<div class="container">
+			<div class="header">
+				<div id="top_bar"></div>
+				<div id="nav_bar"></div>
+				<div id="search"></div>
+			</div>
+			<div class="main_box">
+				<div id="accountFind">
+					<div class="myLeft"></div>
+					<div class="content">
+						<div id="set_password" class="setting_box">
+							<h2>设置密码</h2>
+							<div class="set_content">
+								<h4 class="tishi"></h4>
+								<form>
+									<div><label>账户名</label>：<span id="user_name"></span></div>
+									<div id="curent_pasword"><label>当前密码</label>：<input type="password" name="pwd"/><a id="forget_pwd" class="input_tips" href="###">忘记密码</a><em>当前密码错误</em></div>
+									<div id="new_pasword"><label>新密码</label>：<input id="pwd" type="password" name="pwd" /><i class="pwd_demand">可由6-20位英文字母(区分大小写)或数字组成</i><em>密码不能为空</em></div>
+									<div id="sure_pasword"><label>确定新密码</label>：<input id="pwd2" type="password" name="pwd" /><em>两次输入密码保持一致</em></div>
+								</form>
+								<div id="sub_sure" class="setting_sure"><a class="submit">确&nbsp;&nbsp;&nbsp;&nbsp;定</a></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="footer"></div>
+		</div>
+		<input class="hidden" data-id="setpwd" type="hidden"/>
+		<script src="../../lib/jquery-1.8.3.min.js"></script>
+		<script type="text/javascript" src="../../lib/md5.js"></script>
+		<script type="text/javascript" src="../../js/secret.js"></script>
+		<script type="text/javascript" src="../../js/validate.js"></script>
+
+		<script>
+			$(function(){
+				$('#top_bar').load('../public/topBar.html');
+				$('#nav_bar').load('../public/navBar.html');
+				$('#search').load('../public/search.html');
+				$('#footer').load('../public/footer.html');
+				$('.myLeft').load('../public/accLeft.html');
+
+//				用户名
+				$('#user_name').html(localStorage.getItem('userName'));
+
+				$('#curent_pasword input').focus(function(){
+					$(this).siblings('em').hide();
+				});
+				validate(true,true,true,false,false,true,true);
+				$('.submit').click(function(){
+					if($(this).hasClass('active')&&$('#curent_pasword input').val()!=''){
+						var pathname='/api/paper/reset/password';
+						var obj={
+							pe_phone:localStorage.getItem('userPhone'),
+							old_password:$('#curent_pasword input').val(),
+							new_password:$('#pwd').val(),
+							re_password:$('#pwd2').val(),
+							pe_id:localStorage.getItem('userId')
+						}
+						GetList(obj,pathname,getSub);
+						function getSub(_data){
+							if(_data.status_code=='10000'){
+								alert('密码设置成功');
+								$('.tishi').hide();
+								$('form input').val('');
+							}else if(_data.status_code=='10001'||_data.status_code=='10003'){
+								$('.tishi').show().html(_data.msg);
+							}else if(_data.status_code=='10002'){
+								$('.tishi').show().html(_data.msg);
+							}else if(_data.status_code=='10006'){
+								$('.tishi').show().html(_data.msg);
+							}
+						}
+					}else{
+						$('#curent_pasword em').show();
+					}
+				});
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,212 @@
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+a {
+	text-decoration: none;
+}
+.popupBox,
+.background {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+}
+div.addcss{
+	position: fixed;
+	display: none;
+}
+.background {
+	background-color: #000;
+	filter: alpha(opacity=50);
+	-moz-opacity: 0.5;
+	-khtml-opacity: 0.5;
+	opacity: 0.5;
+}
+
+#success_box,
+#delete_box,
+#linkman_box,
+#resubmit_box,
+#sub_success_box,
+#firmOrder_box {
+	background: #fff;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	bottom: 0px;
+	right: 0px;
+	margin: auto;
+	z-index: 22;
+	border-radius: 20px;
+	color: #333;
+	font-size: 20px;
+}
+.popupBox a{
+	color: #fff;
+	font-size: 18px;
+	display: inline-block;
+	height: 44px;
+	line-height: 44px;
+	border-radius: 5px;
+	text-align: center;
+}
+/*右上角关闭按钮*/
+
+#close {
+	float: right;
+	margin: 14px 18px 0px 0px;
+	cursor: pointer;
+}
+
+/*--------------设置密码成功/删除银行卡成功--------------*/
+
+#success_box {
+	width: 420px;
+	height: 274px;
+	line-height: 274px;
+}
+
+/*未设置margin值*/
+
+#success_content {
+	text-align: center;
+}
+#success_content img {
+	margin-right: 20px;
+	vertical-align: middle;
+}
+
+/*-----------------确认删除纸标准/确认删除纸厂----------------------------*/
+
+#delete_box {
+	width: 420px;
+	height: 262px;
+}
+
+/*未设置margin值*/
+
+#delete_content {
+	text-align: center;
+}
+#delete_content>a {
+	width: 130px;
+	background-color: #b2b2b2;
+}
+
+a#make_sure {
+	background-color: #FF5000;
+	margin-right: 44px;
+}
+.operate_tip {
+	color: #575656;
+	text-align: center;
+	margin: 70px 0px 76px;
+}
+
+/*-------------------发货联系人页面---------------------*/
+
+/*可见的弹出框*/
+#linkman_box {
+	width: 420px;
+	height: 314px;
+}
+
+#linkman_content {
+	margin-top: 50px;
+	margin-left: 39px;
+}
+
+#linkman_content>h2 {
+	font-size: 20px;
+	margin-bottom: 24px;
+}
+
+#linkman_content>p {
+	color: #666;
+	font-size: 18px;
+	margin-bottom: 12px;
+}
+
+#linkman_content>p.tips {
+	color: #FF5000;
+	margin-top: 25px;
+}
+
+/*------------------提交失败重新提交-----------------------*/
+
+#resubmit_box,#sub_success_box {
+	width: 426px;
+	height: 274px;
+	text-align: center;
+}
+/*提交失败*/
+
+p#submit_fail {
+	font-size: 20px;
+	margin: auto;
+	margin-top: 76px;
+	margin-bottom: 53px;
+	text-align: center;
+}
+a#resubmit_btn {
+	width: 294px;
+	background-color: #FF5000;
+}
+/*---------------提交成功------------------*/
+/*提交成功*/
+p#submit_tip {
+	font-size: 16px;
+	color: #666;
+	width: 356px;
+	height: 50px;
+	line-height: 2;
+	display: inline-block;
+	text-align: center;
+}
+
+#sub_success_content {
+	margin-top: 56px;
+	margin-bottom: 35px;
+}
+
+#sub_success_content>img {
+	margin: 0px 20px 0px;
+	vertical-align: middle;
+}
+/*--------------------确认订单----------------------*/
+
+/*可见的弹出框*/
+#firmOrder_box {
+	width: 420px;
+	height: 500px;
+}
+#firmOrder_content {
+	margin-top: 60px;
+	margin-left: 26px;
+	color: #666;
+}
+#firmOrder_content>h2 {
+	color: #333;
+	font-size: 20px;
+	margin-bottom: 24px;
+}
+#firmOrder_content>p {
+	font-size: 18px;
+	margin-bottom: 12px;
+}
+#firmOrder_content>p.goods_adress {
+	line-height: 22px;
+	width: 370px;
+}
+#payment {
+	text-align: center;
+	margin-top: 70px;
+}
+/*确认提交按钮*/
+#payment>a {
+	width: 294px;
+	background-color: #FF5000;
+}

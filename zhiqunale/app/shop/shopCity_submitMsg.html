@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../../css/shop/shoppingCity.css" />
+	</head>
+	<body>
+		<div class="container">
+	        <div class="header">
+	            <div id="top_bar"></div>
+	            <div id="nav_bar"></div>
+	            <div id="search"></div>
+	        </div>
+	        <div class="main_box">
+		<div class="content">
+			<div class="submit_msg">
+				<h2>提交信息</h2>
+				<p>请填写双方议价后的价格</p>
+				<div class="price_msg">
+					<ul>
+						<li>
+							<span>单 价：</span>
+							<input class="price" type="text" name="price"/>
+						</li>
+						<li><span>预估等级：</span>
+							<select class="grade" name="level">
+
+							</select>
+						</li>
+						<li><span>数 量：</span><input class="num" type="text" name="count" /></li>
+					</ul>
+				</div>
+				<div id="sub_msg">
+					<button onclick="sub()" type="button" class="sure">确定</button>
+					<a href="javascript:history.back(-1)">取消</a>
+				</div>
+			</div>
+		</div>
+		 </div>
+			<div id="footer"></div>
+        </div>
+		<input type="hidden" class="hidden" data-id="shopCity"/>
+<script type="text/html" id="subMsg">
+	<!-- 贸易公司没有合作纸厂时,不显示-->
+	{{if address_id}}
+	<li id="address" data-type="{{paper_type}}" data-adid="{{address_id}}">
+		<span>收货地址：</span>{{province}}{{city}}{{dist}}{{detail}}
+	</li>
+	{{/if}}
+	<li id="revise_adress">
+		<!-- 纸厂-->
+		{{if sign==1}}
+		<a href="../account/addressManage_edit.html">编辑地址</a>
+		<!-- 贸易公司-->
+		{{else}}
+		{{if address_id}}
+		<a onclick="selAddr()">编辑地址</a>
+		{{/if}}
+		{{/if}}
+		<!-- 贸易公司没有合作纸厂时-->
+		{{if !address_id}}
+		<h3>您还没有添加任何纸厂，无法进行采购，请前往<a href="">添加合作纸厂</a></h3>
+		{{/if}}
+	</li>
+</script>
+		<script type="text/html" id="stage">
+			{{each data as value i}}
+			<option value="{{value.psg_id}}">{{value.name}}</option>
+			{{/each}}
+		</script>
+		<script src="../../lib/jquery-1.8.3.min.js"></script>
+		<script type="text/javascript" src="../../lib/md5.js"></script>
+		<script type="text/javascript" src="../../js/secret.js"></script>
+		<script type="text/javascript" src="../../lib/template-web.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				$('#top_bar').load('../public/topBar.html');
+            	$('#search').load('../public/search.html');
+            	$('#nav_bar').load('../public/navBar.html');
+            	$('#footer').load('../public/footer.html');
+				//获取默认收货地址
+				var pathname='/api/paper/get/paper/address/before/submit/purchase/apply';
+				var obj={
+					pe_id:localStorage.getItem("userId"),
+					pe_phone:localStorage.getItem("userPhone")
+				};
+				GetList(obj,pathname,getAddr);
+				function getAddr(_data){
+					if(_data.status_code=='10000'){
+						var userSign=localStorage.getItem("userSign");//贸易公司--2
+						_data.data.sign=userSign;
+						var address=location.search.substring(1).split('&');
+						if(address.length==3){
+							_data.data.address_id=address[0];
+							_data.data.paper_type=address[1];
+							_data.data.province='';
+							_data.data.city='';
+							_data.data.dist='';
+							_data.data.detail=unescape(address[2]);
+						}
+						var html=template('subMsg',_data.data);
+						$('.price_msg ul').append(html);
+					}else{
+						$('.submit_msg').html(_data.msg).css({'font-size':'20px'});
+					}
+				}
+				//获取纸品等级
+				var stage={
+					pe_id:localStorage.getItem("userId"),
+					pe_phone:localStorage.getItem("userPhone")
+				}
+				var stagename='/api/paper/get/paper/stage/before/submit/purchase/apply';
+				GetList(stage,stagename,getStage);
+				function getStage(data){
+					var html=template('stage',data);
+					$('.grade').html(html);
+				}
+			})
+//			提交重新申请的数据
+			function sub(){
+				var obj={
+					pe_id:localStorage.getItem('userId'),
+					pe_phone:localStorage.getItem('userPhone'),
+					estimate_price:escape($('.price').val()),
+					estimate_stage:escape($('.grade option:selected').html()),
+					pap_num:escape($('.num').val()),
+					address_id:$('#address').attr('data-adid'),
+					paper_type:$('#address').attr('data-type'),
+					goods_id:localStorage.getItem("goodId")
+				}
+				var subname='/api/paper/submit/purchase/apply';
+				GetList(obj,subname,getSub);
+				function getSub(data){
+					
+					if(data.status_code=='10000'||data.status_code=='10010') {						
+						window.location.href = '../account/buyApply.html';
+					}else{
+						alert('提交失败，请检查您提交的数据格式是否正确！');
+					}
+				}
+			}
+			//			选择合作纸厂地址
+			function selAddr(){
+				var loca=window.location.href.split('/');
+				loca=loca[loca.length-1];
+				window.location.href='../shop/shopCity_reviseAddress.html?location='+loca;
+			}
+		</script>
+	</body>
+</html>

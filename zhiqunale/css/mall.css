@@ -1,0 +1,25 @@
+
+#search{
+    background:#F2F2F2;
+}
+.main_box{
+    background:#F2F2F2;
+    padding:10px 0 50px;
+}
+#mall_box{
+    width:1342px;
+    margin:0 auto;
+    height:720px;
+    background:#fff;
+    text-align:center;
+}
+.qidai{
+    display:inline-block;
+    position:relative;
+    top:200px;
+}
+.qidai p{
+    font-size:26px;
+    color:#333;
+    margin-bottom:40px;
+}

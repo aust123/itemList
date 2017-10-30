@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../../css/shop/shoppingCity.css" />
+	</head>
+	<body>
+		<div class="container">
+	        <div class="header">
+	            <div id="top_bar"></div>
+	            <div id="nav_bar"></div>
+	            <div id="search"></div>
+	        </div>
+	        <div class="main_box">
+		<div class="content">
+			<div class="revise_address">
+				<h2>地址列表</h2>
+				<div class="address_list">
+					<ul class="addList">
+					</ul>				
+				</div>
+				<div id="select_address">
+					<a class="sure">确  定</a>
+				</div>
+			</div>
+		</div>
+		 </div>
+			<div id="footer"></div>
+        </div>
+		<input type="hidden" class="hidden" data-id="shopCity"/>
+<script type="text/html" id="addList">
+	{{each data as value i}}
+	{{if i==0}}
+	<li class="active" data-type="{{value.da_slug}}" data-aid="{{value.address_id}}">
+		<span>{{value.co_name}}&nbsp;&nbsp;&nbsp;&nbsp;<b>{{value.co_address}}</b></span>
+	</li>
+	{{else}}
+	<li data-type="{{value.da_slug}}" data-aid="{{value.address_id}}">
+		<span>{{value.co_name}}&nbsp;&nbsp;&nbsp;&nbsp;<b>{{value.co_address}}</b></span>
+	</li>
+	{{/if}}
+	{{/each}}
+</script>
+		<script src="../../lib/jquery-1.8.3.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="../../lib/md5.js"></script>
+		<script type="text/javascript" src="../../js/secret.js"></script>
+		<script type="text/javascript" src="../../lib/template-web.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				$('#top_bar').load('../public/topBar.html');
+            	$('#search').load('../public/search.html');
+            	$('#nav_bar').load('../public/navBar.html');
+            	$('#footer').load('../public/footer.html');
+				
+				/*默认地址*/
+				$(".addList").delegate('li','click',function() {
+					$(this).addClass('active').siblings().removeClass('active');
+				})
+//				获取上级页面的地址
+				var loca=location.search.split('?')[1].split('=')[1];
+				if(loca=='reApply.html'){
+					loca='../account/reApply.html';
+				}
+
+//				获取贸易公司合作纸厂的地址列表
+				var pathname='/api/paper/get/cooperate/paper/address';
+				var obj={
+					pe_id:localStorage.getItem("userId"),
+					pe_phone:localStorage.getItem("userPhone")
+				}
+				GetList(obj,pathname,getAddlist);
+				function getAddlist(_data){
+					if(_data.status_code=='10000'){
+						var html=template('addList',_data);
+						$('.addList').html(html);
+					}else{
+						$('.addList').html(_data.msg);
+					}
+				}
+//				点击确定跳转页面
+				$('.sure').click(function(){
+					var aid=$('.addList li.active').attr('data-aid');
+					var type=$('.addList li.active').attr('data-type');
+					var adrs=escape($('.addList li.active b').html());
+					window.location.href=loca+'?'+aid+'&'+type+'&'+adrs;
+				});
+			})
+		</script>
+		
+	</body>
+</html>

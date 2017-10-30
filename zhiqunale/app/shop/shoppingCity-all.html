@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../../css/shop/shoppingCity-all.css" />
+		<script type="text/javascript" src="../../lib/jquery-1.8.3.min.js"></script>
+	</head>
+
+	<body>
+		<div class="container">
+	        <div class="header">
+	            <div id="top_bar"></div>
+	            <div id="nav_bar"></div>
+	            <div id="search"></div>
+	        </div>
+	        <div class="main_box">
+		<div class="sort">
+			<div class="sort_select">
+				<a id="new_list" class="newest current">最 新</a>
+				<a class="weight">重 量</a>
+				<a class="distance">距 离</a>
+			</div>
+		</div>
+		<div class="content">
+			<div class="shopcity_all">
+				<ul class="shop_list">
+				</ul>
+			</div>
+		</div>
+		</div>
+			<div id="footer"></div>
+        </div>
+		<input type="hidden" class="hidden" data-id="shopCity"/>
+<script type="text/html" id="shList">
+	{{each data as value i}}
+	<li>
+		<!-- 公司已认证，跳转到打包站详情页面-->
+		{{if data.uState==1}}
+		<a data-pkid="{{value.pack_id}}" href="shoppingCity.html?id={{value.pg_id}}"><img src="{{value.pg_goods_img}}" /></a>
+		{{else}}
+		<a href="javascript:;"><img src="{{value.pg_goods_img}}" /></a>
+		{{/if}}
+		<div class="shop_detail">
+			{{if value.dis}}
+			<p class="dist">距离您：{{value.dis}}km</p>
+			{{/if}}
+			<div class="shop_adress"><span>{{value.pg_paper_category}}</span><b>{{value.pg_city}}</b></div>
+			<p class="shop_price">数量：{{value.pg_per_supply}}吨</p>
+			<div class="shop_msg">
+				<span>今日已售：{{value.has_sold}}吨</span>
+				<!-- 登录链接到购买页面，未登录链接到登录页面-->
+				{{if data.isLogin}}
+				<a onclick="apply(this)" data-pgid="{{value.pg_id}}" class="shop_buy">购买</a>
+				<a href="shopCity_bargain.html?gd_id={{value.pg_id}}">议价</a>
+				{{else}}
+				<a class="shop_buy" href="../login/login.html">购买</a>
+				<a href="../login/login.html">议价</a>
+				{{/if}}
+			</div>
+		</div>
+	</li>
+	{{/each}}
+</script>
+		<script type="text/javascript" src="../../lib/md5.js"></script>
+		<script type="text/javascript" src="../../js/secret.js"></script>
+		<script type="text/javascript" src="../../lib/template-web.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				/*引入top、footer等公共部分*/
+				$('#top_bar').load('../public/topBar.html');
+				$('#nav_bar').load('../public/navBar.html');
+				$('#search').load('../public/search.html');
+				$('#footer').load('../public/footer.html');
+
+				//默认按照最新加载废纸列表
+				var obj={
+					city:escape(localStorage.curCity),
+					tip:1,
+					province:'',
+					page:1
+				}
+				var pathname='/api/paper/get/purchase/shop/recommend/goods';
+				GetList(obj,pathname,getList);
+				function getList(_data){
+					if(_data.status_code=='10000'){
+						var isLogin=localStorage.getItem("isLogin");
+						var uState=localStorage.getItem("userState");
+						_data.data.isLogin=isLogin;
+						_data.data.uState=uState;
+						var html=template('shList',_data);
+						$('.shop_list').html(html);
+					}else if(_data.status_code=='10002'){
+						$('.shop_list').html(_data.msg).css({'font-size':'20px'});
+					}
+				}
+				var isMore=true;
+				/*点击按纸品最新、重量、距离分类排序*/
+				$('.sort_select a').click(function(){
+					obj.page=1;
+					$(this).addClass('current').siblings().removeClass('current');
+					//需要实现的功能
+					if($(this).hasClass('weight')){
+						obj={
+							city:escape(localStorage.curCity),
+							tip:1,
+							province:'',
+							page:1,
+							weight:1
+						}
+					}else if($(this).hasClass('distance')){
+						obj={
+							city:escape(localStorage.curCity),
+							tip:1,
+							province:'',
+							page:1,
+							distance:1
+						}
+					}else {
+						obj = {
+							city: escape(localStorage.curCity),
+							tip: 1,
+							province:'',
+							page:1
+						}
+					}
+					GetList(obj, pathname,getList);
+				});
+				//加载更多
+				$(window).scroll(function(){
+					var scrollTop = $(this).scrollTop();
+					var scrollHeight = $(document).height();
+					var windowHeight = $(this).height();
+					if (scrollTop + windowHeight == scrollHeight){
+						if(isMore){
+							delete obj.sign;
+							obj.page++;
+							loadMore(obj);
+						}
+					}
+				});
+				function loadMore(ob){
+					if(isMore){
+						var morename='/api/paper/get/purchase/shop/recommend/goods';
+						GetList(obj,morename,getMore);
+						function getMore(data){
+							if(data.data=='undefined'&&data.data.length<12){
+								isMore=false;
+							}else{
+								isMore=true;
+								var html=template('shList',data);
+								$('.shop_list').append(html);
+							}
+						}
+					}
+				}
+			});
+
+			//采购申请
+			function apply(This){
+				localStorage.setItem("goodId",$(This).attr('data-pgid'));
+				window.location.href='shopCity_submitMsg.html';
+			}
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,783 @@
+
+body{
+	background: #f2f2f2!important;:
+}
+/*我的订单*/
+#myorder{
+	width: 1342px;
+	margin: 0px auto 50px;
+	overflow: hidden;
+}
+#myorder .myLeft{
+	margin-left: 16px;
+	margin-right: 5px;
+}
+#myorder .order_form{
+	float: right;
+	min-height: 895px;
+	width: 1160px;
+	color: #666;
+	font-size: 18px;
+	/*临时加的白色背景*/
+	background-color: #fff;
+}
+#myorder .form_top{
+	border-bottom: 1px solid #d2d2d2;
+}
+#myorder .form_top>a{
+	display: inline-block;
+	width: 182px;
+	height:44px;
+	line-height: 40px;
+	text-align: center;
+	font-size: 22px;
+	color: #333;
+	margin-top: 14px;
+	cursor: pointer;
+}
+#myorder .query_date{
+	float: right;
+	margin: 10px 19px 0px 0px;
+}
+#myorder .trade_type{
+	position: relative;
+}
+/*交易方式切换状态*/
+#myorder .sales_mode{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+}
+/*订单选中状态*/
+#myorder a.trade_current{
+	background-color: #FF5000;
+	color: #fff;
+}
+#myorder .form_select{
+	height: 70px;
+	line-height: 74px;
+	overflow: hidden;
+}
+#myorder .purchase li{
+	float: left;
+	/*margin-left: 93px;*/
+	cursor: pointer;
+	text-align: center;
+}
+#myorder .direct_sale li {
+	float: left;
+	/*margin-left: 169px;*/
+	cursor: pointer;
+	width: 20%;
+}
+#myorder .apply li{
+	width: 14%;
+}
+#myorder .current_select{
+	color: #FF5000;
+}
+#myorder li.daifu{
+	/*margin-left:52px ;*/
+}
+#myorder .form_list{
+	font-size: 16px;
+	position: relative;
+	margin:0px 12px;
+}
+/*显示查询的选项*/
+#myorder .curent_item{
+	display: block !important;
+}
+/*加载的表格内容样式*/
+#myorder .form_item {
+	color: #666;
+	border: none;
+	width: 100%;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	display: none;
+}
+#myorder .form_item table{
+	border: none;
+	width: 100%;
+}
+#myorder .form_item td {
+	text-align: center;
+	height: 36px;
+	border: none;
+}
+
+#myorder .form_item table a {
+	color: #208DF0;
+}
+
+#myorder .list_title {
+	height: 40px;
+	line-height: 40px;
+	background-color: #f2f2f2;
+}
+
+#myorder .list_title>th {
+	text-align: center;
+	color: #666;
+	font-weight: normal;
+	border: none;
+}
+
+#myorder .list_content>td {
+	padding-top: 7px;
+}
+#myorder .list_content>td:nth-child(1){
+	width: 10%;
+}
+#myorder .creat_time,#myorder .acceptance.creat_time,#myorder .finish.creat_time,#myorder .unpaid.creat_time {
+	width: 85px;
+}
+
+#myorder .shipper {
+	width: 214px;
+}
+#myorder .price,#myorder .logistic {
+	width: 91px;
+}
+
+#myorder .weight,#myorder .factory  {
+	width: 208px;
+}
+
+#myorder .level {
+	width: 93px;
+}
+
+#myorder th.order{
+	width: 98px;
+	/*padding-left: 46px;*/
+}
+/*#myorder td.list_detail>a{*/
+	/*padding-left: 53px;*/
+/*}*/
+/*待验收样式代码*/
+
+#myorder .acceptance.shipper,#myorder .finish.shipper{
+	width: 178px;
+}
+#myorder .acceptance.price,#myorder .acceptance.logistic,#myorder .finish.price,#myorder .finish.logistic {
+	width: 83px;
+}
+
+#myorder .acceptance.weight,#myorder .acceptance.factory,#myorder .finish.weight,#myorder .finish.factory  {
+	width: 182px;
+}
+
+#myorder .acceptance.level,#myorder .finish.level {
+	width: 81px;
+}
+#myorder .settlement_list{
+	width: 176px;
+}
+#myorder th.acceptance.order,#myorder th.finish.order{
+	padding-left: 6px;
+	
+}
+#myorder .acceptance.list_detail>a{
+	padding-left: 12px;
+}
+#myorder .finish.list_detail>a{
+	padding-left: 12px;
+}
+/*待付款样式*/
+
+#myorder .unpaid.shipper {
+	width: 148px;
+}
+#myorder .unpaid.price,#myorder .unpaid.logistic {
+	width: 86px;
+}
+
+#myorder .unpaid.weight,#myorder .unpaid.factory  {
+	width: 148px;
+}
+
+#myorder .unpaid.level,#myorder .unpaid.funkuan {
+	width: 86px;
+}
+#myorder .unpaid.settlement_list{
+	width: 147px;
+}
+
+#myorder th.unpaid.order{
+	/*padding-left: 31px;*/
+}
+/*#myorder .unpaid.list_detail>a{*/
+	/*padding-left: 34px;*/
+/*}*/
+/*联系人弹出框*/
+.linkman{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: none;
+}
+
+/*采购待验收标题样式*/
+#buy_acceptance .settlement_list {
+    width: 86px;
+}
+#buy_acceptance .funkuan {
+    width: 147px;
+}
+/*直销/采购付款进程宽度*/
+#buy_waitRecive .funkuan,
+#buy_obligation .funkuan,
+#buy_waitDelivery .funkuan,
+#direct_complete .fukuan{
+	width: 176px;
+}
+/*直销已完成标题样式*/
+#direct_complete .settlement_list{
+	width: 83px;
+}
+
+/*查看结算清单*/
+#checkorder{
+	width: 1342px;
+	margin: 0px auto 50px;
+	overflow: hidden;
+}
+#checkorder .content{
+	width: 1140px;
+	float: right;
+	background: #fff;
+
+}
+/*---------我的订单——清单公共部分---------*/
+#checkorder .list_box{
+	min-height: 794px;
+	width: 1150px;
+	background-color: #fff;
+}
+#checkorder .list_box h2{
+	height: 62px;
+	line-height: 62px;
+	margin: 0px 25px 0px 12px;
+	color: #333;
+	font-size: 22px;
+	border-bottom:1px solid #d2d2d2 ;
+	padding-left: 8px;
+	font-weight: normal;
+}
+/*--------------编辑清单页面样式/填写清单页面----------------*/
+#checkorder div.list_content{
+	margin: 43px 50px 0px;
+	font-size: 18px;
+	color: #666;
+	padding-bottom: 20px;
+}
+#checkorder div.list_content>div{
+	margin-bottom: 12px;
+}
+/*------输入框样式-------*/
+#checkorder div.list_content input,
+#checkorder div.list_content select{
+	height: 31px;
+	outline: none;
+	border: 1px solid #d2d2d2;
+	border-radius:5px ;
+	　　appearance: none;
+	-webkit-appearance: none;
+	/*去除chrome浏览器的默认下拉图片*/
+	-moz-appearance: none;
+	/*去除Firefox浏览器的默认下拉图片*/
+}
+#checkorder .car_number>select{
+
+	width: 216px;
+	background:url(../../img/da_sanjaio.png) no-repeat right center;
+	background-position: 194px center;
+	margin-left:4px;
+}
+/*选择日期*/
+
+#checkorder .select_date>select{
+	font-size: 18px;
+	background:url(../../img/xiao_sanjiao.png) no-repeat;
+	margin-right: 6px;
+}
+#checkorder select#J_Year{
+	width: 60px;
+	margin-left:6px;
+	background-position:45px center;
+}
+#checkorder select#J_Month{
+	width: 32px;
+	background-position:20px center;
+}
+#checkorder select#J_Day{
+	width: 42px;
+	background-position:30px center;
+}
+
+#checkorder div.list_content input{
+	width: 149px;
+	font-size: 16px;
+	padding-left: 10px;
+	margin-left:18px;
+}
+#checkorder p.upload_listText{
+	margin-top: 22px;
+}
+#checkorder div.list_img{
+	margin-top: 20px;
+	width: 323px;
+	height: 153px;
+	position: relative;
+}
+#checkorder div.list_img input{
+	position: absolute;
+	right: 0;
+	top: 0;
+	opacity: 0;
+	filter:alpha(opacity=0);
+	display: inline-block;
+	width: 100%;
+	height: 100%;
+}
+#checkorder div.list_img>img{
+	width: 100%;
+	height: 100%;
+}
+#checkorder div.edit.list_sure{
+	margin-top: 19px;
+}
+/*-----------确认按钮--------------*/
+#checkorder div.list_sure{
+	margin: 50px 0px 0px 50px;
+}
+#checkorder div.list_sure>a{
+	height: 44px;
+	background-color: #FF5000;
+	color: #fff;
+	line-height:44px ;
+	text-align: center;
+	display: inline-block;
+	border-radius:5px ;
+	width: 314px;
+	font-size: 18px;
+	text-decoration: none;
+}
+/*--------填写清单页面-------------*/
+.carNumber {
+	font-size: 16px;
+	padding-left: 10px;
+}
+
+#checkorder div.list_img>a{
+	display: inline-block;
+	background: url(../../img/qiyexinxi_shangchuang.png) center;
+	box-shadow: 4px 4px 2px 0px #e8e8e8;
+	width: 196px;
+	height: 140px;
+	position: relative;
+}
+#listImg{
+	width: 100%;
+	height: 100%;
+	margin: 0px;
+	padding: 0px;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	opacity: 0;
+	filter: alpha(opacity=0);
+	cursor: pointer;
+}
+#checkorder div.list_sure.write{
+	margin-top: 23px;
+}
+/*---------------查看结算清单页面内容---------------------*/
+#checkorder div.check_content.list_content{
+	margin-top: 44px;
+	border-bottom:1px solid #d2d2d2 ;
+}
+#checkorder .check_content.list_content>div,
+#checkorder div.upload_content>div{
+	margin-bottom: 14px;
+}
+#checkorder p.check_text.upload_listText{
+	margin-top:27px ;
+}
+#checkorder div.list_sure.check{
+	margin-top: 38px;
+	margin-bottom: 50px;
+}
+#checkorder div.list_content#upload_content span{
+	margin-left: 14px !important;
+	color: #333;
+}
+#checkorder div.check_second.list_content{
+	margin-top: 38px;
+}
+#edit_settle{
+	float: right;
+	color: #208df0;
+}
+#settle_id{
+	display: none;
+}
+
+/*-------------上传结算清单页内容--------------*/
+#checkorder p.uploadTips{
+	color: #208DF0;
+	font-size: 18px;
+	margin:20px 50px 0px ;
+}
+#checkorder div#upload_content{
+	margin-top: 40px;
+}
+#checkorder div#none_border1,
+#checkorder div#none_border2{
+	border: none;
+}
+
+#add_settle{
+	font-size: 18px;
+	color: #999;
+	float:right;
+	margin-right: 10px;
+}
+
+/*订单详情*/
+#orderDetail{
+	width: 1342px;
+	margin:0 auto 50px;
+	overflow:hidden;
+}
+#orderDetail .myLeft{
+	float:left;
+}
+#orderDetail .od_detail{
+	width: 1100px;
+	float:right;
+	/*height:1160px;*/
+	padding:0 10px;
+	background: #ffffff;
+}
+#orderDetail .od_detail .bread{
+	margin:20px 10px;
+	font-size: 18px;
+	color: #999999;
+}
+#orderDetail .od_detail .bread a{
+	color: #666666;
+}
+#orderDetail .od_detail .bread a.cur{
+	color: #519ff2;
+}
+#orderDetail .od_detail .title{
+	margin:20px 10px;
+	font-size:22px;
+}
+#orderDetail .od_detail .time{
+	line-height: 38px;
+	font-size: 16px;
+	color: #666666;
+	background: #f2f2f2;
+	padding:0 20px;
+}
+#orderDetail .orderMsg>div{
+	padding:0 24px 20px;
+	border-bottom:1px solid #d2d2d2;
+}
+#orderDetail .orderMsg>div h3{
+	font-size: 20px;
+	color: #ff5000;
+	margin:30px 0;
+}
+#orderDetail .orderMsg>div p{
+	font-size: 18px;
+	color:#666666;
+	margin-top: 20px;
+}
+#orderDetail .orderMsg p a{
+	color: #208df0;
+}
+#orderDetail .orderMsg .kp,#orderDetail .orderMsg .wl{
+	border:none;
+}
+#orderDetail .orderMsg .kp p img{
+	width: 150px;
+	height: 110px;
+	margin: 40px 20px;
+}
+#orderDetail .orderMsg .js p img{
+	width:320px;
+	height:150px;
+	margin-top: 20px;
+}
+#orderDetail .orderMsg .msg .lf{
+	display: inline-block;
+}
+#orderDetail .orderMsg .msg .more{
+	float:right;
+	margin-top: 20px;
+	margin-right: 70px;
+}
+#orderDetail .orderMsg .msg .more a{
+	font-size: 16px;
+	color: #ffffff;
+	background: #ff5000;
+	width: 150px;
+	line-height: 44px;
+	display:inline-block;
+	text-align:center;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+#orderDetail .orderMsg .more .mo{
+	font-size: 16px;
+	color: #333333;
+	text-align:center;
+	margin:20px 0 0;
+	position:relative;
+}
+#orderDetail .orderMsg .more .cf{
+	cursor:pointer;
+}
+#orderDetail .orderMsg .more .mo .cf img{
+	width: 16px;
+	display:none;
+}
+#orderDetail .orderMsg .more .mo .cf img.on{
+	display:inline-block;
+}
+#orderDetail .orderMsg .more .xs{
+	padding:20px 30px 10px;
+	background: #f2f2f2;
+	-webkit-border-radius: 20px;
+	-moz-border-radius: 20px;
+	border-radius: 20px;
+	text-align:left;
+	position:absolute;
+	top: 30px;
+	right:0;
+	z-index:100;
+	width: 280px;
+	display:none;
+}
+#orderDetail .orderMsg .more .xs p{
+	margin:0 0 10px;
+	font-size: 16px;
+	color:#666666;
+}
+.applytk{
+	width: 150px;
+	height: 44px;
+	margin: 30px 0 40px 50px;
+	background: #ff5000;
+	text-align: center;
+	line-height: 44px;
+	display: inline-block;
+	color: #fff;
+	font-size: 16px;
+	border-radius: 3px;
+}
+/*分页*/
+.pages{
+	list-style: none;
+	overflow: hidden;
+	text-align: center;
+	margin-top: 25px;
+}
+.pages .link-wrapper{
+	display: inline-block;
+}
+.pages .link-wrapper a,.pages .link-wrapper span{
+	display: inline-block;
+	float: left;
+	width: 30px;
+	height: 30px;
+	background: #fff;
+	border: 1px solid #ddd;
+	text-align: center;
+	line-height: 30px;
+	border-radius: 3px;
+	margin-right: 10px;
+	cursor: pointer;
+	text-decoration: none;
+	color: #333;
+}
+.pages .link-wrapper a.active{
+	color: #FF5000;
+}
+.pages .link-wrapper span{
+	width: 66px;
+	display: inline-block;
+}
+/*----------申请退款------------*/
+#bg_line{
+	height: 38px;
+}
+div#refound_msg{
+	border-bottom: 0px;
+	height: auto;
+}
+span.refound_tips{
+	font-size: 14px;
+	color: #208df0;
+}
+div.refund_reason{
+	clear: both;
+	margin-top: 35px;
+	font-size: 18px;
+	color: #666;
+}
+div.refund_reason input[type='radio']{
+	display: none;
+}
+div.refund_reason>label{
+	display: block;
+	width: 200px;
+	margin-top:20px ;
+	vertical-align: top;
+}
+div.refund_reason img{
+	margin-right: 15px;
+
+	vertical-align: -1px;
+}
+div.more_reason{
+	margin-top: 35px;
+}
+div.more_reason>textarea{
+	border: 1px solid #d2d2d2;
+	border-radius: 3px;
+	height: 180px;
+	width: 630px;
+	margin-top: 15px;
+	padding-top: 13px ;
+	padding-left: 15px;
+	font-size: 18px;
+	outline: none;
+}
+div.more_reason>textarea::-webkit-input-placeholder { /* WebKit browsers */
+	color:#999;
+	font-size: 18px;
+}
+div.more_reason>textarea:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+	color:#999;
+	font-size: 18px;
+}
+div.more_reason>textarea::-moz-placeholder { /* Mozilla Firefox 19+ */
+	color:#999;
+	font-size: 18px;
+}
+div.more_reason>textarea:-ms-input-placeholder { /* Internet Explorer 10+ */
+	color:#999;
+	font-size: 18px;
+}
+div.pay_pwd{
+	font-size: 18px;
+	color: #666;
+	margin-top: 25px;
+}
+div.pay_pwd input{
+	width: 264px;
+	height: 46px;
+	border: 1px solid #d2d2d2;
+	padding-left:10px ;
+	border-radius: 3px;
+	font-size: 18px;
+	outline: none;
+}
+div.pay_pwd input::-webkit-input-placeholder { /* WebKit browsers */
+	color:#999;
+	font-size: 18px;
+}
+div.pay_pwd input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+	color:#999;
+	font-size: 18px;
+}
+div.pay_pwd input::-moz-placeholder { /* Mozilla Firefox 19+ */
+	color:#999;
+	font-size: 18px;
+}
+div.pay_pwd input:-ms-input-placeholder { /* Internet Explorer 10+ */
+	color:#999;
+	font-size: 18px;
+}
+div.sure_refund>a{
+	width: 280px;
+	height: 44px;
+	color: #fff;
+	background-color:#FF5000;
+	display: inline-block;
+	margin-top: 80px;
+	border-radius: 5px;
+	font-size:18px;
+	text-align: center;
+	line-height: 44px;
+}
+/*------------退款详情-------------*/
+#orderDetail div#refund_pro{
+	margin: 40px 0px 0px 56px;
+	padding: 0px;
+	border: 0px;
+}
+h2#first_step,
+h2#secnod_step{
+	margin: 0px !important;
+	color: #666;
+
+}
+h2#first_step>img,
+h2#secnod_step>img{
+	margin-right: 10px;
+}
+img#process_line{
+	float: left;
+	margin:0px 22px 0px 4px;
+}
+#pro_right,
+#pro_right1{
+	overflow: hidden;
+	/*margin: 12px 0px;*/
+}
+#orderDetail #pro_right p,
+#orderDetail #pro_right1 p{
+	margin-top: 8px ;
+	font-size: 14px;
+}
+#orderDetail #pro_right1{
+	margin-left: 32px;
+}
+#orderDetail h2.re_status.title{
+	color: #FF5000;
+}
+/*-------申请退款按钮---------*/
+div#refund_btn>a{
+	margin: 40px 0px 20px;
+	width: 150px;
+	height: 44px;
+	line-height: 44px;
+	color: #fff;
+	border-radius: 5px;
+	background-color: #FF5000;
+	text-align: center;
+	display: inline-block;
+	font-size: 18px;
+}
+/*支付密码提示em*/
+div.pay_pwd em{
+	font-size: 12px;
+	color: #f10505;
+	font-style: normal;
+	background: url('../../img/prompt.png') no-repeat left center;
+	padding-left: 16px;
+	margin-left: 10px;
+	display: none;
+}

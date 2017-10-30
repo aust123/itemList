@@ -1,0 +1,399 @@
+
+/*banner轮播图*/
+.banner{
+    width: 100%;
+    height:646px;
+    position: relative;
+}
+.banner .carList ul{
+    width:100%;
+    height:646px;
+}
+.banner .carList li{
+    width:100%;
+    position: absolute;
+    top:0;
+    left: 0;
+    opacity: 0;
+    transition:opacity 0.3s linear;
+    -webkit-transition:opacity 0.3s linear;
+    -moz-transition:opacity 0.3s linear;
+    -ms-transition:opacity 0.3s linear;
+    -o-transition:opacity 0.3s linear;
+}
+.banner .carList li.on{
+    opacity: 1;
+}
+.banner .carList li img{
+    width:100%;
+    height:646px;
+}
+.banner .carCtrl{
+    position:absolute;
+    top: 299px;
+    left:0;
+    width:100%;
+}
+.banner .carCtrl>div{
+    width:1342px;
+    margin:0 auto;
+    overflow:hidden;
+}
+.banner .carCtrl .prevBan{
+    float:left;
+    cursor:pointer;
+}
+.banner .carCtrl .nextBan{
+    float:right;
+    cursor:pointer;
+}
+/*这是内容content区域*/
+.content{
+    width: 100%;
+    margin: 50px 0 80px;
+}
+/*废纸指数内容*/
+.wstpa_ndex,.cpt_factory,.shop_city,.cpt_trading{
+    width: 1342px;
+    margin: 0px auto;
+    overflow: hidden;
+}/*各个内容标题，为公用部分*/
+.content_title{
+    border-bottom: 2px solid #999;
+    padding-bottom: 20px;
+    position: relative;
+}
+.content_title .ch_text{
+    font-size: 30px;
+    color: #666;
+}
+.content_title .en_text{
+    font-size: 15px;
+    color: #b2b2b2;
+    margin: 5px 0px 0px;
+}
+.wstpa_ndex_msg{
+    margin-top: 36px;
+}
+/*废纸指数————纸厂信息*/
+.city_price{
+    float: left;
+    border: 1px solid #e5e5e5;
+    width: 741px;
+}
+
+.city_price .city {
+    border-bottom: 1px solid #e5e5e5;
+    padding: 0px 10px;
+    overflow:visible;
+    height: 55px;
+}
+.city>li{
+    height: 52px;
+    line-height: 52px;
+    display: inline-block;
+    font-size: 20px;
+    color: #666;
+    position: relative;
+    cursor:pointer;
+    width: 20%;
+    overflow: hidden;
+    text-align: center;
+}
+.city>li span{
+    height: 52px;
+    overflow: hidden;
+    width: 88%;
+    display: inline-block;
+    text-overflow: ellipsis;
+    padding-left: 12%;
+}
+.city>li.current_city{
+    background: url('../img/address.png') no-repeat left center;
+    background-size: 15px;
+}
+/*更多箭头*/
+.up_arrow{
+    position: absolute;
+    left: 6px;
+    bottom:0px ;
+    display: none;
+}
+.arrow_show{
+    display: block;
+}
+.city_more{
+    position: relative;
+    margin-left:65px;
+}
+.city_more>img{
+    width: 14px;
+    margin-left: 10px;
+    margin-bottom: 3px;
+}
+#city_more_list{
+    position: absolute;
+    top: 50px;
+    right: -23px;
+    width: 294px;
+    height: 132px;
+    border: 1px solid #999;
+    background: #fff;
+    z-index: 22;
+    display: none;
+}
+#city_more_list ul{
+    overflow: hidden;
+    padding: 12px 0 0 15px;
+}
+#city_more_list li{
+    margin: 0 18px 20px 0;
+    float: left;
+    font-size: 18px;
+    color: #666;
+    line-height: 20px;
+}
+.city_more:hover #city_more_list{
+    display: block;
+}
+.city_price li.current_city{
+    font-size: 22px;
+    color: #333;
+    /*margin-left: 12px;*/
+}
+.marg_li{
+    /*margin-left: 70px;*/
+}
+.standList{
+    height: 272px;
+    width: 741px;
+    overflow: hidden;
+    position: relative;
+}
+.standList .carList{
+    width: 3000%;
+    height: 272px;
+    position: relative;
+    left: 0;
+}
+.standList ul{
+    width: 741px;
+    float: left;
+}
+.standList .carCtrl{
+    position: absolute;
+    top: 108px;
+    left: 0;
+    width: 100%;
+    display: none;
+}
+.standList:hover .carCtrl{
+    display: inline-block;
+}
+.standList .carCtrl .prevBan,.standList .carCtrl .nextBan{
+    width: 7px;
+    /*height: 48px;*/
+    text-align:center;
+    line-height: 54px;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.5);
+    _background: #000;
+    filter: alpha(opacity=50);
+}
+.standList .carCtrl .prevBan{
+    float: left;
+    position: relative;
+    left: -25px;
+    padding: 0 18px 0 30px;
+}
+.standList .carCtrl .nextBan{
+    float: right;
+    position: relative;
+    right: -22px;
+    padding: 0 30px 0 18px;
+}
+.standList .carCtrl img{
+    width: 13px;
+}
+.pg_factory{
+    height: 136px;
+    border-bottom: 1px solid #e5e5e5;
+    padding: 0px 3%;
+    float: left;
+    width: 94%;
+}
+.pg_factory>p{
+    font-size: 18px;
+    color: #999;
+    margin-bottom: 13px;
+}
+.pg_factory .factory_li0,#factory_li1,#factory_li2{
+    font-size: 20px;
+    color: #666;
+    margin-top: 18px;
+}
+/*#none_line{*/
+    /*border-bottom: none;*/
+/*}*/
+.pg_factory>p>span{
+    float: right;
+}
+/*废纸指数————成交信息*/
+.trade_show{
+    float: left;
+    border: 1px solid #e5e5e5;
+    border-left:0px ;
+    width: 598px;
+}
+.trade_show .trade_msg{
+    height: 272px;
+}
+.trade_show>p{
+    font-size: 22px;
+    color: #333;
+    height: 55px;
+    line-height: 55px;
+    border-bottom: 1px solid #e5e5e5;
+    padding:0px 50px 0px 30px;
+    position: relative;
+}
+.trade_show>p img{
+    position: absolute;
+    left: 40px;
+    bottom:0px ;
+}
+.trade_show li{
+    font-size: 18px;
+    color: #999;
+    margin-bottom: 18px;
+    padding:0px 50px 0px 30px;
+}
+.trade_msg>li>span{
+    float: right;
+}
+.trade_msg i{
+    color: #ff5a00;
+    font-style:normal ;
+}
+/*采购城内容*/
+.shop_city{
+    margin-top: 65px;
+}
+
+.shop_more{
+    position: absolute;
+    right: 0px;
+    bottom: 20px;
+}
+.shop_more>a{
+    font-size: 22px;
+    color: #666;
+}
+.shop_list{
+    overflow: hidden;
+    margin-top: 40px;
+    padding: 0px;
+}
+.shop_list>li{
+    float: left;
+    margin-right: 52px;
+    font-size: 17px;
+}
+#shop_last_li{
+    margin-right: 0px;
+}
+.shop_list>li img{
+    width: 292px;
+    height: 296px;
+}
+.shop_detail{
+    margin-top: 20px;
+    
+}
+.shop_adress>b{
+    float:right;
+    font-weight: normal;
+}
+.shop_price{
+    margin: 10px 0px ;
+}
+.shop_msg>a{
+    float: right;
+    display: inline-block;
+    width: 60px;
+    height: 24px;
+    background-color: #ff5a00;
+    font-size: 16px;
+    line-height: 24px;
+    color: #fff;
+    text-align: center;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+.shop_buy{
+    margin-left:25px ;
+}
+/*合作纸厂*/
+.cpt_factory{
+    margin-top: 90px;
+}
+.cpt_compnany{
+    position: relative;
+    width: 1296px;
+    margin: 50px auto 0;
+    padding: 0 23px;
+    overflow: hidden;
+}
+.cpt_compnany .carList{
+    width:100%;
+    overflow: hidden;
+}
+.cpt_compnany .carList ul{
+    width: 1000%;
+    overflow: hidden;
+}
+.cpt_compnany .carList li{
+    float: left;
+    width: 324px;
+    text-align: center;
+}
+.cpt_compnany .carList img{
+    width: 277px;
+    height: 242px;
+}
+.cpt_compnany .carList li a{
+    color: #333;
+    display: block;
+}
+.cpt_compnany .carList li p{
+    text-align: center;
+    font-size: 22px;
+    margin-top: 22px;
+}
+.cpt_compnany .carCtrl{
+    width: 100%;
+    position: absolute;
+    top: 103px;
+    left: 0;
+    overflow: hidden;
+}
+.cpt_compnany .prevCtrl{
+    float: left;
+    display:inline;
+}
+.cpt_compnany .nextCtrl{
+    float: right;
+}
+
+/*合作贸易公司*/
+.cpt_trading{
+    margin-top: 90px;
+}
+
+
+@media screen and (max-width:1342px){
+    .banner{
+        width: 1342px;
+    }
+}

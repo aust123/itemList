@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+
+	<head lang="en">
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<title>纸去哪了-废纸交易平台</title>
+		<link rel="stylesheet" href="../../css/account/certificate.css" />
+	</head>
+
+	<body>
+		<div class="container">
+			<div class="header">
+				<div id="top_bar"></div>
+				<div id="nav_bar"></div>
+				<div id="search"></div>
+			</div>
+			<div class="main_box">
+				<div id="certificate">
+					<div class="myLeft"></div>
+					<div class="myRight">
+						<div id="certiFirm">
+							<h2 class="til">企业认证</h2>
+							<form method="post" enctype="multipart/form-data" action="">
+								<div class="block" id="co_msg">
+									<div class="msg">
+										<span>企业名称：</span>
+										<input type="text" name="co_name" />
+										<em>请输入企业名称</em>
+									</div>
+									<div class="msg">
+										<span>法人姓名：</span>
+										<input name="faname" type="text" />
+										<em>请输入法人姓名</em>
+									</div>
+									<div class="msg">
+										<span>营业执照编码：</span>
+										<input name="bianma" type="text" />
+										<em>请输入营业执照编码</em>
+									</div>
+									<div class="msg">
+										<span>营业执照有效期：</span>
+										<input name="youxiaoqi" type="text" />
+										<em>请输入营业执照有效期</em>
+									</div>
+								</div>
+								<div class="block" id="pe_msg">
+									<div class="msg">
+										<span>业务联系人：</span>
+										<input type="text" name="busines_contact" />
+										<em>请输入业务联系人</em>
+									</div>
+									<div class="msg">
+										<span>联系方式：</span>
+										<input type="text" name="busines_contact_tel" />
+										<em>请输入联系方式</em>
+									</div>
+								</div>
+								<div class="block" style="border:0;">
+									<h3>上传营业执照</h3>
+									<div class="msg">
+										<em class="selImg">
+                                    <input type="file" class="yyImg" onchange="uploadImg(this)" />
+                                    <img id="yyImg" src='../../img/qiyexinxi_shangchuang.png' alt="企业信息图片">
+                                </em>
+									</div><br/>
+									<h3>上传企业LOGO</h3>
+									<div class="msg">
+										<em class="selImg">
+                                    <input type="file" class="logoImg" onchange="uploadImg1(this)" />
+                                    <img id="lgImg" src='../../img/qiyexinxi_shangchuang.png' alt="企业lpgp">
+                                </em>
+									</div>
+								</div>
+								<div class="submit">
+									<input type="button" value="确 定" />
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="footer"></div>
+		</div>
+		<input class="hidden" data-id="firm" type="hidden" />
+		<script src="../../lib/jquery-1.8.3.min.js"></script>
+		<script src="../../js/certificate.js"></script>
+		<script type="text/javascript" src="../../lib/md5.js"></script>
+		<script type="text/javascript" src="../../js/secret.js"></script>
+		<script type="text/javascript">
+			/*------提交信息---------*/
+			
+			$('input[type="button"]').click(function() {
+					if($('input[name="co_name"]').val() != '' && $('input[name="name"]').val() != '' && $('input[name="bianma"]').val() != '' && $('input[name="youxiaoqi"]').val() != '' && $('input[name="busines_contact"]').val() != '' && $('input[name="busines_contact_tel"]').val() != '') {
+						if(localStorage.certicate_Msg){
+							var pathname = '/api/paper/edit/company/auth/data';
+						}else{
+							var pathname = '/api/paper/company/auth';
+						}
+						
+						if(localStorage.photof&&localStorage.photob){
+							 localStorage.photof = localStorage.photof;
+							 localStorage.photob = localStorage.photob;
+						}else if(localStorage.certicate_Msg){
+							localStorage.photof = $('#yyImg').attr('src').replace('https://admin.zhiqunale.cn/','');//域名
+							localStorage.photob = $('#lgImg').attr('src').replace('https://admin.zhiqunale.cn/','');//域名
+						}						
+						var obj = {
+							pe_id: localStorage.userId, //用户id值，本地缓存读取
+							pe_phone:localStorage.userPhone,
+							co_name: escape($('input[name="co_name"]').val()),
+							co_legal_person_name: escape($('input[name="faname"]').val()),
+							co_licence_code: escape($('input[name="bianma"]').val()),
+							co_licence_expiry_date: escape($('input[name="youxiaoqi"]').val()),
+							co_business_contacts_name: escape($('input[name="busines_contact"]').val()),
+							co_business_contacts_phone: escape($('input[name="busines_contact_tel"]').val()),
+							co_licence_photo: localStorage.photof, //后台返回
+							co_logo: localStorage.photob //后台返回
+						}
+						GetList(obj, pathname, DealData);
+					} else {
+						//输入框值为空的显示提示信息
+						$('input[type="text"]').each(function(){
+							if(typeof($(this).siblings('em').attr("fill"))=="undefined"){
+								$(this).siblings('em').show();
+							}
+						})
+					}
+				})
+
+				//认证未成功，编辑时页面信息渲染（从本地缓存获取），待完善
+				! function() {
+					if(localStorage.certicate_Msg) {
+						var edit_certicateMsg = JSON.parse(localStorage.certicate_Msg);
+						console.log(edit_certicateMsg);
+						$('input[name="co_name"]').val(edit_certicateMsg['co_name']);
+						$('input[name="faname"]').val(edit_certicateMsg['co_legal_person_name']);
+						$('input[name="bianma"]').val(edit_certicateMsg['co_licence_code']);
+						$('input[name="youxiaoqi"]').val(edit_certicateMsg['co_licence_expiry_date']);
+						$('input[name="busines_contact"]').val(edit_certicateMsg['co_business_contacts_name']);
+						$('input[name="busines_contact_tel"]').val(edit_certicateMsg['co_business_contacts_phone']);
+						$('#yyImg').attr('src',edit_certicateMsg['co_licence_photo']); //图片待处理
+						$('#lgImg').attr('src',edit_certicateMsg['co_logo']); //图片待处理
+					}
+				}()
+			function DealData(_data) {
+				console.log(_data)
+				//注册状态判断
+				if(_data.status_code == '10000') {
+					window.confirm("恭喜您信息提交成功！");
+					window.location.href = 'certificate_firm_check.html';
+				} else if(_data.status_code == '10003' || _data.status_code == '10005') {
+					window.confirm("用户不存在");
+				} else if(_data.status_code == '10002' || _data.status_code == '10001' || _data.status_code == '10004') {
+					window.confirm("信息提交失败，请重新提交?");
+				}
+			}
+		</script>
+	</body>
+
+</html>

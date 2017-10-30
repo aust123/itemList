@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../../css/account/accountSet_pwd.css" />
+	</head>
+
+	<body>
+		<div class="container">
+			<div class="header">
+				<div id="top_bar"></div>
+				<div id="nav_bar"></div>
+				<div id="search"></div>
+			</div>
+			<div class="main_box">
+				<div id="accountFind">
+					<div class="myLeft"></div>
+					<div class="content">
+						<div id="set_password" class="setting_box">
+							<h2>设置支付密码</h2>
+							<div class="set_steps"><span>1、启用支付密码</span><span class="current_steps">2、验证身份</span><span>3、完成</span></div>
+
+							<div id="set_verified_tel">已验证手机&nbsp;: <span id="user_phone"></span>
+								<a class="gain_identifyCode" id="hqyzm" href="###">获取短信验证码</a>
+							</div>
+							<div class="set_content" style="margin-top: 40px;">
+								<!------------表单提交内容-------------------->
+								<form action="">
+									<!----获取验证码----->
+									<div id="set_mag_yzm">短信验证码&nbsp;:
+										<input type="text" name="yzm" />
+										<a class="cannot_recive" href="accountSet_setPaypwd-noCode.html">收不到短信验证码</a>
+										<em>请输入短信验证码</em>
+									</div>
+									<div id="set_ID_number">证件号码&nbsp;:<input type="text" name="zjh" /><em>请输入证件号码</em></div>
+								</form>
+								<div id="set_submit" class="setting_sure">
+									<a href="###">提&nbsp;&nbsp;交</a>
+								</div>
+							</div>
+							<div id="securityTips">
+								<h3>为什么要进行身份验证？</h3>
+								<p>1、为保障您的账户信息安全，在变更账户中的重要信息时需要进行身份验证，感谢您的理解和支持。</p>
+								<p>2、验证身份遇到问题？请拨打客服电话，客服将尽快联系您。</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="footer"></div>
+		</div>
+		<input class="hidden" data-id="paypwd" type="hidden" />
+		<script src="../../lib/jquery-1.8.3.min.js"></script>
+		<script type="text/javascript" src="../../js/setPayPwd.js"></script>
+		<script type="text/javascript" src="../../js/secret.js"></script>
+		<script type="text/javascript" src="../../lib/md5.js"></script>
+		<script>
+			$(function() {
+				$('#top_bar').load('../public/topBar.html');
+				$('#nav_bar').load('../public/navBar.html');
+				$('#search').load('../public/search.html');
+				$('#footer').load('../public/footer.html');
+				$('.myLeft').load('../public/accLeft.html');
+				
+				//将缓存的用户手机号渲染至页面上
+				if(localStorage.userPhone){
+					$('#user_phone').html('*******'+localStorage.userPhone.substr(-4));
+				}
+
+				//获取短息验证码
+				$('#hqyzm').click(function() {
+					//限定30秒后才能重新发送
+					if($(this).html().indexOf('秒') >= 0) {
+						return false;
+					} else {
+						var pathname = '/api/common/getcode';
+						var obj = {
+							nc_phone: localStorage.userPhone//用户电话号码
+						}
+						GetList(obj, pathname, BackCode);
+					}
+				})
+
+				function BackCode(_data) {
+					console.log(_data);
+					if(_data.status_code == 10000) {
+						//返回验证码nc_id值
+						localStorage.snc_id = _data.data.code_id;
+					}
+				}
+				console.log(localStorage.IsSet)
+				//短信验证码和身份证号码填写合格后跳转页面
+				var Tag = '?' + encodeURIComponent('tag=1'); //短信验证码验证信息标记tag=1
+				var href_first = 'accountSet_setPaypwd-complete_First.html' + Tag;
+				var href = 'accountSet_setPaypwd-complete.html' + Tag;
+				$('.setting_sure>a').click(function() {
+					if($('input[name="yzm"]').val() != '' && $('input[name="zjh"]').val() != '') {
+						if($('input[name="yzm"]').siblings('em').attr('fill') && $('input[name="zjh"]').siblings('em').attr('fill')) {
+							//根据用户是否已设置支付密码选择进入的页面
+							var IsSet = parseInt(localStorage.IsSet);							  
+							IsSet ? $(this).attr('href',href) : $(this).attr('href', href_first);
+							localStorage.nc_code = $('input[name="yzm"]').val(); //短信验证码
+							localStorage.idcard_code = $('input[name="zjh"]').val(); //证件号
+						}
+					} else {
+						//输入框值为空的显示提示信息
+						$('input[type="text"]').each(function(){
+							if(typeof($(this).siblings('em').attr("fill"))=="undefined"){
+								$(this).siblings('em').show();
+							}
+						})
+					}
+				})
+
+			})
+		</script>
+	</body>
+
+</html>

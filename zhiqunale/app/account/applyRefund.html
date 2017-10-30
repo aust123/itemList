@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+	<head lang="en">
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<title>纸去哪了-废纸交易平台</title>
+		<link rel="stylesheet" href="../../css/account/myOrder.css" />
+	</head>
+	<body>
+		<div class="container">
+			<div class="header">
+				<div id="top_bar"></div>
+				<div id="nav_bar"></div>
+				<div id="search"></div>
+			</div>
+			<div class="main_box">
+				<div id="orderDetail">
+					<div class="myLeft"></div>
+					<div class="od_detail">
+						<div class="bread">
+							您的位置：
+							<a href="../index.html">首页</a> ＞
+							<a href="myOrder.html">我的订单</a> ＞
+							<a href="orderDetail.html">订单详情</a>＞
+							<a class="cur">申请退款</a>
+						</div>
+						<h2 class="title">申请退款</h2>
+						<h2 class="time" id="bg_line"></h2>
+						<div class="orderMsg">
+							<div id="refound_msg" style="border: 0px; padding-bottom: 200px;">
+								<div class="lf" style="float: none;margin-top: 25px;">
+									<p>退款金额：4500元</p>
+									<p>退款方式：原路退回&nbsp;(&nbsp;<span class="refound_tips">退款申请审核通过以后，会在1-7个工作日内退款到您的账户</span>&nbsp;)</p>
+								</div>
+								<div class="refund_reason">
+									<p>退款原因</p>
+									<label for="re_reason_f"><input type="radio" name="re_reason" id="re_reason_f" value=""/><img src="../../img/tuikuan_choose_n.png"/>联系不上打包站</label>
+									<label for="re_reason_s"><input type="radio" name="re_reason" id="re_reason_s" value=""/><img src="../../img/tuikuan_choose_n.png"/>打包站一直不发货</label>
+									<label for="re_reason_t"><input type="radio" name="re_reason" id="re_reason_t" value=""/><img src="../../img/tuikuan_choose_n.png"/>后悔了，不想要了</label>
+								</div>
+								<div class="more_reason">
+									<p>更多不爽，必须吐糟&nbsp;！</p>
+									<textarea placeholder='"纸去哪儿了"会用心听取您的任何不满！' name="reasons" rows="10" cols="30"></textarea>
+								</div>
+								<div class="pay_pwd">
+									<label for="payPwd">支付密码：<input placeholder="请输入支付密码" type="password" name="payPwd" id="payPwd" value="" /><em>请输入支付密码</em></label>
+								</div>
+								<div class="sure_refund">
+									<a class="applytk">申请退款</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="footer"></div>
+		</div>
+		<input class="hidden" data-id="myOrder" type="hidden"/>
+		<script src="../../lib/jquery-1.8.3.min.js"></script>
+		<script type="text/javascript" src="../../lib/md5.js"></script>
+		<script type="text/javascript" src="../../js/secret.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				$('#top_bar').load('../public/topBar.html');
+				$('#nav_bar').load('../public/navBar.html');
+				$('#search').load('../public/search.html');
+				$('#footer').load('../public/footer.html');
+				$('.myLeft').load('../public/accLeft.html');
+
+				$('input[name="re_reason"]').change(function() {
+					if($(this).attr('checked')) {
+						$(this).parent('label').siblings().children('img').attr('src', '../../img/tuikuan_choose_n.png');
+						$(this).siblings('img').attr('src', '../../img/tuikuan_choose_p.png');
+					}
+
+				})
+				//	支付密码后提示信息，获取焦点时消失
+				$('#payPwd').focus(function(){
+					$(this).siblings('em').hide();
+				})
+
+				$('.applytk').click(function() {
+					//页面跳转带过来订单id
+					var oid=(location.search.split('?')[1]);
+					if($('#payPwd').val() != '') {
+						var pathname = "/api/paper/apply/refund";
+						var obj = {
+							pe_id:localStorage.getItem("userId"),
+							pe_phone:localStorage.getItem("userPhone"),
+							order_id:oid,
+							pay_password:$('#payPwd').val(),
+							reason:escape($('input[name="re_reason"]:checked').parent('label').text())
+						}
+						GetList(obj,pathname,DealData);
+					}else{
+						$('#payPwd').siblings('em').show()
+					}
+				})
+			})
+			
+			function DealData(_data){
+				if(_data.status_code==10000){
+					alert("退款成功");
+					window.location.href='myOrder.html';
+				}else if(_data.status_code==10007){
+					window.confirm('支付密码不正确')
+				}else if(_data.status_code==10012){
+					window.confirm('该笔订单已提交退款申请，请勿重复提交');
+				}
+			}
+		</script>
+
+	</body>
+
+</html>

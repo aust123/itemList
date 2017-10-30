@@ -1,0 +1,30 @@
+<link rel="stylesheet" href="../../css/public.css"/>
+<!--页面导航! -->
+<div class="nav_bar">
+        <ul class="nav_list">
+            <li class="index">
+                <a href="../index.html">首 页</a>
+            </li>
+            <li class="shopCity">
+                <a href="http://192.168.1.132:8020/zhiqunale/myReposities/app/shop/shoppingCity-all.html">采购城</a>
+            </li>
+            <li class="mall">
+                <a href="http://192.168.1.132:8020/zhiqunale/myReposities/app/mall.html">成品纸商城</a>
+            </li>
+            <li class="news" style="margin-right:0;">
+                <a href="http://192.168.1.107:8020/zhiqunale/myReposities/app/news/information.html">资 讯</a>
+            </li>
+        </ul>
+    </div>
+<script type="text/javascript">
+    $(function(){
+        var dataId=$('.hidden').attr('data-id');
+        $('.nav_list li.'+dataId).addClass('on').siblings().removeClass('on');
+    })
+</script>
+
+
+
+
+
+

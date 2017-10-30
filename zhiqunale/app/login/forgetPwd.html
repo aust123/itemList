@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+
+	<head lang="en">
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<title>纸去哪了-废纸交易平台</title>
+		<link rel="stylesheet" href="../../css/login/login.css" />
+	</head>
+
+	<body>
+
+		<div class="container">
+			<div class="header">
+				<div id="top_bar"></div>
+				<div class="welLogin">
+					<img src="../../img/logo.png" alt="欢迎来到纸去哪了" title="纸去哪了注册" /> 忘记密码
+					<span class="dl">已有账号？<a href="login.html">请登录</a></span>
+				</div>
+			</div>
+			<div class="main_box" style="background:#f2f2f2; padding-top: 20px;">
+				<div id="forget">
+					<form class="forForm">
+						<p>
+							<span></span>
+							<em class="tishi"></em>
+						</p>
+						<p>
+							<span>注册手机号：</span>
+							<input class="phone" name="tel" id="tel" type="tel" autocomplete="off"/>
+							<em class="tishi"></em>
+						</p>
+						<p>
+							<span>输入验证码：</span>
+							<input id="dxyzm" class="dxyzm" type="text" />
+							<span id="hqyzm">获取验证码</span>
+							<em></em>
+						</p>
+						<p>
+							<span>新密码：</span>
+							<input name="pwd" id="pwd" type="password" />
+							<i>可由6-20位英文字母和数字组成</i>
+							<em></em>
+						</p>
+						<p>
+							<span>确认新密码：</span>
+							<input id="pwd2" type="password" />
+							<em></em>
+						</p>
+						<p>
+							<a class="submit"/>确认</a>
+						</p>
+					</form>
+				</div>
+			</div>
+			<div id="footer"></div>
+		</div>
+
+		<script src="../../lib/jquery-1.8.3.min.js"></script>
+		<script type="text/javascript" src="../../js/validate.js"></script>
+		<script type="text/javascript" src="../../lib/md5.js"></script>
+		<script type="text/javascript" src="../../js/secret.js"></script>
+		<script>
+			$(function() {
+				$('#top_bar').load('../public/topBar.html');
+				$('#footer').load('../public/footer.html');
+
+				$('.forForm input').focus(function(){
+					$('.forForm .tishi').hide();
+				});
+				//后台获取短信验证码id
+				$('#hqyzm').click(function() {
+					if($('#tel').val()!=''){
+						//限定300秒后才能重新发送请求
+						if($(this).html().indexOf('秒') >= 0) {
+							return false;
+						} else {
+							var obj = {
+								nc_phone: $('#tel').val()//手机号
+							}
+							var signs=getUrl(obj);
+							obj.sign=signs;
+							$.ajax({
+								url:'https://api.zhiqunale.cn/api/common/getcode',
+								type:'post',
+								dataType:'json',
+								data:obj,
+								success:function(data){
+									console.log(data);
+									if(data.status_code == 10000) {
+										sessionStorage.rnc_id = data.data.code_id;//将返回的验证码Id缓存
+									}
+								},error:function(){
+									console.log("服务器请求错误");
+								}
+							});
+						}
+					}
+				})
+				validate(false, true, false, false, false, true, true);
+				$('.submit').click(function() {
+					if($(this).hasClass('active')){
+						var fot={
+							pe_phone:$('#tel').val(),
+							nc_code:$('#dxyzm').val(),
+							nc_id:sessionStorage.rnc_id,
+							new_password:$('#pwd').val(),
+							re_password:$('#pwd2').val()
+						}
+						var pathname='/api/paper/forget/password';
+						GetList(fot,pathname);
+					}
+				});
+			})
+			function CallBack(_data){
+				if(_data.status_code=='10000'){
+					alert('密码修改成功');
+					window.location.href='login.html';
+				}else if(_data.status_code=='10002'||_data.status_code=='10007'){
+					$('#pwd2').next().show().html(_data.msg);
+				}else if(_data.status_code=='10003'){
+					$('#tel').next().show().html(_data.msg);
+				}else if(_data.status_code=='10021'||_data.status_code=='10022'||_data.status_code=='10023'){
+					$('#hqyzm').next().show().html(_data.msg);
+				}
+			}
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv = "X-UA-Compatible" content = "IE=edge,chrome=1" />
+    <title>纸去哪了-废纸交易平台</title>
+    <link rel="stylesheet" href="../../css/account/accountMsg.css"/>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <div id="top_bar"></div>
+            <div id="nav_bar"></div>
+            <div id="search"></div>
+        </div>
+        <div class="main_box">
+            <div id="account_paper">
+                <div class="myLeft"></div>
+                <div class="accCompRight">
+                    <div id="cooperEdit">
+                        <h2 class="til">合作纸厂管理</h2>
+                        <div class="cooperEdit">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="footer"></div>
+    </div>
+    <input class="hidden" data-id="papers" type="hidden"/>
+<script type="text/html" id="ppedit">
+    <h3 class="pid" data-id="{{data.company_data.op_id}}">
+        {{data.company_data.op_name}}
+        {{if data.company_data.op_check_state==0}}
+        <span>未认证</span>
+        {{else if data.company_data.op_check_state==1}}
+        <span>已认证</span>
+        {{else}}
+        <span>认证中</span>
+        {{/if}}
+    </h3>
+    <div>
+        <h3>公司地址</h3>
+        <p>{{data.company_data.op_address}}</p>
+    </div>
+    <div>
+        <h3>联系方式</h3>
+        <p>
+            手机号：<span>{{data.company_data.op_phone}}</span>
+            <input id="tel" type="text" value="{{data.company_data.op_phone}}" autocomplete="off"/>
+            <em></em>
+            <a onclick="editTel(this)" href="javascript:;">修改</a>
+            <a class="sub" href="javascript:;">提交</a>
+        </p>
+    </div>
+    <div>
+        <h3>
+            公司简介
+            <a onclick="brief(this)">编辑</a>
+        </h3>
+        <p>{{data.company_data.op_info}}</p>
+    </div>
+    {{each data.paper_standard as value}}
+    <div>
+        <h3>收纸标准</h3>
+        <h4>
+            {{value.ps_paper_stage}}级
+            <span>价格：{{value.ps_price}}</span>
+        </h4>
+        <h5>标准详情</h5>
+        <p>{{value.ps_detail}}</p>
+        <br/>
+        <h5>打包标准</h5>
+        <p>{{value.ps_pack_standard}}</p>
+        <br/>
+        <h5>备注：</h5>
+        <p>{{value.ps_remark}}</p>
+    </div>
+    {{/each}}
+    <div>
+        <h3>
+            公司照片、荣誉证书
+            <a onclick="pics()">编辑</a>
+        </h3>
+        {{if data.company_data.op_photos}}
+        <ul>
+            {{each data.company_data.op_photos as value}}
+            <li>
+                <img src="{{value}}"/>
+            </li>
+            {{/each}}
+        </ul>
+        {{/if}}
+    </div>
+</script>
+    <script src="../../lib/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="../../lib/md5.js"></script>
+    <script type="text/javascript" src="../../js/secret.js"></script>
+    <script type="text/javascript" src="../../lib/template-web.js"></script>
+    <script>
+        $(function(){
+            $('#top_bar').load('../public/topBar.html');
+            $('#search').load('../public/search.html');
+            $('#nav_bar').load('../public/navBar.html');
+            $('#footer').load('../public/footer.html');
+            $('.myLeft').load('../public/accLeft.html');
+            var pid=location.search.substring(1).split('=')[1];
+//          获取线下纸厂详细信息
+            var pathname='/api/paper/get/cooperate/paper/detail';
+            var obj={
+                pe_id:localStorage.getItem("userId"),
+                pe_phone:localStorage.getItem("userPhone"),
+                paper_id:pid,
+                paper_type:2
+            }
+            GetList(obj,pathname,getPaper);
+            function getPaper(_data){
+                if(_data.status_code=='10000'){
+                    console.log(_data.data);
+                    _data.data.company_data.op_info=unescape(_data.data.company_data.op_info);
+                    for(var i=0;i<_data.data.paper_standard.length;i++){
+                        _data.data.paper_standard[i].ps_detail=unescape(_data.data.paper_standard[i].ps_detail);
+                        _data.data.paper_standard[i].ps_pack_standard=unescape(_data.data.paper_standard[i].ps_pack_standard);
+                        _data.data.paper_standard[i].ps_remark=unescape(_data.data.paper_standard[i].ps_remark);
+                    }
+                    var html=template('ppedit',_data);
+                    $('.cooperEdit').html(html);
+                }else{
+                    $('.cooperEdit').html(_data.msg).css('font-size','18px');
+                }
+            }
+        })
+
+//        编辑电话号码
+        function editTel(This){
+            $(This).hide().siblings('span').hide().siblings('input,.sub').show();
+            //验证手机号
+            var ok1=false;
+            $('#tel').focus(function() {
+                $(this).siblings('em').hide();
+            }).keyup(function() {
+                if($(this).val() == '') {
+                    $(this).siblings('em').show().html('手机号码不能为空');
+                    ok1 = false;
+                } else if(!(/^1[34578]\d{9}$/.test($(this).val()))) {
+                    $(this).siblings('em').show().html('请输入正确的手机号码');
+                    ok1 = false;
+                } else {
+                    ok1 = true;
+                    $(this).siblings('em').hide();
+                }
+            });
+            $('.sub').click(function(){
+                if(ok1){
+                    var obj={
+                        pe_id:localStorage.getItem("userId"),
+                        pe_phone:localStorage.getItem("userPhone"),
+                        op_id:$('.pid').attr('data-id'),
+                        op_phone:$('#tel').val()
+                    }
+                    var editname='/api/paper/edit/cooperate/paper/detail';
+                    GetList(obj,editname,getEdit);
+                    function getEdit(data){
+                        window.location.reload();
+                    }
+                }
+            });
+        }
+//        编辑纸厂简介
+        function brief(This){
+            var xxid=$('.pid').attr('data-id');
+            var xxbrief=escape($(This).parent().next().html());
+            window.location.href='cooperPaperBrief_edit.html?'+xxid+'&'+xxbrief;
+        }
+//        编辑纸厂图片
+        function pics(){
+            var xxid=$('.pid').attr('data-id');
+            window.location.href='cooperPaperPic_edit.html?pid='+xxid;
+        }
+    </script>
+</body>
+</html>

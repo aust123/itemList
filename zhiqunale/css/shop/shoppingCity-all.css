@@ -1,0 +1,99 @@
+*{
+	margin: 0px;
+	padding: 0px;
+}
+body{
+	font-family:"Microsoft YaHei","Heiti SC", "WenQuanYi Micro Hei";
+	font-size: 12px;
+	overflow: auto;
+}
+ul,ol{
+	list-style: none;
+}
+a{
+	text-decoration: none;
+}
+.content{
+	width: 1342px;
+	margin: 0px auto;
+}
+.sort{
+	margin-top: 30px;
+	width: 100%;
+	border-top: 1px solid #e0e0e0;
+	height: 72px;
+	line-height: 72px;
+	box-shadow: 0px 2px 5px 0px #e0e0e0;
+}
+.sort_select{
+	width: 1342px;
+	margin: 0px auto;
+}
+.sort_select>a{
+	display: inline-block;
+	font-size: 24px;
+	color: #575656;
+	margin-right:250px;
+}
+a.current{
+	color: #ff5a00;
+}
+#new_list{
+	margin-left: 38px;
+}
+
+.shopcity_all{
+	margin-top: 100px;
+	margin-bottom: 100px;
+}
+.shop_list{
+	overflow: hidden;
+}
+.shop_list>li{
+	float: left;
+	width: 25%;
+	/*margin-right: 55px;*/
+	font-size: 20px;
+}
+li.shop_last_li{
+	margin-right: 0px;
+}
+.shop_list>li img{
+	width: 294px;
+	height: 296px;
+}
+.shop_detail{
+	margin-top: 20px;
+	padding-bottom: 23px;
+	background: #fff;
+	width: 294px;
+}
+.shop_adress>b{
+	float:right;
+	font-weight: normal;
+	
+}
+.shop_price,.dist{
+	margin: 6px 0px ;
+}
+.shop_msg>a{
+	float: right;
+	display: inline-block;
+	width: 55px;
+	height: 24px;
+	background-color: #ff5a00;
+	font-size: 16px;
+	line-height: 24px;
+	color: #fff;
+	text-align: center;
+	border-radius: 3px;
+	margin-left: 10px;
+}
+.count_msg{
+	display: inline-block;
+    margin-top: -3px;
+    margin-left: -3px;
+}
+.purchase{
+	margin-left:26px ;
+}

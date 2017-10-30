@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../../css/account/accountSet_pwd.css"/>
+	</head>
+	<body>
+		<div class="container">
+			<div class="header">
+				<div id="top_bar"></div>
+				<div id="nav_bar"></div>
+				<div id="search"></div>
+			</div>
+			<div class="main_box">
+				<div id="accountFind">
+					<div class="myLeft"></div>
+					<div class="content">
+						<div id="set_password" class="setting_box">
+							<h2>设置支付密码</h2>
+							<div class="set_steps"><span class="current_steps">1、启用支付密码</span><span >2、验证身份</span><span>3、完成</span></div>
+
+							<div id="set_verified_tel" class="selectTips">请选择以下启用支付密码的条件，提交订单时，请根据您的设置启用支付密码，以保障账户资金安全</div>
+							<div class="set_content" style="margin-top: 26px;">
+								<!------------表单提交内容-------------------->
+								<form action="">
+
+									<div id="payPwd_select"><input type="checkbox" checked="checked" id="select_time" name="trade" /><label for="select_time">进行交易时</label></div>
+
+								</form>
+								<div id="set_submit" class="setting_sure" style="margin-top: 50px;"><a href="###">提&nbsp;&nbsp;交</a></div>
+							</div>
+							<div id="securityTips">
+								<h3>为什么需要启用支付密码？</h3>
+								<p>启用支付密码以后，当您再提交订单时，会根据您的设置要求启用支付密码，这样就会为您的账户资产加把锁。</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="footer"></div>
+		</div>
+		<input class="hidden" data-id="paypwd" type="hidden"/>
+		<script src="../../lib/jquery-1.8.3.min.js"></script>
+		<script>
+			$(function(){
+				$('#top_bar').load('../public/topBar.html');
+				$('#nav_bar').load('../public/navBar.html');
+				$('#search').load('../public/search.html');
+				$('#footer').load('../public/footer.html');
+				$('.myLeft').load('../public/accLeft.html');
+				
+				$('.setting_sure>a').click(function(){
+					if($('#select_time').is(':checked')){
+						$(this).attr('href','accountSet_setPaypwd-reciveCode.html')
+					}else {
+						window.confirm('请选择支付密码使用条件！')
+					}
+				})				
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,847 @@
+/*资金管理*/
+
+#search,
+.search,
+.main_box {
+	background: #f2f2f2;
+}
+
+.main_box {
+	padding-bottom: 60px;
+}
+
+#balance {
+	overflow: hidden;
+	width: 1342px;
+	margin: 0 auto;
+}
+
+.myLeft {
+	float: left;
+}
+
+.balBox {
+	float: right;
+	width: 1140px;
+	background: #fff;
+	min-height: 740px;
+}
+
+.balBox>div {
+	margin: 0px 10px 60px 10px;
+}
+
+.balBox>div h3 {
+	font-size: 22px;
+	line-height: 62px;
+	padding: 0 10px;
+}
+
+.balBox .bal>div {
+	padding: 0 40px;
+}
+
+.balBox .bal h4 {
+	margin: 30px 0 35px;
+	font-size: 22px;
+	color: #f10505;
+}
+
+a#cath_btn {
+	font-size: 20px;
+	color: #ffffff;
+	margin-right: 40px;
+	width: 140px;
+	text-align: center;
+	line-height: 44px;
+	background: #208df0;
+	border-radius: 5px;
+	display: inline-block;
+}
+
+.balBox .bal h5 {
+	color: #999999;
+	font-size: 16px;
+	margin-top: 20px;
+}
+
+.balBox .bal h5 img {
+	vertical-align: sub;
+	margin-right: 8px;
+}
+
+.cardList {
+	margin: 30px 70px 0;
+	overflow: hidden;
+	text-align: center;
+	margin-right: -28px;
+}
+
+.cardList li {
+	width: 224px;
+	height: 147px;
+	text-align: center;
+	float: left;
+	margin-bottom: 10px;
+	position: relative;
+	margin-right: 28px;
+	border: 1px solid #d2d2d2;
+}
+
+.cardList li img {
+	position: relative;
+	top: 30px;
+	height: 40px;
+}
+
+.cardList .delete,
+.add span {
+	position: absolute;
+	bottom: 10px;
+	left: 106px;
+	font-size: 16px;
+	color: #208df0;
+}
+
+span.cardId {
+	display: none;
+}
+
+b.account_number {
+	font-weight: normal;
+	display: block;
+	position: absolute;
+	left: 0px;
+	width: 100%;
+	text-align: center;
+	bottom: 40px;
+	font-size: 16px;
+}
+b.numbers{
+	display: none;
+}
+.add span {
+	left: 82px;
+}
+
+.cardList .add img {
+	top: 0px;
+	width: 100%;
+	height: 100%;
+}
+
+.record table {
+	width: 100%;
+	line-height: 38px;
+	margin-top: 10px;
+	border-collapse: collapse;
+}
+
+.record th,
+.record td {
+	font-weight: normal;
+	font-size: 18px;
+	color: #666666;
+	text-align: center;
+	width: 190px;
+}
+
+.record td {
+	background: #fff;
+	line-height: 55px;
+	position: relative;
+}
+
+.record td a {
+	color: #208df0;
+}
+
+.record td a img {
+	width: 12px;
+	margin-left: 8px;
+}
+
+
+/*.record td div{
+    position:absolute;
+    top:33px;
+    left:22px;
+    width:88px;
+    text-align:center;
+    height: 100px;
+    background: #f2f2f2;
+    z-index:10;
+    line-height:18px;
+    display:none;
+}*/
+
+
+/*.record td div p{
+    margin-top: 20px;
+}
+.record td div p span{
+    cursor:pointer;
+}*/
+
+a#rule {
+	font-style: normal;
+	color: #ff5000;
+	font-size: 16px;
+	margin-left: 18px;
+	cursor: pointer;
+}
+
+a#rule img {
+	margin-right: 5px;
+	vertical-align: -3px;
+}
+
+div.record {
+	margin-left: 0px;
+	margin-right: 0px;
+}
+
+div.record h3 {
+	margin-left: 10px;
+}
+
+div#trade_type {
+	border-bottom: 1px solid #d2d2d2;
+}
+
+div#trade_type>span.type {
+	background: #FF5000;
+	color: #fff;
+}
+
+div#trade_type>span {
+	font-size: 22px;
+	color: #333;
+	height: 43px;
+	line-height: 43px;
+	display: inline-block;
+	text-align: center;
+	width: 182px;
+	cursor: pointer;
+}
+
+div#trade_detail {
+	border-top: 2px solid #d2d2d2;
+	border-bottom: 2px solid #d2d2d2;
+	color: #333;
+	font-size: 18px;
+	padding-left: 44px;
+	display: block;
+	text-align: left;
+}
+
+div#trade_detail>p {
+	margin: 20px 0px;
+}
+
+td#card_num {
+	line-height: 18px;
+}
+
+div#trade_detail span {
+	margin-right: 7px;
+}
+
+tr.detail_tr {
+	display: none;
+}
+
+
+.trade_data{
+	display: none;
+}
+div.current_data{
+	display: block;
+}
+
+table thead {
+	line-height: 50px;
+}
+
+
+/*日期*/
+
+div#trade_type .query_date {
+	float: right;
+	margin-right: 19px;
+}
+
+
+/*删除银行卡*/
+
+.balBox .bal .delCard {
+	font-size: 18px;
+	color: #666;
+	padding: 50px 60px;
+}
+
+.balBox .bal .delCard form p {
+	margin-top: 30px;
+}
+
+.balBox .bal .delCard input {
+	margin-right: 15px;
+}
+
+.balBox .bal .delCard .submit {
+	width: 140px;
+	height: 44px;
+	line-height: 44px;
+	font-size: 18px;
+	background: #ff5000;
+	border-radius: 5px;
+	border: none;
+	color: #fff;
+	display: inline-block;
+	text-align: center;
+	margin-right: 45px;
+}
+
+.balBox .bal .delCard a {
+	background: none;
+	color: #666;
+}
+
+#other {
+	vertical-align: middle;
+	margin-left: 30px;
+	outline: none;
+	border: 1px solid #d2d2d2;
+	font-size: 18px;
+	color: #666;
+	display: none;
+}
+
+
+/*确认删除银行卡*/
+
+#balance .confirm_delCard {
+	padding: 40px;
+	font-size: 18px;
+	color: #666;
+}
+
+#balance .confirm_delCard p {
+	margin-bottom: 28px;
+	background: url('../../img/tanchuang_zhanghu_tishi.png') no-repeat left center;
+	padding-left: 33px;
+}
+
+#balance .confirm_delCard p.safe {
+	background: url('../../img/tanchuang_zhanghu_anquan.png') no-repeat left center;
+}
+
+#balance .confirm_delCard input[type=password] {
+	width: 240px;
+	height: 38px;
+	line-height: 38px;
+	border: 1px solid #d2d2d2;
+	border-radius: 5px;
+	padding: 0 10px;
+}
+
+#balance .confirm_delCard h5 {
+	font-size: 18px;
+	color: #666;
+	margin: 40px 0 0;
+}
+
+#balance .confirm_delCard input[type=button] {
+	width: 368px;
+	height: 44px;
+	background: #ff5000;
+	border: 0;
+	font-size: 16px;
+	color: #fff;
+	border-radius: 5px;
+	margin-top: 70px;
+}
+
+#balance .confirm_delCard h6 {
+	margin-top: 10px;
+}
+
+#balance .confirm_delCard a {
+	background: none;
+	color: #208df0;
+	font-size: 16px;
+	margin-left: 250px;
+	margin-bottom: 60px;
+}
+
+.delBox {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.5);
+	display: none;
+}
+
+.delBox .dele {
+	width: 420px;
+	height: 274px;
+	line-height: 274px;
+	background: #fff;
+	border-radius: 20px;
+	margin: 15% auto 0;
+	text-align: center;
+	color: #333;
+	font-size: 20px;
+}
+
+
+/*添加银行卡*/
+
+#balance .addCard {
+	padding: 50px;
+	font-size: 18px;
+	color: #666;
+}
+
+#balance .addCard span {
+	width: 130px;
+	display: inline-block;
+}
+
+#balance .addCard input,
+#balance .addCard select {
+	width: 200px;
+	height: 32px;
+	line-height: 32px;
+	border: 1px solid #d2d2d2;
+	border-radius: 5px;
+	padding: 0 10px;
+	outline: none;
+	font-size: 18px;
+}
+
+#balance .addCard select {
+	width: 222px;
+}
+
+#balance .addCard p {
+	margin-bottom: 15px;
+}
+
+#balance .addCard h6 {
+	font-size: 14px;
+	color: #208df0;
+	margin-bottom: 10px;
+}
+
+#balance .addCard input[type='button'] {
+	width: 330px;
+	height: 44px;
+	background: #FF5000;
+	color: #fff;
+	border-radius: 5px;
+	border: none;
+	font-size: 16px;
+	margin-top: 60px;
+}
+
+#balance .addCard a {
+	color: #666;
+	font-size: 16px;
+	background: none;
+	width: auto;
+}
+
+input#agree {
+	width: 15px !important;
+	height: 15px !important;
+	vertical-align: -2px;
+	margin-right: 5px;
+}
+
+a#agree_btn {
+	font-size: 16px;
+	color: #208df0 !important;
+}
+
+#xieyi {
+	margin-top: 60px;
+	font-size: 16px;
+}
+
+#xieyi label {}
+
+
+/*支付页面*/
+
+#pay {
+	width: 1342px;
+	margin: 0px auto;
+	overflow: hidden;
+}
+
+#pay .pay_content {
+	color: #666;
+	font-size: 22px;
+	margin: 150px 200px 200px;
+}
+
+#pay .pay_content>p {
+	font-size: 26px;
+}
+
+#pay .pay_state {
+	margin-bottom: 9px;
+}
+
+#pay .pay_tip {
+	margin-bottom: 48px;
+}
+
+#time {
+	color: #ff5000;
+}
+
+#pay .pay_switch {
+	margin-top: 45px;
+}
+
+#pay .pay_switch>span {
+	color: #333;
+	display: inline-block;
+	height: 46px;
+	line-height: 46px;
+	text-align: center;
+	border: 1px solid #d2d2d2;
+	width: 141px;
+	cursor: pointer;
+}
+
+#pay .pay_card {
+	width: 146px;
+}
+
+#pay span.currented {
+	color: #fff;
+	background-color: #FF5000;
+	border-color: transparent;
+}
+
+
+/*支付平台支付样式*/
+
+#pay .platform {
+	margin-top: 20px;
+}
+
+#pay .zhifubao,
+.weixin {
+	background-image: url(../../img/tanchuang_choose_n.png);
+	background-repeat: no-repeat;
+	background-position: left center;
+	display: inline-block;
+	margin-right: 38px;
+}
+
+#pay .platform a {
+	font-size: 22px;
+	color: #666;
+}
+
+#pay .platform img {
+	margin: 0px 4px 0px 25px;
+	vertical-align: -3px;
+}
+
+#pay .platform,
+.card {
+	display: none;
+}
+
+#balance .balBox .card {
+	display: block;
+}
+
+
+/*银行卡支付样式*/
+
+#pay .card {
+	border: 1px solid #d2d2d2;
+	min-height: 162px;
+	min-width: 424px;
+}
+
+#pay .card img {
+	width: 162px;
+	height: 70px;
+	border: 1px solid #cecccc;
+	margin: 40px 30px 0px 0px;
+}
+
+#pay img.first_card {
+	margin-left: 36px;
+}
+
+#pay .pay_show {
+	display: block;
+}
+
+.addCard em {
+	font-size: 12px;
+	color: #f10505;
+	font-style: normal;
+	background: url(../../img/prompt.png) no-repeat left center;
+	padding-left: 16px;
+	margin-left: 10px;
+	display: none;
+}
+/*微信支付二维码样式*/
+.weixin{
+	position: relative;
+}
+#qrcode{
+	position:absolute;
+	left: 125px;
+	top: 0;
+}
+
+
+/*-------------收支规则-----------------*/
+
+div.rules_detail {
+	font-size: 16px;
+	color: #666;
+	padding: 50px 60px;
+	color: #666;
+}
+
+.bal div.rules_detail>h4 {
+	color: #333;
+	font-size: 18px;
+	margin: 40px 0px 20px 0px;
+}
+
+div.rules_detail>p {
+	margin-bottom: 8px;
+	line-height: 1.8;
+}
+
+div.rules_detail>p.calculate {
+	color: #ff5000;
+	margin-top: 12px;
+}
+
+
+/*------------提现---------------*/
+
+.balBox .bal div.to_cash {
+	padding: 41px 50px;
+	font-size: 18px;
+	color: #666;
+}
+
+div.to_cash>p {
+	margin-bottom: 10px;
+}
+
+div.to_cash span {
+	margin-right: 16px;
+}
+
+div.to_cash input {
+	height: 38px;
+	outline: none;
+	border: 1px solid #d2d2d2;
+	border-radius: 5px;
+	font-size: 16px;
+	padding-left: 8px;
+}
+
+div.to_cash input[type='password'] {
+	width: 287px;
+}
+
+div.to_cash input.get_count {
+	width: 237px;
+}
+
+div.to_cash input.get_acount {
+	width: 250px;
+}
+
+a#cash_btn {
+	display: inline-block;
+	background-color: #FF5000;
+	color: #fff;
+	line-height: 44px;
+	height: 44px;
+	width: 364px;
+	text-align: center;
+	border-radius: 5px;
+	margin-top: 56px;
+}
+
+div#all_card {
+	overflow: auto;
+	width: 258px;
+	height: 174px;
+	display: none;
+	position: absolute;
+	left: 152px;
+	top: 41px;
+	z-index: 10;
+}
+
+ul.card_list {
+	border: 1px solid #d2d2d2;
+	text-align: center;
+	font-size: 18px;
+	padding: 5px 0px;
+	background-color: #fff;
+}
+
+ul.card_list>li {
+	cursor: pointer;
+	height: 55px;
+	line-height: 55px;
+	color: #666;
+}
+
+i#fullNumber {
+	display: none;
+}
+
+em#bank_id {
+	display: none;
+}
+
+b#phone {
+	display: none;
+}
+
+ul.card_list>li:hover {
+	background-color: #EEEEEE;
+}
+
+div#bank_cardNum {
+	margin-bottom: 10px;
+	position: relative;
+}
+
+
+/*------------提现————获取验证码----------*/
+
+div.to_cash#yzm b {
+	color: #333;
+}
+
+div.to_cash#yzm p {
+	margin-bottom: 20px;
+}
+
+div#yzm #cash_btn {
+	margin-top: 38px;
+}
+
+input.yzm_code {
+	width: 220px;
+}
+
+a#hqyzm {
+	display: inline-block;
+	height: 40px;
+	width: 128px;
+	color: #666;
+	background-color: #f2f2f2;
+	border: #d2d2d2;
+	border-radius: 5px;
+	margin: 9px 0px 0px 8px;
+	font-size: 16px;
+	line-height: 40px;
+	border: 1px solid #d2d2d2;
+	text-align: center;
+}
+
+
+/*输入提示em*/
+
+.to_cash em {
+	font-size: 12px;
+	color: #f10505;
+	font-style: normal;
+	background: url('../../img/prompt.png') no-repeat left center;
+	padding-left: 16px;
+	margin-left: 10px;
+	display: none;
+}
+
+
+/*分页按钮样式*/
+.pages {
+	list-style: none;
+	overflow: hidden;
+	display: block;
+	text-align: center;
+	font-size: 16px;
+}
+div.page_show{
+	display: block;
+}
+.pages a,
+.pages .pre-page,
+.pages .next-page,
+.pages .first-page,
+.pages .last-page {
+	display: inline-block;	
+	width: 30px;
+	height: 30px;
+	background: #fff;
+	border: 1px solid #ddd;
+	text-align: center;
+	line-height: 30px;
+	border-radius: 3px;
+	margin-right: 10px;
+	cursor: pointer;
+	text-decoration: none;
+	color: #333;
+}
+
+.pages a.active {
+	color: #FF5000;
+}
+
+.pages .pre-page,
+.pages .next-page,
+.pages .first-page,
+.pages .last-page {
+	width: 66px;
+	display: inline-block;
+}
+/*-----------添加银行卡前协议样式------------*/
+div#agreement{
+	display: none;
+	width: 700px;
+	height: 210px;
+	border: 1px solid #d2d2d2;
+	background: #fff;	
+	background-color: #f2f2f2;
+}
+div#agreement>p.agree_title{	
+	line-height: 2.5;
+	padding-left: 30px;
+	margin-bottom: 0px !important;
+	font-weight: bold;
+	font-size: 16px;
+}
+div#agree_content{
+	margin: 0px 10px 0px 10px; 
+	background: #fff;
+	height: 150px;
+	padding: 8px 10px 0px 20px;
+	line-height: 1.5;
+	overflow-y:auto ;
+	font-size: 16px;
+	color: #333;
+}

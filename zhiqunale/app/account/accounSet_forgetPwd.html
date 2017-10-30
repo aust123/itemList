@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset="UTF-8">
+	<meta http-equiv = "X-UA-Compatible" content = "IE=edge,chrome=1" />
+	<title>纸去哪了-废纸交易平台</title>
+		<link rel="stylesheet" type="text/css" href="../../css/account/accountSet_pwd.css"/>
+	</head>
+	<body>
+	<div class="container">
+		<div class="header">
+			<div id="top_bar"></div>
+			<div id="nav_bar"></div>
+			<div id="search"></div>
+		</div>
+		<div class="main_box">
+			<div id="accountSet">
+				<div class="myLeft"></div>
+				<div class="content">
+					<div id="forget_password" class="setting_box">
+						<h2>忘记密码</h2>
+						<div class="set_content">
+							<form action="">
+								<div id="phone_number">
+									输入注册手机号&nbsp;:
+									<input type="text" required="required" name="tel" />
+									<a class="input_tips" id="identify_code" href="###">获取验证码</a>
+								</div>
+								<div id="input_identifyCode">
+									输入验证码&nbsp;:
+									<input type="text" name="yzm" />
+								</div>
+								<div id="reset_new_pasword">
+									新密码&nbsp;:
+									<input type="password" name="pwd" />
+									<span class="pwd_demand">可有6-20位英文字母(区分大小写)或数字组成</span>
+								</div>
+								<div id="reset_sure_pasword">
+									确定新密码&nbsp;:
+									<input type="password" name="pwd" />
+								</div>
+							</form>
+							<div id="reset_sub_sure" class="setting_sure">
+								<a href="###">确&nbsp;&nbsp;&nbsp;&nbsp;定</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="footer"></div>
+	</div>
+
+	<input class="hidden" data-id="setpwd" type="hidden"/>
+	<script src="../../lib/jquery-1.8.3.min.js"></script>
+	<script>
+		$(function(){
+			$('#top_bar').load('../public/topBar.html');
+			$('#nav_bar').load('../public/navBar.html');
+			$('#search').load('../public/search.html');
+			$('#footer').load('../public/footer.html');
+			$('.myLeft').load('../public/accLeft.html');
+
+		})
+	</script>
+	</body>
+</html>

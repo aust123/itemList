@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv = "X-UA-Compatible" content = "IE=edge,chrome=1" />
+    <title>纸去哪了-废纸交易平台</title>
+    <link rel="stylesheet" href="../../css/account/accountMsg.css"/>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <div id="top_bar"></div>
+            <div id="nav_bar"></div>
+            <div id="search"></div>
+        </div>
+        <div class="main_box">
+            <div id="account_paper">
+                <div class="myLeft"></div>
+                <div class="accCompRight">
+                    <div id="addrManage">
+                        <h2 class="til">地址管理</h2>
+                        <!--start 当登录的是纸厂时-->
+                        <div class="addrBox zcAddr">
+                            <h3>
+                                纸厂地址管理
+                                <a class="edit" onclick="edit()">
+                                    <img src="../../img/bianji_icon.png" alt=""/>
+                                </a>
+                            </h3>
+                            <ul class="paperAddr">
+                            </ul>
+                        </div>
+                        <!--end -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="footer"></div>
+    </div>
+    <div class="delAddr">
+        <div class="delBox">
+            <p>确定删除安吉纸厂吗？</p>
+            <p>
+                <a onclick="sure()" href="javascript:;">确定</a>
+                <a class="cancel" href="javascript:;">取消</a>
+            </p>
+        </div>
+    </div>
+    <input class="hidden" data-id="address" type="hidden"/>
+<script type="text/html" id="paperAddr">
+        <li>
+            <span data-id="{{da_id}}">{{co_name}}</span><span class="nm">{{da_province}}</span><span class="nm">{{da_city}}</span><span class="nm">{{da_dist}}</span><span class="nm">{{da_detail}}</span>
+            <a class="del" onclick="del()">
+                <img src="../../img/huishou.png"/>
+            </a>
+        </li>
+</script>
+    <script src="../../lib/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="../../lib/md5.js"></script>
+    <script type="text/javascript" src="../../js/secret.js"></script>
+    <script type="text/javascript" src="../../lib/template-web.js"></script>
+    <script>
+        $(function(){
+            $('#top_bar').load('../public/topBar.html');
+            $('#search').load('../public/search.html');
+            $('#nav_bar').load('../public/navBar.html');
+            $('#footer').load('../public/footer.html');
+            $('.myLeft').load('../public/accLeft.html');
+
+            //获取纸厂地址
+            var obj={
+                pe_id:localStorage.getItem("userId"),
+                pe_phone:localStorage.getItem("userPhone")
+            };
+            var pathname='/api/paper/get/paper/address';
+            GetList(obj,pathname,getPaper);
+            function getPaper(_data){
+                if(_data.status_code=='10000'){
+                    var html=template('paperAddr',_data.data);
+                    $('.paperAddr').html(html);
+                    var status=localStorage.getItem("userState");
+                    if(status!=1){
+                        $('.edit').hide();
+                    }
+                }
+            }
+        })
+        function edit(){
+            if($('.paperAddr li').length==0){
+                window.location.href='addressManage_edit.html';
+            }else{
+                var spans=$('.nm');
+                var prov=escape($(spans[0]).html());
+                var city=escape($(spans[1]).html());
+                var dist=escape($(spans[2]).html());
+                var detail=escape($(spans[3]).html());
+                window.location.href='addressManage_edit.html?'+prov+'&'+city+'&'+dist+'&'+detail;
+            }
+        }
+        //删除贸易公司地址
+        function del(){
+            $('.delAddr').show();
+            $('.cancel').click(function(){
+                $('.delAddr').hide();
+            });
+        }
+        //        确定删除
+        function sure(){
+            var delobj={
+                pe_id:localStorage.getItem("userId"),
+                pe_phone:localStorage.getItem("userPhone")
+            }
+            var delname='/api/paper/delete/paper/delivery/address';
+            GetList(delobj,delname,getDel);
+            function getDel(data){
+                if(data.status_code=='10000'){
+                    $('.delAddr').hide();
+                    location.reload();
+                }
+            }
+        }
+
+    </script>
+</body>
+</html>

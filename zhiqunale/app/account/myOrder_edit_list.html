@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../../css/account/myOrder.css" />
+
+	</head>
+
+	<body>
+		<div class="container">
+			<div class="header">
+				<div id="top_bar"></div>
+				<div id="nav_bar"></div>
+				<div id="search"></div>
+			</div>
+			<div class="main_box">
+				<div id="checkorder">
+					<div class="myLeft"></div>
+					<div class="content">
+						<div class="list_box">
+							<h2>编辑结算清单</h2>
+							<form action="" enctype="application/x-www-form-urlencoded">
+								<div class="list_content">
+
+									<div class="car_number">车号选择&nbsp;&nbsp;:
+										<select name="carNumber" class="carNumber"></select>
+									</div>
+									<div class="select_date">日期选择&nbsp;&nbsp;:
+										<select id="J_Year"></select><span>年</span>
+										<select id="J_Month"></select><span>月</span>
+										<select id="J_Day"></select><span>日</span>
+									</div>
+									<div>水分折扣（%）&nbsp;:<input name="moisture_discount" type="text" value="" /></div>
+									<div>杂量折扣（%）&nbsp;:<input name="impurity_discount" type="text" value="" /></div>
+									<div>结算重量（吨）&nbsp;:<input name="settle_weight" type="text" value="" /></div>
+									<div>结算单价（元）&nbsp;:<input name="settle_unit_price" type="text" value="" /></div>
+									<div>结算金额（元）&nbsp;:<input name="settle_price" type="text" value="" /></div>
+									<p class="upload_listText">上传结算清单</p>
+									<div class="list_img">
+										<!--上传清单图片-->
+										<input type="file" onchange="uploadImg(this)" value="" />
+										<img id="yyImg" src='../../img/qingdan.png'>
+									</div>
+
+								</div>
+								<div class="list_sure edit">
+									<a href="###">确&nbsp;&nbsp;定</a>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="footer"></div>
+		</div>
+		<input class="hidden" data-id="myOrder" type="hidden" />
+		<script src="../../lib/jquery-1.8.3.min.js"></script>
+		<script type="text/javascript" src="../../js/selectdate.js"></script>
+		<script type="text/javascript" src="../../lib/md5.js"></script>
+		<script type="text/javascript" src="../../js/secret.js"></script>
+		<script>
+			$(function() {
+				$('#top_bar').load('../public/topBar.html');
+				$('#nav_bar').load('../public/navBar.html');
+				$('#search').load('../public/search.html');
+				$('#footer').load('../public/footer.html');
+				$('.myLeft').load('../public/accLeft.html');
+
+			})
+			// 修改图片
+			function uploadImg(file) {
+				var img = document.getElementById('yyImg');
+				var baseSrc;
+				if(file.files && file.files[0]) {
+					var ext = file.value.substring(file.value.lastIndexOf(".") + 1).toLowerCase();
+					if(ext != 'png' && ext != 'jpg' && ext != 'jpeg') {
+						alert("图片的格式必须为png或者jpg或者jpeg格式！");
+						return false;
+					} else {
+						var reader = new FileReader();
+						reader.onload = function(evt) {
+							baseSrc = evt.target.result;
+							img.src = baseSrc;
+							$.ajax({
+								type: 'post',
+								url: 'https://admin.zhiqunale.cn/index.php?g=Api&m=Img&a=receivePcFile',
+								data: {
+									pic: baseSrc
+								},
+								success: function(data) {
+									localStorage.photo = data.data;
+								},
+								error: function() {
+									console.log('请求错误！')
+								}
+							})
+
+						}
+						reader.readAsDataURL(file.files[0]);
+					}
+				} else //兼容IE
+				{
+					file.select();
+					var imgSrc = document.selection.createRange().text;
+					img.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)";
+					img.filters.item('DXImageTransform.Microsoft.AlphaImageLoader').src = imgSrc;
+					if(navigator.appName == "Microsoft Internet Explorer" && parseInt(navigator.appVersion.split(";")[1].replace(/[ ]/g, "").replace("MSIE", "")) < 10) {
+						//alert("您的浏览器版本过低，请下载IE10及以上版本");
+						$('#yyImg').attr('src', '');
+					}
+				}
+			}
+
+			/*选择日期插件*/
+			selectdate({
+				yearID: "J_Year",
+				monthID: "J_Month",
+				dayID: "J_Day",
+				/*设置年月范围*/
+				minYear: -10, //前10年
+				maxYear: 50 //后50年
+			});
+
+			//获取车牌号及需要编辑的结算清单信息
+			! function() {
+				var sear = decodeURIComponent(window.location.search);
+				var query = sear.substr(4);
+				console.log(query)
+				var pathname = '/api/paper/get/plate/number/before/upload/settle/list';
+				var obj = {
+					pe_id: localStorage.userId, //用户id值，本地缓存读取
+					pe_phone: localStorage.userPhone,
+					order_id: localStorage.orderId, //我的订单页面 pod_id 传值过来
+					order_type:localStorage.orderType,//我的订单页面 传值过来1：直销，2：采购
+					settle_id: query //执行编辑结算清单操作时传入
+				};
+				GetList(obj, pathname, PlateNum)
+			}()
+
+			function PlateNum(_data) {
+				console.log(_data);
+				if(_data.status_code == 10000) {
+					for(var i in _data.data) {
+						var options = "<option value=" + '"' + _data.data[i]["plate_number"] + '" ' + 'dri_type=' + '"' + _data.data[i]["driver_type"] + '" ' + 'loid=' + '"' + _data.data[i]["logistics_order_id"] + '"' + ">" + _data.data[i]["plate_number"] + "</option>";
+						$(".carNumber").append(options);
+					}
+				}
+
+			}
+
+			/*渲染需要修改的结算清单*/
+			! function() {
+				var pathname = '/api/paper/get/settle/info/before/edit';
+				var obj = {
+					pe_id: localStorage.userId, //用户id值，本地缓存读取
+					pe_phone: localStorage.userPhone,
+					order_id: localStorage.orderId, //我的订单页面 pod_id 传值过来
+					order_type: localStorage.orderType,//我的订单页面 传值过来1：直销，2：采购
+					settle_id: localStorage.sId //执行编辑结算清单操作时传入
+				};
+				GetList(obj, pathname, EditList)
+			}()
+
+			function EditList(_data) {
+				console.log(_data);
+				if(_data.status_code == 10000) {
+					localStorage.p_stage = _data.data.paper_stage
+					$('input[name="moisture_discount"]').val(_data.data.moisture_discount);
+					$('input[name="impurity_discount"]').val(_data.data.impurity_discount);
+					$('input[name="settle_weight"]').val(_data.data.settle_weight);
+					$('input[name="settle_unit_price"]').val(_data.data.settle_unit_price);
+					$('input[name="settle_price"]').val(_data.data.settle_price);
+					$('#yyImg').attr('src',_data.data.bill_photo);//获取返回的图片
+					
+					//获取的订单时间为时间戳，转换为年月日格式
+					function getLocalTime(nS) {
+						var dat = new Date(parseInt(nS) * 1000).toLocaleString().replace(/:\d{1,2}$/, ' ');
+						var strs = dat.substr(0, 9);
+						return strs.split('/');
+					}
+					var arr_date = getLocalTime(_data.data.bill_settle_date);
+					$('#J_Year').val(arr_date[0]);
+					$('#J_Month').val(arr_date[1]);
+					$('#J_Day').val(arr_date[2]);
+					//获取的结算订单车牌号
+					if($(".carNumber").find('option[value' + '*=' + '"' + _data.data.plate_number + '"' + ']').size()) {
+						$(".carNumber").val(_data.data.plate_number);
+					} else {
+						$(".carNumber").append("<option value=" + _data.data.plate_number + " selected='selected'>" + _data.data.plate_number + "</option>");
+					}
+
+				}
+
+			}
+
+			//获取修改后的结算订单时间,时间戳格式
+			function timetamp(y, m, d) {
+				return(new Date(y, m, d, ).getTime() / 1000);
+			}
+			var ms = timetamp($('#J_Year').val(), $('#J_Month').val(), $('#J_Day').val());
+			/*$(".carNumber").change(function(){
+				console.log($(".carNumber").val())
+				console.log($(".carNumber").find('option[value='+'"'+$(".carNumber").val()+'"'+']').attr('dri_type'));
+				
+			})*/
+
+			$('.edit a').click(function() {
+				var pathname = '/api/paper/edit/settle/list';
+				var obj = {
+					pe_id: localStorage.userId, //用户id值，本地缓存读取
+					pe_phone: localStorage.userPhone,
+					order_id: localStorage.orderId, //我的订单页面 pod_id 传值过来
+					order_type: localStorage.orderType, //我的订单页面 传值过来1：直销，2：采购
+					plate_number: escape($('.carNumber').val()),
+					logistics_order_id: $(".carNumber").find('option[value=' + '"' + $(".carNumber").val() + '"' + ']').attr('dri_type'),
+					logistics_order_type: $(".carNumber").find('option[value=' + '"' + $(".carNumber").val() + '"' + ']').attr('loid'),
+					paper_stage: escape(localStorage.p_stage),
+					moisture_discount: parseFloat($('input[name="moisture_discount"]').val()).toFixed(3),
+					impurity_discount: parseFloat($('input[name="impurity_discount"]').val()).toFixed(3),
+					settle_weight: parseFloat($('input[name="settle_weight"]').val()).toFixed(2),
+					settle_unit_price: $('input[name="settle_unit_price"]').val(),
+					settle_price: parseFloat($('input[name="settle_price"]').val()).toFixed(2),
+					bill_photo: localStorage.photo, //后台返回图片url字符串
+					bill_settle_date: ms, //10位数时间戳格式
+					settle_id: localStorage.sId
+				}
+				GetList(obj, pathname, DealData)
+			})
+
+			function DealData(_data) {
+				console.log(_data);
+				if(_data.status_code == 10000) {
+					window.location.href = 'myOrder_upload_list.html';
+				} else if(_data.status_code == 10011) {
+					window.confirm('该清单已上传')
+				} else {
+					window.confirm('结算清单提交失败，请重新提交');
+				}
+			}
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv = "X-UA-Compatible" content = "IE=edge,chrome=1" />
+    <title>纸去哪了-废纸交易平台</title>
+    <link rel="stylesheet" href="../css/public.css"/>
+    <link rel="stylesheet" href="../css/index.css"/>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <div id="top_bar"></div>
+        <div id="search"></div>
+        <div id="nav_bar"></div>
+    </div>
+    <div class="main_box">
+        <div id="indexBox">
+            <!--banner轮播图内容-->
+            <div class="banner">
+                <div class="carList">
+                    <ul class="banList">
+                    </ul>
+                </div>
+                <div class="carCtrl">
+                    <div>
+                        <div class="prevBan">
+                            <img src="../img/jiantou_left.png" alt=""/>
+                        </div>
+                        <div class="nextBan">
+                            <img src="../img/jiantou_right.png" alt=""/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--内容区域-->
+            <div class="content">
+                <!--废纸指数-->
+                <div class="wstpa_ndex">
+                    <div class="content_title">
+                        <p class="ch_text">废纸指数</p>
+                        <p class="en_text">WASTE PAGE INDEX</p>
+                    </div>
+                    <div class="wstpa_ndex_msg">
+                        <div class="city_price">
+                            <ul class="city">
+                                <script type="text/html" id="citySome">
+                                    {{each data as value i}}
+                                    {{if i<=4}}
+                                    {{if i==0}}
+                                    <li class="current_city"><span>{{value.city}}价格</span> <img class="up_arrow arrow_show" src="../img/jiantouup.png" /></li>
+                                    {{else}}
+                                    <li class="marg_li">{{value.city}}</li>
+                                    {{/if}}
+                                    {{/if}}
+                                    {{/each}}
+                                    {{if i>4}}
+                                    <li class="city_more">更多<img src="../img/jiantou_bottom.png"/>
+                                        <div id="city_more_list">
+                                            <ul>
+                                                {{each data as value i}}
+                                                <li class="marg_li">{{value.city}}</li>
+                                                {{/each}}
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    {{/if}}
+                                </script>
+                            </ul>
+                            <div class="standList">
+                                <div class="carList"></div>
+                                <div class="carCtrl">
+                                    <div class="prevBan"><img src="../img/s_left.png"/></div>
+                                    <div class="nextBan"><img src="../img/s_right.png"/></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="trade_show">
+                            <p>成交展示 <img src="../img/jiantouup.png" /></p>
+                            <ul class="trade_msg ">
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!--采购城-->
+                <div class="shop_city">
+                    <div class="content_title">
+                        <p class="ch_text">采购城</p>
+                        <p class="en_text">SHOPPING CITY</p>
+                        <div class="shop_more">
+                            <a href="shop/shoppingCity-all.html">更多 <img src="../img/more_arrow.png" /></a>
+                        </div>
+                    </div>
+                    <ul class="shop_list">
+                    </ul>
+                </div>
+                <!--合作纸厂-->
+                <div class="cpt_factory">
+                    <div class="content_title">
+                        <p class="ch_text">合作纸厂</p>
+                        <p class="en_text">COOPERATUVE PAGE MILL</p>
+                    </div>
+                    <div class="cpt_compnany">
+                        <!--合作公司列表-->
+                        <div class="carList">
+                            <ul class="coperFactory">
+                            </ul>
+                        </div>
+                        <div class="carCtrl">
+                            <div class="prevCtrl">
+                                <img src="../img/jiantou_gray_left.png" />
+                            </div>
+                            <div class="nextCtrl">
+                                <img src="../img/jiantou_gray_right.png" />
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!--合作贸易公司-->
+                <div class="cpt_trading">
+                    <div class="content_title">
+                        <p class="ch_text">合作贸易公司</p>
+                        <p class="en_text">COOPERATUVE TRADING COMPNANY</p>
+                    </div>
+                    <div class="cpt_compnany">
+                        <!--合作公司列表-->
+                        <div class="carList">
+                            <ul class="coperCompany">
+                            </ul>
+                        </div>
+                        <div class="carCtrl">
+                            <div class="prevCtrl">
+                                <img src="../img/jiantou_gray_left.png" />
+                            </div>
+                            <div class="nextCtrl">
+                                <img src="../img/jiantou_gray_right.png" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="footer"></div>
+</div>
+<input class="hidden" data-id="index" type="hidden"/>
+<!-- 首页banner图-->
+<script type="text/html" id="banner">
+    {{each data as value i}}
+    {{if i==0}}
+    <li class="on">
+        <img src="{{value.ba_img}}" alt="纸去哪了"/>
+    </li>
+    {{else}}
+    <li>
+        <img src="{{value.ba_img}}" alt="纸去哪了"/>
+    </li>
+    {{/if}}
+    {{/each}}
+</script>
+<!-- 废纸指数-->
+<script type="text/html" id="standList">
+    {{each data as value i}}
+    {{if i%2==0}}
+    <ul>
+        <li class="pg_factory">
+            <p class="factory_li0">{{data[i].paper_stage}}<span>{{data[i].created_at}}</span></p>
+            <p>黄板纸<span>{{data[i].price}}元/吨</span></p>
+            <p>黄板纸<span>{{data[i].price}}元/吨</span></p>
+        </li>
+        {{if data[i+1]}}
+        <li class="pg_factory">
+            <p class="factory_li0">{{data[i+1].paper_stage}}<span>{{data[i+1].created_at}}</span></p>
+            <p>黄板纸<span>{{data[i+1].price}}元/吨</span></p>
+            <p>黄板纸<span>{{data[i+1].price}}元/吨</span></p>
+        </li>
+        {{/if}}
+    </ul>
+    {{/if}}
+    {{/each}}
+</script>
+<!-- 平台成交-->
+<script type="text/html" id="trade_msg">
+    {{if plat_total_num}}
+    <li id="factory_li2">平台成交量：<i>{{plat_total_num}}吨</i><span>{{census_date}}</span></li>
+    {{/if}}
+    {{each data as value i}}
+    <li data-pid="{{value.paper_id}}">{{value.paper_name}}采购废纸{{value.paper_total_num}}吨<span>{{census_date}}</span></li>
+    {{/each}}
+</script>
+<!-- 采购城废纸列表-->
+<script type="text/html" id="shopList">
+    {{each data as value i}}
+    <li>
+        <!-- 公司已认证，跳转到打包站详情页面-->
+        {{if data.uState==1}}
+        <a onclick="pack(this)" data-pkid="{{value.pack_id}}"><img src="{{value.pg_goods_img}}" /></a>
+        {{else}}
+        <a href="javascript:;"><img src="{{value.pg_goods_img}}" /></a>
+        {{/if}}
+        <div class="shop_detail">
+            <div class="shop_adress"><span>{{value.pg_paper_category}}</span><b>{{value.pg_city}}</b></div>
+            <p class="shop_price">数量：{{value.pg_per_supply}}吨</p>
+            <div class="shop_msg">
+                <span>今日已售：{{value.has_sold}}吨</span>
+                <!-- 登录链接到购买页面，未登录链接到登录页面-->
+                {{if data.isLogin}}
+                <a onclick="apply(this)" data-pgid="{{value.pg_id}}" class="shop_buy">购买</a>
+                <a href="shop/shopCity_bargain.html?gd_id={{value.pg_id}}">议价</a>
+                {{else}}
+                <a class="shop_buy" href="login/login.html">购买</a>
+                <a href="login/login.html">议价</a>
+                {{/if}}
+            </div>
+        </div>
+    </li>
+    {{/each}}
+</script>
+<!-- 获取合作纸厂-->
+<script type="text/html" id="coperFactory">
+    {{each data as value}}
+    <li data-id="{{value.co_id}}">
+        <img src="{{value.co_logo}}" />
+        <p data-type="{{value.co_slug}}">{{value.co_name}}</p>
+    </li>
+    {{/each}}
+</script>
+<!-- 获取合作贸易公司-->
+<script type="text/html" id="coperCompany">
+    {{each data as value}}
+    <li data-id="{{value.co_id}}">
+        <img src="{{value.co_logo}}" />
+        <p data-type="{{value.co_slug}}">{{value.co_name}}</p>
+    </li>
+    {{/each}}
+</script>
+<script type="text/javascript" src="../lib/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="../lib/md5.js"></script>
+<script type="text/javascript" src="../js/secret.js"></script>
+<script type="text/javascript" src="../lib/template-web.js"></script>
+<script type="text/javascript" src="../js/index.js"></script>
+</body>
+</html>

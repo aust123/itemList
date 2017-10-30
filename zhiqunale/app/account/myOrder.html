@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset="UTF-8">
+	<meta http-equiv = "X-UA-Compatible" content = "IE=edge,chrome=1" />
+	<title>纸去哪了-废纸交易平台</title>
+	
+	<link rel="stylesheet" href="../../css/motai.css"/>
+	<link rel="stylesheet" type="text/css" href="../../css/account/jquery-ui.min.css" />
+	<link rel="stylesheet" type="text/css" href="../../css/account/myOrder.css" />
+	</head>
+	<body>
+	<div class="container">
+		<div class="header">
+			<div id="top_bar"></div>
+			<div id="nav_bar"></div>
+			<div id="search"></div>
+		</div>
+		<div class="main_box">
+			<div id="myorder">
+				<div class="myLeft"></div>
+				<!--整体可移出内容区域-->
+				<div class="order_form">
+					<div class="form_top">
+						<a href="javascript:;" class="trade_current">直销</a><a href="myOrder_buy.html">采购</a>
+						<div class="query_date">
+							<!--日期插件-->
+							<p id="date_select">
+								<input onpropertychange="onPropertyChange(event)" type="text" id="start"/>至<input type="text" id="end"/>
+							</p>
+						</div>
+					</div>
+					<div class="trade_type">
+						<!--这是直销交易的内容区域-->
+						<div class="sales_mode curent_item">
+							<div class="form_select direct_sale purchase">
+								<ul class="states">
+									<li class="daifu current_select">待发货<span></span></li>
+									<li>待收货<span></span></li>
+									<li>待验收<span></span></li>
+									<li>待付款<span></span></li>
+									<li>已完成<span></span></li>
+								</ul>
+							</div>
+							<div class="form_list">
+								<!--直销——待发货-->
+								<div class="dfh form_item curent_item">
+									<table class="dfhList" border="none" cellspacing="0px" cellpadding="0px">
+									</table>
+									<div class="pages dfhPages"></div>
+								</div>
+								<!--直销——待收货-->
+								<div class="dsh form_item">
+									<table class="dshList" border="none" cellspacing="0px" cellpadding="0px">
+									</table>
+									<div class="pages dshPages"></div>
+								</div>
+								<!--直销——待验收-->
+								<div class="dys form_item">
+									<table class="dysList" border="none" cellspacing="0px" cellpadding="0px">
+									</table>
+									<div class="pages dysPages"></div>
+								</div>
+								<!--直销——待付款-->
+								<div class="dfk form_item">
+									<table class="dfkList" border="none" cellspacing="0px" cellpadding="0px">
+									</table>
+									<div class="pages dfkPages"></div>
+								</div>
+								<!--直销——已完成2-->
+								<div class="ywc form_item">
+									<table class="ywcList" border="none" cellspacing="0px" cellpadding="0px">
+									</table>
+									<div class="pages ywcPages"></div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="footer"></div>
+	</div>
+	<input class="hidden" data-id="myOrder" type="hidden"/>
+	<div class="linkman">
+	</div>
+	<!-- 弹出联系人-->
+	<script type="text/html" id="ppbox">
+		<div class="background"></div>
+		<div class="popupBox" onclick="clo()">
+			<div id="linkman_box">
+				<img onclick="clo()" id="close" src="../../img/tanchuang_cancel.png"/>
+				<div id="linkman_content">
+					<h2>联系方式：</h2>
+					<p>姓名：{{linkman}}</p>
+					<p>Tel : {{linktel}}</p>
+					<p>公司名字：{{linkcpname}}</p>
+					<p>详细地址：{{address}}</p>
+					<p class="tips">#联系我时请说是在&nbsp;"纸去哪了"&nbsp;平台看到的#</p>
+				</div>
+			</div>
+		</div>
+	</script>
+<!--直销——待发货-->
+<script type="text/html" id="dfhList">
+	<tr class="list_title" id="direct_waitDelivery">
+		<th class="creat_time">创建时间</th>
+		<th class="shipper">发货人</th>
+		<th class="price">预估单价</th>
+		<th class="weight">预估重量</th>
+		<th class="level">预估级别</th>
+		<th class="factory">销往纸厂</th>
+		<th class="logistic">物流状态</th>
+		<th class="order">订单详情</th>
+	</tr>
+	{{each data as value i}}
+	<tr class="list_content">
+		<td>{{value.create_time}}</td>
+		<td data-pkad="{{value.pack_address}}" data-pknm="{{value.pack_name}}"><label>{{value.pack_real_name}}</label>&nbsp;&nbsp;
+			<a data-tel="{{value.pack_phone}}" data-cpname="{{value.company_name}}" class="connect" onclick="popbox(this)">联系</a>
+		</td>
+		<td>{{value.paper_unit_price}}元</td>
+		<td>{{value.paper_estimate_num}}吨</td>
+		<td>{{value.paper_specify}}级</td>
+		<td data-type="{{value.so_paper_type}}">{{value.company_name}}</td>
+		<td>待发货</td>
+		<td class="list_detail">
+			<a data-gdnm="{{value.goods_name}}" data-id="{{value.goods_id}}" data-pid="{{value.paper_id}}" data-pkid="{{value.pack_id}}" href="orderDetail.html?odid={{value.so_id}}&odType=1">详情</a>
+		</td>
+	</tr>
+	{{/each}}
+</script>
+<!-- 待收货-->
+<script type="text/html" id="dshList">
+	<tr class="list_title" id="direct_waitRecive">
+		<th class="creat_time">创建时间</th>
+		<th class="shipper">发货人</th>
+		<th class="price">预估单价</th>
+		<th class="weight">预估重量</th>
+		<th class="level">预估级别</th>
+		<th class="factory">销往纸厂</th>
+		<th class="logistic">物流状态</th>
+		<th class="order">订单详情</th>
+	</tr>
+	{{each data as value i}}
+	<tr class="list_content">
+		<td>{{value.create_time}}</td>
+		<td data-pkad="{{value.pack_address}}" data-pknm="{{value.pack_name}}"><label>{{value.pack_real_name}}</label>&nbsp;&nbsp;
+			<a data-tel="{{value.pack_phone}}" data-cpname="{{value.company_name}}" class="connect" onclick="popbox(this)">联系</a>
+		</td>
+		<td>{{value.paper_unit_price}}元</td>
+		<td>{{value.paper_estimate_num}}吨</td>
+		<td>{{value.paper_specify}}级</td>
+		<td data-type="{{value.so_paper_type}}">吉安纸厂</td>
+		<td>待收货</td>
+		<td class="list_detail">
+			<a data-gdnm="{{value.goods_name}}" data-gdid="{{value.goods_id}}" data-pid="{{value.paper_id}}" data-pkid="{{value.pack_id}}" href="orderDetail.html?odid={{value.so_id}}&odType=1">详情</a>
+		</td>
+	</tr>
+	{{/each}}
+</script>
+<!-- 待验收-->
+<script type="text/html" id="dysList">
+	<tr class="list_title" id="direct_acceptance">
+		<th class="acceptance creat_time">创建时间</th>
+		<th class="acceptance shipper">发货人</th>
+		<th class="acceptance price">预估单价</th>
+		<th class="acceptance weight">预估重量</th>
+		<th class="acceptance level">预估级别</th>
+		<th class="acceptance factory">销往纸厂</th>
+		<th class="acceptance logistic">物流状态</th>
+		<th class="acceptance settlement_list">结算清单</th>
+		<th class="acceptance order">订单详情</th>
+	</tr>
+	{{each data as value i}}
+	<tr class="list_content">
+		<td>{{value.create_time}}</td>
+		<td data-pkad="{{value.pack_address}}" data-pknm="{{value.pack_name}}"><label>{{value.pack_real_name}}</label>&nbsp;&nbsp;
+			<a data-tel="{{value.pack_phone}}" data-cpname="{{value.company_name}}" class="connect" onclick="popbox(this)">联系</a>
+		</td>
+		<td>{{value.paper_unit_price}}元</td>
+		<td>{{value.paper_estimate_num}}吨</td>
+		<td>{{value.paper_specify}}级</td>
+		<td data-type="{{value.so_paper_type}}">{{value.company_name}}</td>
+		<td>已发货</td>
+		<td class="">
+			<a href="myOrder_write_list.html?odid={{value.so_id}}&odType=1">上传清单</a>
+		</td>
+		<td class="acceptance list_detail">
+			<a data-gdnm="{{value.goods_name}}" data-gdid="{{value.goods_id}}" data data-pid="{{value.paper_id}}" data-pkid="{{value.pack_id}}" href="orderDetail.html?odid={{value.so_id}}&odType=1">详情</a>
+		</td>
+	</tr>
+	{{/each}}
+</script>
+<!-- 待付款-->
+<script type="text/html" id="dfkList">
+	<tr class="list_title" id="direct_obligation">
+		<th class="unpaid creat_time">创建时间</th>
+		<th class="unpaid shipper">发货人</th>
+		<th class="unpaid price">预估单价</th>
+		<th class="unpaid weight">预估重量</th>
+		<th class="unpaid level">预估级别</th>
+		<th class="unpaid factory">销往纸厂</th>
+		<th class="unpaid logistic">物流状态</th>
+		<th class="unpaid settlement_list">结算清单</th>
+		<th class="unpaid funkuan">付款进程</th>
+		<th class="unpaid order">订单详情</th>
+	</tr>
+	{{each data as value i}}
+	<tr class="list_content">
+		<td>{{value.create_time}}</td>
+		<td data-pkad="{{value.pack_address}}" data-pknm="{{value.pack_name}}"><label>{{value.pack_real_name}}</label>&nbsp;&nbsp;
+			<a data-tel="{{value.pack_phone}}" data-cpname="{{value.company_name}}" class="connect" onclick="popbox(this)">联系</a>
+		</td>
+		<td>{{value.paper_unit_price}}元</td>
+		<td>{{value.paper_estimate_num}}吨</td>
+		<td>{{value.paper_specify}}级</td>
+		<td data-type="{{value.so_paper_type}}">{{value.company_name}}</td>
+		<td>已发货</td>
+		<td class="">
+			<a href="myOrder_check_list.html?odid={{value.so_id}}&odType=1">查看</a>
+		</td>
+		{{if value.is_pay==1}}
+		{{if value.ping_order_no}}
+		<td>等待平台结算</td>
+		{{else}}
+		<td>
+			<a data-pay="{{is_pay}}" href="payment.html?{{value.so_id}}&1&0">去付款</a>
+		</td>
+		{{/if}}
+		{{else}}
+		<td>等待平台结算</td>
+		{{/if}}
+		<td class="unpaid list_detail">
+			<a data-gdnm="{{value.goods_name}}" data-gdid="{{value.goods_id}}" data data-pid="{{value.paper_id}}" data-pkid="{{value.pack_id}}" href="orderDetail.html?odid={{value.so_id}}&odType=1">详情</a>
+		</td>
+	</tr>
+	{{/each}}
+</script>
+<!-- 已完成-->
+<script type="text/html" id="ywcList">
+	<tr class="list_title" id="direct_complete">
+		<th class="finish creat_time">创建时间</th>
+		<th class="finish shipper">发货人</th>
+		<th class="finish price">预估单价</th>
+		<th class="finish weight">预估重量</th>
+		<th class="finish level">预估级别</th>
+		<th class="finish factory">销往纸厂</th>
+		<th class="finish settlement_list">结算清单</th>
+		<th class="finish fukuan">付款进程</th>
+		<th class="finish order">订单详情</th>
+	</tr>
+	{{each data as value i}}
+	<tr class="list_content">
+		<td>{{value.create_time}}</td>
+		<td data-pkad="{{value.pack_address}}" data-pknm="{{value.pack_name}}"><label>{{value.pack_real_name}}</label>&nbsp;&nbsp;
+			<a data-tel="{{value.pack_phone}}" data-cpname="{{value.company_name}}" class="connect" onclick="popbox(this)">联系</a>
+		</td>
+		<td>{{value.paper_unit_price}}元</td>
+		<td>{{value.paper_estimate_num}}吨</td>
+		<td>{{value.paper_specify}}级</td>
+		<td data-type="{{value.so_paper_type}}">{{value.company_name}}</td>
+		<td>
+			<a href="myOrder_check_list.html?odid={{value.so_id}}&odType=1">查看</a>
+		</td>
+		<td>
+			<a>已付款</a>
+		</td>
+		<td class="finish list_detail">
+			<a data-gdnm="{{value.goods_name}}" data-gdid="{{value.goods_id}}" data-pid="{{value.paper_id}}" data-pkid="{{value.pack_id}}" href="orderDetail.html?odid={{value.so_id}}&odType=1">详情</a>
+		</td>
+	</tr>
+	{{/each}}
+</script>
+	<script type="text/javascript" src="../../lib/jquery-1.8.3.min.js"></script>
+	<script type="text/javascript" src="../../lib/jquery-ui.js"></script>
+	<script type="text/javascript" src="../../lib/jquery.ui.datepicker-zh-CN.js"></script>
+	<script type="text/javascript" src="../../lib/md5.js"></script>
+	<script type="text/javascript" src="../../js/secret.js"></script>
+	<script type="text/javascript" src="../../lib/template-web.js"></script>
+	<script type="text/javascript" src="../../lib/pagination.js"></script>
+	<script type="text/javascript" src="../../js/myOrder.js"></script>
+
+	</body>
+
+</html>

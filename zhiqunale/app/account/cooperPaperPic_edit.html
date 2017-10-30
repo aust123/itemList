@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv = "X-UA-Compatible" content = "IE=edge,chrome=1" />
+    <title>纸去哪了-废纸交易平台</title>
+    <link rel="stylesheet" href="../../css/account/accountMsg.css"/>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div id="top_bar"></div>
+            <div id="nav_bar"></div>
+            <div id="search"></div>
+        </div>
+        <div class="main_box">
+            <div id="account_comp">
+                <div class="myLeft"></div>
+                <div class="accCompRight">
+                    <div id="compMsgEdit">
+                        <h2 class="til">合作纸厂管理</h2>
+                        <div class="picEdit">
+                            <h3>
+                                <span>编辑合作纸厂照片及荣誉证书</span>
+                            </h3>
+                            <form action="" method="post" enctype="multipart/form-data">
+                                <div class="msg">
+                                    <div class="imgs">
+                                        <ul class="imgsbox">
+                                            <li class="file">
+                                                <a href="javascript:;">
+                                                    <input onchange="uploadImg(this)" name="gsPic" class="gsPic" type="file"/>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <p class="submit">
+                                    <input type="button" value="完成"/>
+                                </p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="footer"></div>
+    </div>
+    <input class="hidden" data-id="papers" type="hidden"/>
+<script type="text/html" id="imgsbox">
+    {{if data.company_data.op_photos}}
+    {{each data.company_data.op_photos as value}}
+    <li class="simg" data-src="{{value.substring(value.indexOf('data'),value.length)}}">
+        <img src="{{value}}"/>
+        <p>
+            <img onclick="remove(this)" class="remove" src="../../img/huishou.png" alt=""/>
+        </p>
+    </li>
+    {{/each}}
+    {{/if}}
+</script>
+    <script src="../../lib/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="../../lib/md5.js"></script>
+    <script type="text/javascript" src="../../js/secret.js"></script>
+    <script type="text/javascript" src="../../lib/template-web.js"></script>
+    <script>
+        $(function(){
+            $('#top_bar').load('../public/topBar.html');
+            $('#search').load('../public/search.html');
+            $('#nav_bar').load('../public/navBar.html');
+            $('#footer').load('../public/footer.html');
+            $('.myLeft').load('../public/accLeft.html');
+            var pd=(location.search.substring(1)).split('=')[1];
+            //获取线下纸厂详细信息
+            var pathname='/api/paper/get/cooperate/paper/detail';
+            var obj={
+                pe_id:localStorage.getItem("userId"),
+                pe_phone:localStorage.getItem("userPhone"),
+                paper_id:pd,
+                paper_type:2
+            }
+            GetList(obj,pathname,getPic);
+            function getPic(_data){
+                if(_data.status_code=='10000'){
+                    var html=template('imgsbox',_data);
+                    $(html).insertBefore($('.file'));
+                }
+            }
+        })
+
+//        编辑公司图片
+        function uploadImg(file)
+        {
+            if (file.files && file.files[0])
+            {
+                var ext = file.value.substring(file.value.lastIndexOf(".") + 1).toLowerCase();
+                if(ext != 'png' && ext != 'jpg' && ext != 'jpeg') {
+                    alert("图片的格式必须为png或者jpg或者jpeg格式！");
+                    return false;
+                }else{
+                    var reader = new FileReader();
+                    reader.onload = function(evt){
+                        var imgSrc = evt.target.result;
+                        $.ajax({
+                            type: 'post',
+                            url: 'https://admin.zhiqunale.cn/index.php?g=Api&m=Img&a=receivePcFile',
+                            data: {
+                                pic: imgSrc
+                            },
+                            success: function(data) {
+                                var html='<li data-src="'+data.data+'" class="simg"><img src="'+imgSrc+'" alt=""/><p><img onclick="remove(this)" class="remove" src="../../img/huishou.png" alt=""/></p></li>';
+                                $(html).insertBefore('.file');
+                            },
+                            error: function() {
+                                console.log('请求错误！')
+                            }
+                        })
+                    }
+                    reader.readAsDataURL(file.files[0]);
+                }
+            }
+            else //兼容IE
+            {
+                file.select();
+                var imgSrc = document.selection.createRange().text;
+                $.ajax({
+                    type: 'post',
+                    url: 'https://admin.zhiqunale.cn/index.php?g=Api&m=Img&a=receivePcFile',
+                    data: {
+                        pic: imgSrc
+                    },
+                    success: function(data) {
+                        var filter="progid:DXImageTransform.Microsoft.AlphaImageLoader(src='"+imgSrc+"', sizingMethod='scale')";
+                        var html='<li class="simg"><img data-src="'+data.data+'" style="filter:'+filter+'"/><p><img onclick="remove(this)" class="remove" src="../../img/huishou.png" alt=""/></p></li>';
+                        $(html).insertBefore('.file');
+                    },
+                    error: function() {
+                        console.log('请求错误！')
+                    }
+                })
+            }
+        }
+        //            删除图片
+        function remove(This){
+            $(This).parents('.simg').remove();
+        }
+        //            提交图片信息
+        $('.submit input').click(function(){
+            var imgs=$('.simg'),pics=[];
+            for(var i=0;i<imgs.length;i++){
+                pics.push($(imgs[i]).attr('data-src'));
+            }
+            var obj = {
+                pe_id: localStorage.getItem("userId"), //本地缓存读取
+                pe_phone: localStorage.getItem("userPhone"), //本地缓存读取
+                op_id:(location.search.substring(1)).split('=')[1],
+                op_photos:JSON.stringify(pics)
+            }
+            var subname='/api/paper/edit/cooperate/paper/detail';
+            GetList(obj,subname,getSub);
+            function getSub(data){
+                window.history.go(-1);
+            }
+        });
+
+    </script>
+</body>
+</html>

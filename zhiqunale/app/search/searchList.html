@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv = "X-UA-Compatible" content = "IE=edge,chrome=1" />
+    <title>纸去哪了-废纸交易平台</title>
+    <link rel="stylesheet" href="../../css/searchList.css"/>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div id="top_bar"></div>
+            <div id="nav_bar"></div>
+            <div id="search">
+            </div>
+        </div>
+        <div class="main_box">
+            <!--搜索列表-->
+            <div class="shop_city">
+                <h3>全部结果“关键词”</h3>
+                <ul class="shop_list">
+                </ul>
+            </div>
+        </div>
+        <div id="footer"></div>
+    </div>
+
+    <script src="../../lib/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="../../lib/md5.js"></script>
+    <script type="text/javascript" src="../../js/secret.js"></script>
+    <script src="../../lib/template-web.js"></script>
+    <script id="sList" type="text/html">
+        {{each data as value i}}
+        <li>
+            <!-- 公司已认证，跳转到打包站详情页面-->
+            {{if data.uState==1}}
+            <a data-id="{{value.pg_id}}" href="../shop/shoppingCity.html?id={{value.pg_id}}"><img src="{{value.pg_goods_img}}" /></a>
+            {{else}}
+            <a href="javascript:;"><img src="{{value.pg_goods_img}}" /></a>
+            {{/if}}
+            <div class="shop_detail">
+                <div class="shop_adress"><span>{{value.pg_paper_category}}</span><b>{{value.pg_city}}</b></div>
+                <p class="shop_price">日均供货量：{{value.pg_per_supply}}</p>
+                <div class="shop_msg">
+                <span>今日已售：{{value.has_sold}}</span>
+                    <!-- 登录链接到购买页面，未登录链接到登录页面-->
+                    {{if data.isLogin}}
+                    <a onclick="apply(this)" data-pgid="{{value.pg_id}}" data-id="{{value.pack_id}}" class="shop_buy">购买</a>
+                    <a href="../shop/shopCity_bargain.html?gd_id={{value.pg_id}}">议价</a>
+                    {{else}}
+                    <a class="shop_buy" href="../login/login.html">购买</a>
+                    <a href="../login/login.html">议价</a>
+                    {{/if}}
+            </div>
+            </div>
+        </li>
+      {{/each}}
+    </script>
+    <script>
+        $(function() {
+            $('#top_bar').load('../public/topBar.html');
+            $('#nav_bar').load('../public/navBar.html');
+            $('#search').load('../public/search.html');
+            $('#footer').load('../public/footer.html');
+            var keyword;
+            $('#search').delegate('.submit','click',function(){
+                if($(this).siblings('.sr').val()!=''){
+                    keyword=$(this).siblings('.sr').val();
+                    search(keyword);
+                }
+            });
+            $('#search').delegate('.sr','keydown', function (e) {
+                var key = e.which;
+                if (key == 13) {
+                    if($(this).val()!=''){
+                        keyword=$(this).val();
+                        search(keyword);
+                    }
+                }
+            });
+        })
+
+        function search(keyword){
+            var obj;
+            $('.shop_list').html('');
+            //默认按照最新加载废纸列表
+            obj={
+                city:escape(localStorage.curCity),
+                province:'',
+                page:1,
+                name:escape(keyword)
+            }
+            var pathname='/api/paper/search/goods';
+            GetList(obj,pathname,getSearch);
+            function getSearch(_data){
+                if(_data.status_code=='10000'){
+                    var isLogin=localStorage.getItem("isLogin");
+                    var uState=localStorage.getItem("userState");
+                    _data.data.isLogin=isLogin;
+                    _data.data.uState=uState;
+                    var html=template('sList',_data);
+                    $('.shop_list').html(html);
+                }else if(_data.status_code=='10002'){
+                    $('.shop_list').html(_data.msg).css({'color':'#333','font-size':'16px','margin-left':'30px'});
+                }
+            }
+        }
+        //采购申请
+        function apply(This){
+            localStorage.setItem("goodId",$(This).attr('data-id'));
+            window.location.href='../shop/shopCity_submitMsg.html';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../../css/account/buyApply.css" />
+	</head>
+	<body>
+	<div class="container">
+		<div class="header">
+			<div id="top_bar"></div>
+			<div id="nav_bar"></div>
+			<div id="search"></div>
+		</div>
+		<div class="main_box">
+			<div id="buyapply">
+				<div class="myLeft"></div>
+				<div class="content">
+					<!--采购申请状态-->
+					<div id="buy_box">
+						<div class="buy_apply">
+							<p class="buy_title">采购申请</p>
+							<div class="apply_content">
+								<ul class="applyList">
+								</ul>
+								<div class="pages"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="footer"></div>
+	</div>
+	<input class="hidden" data-id="buyapply" type="hidden"/>
+<script type="text/html" id="applyList">
+	{{each data as value i}}
+	<!-- 待处理-->
+	{{if value.pap_apply_state==0}}
+	<li data-pkid="{{value.pack_id}}">
+		<div class="apply_msg" data-gdid="{{value.goods_id}}">
+			<p>废纸品类：{{value.estimate_stage}} <b class="paper_class">{{value.goods_name}}</b></p>
+			<p class="buy_count">数量：{{value.pap_num}}吨</p>
+			<p>预估单价：{{value.estimate_price}}元</p>
+			<p data-id="{{value.pap_id}}" class="btn" onclick="cancel(this)">取消申请</p>
+		</div>
+		<div class="apply_msg">
+			<p>联系人：{{value.pack_real_name}}</p>
+			<p class="apply_connect">联系方式：{{value.pack_phone}}</p>
+			<p class="buy_state">正在等待买家确认</p>
+		</div>
+	</li>
+	<!-- 同意-->
+	{{else if value.pap_apply_state==1}}
+	<li data-pkid="{{value.pack_id}}">
+		<div class="apply_msg" data-gdid="{{value.goods_id}}">
+			<p>废纸品类：{{value.estimate_stage}} <b class="paper_class">{{value.goods_name}}</b></p>
+			<p class="buy_count">数量：{{value.pap_num}}吨</p>
+			<p>预估单价：{{value.estimate_price}}元</p>
+			<p><a data-id="{{value.pap_id}}" class="btn" onclick="del(this)">删除</a></p>
+		</div>
+		<div class="apply_msg">
+			<p>联系人：{{value.pack_real_name}}</p>
+			<p class="apply_connect">联系方式：{{value.pack_phone}}</p>
+			<p class="buy_state">卖家已同意售出</p>
+		</div>
+	</li>
+	<!-- 拒绝-->
+	{{else if value.pap_apply_state==2}}
+	<li data-pkid="{{value.pack_id}}">
+		<div class="apply_msg">
+			<p>废纸品类：{{value.estimate_stage}} <b class="paper_class">{{value.goods_name}}</b></p>
+			<p class="buy_count">数量：{{value.pap_num}}吨</p>
+			<p>预估单价：{{value.estimate_price}}元</p>
+			<p><a data-id="{{value.pap_id}}" class="btn" onclick="del(this)">删除</a></p>
+		</div>
+		<div class="apply_msg">
+			<p>联系人：{{value.pack_real_name}}</p>
+			<p class="apply_connect">联系方式：{{value.pack_phone}}</p>
+			<p class="buy_state">卖家不同意售出</p>
+			<p class="pay_state">
+				<a data-num="{{value.pap_num}}" data-stage="{{value.estimate_stage}}" data-price="{{value.estimate_price}}" data-gdid="{{value.pap_id}}" onclick="reApply(this)" class="to_pay">重新申请</a>
+			</p>
+		</div>
+	</li>
+	<!-- 超时-->
+	{{else if value.pap_apply_state==3}}
+	<li data-id="{{value.pap_id}}" data-pkid="{{value.pack_id}}">
+		<div class="apply_msg" data-gdid="{{value.goods_id}}">
+			<p>废纸品类：{{value.estimate_stage}} <b class="paper_class">{{value.goods_name}}</b></p>
+			<p class="buy_count">数量：{{value.pap_num}}吨</p>
+			<p>预估单价：{{value.estimate_price}}元</p>
+			<p><a data-id="{{value.pap_id}}" class="btn" onclick="del(this)">删除</a></p>
+		</div>
+		<div class="apply_msg">
+			<p>联系人：{{value.pack_real_name}}</p>
+			<p class="apply_connect">联系方式：{{value.pack_phone}}</p>
+			<p class="buy_state">超时</p>
+		</div>
+	</li>
+	<!-- 已取消-->
+	{{else}}
+	<li data-pkid="{{value.pack_id}}">
+		<div class="apply_msg">
+			<p>废纸品类：{{value.estimate_stage}} <b class="paper_class">{{value.goods_name}}</b></p>
+			<p class="buy_count">数量：{{value.pap_num}}吨</p>
+			<p>预估单价：{{value.estimate_price}}元</p>
+			<p><a data-id="{{value.pap_id}}" class="btn" onclick="del(this)">删除</a></p>
+		</div>
+		<div class="apply_msg">
+			<p>联系人：{{value.pack_real_name}}</p>
+			<p class="apply_connect">联系方式：{{value.pack_phone}}</p>
+			<p class="buy_state">取消申请后，可重新申请</p>
+			<p class="pay_state">
+				<a data-num="{{value.pap_num}}" data-stage="{{value.estimate_stage}}" data-price="{{value.estimate_price}}" data-gdid="{{value.pap_id}}" onclick="reApply(this)" class="to_pay">重新申请</a>
+			</p>
+		</div>
+	</li>
+	{{/if}}
+	{{/each}}
+</script>
+	<script src="../../lib/jquery-1.8.3.min.js"></script>
+	<script type="text/javascript" src="../../lib/md5.js"></script>
+	<script type="text/javascript" src="../../js/secret.js"></script>
+	<script type="text/javascript" src="../../lib/template-web.js"></script>
+	<script type="text/javascript" src="../../lib/pagination.js"></script>
+	<script>
+		$(function(){
+			$('#top_bar').load('../public/topBar.html');
+			$('#nav_bar').load('../public/navBar.html');
+			$('#search').load('../public/search.html');
+			$('#footer').load('../public/footer.html');
+			$('.myLeft').load('../public/accLeft.html');
+
+//			获取采购申请列表
+			var page= 1;
+			apply(page,true);
+			function apply(pg,can){
+				var obj={
+					pe_id:localStorage.getItem("userId"),
+					pe_phone:localStorage.getItem("userPhone"),
+					page:pg
+				}
+				var applyname='/api/paper/get/purchase/apply/list';
+				GetList(obj,applyname,getApplist);
+				function getApplist(_data){
+					if(_data.status_code=='10000'){
+						var html=template('applyList',_data);
+						$('.applyList').html(html);
+						if(can){
+							$('.pages').html('');
+							//分页
+							$('.pages').initPagenation({
+								totalCount: _data.totalRecord,     //数据总个数,
+								showBtnFirst: true,     //是否显示 首页按钮
+								showCount: 5,          //每页显示多少个,默认10个
+								showBtnsCount: 8      //数字按钮数量,最多10个,默认10个
+							});
+						}
+					}else{
+						$('.applyList').html(_data.msg).css({'font-size':'18px'});
+					}
+				}
+			}
+			$('.pages').delegate('a','click',function(){
+				apply($(this).html(),false);
+			});
+			$('.pages').delegate('.pre-page','click',function(){
+				var page=$(this).siblings('a.active').html();
+				if(page!=1){
+					apply(page-1,false);
+				}
+			});
+			$('.pages').delegate('.next-page','click',function(){
+				var page=$(this).siblings('a.active').html();
+				if(page!=$(this).prev().prev().html()){
+					apply(parseInt(page)+1,false);
+				}
+			});
+			$('.pages').delegate('.first-page','click',function(){
+				var page=$(this).next().html();
+				apply(page,false);
+			});
+			$('.pages').delegate('.last-page','click',function(){
+				var page=$(this).prev().html();
+				apply(page,false);
+			});
+		})
+
+//		取消申请
+		function cancel(This){
+			var pid=$(This).attr('data-id');
+			var can={
+				pe_id:localStorage.getItem("userId"),
+				pe_phone:localStorage.getItem("userPhone"),
+				pap_id:pid
+			}
+			var canname='/api/paper/cancel/purchase/apply';
+			GetList(can,canname,getCancel);
+			function getCancel(data){
+				location.reload();
+			}
+		}
+//		删除采购申请
+		function del(This){
+			var pid=$(This).attr('data-id');
+			var obj={
+				pe_id:localStorage.getItem("userId"),
+				pe_phone:localStorage.getItem("userPhone"),
+				pap_id:pid
+			}
+			var delname='/api/paper/delete/purchase/apply';
+			GetList(obj,delname,getDel);
+			function getDel(data){
+				if(data.status_code=='10000'){
+					location.reload();
+				}else{
+					alert(data.msg);
+				}
+			}
+		}
+//		重新申请
+		function reApply(This){
+			localStorage.setItem("replyId",$(This).attr('data-gdid'));
+			localStorage.setItem("replyPrice",$(This).attr('data-price'));
+			localStorage.setItem("replyNum",$(This).attr('data-num'));
+			localStorage.setItem("replyStage",$(This).attr('data-stage'));
+			window.location.href='reApply.html';
+		}
+	</script>
+	</body>
+
+</html>

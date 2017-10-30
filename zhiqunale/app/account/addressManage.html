@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv = "X-UA-Compatible" content = "IE=edge,chrome=1" />
+    <title>纸去哪了-废纸交易平台</title>
+    <link rel="stylesheet" type="text/css" href=""/>
+    <link rel="stylesheet" type="text/css" href="../../css/account/accountMsg.css"/>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <div id="top_bar"></div>
+            <div id="nav_bar"></div>
+            <div id="search"></div>
+        </div>
+        <div class="main_box">
+            <div id="account_paper">
+                <div class="myLeft"></div>
+                <div class="accCompRight">
+                    <div id="addrManage">
+                        <h2 class="til">地址管理</h2>
+                        <div class="addrBox">
+                            <h3>
+                                贸易公司地址管理
+                                <a class="edit" onclick="edit()">
+                                    <img src="../../img/bianji_icon.png"/>
+                                </a>
+                            </h3>
+                            <ul class="comAddress">
+                            </ul>
+                        </div>
+                        <div class="addrBox paperAddress">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="footer"></div>
+    </div>
+    <div class="delAddr">
+        <div class="delBox">
+            <p>确定删除该纸厂吗？</p>
+            <p>
+                <a onclick="sure()" href="javascript:;">确定</a>
+                <a class="cancel" href="javascript:;">取消</a>
+            </p>
+        </div>
+    </div>
+    <input class="hidden" data-id="address" type="hidden"/>
+    <!-- 纸厂或贸易公司的地址-->
+<script type="text/html" id="compMana">
+    <li>
+        <span data-id="{{da_id}}">{{co_name}}</span><span class="nm">{{da_province}}</span><span class="nm">{{da_city}}</span><span class="nm">{{da_dist}}</span><span class="nm">{{da_detail}}</span>
+        <a class="del" onclick="del()">
+            <img src="../../img/huishou.png"/>
+        </a>
+    </li>
+</script>
+    <!-- 贸易公司合作纸厂地址-->
+<script type="text/html" id="paperMana">
+    <h3>纸厂地址管理</h3>
+    <ul>
+        {{each data as value i}}
+        {{if value.da_slug==2}}
+        <li>
+            <span data-id="{{value.address_id}}">{{value.co_name}}</span>
+            <span>{{value.province}}</span><span>{{value.city}}</span><span>{{value.dist}}</span><span>{{value.detail}}</span>
+            <a class="edit" onclick="editpp(this)">
+                <img src="../../img/bianji_icon.png"/>
+            </a>
+        </li>
+        {{else}}
+        <li>
+            <span data-id="{{value.address_id}}">{{value.co_name}}</span>
+            <span>{{value.province}}</span><span>{{value.city}}</span><span>{{dist}}</span><span>{{value.detail}}</span>
+        </li>
+        {{/if}}
+        {{/each}}
+    </ul>
+</script>
+    <script src="../../lib/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="../../lib/md5.js"></script>
+    <script type="text/javascript" src="../../js/secret.js"></script>
+    <script type="text/javascript" src="../../lib/template-web.js"></script>
+    <script>
+        $(function(){
+            $('#top_bar').load('../public/topBar.html');
+            $('#search').load('../public/search.html');
+            $('#nav_bar').load('../public/navBar.html');
+            $('#footer').load('../public/footer.html');
+            $('.myLeft').load('../public/accLeft.html');
+            //获取贸易公司地址
+            var obj={
+                pe_id:localStorage.getItem("userId"),
+                pe_phone:localStorage.getItem("userPhone")
+            };
+            var comname='/api/paper/get/paper/address';
+            GetList(obj,comname,getComp);
+            function getComp(data){
+                if(data.status_code=='10000'){
+                    var html=template('compMana',data.data);
+                    $('.comAddress').html(html);
+                }
+            }
+
+            //获取贸易公司下的合作纸厂
+            var obj1={
+                pe_id:localStorage.getItem("userId"),
+                pe_phone:localStorage.getItem("userPhone")
+            };
+            var pathname='/api/paper/get/cooperate/paper/address';
+            GetList(obj1,pathname,getCoper);
+            function getCoper(_data){
+                if(_data.status_code=='10000'){
+//                if(_data.data.length>1){
+//                    for(var d=0;d<_data.data.length;d++){
+//                        _data.data[d].province=unescape(_data.data[d].province);
+//                        _data.data[d].city=unescape(_data.data[d].city);
+//                        _data.data[d].dist=unescape(_data.data[d].dist);
+//                        _data.data[d].detail=unescape(_data.data[d].detail);
+//                    }
+//                }
+                    var html=template('paperMana',_data);
+                    $('.paperAddress').html(html);
+                    //认证状态
+                    var status=localStorage.getItem("userState");
+                    if(status!=1){
+                        $('.paperAddress .edit').hide();
+                    }
+                }else{
+                    $('.paperAddress').css('border-bottom','none');
+                }
+            }
+
+        })
+        function edit(){
+            if($('.comAddress li').length==0){
+                window.location.href='addressManage_edit.html';
+            }else{
+                var spans=$('.nm');
+                var prov=escape($(spans[0]).html());
+                var city=escape($(spans[1]).html());
+                var dist=escape($(spans[2]).html());
+                var detail=escape($(spans[3]).html());
+                window.location.href='addressManage_edit.html?'+prov+'&'+city+'&'+dist+'&'+detail;
+            }
+        }
+        function editpp(This){
+            var spans=$(This).siblings('span');
+            var ppid=$(spans[0]).attr('data-id');
+            var ppProv=escape($(spans[1]).html());
+            var ppCity=escape($(spans[2]).html());
+            var ppDist=escape($(spans[3]).html());
+            var ppDetail=escape($(spans[4]).html());
+            window.location.href='addressManage_copp_edit.html?'+ppid+'&'+ppProv+'&'+ppCity+'&'+ppDist+'&'+ppDetail;
+        }
+        //删除贸易公司地址
+        function del(){
+            $('.delAddr').show();
+            $('.cancel').click(function(){
+                $('.delAddr').hide();
+            });
+        }
+//        确定删除
+        function sure(){
+            var delobj={
+                pe_id:localStorage.getItem("userId"),
+                pe_phone:localStorage.getItem("userPhone")
+            }
+            var delname='/api/paper/delete/paper/delivery/address';
+            GetList(delobj,delname,getDel);
+            function getDel(data){
+                if(data.status_code=='10000'){
+                    $('.delAddr').hide();
+                    location.reload();
+                }
+            }
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv = "X-UA-Compatible" content = "IE=edge,chrome=1" />
+    <title>纸去哪了-废纸交易平台</title>
+    <link rel="stylesheet" href="../../css/account/balance.css"/>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <div id="top_bar"></div>
+        <div id="nav_bar"></div>
+        <div id="search"></div>
+    </div>
+    <div class="main_box">
+        <div id="balance">
+            <div class="myLeft"></div>
+            <div class="balBox" style="min-height:450px;">
+                <div class="bal">
+                    <h3 style="border-bottom: 1px solid #d2d2d2;">收支规则</h3>
+                    <div class="rules_detail">
+                        <h4 style="margin-top: 36px;">1.结算</h4>
+                        <p>双方没有异议，业务员上传结算清单，平台将完成向打包站结算贷款，或向物流司机结算物流费用，结算金额可在资金流水中查看。</p>
+                    	<p class="calculate">结算金额 = 订单金额-收款手续费；</p>
+                    	<p>银联B2B手续费10元/笔，B2C手续费=订单金额*0.4%（最低0.24元）；</p>
+                    	<p>支付宝手续费=订单金额*0.4%；</p>
+                    	<p>微信手续费=订单金额*0.6%（单笔收款最多5w）</p>
+                    	<h4>2.退款</h4>
+                    	<p>废纸交易或物流找车，在订单异常时，其中一方取消交易订单，平台将向付钱方退还贷款费用，退款金额可在资金流水中查看。</p>
+                    	<p class="calculate">退款金额=订单金额-收款手续费</p>
+                    	<h4>3.提现</h4>
+                    	<p>您将账户余额转移到银行卡的过程，平台审核通过，将在7个工作日内完成向您的银行卡账户打款，提现时银联将收取收费费2元/笔，纸去哪了平台不收取任何费用</p>
+                    	
+                    	<h4>4.手续费将在账户余额中扣除</h4>
+                    	<p class="calculate">余额提现扣款=提现金额+手续费</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="footer"></div>
+</div>
+<input class="hidden" data-id="balance" type="hidden"/>
+<script src="../../lib/jquery-1.8.3.min.js"></script>
+<script>
+    $(function(){
+        $('#top_bar').load('../public/topBar.html');
+        $('#nav_bar').load('../public/navBar.html');
+        $('#search').load('../public/search.html');
+        $('#footer').load('../public/footer.html');
+        $('.myLeft').load('../public/accLeft.html');
+		
+		
+		$('.delCard input').each(function(){
+			$(this).click(function(){
+				if($(this).val()=='qt'){
+					$('#other').show();
+				}else{
+					$('#other').hide()
+				}
+			})
+		})
+		
+		/*$('#qt').click(function(){
+			$(this).parent().siblings('textarea').show();
+		})*/
+		$('.submit').click(function(){
+			if($('input[name="reason"]:checked').val()=='qt'){
+				localStorage.reason =  $('input[name="reason"]:checked').parents('label').siblings('textarea').val();
+			}else{
+				localStorage.reason =$('input[name="reason"]:checked').parents('label').text();
+			}
+			$(this).attr('href','confirm_delCard.html');			
+		})
+		
+    })
+</script>
+</body>
+</html>

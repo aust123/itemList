@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv = "X-UA-Compatible" content = "IE=edge,chrome=1" />
+    <title>纸去哪了-废纸交易平台</title>
+    <link rel="stylesheet" href="../../css/account/accountMsg.css"/>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <div id="top_bar"></div>
+            <div id="nav_bar"></div>
+            <div id="search"></div>
+        </div>
+        <div class="main_box">
+            <div id="account_paper">
+                <div class="myLeft"></div>
+                <div class="accCompRight">
+                    <div id="cooperAdd">
+                        <h2 class="til">合作纸厂管理</h2>
+                        <div class="addBox">
+                            <h3>添加纸厂</h3>
+                            <form action="">
+                                <p>
+                                    <label>纸厂姓名：</label>
+                                    <select class="selpaper">
+                                    </select>
+                                    <a href="cooperPaper_addMore.html">添加其他纸厂</a>
+                                </p>
+                                <div class="detail">
+                                    <p>
+                                        <label>纸厂地址：</label>
+                                    </p>
+                                    <h4>
+                                        <label>公司简介：</label><br/>
+                                    </h4>
+                                </div>
+                                <p>
+                                    <input class="submit" type="button" value="确定"/>
+                                </p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="footer"></div>
+    </div>
+    <input class="hidden" data-id="papers" type="hidden"/>
+<script type="text/html" id="selpaper">
+    <option value="0">请选择纸厂</option>
+    {{each data as value i}}
+        <option value="{{value.co_id}}">{{value.co_name}}</option>
+    {{/each}}
+</script>
+<script type="text/html" id="detail">
+        <p>
+            <label>纸厂地址：</label>
+            <span>{{da_province}}{{da_city}}{{da_dist}}{{da_detail}}</span>
+        </p>
+        <h4>
+            <label>公司简介：</label><br/>
+            <span>{{co_info}}</span>
+        </h4>
+</script>
+    <script src="../../lib/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="../../lib/md5.js"></script>
+    <script type="text/javascript" src="../../js/secret.js"></script>
+    <script type="text/javascript" src="../../lib/template-web.js"></script>
+    <script>
+        $(function(){
+            $('#top_bar').load('../public/topBar.html');
+            $('#search').load('../public/search.html');
+            $('#nav_bar').load('../public/navBar.html');
+            $('#footer').load('../public/footer.html');
+            $('.myLeft').load('../public/accLeft.html');
+
+//            获取合作纸厂信息
+            var obj={
+                pe_id:localStorage.getItem("userId"),
+                pe_phone:localStorage.getItem("userPhone")
+            };
+            var copername='/api/paper/get/online/paper/data';
+            GetList(obj,copername,getCoper);
+            function getCoper(data){
+                if(data.status_code=='10000'){
+                    var html=template('selpaper',data);
+                    $('.selpaper').html(html);
+                }
+            }
+
+            //根据选择纸厂显示详细信息
+            $('.selpaper').change(function(){
+                var curId=$(this).val();
+                if(curId==0){
+                    $('.detail span').html('');
+                }else{
+                    var selname='/api/paper/get/online/paper/data';
+                    GetList(obj,selname,getSel);
+                    function getSel(_data){
+                        if(_data.status_code=='10000'){
+                            for(var d=0;d<_data.data.length;d++){
+                                if(_data.data[d].co_id==curId){
+                                    var html=template('detail',_data.data[d]);
+                                    $('.detail').html(html);
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+//          提交添加的合作纸厂
+            $('.submit').click(function(){
+                var ppid=$('.selpaper option:selected').val();
+                if(ppid!=0){
+                    var pathname='/api/paper/add/trade/cooperate/paper';
+                    var sub={
+                        pe_id:localStorage.getItem("userId"),
+                        pe_phone:localStorage.getItem("userPhone"),
+                        paper_type:1,
+                        paper_id:ppid
+                    }
+                    GetList(sub,pathname,getAdd);
+                    function getAdd(_data){
+                        if(_data.status_code=='10000'){
+                            window.location.href='cooperPaper.html';
+                        }
+                    }
+                }
+            });
+        })
+    </script>
+</body>
+</html>

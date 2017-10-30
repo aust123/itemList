@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../../css/account/accountSet_pwd.css" />
+	</head>
+
+	<body>
+		<div class="container">
+			<div class="header">
+				<div id="top_bar"></div>
+				<div id="nav_bar"></div>
+				<div id="search"></div>
+			</div>
+			<div class="main_box">
+				<div id="accountFind">
+					<div class="myLeft"></div>
+					<div class="content">
+						<div id="find_password" class="setting_box">
+							<h2>找回支付密码</h2>
+							<div class="set_steps"><span>1、获取短信验证码</span><span class="current_steps">2、设置新密码</span><span>3、成功找回</span></div>
+
+							<div class="set_content" style="margin-top: 40px;">
+								<!------------表单提交内容-------------------->
+								<form action="">
+									<div id="input_payPwd">输入支付密码&nbsp;:<input type="password" id="new_pwd" name="payPwd" />
+										<span class="pwd_demand">可由6-20位英文字母和数字组成</span>
+										<em>请输入支付密码</em>
+									</div>
+									<div id="sure_payPwd" class="">确认支付密码&nbsp;:<input type="password" id="new_pwd2" name="sure_payPwd" /><em>请输入支付密码</em></div>
+								</form>
+								<div id="newPwd_sure" class="setting_sure">
+									<a href="###">确&nbsp;&nbsp;定</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="footer"></div>
+		</div>
+		<input class="hidden" data-id="findpwd" type="hidden" />
+		<script src="../../lib/jquery-1.8.3.min.js"></script>
+		<script type="text/javascript" src="../../js/setPayPwd.js"></script>
+		<script type="text/javascript" src="../../lib/md5.js"></script>
+		<script type="text/javascript" src="../../js/secret.js"></script>
+		<script>
+			$(function() {
+				$('#top_bar').load('../public/topBar.html');
+				$('#nav_bar').load('../public/navBar.html');
+				$('#search').load('../public/search.html');
+				$('#footer').load('../public/footer.html');
+				$('.myLeft').load('../public/accLeft.html');
+
+				//获取url的tag值
+				var search = decodeURIComponent(window.location.search);
+				var query = search.substr(5);
+				console.log(query);
+				$('.setting_sure a').click(function() {
+					if($('#new_pwd').val() != '' && $('#new_pwd2').val() != '') {
+						//向后台发送数据
+						var pathname = "/api/paper/find/back/pay/password";
+						var obj = {};
+						//判断是短信验证码还是登录密码验证
+						if(query == 1) {
+							obj = {
+								pe_id: localStorage.userId, //用户id值，本地缓存读取
+								pe_phone: localStorage.userPhone, //用户电话号码，本地缓存读取
+								tag: query,
+								nc_id: localStorage.fnc_id, //后台返回短信验证码的id值
+								nc_code: localStorage.nc_code,
+								idcard_code: localStorage.idcard_code,
+								new_pay_password: $('#new_pwd').val(),
+								re_pay_password: $('#new_pwd2').val()
+							}
+						} else if(query == 2) {
+							obj = {
+								pe_id: localStorage.userId, //用户id值，本地缓存读取
+								pe_phone: localStorage.userPhone, //用户电话号码，本地缓存读取
+								tag: query,
+								password: localStorage.pwd,
+								idcard_code: localStorage.idcard,
+								new_pay_password: $('#new_pwd').val(),
+								re_pay_password: $('#new_pwd2').val()
+							}
+						}
+
+						GetList(obj, pathname, DealData);
+
+					} else {
+						//输入框值为空的显示提示信息
+						$('input[type="password"]').each(function() {
+							if(typeof($(this).siblings('em').attr("fill")) == "undefined") {
+								$(this).siblings('em').show();
+							}
+						})
+					}
+				})
+
+				function DealData(_data) {
+					console.log(_data);
+					if(_data.status_code == 10000) {
+						$('.setting_sure a').attr('href', 'accountSet_findPaypwd-success.html');
+					} else if(_data.status_code == 10011) {
+						window.confirm('新支付密码与旧支付密码相同');
+					} else if(_data.status_code == 10021 || _data.status_code == 10023) {
+						window.confirm('验证码错误')
+					} else if(_data.status_code == 10022) {
+						window.confirm('验证码已过期')
+					}
+				}
+
+			})
+		</script>
+	</body>
+
+</html>

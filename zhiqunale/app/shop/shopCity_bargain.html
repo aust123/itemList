@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+
+		<link rel="stylesheet" type="text/css" href="../../css/shop/shoppingCity.css" />
+
+	</head>
+
+	<body style="background:#f2f2f2;">
+		<div class="container">
+			<div class="header">
+				<div id="top_bar"></div>
+				<div id="nav_bar"></div>
+				<div id="search"></div>
+			</div>
+			<div class="main_box">
+				<div class="content">
+					<div class="bargin">
+						<h2>议价</h2>
+						<div class="bargin_msg">
+							<ul class="gd_msg">
+
+							</ul>
+						</div>
+						<div id="cancel">
+							<a href="javascript:history.back(-1)">取消</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="footer"></div>
+		</div>
+		<input type="hidden" class="hidden" data-id="shopCity"/>
+<script type="text/html" id="gdMsg">
+			<li>
+				<span>姓名：</span>{{pk_real_name}}
+			</li>
+			<li>
+				<span>手机号：</span>{{pk_phone}}
+			</li>
+			<li>
+				<span>公司名字：</span>{{pk_username}}
+			</li>
+			<li style="margin-bottom: 14px;">
+				<span>详细地址：</span>{{address}}
+			</li>
+			<li id="tip">#联系我时说是在&nbsp;&nbsp;"纸去哪了"&nbsp;&nbsp;平台看到的#</li>
+</script>
+		<script src="../../lib/jquery-1.8.3.min.js"></script>
+		<script type="text/javascript" src="../../lib/md5.js"></script>
+		<script type="text/javascript" src="../../js/secret.js"></script>
+		<script type="text/javascript" src="../../lib/template-web.js"></script>
+		<script type="text/javascript">
+			$(function() {
+				$('#top_bar').load('../public/topBar.html');
+				$('#search').load('../public/search.html');
+				$('#nav_bar').load('../public/navBar.html');
+				$('#footer').load('../public/footer.html');
+
+				var gdid=unescape(location.search.substring(1)).split('=')[1];
+				var obj={
+					pe_id:localStorage.getItem("userId"),
+					pe_phone:localStorage.getItem("userPhone"),
+					goods_id:gdid
+				}
+				var pathname='/api/paper/bargain';
+				GetList(obj,pathname,getBargin);
+				function getBargin(_data){
+					if(_data.status_code=='10000'){
+						var html=template('gdMsg',_data.data);
+						$('.gd_msg').html(html);
+					}else{
+						$('.gd_msg').html(_data.msg);
+					}
+				}
+			})
+
+		</script>
+
+	</body>
+
+</html>

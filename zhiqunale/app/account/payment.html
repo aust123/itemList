@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../../css/account/balance.css" />
+	</head>
+	<body>
+	<div class="container">
+		<div class="header">
+			<div id="top_bar"></div>
+			<div id="nav_bar"></div>
+			<div id="search"></div>
+		</div>
+		<div class="main_box">
+			<div id="pay">
+				<div class="content">
+					<div class="pay_content">
+						<p class="pay_state">您的订单已成功提交，请尽快完成本次交易的付款</p>
+						<div class="pay_tip">
+							温馨提示：请您及时付款，以便订单尽快处理。请在<span id="time"></span>内完成支付
+						</div>
+						<div class="pay_switch">
+							<span class="pay_platform currented">平台支付</span>
+							<span class="pay_card currented">银行卡支付</span>
+						</div>
+						<div id="pay_select">
+							<!--支付平台内容-->
+							<div class="platform pay_show">
+								<div class="zhifubao">
+									<a onclick="wap_pay('alipay_pc_direct',1)"><img src="../../img/zhifubao.png" />支付宝</a>
+								</div>
+								<div class="weixin">
+									<a onclick="wap_pay('wx_pub_qr',2)"><img src="../../img/weixin.png" />微信</a>
+									<span id="qrcode"></span>
+								</div>
+							</div>
+							<!--银行卡内容-->
+							<div class="card">
+								<a><img class="first_card" src="../../img/jianshe.png"/></a>
+								<a><img src="../../img/gongshang.png"/></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="footer"></div>
+	</div>
+
+	<script src="../../lib/jquery-1.8.3.min.js"></script>
+	<script type="text/javascript" src="../../lib/md5.js"></script>
+	<script type="text/javascript" src="../../js/secret.js"></script>
+	<script type="text/javascript" src="../../lib/template-web.js"></script>
+	<script type="text/javascript" src="../../lib/pingpp.js"></script>
+	<script type="text/javascript" src="../../lib/qrcode.min.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				$('#top_bar').load('../public/topBar.html');
+				$('#footer').load('../public/footer.html');
+
+				/*倒计时30min效果*/
+				var x = 30, interval;
+				var time = document.getElementById("time");
+				window.onload = function() {
+					var d = new Date("1111/1/1,0:" + x + ":0");
+					interval = setInterval(function() {
+						var m = d.getMinutes();
+						var s = d.getSeconds();
+						m = m < 10 ? "0" + m : m;
+						s = s < 10 ? "0" + s : s;
+						time.innerHTML = m + "分" + s + "秒";
+						if(m == 0 && s == 0) {
+							clearInterval(interval);
+							history.go(-1);
+							return;
+						}
+						d.setSeconds(s - 1);
+					}, 1000);
+
+				}
+
+				/*支付方式选择*/
+				$(".pay_platform").click(function(){
+					$(this).addClass("currented").siblings().removeClass("currented");
+					$(".platform").addClass("pay_show").siblings().removeClass("pay_show");
+				})
+				$(".pay_card").click(function(){
+					$(this).addClass("currented").siblings().removeClass("currented");
+					$(".card").addClass("pay_show").siblings().removeClass("pay_show");
+
+				})
+
+				/*单击支付平台支付宝/微信更换选中状态*/
+				var zf =wx= 1;
+				$(".zhifubao").click(function() {
+					if(zf == 1) {
+						$(this).css("background", "url(../../img/tanchuang_choose_p.png) left center no-repeat");
+						$(".weixin").css("background", "url(../../img/tanchuang_choose_n.png) left center no-repeat");
+						zf = 0;
+						wx=1;
+					} else {
+						$(this).css("background", "url(../../img/tanchuang_choose_n.png) left center no-repeat");
+						zf = 1;
+					}
+				})
+				$(".weixin ").click(function() {
+					if(wx == 1) {
+						$(this).css("background", "url(../../img/tanchuang_choose_p.png) left center no-repeat");
+						$(".zhifubao").css("background", "url(../../img/tanchuang_choose_n.png) left center no-repeat");
+						wx = 0;
+						zf = 1;
+					} else {
+						$(this).css("background", "url(../../img/tanchuang_choose_n.png) left center no-repeat");
+						wx = 1;
+					}
+				})
+//				var pay=location.search.split('?')[1].split('&');
+//				$('.sum').html(pay[2]);
+			})
+			//支付
+			function wap_pay(channel,sl) {
+				var pay=location.search.split('?')[1].split('&');
+//				模拟数据--如果pay[2]==0，正常支付   pay[2]=1,补差额
+				var pathname;
+				if(pay[2]==0){
+					pathname='/api/paper/pay';
+				}else{
+					pathname='/api/paper/pay/extra';
+				}
+				var obj={
+					pe_id:localStorage.getItem('userId'),
+					pe_phone:localStorage.getItem('userPhone'),
+					order_id:pay[0],
+					order_type:pay[1],
+					channel:channel,
+					amount:'1',
+					subject:escape('支付货款'),
+					body:escape('支付货款'),
+					description:'',
+					slug:sl
+				};
+				GetList(obj,pathname,getPay);
+				function getPay(data){
+					if(sl==1){
+						pingpp.createPayment(JSON.stringify(data), function(result, err) {
+							window.location.href='myOrder.html';
+							if (data.status_code=="10000") {
+								alert(data.msg);
+							} else {
+								alert(result+" "+err.msg+" "+err.extra);
+							}
+						});
+					}else if(sl==2){
+						$('.ewmshow').html(makeCode(data.data));
+						var qr={
+							ping_order_no:data.ping_order_no
+						}
+						qr.sign=getUrl(qr);
+						setInterval(function(){
+							$.ajax({
+								url:'https://api.zhiqunale.cn/api/paper/wx/pay/or/not',
+								type:'post',
+								dataType:'json',
+								data:qr,
+								success:function(data){
+									if(data.status_code=='10000'){
+										window.location.href='myOrder.html';
+									}else{
+										console.log(data.msg);
+									}
+								},error:function(){
+									console.log("请求错误");
+								}
+							});
+						},1000);
+					}
+				}
+			}
+//			生成二维码
+			function makeCode (url) {
+				var qrcode = new QRCode(document.getElementById("qrcode"), {
+					width : 200,
+					height : 200
+				});
+				return qrcode.makeCode(url);
+			}
+
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../../css/public.css"/>
+</head>
+<body>
+<!--页面搜索框! -->
+<div class="search">
+    <div class="logo">
+        <p>
+            <img src="" alt="纸去哪了平台"/>
+        </p>
+        <p>
+            <b style="display:none;" class="province"></b><b class="curCity"></b><br/>
+            <a href="switchCity.html">切换城市</a>
+        </p>
+    </div>
+    <p class="sear_box">
+        <input class="sear sr" type="text" placeholder="请输入纸品"/>
+        <a class="submit"></a>
+    </p>
+</div>
+<!--<script type="text/javascript" src="../../lib/jquery-1.8.3.min.js"></script>-->
+<script type="text/javascript">
+
+    $(function(){
+        $('.sear').focus(function(){
+            var s=location.href.split('/');
+            if(s[s.length-1]=='searchList.html'){
+            }else{
+                window.location.href='http://localhost:63342/zhiqunale/app/search/searchList.html';
+            }
+        });
+    })
+    if(localStorage.curCity){
+        localStorage.curCity;
+    }else{
+        $.getScript("http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js",function(){
+            var city = remote_ip_info["city"];
+            localStorage.curCity=city+'市';
+        });
+    }
+    $('.curCity').html(localStorage.curCity);
+</script>
+</body>
+
+</html>
+
+
+
+

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../../css/shop/shoppingCity.css" />
+	</head>
+	<body>
+		<div class="container">
+	        <div class="header">
+	            <div id="top_bar"></div>
+	            <div id="nav_bar"></div>
+	            <div id="search"></div>
+	        </div>
+	        <div class="main_box">
+		<div class="shop_content">
+			<div class="pack_msg">
+				<!--采购城商品描述区域-->
+				<div class="buy_msg">
+				</div>
+				<!--公司信息和发布列表-->
+				<div class="shop_company">
+					<div class="shop_company_nav">
+						<span class="compan_msg curent_state">公司信息</span><span>发布列表</span>
+					</div>
+					<!---------------公司信息--------------------->
+					<div class="compMsg companys comp_curent">
+					</div>
+					<!-------------------发布列表----------------->
+					<div class="companys">
+						<div class="publish_list">
+							<p>发布其他应用</p>
+							<div class="product_list">
+								<ul class="pubList">
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			</div>
+			<div id="footer"></div>
+        </div>
+	</div>
+<input type="hidden" class="hidden" data-id="shopCity"/>
+<!--采购城商品描述区域-->
+<script type="text/html" id="buyMsg">
+			<div class="shop_img">
+				<img src="{{pg_goods_img}}" />
+			</div>
+			<div class="buy_detail">
+				<div class="paper_name">{{pg_paper_category}}<span class="show_time">发布日期：{{publish_time}}</span></div>
+				<p>数量：{{pg_per_supply}}吨</p>
+				<p>今日已售：<span class="show_day">{{has_sold}}吨</span></p>
+				<p>详细地址：安徽省合肥市南二环与翡翠路</p>
+				<p class="paper_detail">商品描述：{{pg_remark}}</p>
+				<div class="shop_buy">
+					<a onclick="apply(this)" data-id="{{pg_id}}" id="buy_btn">购 买</a>
+					<a href="shopCity_bargain.html?gd_id={{pg_id}}">议 价</a>
+				</div>
+			</div>
+			<div class="shop_process">
+				<p>交易流程提示：询价、议价 ———提交购买信息———等待确认订单———支付预付款———验收———结算 </p>
+			</div>
+</script>
+<!---------------公司信息--------------------->
+<script type="text/html" id="compMsg">
+			<div class="compan_show">
+				<p>公司认证：{{pk_check_state}} &nbsp;&nbsp;信用：{{pk_credit_score}}</p>
+				<p>公司简介</p>
+				<div class="detail_more">
+					<p>{{pk_info}}</p>
+				</div>
+				<p>公司照片</p>
+				<div class="compan_img">
+					{{each pk_photos as value i}}
+					<img src="{{value}}" />
+					{{/each}}
+				</div>
+			</div>
+</script>
+<!-------------------发布列表----------------->
+<script type="text/html" id="pubList">
+	{{each data.pack_goods_list as value}}
+	<li data-id="{{value.pg_id}}">
+		<div class="product_list_img">
+			<a href="shoppingCity.html?id={{value.pg_id}}">
+				<img src="{{value.pg_goods_img}}" />
+			</a>
+		</div>
+		<div class="product_detail">
+			<p>{{value.pg_paper_category}}</p>
+			<p>数量：{{value.pg_per_supply}}吨</p>
+			<p>已售：{{value.has_sold}}吨</p>
+			<p>发布日期：{{value.publish_time}}</p>
+			<div class="pro_count">
+				<div class="shop_buy pro_buy">
+					<a onclick="apply(this)" data-id="{{value.pg_id}}" class="list_buy_btn">购买</a>
+					<a href="shopCity_bargain.html?gd_id={{value.pg_id}}">议价</a>
+				</div>
+			</div>
+		</div>
+	</li>
+	{{/each}}
+</script>
+<script type="text/javascript" src="../../lib/jquery-1.8.3.min.js"></script>
+		<script type="text/javascript" src="../../lib/md5.js"></script>
+		<script type="text/javascript" src="../../js/secret.js"></script>
+		<script type="text/javascript" src="../../lib/template-web.js"></script>
+			<script type="text/javascript">				
+				$(function() {			
+				$('#top_bar').load('../public/topBar.html');
+            	$('#search').load('../public/search.html');
+            	$('#nav_bar').load('../public/navBar.html');
+            	$('#footer').load('../public/footer.html');
+					
+					/*公司信息/信息列表单击切换显示*/
+					$(".shop_company_nav>span").each(function(i) {
+						$(this).click(function() {
+							$(this).addClass("curent_state").siblings().removeClass("curent_state");
+							$(".companys").eq(i).addClass("comp_curent").siblings().removeClass("comp_curent");
+						})
+					})
+
+//					根据id获取废纸详情
+					var pgid=unescape(location.search.substring(1)).split('=')[1];
+					var obj={
+						pe_id:localStorage.getItem("userId"),
+						pe_phone:localStorage.getItem("userPhone"),
+						goods_id:pgid
+					}
+					var pathname='/api/paper/get/goods/detail';
+					GetList(obj,pathname,getDetail);
+					function getDetail(_data){
+						if(_data.status_code=='10000'){
+							$('.pack_msg').removeAttr('style');
+							_data.data.goods.pg_id=unescape(location.search.substring(1)).split('=')[1];
+							var html1=template('buyMsg',_data.data.goods);
+							$('.buy_msg').html(html1);
+							var html2=template('compMsg',_data.data.pack);
+							$('.compMsg').html(html2);
+							var html3=template('pubList',_data);
+							$('.pubList').html(html3);
+						}else{
+							$('.pack_msg').html(_data.msg).css({'padding-left':'50px','font-size':'18px'});
+						}
+					}
+				})
+
+				//采购申请
+				function apply(This){
+					localStorage.setItem("goodId",$(This).attr('data-id'));
+					window.location.href='shopCity_submitMsg.html';
+				}
+				
+			</script>
+	</body>
+
+</html>

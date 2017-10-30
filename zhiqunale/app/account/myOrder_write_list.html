@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../../css/account/myOrder.css" />
+
+	</head>
+
+	<body>
+
+		<div class="container">
+			<div class="header">
+				<div id="top_bar"></div>
+				<div id="nav_bar"></div>
+				<div id="search"></div>
+			</div>
+			<div class="main_box">
+				<div id="checkorder">
+					<div class="myLeft"></div>
+					<div class="content">
+						<div class="list_box">
+							<h2>填写结算清单</h2>
+							<form action="" enctype="application/x-www-form-urlencoded">
+								<div class="list_content">
+
+									<div class="car_number">车号选择&nbsp;&nbsp;:
+										<select name="carNumber" class="carNumber"></select>
+									</div>
+									<div class="select_date">日期选择&nbsp;&nbsp;:
+										<select id="J_Year"></select><span>年</span>
+										<select id="J_Month"></select><span>月</span>
+										<select id="J_Day"></select><span>日</span>
+									</div>
+									<div>纸品等级&nbsp;:<input style="width: 201px;" name="paper_stage" type="text" value="" /></div>
+									<div>水分折扣（%）&nbsp;:<input name="moisture_discount" type="text" value="" /></div>
+									<div>杂量折扣（%）&nbsp;:<input name="impurity_discount" type="text" value="" /></div>
+									<div>结算重量（吨）&nbsp;:<input name="settle_weight" type="text" value="" /></div>
+									<div>结算单价（元）&nbsp;:<input name="settle_unit_price" type="text" value="" /></div>
+									<div>结算金额（元）&nbsp;:<input name="settle_price" type="text" value="" /></div>
+
+									<p class="upload_listText">上传结算清单</p>
+									<div class="list_img">
+										<!--上传清单图片-->
+										<input id="file" type="file" onchange="uploadImg(this)" />
+										<img id="yyImg" src='../../img/qiyexinxi_shangchuang.png'>
+									</div>
+
+								</div>
+								<div class="list_sure write">
+									<a href="###">确&nbsp;&nbsp;定</a>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="footer"></div>
+		</div>
+		<input class="hidden" data-id="myOrder" type="hidden" />
+		<script src="../../lib/jquery-1.8.3.min.js"></script>
+		<script type="text/javascript" src="../../js/selectdate.js"></script>
+		<script type="text/javascript" src="../../lib/md5.js"></script>
+		<script type="text/javascript" src="../../js/secret.js"></script>
+		<script>
+			$(function() {
+				$('#top_bar').load('../public/topBar.html');
+				$('#nav_bar').load('../public/navBar.html');
+				$('#search').load('../public/search.html');
+				$('#footer').load('../public/footer.html');
+				$('.myLeft').load('../public/accLeft.html');
+
+			})
+
+			// 上传图片
+			function uploadImg(file) {
+				var baseSrc;
+				var img = document.getElementById('yyImg');
+				if(file.files && file.files[0]) {
+					var ext = file.value.substring(file.value.lastIndexOf(".") + 1).toLowerCase();
+					if(ext != 'png' && ext != 'jpg' && ext != 'jpeg') {
+						alert("图片的格式必须为png或者jpg或者jpeg格式！");
+						return false;
+					} else {
+						var reader = new FileReader();
+						reader.onload = function(evt) {
+							baseSrc= evt.target.result;
+							img.src = baseSrc;												
+							$.ajax({
+								type: 'post',
+								url: 'https://admin.zhiqunale.cn/index.php?g=Api&m=Img&a=receivePcFile',
+								data: {
+									pic: baseSrc
+								},
+								success: function(data) {
+									console.log(data)
+									localStorage.photo = data.data;								
+								},
+								error: function() {
+									console.log('请求错误！')
+								}
+							})
+						}
+						reader.readAsDataURL(file.files[0]);
+					}
+				} else //兼容IE
+				{
+					file.select();
+					var imgSrc = document.selection.createRange().text;
+					img.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)";
+					img.filters.item('DXImageTransform.Microsoft.AlphaImageLoader').src = imgSrc;
+					if(navigator.appName == "Microsoft Internet Explorer" && parseInt(navigator.appVersion.split(";")[1].replace(/[ ]/g, "").replace("MSIE", "")) < 10) {
+						//alert("您的浏览器版本过低，请下载IE10及以上版本");
+						$('#yyImg').attr('src', '');
+					}
+				}
+
+			}
+
+			/*选择日期插件*/
+			selectdate({
+				yearID: "J_Year",
+				monthID: "J_Month",
+				dayID: "J_Day",
+				/*设置年月范围*/
+				minYear: -10, //前10年
+				maxYear: 50 //后50年
+			});
+
+			//上传图片
+
+			//获取订单id和订单类型
+			var params=location.search.split('?')[1].split('&');
+			localStorage.orderId=params[0].split('=')[1];
+			localStorage.orderType = params[1].split('=')[1];
+			//获取车牌号
+			! function() {
+				var pathname = '/api/paper/get/plate/number/before/upload/settle/list';
+				var obj = {
+					pe_id: localStorage.userId, //用户id值，本地缓存读取
+					pe_phone: localStorage.userPhone,
+					order_id: localStorage.orderId, //我的订单页面 pod_id 传值过来
+					order_type:localStorage.orderType //我的订单页面 传值过来1：直销，2：采购
+				};
+				GetList(obj, pathname, PlateNum)
+			}()
+
+			function PlateNum(_data) {
+				console.log(_data)
+				if(_data.status_code == 10000) {
+					for(var i in _data.data) {
+						var options = "<option value=" + '"' + _data.data[i]["plate_number"] + '" ' + 'dri_type=' + '"' + _data.data[i]["driver_type"] + '" ' + 'loid=' + '"' + _data.data[i]["logistics_order_id"] + '"' + ">" + _data.data[i]["plate_number"] + "</option>";
+						$(".carNumber").append(options);
+					}
+				}
+
+			}
+			//保留三位有效数字  cont.toFixed(3)
+			
+			function timetamp(y, m, d) {
+				return(new Date(y, m, d, ).getTime() / 1000);
+			}
+
+			var ms = timetamp($('#J_Year').val(), $('#J_Month').val(), $('#J_Day').val());
+
+			$('.write a').click(function() {
+				if(ms && $('.carNumber').val() != '' && $('input[name="moisture_discount"]').val() != '' && $('input[name="impurity_discount"]').val() != '' && $('input[name="settle_weight"]').val() != '' && $('input[name="settle_unit_price"]').val() != '' && $('input[name="settle_price"]').val() != '' && $('input[type="file"]').val() != '') {
+					var pathname = '/api/paper/upload/settle/list';
+					var obj = {
+						pe_id: localStorage.userId, //用户id值，本地缓存读取
+						pe_phone: localStorage.userPhone,
+						order_id: localStorage.orderId, //我的订单页面 pod_id 传值过来
+						order_type: localStorage.orderType, //我的订单页面 传值过来1：直销，2：采购
+						plate_number: escape($('.carNumber').val()),
+						paper_stage: escape($('input[name="paper_stage"]').val()),
+						logistics_order_id: $(".carNumber").find('option[value=' + '"' + $(".carNumber").val() + '"' + ']').attr('dri_type'),
+						logistics_order_type: $(".carNumber").find('option[value=' + '"' + $(".carNumber").val() + '"' + ']').attr('loid'),
+						moisture_discount: parseFloat($('input[name="moisture_discount"]').val()).toFixed(3),
+						impurity_discount: parseFloat($('input[name="impurity_discount"]').val()).toFixed(3),
+						settle_weight: parseFloat($('input[name="settle_weight"]').val()).toFixed(2),
+						settle_unit_price: $('input[name="settle_unit_price"]').val(),
+						settle_price: parseFloat($('input[name="settle_price"]').val()).toFixed(2),
+						bill_photo: localStorage.photo,
+						bill_settle_date: ms
+					}
+					GetList(obj, pathname, DealData);
+
+				} else(
+					window.confirm('请将清单信息填写完整')
+				)
+			})
+
+			function DealData(_data) {
+				console.log(_data);
+				if(_data.status_code == 10000) {
+					window.location.href = 'myOrder_upload_list.html';
+					
+				} else if(_data.status_code == 10011) {
+					window.confirm('该清单已上传')
+				} else {
+					window.confirm('结算清单提交失败，请重新提交');
+				}
+			}
+		</script>
+	</body>
+
+</html>

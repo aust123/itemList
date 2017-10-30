@@ -1,0 +1,366 @@
+
+.welLogin{
+    width:1282px;
+    margin:0 auto;
+    height: 130px;
+    line-height: 130px;
+    padding:0 30px;
+    font-size: 24px;
+    color:#666;
+}
+.welLogin img{
+    margin-right:40px;
+}
+.main_box{
+    height:626px;
+    background:url('../../img/login_banner.png') no-repeat center center;
+    background-size:100% 100%;
+}
+#login{
+    width: 1342px;
+    margin:0 auto;
+    color: #ffffff;
+    overflow: hidden;
+}
+.wel{
+    float: left;
+    margin:247px 100px 0 70px;
+}
+.wel h2{
+    font-size: 56px;
+    font-weight:bold;
+}
+.wel p{
+    font-size: 36px;
+    margin-top:10px;
+}
+.wel p span{
+    color: #f10505;
+}
+.loginBox{
+    float: left;
+    margin: 126px 0 0;
+    width: 454px;
+    height: 390px;
+    background: rgba(255,255,255,0.65);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#7fffffff,endColorstr=#7fffffff);
+    position: relative;
+}
+.loginBox>div{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: none;
+}
+.loginBox>div.on{
+    display: block;
+}
+.loginBox .lgBox_til{
+    padding: 18px 40px;
+    font-size: 22px;
+    color: #333;
+    border-bottom: 1px solid #e5e5e5;
+}
+.loginBox .lgBox_form{
+    padding: 20px 0;
+    text-align: center;
+}
+.loginBox .lgBox_form form{
+    display: inline-block;
+    text-align: left;
+    font-size: 12px;
+    color: #f10505;
+}
+.loginBox .lgBox_form form span{
+    background: url('../../img/prompt.png') no-repeat left center;
+    padding-left: 18px;
+    line-height: 30px;
+    margin-left: 48px;
+    display: none;
+}
+.loginBox .lgBox_form div{
+    margin-left: -48px;
+}
+.loginBox .lgBox_form i{
+    width: 45px;
+    text-align: center;
+    height: 36px;
+    line-height: 40px;
+    background: #fff;
+    display: inline-block;
+    position: relative;
+    left: 50px;
+    top: 0px;
+}
+.loginBox .lgBox_form input{
+    width: 301px;
+    height: 44px;
+    line-height: 44px;
+    font-size: 16px;
+    color: #666;
+    padding-left: 48px;
+    border: none;
+    margin-bottom: 25px;
+    outline: none;
+}
+.loginBox .lgBox_form input[type=button]{
+    background: #ff5000;
+    width: 346px;
+    padding: 0;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 18px;
+    margin-left: 48px;
+}
+.loginBox .lgBox_form input.pwdLg{
+    margin-top: 15px;
+    margin-left: 48px;
+}
+.loginBox .yzmLogin input[type=submit]{
+    margin-top: 0;
+}
+.loginBox .lgBox_form .kj{
+    margin-top: 11px;
+    color: #333;
+    margin-left: 0;
+}
+.loginBox .lgBox_form .kj a{
+    color: #333;
+}
+.loginBox .yzmLogin p{
+    margin-top: 10px;
+}
+.loginBox .yzmLogin input[type=text]{
+    background: #fff url('../../img/login_yanzheng.png') no-repeat 3% center;
+    width: 183px;
+    margin-right: 35px;
+}
+.loginBox .yzmLogin #hqyzm{
+    font-style: normal;
+    color: #208df0;
+    font-size: 16px;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    outline: none;
+}
+.loginBox .yzmLogin h6{
+    text-align: right;
+}
+
+.loginFoot{
+    width: 1342px;
+    margin:120px auto;
+    text-align:center;
+}
+.loginFoot ul{
+    display:inline-block;
+}
+.loginFoot li{
+    float:left;
+    padding:0 10px;
+    border-right:1px solid #666666;
+    font-size: 16px;
+    line-height: 18px;
+}
+.loginFoot li:last-child{
+    border: none;
+}
+
+/*注册账号*/
+.welLogin .dl{
+    float: right;
+    font-size: 16px;
+    color: #999;
+}
+.welLogin .dl a{
+    margin: 0 48px;
+    color: #333;
+    font-size: 18px;
+}
+#register,#forget{
+    width: 1042px;
+    min-height: 73%;
+    margin: 0 auto;
+    background: #fff;
+    padding: 60px 150px;
+}
+#register input,#forget input{
+    width: 280px;
+    padding: 0 15px;
+    height: 34px;
+    line-height: 34px;
+    border: 1px solid #c1c1c1;
+    border-radius: 4px;
+    font-size: 16px;
+}
+#register span,#forget span{
+    font-size: 16px;
+    width: 99px;
+    display: inline-block;
+}
+#register p,#forget p{
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+#register .yzm{
+    width: 116px;
+    margin-right: 12px;
+}
+#register .dxyzm,#forget .dxyzm{
+    width: 164px;
+    margin-right: 12px;
+}
+#register .refresh{
+    margin-left: 20px;
+}
+#register #hqyzm,#forget #hqyzm{
+    background: #46c01b;
+    width: 100px;
+    height: 36px;
+    display: inline-block;
+    border-radius: 4px;
+    color: #fff;
+    text-align: center;
+    line-height: 36px;
+    cursor: pointer;
+}
+#register i,#forget i{
+    width: 200px;
+    font-style: normal;
+    display: inline-block;
+    font-size: 14px;
+    color: #999;
+    line-height: 16px;
+    position: relative;
+    top: 5px;
+    left: 10px;
+}
+#register input[type=radio]{
+    width: 16px;
+    height: 16px;
+    position: relative;
+    top: 4px;
+    right: 10px;
+    border: 0;
+}
+#register label{
+    line-height: 16px;
+    margin: 0 50px 0 10px;
+}
+#register .xieyi input[type=checkbox]{
+    width: auto;
+    height: auto;
+    border: 0;
+}
+#register .xieyi{
+    margin-top: 45px;
+    color: #666;
+}
+#register .xieyi a{
+    color: #208df0;
+}
+#register .submit,#forget .submit{
+    background: #d2d2d2;
+    color: #fff;
+    width: 417px;
+    border-radius: 5px;
+    border: 0;
+    height: 36px;
+    display: inline-block;
+    text-align: center;
+    line-height: 36px;
+}
+#register .submit.active,#forget .submit.active{
+    background: #ff5000;
+}
+#register em,#forget em{
+    font-size: 12px;
+    color: #f10505;
+    font-style: normal;
+    background: url('../../img/prompt.png') no-repeat left center;
+    padding-left: 16px;
+    margin-left: 10px;
+    display: none;
+}
+/*忘记密码*/
+#forget input[type=submit]{
+    width: 400px;
+    margin-top: 60px;
+}
+/*----------验证码---------*/
+
+.code {
+    background: #f2f2f2;
+    font-family: Arial;
+    font-style: italic;
+    border: 0;
+    padding: 2px 3px;
+    letter-spacing: 3px;
+    font-weight: bolder;
+    display: inline-block;
+    cursor: pointer;
+    width: 110px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    vertical-align: middle;
+
+}
+
+#fir,#sec,#thir,#fouth {
+    display: inline-block;
+    font-weight: bold;
+}
+
+#checkCode {
+    font-style: oblique;
+    padding-bottom: 10px;
+    font-family: HoboStd;
+}
+
+#checkCode1 {
+    font-family: Papyrus;
+    margin-top: 2px;
+}
+
+#checkCode2 {
+    font-family: BrushScriptStd;
+    margin-bottom: 10px;
+}
+
+#checkCode3 {
+    font-family: Bitstream Vera Sans Mono;
+}
+/*--------------注册前获取协议样式----------*/
+div#agreement{
+	display:none ;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
+	margin: auto;
+	width: 700px;
+	height: 210px;
+	border: 1px solid #d2d2d2;
+	background: #fff;	
+	background-color: #f2f2f2;
+}
+div#agreement>p{	
+	line-height: 2.5;
+	padding-left: 30px;
+	margin-bottom: 0px;
+	font-weight: bold;
+}
+div#agree_content{
+	margin: 0px 10px 0px 10px; 
+	background: #fff;
+	height: 150px;
+	padding: 8px 10px 0px 20px;
+	line-height: 1.5;
+	overflow-y:auto ;
+	font-size: 16px;
+	color: #333;
+}

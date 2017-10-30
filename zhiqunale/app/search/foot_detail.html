@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv = "X-UA-Compatible" content = "IE=edge,chrome=1" />
+    <title>纸去哪了-废纸交易平台</title>
+    <link rel="stylesheet" href="../../css/searchList.css"/>
+</head>
+<body>
+
+<!--联系我们-->
+<ul class="dtLeft">
+    <li>
+        <span>商城直售纸厂</span>
+        <div>
+            <a class="cgfz" href="cgfz.html">如何采购废纸</a>
+            <a class="cglc" href="cglc.html">采购流程</a>
+        </div>
+    </li>
+    <li>
+        <span>免费发布需求</span>
+        <div>
+            <a class="cgxq" href="cgxq.html">如何免费发布采购需求</a>
+            <a class="wlxq" href="wlxq.html">如何发布物流需求</a>
+        </div>
+    </li>
+    <li>
+        <span>免费找车</span>
+        <div>
+            <a class="mfzc" href="mfzc.html">如何免费找车</a>
+        </div>
+    </li>
+</ul>
+<script>
+    $(function(){
+        $('.dtLeft li').click(function(){
+            $(this).children('div').slideToggle();
+            $(this).siblings().children('div').slideUp();
+            $(this).children('span').toggleClass('slide');
+            $(this).siblings().children('span').removeClass('slide');
+        });
+        var as=$('.dtLeft a');
+        for(var i=0;i<as.length;i++){
+            $(as[i]).removeClass('on');
+            if($(as[i]).hasClass($('.foot_hidden').attr('data-hidden'))){
+                $(as[i]).addClass('on').parents('div').slideDown().css('padding',0);
+                $(as[i]).siblings('a').css({'margin-left':'40px'});
+            }
+        }
+    })
+</script>
+</body>
+</html>

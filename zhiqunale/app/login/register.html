@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+	<head lang="en">
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<title>纸去哪了-废纸交易平台</title>
+		<link rel="icon" href="">
+		<link rel="stylesheet" href="../../css/login/login.css" />		
+	</head>
+	<body>
+		<div class="container">
+			<div class="header">
+				<div id="top_bar"></div>
+				<div class="welLogin">
+					<img src="../../img/logo.png" alt="欢迎来到纸去哪了" title="纸去哪了注册" /> 欢迎注册
+					<span class="dl">已有账号？<a href="login.html">请登录</a></span>
+				</div>
+			</div>
+			<div class="main_box" style="background:#f2f2f2; padding-top: 20px;">
+				<div id="register" style="position: relative;">
+					<form action="" class="registerForm">
+						<p>
+							<span>手机号：</span>
+							<input name="tel" id="tel" type="text" autocomplete="off" />
+							<em></em>
+						</p>
+						<p id="yzm_box">
+							<span>验证码：</span>
+							<input name="yzm" id="yzm" class="yzm" type="text" />
+							<b class="code" id='box' onclick="createCode()">
+								<b id="fir"></b>
+							<b id="sec"></b>
+							<b id="thir"></b>
+							<b id="fouth"></b>
+							</b>
+							<a href="#" onclick="createCode()" class="refresh">
+								<img src="../../img/shuaxin.png" alt="" />
+							</a>
+							<em></em>
+						</p>
+						<p>
+							<span>短信验证码：</span>
+							<input name="dxyzm" id="dxyzm" class="dxyzm" type="text" />
+							<span id="hqyzm">获取验证码</span>
+							<em></em>
+						</p>
+						<p>
+							<span>设置密码：</span>
+							<input name="pwd" maxlength="20" id="pwd" type="password" />
+							<i>可由6-20位英文字母和数字组成</i>
+							<em></em>
+						</p>
+						<p>
+							<span>你是：</span>
+							<label>
+                            <input  type="radio" name="identity" checked value="1"/>纸厂
+                        </label>
+							<label>
+                            <input  type="radio" name="identity" value="2"/>贸易公司
+                        </label>
+						</p>
+						<p>
+							<span>所属公司：</span>
+							<input id="ssgs" type="text" />
+							<em></em>
+						</p>			
+						<p class="xieyi">
+							<input class="chk" type="checkbox" /> 阅读并同意
+							<a class="agreement" href="###">《纸去哪了用户协议》</a>
+						</p>
+						<div id="agreement">
+						<p class="agree_title"></p>
+						<div id="agree_content"></div>
+					</div>
+						<p>
+							<a class="submit" href="###">注册</a>
+						</p>
+					</form>
+					
+				</div>
+			</div>
+			<div id="footer"></div>
+		</div>
+
+		<script src="../../lib/jquery-1.8.3.min.js"></script>
+		<script type="text/javascript" src="../../lib/template-web.js"></script>
+		<script type="text/javascript" src="../../js/secret.js"></script>
+		<script type="text/javascript" src="../../js/validate.js"></script>
+		<script type="text/javascript" src="../../lib/md5.js"></script>
+		
+		<script src="../../js/register.js"></script>
+		<script type="text/javascript">
+			console.log($('input[name="identity"]:checked').val())
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../../css/public.css" />
+	</head>
+
+	<body>
+		<!--采购信息左侧标题-->
+		<div class="msg_title">
+			<ul>
+				<li id="user_icon"><img style="width: 108px;height: 108px;border-radius:50%;" src="" /></li>
+				<li class="user_msg"><span></span>：<i style="font-style:normal;"></i></li>
+				<li class="user_msg">信用分：<label></label></li>
+				<li id="approve_item">
+					<a href="javascript:;">认证</a>
+					<div class="nav_titile">
+						<a class="name" href="">实名认证</a>
+						<a class="firm" href="../account/certificate_firm_check.html">企业认证</a>
+					</div>
+				</li>
+				<li>
+					<a class="myOrder" href="../account/myOrder.html">我的订单</a>
+				</li>
+				<li>
+					<a href="javascript:;">账户信息</a>
+					<div class="nav_titile">
+						<a class="personal" href="../account/personMsg.html">个人信息</a>
+						<a class="company" href="../account/companyMsg.html">企业信息</a>
+						<a class="standard" href="../account/paperStandard.html">收纸标准</a>
+						<a class="address" href="">地址管理</a>
+						<a class="papers" href="../account/cooperPaper.html">合作纸厂管理</a>
+					</div>
+				</li>
+				<li>
+					<a class="balance" href="../account/balance.html">资金管理</a>
+				</li>
+				<li>
+					<a class="buyapply" href="../account/buyApply.html">采购申请</a>
+				</li>
+				<li>
+					<a href="javascript:;">账户设置</a>
+					<div class="nav_titile">
+						<a class="paypwd">设置支付密码</a>
+						<a class="findpwd">找回支付密码</a>
+						<a class="setpwd" href="../account/accountSet_pwdSetting.html">密码设置</a>
+					</div>
+				</li>
+				<li class="login_out">
+					<a onclick="loginOff()">退出登录</a>
+				</li>
+			</ul>
+		</div>
+		<script type="text/javascript" src="../../lib/md5.js"></script>
+		<script type="text/javascript" src="../../js/secret.js"></script>
+		<script type="text/javascript">
+			$(function() {
+				//左边公共部分
+				var dataId = $('.hidden').attr('data-id');
+				$('.msg_title a').removeClass('curent_title');
+				$('.msg_title a.' + dataId).addClass('curent_title');
+
+				//			判断身份
+				var slug = localStorage.getItem("userSign");
+				if(slug == 1) {
+					$('.address').attr('href', '../account/addressManage_paper.html');
+					$('.papers').hide();
+				} else {
+					$('.address').attr('href', '../account/addressManage.html');
+					$('.standard').hide();//贸易公司，隐藏收纸标准
+				}
+				$('#user_icon').children('img').attr('src', localStorage.getItem('userImg'));
+				$('.user_msg').children('span').html(localStorage.getItem('userName'));
+				var state = localStorage.getItem('userState');
+				if(state == 0) {
+					state = "（未认证）";
+				} else if(state == 1) {
+					state = '（已认证）';
+				} else if(state == 2) {
+					state = '（认证中）';
+				} else {
+					state = "（认证失败）";
+				}
+				$('.user_msg').children('i').html(state);
+				//			$('.user_msg').children('label').html(localStorage.getItem('userScore')+'分');
+			})
+
+			function loginOff() {
+				localStorage.clear();
+				window.location.href = 'http://192.168.1.107:8020/zhiqunale/myReposities/app/index.html';
+			}
+
+			//根据实名认证状态,确定点击'实名认证'时跳转的页面
+			var pe = localStorage.userState;
+			if(pe == 0) {
+				$('.name').attr('href', '../account/certificate_name.html');
+			} else if(pe == 1) {
+				$('.name').attr('href', '../account/certificate_name_ed.html')
+			} else if(pe == 2) {
+				$('.name').attr('href', '../account/certificate_name_check.html')
+			} else if(pe == 3) {
+				$('.name').attr('href', '../account/certificate_name_check.html')
+			}
+
+			//判断用户是否可以设置支付密码
+			! function() {
+				$('.paypwd').click(function() {
+					var pathname = '/api/paper/is/set/pay/password';
+					var obj = {
+						pe_id: localStorage.userId, //用户id值，本地缓存读取
+						pe_phone: localStorage.userPhone //用户电话号码，本地缓存读取
+					}
+					GetList(obj, pathname, SetJudgment);
+				})
+
+				function SetJudgment(_data) {
+					console.log(_data);
+					/*判断是否已设置支付密码*/					
+					if(_data.status_code == 10000) {
+						localStorage.IsSet = _data.data.is_set;
+						window.location.href = '../account/accountSet_setPaypwd-usePayPwd.html';
+					} else if(_data.status_code == 10006) {
+						window.confirm('您还未通过企业验证暂时无法设置支付密码！');
+						window.location.href='../account/certificate_firm_check.html';
+					}
+				}
+			}();
+			//单击左侧找回支付密码验证，
+			! function() {
+				$('.findpwd').click(function() {
+					var pathname = '/api/paper/is/set/pay/password';
+					var obj = {
+						pe_id: localStorage.userId, //用户id值，本地缓存读取
+						pe_phone: localStorage.userPhone //用户电话号码，本地缓存读取
+					}
+					GetList(obj, pathname, FindJudgment);
+				})
+
+				function FindJudgment(_data) {
+					console.log(_data)
+					/*判断是否已设置支付密码*/
+					if(_data.status_code == 10000) {
+						if(_data.data.is_set == 1) {
+							window.location.href = '../account/accountSet_findPaypwd-select.html';
+						} else {
+							window.confirm('您还未设置支付密码，先去设置支付密码吧');
+							window.location.href='../account/accountSet_setPaypwd-usePayPwd.html';
+						}
+					} else if(_data.status_code == 10006) {
+						window.confirm('您还未通过企业验证暂时无法找回支付密码！');
+						window.location.href='../account/certificate_firm_check.html';
+					}
+				}
+			}();
+		</script>
+	</body>
+
+</html>

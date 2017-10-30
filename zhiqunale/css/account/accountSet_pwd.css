@@ -1,0 +1,344 @@
+
+body{
+	background: #f2f2f2!important;
+}
+#accountSet,#accountFind{
+	width: 1342px;
+	margin: 0px auto 50px;
+	overflow: hidden;
+}
+.content{
+	width: 1140px;
+	float: right;
+	min-height: 750px;
+	background: #fff;
+}
+/*-----------------公共部分开始---------------------------*/
+.setting_box{
+	min-height: 720px;
+}
+/*设置标题*/
+.setting_box h2{
+	height: 62px;
+	line-height: 62px;
+	margin: 0px 12px ;
+	color: #333;
+	font-size: 22px;
+	border-bottom:1px solid #d2d2d2 ;
+	padding-left: 8px;
+	font-weight: normal;
+}
+/*设置内容区域*/
+.set_content{
+	margin: 52px 0px 0px 60px;
+	font-size: 18px;
+	color: #666;
+}
+/*-----------------------公共部分结束-------------------------*/
+
+form div{
+	margin-bottom: 12px;
+}
+#accountFind form label{
+	width: 92px;
+	display: inline-block;
+	text-align: right;
+}
+#accountFind input{
+	height: 32px;
+	border: 1px solid #d2d2d2;
+	border-radius:5px ;
+	outline: none;
+	margin-left: 8px;
+	font-size: 16px;
+	line-height: 32px;
+	padding: 0 6px;
+	width: 255px;
+}
+/*-----------------------密码设置页和忘记密码页部分开始-----------------*/
+/*设置密码-用户名*/
+#user_name{
+	margin-left: 12px;
+	color: #333;
+}
+/*密码设置-当前密码*/
+
+#curent_pasword input{
+	margin-right: 8px;
+}
+/*密码设置-新密码*/
+#new_pasword input{
+	margin-right: 12px;
+}
+/*密码设置-确认新密码*/
+#phone_number input{
+	width: 204px;
+}
+/*忘记密码—注册手机号*/
+#phone_number input{
+	margin-right: 10px;
+}
+/*忘记密码-验证码/确认新密码*/
+#input_identifyCode input,#reset_sure_pasword input{
+	width: 242px;
+}
+/*忘记密码-新密码*/
+#reset_new_pasword input{
+	width: 281px;
+	margin-right: 10px;
+	margin-left:4px;
+}
+/*输入框右侧输入提示*/
+a.input_tips{
+	color: #208DF0;
+	font-size: 14px;
+}
+/*右侧密码设置要求*/
+.pwd_demand{
+	font-style: normal;
+	line-height: 16px;
+	color: #999;
+	font-size: 14px;
+	display: inline-block;
+	vertical-align: middle;
+}
+#set_password em,.tishi,
+.set_content em{
+	font-size: 12px;
+	color: #f10505;
+	font-style: normal;
+	background: url('../../img/prompt.png') no-repeat left center;
+	padding-left: 16px;
+	margin-left: 10px;
+	display: none;
+}
+.tishi{
+	font-size: 16px;
+	margin-bottom: 20px;
+}
+/*密码设置完确认行*/
+#sub_sure,#reset_sub_sure{
+	margin-top: 60px;
+}
+/*设置后的确认按钮*/
+.setting_sure>a,
+.setting_sure>input{
+	height: 44px;
+	background-color: #FF5000;
+	color: #fff;
+	line-height:44px ;
+	text-align: center;
+	display: inline-block;
+	border-radius:5px ;
+}
+.setting_sure>a{
+	background-color: #d2d2d2;
+}
+.setting_sure>a.active{
+	background-color: #FF5000;
+}
+/*设置秘密-确认按钮*/
+#sub_sure>a{
+	width: 330px;
+	margin-left: 30px;
+}
+/*忘记密码-确认按钮*/
+#reset_sub_sure>a,
+#reset_sub_sure>input{
+	width: 370px;
+	font-size: 18px;
+}
+/*-----------------------密码设置页和支付密码找回页部分结束-----------------*/
+
+/*----------------找回支付密码/设置支付密码——获取短信验证码----------------*/
+.set_steps{
+	margin: 20px 0px 0px 20px;
+}
+.set_steps>span{
+	line-height:44px ;
+	text-align: center;
+	display: inline-block;
+	height: 44px;
+	width:224px ;
+	font-size: 20px;
+	color: #333;
+	background-color: #f2f2f2;
+	margin-right: 20px;
+}
+#verified_tel,
+#set_verified_tel{
+	font-size: 18px;
+	color:  #666;
+	padding:0px 0px 40px 48px;
+	overflow: hidden;
+	margin:52px 12px 0px 12px;
+	border-bottom: 1px solid #D2D2D2;
+}
+/*获取验证码*/
+a.gain_identifyCode{
+	display: inline-block;
+	height: 44px;
+	width: 142px;
+	line-height: 44px;
+	background-color: #208df0;
+	color: #fff;
+	border: 1px solid #208DF0;
+	border-radius: 5px;
+	font-size: 16px;
+	margin-left: 80px;
+	text-align: center;
+}
+
+#mag_yzm>input,
+#set_mag_yzm>input{
+	width: 236px;
+	margin:0px 10px ;
+}
+a.cannot_recive{
+	font-size: 14px;
+	color: #ff5000;
+}
+#ID_number>input,
+#set_ID_number>input{
+	width: 236px;
+	margin-left: 30px;
+}
+/*------下一步-------*/
+#next_step,#set_submit{
+	margin-top: 44px;
+}
+#next_step>a,
+#newPwd_sure>a,
+#set_submit>a{
+	width: 354px;
+	background-color: #208DF0;
+	text-decoration: none;
+}
+.set_steps span.current_steps{
+	background-color: #FF5000;
+	color: #fff;
+}
+/*-----------找回支付密码——收不到验证码身份验证-------------*/
+div#ID_number.prove_id>input,
+div#set_ID_number.prove_id>input{
+	margin-left: 10px;
+}
+
+/*----------登录密码----------*/
+div#login_pwd>input,
+div#set_login_pwd>input{
+	width:236px ;
+	margin-left: 10px;
+}
+/*---------------找回支付密码——设置新支付密码--------------------*/
+#input_payPwd>input,
+#set_input_payPwd>input,
+#sure_payPwd>input,
+#set_sure_payPwd>input{
+	margin-left: 10px;
+	width: 216px;
+}
+
+#set_input_payPwd>span{
+	margin:10px 0px 0px 127px ;
+	height: 34px;
+	line-height: 34px;
+}
+#newPwd_sure{
+	margin-top: 52px;
+}
+/*-------------------找回支付密码——选择验证方式----------------------------*/
+div.find_method{
+	margin-top: 58px;
+	padding: 0px 110px 0px 50px;
+}
+div.find_method>a{
+	float: right;
+	height: 44px;
+	line-height: 44px;
+	width: 118px;
+	text-align: center;
+	background-color: #FF5000;
+	font-size: 16px;
+	color: #fff;
+	border-radius: 5px;
+	margin-top: 3px;
+}
+div.find_method>img{
+	margin-right:20px;
+	vertical-align: middle;
+}
+/*-------------------找回支付密码——成功找回-----------------------------*/
+div.congratulate{
+	color: #333;
+	font-size: 20px;
+}
+/*---------------------设置支付密码部分-------------------*/
+/*------身份验证提示-------*/
+#securityTips{
+	padding-top: 35px;
+	margin: 40px 12px 0px;
+	padding-left: 48px;
+	border-top: 1px solid #d2d2d2;
+}
+#securityTips>h3{
+	color: #666;
+	font-size: 18px;
+	font-weight: normal;
+	margin-bottom: 30px;
+}
+#securityTips>p{
+	color: #999;
+	font-size: 16px;
+	font-weight: normal;
+	margin-bottom: 20px;
+}
+/*-------------启用支付密码----------------*/
+div#set_verified_tel.selectTips{
+	border: none;
+	margin-top: 40px;
+	padding-bottom:0px ;
+}
+/*支付密码选择框*/
+input#select_time{
+	width: 16px;
+	vertical-align: middle;
+	margin-right: 10px;
+	margin-left: 0px;
+}
+div#payPwd_select>label{
+	font-size: 16px;
+	color: #333;
+}
+/*-----------设置支付密码——完成——第1次-------*/
+#set_input_payPwd>span.pwd_demand{
+	margin-left: 10px;
+	margin-top: 0px;
+}
+#set_input_payPwd,#input_payPwd{
+	margin-bottom: 50px;
+}
+#set_sure_payPwd{
+	margin-bottom: 68px;
+}
+/*-----------设置支付密码——完成-------*/
+#curent_Paypasword>input{
+	width: 216px;
+	margin: 0px 10px;
+}
+#new_Paypasword>input{
+	width: 237px;
+	margin-right: 10px;
+}
+#sure_Paypasword>input{
+	width: 199px;
+}
+#sure_Paypasword{
+	margin-bottom: 60px;
+}
+
+
+
+
+
+

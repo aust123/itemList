@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+
+	<head lang="en">
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<title>纸去哪了-废纸交易平台</title>
+		<link rel="stylesheet" href="../../css/account/certificate.css" />
+	</head>
+
+	<body>
+
+		<div class="container">
+			<div class="header">
+				<div id="top_bar"></div>
+				<div id="nav_bar"></div>
+				<div id="search"></div>
+			</div>
+			<div class="main_box">
+				<div id="certificate">
+					<div class="myLeft"></div>
+					<div class="myRight">
+						<div id="certiNameChk">
+							<h2 class="til">实名认证
+                        		<a style="color:#666;" class="pe_edit" onclick="nameEdit()">编辑</a>
+                   			</h2>
+
+							<div id="realname_show"></div>
+
+							<script type="text/html" id="check_ok">
+								<div class="block" id="ed_msg">
+									<div class="msg">
+										<span>真实姓名：</span>
+										<b>{{data.pe_realname}}</b>
+									</div>
+									<div class="msg">
+										<span>身份证号码：</span>
+										<b>{{data.pe_idcard_code.substr(0,6)+'********'+data.pe_idcard_code.substr(-4)}}</b>
+									</div>
+									<div class="msg">
+										<span>电话号码：</span>
+										<b class="tel">{{data.pe_phone}}</b>
+										<input class="edit_input telephone" name="tel" onfocus="focusT()" type="text" value="" />
+										<em>请输入电话号码</em>
+										<a class="pe_edit certi_ed" onclick="nameEdit()"  href="###">可修改</a>
+									</div>
+									<div class="msg">
+										<span>个人地址：</span>
+										<b class="add">{{data.pe_address}}</b>										
+										<input class="edit_input address" name="addr" onfocus="focusA()" type="text" value="" />
+										<em>请输入个人地址</em>
+										<a class="pe_edit certi_ed" onclick="nameEdit()" href="###">可修改</a>
+									</div>
+								</div>
+								<div class="block">
+									<span>证件照</span>
+									<div class="msg">
+										<img src="{{data.pe_idcard_front_img}}" alt="" />
+										<img src="{{data.pe_idcard_back_img}}" alt="" />
+									</div>
+									<!-- 已认证显示-->
+									<div class="submit">
+										<a class="move" href="certificate_firm_check.html">前往企业认证</a>
+										<div id="eidt_submit">
+											<input class="name_eidt" onclick="edit_nAjax()" type="button" value="确   定" />
+											<b  onclick="cancle_nameEdit()">取&nbsp;&nbsp;消</b>
+										</div>
+									</div>
+								</div>
+							</script>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="footer"></div>
+		</div>
+		<input class="hidden" data-id="name" type="hidden" />
+		<script src="../../lib/jquery-1.8.3.min.js"></script>
+		<script type="text/javascript" src="../../lib/template-web.js"></script>
+		<script type="text/javascript" src="../../lib/md5.js"></script>
+		<script type="text/javascript" src="../../js/secret.js"></script>
+		<script>
+			$(function() {
+				$('#top_bar').load('../public/topBar.html');
+				$('#nav_bar').load('../public/navBar.html');
+				$('#search').load('../public/search.html');
+				$('#footer').load('../public/footer.html');
+				$('.myLeft').load('../public/accLeft.html');
+			})
+
+			//点击编辑按钮时执行的函数
+			function nameEdit() {
+				$('.pe_edit').hide();
+				$('.pe_edit').siblings('b').hide().siblings('input').show();
+				$('.telephone').val($('.tel').html());
+				$('.edit_input.address').val($('.add').html())
+				$('#eidt_submit').css('display', 'block');
+				$('.move').hide();
+			}
+			/*点击取消编辑信息*/
+			function cancle_nameEdit() {
+				$('.pe_edit').show();
+				$('.pe_edit').siblings('b').show().siblings('input').hide();
+				$('#eidt_submit').css('display', 'none');
+				$('.move').show();
+			}
+
+			//修改完成后提交按钮,向后台发送请求
+			function edit_nAjax() {
+				if($('.telephone').val() != ''&& $('.edit_input.address').val() != '') {
+					var pathname = '/api/paper/edit/personal/data';
+					var obj = {
+						pe_id: localStorage.userId, //用户id值，本地缓存读取
+						pe_phone:localStorage.userPhone, //用户电话号码，本地缓存读取
+						e_phone: $('.telephone').val(),
+						e_address:escape($('.edit_input.address').val())
+					}
+					GetList(obj, pathname, nameBack);
+				} else {
+					$('#ed_msg em').show();
+				}
+			}
+			//修改好信息返回的数据
+			function nameBack(_data) {
+				console.log(_data);
+				if(_data.status_code == 10000) {
+					window.location.reload(true);
+				} else if(_data.status_code == 10002) {
+					$('.telephone').nextAll('em').show().html('该手机号已在平台注册');
+				}
+			}
+			/*编辑信息提示内容*/
+			function focusA(){	
+				$('.address').next('em').hide();			
+			}
+			function focusT(){	
+				$('.telephone').next('em').hide();			
+			}
+
+			/*------获取实名认证信息---------*/
+
+			! function() {
+				var pathname = '/api/paper/get/personal/auth/data';
+				var obj = {
+					pe_id: localStorage.userId, //用户id值，本地缓存读取
+					pe_phone:localStorage.userPhone//用户电话号码，本地缓存读取
+				}
+				GetList(obj, pathname, DealData);
+
+				function DealData(_data) {
+					console.log(_data);
+					/*获取个人信息渲染至页面*/
+					var html = template('check_ok', _data);
+					document.getElementById('realname_show').innerHTML = html;
+				}
+			}();
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv = "X-UA-Compatible" content = "IE=edge,chrome=1" />
+		<title>纸去哪了-废纸交易平台</title>
+		<link rel="stylesheet" href="../css/public.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/switchCity.css" />
+	</head>
+	<body>
+	<div class="container">
+		<div class="header">
+			<div id="top_bar"></div>
+			<div id="search"></div>
+			<div id="nav_bar"></div>
+		</div>
+		<div class="main_box">
+			<div class="content">
+				<div class="select_city">
+					<span>按省份选择：</span>
+					<form class="all_city">
+						<!--切换城市开始代码-->
+						<select id="seachprov" name="seachprov" onChange="changeComplexProvince(this.value, sub_array, 'seachcity', 'seachdistrict');"></select>&nbsp;&nbsp;
+						<select id="seachcity" name="homecity" onChange="changeCity(this.value,'seachdistrict','seachdistrict');"></select>&nbsp;&nbsp;
+						<span id="seachdistrict_div"><select style="display:none;" id="seachdistrict"></select></span>
+						<!--切换城市结束代码-->
+						<input id="submit" type="button" value="确定" />
+					</form>
+				</div>
+				<div class="often">
+					<script type="text/html" id="often">
+						<div class="common_use">
+							常用城市：
+							{{each data.usual_login_city as value i}}
+							<span>{{value.city}}</span>
+							{{/each}}
+						</div>
+						<div class="recent_visit">
+							最近访问：<span>{{data.last_login_city}}</span>
+						</div>
+						<div class="city_list">
+							<ul>
+								{{each data.plat_city as value i}}
+								<li>
+									<b>{{i}}</b>
+									{{each value as val}}
+									<span>{{val}}</span>
+									{{/each}}
+								</li>
+								{{/each}}
+							</ul>
+						</div>
+					</script>
+				</div>
+			</div>
+		</div>
+		<div id="footer"></div>
+	</div>
+
+		<!--以下是切换城市需要的js代码-->
+		<script type="text/javascript" src="../lib/jquery-1.8.3.min.js"></script>
+		<script type="text/javascript" src="../lib/Area.js"></script>
+		<script type="text/javascript" src="../lib/AreaData_min.js"></script>
+	<script type="text/javascript" src="../lib/md5.js"></script>
+	<script type="text/javascript" src="../js/secret.js"></script>
+	<script type="text/javascript" src="../lib/template-web.js"></script>
+	<script type="text/javascript" src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
+		<script type="text/javascript">
+			$(function() {
+				$('#top_bar').load('public/topBar.html');
+				$('#nav_bar').load('public/navBar.html');
+				$('#search').load('public/search.html');
+				$('#footer').load('public/footer.html');
+
+				initComplexArea('seachprov', 'seachcity', 'seachdistrict', area_array, sub_array, '0', '0', '0');
+//				点击切换城市
+				$('#submit').click(function(){
+					var proCity;
+					var pro=$('#seachprov option:selected').html();
+					var city=$('#seachcity option:selected').html();
+					if(pro!='请选择'&&city!='请选择'){
+						if(pro=="北京市" || pro=="天津市" || pro=="上海市" || pro=="重庆市"){
+							proCity=pro;
+						}else{
+							proCity=city;
+						}
+						localStorage.curCity= proCity;
+						if(localStorage.isLogin){
+							scCity(proCity);
+						}
+						window.location.href='http://localhost:63342/zhiqunale/app/index.html';
+					}
+				});
+
+//				获取用户常用城市
+				if(localStorage.getItem('isLogin')){
+					var pathname='/api/paper/get/usual/login/city/and/last/login/city';
+					var obj={
+						pe_id:localStorage.getItem('userId'),
+						pe_phone:localStorage.getItem('userPhone')
+					}
+					GetList(obj,pathname,getCity);
+					function getCity(_data){
+						var html=template('often',_data);
+						$('.often').html(html);
+						$('.often').delegate('span','click',function(){
+							localStorage.curCity= $(this).html();
+							scCity($(this).html());
+							window.location.href='http://localhost:63342/zhiqunale/app/index.html';
+						})
+					}
+				}
+			});
+
+			function scCity(proCity){
+				var ct={
+					pe_id:localStorage.userId,
+					pe_phone:localStorage.userPhone,
+					city:escape(proCity),
+					ip:returnCitySN["cip"]
+				}
+				var ctname='/api/paper/record/login/city';
+				GetList(ct,ctname,getCt);
+				function getCt(data){
+
+				}
+
+			}
+		</script>
+	</body>
+
+</html>

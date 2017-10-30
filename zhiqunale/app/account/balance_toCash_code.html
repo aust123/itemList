@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+
+	<head lang="en">
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<title>纸去哪了-废纸交易平台</title>
+		<link rel="stylesheet" href="../../css/account/balance.css" />
+	</head>
+
+	<body>
+
+		<div class="container">
+			<div class="header">
+				<div id="top_bar"></div>
+				<div id="nav_bar"></div>
+				<div id="search"></div>
+			</div>
+			<div class="main_box">
+				<div id="balance">
+					<div class="myLeft"></div>
+					<div class="balBox" style="min-height:720px;">
+						<div class="bal">
+							<h3 style="border-bottom: 1px solid #d2d2d2;">提现</h3>
+							<div class="to_cash " id="yzm">
+								<p><span>银行预留手机号&nbsp;：</span><b></b></p>
+								<p><span>验证码&nbsp;：</span><input class="yzm_code" type="text" /><em></em>
+									<a id="hqyzm" href="###">发送验证码</a>
+								</p>
+								<p>
+									<a id="cash_btn" href="###">发起提现</a>
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="footer"></div>
+		</div>
+		<input class="hidden" data-id="balance" type="hidden" />
+		<script src="../../lib/jquery-1.8.3.min.js"></script>
+		<script src="../../lib/template-web.js"></script>
+		<script src="../../lib/md5.js"></script>
+		<script src="../../js/secret.js"></script>
+		<script>
+			$(function() {
+				$('#top_bar').load('../public/topBar.html');
+				$('#nav_bar').load('../public/navBar.html');
+				$('#search').load('../public/search.html');
+				$('#footer').load('../public/footer.html');
+				$('.myLeft').load('../public/accLeft.html');
+				$('.delCard input').each(function() {
+					$(this).click(function() {
+						if($(this).val() == 'qt') {
+							$('#other').show();
+						} else {
+							$('#other').hide();
+						}
+					})
+				})
+				//将预留手机号渲染至页面上
+				$('.to_cash b').html(localStorage.phone);
+				
+				
+				/*获取短息验证码按钮*/
+				var start = 1;
+				$("#hqyzm").click(function() {
+					if(start) {
+						var time = 60;
+						var code = $(this);
+						code.addClass("msgs1");
+						var t = setInterval(function() {
+							time--;
+							code.html(time + "s后重新获取");
+							start = 0;
+							if(time == 0) {
+								clearInterval(t);
+								code.html("重新获取");
+								code.removeClass("msgs1");
+								start = 1;
+							}
+						}, 1000)
+
+					}
+					//限定30秒后才能重新发送
+					if($(this).html().indexOf('s') >= 0) {
+						return false;
+					} else {
+						var pathname = '/api/common/getcode';
+						var obj = {
+							nc_phone: $('.to_cash b').html() //用户电话号码
+						}
+						GetList(obj, pathname, BackCode);
+					}
+				})
+
+				function BackCode(_data) {
+					console.log(_data);
+					if(_data.status_code == 10000) {
+						//返回验证码nc_id值
+						localStorage.cnc_id = _data.data.code_id;
+					}
+				}
+
+				//发起提现的按钮
+				$('#cash_btn').click(function() {
+					if($('.yzm_code').val() != '') {
+						var pathname = '/api/paper/apply/cash';
+						var obj = {
+							pe_id: localStorage.userId, //用户id值，本地缓存读取
+							pe_phone: localStorage.userPhone,
+							tips:2,
+							bankcard_code:localStorage.bankcard_code ,
+							bank_id:localStorage.bank_id,
+							money:localStorage.money,
+							pay_password:localStorage.pay_password,
+							step:localStorage.step,
+							phone:localStorage.phone,//预留手机号
+							nc_id:localStorage.cnc_id,
+							nc_code:$('.yzm_code').val()
+						}
+						GetList(obj,pathname,DealData);
+					}
+				})
+				
+				function DealData(_data){
+					console.log(_data);
+					if(_data.status_code==10000){
+						window.location.href = 'balance.html';
+					}else if(_data.status_code==10021||_data.status_code==10023){
+						$('.yzm_code').siblings('em').show().html('验证码错误');
+					}else if(_data.status_code==10022){
+						$('.yzm_code').siblings('em').show().html('验证码已过期');
+					}
+				}
+				
+				
+
+			})
+		</script>
+	</body>
+
+</html>

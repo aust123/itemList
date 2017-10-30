@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv = "X-UA-Compatible" content = "IE=edge,chrome=1" />
+    <title>纸去哪了-废纸交易平台</title>
+    <link rel="stylesheet" href="../../css/account/accountMsg.css"/>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <div id="top_bar"></div>
+            <div id="nav_bar"></div>
+            <div id="search"></div>
+        </div>
+        <div class="main_box">
+            <div id="account_comp">
+                <div class="myLeft"></div>
+                <div class="accCompRight">
+                    <div id="perMsg">
+                        <h2 class="til">
+                            个人信息
+                            <a href="personMsg_edit.html">编辑</a>
+                        </h2>
+                        <div class="perBox">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="footer"></div>
+    </div>
+    <input class="hidden" data-id="personal" type="hidden"/>
+<script type="text/html" id="personMsg">
+    <h3>
+        真实姓名：
+        {{if (pe_realname!='null')}}
+        <span class="name">{{pe_realname}}</span>
+        {{/if}}
+    </h3>
+    <h3>
+        身份证号码：<span class="userid">{{pe_idcard_code}}</span>
+    </h3>
+    <h3>
+        所属公司：
+        {{if (pe_part_company!='null')}}
+        <span class="comp">{{pe_part_company}}</span>
+        {{/if}}
+    </h3>
+    <h3 class="tel">
+        电话号码：
+        <span>{{pe_phone}}</span>
+        <a href="personMsg_edit.html">可修改</a>
+    </h3>
+    <h3 class="area">
+        个人所在地：
+        {{if (pe_address!='null')}}
+        <span>{{pe_address}}</span>
+        {{/if}}
+        <a href="personMsg_edit.html">可修改</a><br/>
+    </h3>
+</script>
+    <script src="../../lib/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="../../lib/md5.js"></script>
+    <script type="text/javascript" src="../../js/secret.js"></script>
+    <script type="text/javascript" src="../../lib/template-web.js"></script>
+    <script>
+        $(function(){
+            $('#top_bar').load('../public/topBar.html');
+            $('#search').load('../public/search.html');
+            $('#nav_bar').load('../public/navBar.html');
+            $('#footer').load('../public/footer.html');
+            $('.myLeft').load('../public/accLeft.html');
+
+        })
+        // 获取个人信息
+        var pathname='/api/paper/get/personal/data';
+        var obj={
+            pe_id:localStorage.getItem("userId"),
+            pe_phone:localStorage.getItem("userPhone")
+        }
+        GetList(obj,pathname,getPer);
+        function getPer(_data){
+            if(_data.status_code=="10000"){
+                _data.data.pe_realname=unescape(_data.data.pe_realname);
+                _data.data.pe_address=unescape(_data.data.pe_address);
+                _data.data.pe_part_company=unescape(_data.data.pe_part_company);
+                var html=template('personMsg',_data.data);
+                $('.perBox').html(html);
+            }
+        }
+
+    </script>
+</body>
+</html>

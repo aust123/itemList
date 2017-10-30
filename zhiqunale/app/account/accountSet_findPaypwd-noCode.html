@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset="UTF-8">
+	<meta http-equiv = "X-UA-Compatible" content = "IE=edge,chrome=1" />
+	<title>纸去哪了-废纸交易平台</title>
+		<link rel="stylesheet" type="text/css" href="../../css/account/accountSet_pwd.css"/>
+	</head>
+	<body>
+		<div class="container">
+			<div class="header">
+				<div id="top_bar"></div>
+				<div id="nav_bar"></div>
+				<div id="search"></div>
+			</div>
+			<div class="main_box">
+				<div id="accountFind">
+					<div class="myLeft"></div>
+					<div class="content">
+						<div id="set_password" class="setting_box">
+							<h2>找回支付密码</h2>
+							<div class="set_steps"><span class="current_steps">1、获取短信验证码</span><span>2、设置新密码</span><span>3、成功找回</span></div>
+
+							<div class="set_content" style="margin-top: 40px;">
+								<!------------表单提交内容-------------------->
+								<form action="">
+									<div id="login_pwd">登录密码&nbsp;:<input type="password" id="log_pwd" name="pwd" /><em>请输入登录密码</em></div>
+									<div id="ID_number" class="prove_id">证件号码&nbsp;:<input type="text" name="zjh" /><em>请输入证件号码</em></div>
+								</form>
+								<div id="next_step" class="setting_sure"><a href="###">下一步</a></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="footer"></div>
+		</div>
+		<input class="hidden" data-id="findpwd" type="hidden"/>
+		<script src="../../lib/jquery-1.8.3.min.js"></script>
+		<script type="text/javascript" src="../../js/setPayPwd.js"></script>
+		<script>
+			$(function(){
+				$('#top_bar').load('../public/topBar.html');
+				$('#nav_bar').load('../public/navBar.html');
+				$('#search').load('../public/search.html');
+				$('#footer').load('../public/footer.html');
+				$('.myLeft').load('../public/accLeft.html');
+				
+				var Tag = '?'+encodeURIComponent('tag=2');//登录密码验证信息标记tag=2
+				var href ='accountSet_findPaypwd-setNewPwd.html'+Tag;
+				$('.setting_sure>a').click(function() {
+					if($('input[name="pwd"]').val() != '' && $('input[name="zjh"]').val() != '') {					
+						if($('input[name="pwd"]').siblings('em').attr('fill') && $('input[name="zjh"]').siblings('em').attr('fill')) {					
+							 $(this).attr('href', href);
+							localStorage.pwd =$('input[name="pwd"]').val() ;//登录密码
+							localStorage.idcard = $('input[name="zjh"]').val();//证件号码
+						}
+					} else {
+						//输入框值为空的显示提示信息
+						$('#set_password input').each(function(){
+							if(typeof($(this).siblings('em').attr("fill"))=="undefined"){
+								$(this).siblings('em').show();
+							}
+						})
+					}
+				})
+			})
+		</script>
+	</body>
+</html>
