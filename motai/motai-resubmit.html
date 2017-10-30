@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<title></title>
+		<script src="js/jquery.min.js"></script>
+		<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+		<link rel="stylesheet" href="css/motai.css" />
+	</head>
+
+	<body>
+		<div class="background"></div>
+		<div class="popupBox">
+			<div id="resubmit_box">
+				<img id="close" src="img/tanchuang_cancel.png"/>
+				<p id="submit_fail">对不起，您的信息提交失败！</p>
+				<a href="###" id="resubmit_btn">重新提交</a>
+			</div>
+		</div>
+		<button type="button" id="btn">click me</button>
+		<script type="text/javascript">
+			$(function() {
+				var timer;
+				$("#btn").click(function() {
+					$(".popupBox,.background").fadeIn(200);
+				})
+				/*单击空白区域和 确定/删除按钮模态框消失*/
+				$('.popupBox').click(function(e) {
+					var ev = e ? e : window.event;
+					if(ev.target == $("#close")[0]||ev.target==$('#resubmit_btn')[0]){
+						$(".popupBox,.background").fadeOut(200);
+					}
+				})
+			})
+		</script>
+	</body>
+
+</html>

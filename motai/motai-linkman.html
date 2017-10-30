@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/motai.css"/>
+		<script src="js/jquery.min.js"></script>
+		<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+	</head>
+
+	<body>
+		<div class="background"></div>
+		<div class="popupBox">
+			<div id="linkman_box">
+				<img id="close" src="img/tanchuang_cancel.png"/>
+				<div id="linkman_content">
+					<h2>联系方式：</h2>
+					<p>姓名：曹操</p>
+					<p>Tel : 13666666666</p>
+					<p>公司名字：************</p>
+					<p>详细地址：************</p>
+					<p class="tips">#联系我时请说是在&nbsp;"纸去哪了"&nbsp;平台看到的#</p>
+				</div>
+			</div>
+		</div>
+		<button type="button" id="btn">click me</button>
+		<script type="text/javascript">
+			$(function() {
+				var timer;
+				$("#btn").click(function() {
+					$(".popupBox,.background").fadeIn(200);
+				})
+				/*单击空白区域和 确定/删除按钮模态框消失*/
+				$('.popupBox').click(function(e) {
+					var ev = e ? e : window.event;
+					if(ev.target == $(".popupBox")[0] || ev.target==$("#close")[0]){
+						$(".popupBox,.background").fadeOut(200);
+					}
+				})
+			})
+		</script>
+	</body>
+
+</html>

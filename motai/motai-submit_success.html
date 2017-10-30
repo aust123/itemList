@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<title></title>
+		<script src="js/jquery.min.js"></script>
+		<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+		<link rel="stylesheet" href="css/motai.css" />
+	</head>
+	<body>
+		<div class="background"></div>
+		<div class="popupBox">
+			<div id="sub_success_box">
+				<img id="close" src="img/tanchuang_cancel.png"/>
+				<div id="sub_success_content">
+					<img src="img/tanchaung_success.png"/>提交成功
+				</div>
+				<p id="submit_tip" >请耐心等待打包站确认，确认同意后，您需要在24小时进行支付，否则订单无效</p>
+			</div>
+		</div>
+		<button type="button" id="btn">click me</button>
+		<script type="text/javascript">	
+			$(function() {
+				var timer;
+				$("#btn").click(function() {
+					$(".popupBox,.background").stop().fadeIn(200);
+					clearTimeout(timer);
+					timer = setTimeout(function(){
+						$(".popupBox,.background").stop(true,true).fadeOut(200);
+					},2000)
+				})
+				/*单击空白区域和 确定/删除按钮模态框消失*/
+				$('.popupBox').click(function(e) {
+					var ev = e ? e : window.event;
+					if(ev.target == $(".popupBox")[0]|| ev.target==$("#close")[0]){
+						$(".popupBox,.background").stop().fadeOut(200);
+					}
+				})
+			})
+		</script>
+	</body>
+
+</html>

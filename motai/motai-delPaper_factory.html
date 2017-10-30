@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<title></title>
+		<script src="js/jquery.min.js"></script>
+		<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+		<link rel="stylesheet" href="css/motai.css" />
+	</head>
+
+	<body>
+		<!--没有右上角关闭按钮-->
+		<div class="background"></div>
+		<div class="popupBox">
+			<div id="delete_box">
+				<p class="operate_tip">确定删除吉安纸厂吗？</p>
+				<div id="delete_content">
+					<a href="###" id="make_sure">确定</a>
+					<a href="###" id="cancel">取消</a>
+				</div>
+			</div>
+		</div>
+		<button type="button" id="btn">click me</button>
+		<script type="text/javascript">
+			/*原生js写法，支持ie8浏览器
+				btn.onclick = function(){
+					delFactory.className = "show";
+					g.className = "show";
+				}
+						 
+				delFactory.onclick = function(ev) {
+				var evt = ev ? ev : window.event;
+				if(evt.target == delFactory || evt.target == make_sure || evt.target == cancel) {
+					delFactory.className = "";
+					bg.className = "";
+				}
+			}*/
+			/*单击显示模态框*/
+			$(function() {
+				$("#btn").click(function() {
+					$(".popupBox,.background").fadeIn(200);
+				})
+				/*单击空白区域和 确定/删除按钮模态框消失*/
+				$('.popupBox').click(function(e) {
+					var ev = e ? e : window.event;
+					if(ev.target == $(".popupBox")[0] || ev.target == $('#make_sure')[0] || ev.target == $('#cancel')[0]){
+						$(".popupBox,.background").fadeOut(200);
+					}
+				})
+			})
+		</script>
+	</body>
+
+</html>

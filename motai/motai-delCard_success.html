@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<title></title>
+		<script src="js/jquery.min.js"></script>
+		<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+		<link rel="stylesheet" href="css/motai.css" />
+	</head>
+	<body>
+		<!--没有右上角关闭按钮-->
+		<div class="background"></div>
+		<div class="popupBox">
+			<div id="success_box">
+				<div id="success_content">
+					<img src="img/tanchaung_success.png"/>银行卡删除成功
+				</div>
+			</div>
+		</div>
+		<button type="button" id="btn">click me</button>
+		
+		<script type="text/javascript">		
+			$(function() {
+				var timer;
+				$("#btn").click(function() {
+					$(".popupBox,.background").stop().fadeIn(200);
+					clearTimeout(timer);
+					timer = setTimeout(function(){
+						$(".popupBox,.background").stop(true,true).fadeOut(200);
+					},2000)
+				})
+				/*单击空白区域和 确定/删除按钮模态框消失*/
+				$('.popupBox').click(function(e) {
+					var ev = e ? e : window.event;
+					if(ev.target == $(".popupBox")[0]){
+						$(".popupBox,.background").stop().fadeOut(200);
+					}
+				})
+			})
+		</script>
+	</body>
+
+</html>

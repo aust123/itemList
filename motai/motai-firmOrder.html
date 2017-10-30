@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<title></title>
+		<script src="js/jquery.min.js"></script>
+		<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+		<link rel="stylesheet" href="css/motai.css" />
+	</head>
+
+	<body>
+		<div class="background"></div>
+		<div class="popupBox">
+			<div id="firmOrder_box">
+				<img id="close" src="img/tanchuang_cancel.png" />
+				<div id="firmOrder_content">
+					<h2>确认订单:</h2>
+					<p>出售人 : 王先生</p>
+					<p>出售纸类 : 黄板纸</p>
+					<p>单价 : 1800元</p>
+					<p>数量 : 10吨</p>
+					<p>总价 : 18000元</p>
+					<p class="goods_adress">出货地址 : 安徽省合肥市蜀山区南二环与翡翠路交口内森庄园9栋2801</p>
+				</div>
+				<div id="payment">
+					<a href="###" id="pay_btn">支&nbsp;&nbsp;付</a>
+				</div>
+			</div>
+		</div>
+		<button type="button" id="btn">click me</button>
+		<script type="text/javascript">
+					
+			$(function() {
+				var timer;
+				$("#btn").click(function() {
+					$(".popupBox,.background").fadeIn(200);
+				})
+				/*单击空白区域和 确定/删除按钮模态框消失*/
+				$('.popupBox').click(function(e) {
+					var ev = e ? e : window.event;
+					if(ev.target == $("#pay_btn")[0] || ev.target==$("#close")[0]){
+						$(".popupBox,.background").fadeOut(200);
+					}
+				})
+				
+				$('#pay_btn').click(function(){
+					window.location.href="http://www.baidu.com/"
+					pay_btn
+				})
+			})
+			
+			
+		</script>
+	</body>
+
+</html>
