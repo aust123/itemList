@@ -1,0 +1,135 @@
+body,
+ul,
+li,
+ol,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+input,
+textarea,
+select,
+p,
+dl,
+dt,
+dd,
+a,
+img,
+button,
+form,
+table,
+th,
+tr,
+td,
+tbody,
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+	margin: 0;
+	padding: 0;
+}
+
+a {
+	text-decoration: none;
+}
+
+ul ol {
+	list-style: none;
+}
+
+body {
+	font-family: "microsoft yahei", '宋体', Tahoma, Arial, sans-serif;
+	background-color: #f2f2f2;
+}
+/*--------个人中心-----------*/
+header{
+	width: 100%;
+	font-size: 0.72rem;
+	text-align: center;
+	height: 1.76rem;
+	line-height: 1.76rem;
+	background-color: #f7f7f7;
+	border-bottom: 0.02rem solid #ddd;
+}
+header a{
+	position: absolute;
+	top: 0.15rem;
+	left: 0.7rem;
+}
+header img{
+	width: 0.4rem;
+	
+}
+.geren{
+	width: 100%;
+	background-color: #fff;
+	margin-top: 0.28rem;
+}
+
+.geren a{
+	display: block;
+	width: 100%;
+	color: #333;
+	font-size: 0.64rem;
+	padding: 0 1.4rem 0 0.84rem;
+	box-sizing: border-box;
+	height: 2.44rem;
+	line-height: 2.44rem;
+	border-bottom: 1px solid #d2d2d2;
+}
+.details p{
+	height: 2.4rem;
+	line-height: 2.4rem;
+	width: 100%;
+	color: #333;
+	font-size: 0.64rem;
+	padding: 0 1.4rem 0 0.84rem;
+	box-sizing: border-box;
+	border-bottom: 1px solid #d2d2d2;
+	position: relative;
+}
+.details p>span{
+	position: absolute;
+	top: 0rem;
+	left: 5.8rem;
+	color: #666;
+}
+#siji_detail p>span{
+	left: 7rem;
+}
+#maoyi_detail p>span{
+	left: 7.2rem;
+}
+p#img_box{
+	height: 4.64rem;
+	padding-bottom:1.12rem ;
+	padding-top: 0.8rem;
+}
+p#img_box img{
+	width: 2.76rem;
+	height: 2.76rem;
+	margin-right: 0.8rem;
+	
+}
+.geren .userid{
+	width: 1.16rem;
+	margin-right: 1.04rem;
+	vertical-align: middle;
+}
+.right{
+	float: right;
+	margin-top: 0.92rem;
+}
+.geren a img{
+	width: 0.32rem;
+}

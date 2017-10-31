@@ -112,12 +112,13 @@ input#btn{
 	background-size:cover;
 }
 div#content{
+	width: 100%;
 	box-sizing: border-box;
 	padding: 0 1.52rem;
-	margin-top: 5rem;/*3.4rem*/
+	margin-top: 2.6rem;/*3.4rem*/
 }
 div#content div{
-	margin-bottom:1.44rem;
+	margin-bottom:0.7rem;	
 }
 #content a{
 	color: #fff;
@@ -142,4 +143,5 @@ div#content div{
 }
 .clear{
 	clear: both;
+	text-align: center;
 }
