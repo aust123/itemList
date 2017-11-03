@@ -1,0 +1,256 @@
+body,
+ul,
+li,
+ol,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+input,
+textarea,
+select,
+p,
+dl,
+dt,
+dd,
+a,
+img,
+button,
+form,
+table,
+th,
+tr,
+td,
+tbody,
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+ul ol {
+	list-style: none;
+}
+
+body {
+	font-family: "microsoft yahei", '宋体', Tahoma, Arial, sans-serif;
+}
+
+header {
+	width: 100%;
+	position: relative;
+}
+
+header img {
+	display: block;
+	width: 100%;
+}
+
+.change_color {
+	display: none;
+	color: #fff;
+	font-size: 0.4rem;
+	font-style: normal;
+	position: absolute;
+	top: 0.4rem;
+	right: 0.6rem;
+}
+
+.color {
+	text-align: center;
+	/*position: absolute;
+	top: 0.4rem;
+	right: 0.6rem;
+	
+	background: #eee;*/
+}
+
+.color span {
+	display: inline-block;
+	width: 0.6rem;
+	height: 0.6rem;
+}
+
+.blue {
+	background-color: #6c7eec;
+}
+
+.yellow {
+	background-color: #f2e000;
+}
+
+.pink {
+	background-color: #f2d3ea;
+}
+
+.black {
+	background-color: #3f4140;
+}
+
+.green {
+	background-color: #2cca9f;
+}
+
+
+/*中间内容*/
+
+.title {
+	font-size: 0.64rem;
+	color: #6e7fee;
+	text-align: center;
+	position: relative;
+	z-index: 22;
+}
+
+.title img {
+	display: block;
+	width: 7.24rem;
+	position: absolute;
+	top: 0.4rem;
+	left: 3.9rem;
+	z-index: -1;
+}
+
+.content {
+	margin-top: 0.7rem;
+}
+
+section p {
+	font-size: 0.6rem;
+	color: #333;
+}
+
+.company_name {
+	margin-top: 0.8rem;
+	padding: 0 1.08rem;
+	box-sizing: border-box;
+	position: relative;
+}
+
+.company_price {
+	padding: 0 1.08rem;
+	box-sizing: border-box;
+}
+
+p#company_adress {
+	position: relative;
+	margin-bottom: 1.2rem;
+	clear: both;
+}
+
+p#company_adress span {
+	position: absolute;
+	top: 0;
+	left: 2.96rem;
+}
+
+p.update_time {
+	text-align: center;
+	font-size: 0.5rem;
+	color: #999;
+	margin-top: 0.5rem;
+}
+
+p.price {
+	margin-top: 0.96rem;
+}
+
+.company_name p,
+.company_price p {
+	margin-bottom: 0.6rem;
+}
+
+/*.out_content,
+.contents {
+	width: 200px;
+	height: 200px;
+}*/
+
+.out_content {
+	position: relative;
+}
+
+.inner_content {
+	position: absolute;
+	left: 0;
+	height: 100%;
+	overflow-x: hidden;
+	overflow-y: scroll;
+}
+
+
+/* for Chrome */
+
+.inner_content::-webkit-scrollbar {
+	display: none;
+}
+
+.out_content {
+	width: 12.84rem;
+	height: 10rem;
+	border: 0.02rem solid #dbdbdb;
+	
+	border-radius: 0.2rem;
+	
+}
+#price_list{
+	width: 12.84rem;
+	height: 10rem;	
+	padding: 0 1.08rem;
+	box-sizing: border-box;
+}
+
+#price_list b {
+	font-weight: normal;
+	color: #e80707;
+	font-size: 0.6rem;
+	float: right;
+}
+
+p.first_msg {
+	margin-top: 0.4rem;
+}
+
+
+/*加载更多*/
+
+p#more {
+	margin: 0;
+	margin-top: -0.65rem;
+}
+
+
+/*底部二维码区域*/
+
+#footer {
+	width: 100%;
+	margin-top: 1rem;
+}
+
+#footer img {
+	width: 100%;
+	display: block;
+}
+
+#footer p {
+	color: #fff;
+	margin-top: -2.6rem;
+	padding-left: 1.18rem;
+	box-sizing: border-box;
+}

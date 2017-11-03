@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		
+		<title></title>
+		<script type="text/javascript" src="js/template-web.js"></script>
+		
+		<style type="text/css">
+			/*.outer-container{
+				width: 180px;
+				height: 200px;
+			}
+			.contents {
+				width: 200px;
+				height: 200px;
+			}
+			
+			.outer-container {
+				position: relative;
+				overflow: hidden;
+			}
+			
+			.inner-container {
+				position: absolute;
+				left: 0;
+				overflow-x: hidden;
+				overflow-y: scroll;
+			}*/
+			/* for Chrome */
+			/*.inner-container::-webkit-scrollbar {
+				display: none;
+			}*/
+			.out_box {
+				width:180px;
+				height: 200px;
+				position: relative;
+				overflow: hidden;
+				background: #EEE;
+			}			
+			.inner_box {
+				position: absolute;
+				left: 0;
+				overflow-x: hidden;
+				overflow-y: scroll;
+			}
+			.contents {
+				width: 200px;
+				height: 200px;
+			}
+			
+		</style>
+	</head>
+
+	<body>
+		<div class="out_box">
+			<div class="inner_box">
+				<div id="content" class="contents">
+					
+				</div>
+				<!---->
+			</div>
+		</div>
+	</body>
+		<script id="test" type="text/html">
+			{{if isAdmin}}			
+				{{each list value i}}
+				<p>索引 {{i + 1}} ：{{value}}</p>
+				{{/each}}
+			
+
+			{{/if}}
+			<!--{{$data}}-->
+		</script>
+
+		<script>
+			var data = {
+				title: '基本例子',
+				isAdmin: true,
+				list: ['文艺', '博客', '摄影', '电影', '民谣', '旅行', '吉他', '摄影', '电影', '民谣', '旅行', '吉他', '摄影', '电影', '民谣', '旅行', '吉他', '电影', '民谣', '旅行', '吉他', '摄影', '电影', '民谣', '旅行', '吉他']
+			};
+			var html = template('test', data);
+			document.getElementById('content').innerHTML = html;
+		</script>
+	</body>
+
+</html>
