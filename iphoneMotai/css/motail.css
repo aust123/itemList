@@ -1,0 +1,201 @@
+body,
+div,
+ul,
+li,
+ol,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+input,
+textarea,
+select,
+p,
+dl,
+dt,
+dd,
+a,
+img,
+button,
+form,
+table,
+th,
+tr,
+td,
+tbody,
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+	margin: 0;
+	padding: 0;
+}
+
+a {
+	text-decoration: none;
+}
+
+ul ol {
+	list-style: none;
+}
+
+body {
+	font-family: "microsoft yahei", '宋体', Tahoma, Arial, sans-serif;
+	background-color: #f2f2f2;
+}
+/*弹出框样式*/
+.popupBox,
+.background {
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+	display: none;
+}
+.background {
+	background-color: rgba(0,0,0,.4);
+	filter: alpha(opacity=40);
+	-moz-opacity: 0.4;
+	-khtml-opacity: 0.4;
+	opacity: 0.4;
+}
+
+#delete_box{
+	width: 100%;
+	background: rgba(255,255,255,0.95);	
+	position: fixed;
+	top: 0px;
+	left: 50%;
+	bottom: 0px;
+	right: 0px;
+	margin: auto;
+	z-index: 22;
+	color: #333;
+	font-size: 0.0rem;
+	border-radius: 0.52rem;
+	width: 10.8rem;
+	height: 4.84rem;
+	 opacity: 0;
+    -webkit-transition-property: -webkit-transform,opacity;
+    transition-property: transform,opacity;
+    -webkit-transform: translate3d(-50%,-50%,0) scale(1.185);
+    transform: translate3d(-50%,-50%,0) scale(1.185);  
+}
+
+#delete_box.show{
+	transform: translate3d(-50%,-50%,0) scale(1.185);
+	 -webkit-transform: translate3d(-50%,-50%,0) scale(1.185);
+}
+#delete_box.show_in{
+	opacity: 1;
+	-webkit-transition-duration: 400ms;
+	transition-duration: 400ms;
+    -webkit-transform: translate3d(-50%,-50%,0) scale(1);
+    transform: translate3d(-50%,-50%,0) scale(1);
+	-webkit-transition-property: -webkit-transform,opacity;
+    transition-property: transform,opacity;
+    
+}
+div.buttons{
+	position: relative;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    height: 1.76rem;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+}
+span.mui_btn{
+	position: relative;
+    display: block;
+    width: 100%;
+    height: 1.76rem;
+    box-sizing: border-box;
+    padding: 0 5px;
+    overflow: hidden;
+    font-size: 0.68rem;
+    line-height: 1.76rem;
+    color: #007aff;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+    -webkit-box-flex: 1;
+}
+
+#sure {
+	border-radius:0 0 0 0.52rem ;
+}
+#cancle{
+	border-radius:0 0 0.52rem 0;
+	font-weight: bold;
+}
+span#sure:after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: auto;
+    left: auto;
+    z-index: 99;
+    display: block;
+    width: 1px;
+    height: 100%;
+    content: '';
+    background-color: rgba(0,0,0,.2);    
+}
+div.operate_tip {
+	position: relative;
+	color: #000;	
+	text-align: center;
+	padding: 0.55rem;
+	font-weight: 400;
+	border-radius: 0.52rem 0.52rem 0 0;
+	height: 2rem;
+	line-height: 2rem;
+}
+div.operate_tip::after{
+	position: absolute;
+    top: auto;
+    right: auto;
+    bottom: 0;
+    left: 0;
+    z-index: 15;
+    display: block;
+    width: 100%;
+    height: 1px;
+    content: '';
+    background-color: rgba(0,0,0,.2);
+    -webkit-transform: scaleY(.5);
+    transform: scaleY(.5);
+    -webkit-transform-origin: 50% 100%;
+    transform-origin: 50% 100%;
+}
+div.text{
+	font-size: 0.72rem;
+    font-weight: 500;
+    text-align: center;
+}
+
+/*确认退出按钮*/
+.login_out{
+	width: 100%;
+	background: #fff;
+	color: red;
+	font-size: 0.64rem;
+	height: 1.76rem;
+	line-height: 1.76rem;
+	text-align: center;
+	
+}
+
