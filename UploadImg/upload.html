@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<script type="text/javascript">
+			(function() {
+				var html = document.documentElement;
+				var width = html.getBoundingClientRect().width;
+				html.style.fontSize = width / 15 + 'px';
+				//1rem=50;
+			})()
+		</script>
+		<style type="text/css">
+			#img_box {
+				display: inline-block;
+				width: 2.56rem;
+				height: 2.56rem;
+				position: relative;
+			}			
+			#chose {
+				width: 100%;
+				height: 100%;
+				opacity: 0;
+				position: absolute;
+				left: 0;
+				top: 0;
+				cursor: pointer;
+				z-index: 5;
+			}
+			
+			#imgs {
+				display: block;
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				top: 0;
+				left: 0;
+				cursor: pointer;
+				z-index: -1;
+			}
+			
+			#cancle {
+				position: absolute;
+				right: -0.12rem;
+				top: -0.18rem;
+				width: 0.6rem;
+				height: 0.6rem;
+				text-align: center;
+				line-height: 0.6rem;
+				border-radius: 100%;
+				background-color: #FF5053;
+				color: #f3f3f3;
+				border: solid 0.02rem #FF5053;
+				font-size: 0.5rem;
+				font-weight: 200;
+				z-index: 8;
+				display: none;
+				font-weight: bold;
+			}
+			
+			#cancle.show {
+				display: inline-block;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="img_box">
+			<span id="cancle">X</span>
+			<!--使用accept='image/*'属性，调用移动端设备的相机功能，并且支持浏览本地图片-->
+			<input type="file" accept="image/*" id="chose" value="" />
+			<img id="imgs" src="img/iconfont-tianjia.png" />
+		</div>
+		
+		<script type="text/javascript">
+			var chose = document.getElementById('chose');
+			var cancle = document.getElementById('cancle');
+			var img = document.getElementById('imgs');
+			chose.onchange = function uploadImg() {
+				if(this.files && this.files[0]) {
+					var ext = this.value.substring(this.value.lastIndexOf(".") + 1).toLowerCase();
+					if(ext != 'png' && ext != 'jpg' && ext != 'jpeg') {
+						alert("图片的格式必须为png或者jpg或者jpeg格式！");
+						return false;
+					} else {
+						//使用FileReader对象实现图片转换成base64格式
+						var reader = new FileReader();
+						reader.onload = function(evt) {
+							/*上传转换base64格式*/
+							baseSrc = evt.target.result;
+							/*上传图片预览效果*/
+							img.setAttribute('src', baseSrc);
+							
+							//方法一：图片预览生成后，修改input[type="file"]的type属性,如改为'text';
+							chose.setAttribute('type','text');
+							cancle.className = 'show';
+
+						}
+						reader.readAsDataURL(this.files[0]);
+					}
+				}
+			}
+			
+			/*右上角取消选择图片按钮*/
+			cancle.onclick = function() {
+				this.className = '';
+				//方法二：每次取消已选择的图片后，将input[type='file']的value值重置为空
+				//chose.value='';
+				/*方法一：取消预览后重新将input[type='file']的type属性设置回来*/
+				chose.setAttribute('type','file');
+				img.setAttribute('src', 'img/iconfont-tianjia.png');
+				
+			}
+		</script>
+	</body>
+
+</html>
