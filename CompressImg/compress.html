@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<style type="text/css">
+			#preview {
+				display: inline-block;
+				width: 2.56rem;
+				height: 2.56rem;
+				position: relative;
+				background-image: url(img/iconfont-tianjia.png);
+				background-repeat: no-repeat;
+				background-size:cover ;
+			}			
+			#file {
+				width: 100%;
+				height: 100%;
+				opacity: 0;
+				position: absolute;
+				left: 0;
+				top: 0;
+				cursor: pointer;
+				z-index: 5;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="preview">
+			<input type="file" accept="image/*" id="file" value="" />
+		</div>
+		<script type="text/javascript">
+			var preview = document.querySelector('#preview');
+			var eleFile = document.querySelector('#file');
+			// 压缩图片需要的一些元素和对象
+			var reader = new FileReader(),
+				//创建一个img对象
+				img = new Image();
+
+			// 选择的文件对象
+			var file = null;
+
+			// 缩放图片需要的canvas
+			var canvas = document.createElement('canvas');
+			var context = canvas.getContext('2d');
+
+			// base64地址图片加载完毕后
+			img.onload = function() {
+				// 图片原始尺寸
+				var originWidth = this.width;
+				var originHeight = this.height;
+				// 最大尺寸限制，可通过国设置宽高来实现压缩程度
+				var maxWidth = 800,
+					maxHeight = 800;
+				// 目标尺寸
+				var targetWidth = originWidth,
+					targetHeight = originHeight;
+				// 图片尺寸超过400x400的限制
+				if(originWidth > maxWidth || originHeight > maxHeight) {
+					if(originWidth / originHeight > maxWidth / maxHeight) {
+						// 更宽，按照宽度限定尺寸
+						targetWidth = maxWidth;
+						targetHeight = Math.round(maxWidth * (originHeight / originWidth));
+					} else {
+						targetHeight = maxHeight;
+						targetWidth = Math.round(maxHeight * (originWidth / originHeight));
+					}
+				}
+				// canvas对图片进行缩放
+				canvas.width = targetWidth;
+				canvas.height = targetHeight;
+				// 清除画布
+				context.clearRect(0, 0, targetWidth, targetHeight);
+				// 图片压缩
+				context.drawImage(img, 0, 0, targetWidth, targetHeight);
+				/*第一个参数是创建的img对象；第二个参数是左上角坐标，后面两个是画布区域宽高*/
+				//压缩后的图片base64 url
+				/*canvas.toDataURL(mimeType, qualityArgument),mimeType 默认值是'image/jpeg';
+				 * qualityArgument表示导出的图片质量，只要导出为jpg和webp格式的时候此参数才有效果，默认值是0.92*/
+				var newUrl = canvas.toDataURL('image/jpeg', 0.92); //base64 格式
+				preview.style.backgroundImage='url(' + newUrl + ')';
+				//console.log(canvas.toDataURL('image/jpeg', 0.92))
+
+			};
+
+			// 文件base64化，以便获知图片原始尺寸
+			reader.onload = function(e) {
+				img.src = e.target.result;
+			};
+			eleFile.addEventListener('change', function(event) {
+				file = event.target.files[0];
+				// 选择的文件是图片
+				if(file.type.indexOf("image") == 0) {
+					reader.readAsDataURL(file);
+				}
+			});
+		</script>
+	</body>
+
+</html>
