@@ -1,0 +1,271 @@
+body,
+ul,
+li,
+ol,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+input,
+textarea,
+select,
+p,
+dl,
+dt,
+dd,
+a,
+img,
+button,
+form,
+table,
+th,
+tr,
+td,
+tbody,
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+	margin: 0;
+	padding: 0;
+}
+
+a {
+	text-decoration: none;
+}
+
+ul ol {
+	list-style: none;
+}
+
+body {
+	font-family: helvetica, '宋体', Tahoma, Arial, sans-serif;
+	position: relative;
+}
+
+.left {
+	float: left;
+}
+
+.right {
+	float: right;
+}
+
+.clear {
+	clear: both;
+}
+
+
+/*--------头部公共模块-------*/
+.top{
+	width: 100%;
+	height: 1.2rem;
+	background-color: #00d3af;
+}
+.top>a{
+	display: block;
+	height: 100%;
+	width: 100%;
+	color: #fff;
+	font-size: 0.52rem;
+	line-height: 1.2rem;
+	
+}
+.top img{
+	margin: 0 0.24rem 0 0.56rem;
+	width: 0.64rem;
+	vertical-align: -0.12rem;
+}
+
+header {
+	width: 100%;
+	text-align: center;
+	height: 3.32rem;
+	position: relative;	
+	padding: 0 0.8rem;
+	box-sizing: border-box;
+}
+.logo{	
+	width: 2.3rem;
+	margin-top: 0.4rem;
+}
+
+
+header>a {
+	font-size: 0.6rem;
+	color: #333;
+	display: inline-block;
+	height: 100%;	
+	line-height: 3.32rem;
+}
+
+a.date img {
+	width: 1.06rem;
+}
+a.date b {
+	display: block;
+	font-weight: normal;
+	line-height: 1;
+	margin-top: -1.2rem;
+	font-size: 0.4rem;
+}
+
+/*----内容区域-----*/
+
+.content {
+	padding-bottom: 1.96rem;
+	display: none;
+	
+}
+div.current_option{
+	display: block;
+}
+/*实时价格内容样式*/
+
+.flex {
+	display: flex;
+	padding: 0px 0.64rem;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+#area {
+	border-top:0.02rem solid #ddd;
+	padding-top: 0.52rem;
+}
+
+#area a {
+	font-size: 0.6rem;
+	color: #6e6d6d;
+}
+
+.current_area {
+	font-weight: bold;
+	border-bottom: 0.04rem solid #ef7d40;
+	padding-bottom: 0.24rem;
+}
+
+.province {
+	margin-top: 0.58rem;
+	display: none;
+}
+section.current_area_province{
+	display: flex;
+}
+.province a {
+	font-size: 0.56rem;
+	color: #858484;
+}
+
+.province .current_province {
+	color: #ef7d40;
+}
+
+#price_detail {
+	margin-top:0.96rem;
+	padding: 0 0.6rem;
+}
+#price_detail>div{
+	border: 0.02rem solid #bfbfbf;
+	padding: 0.64rem 0.44rem;
+	box-sizing: border-box;
+	margin-bottom: 0.4rem;
+	border-radius:0.2rem ;
+}
+#price_detail>div>p:nth-of-type(1) {
+	font-size:0.64rem;
+	color: #333;
+	line-height: 1;
+	margin-bottom: 0.4rem;
+	font-weight: bold;
+}
+#price_detail>div>p:nth-of-type(2) {
+	font-size: 0.56rem;
+	color: #999;
+	margin-bottom: 0.72rem;
+}
+#price_detail .tips{
+	color: #f00808;
+	font-size: 0.6rem;
+}
+.id_img{
+	width: 2.52rem;
+	vertical-align: middle;
+}
+p.prices{
+	font-size: 0.64rem;
+	color: #7d7d7d;
+	margin-top: 0.6rem;
+}
+
+/*----底部公共模块-----*/
+
+.flex_box {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
+}
+
+#footer {
+	border-top: 0.02rem solid #ddd;
+	padding: 0 1.48rem;
+	box-sizing: border-box;
+	height: 1.96rem;
+	width: 100%;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	background-color: #fff;
+}
+
+#footer img {
+	width: 0.88rem;
+	margin-bottom: 0.1rem;
+}
+
+#footer a {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	font-size: 0.48rem;
+	color: #bababa;
+}
+
+#footer .current_btn {
+	color: #00D3AF;
+}
+
+
+/*--------行情分析页面-----------*/
+#msg_list {
+	padding: 0.24rem 0;
+	background-color: #f1f1f1;
+}
+.msg_title{
+	background-color: #fff;
+	width: 100%;
+	display: block;
+	height: 2.4rem;
+	color: #333;
+	font-size: 0.6rem;
+	border-bottom:0.02rem solid #ddd;
+	padding: 0.68rem 0.6rem 0 0.46rem;
+	box-sizing: border-box;
+}
+p.msg_date{
+	font-size: 0.56rem;
+	color: #999;	
+}
+.msg_title p:nth-of-type(2){
+	margin-top:0.25rem ;
+}
