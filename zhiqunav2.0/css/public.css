@@ -1,0 +1,248 @@
+/* 清除内外边距 */
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+p,
+blockquote,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+pre,
+fieldset,
+lengend,
+button,
+input,
+textarea,
+th,
+td {
+	/* table elements 表格元素 */
+	margin: 0;
+	padding: 0;
+}
+
+
+/* 设置默认字体 */
+
+body,
+button,
+input,
+select,
+textarea {
+	outline: none;
+	/* for ie */
+	/*font: 12px/1 Tahoma, Helvetica, Arial, "宋体", sans-serif;*/
+	font: 12px/1 Microsoft Yahei, Tahoma, Helvetica, Arial, "\5b8b\4f53", sans-serif;
+	/* 用 ascii 字符表示，使得在任何编码下都无问题 */
+}
+
+h1 {
+	font-size: 18px;
+	/* 18px / 12px = 1.5 */
+}
+
+h2 {
+	font-size: 16px;
+}
+
+h3 {
+	font-size: 14px;
+}
+
+h4,
+h5,
+h6 {
+	font-size: 100%;
+}
+
+address,
+cite,
+dfn,
+em,
+var {
+	font-style: normal;
+}
+
+
+/* 将斜体扶正 */
+
+code,
+kbd,
+pre,
+samp,
+tt {
+	font-family: "Courier New", Courier, monospace;
+}
+
+
+/* 重置列表元素 */
+
+ul,
+ol {
+	list-style: none;
+}
+
+
+/* 重置文本格式元素 */
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+abbr[title],
+acronym[title] {
+	/* 注：1.ie6 不支持 abbr; 2.这里用了属性选择符，ie6 下无效果 */
+	border-bottom: 1px dotted;
+	cursor: help;
+}
+
+q:before,
+q:after {
+	content: '';
+}
+
+
+/* 重置表单元素 */
+
+legend {
+	color: #000;
+}
+
+
+/* for ie6 */
+
+fieldset,
+img {
+	border: none;
+}
+
+
+/* img 搭车：让链接里的 img 无边框 */
+
+
+/* 注：optgroup 无法扶正 */
+
+button,
+input,
+select,
+textarea {
+	font-size: 100%;
+	/* 使得表单元素在 ie 下能继承字体大小 */
+}
+
+
+/* 重置表格元素 */
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+/* 重置 hr */
+
+hr {
+	border: none;
+	height: 1px;
+}
+
+.icon {
+	display: inline-block;
+}
+
+.icon-zs {
+	width: 40px;
+	height: 39px;
+	background: url(../img/index_appicon1.png) no-repeat;
+}
+
+.icon-wl {
+	width: 40px;
+	height: 40px;
+	background: url(../img/index_appicon2.png) no-repeat;
+}
+
+.icon-sd {
+	width: 43px;
+	height: 43px;
+	background: url(../img/index_appicon3.png) no-repeat;
+}
+
+body {
+	background: #f7f7f7;
+}
+
+.index-main {
+	width: 1180px;
+	margin: 0 auto;
+}
+
+.index-main:after {
+	content: '';
+	display: block;
+	clear: both;
+}
+
+.public-title {
+	height: 62px;
+	line-height: 62px;
+	color: #666;
+}
+
+.public-title .title-heading {
+	float: left;
+	color: #333;
+	font-size: 20px;
+	font-weight: normal;
+	margin-right: 30px;
+}
+
+.public-title .title-tab {
+	float: left;
+}
+
+.public-title .title-tab:after {
+	content: '';
+	display: block;
+	clear: both;
+}
+
+.public-title .title-tab li {
+	float: left;
+	height: 48px;
+	border-bottom: 2px solid transparent;
+	margin-right: 26px;
+	line-height: 60px;
+	cursor: pointer
+}
+
+.public-title .title-tab li.active {
+	color: #d0111b;
+	border-color: #d0111b;
+}
+
+.public-title .title-tab li:hover {
+	color: #d0111b;
+}
+
+.public-title .title-note {
+	float: left;
+	color: #999;
+}
+
+.public-title .more {
+	float: right;
+	color: #666;
+}

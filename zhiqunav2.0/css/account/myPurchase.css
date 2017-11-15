@@ -1,0 +1,190 @@
+/*我的供应和我的采购叶明样式*/
+.purchase{
+	width: 1040px;
+	margin: 0 auto;
+	background-color: #fff;
+	padding: 30px 40px 48px 40px;
+	margin-top: 50px;
+	min-height: 825px;
+}
+.purchase>h3{
+	font-size: 18px;
+	color: #333;
+	padding-bottom: 14px;
+	border-bottom: 1px dashed #e5e5e5;
+	font-weight: normal;
+}
+div.purchase_list{
+	margin-top: 30px;
+}
+div.purchase_list table th{
+	font-weight: normal;
+	color: #333;
+	font-size: 16px;
+	background-color:#f3f3f3 ;
+	height: 36px;
+	line-height: 36px;
+	text-align: center;
+	width: 137px;
+}
+div.purchase_list .th1{
+	width:135px ;
+}
+div.purchase_list .th2{
+	width: 135px;
+}
+div.purchase_list .th3{
+	width: 130px;
+}
+div.purchase_list .th4{
+	width: 205px;
+}
+div.purchase_list .th5{
+	width: 145px;
+}
+div.purchase_list .th6{
+	width: 145px;
+}
+div.purchase_list .th7{
+	width:145px ;
+}
+
+div.purchase_list table td{
+	font-size: 14px;
+	color: #666;
+	text-align: center;
+	height: 50px;
+	line-height: 50px;
+	border-bottom: 1px solid #e5e5e5;
+	position: relative;
+}
+div.purchase_list table tr:hover{
+	background-color:#fff1f1 ;
+}
+td.option a{
+	display: inline-block;
+	text-align: center;
+	width: 50px;
+	font-size: 14px;
+	color: #fff;
+	height: 26px;
+	line-height: 26px;
+	border-radius: 5px;
+}
+/*下架按钮*/
+a.down{	
+	background-color: #ff5000;	
+}
+/*下架编辑按钮和刷新按钮*/
+a.edit,a.refresh{
+	margin-left: 10px;
+	background-color: #208df0;	
+}
+/*上架按钮*/
+a.up{	
+	background-color: #4dbc04;	
+}
+/*上架编辑按钮*/
+a.up_edit{
+	margin-left: 10px;
+	background-color: #ffba00;	
+}
+a.change_price{
+	position: absolute;
+	top: 15px;
+	right: -8px;
+	width: 46px;
+	height: 18px;
+	display: inline-block;
+	background: url(../../img/my_wodegongying_gaijia.png) no-repeat;
+	color: #fff;
+	font-size: 12px;
+	
+}
+a.change_price>span{
+	display: inline-block;
+	width: 100%;
+	position: absolute;
+	top: 2px;
+	left: 3px;
+	line-height: 1;
+}
+a.change_price:hover{
+	text-decoration: none;	
+}
+/*-----------我的报价页面样式--------------*/
+div.purchase_list .quote_th1{
+	width: 140px;
+}
+div.purchase_list .quote_th2{
+	width: 220px;
+}
+div.purchase_list .quote_th3{
+	width: 165px;
+}
+div.purchase_list .quote_th4{
+	width: 200px;
+}
+div.purchase_list .quote_th5{
+	width: 300px;
+}
+div.purchase_list .quote_status{
+	color: #208df0;
+}
+div.purchase_list .quote_status_agree{
+	color: #cf181e;
+}
+/*订金*/
+div.purchase_list span.deposit{
+	margin-left: 35px;
+}
+/*状态左对齐*/
+.left_align{
+	text-align: left !important;
+}
+
+a>img{
+	vertical-align: -3px;
+	margin-right: 8px;
+}
+a.cancel{
+	color: #FF5000;
+}
+a.chat{
+	color: #00d4af;
+	margin: 0 30px;
+}
+a.phone{
+	color: #4dbc04;
+}
+/*-----------认证页面-------------*/
+/*-----个人认证-----*/
+.purchase_list h2{
+	font-size: 18px;
+	color: #333;
+	margin-bottom: 54px;
+}
+
+div.certificate_msg p{
+	color: #333;
+	font-size: 16px;
+	margin-bottom: 48px;
+}
+div.certificate_msg p>span{
+	color:#666;	
+	margin-right: 30px;
+	margin-left: 87px;
+}
+.certificate_msg span.name{
+	margin-left: 80px;
+}
+.certificate_msg span.id_number{
+	margin-left: 63px;
+}
+.certificate_msg span.id_img{
+	margin-left: 0;
+}
+div.certificate_msg p>img{
+	vertical-align: text-top;
+	margin-right: 40px;	
+}
