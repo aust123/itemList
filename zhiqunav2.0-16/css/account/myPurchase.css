@@ -1,0 +1,375 @@
+/*我的供应和我的采购叶明样式*/
+.purchase{
+	width: 1040px;
+	margin: 0 auto;
+	background-color: #fff;
+	padding: 30px 40px 48px 40px;
+	margin-top: 50px;
+	min-height: 825px;
+}
+.purchase>h3,.strength_show>h3{
+	font-size: 18px;
+	color: #333;
+	padding-bottom: 14px;
+	border-bottom: 1px dashed #e5e5e5;
+	font-weight: normal;
+}
+div.purchase_list{
+	margin-top: 30px;
+}
+div.purchase_list table th{
+	font-weight: normal;
+	color: #333;
+	font-size: 16px;
+	background-color:#f3f3f3 ;
+	height: 36px;
+	line-height: 36px;
+	text-align: center;
+	width: 137px;
+}
+div.purchase_list .th1{
+	width:135px ;
+}
+div.purchase_list .th2{
+	width: 135px;
+}
+div.purchase_list .th3{
+	width: 130px;
+}
+div.purchase_list .th4{
+	width: 205px;
+}
+div.purchase_list .th5{
+	width: 145px;
+}
+div.purchase_list .th6{
+	width: 145px;
+}
+div.purchase_list .th7{
+	width:145px ;
+}
+
+div.purchase_list table td{
+	font-size: 14px;
+	color: #666;
+	text-align: center;
+	height: 50px;
+	line-height: 50px;
+	border-bottom: 1px solid #e5e5e5;
+	position: relative;
+}
+div.purchase_list table tr:hover{
+	background-color:#fff1f1 ;
+}
+td.option a{
+	display: inline-block;
+	text-align: center;
+	width: 50px;
+	font-size: 14px;
+	color: #fff;
+	height: 26px;
+	line-height: 26px;
+	border-radius: 5px;
+}
+/*下架按钮*/
+a.down{	
+	background-color: #ff5000;	
+}
+/*下架编辑按钮和刷新按钮*/
+a.edit,a.refresh{
+	margin-left: 10px;
+	background-color: #208df0;	
+}
+/*上架按钮*/
+a.up{	
+	background-color: #4dbc04;	
+}
+/*上架编辑按钮*/
+a.up_edit{
+	margin-left: 10px;
+	background-color: #ffba00;	
+}
+a.change_price{
+	position: absolute;
+	top: 15px;
+	right: -8px;
+	width: 46px;
+	height: 18px;
+	display: inline-block;
+	background: url(../../img/my_wodegongying_gaijia.png) no-repeat;
+	color: #fff;
+	font-size: 12px;
+	
+}
+a.change_price>span{
+	display: inline-block;
+	width: 100%;
+	position: absolute;
+	top: 2px;
+	left: 3px;
+	line-height: 1;
+}
+a.change_price:hover{
+	text-decoration: none;	
+}
+/*-----------我的报价页面样式--------------*/
+div.purchase_list .quote_th1{
+	width: 140px;
+}
+div.purchase_list .quote_th2{
+	width: 220px;
+}
+div.purchase_list .quote_th3{
+	width: 165px;
+}
+div.purchase_list .quote_th4{
+	width: 200px;
+}
+div.purchase_list .quote_th5{
+	width: 300px;
+}
+div.purchase_list .quote_status{
+	color: #208df0;
+}
+div.purchase_list .quote_status_agree{
+	color: #cf181e;
+}
+/*订金*/
+div.purchase_list span.deposit{
+	margin-left: 35px;
+}
+/*状态左对齐*/
+.left_align{
+	text-align: left !important;
+}
+
+a>img{
+	vertical-align: -3px;
+	margin-right: 8px;
+}
+a.cancel{
+	color: #FF5000;
+}
+a.chat{
+	color: #00d4af;
+	margin: 0 30px;
+}
+a.phone{
+	color: #4dbc04;
+}
+/*-----------认证页面-------------*/
+/*-----个人认证-----*/
+.purchase_list h2{
+	font-size: 18px;
+	color: #333;
+	margin-bottom: 54px;
+}
+
+div.certificate_msg p{
+	color: #333;
+	font-size: 16px;
+	margin-bottom: 48px;
+}
+div.certificate_msg p>span{
+	color:#666;	
+	margin-right: 30px;
+	margin-left: 87px;
+}
+.certificate_msg span.name{
+	margin-left: 80px;
+}
+.certificate_msg span.id_number{
+	margin-left: 63px;
+}
+.certificate_msg span.id_img{
+	margin-left: 0;
+}
+div.certificate_msg p>img{
+	vertical-align: text-top;
+	margin-right: 40px;	
+}
+/*----------账户信息页面样式-------------*/
+#account_content{
+	min-height: 202px;
+	padding-bottom: 0;
+}
+.account_info{
+	margin-top: 30px;
+}
+.account_info>div{
+	display: inline-block;
+}
+
+.info_img>img{
+	width: 88px;
+	height: 92px;
+}
+.info_detail{
+	margin-left: 14px;
+	width:89.85% ;
+}
+.info_detail h4{
+	color: #333;
+	font-size: 16px;
+	font-weight: normal;
+	margin-bottom: 20px;
+}
+.info_detail p{
+	font-size: 16px;
+	color: #666;
+}
+.my_role{
+	background: url(../../img/my_zhanghuxinxi_dabao.png) no-repeat;
+	padding-left: 25px;
+	margin-right: 20px;
+}
+.my_address{
+	background: url(../../img/my_zhanghuxinxi_dizhi.png) no-repeat;
+	padding-left: 25px;
+	margin-right: 36px;
+}
+.my_score{
+	margin-right: 44px;
+}
+.my_score>i{
+	font-style: normal;
+	font-size: 14px;
+	color: #f1a31c;
+}
+.my_ranking>b{
+	font-weight: normal;
+	font-size: 14px;
+	color: #FF5000;
+}
+p.my_first{
+	padding-bottom: 16px;
+	border-bottom: 1px solid #e5e5e5;
+	margin-bottom: 14px;
+}
+p.my_second span{
+	margin-right: 26px;
+	color: #999;
+}
+p.my_second b{
+	font-weight: normal;
+	color: #666;
+}
+
+.strength_show{
+	padding: 30px 40px 17px 40px;
+	width: 1040px;
+	margin: 0px auto;
+	background-color: #fff;
+	margin-top: 18px;
+	margin-bottom: 90px;
+}
+.strength_show>h3{
+	border-bottom: 1px solid #e5e5e5;
+}
+a.edit_info{
+	float: right;
+	color: #ff5000;
+	background: url(../../img/my_zhanghuxinxi_bianji.png) no-repeat;
+	background-size:16px 16px ;
+	padding-left: 25px;
+	font-size: 16px;
+	margin-right: 33px;
+}
+a.edit_info:hover{
+	text-decoration: none;
+}
+p.text_show{
+	font-size:16px ;
+	color: #333;
+	line-height: 1.5;
+	margin:20px 0 40px ;
+}
+div.img_show{
+	white-space: nowrap;
+	overflow-x: auto;
+	overflow-y: hidden;
+}
+div.img_show>img{
+	margin-right: 20px;
+	width: 154px;
+}
+/*--------------我的团队-------------*/
+a.team_share{
+	float: right;
+	color: #fff;
+	font-size: 14px;
+	text-align: center;
+	background-color:#00D3AF;
+	height: 26px;
+	width:58px;
+	line-height: 26px;
+	border-radius: 5px;
+	
+}
+.my_team>p{
+	color: #666;
+	font-size: 16px;
+	margin-left: 136px;
+}
+.my_team>p>span{
+	color: #333;
+}
+p.team_count{
+	margin-top: 40px;
+	margin-bottom: 50px;
+}
+a.rank_state{
+	margin-top: 46px;
+	float: right;
+	color: #666;
+	padding-left: 25px;
+	font-size:14px ;
+}
+a.rank_state img{
+	width: 15px;
+	vertical-align: -2px;
+}
+a.rank_state:hover{
+	text-decoration: none;
+	color: #00D3AF;
+}
+
+ul.team_numbers{
+	margin-top: 20px;
+	border: 1px solid #e5e5e5;
+	border-bottom: 0px;	
+}
+ul.team_numbers>li{
+	height: 77px;
+	
+	border-bottom: 1px solid #e5e5e5;
+}
+ul.team_numbers>li img{
+	width: 50px;
+	height: 50px;
+	vertical-align: -5px;
+	margin-right: 28px;
+	margin-left: 36px;
+}
+ul.team_numbers div{
+	display: inline-block;
+	color: #333;
+	margin-top: 20px;
+}
+ul.team_numbers p{
+	font-size: 16px;
+}
+ul.team_numbers p.second_p{
+	font-size: 14px;
+	margin-top: 10px;
+}
+ul.team_numbers>li span{
+	color: #666;	
+}
+i.red_text{
+	font-style: normal;
+	color: #ff0036;
+}
+span.money{	
+	margin:0 162px;
+}

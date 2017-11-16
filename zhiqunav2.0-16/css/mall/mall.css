@@ -1,0 +1,129 @@
+/*----------店铺详情------------*/
+.store_header{
+	width: 100%;
+	background-color: #fff;
+}
+.store_img{
+	width: 100%;
+	height: 428px;
+}
+.store_img img{
+	width: 100%;
+	height: 100%;
+}
+.store_info{
+	border-bottom:1px solid #e0e0e0 ;
+}
+.store_info ul{
+	height: 87px;
+	padding: 20px 0px;
+	box-sizing: border-box;	
+	text-align: center;
+}
+.store_info ul li{
+	font-size: 20px;
+	display: inline-block;
+	width: 310px;	
+	text-align: center;
+	color: #333;
+	border-right:1px solid #e5e5e5;	
+}
+.store_info li.last_li{
+	border: 0px;
+}
+.store_info ul li p{
+	margin-bottom: 10px;
+	
+}
+.store_info ul li span{
+	font-size: 18px;
+	color:#999 ;
+}
+/*店铺信息内容区域*/
+.store_content{
+	width: 1180px;
+	margin: 0 auto;
+	overflow: hidden;
+	margin-top: 16px;
+}
+.store_content>div{
+	float: left;
+}
+/*店铺信息内容区域左侧部分*/
+.store_info_left{
+	width: 238px;
+}
+.store_info_left>div{
+	background-color: #fff;
+}
+.store_info_left h3{
+	font-size: 16px;
+	color: #333;
+}
+.store_info_left p{
+	font-size: 14px;
+	color: #666;
+}
+.store_info_left p span{
+	color: #999;
+}
+p.seller_name{
+	color: #333;
+	font-size: 16px;	
+	margin: 18px 0;
+}
+.seller_name img{
+	width: 74px;
+	height: 74px;
+	margin-right: 18px;
+	vertical-align: middle;
+}
+div.seller_info{
+	padding:22px 20px 18px 20px;
+}
+
+p.third_p{
+	margin-top: 12px;
+}
+
+div.follow_info{
+	border-top: 1px  solid #e5e5e5;
+	padding: 18px 7px;
+}
+div.follow_info>p{
+	padding:0px 13px;
+	margin-bottom: 24px;
+}
+div.option{
+	margin-top: 10px;
+	padding: 18px 20px 16px 20px;
+}
+div.option h3{
+	margin-bottom: 16px;
+}
+div.option a{
+	display: block;
+	padding-left: 40px;
+	height: 30px;
+	font-size: 14px;
+	margin-bottom: 10px;
+	position: relative;
+	color: #fff;
+}
+div.option a span{
+	position: relative;
+	top: 7px;
+	left: 40px;
+	z-index: 2;
+}
+div.option a img{
+	position: absolute;	
+}
+/*店铺信息内容区域右侧部分*/
+.store_info_right{
+	
+}
+
+
+
+
