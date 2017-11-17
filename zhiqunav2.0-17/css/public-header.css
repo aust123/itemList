@@ -1,0 +1,108 @@
+body{
+    min-width:1300px;
+}
+.icon {
+    display: inline-block;
+}
+
+/*替换头部背景色以及房子图标*/
+#mall_header:after{
+     content: "";
+    display: block;
+    height: 0;
+    clear: both;
+}
+#mall_header .topbar {
+    background: #e7e7e7;
+}
+#mall_header .toplink a, #mall_header .toplink span {
+    color: #999;
+    float: left;
+}
+#mall_header .topmenu a, #mall_header .topmenu span {
+    color: #999;
+}
+#mall_header .topbar i.home {
+    background: url(../img/index_home.png) no-repeat;
+    background-size:cover ;
+   
+}
+/*增加公司下拉*/
+#mall_header .topbar .company-list {
+    float: left;
+    position: relative;
+    padding: 0 10px;
+    border: 1px solid transparent;
+    border-top: 0;
+    border-bottom: 0;
+    margin-right:10px
+}
+#mall_header .topbar .company-list.active {
+    border-color: #d9d9d9;
+    background: #fff;
+}
+#mall_header .topbar .company-list.active .icon-header-arrow {
+            background-position: -186px -164px!important;
+}
+#mall_header .topbar .company-list.active .company-list-ul {
+            display: block;
+}
+#mall_header .topbar .company-list .company-list-name {
+        color: #c7181e;
+        cursor: pointer;
+        margin-right: 0;
+        cursor: pointer;
+        display: inline-block;
+        width: 156px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+}
+#mall_header .topbar .company-list .icon-header-arrow {
+        margin-right: 0;
+        margin-left:4px;
+}
+#mall_header .topbar .company-list .company-list-ul {
+        display: none;
+        position: absolute;
+        top: 30px;
+        background: #fff;
+        left: -1px;
+        border: 1px solid #d9d9d9;
+        border-top: 0;
+        padding: 10px 0;
+        z-index: 22;
+        min-width:188px;
+}
+/*w: 100%;*/
+#mall_header .topbar .company-list .company-list-ul li {
+
+            height: 24px;
+            line-height: 24px;
+            color: #999;
+            padding: 0 10px;
+            /*w:140px;*/
+            cursor: pointer;
+            white-space: nowrap
+            /*ofl: hidden;*/
+        }
+#mall_header .topbar .company-list .company-list-ul li:hover {
+    background: #e6e6e6;
+}
+/*更改导航文字颜色*/
+#mall_header .nav {
+    margin-left: 50px;
+}
+#mall_header .nav li {
+    margin-right: 0;
+}
+#mall_header .nav li a {
+    color: #555;
+    margin-right: 110px;
+    padding: 0;
+}
+#mall_header .nav li.on a, #mall_header .nav li.on a:hover {
+    background: none;
+    color: #00d3af;
+}
+
