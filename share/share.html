@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/share.css" />
+		<script>
+			(function() {
+				var html = document.documentElement;
+				var width = html.getBoundingClientRect().width;
+				html.style.fontSize = width / 15 + 'px';
+			})();
+		</script>
+	</head>
+
+	<body>
+		<header>
+			<a id="back_btn" href="javascript:history.go(-1);"></a>
+			<img src="img/bg.png" /></header>
+		<section class="content">
+			<form action="" method="">
+				<input id="phone" type="text" name="phone" placeholder="手机号" maxlength="11" autocomplete="off" required pattern='^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$' />
+				<input id="yzm" type="text" name="yzm" placeholder="验证码" required pattern="[0-9]{6}" maxlength="6" /><span class="code_btn">获取验证码</span>
+				<input id="sub_btn" type="submit" value="注 册" />
+			</form>
+		</section>
+		<section class="apps">
+			<a id="ios_rev" href="###"></a>
+			<a id="android_rev" href="###"></a>
+		</section>
+		<footer>
+			<div><img class="gzh" src="img/erweima.png" /></div>
+			<p>扫一扫，关注微信公众号</p>
+		</footer>
+
+		<!--弹出框-->
+		<div class="background"></div>
+		<div class="popupBox">
+			<div id="sucess_tips">
+				<span id="close_btn"></span> 恭喜你注册成功
+			</div>
+		</div>
+		<script src="js/jquery.min.js"></script>
+		<script type="text/javascript">
+			$(function() {
+				$(".gzh").click(function() {
+					popup();
+				})
+				/*单击空白区域和 确定/删除按钮模态框消失*/
+				function popup() {
+					$(".popupBox,.background").fadeIn(200);
+					$('.popupBox').click(function(e) {
+						var ev = e ? e : window.event;
+						if(ev.target == $(".popupBox")[0] || ev.target == $('#close_btn')[0]) {
+							$(".popupBox,.background").fadeOut(200);
+						}
+					})
+				}
+				
+				//获取短信验证码
+				var start = 1;
+				$(".code_btn").click(function() {
+					
+				})
+				/*点击获取验证码倒计时*/
+				function time(){
+					if(start) {
+						if($("#phone").val() != '') {
+							var time = 60;
+							var code = $(this);
+							var t = setInterval(function() {
+								time--;
+								code.html(time + "秒");
+								start = 0;
+								if(time == 0) {
+									clearInterval(t);
+									code.html("重新获取");
+									start = 1;
+								}
+							}, 1000)
+						} else {
+							alert('请输入验证码');
+						}
+					}
+				}
+
+			})
+		</script>
+	</body>
+
+</html>
