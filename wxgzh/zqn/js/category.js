@@ -49,7 +49,7 @@ function GetList(_id, _pathname) {
 		data: _id,
 		async: true,
 		success: function(data) {
-			console.log(data);
+			//console.log(data);
 			if(data.data) {
 				if(data.data.n_detail) {
 					AppendContent(data.data.n_detail);
@@ -63,7 +63,7 @@ function GetList(_id, _pathname) {
 						for(var i in data.data) {
 							for(var k in data.data[i]) {
 								if(k = 'created_at') {
-									console.log(data.data[i][k]);
+									//console.log(data.data[i][k]);
 									times = getLocalTime(data.data[i][k]);
 								}
 							}
@@ -74,7 +74,7 @@ function GetList(_id, _pathname) {
 					document.getElementById('content_list').innerHTML += html;
 					//数据请求成功后移除正在加载图片	
 					$('body #load_img').remove();
-					$("#load_btn").css("display", "block");
+					//$("#load_btn").css("display", "block");
 				} else {
 					$('body #load_img').remove();
 					$("#load_btn").css("display", "block").html("没有更多内容...")
@@ -146,10 +146,9 @@ Date.prototype.format = function(format) {
 }
 
 //点击加载更多
-/*点击加载状态*/
-var loadDiv = '<div id="load_img" style="color:#333"><span class="loading"></span>正在加载</div>';
 
-function LoadMore(tar) {
+
+/*function LoadMore(tar) {
 	$(this).remove();
 	var pathname = "/api/news/list";
 	if($('#box .loading').length == 0) {
@@ -160,24 +159,7 @@ function LoadMore(tar) {
 	//page值增长
 	obj.page++;
 	GetList(obj, pathname);
-}
-//下拉刷新内容
-$('.content').dropload({
-	scrollArea: window,
-	domUp: {
-		domClass: 'dropload-up',
-		domRefresh: '<div class="dropload-refresh">↓下拉刷新</div>',
-		domUpdate: '<div class="dropload-update">↑释放更新</div>',
-		domLoad: '<div class="dropload-load"><span class="loading"></span>加载中-请耐心等待...</div>'
-	},
-	loadUpFn: function(me) {
-		setTimeout(function() {
-			window.location.reload(true);
-			me.resetload();
-		}, 1000)
-	},
-	threshold: 50
-});
+}*/
 
 //视频播放添加touch事件并且 触摸视频时，图片消失，并播放视频
 function PLAY(video) {
