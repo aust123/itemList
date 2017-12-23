@@ -31,7 +31,14 @@ var banner = {
 };
 var mall = {
 	fn_ad: function() {
-		var a = new Swiper(".index-ad", {
+		var a = new Swiper(".co_factory", {
+			simulateTouch: false,
+			autoplay: 5000,
+			slidesPerView: 4,
+			loop: true,
+			slidesPerGroup: 4,
+		});
+		var aa = new Swiper(".co_company", {
 			simulateTouch: false,
 			autoplay: 5000,
 			slidesPerView: 4,
@@ -39,25 +46,45 @@ var mall = {
 			slidesPerGroup: 4,
 		});
 		$(".ad-prev").on("click", function(b) {
-			a.stopAutoplay();
+			a.stopAutoplay();			
 			b.preventDefault();
-			a.swipePrev()
+			a.swipePrev();			
 		});
 		$(".ad-next").on("click", function(b) {
-			a.stopAutoplay();
+			a.stopAutoplay();			
 			b.preventDefault();
-			a.swipeNext()
+			a.swipeNext();			
+		});
+		$(".ad-prevs").on("click", function(b) {			
+			aa.stopAutoplay();
+			b.preventDefault();
+			aa.swipePrev();
+		});
+		$(".ad-nexts").on("click", function(b) {
+			aa.stopAutoplay();
+			b.preventDefault();
+			aa.swipeNext();
 		});
 		$(document).on({
 			mouseenter: function() {
+				$(".ad-prevs,.ad-nexts").show();				
+				aa.stopAutoplay();
+			},
+			mouseleave: function() {
+				$(".ad-prevs,.ad-nexts").hide();				
+				aa.startAutoplay();
+			}
+		}, ".co_company");		
+		$(document).on({
+			mouseenter: function() {
 				$(".ad-prev,.ad-next").show();
-				a.stopAutoplay()
+				a.stopAutoplay();				
 			},
 			mouseleave: function() {
 				$(".ad-prev,.ad-next").hide();
-				a.startAutoplay()
+				a.startAutoplay();				
 			}
-		}, ".index-ad")
+		}, ".co_factory");
 	},
 	fn_del_action: function() {
 		var a = new Swiper(".slick", {

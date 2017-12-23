@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+
+	<head lang="en">
+		<meta charset="UTF-8">
+		<title>卖废纸买废纸，上纸去哪了</title>
+		<link rel="stylesheet" href="../../css/personal.css" />
+		<!--百度地图-->
+		<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.3"></script>
+		<!--　<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.5&ak=RsaS9YGARfDFV0vDkBfW9GyNfdfkcF6j"></script>-->
+	</head>
+
+	<body>
+		<!--地址管理-->
+		<div class="personal">
+			<div class="personalbanner"></div>
+			<div class="personalbox">
+				<!-- 侧边栏-->
+				<div class="personal-aside">
+				</div>
+				<!-- 主要内容-->
+				<div class="personal-content">
+					<h1 class="personal-content-title">个人中心</h1>
+					<h1 class="address-manage-title">
+                <strong>添加地址</strong>
+            </h1>
+					<div class="address-addform">
+						<div class="address-addform-item">
+							<span>姓名：</span>
+							<input class="a_name" type="text" placeholder="请填写姓名" />
+						</div>
+						<div class="address-addform-item">
+							<span>电话：</span>
+							<input class="a_phone" type="text" placeholder="请填写手机号码" />
+						</div>
+						<div class="address-addform-item">
+							<span>省份：</span>
+							<select id="seachprov" name="seachprov" onChange="changeComplexProvince(this.value, sub_array, 'seachcity', 'seachdistrict');">
+							</select>
+						</div>
+						<div class="address-addform-item">
+							<span>城市：</span>
+							<select id="seachcity" name="homecity" onChange="changeCity(this.value,'seachdistrict','seachdistrict');">
+							</select>
+						</div>
+						<div class="address-addform-item">
+							<span>区域：</span>
+							<select name="district" id="seachdistrict">
+							</select>
+						</div>
+						<div class="address-addform-item">
+							<span>详细地址：</span>
+							<input class="a_detail" type="text" />
+						</div>
+						<div class="address-addform-item">
+							<span></span>
+							<label>设为默认地址</label>
+						</div>
+						<div class="address-addform-submit">
+							<button id="sure_btn">保存</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<input type="hidden" class="addressManage" />
+		<div style="display: none;" id="allmap"></div>
+		<script src="../../lib/jquery-1.8.3.min.js"></script>
+		<script src="../../lib/AreaData_min.js"></script>
+		<script src="../../lib/Area.js"></script>
+		<script src="../../lib/md5.js"></script>
+		<script src="../../js/secret.js"></script>
+		<script>
+			$('.personal-aside').load('personal_aside.html');
+			//切换城市
+			initComplexArea('seachprov', 'seachcity', 'seachdistrict', area_array, sub_array, '0', '0', '0');
+			//是否设置默认地址
+			$a_is_default = 0;
+			$('.address-addform-item label').click(function() {
+				$(this).toggleClass('on');
+				$a_is_default = $(this).hasClass('on') ? 1 : 0;
+			});
+
+			/*提交添加地址信息*/
+
+			$('#sure_btn').click(function() {				
+				window.location.search ? Edit():Add();			
+			});
+
+			function Add() {			
+				var url = 'https://two.zhiqunale.cn/Paper/PersonalCenter/address_adding';;
+				var disc = $('#seachdistrict option:selected').val();
+				if(disc == 0) {
+					disc = '';
+				} else {
+					disc = escape($('#seachdistrict option:selected').html());
+				}
+				var argu = {
+					c_id: cookie.getCookie('uid'),
+					user_state: 1,
+					device_number: 'pc_online',
+					a_username: escape($('.a_name').val()),
+					a_phone: $('.a_phone').val(),
+					a_province: escape($('#seachprov').find("option:selected").text()),
+					a_city: escape($('#seachcity').find("option:selected").text()),
+					a_dist: disc,
+					a_detail: escape($('.a_detail').val()),
+					a_is_default: $a_is_default,
+					a_lng: $lng,
+					a_lat: $lat
+					
+				};
+				GetList(argu, url, addAddress);
+			}
+			
+			var $lng;
+			
+			function Edit() {				
+				var url = 'https://two.zhiqunale.cn/Paper/PersonalCenter/modify_address';;
+				var disc = $('#seachdistrict option:selected').val();
+				if(disc == 0) {
+					disc = '';
+				} else {
+					disc = escape($('#seachdistrict option:selected').html());
+				}
+				if(!$lng){
+					$lng=editAddress['a_lng'];
+					$lat=editAddress['a_lat'];
+				}
+				var argu = {
+					c_id: cookie.getCookie('uid'),
+					user_state: 1,
+					device_number: 'pc_online',
+					a_username: escape($('.a_name').val()),
+					a_phone: $('.a_phone').val(),
+					a_province: escape($('#seachprov').find("option:selected").text()),
+					a_city: escape($('#seachcity').find("option:selected").text()),
+					a_dist: disc,
+					a_detail: escape($('.a_detail').val()),
+					a_is_default: $a_is_default,
+					a_lng: $lng,
+					a_lat: $lat,
+					a_id:query
+				};				
+				GetList(argu, url, editAddfnc);
+			}
+			function editAddfnc(data) {
+				console.log(data);
+				if(data.status_code == 10000) {
+					alert('地址修改成功！');
+					window.location.href = 'address_manage.html';
+				} else(
+					alert('地址修改失败，请重新提交')
+				)
+			}
+			
+			function addAddress(data) {
+				console.log(data);
+				if(data.status_code == 10000) {
+					alert('地址添加成功！');
+					window.location.href = 'address_manage.html';
+				} else(
+					alert('地址提交失败，请重新提交')
+				)
+			}
+
+			
+
+			$('#seachcity').change(function() {
+				getAddress();
+			})
+
+			//获取经纬度
+			function getAddress() {
+				var map = new BMap.Map("allmap");
+				var localSearch = new BMap.LocalSearch(map);
+				localSearch.enableAutoViewport(); //允许自动调节窗体大小				　　
+				//然后我们就可以开始做最关键的一步了， 就是获取地址的具体经纬度：　　
+
+				var keyword = $('#seachcity').find("option:selected").text();　　
+				localSearch.setSearchCompleteCallback(function(searchResult) {　　　　
+					var poi = searchResult.getPoi(0);　　　　
+					//poi.point.lng + "," + poi.point.lat; //获取经度和纬度，将结果显示在文本框中
+					$lng = poi.point.lng;
+					$lat = poi.point.lat;
+					//console.log(poi.point.lng); //经度
+					//console.log(poi.point.lat); //纬度
+					map.centerAndZoom(poi.point, 13);　　
+				});　　
+				localSearch.search(keyword);
+
+			}
+
+			(function() {
+				if(window.location.search) {
+					$('strong').html('编辑地址');
+					query = decodeURIComponent(window.location.search).substr(6);
+					var List = JSON.parse(localStorage.addressList);
+					for(var i in List) {
+						for(var j in List[i]) {
+							if(List[i][j] == query) {
+								editAddress = List[i];
+								console.log(editAddress);
+							}
+						}
+					}
+					$('.a_name').val(editAddress['a_username']);
+					$('.a_phone').val(editAddress['a_phone']);
+					$('.a_detail').val(editAddress['a_detail']);
+					if(parseInt(editAddress['a_is_default'])) {
+						console.log(editAddress['a_is_default'])
+						$('.address-addform-item label').addClass('on');
+					}
+					//a_lat
+					//a_lng
+
+					var proOpts = $('#seachprov option'),
+						proVal;
+					for(var i = 0; i < proOpts.length; i++) {
+						if($(proOpts[i]).html() == editAddress['a_province']) {
+							proVal = $(proOpts[i]).val();
+							$('#seachprov').val(proVal);
+						}
+					}
+					changeComplexProvince(proVal, sub_array, 'seachcity', 'seachdistrict');
+					var ctyOpts = $('#seachcity option'),
+						ctyVal;
+					for(var j = 0; j < ctyOpts.length; j++) {
+						if($(ctyOpts[j]).html() == editAddress['a_city']) {
+							ctyVal = $(ctyOpts[j]).val();
+							$('#seachcity').val(ctyVal);
+						}
+					}
+					changeCity(ctyVal, 'seachdistrict', 'seachdistrict');
+
+					var distOpts = $('#seachdistrict option'),
+						distVal;
+					for(var k = 0; k < distOpts.length; k++) {
+						if($(distOpts[k]).html() == editAddress['a_dist']) {
+							distVal = $(distOpts[k]).val();
+							$('#seachdistrict').val(distVal);
+						}
+					}
+
+				}
+
+			})()
+		</script>
+	</body>
+
+</html>

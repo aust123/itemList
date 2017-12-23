@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+
+	<head lang="en">
+		<meta charset="UTF-8">
+		<title>卖废纸买废纸，上纸去哪了</title>
+		<link rel="stylesheet" href="../../css/personal.css" />
+	</head>
+
+	<body>
+		<!--地址管理-->
+		<div class="personal">
+			<div class="personalbanner"></div>
+			<div class="personalbox">
+				<!-- 侧边栏-->
+				<div class="personal-aside">
+				</div>
+				<!-- 主要内容-->
+				<div class="personal-content">
+					<h1 class="personal-content-title">我的店铺</h1>
+					<div class="shop-manage">
+						<div class="shop-manage-icon">
+							<input type="file" onchange="uploadIcon(this)" />
+							<img id="icon" src='../../img/my_shopmange_touxiang.png'>
+						</div>
+						<div class="shop-manage-form">
+							<form>
+								<div class="shop-manage-form-item">
+									<span>店铺名称</span>
+									<input name="shopname" class="shopname" type="text" placeholder="请输入店铺名称"/>
+								</div>
+								<div class="shop-manage-form-item">
+									<span>主营业务</span>
+									<input name="shopbusiness" class="shopbusiness" type="text" placeholder="纸厂/打包站/贸易公司等"/>
+								</div>
+								<div class="shop-manage-form-item">
+									<span>地址</span>
+									<input name="shopaddress" class="shopaddress" type="text" placeholder="请输入店铺地址"/>
+								</div>
+								<div class="shop-manage-form-item">
+									<span>实力展示</span>
+									<div class="shop-form-detail">
+										<textarea maxlength="500" class="shopshow">展示你的实力，增加客户信任的文字描述如：从业年限、为哪些大客户供货、货品特色等。（最多500字）</textarea>
+										<div class="shop-form-detail-upload">
+											<div class="detail-upload">
+												<a><input type="file" onchange="uploadImg(this)" /></a>
+												<span>上传证明实力的图片（最多15张）如获奖证书、资质证明等。</span>
+											</div>
+											<ul class="upload-list">
+											</ul>
+										</div>
+									</div>
+								</div>
+								<div class="shop-manage-form-btn">
+									<button id="save_btn" type="button">保存</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<input type="hidden" class="shopInform" />
+		<script src="../../lib/jquery-1.8.3.min.js"></script>
+		<script src="../../lib/md5.js"></script>
+		<script src="../../js/secret.js"></script>
+		<script>
+			$('.personal-aside').load('personal_aside.html');
+
+			//文本域
+			$('.shop-form-detail textarea').focus(function() {
+				$(this).html('');
+			}).blur(function() {
+				$(this).html('展示你的实力，增加客户信任的文字描述如：从业年限、为哪些大客户供货、货品特色等。（最多500字）');
+			});
+
+			//编辑头像
+			function uploadIcon(file) {
+				var img = document.getElementById('icon');
+				if(file.files && file.files[0]) {
+					var ext = file.value.substring(file.value.lastIndexOf(".") + 1).toLowerCase();
+					if(ext != 'png' && ext != 'jpg' && ext != 'jpeg') {
+						alert("图片的格式必须为png或者jpg或者jpeg格式！");
+						return false;
+					} else {
+						var reader = new FileReader();
+						reader.onload = function(evt) {
+							//img.src =evt.target.result;
+							logoSrc= evt.target.result;							
+							ajaxImg(logoSrc,logoShow);
+						}
+						reader.readAsDataURL(file.files[0]);
+					}
+				} else //兼容IE
+				{
+					file.select();
+					var imgSrc = document.selection.createRange().text;
+					img.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)";
+					img.filters.item('DXImageTransform.Microsoft.AlphaImageLoader').src = imgSrc;
+					if((navigator.appName == "Microsoft Internet Explorer") && parseInt(navigator.appVersion.split(";")[1].replace(/[ ]/g, "").replace("MSIE", "")) < 10) {
+						//alert("您的浏览器版本过低，请下载IE10及以上版本");
+						$('#icon').attr('src', '');
+					}
+				}
+			}
+			
+			function logoShow(data){
+				//console.log(data);
+				if(data.code==10000){
+					$src='https://two.zhiqunale.cn/' + data.data;
+					$('#icon').attr('src',$src);
+					localStorage.logoUrl = data.data;
+				}
+			}
+			//上传图片
+			function uploadImg(file) {
+				if($('.upload-list li').length < 15) {
+					var baseSrc, picUrl = [];
+					if(file.files && file.files[0]) {
+						var ext = file.value.substring(file.value.lastIndexOf(".") + 1).toLowerCase();
+						if(ext != 'png' && ext != 'jpg' && ext != 'jpeg') {
+							alert("图片的格式必须为png或者jpg或者jpeg格式！");
+							return false;
+						} else {
+							var reader = new FileReader();
+							reader.onload = function(evt) {
+								baseSrc = evt.target.result;
+								ajaxImg(baseSrc,shopShow);
+							}
+							reader.readAsDataURL(file.files[0]);
+						}
+					} else //兼容IE
+					{
+						file.select();
+						var imgSrc = document.selection.createRange().text;
+						var filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + imgSrc + "', sizingMethod='scale')";
+						var html = '<li class="simg"><img style="filter:' + filter + '"/></li>';
+						$('.upload-list').append(html);
+					}
+				} else {
+					alert('最多上传15张');
+				}
+			}
+
+			function ajaxImg(base64, fn) {
+				$.ajax({
+					type: 'post',
+					url: 'https://two.zhiqunale.cn/paper/img/receivePcFile',
+					data: {
+						pic: base64
+					},
+					success: function(data) {
+						fn(data);
+					},
+					error: function(XMLHttpRequest, textStatus, errorThrown) {
+						console.log('请求错误！');
+						console.log(XMLHttpRequest);
+						console.log(textStatus);
+						console.log(errorThrown);
+					}
+				})
+			}
+			var picUrl = [];
+			function shopShow(data) {
+				//console.log(data);				
+				//var html = '<li class="simg"><img src="'+ 'https://two.zhiqunale.cn/' + data.data + '" alt=""/><p><img class="remove" src="../../img/huishou.png" alt=""/></p></li>';
+				//$(html).insertBefore('.file');
+				var html = '<li class="simg"><img src="' + 'https://two.zhiqunale.cn/' + data.data + '" alt=""/></li>';
+				$('.upload-list').append(html);
+				//if(localStorage.ph) {
+					//picUrl = JSON.parse(localStorage.ph);
+					//picUrl.push(data.data);
+					//localStorage.ph = JSON.stringify(picUrl);
+				//} else {
+					console.log(data.data);
+					//picUrl += data.data+','
+					picUrl.push(data.data);					
+					//localStorage.ph = JSON.stringify(picUrl);
+					//picUrl.split(-1)
+					
+				//}
+				//localStorage.ph=picUrl.join();
+			}
+
+			
+			//    删除上传的图片
+			$('.upload-list').delegate('li', 'click', function() {
+				$(this).remove();
+			})
+
+			$('#save_btn').click(function() {
+				//console.log(typeof localStorage.ph);
+				console.log(picUrl.join())
+				//console.log(localStorage.ph)
+				var url = 'https://two.zhiqunale.cn/Paper/PersonalCenter/modify_data';
+				var argu = {
+					c_id: cookie.getCookie('uid'),
+					user_state: 1,
+					device_number: 'pc_online',
+					c_store_name: escape($('.shopname').val()),
+					c_store_detail_address: escape($('.shopaddress').val()),
+					c_store_headurl:localStorage.logoUrl,
+					c_main_business:escape($('.shopbusiness').val()),
+					c_store_show_photos:picUrl.join(),
+					c_store_show_text:escape($('.shopshow').val())
+				}
+				GetList(argu,url,shopInfo);
+			})
+
+			function shopInfo(data) {
+				console.log(data);
+			}
+		</script>
+	</body>
+
+</html>

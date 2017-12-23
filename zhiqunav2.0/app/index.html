@@ -4,14 +4,11 @@
 
 	<head>
 		<meta charset="UTF-8">
-		<title>纸去哪了</title>
+		<title>卖废纸买废纸，上纸去哪了</title>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<meta content="" name="keywords">
 		<meta content="" name="description">
-
 		<!-- 首页所需样式 -->
-		<link rel="stylesheet" href="../css/public.min.css">
-		<link rel="stylesheet" href="../css/public-header.css">
 		<link rel="stylesheet" href="../css/public.css">
 		<link rel="stylesheet" href="../css/idangerous.swiper.css">
 		<link rel="stylesheet" href="../css/index-new.css">
@@ -23,17 +20,16 @@
 			<div class="topbar">
 				<div class="w1180">
 					<div class="toplink">
-						<a href="###"><i class="home"></i>纸去哪了首页</a>
-						<span id="">欢迎来到纸去哪了</span>
-						<a href="javascript:" id="topbar_login_btn">请登录</a>
-						<a href="javascript:" id="topbar_register">免费注册</a>
+						<a href="index.html"><i class="home"></i>纸去哪了首页</a>
+						<span id="changes">欢迎来到纸去哪了</span>
+						<a href="login/login.html" id="topbar_login_btn">请登录</a>
 						<div class="company-list" id="span_top_company_show" style="display: none;"></div>
 						<a href="javascript:" id="topbar_quit" style="display: none;">退出</a>
 					</div>
 					<div class="topmenu">
 						<a target="_blank" href="###" id="topbar_my_top">我的纸去哪了</a>
 						|
-						<a target="_blank" href="###">我的订单</a>
+						<a target="_blank" class="myorder" href="###">我的订单</a>
 						|
 						<div class="msn">
 							<a href="###" class="msn_center">
@@ -54,6 +50,7 @@
 			</div>
 		</div>
 		<meta name="baidu-site-verification" content="AxEnOEiidG" />
+
 		<div id="mall_header">
 			<div class="header_box">
 				<div class="w1180">
@@ -63,19 +60,19 @@
 							<a href="###">首页</a>
 						</li>
 						<li id="head_mall">
-							<a class="hot" target="_blank" href="###"><i class="icon_hot"></i>商城</a>
+							<a target="_blank" href="mall/store.html"><i class="icon_hot"></i>商城</a>
 						</li>
 						<li id="head_cuo_search" class="sub">
-							<a target="_blank" href="###">采购</a>
+							<a target="_blank" href="purchase/buy.html">采购</a>
 						</li>
 						<li id="head_cuo_purchaser">
-							<a class='new' target="_blank" href="###"><i class="icon_new"></i>成品纸</a>
+							<a class='new' target="_blank" href="papered/finished_paper.html"><i class="icon_new"></i>成品纸</a>
 						</li>
 						<li id="head_wl">
-							<a target="_blank" href="###">废纸搜索</a>
+							<a target="_blank" href="search/search.html">废纸搜索</a>
 						</li>
 						<li id="head_baitiao">
-							<a target="_blank" href="###">资讯</a>
+							<a target="_blank" href="information/infor_price.html">资讯</a>
 						</li>
 					</ul>
 				</div>
@@ -139,8 +136,7 @@
 							Hi，欢迎来到纸去哪了网！
 						</div>
 						<div class="login-action-button">
-							<button type="button" class="bt-login">登录</button>
-							<button type="button" class="bt-register">注册</button>
+							<a href="login/login.html" class="bt-login">登录</a>
 						</div>
 					</div>
 				</div>
@@ -172,10 +168,11 @@
                         <i class="icon icon-zs"><img src="../img/index_home.png"/></i>
                     </dt>
 						<dd>
-							找钢指数
+							废纸信息
 							<div class="ewm">
+								<!--废纸信息二维码-->
 								<img src="http://static-online.zhaogang.com/project/ued/mall/local/Resources/index/newimages/zs-ewm.jpg" alt="">
-								<span>下载找钢指数</span>
+								<span>关注废纸信息</span>
 							</div>
 						</dd>
 					</dl>
@@ -186,6 +183,7 @@
 						<dd>
 							小猴物流
 							<div class="ewm">
+								<!--小猴物流app下载二维码-->
 								<img src="http://static-online.zhaogang.com/project/ued/mall/local/Resources/index/newimages/wl-ewm.jpg" alt="">
 								<span>下载小猴物流</span>
 							</div>
@@ -198,6 +196,7 @@
 						<dd>
 							纸去哪了
 							<div class="ewm">
+								<!--纸去哪了二维码-->
 								<img src="http://static-online.zhaogang.com/project/ued/mall/local/Resources/index/newimages/sd-ewm.jpg" alt="">
 								<span>关注纸去哪了</span>
 							</div>
@@ -208,53 +207,26 @@
 		</div>
 		<!--内容区域-->
 		<div class="index-main">
-			<p class="cooperate_company">合作纸厂</p>
-			<div class="index-ad swiper-container">
+			<p class="cooperate_company">合作纸厂
+				<a class="more_info" href="###">更多></a>
+			</p>
+			<div class="index-ad co_factory swiper-container">
 				<div class="ad_slide swiper-wrapper" style="width: 5900px; height: 74px; transform: translate3d(-3540px, 0px, 0px); transition-duration: 0.3s;">
 					<div class="swiper-slide" style="width: 295px; height: 74px;">
-						<a target="_blank" href="###"><img src="../img/index_logo_derun.png"></a><span class="line"></span></div>
-					<div class="swiper-slide" style="width: 295px; height: 74px;">
 						<a target="_blank" href=""><img src="../img/index_logo_qiahao.png"></a><span class="line"></span></div>
 					<div class="swiper-slide" style="width: 295px; height: 74px;">
 						<a target="_blank" href=" "><img src="../img/index_logo_shanying.png"></a><span class="line"></span></div>
 					<div class="swiper-slide" style="width: 295px; height: 74px;">
 						<a target="_blank" href=""><img src="../img/index_logo_derun.png"></a><span class="line"></span></div>
-					<div class="swiper-slide" style="width: 295px; height: 74px;">
-						<a target="_blank" href=""><img src="../img/index_logo_qiahao.png"></a><span class="line"></span></div>
-					<div class="swiper-slide" style="width: 295px; height: 74px;">
-						<a target="_blank" href=" "><img src="../img/index_logo_shanying.png"></a><span class="line"></span></div>
-					<div class="swiper-slide" style="width: 295px; height: 74px;">
-						<a target="_blank" href=""><img src="../img/index_logo_derun.png"></a><span class="line"></span></div>
-					<div class="swiper-slide" style="width: 295px; height: 74px;">
-						<a target="_blank" href=""><img src="../img/index_logo_qiahao.png"></a><span class="line"></span></div>
-					<div class="swiper-slide" style="width: 295px; height: 74px;">
-						<a target="_blank" href=" "><img src="../img/index_logo_shanying.png"></a><span class="line"></span></div>
-					<div class="swiper-slide" style="width: 295px; height: 74px;">
-						<a target="_blank" href=""><img src="../img/index_logo_derun.png"></a><span class="line"></span></div>
-					<div class="swiper-slide" style="width: 295px; height: 74px;">
-						<a target="_blank" href=""><img src="../img/index_logo_qiahao.png"></a><span class="line"></span></div>
-					<div class="swiper-slide" style="width: 295px; height: 74px;">
-						<a target="_blank" href=" "><img src="../img/index_logo_shanying.png"></a><span class="line"></span></div>
-					<div class="swiper-slide" style="width: 295px; height: 74px;">
-						<a target="_blank" href=""><img src="../img
-/index_logo_derun.png"></a><span class="line"></span></div>
-					<div class="swiper-slide" style="width: 295px; height: 74px;">
-						<a target="_blank" href=""><img src="../img/index_logo_qiahao.png"></a><span class="line"></span></div>
-					<div class="swiper-slide" style="width: 295px; height: 74px;">
-						<a target="_blank" href=" "><img src="../img/index_logo_shanying.png"></a><span class="line"></span></div>
-					<div class="swiper-slide" style="width: 295px; height: 74px;">
-						<a target="_blank" href=""><img src="../img/index_logo_derun.png"></a><span class="line"></span></div>
-					<div class="swiper-slide" style="width: 295px; height: 74px;">
-						<a target="_blank" href=""><img src="../img/index_logo_qiahao.png"></a><span class="line"></span></div>
-					<div class="swiper-slide" style="width: 295px; height: 74px;">
-						<a target="_blank" href=" "><img src="../img/index_logo_shanying.png"></a><span class="line"></span></div>
 				</div>
 				<div class="icon swiper-button-prev ad-prev"></div>
 				<div class="icon swiper-button-next ad-next"></div>
 			</div>
 			<!--合作贸易公司-->
-			<p class="cooperate_company">合作贸易公司</p>
-			<div class="index-ad swiper-container">
+			<p class="cooperate_company">合作贸易公司
+				<a class="more_info" href="###">更多></a>
+			</p>
+			<div class="index-ad co_company swiper-container">
 				<div class="ad_slide swiper-wrapper" style="width: 5900px; height: 74px; transform: translate3d(-3540px, 0px, 0px); transition-duration: 0.3s;">
 					<div class="swiper-slide" style="width: 295px; height: 74px;">
 						<a target="_blank" href=""><img src="../img/index_logo_derun.png"></a><span class="line"></span></div>
@@ -262,45 +234,16 @@
 						<a target="_blank" href=""><img src="../img/index_logo_qiahao.png"></a><span class="line"></span></div>
 					<div class="swiper-slide" style="width: 295px; height: 74px;">
 						<a target="_blank" href=" "><img src="../img/index_logo_shanying.png"></a><span class="line"></span></div>
-					<div class="swiper-slide" style="width: 295px; height: 74px;">
-						<a target="_blank" href=""><img src="../img/index_logo_derun.png"></a><span class="line"></span></div>
-					<div class="swiper-slide" style="width: 295px; height: 74px;">
-						<a target="_blank" href=""><img src="../img/index_logo_qiahao.png"></a><span class="line"></span></div>
-					<div class="swiper-slide" style="width: 295px; height: 74px;">
-						<a target="_blank" href=" "><img src="../img/index_logo_shanying.png"></a><span class="line"></span></div>
-					<div class="swiper-slide" style="width: 295px; height: 74px;">
-						<a target="_blank" href=""><img src="../img/index_logo_derun.png"></a><span class="line"></span></div>
-					<div class="swiper-slide" style="width: 295px; height: 74px;">
-						<a target="_blank" href=""><img src="../img/index_logo_qiahao.png"></a><span class="line"></span></div>
-					<div class="swiper-slide" style="width: 295px; height: 74px;">
-						<a target="_blank" href=" "><img src="../img/index_logo_shanying.png"></a><span class="line"></span></div>
-					<div class="swiper-slide" style="width: 295px; height: 74px;">
-						<a target="_blank" href=""><img src="../img/index_logo_derun.png"></a><span class="line"></span></div>
-					<div class="swiper-slide" style="width: 295px; height: 74px;">
-						<a target="_blank" href=""><img src="../img/index_logo_qiahao.png"></a><span class="line"></span></div>
-					<div class="swiper-slide" style="width: 295px; height: 74px;">
-						<a target="_blank" href=" "><img src="../img/index_logo_shanying.png"></a><span class="line"></span></div>
-					<div class="swiper-slide" style="width: 295px; height: 74px;">
-						<a target="_blank" href=""><img src="../img/index_logo_derun.png"></a><span class="line"></span></div>
-					<div class="swiper-slide" style="width: 295px; height: 74px;">
-						<a target="_blank" href=""><img src="../img/index_logo_qiahao.png"></a><span class="line"></span></div>
-					<div class="swiper-slide" style="width: 295px; height: 74px;">
-						<a target="_blank" href=" "><img src="../img/index_logo_shanying.png"></a><span class="line"></span></div>
-					<div class="swiper-slide" style="width: 295px; height: 74px;">
-						<a target="_blank" href=""><img src="../img/index_logo_derun.png"></a><span class="line"></span></div>
-					<div class="swiper-slide" style="width: 295px; height: 74px;">
-						<a target="_blank" href=""><img src="../img/index_logo_qiahao.png"></a><span class="line"></span></div>
-					<div class="swiper-slide" style="width: 295px; height: 74px;">
-						<a target="_blank" href=" "><img src="../img/index_logo_shanying.png"></a><span class="line"></span></div>
 				</div>
-				<div class="icon swiper-button-prev ad-prev"></div>
-				<div class="icon swiper-button-next ad-next"></div>
+				<div class="icon swiper-button-prev  ad-prevs"></div>
+				<div class="icon swiper-button-next  ad-nexts"></div>
 			</div>
 
 			<div class="index-shop" id="mallDiv">
 				<div class="public-title">
-					<div class="title-heading">纸去哪了动态</div>
-					<a class="more" href='###'>更多</a>
+					<div class="title-heading">纸去哪了动态
+						<a class="more_info" href="###">更多></a>
+					</div>
 				</div>
 				<div class="shop-left">
 					<div class="shop-title">最近成交动态</div>
@@ -321,21 +264,7 @@
 							<div class="swiper-item swiper-slide">
 								<p class="p-top">德润<span class="paper">国废A级纸</span><span>2000元/吨</span><span>2017.11.9</span></p>
 							</div>
-							<div class="swiper-item swiper-slide">
-								<p class="p-top">德润<span class="paper">国废A级纸</span><span>2000元/吨</span><span>2017.11.9</span></p>
-							</div>
-							<div class="swiper-item swiper-slide">
-								<p class="p-top">德润<span class="paper">国废A级纸</span><span>2000元/吨</span><span>2017.11.9</span></p>
-							</div>
-							<div class="swiper-item swiper-slide">
-								<p class="p-top">德润<span class="paper">国废A级纸</span><span>2000元/吨</span><span>2017.11.9</span></p>
-							</div>
-							<div class="swiper-item swiper-slide">
-								<p class="p-top">德润<span class="paper">国废A级纸</span><span>2000元/吨</span><span>2017.11.9</span></p>
-							</div>
-							<div class="swiper-item swiper-slide">
-								<p class="p-top">德润<span class="paper">国废A级纸</span><span>2000元/吨</span><span>2017.11.9</span></p>
-							</div>
+
 						</div>
 					</div>
 				</div>
@@ -377,34 +306,23 @@
 					</table>
 				</div>
 			</div>
-			<!--<div class="recommend-ad">
-				<div class="section">
-					<a href="http://scm.zhaogang.com/" style="display:block" target="_blank"><img src="http://img.zhaogang.com/cms/2017/08/25/20c52da3-e96e-4866-b639-a85a9f6ba928.jpg" style="width:100%;height:100%"></a>
-				</div>
-				<div class="section">
-					<a href="http://www.pangmao56.com/" style="display:block" target="_blank"><img src="http://img.zhaogang.com/cms/2017/08/25/33e94fe5-545d-4b50-a08b-ca456c03bbda.jpg" style="width:100%;height:100%"></a>
-				</div>
-				<div class="section mar0">
-					<a href="http://www.zhaogang.com/" style="display:block" target="_blank"><img src="http://img.zhaogang.com/cms/2017/08/25/7568e668-a2d4-44ae-bd83-1d178d3a33ba.jpg" style="width:100%;height:100%"></a>
-				</div>
-			</div>-->
 		</div>
 		<!--底部-->
 		<div id="footer">
 			<div class="advantage">
 				<ul class="w1180" id="footer_content">
 					<li>
-						<div><img src="../img/index_bottom_mall.png" />商城直售纸厂</div>
+						<div class="footer_div1">商城直售纸厂</div>
 						<a href="###" target="_blank">如何采购废纸</a>
 						<a href="###" target="_blank">采购流程 </a>
 					</li>
 					<li>
-						<div><img src="../img/index_bottom_fabu.png" />免费发布需求</div>
+						<div class="footer_div2">免费发布需求</div>
 						<a href="###" target="_blank">如何免费发布采购需求 </a>
 						<a href="###" target="_blank">如何发布物流需求</a>
 					</li>
 					<li class="thelast">
-						<div><img src="../img/index_bottom_wuliu.png" />免费找车</div>
+						<div class="footer_div3">免费找车</div>
 						<a href="###" target="_blank">如何免费找车</a>
 						<a href="###" style="color: #333;cursor: default;">如何免费找车</a>
 					</li>
@@ -426,27 +344,48 @@
 				</div>
 				<p>COPYRIGHT ©
 					<a href="###">纸去哪了网</a> 浙ICP备 13013915号-3 ICP证：浙B2-20140148</p>
-
-				<!--最底部认证图片-->
-				<!--<div class="copyimg">
-					<span class="img1"></span>
-					<a target="_blank" href="http://www.itrust.org.cn/home/index/itrust_certifi?wm=1591692730" class="img4"></a>
-					<a href="http://www.shjbzx.cn/" class="img5" target="_blank"></a>
-					<a id="___szfw_logo___" target="_blank" href="https://search.szfw.org/cert/l/CX20140725008522008613" class="img3"></a>
-					<a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31011002000120" class="img6"></a>
-					<a href="javascript:void(0)" style="display: inline-flex;vertical-align: top;"><img src="http://static-online.zhaogang.com/resource/build-public/public/img/weifa.jpg" /></a>
-					<a key="55025d6befbfb00840d2b605" logo_size="83x30" logo_type="business" href="http://www.anquan.org" style="display: inline-block;border: 1px solid #ccc;text-align: center;padding: 4px;margin: 0 10px;background: #fff;height: 30px;vertical-align: top;">
-						
-					</a>
-				</div>-->
-
 			</div>
 		</div>
 
-		<script src="../lib/zquery.js"></script>
+		<script src="../lib/jquery-1.8.3.min.js"></script>
 		<script src="../lib/idangerous.swiper.min.js"></script>
 		<script src="../lib/jquery.slides.min.js"></script>
 		<script type="text/javascript" src="../lib/homePage.js"></script>
+		<script src="../js/secret.js"></script>
+		<script type="text/javascript">
+			/*判断用户是否登录，级登陆后修改相关内容*/
+			(function() {
+				if(cookie.getCookie('uid')) {
+					$('#changes').html('您好，' + cookie.getCookie('user_phone'));
+					$('#topbar_login_btn').css('display', 'none');
+					$('#topbar_quit').css('display', 'block');
+					$('.welcome').html('Hi , ' + cookie.getCookie('username'));
+					$('.login-action-button').css('display', 'none');
+					$('.myorder').attr('href', 'account/apply_order.html'); //用户登录后跳转至’我的订单‘
+					$('#topbar_my_top').attr('href', '') //登录成功后跳转至’我的纸去哪了‘
+				} else {
+					$('.myorder,#topbar_my_top').attr('href', 'login/login.html'); //用户未登录是’我的订单‘’我的纸去哪了‘跳转至的登录页
+				}
+			})();
+			/*用户登录后点击退出登录，跳转至登录页面，清除cookie记录*/
+			$('#topbar_quit').click(function(ev) {
+				quit();
+			})
+
+			/*退出登录函数*/
+			function quit() {
+				var url = 'https://two.zhiqunale.cn/Paper/PersonalCenter/login_out';
+				var argu = {};
+				GetList(argu, url, loginOut)
+			}
+
+			function loginOut(data) {
+				if(data.status_code == 10000) {
+					cookie.delCookie();
+					window.location.href = 'login/login.html';
+				}
+			}
+		</script>
 	</body>
 
 </html>

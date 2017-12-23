@@ -3995,7 +3995,7 @@
 				})
 			}
 		},
-		Storage: new function() {
+		/*Storage: new function() {
 			var _canuse = !!window.sessionStorage,
 				hasData = function(pData) {
 					return pData && pData !== "" && pData !== "null" && pData !== "undefined"
@@ -4050,7 +4050,7 @@
 					_funcPoint(pKey, pUrl, pArg, pCallBack, true, pCharset)
 				}
 			}
-		},
+		},*/
 		jsonToString: function(object) {
 			if(!$$.browser.IsIE) {
 				return JSON.stringify(object)
@@ -4248,7 +4248,7 @@
 		(_body = document.getElementById("__body__")) && _body.parentNode.removeChild(_body);
 		$$.container = $(_container)
 	})();
-	$$.cookie = function(name, value, options) {
+	/*$$.cookie = function(name, value, options) {
 		if(typeof value != "undefined") {
 			options = options || {};
 			if(value === null) {
@@ -4284,8 +4284,8 @@
 			}
 			return cookieValue
 		}
-	};
-	var _load = new function() {
+	};*/
+	/*var _load = new function() {
 		var _jCookie = $$.cookie("privateJs") || "",
 			_jCookieArray = _jCookie.split(","),
 			_isDebug = _jCookieArray.length > 1,
@@ -4374,7 +4374,7 @@
 			}
 		};
 		config()
-	};
+	};*/
 	var Base = (function() {
 		var b = {};
 		b.Callbacks = (function() {
@@ -4712,10 +4712,7 @@
 		})(b.TReplace);
 		return b
 	})();
-	$.extend({
-		load: _load,
-		Base: Base
-	});
+	
 	window.$$ = $$
 })(jQuery, undefined);
 (function(f) {

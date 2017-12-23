@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="../../css/public.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/personal.css" />
+		<title>卖废纸买废纸，上纸去哪了</title>
+	</head>
+
+	<body>
+		<div class="personalbanner"></div>
+		<div class="personalbox">
+			<!-- 侧边栏-->
+			<div class="personal-aside">
+			</div>
+			<!-- 主要内容-->
+			<div class="purchase">
+				<h3>认证信息</h3>
+				<div class="purchase_list">					
+					<div id="person_co"></div>
+				</div>
+			</div>
+		</div>
+		<script id="person_tpl" type="text/html">
+			<h2>个人认证 
+						{{if data.c_certification ==1}}
+						<div class="acc_state">已认证</div>
+						{{else if data.c_certification ==2}}
+						<div class="acc_state">认证中...</div>
+						{{else if data.c_certification ==3}}
+						<div class="acc_state">认证被拒绝</div>
+						{{/if}}
+					</h2>
+			<div class="certificate_msg">
+				<p><span class="name">姓名&nbsp;：</span>{{data.c_sm_nam}}</p>
+				<p><span class="id_number">身份证&nbsp;：</span>{{data.c_id_card}}</p>
+				<p><span class="id_img">手持身份证照片&nbsp;&nbsp;: </span><img src="{{data.c_id_front_photo}}" /><img src="{{data.c_id_backend_photo}}" /></p>
+			</div>
+		</script>
+		<input type="hidden" class="personalCertificate" />
+		<script src="../../lib/jquery-1.8.3.min.js"></script>
+		<script src="../../lib/md5.js"></script>
+		<script src="../../js/secret.js"></script>
+		<script src="../../lib/template-web.js"></script>
+		<script type="text/javascript">
+			$('.personal-aside').load('personal_aside.html');
+
+			var url = 'https://two.zhiqunale.cn/paper/user/get_certification_detail'
+			var argu = {
+				uid: cookie.getCookie('uid'),
+				device_number:'pc_online'
+			}
+			GetList(argu, url, getPerson);
+
+			function getPerson(data) {
+				console.log(data);
+				if(data.status_code == 10000) {
+					var html = template('person_tpl', data);
+					document.getElementById('person_co').innerHTML = html;
+				}else if(data.status_code == 10002){
+					alert(data.msg);
+				}
+			}
+		</script>
+	</body>
+
+</html>
