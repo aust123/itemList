@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="../../css/public.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/personal.css" />
+		<title>卖废纸买废纸，上纸去哪了</title>
+	</head>
+
+	<body>
+		<div class="personalbanner"></div>
+		<div class="personalbox">
+			<!-- 侧边栏-->
+			<div class="personal-aside">
+			</div>
+			<!-- 主要内容-->
+			<div id="account_info_co"></div>
+			<div class="purchase" id="account_content">
+				<h3>账户信息</h3>
+				<div class="account_info">
+					<div class="info_img"><img src="../../img/my_zhanghuxinxi_touxiang.png" /></div>
+					<div class="info_detail">
+						<h4>莱昂纳德</h4>
+						<p class="my_first">
+							<span class="my_role">打包站</span>
+							<span class="my_address">安徽省合肥市</span>
+							<span class="my_score">我的评分：<i>6.5分</i></span>
+							<span class="my_ranking">我的排名：<b>10名</b></span>
+						</p>
+						<p class="my_second">
+							<span>店铺浏览量：<b>500次</b></span>
+							<span>店铺关注人数：<b>100人</b></span>
+							<span>商品关注人数：<b>20人</b></span>
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="strength_show">
+				<h3>实力展示<a href="###" class="edit_info">编辑</a></h3>
+				<div class="strength_detail">
+					<p class="text_show">
+						合肥是一座具有2000多年历史的古城[8] ，因东淝河与南淝河均发源于该地而得名[9] 。合肥素有“三国故地，包拯家乡”之称[10] 。秦置合肥县，隋至明清时，合肥一直是庐州府治所，故又称“庐州” 、又名“庐阳”，境内名胜古迹众多，如包公祠、李鸿章故居、吴王遗踪等。合肥还诞生了周瑜、包拯、李鸿章等一批历史名人。[11] 合肥是世界科技城市联盟会员城市[12] 、国家科技创新型试点城市[13] 、中国综合性国家科学中心[14] 。截至2016年末，全市有各类高等院校60所，在校学生62.86万人，其中普通高校50所，在校学生54.55万人；有省部级以上重点实验室和工程实验室151个，其中国家重点（工程）实验室13个。
+					</p>
+					<div class="img_show">
+						<img src="../../img/shopdetail_image.png" />
+						<img src="../../img/shopdetail_image.png" />
+						<img src="../../img/shopdetail_image.png" />
+						<img src="../../img/shopdetail_image.png" />
+					</div>
+				</div>
+			</div>
+			
+		</div>
+		<input type="hidden" class="accountInfo" />
+		<script type="text/html" id="account_info_tpl">
+			<div class="purchase" id="account_content">
+				<h3>账户信息</h3>
+				<div class="account_info">
+					<div class="info_img"><img src="https://two.zhiqunale.cn{{data.c_store_headurl}}" /></div>
+					<div class="info_detail">
+						<h4>{{data.c_store_name}}</h4>
+						<p class="my_first">
+							{{if data.c_main_business==1}}
+							<span class="my_role">打包站</span>
+							{{else if data.c_main_business==2}}
+							<span class="my_role">贸易公司</span>
+							{{else}}
+							<span class="my_role">纸厂</span>
+							{{/if}}
+							
+							<span class="my_address">{{data.c_store_province}}{{data.c_store_city}}{{data.c_store_dist}}</span>
+							<span class="my_score">我的评分：<i>{{data.c_store_serve_jugde}}分</i></span>
+							<span class="my_ranking">我的排名：<b>{{data.ranking}}名</b></span>
+						</p>
+						<p class="my_second">
+							<span>店铺浏览量：<b>{{data.c_store_looks}}次</b></span>
+							<span>店铺关注人数：<b>{{data.c_store_concern}}人</b></span>
+							<!--<span>商品关注人数：<b>20人</b></span>-->
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="strength_show">
+				<h3>实力展示<a href="###" class="edit_info">编辑</a></h3>
+				<div class="strength_detail">
+					<p class="text_show">{{data.c_store_show_text}}</p>
+					<div class="img_show">
+						<!--{{each data.c_store_show_photos value}}-->
+						<img src="https://two.zhiqunale.cn{{data.c_store_show_photos}}" />
+						<!--{{/each}}-->
+						
+					</div>
+				</div>
+			</div>
+		</script>
+		<script src="../../lib/jquery-1.8.3.min.js"></script>
+		<script src="../../lib/md5.js"></script>
+		<script src="../../js/secret.js"></script>
+		<script src="../../lib/template-web.js"></script>
+		<script>
+			$('.personal-aside').load('personal_aside.html');
+			
+			(function() {
+				var url = 'https://two.zhiqunale.cn/Paper/PersonalCenter/get_shop_information';
+				var argu = {
+					c_id: cookie.getCookie('uid'),
+					user_state: 1,
+					device_number: 'pc_online'
+				}
+				GetList(argu, url, getAccountInfo);
+			})()
+
+			function getAccountInfo(data) {
+				console.log(data);
+				if(data.status_code == 10000) {
+					var html = template('account_info_tpl', data);
+					document.getElementById('account_info_co').innerHTML += html;
+				}else if(data.status_code == 10002){
+					alert(data.msg);
+				}
+			}
+		</script>
+	</body>
+
+</html>

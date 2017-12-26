@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="../../css/public.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/personal.css" />
+		<title>卖废纸买废纸，上纸去哪了</title>
+	</head>
+
+	<body>
+		<div class="personalbanner"></div>
+		<div class="personalbox">
+			<!-- 侧边栏-->
+			<div class="personal-aside">
+			</div>
+			<!-- 主要内容-->
+			<div class="purchase">
+				<h3>我的团队<a class="team_share" href="###">分享</a></h3>
+				<div id="team_co"></div>
+			</div>
+		</div>
+		<script type="text/html" id="myTeam_tpl">
+			<div class="purchase_list my_team">
+				<p class="team_count">我的团队人数：<span>{{my_team_count}}人</span></p>
+				<p>我的团队收益：<span>{{all_shouyi}}元</span></p>
+				<p style="overflow: hidden;">
+					<a class="rank_state" href="###"><img src="../../img/shopdetail_tishi.png" />等级说明</a>
+				</p>
+				<ul class="team_numbers">
+					{{if my_team_list.length>0}} {{each my_team_list as value}}
+					<li>
+						{{if value.c_headur}}
+						<img src="{{value.c_headur}}" /> {{else}}
+						<img src="../../img/index_touxiang.png" /> {{/if}}
+						<div>
+							<p>{{value.c_username}}</p>
+							<p class="team_second_p">
+								<span>认证收益：<i class="red_text">{{value.renzheng_shouyi}}元</i></span>
+								<span class="money">交易收益：<i class="red_text">{{value.trade_shouyi}}元</i></span>
+								<b>我的收益：<i class="red_text">{{value.renzheng_shouyi+value.trade_shouyi}}元</i></b>
+							</p>
+						</div>
+					</li>
+					{{/each}} {{else}}
+					<p style="margin-top: 10px; text-align: center;">暂无团队信息</p>
+					{{/if}}
+				</ul>
+			</div>
+		</script>
+		<script src="../../lib/jquery-1.8.3.min.js"></script>
+		<script src="../../lib/md5.js"></script>
+		<script src="../../js/secret.js"></script>
+		<script src="../../lib/template-web.js"></script>
+		<script type="text/javascript">
+			$('.personal-aside').load('personal_aside.html');
+			$('.purchase-ordersort li').click(function() {
+				$(this).addClass('on').siblings().removeClass('on');
+			});
+
+			(function() {
+				var url = 'https://two.zhiqunale.cn/paper/user/get_my_team_data';
+				var argu = {
+					uid: cookie.getCookie('uid'),
+					device_number: 'pc_online'
+				};
+				GetList(argu, url, getTeam);
+			})()
+
+			function getTeam(data) {
+				console.log(data);
+				if(data.status_code == 10000) {
+					var html = template('myTeam_tpl', data);
+					document.getElementById('team_co').innerHTML += html;
+				}
+
+			}
+		</script>
+	</body>
+
+</html>
