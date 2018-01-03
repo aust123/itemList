@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>卖废纸买废纸，上纸去哪了</title>
+		<link rel="stylesheet" type="text/css" href="../../css/orders.css" />
+	</head>
+
+	<body>
+		<div class="follows">
+			<div style="width: 100%; background-color: #fff;">
+				<div class="follow_select">
+					<span class="follow_goods select">关注的商品</span><i>|</i>
+					<span class="follow_shop">关注的店铺</span><i>|</i>
+					<span class="chat_record">聊天记录</span>
+				</div>
+			</div>
+			<div class="white_space"></div>
+			<div class="follow_content">
+				<!--关注的商品-->
+				<div class="followed-googs followed followed_show">
+					<ul class="mall-advice-list"></ul>
+					<div class="page_turn"><span class="first_page">首页</span><span class="pre_page">上一页</span><span class="next_page">下一页</span></div>
+				</div>
+
+				<!--关注的店铺-->
+				<div class="followed-shops followed">
+					<ul class="followed-shops-list"></ul>
+					<div class="page_turn"><span class="first_page">首页</span><span class="pre_page">上一页</span><span class="next_page">下一页</span></div>
+				</div>
+				<!--聊天记录-->
+				<div class="follow-chat followed">
+					<div class="chat_linkman">
+						<h3 style="margin: 60px 0; text-align: center;">敬请期待</h3>
+						<!--<img src="../../img/guanzhutouxiang_two.png" />
+						<div>
+							<h4>每日推荐</h4>
+							<p>可能有生意机会的客户</p>
+						</div>-->
+					</div>					
+				</div>
+			</div>
+			<!--翻页-->
+			
+		</div>
+		<input type="hidden" class="myfollow" />
+		<input type="hidden" class="hasdata" value="" />
+		<!--我关注的商品-->
+		<script type="text/html" id="foll_goods_tpl">
+			{{each data value}}
+			<li>
+				<p class="pic"><img src="https://two.zhiqunale.cn/{{value.sp_fengmian_photo}}" /></p>
+				<h2>{{value.sp_product_name}} <span><b>{{value.sp_product_price}}</b>元/个</span></h2>
+				<h3 style="margin-bottom: 5px;">
+					{{if value.c_certification==1}}
+                      <img src="../../img/zhoubian_renzheng_shi.png"/>
+                      {{/if}}
+                      {{if value.c_is_company==1}}
+                      <img src="../../img/zhoubian_renzheng_qi.png"/>
+                      {{/if}}
+                      {{if value.c_is_recommend==1}}
+                      <img src="../../img/zhoubian_renzheng_tui.png"/>
+                      {{/if}}
+                       {{value.sp_send_province}}{{value.sp_send_city}}{{value.sp_send_dist}}
+               </h3>
+
+			</li>
+			{{/each}}
+		</script>
+		<!--我关注的商品-->
+		<script type="text/html" id="foll_shops_tpl">
+			{{each data value}}
+			<li>
+				<div class="co_logo"><img src="https://two.zhiqunale.cn/{{value.c_store_headurl}}" /></div>
+				<div>
+					<p class="tarde_co_name">{{value.c_store_name}}</p>
+					<p class="co_status">
+						{{if value.c_certification==1}}
+						<img style="width: 16px;" src="../../img/zhoubian_renzheng_shi.png" alt="" />
+						{{/if}}
+						{{if value.c_is_company==1}}
+						<img style="width: 22px;" src="../../img/zhoubian_renzheng_qi.png" />
+						{{/if}}
+						{{if value.c_is_recommend==1}}
+						<img style="width: 18px;" src="../../img/zhoubian_renzheng_tui.png" />
+						{{/if}}
+					</p>
+				</div>
+				<div id="co_address">{{value.c_store_province}}{{value.c_store_city}}{{value.c_store_dist}}</div>
+			</li>
+			{{/each}}
+
+		</script>
+		<script src="../../lib/jquery-1.8.3.min.js"></script>
+		<script src="../../lib/md5.js"></script>
+		<script src="../../js/secret.js"></script>
+		<script src="../../lib/template-web.js"></script>
+		<script type="text/javascript">
+			$('.follow_select span').each(function(i) {
+				$(this).click(function() {
+					$(this).addClass('select').siblings().removeClass('select');
+					$('.follow_content .followed').eq(i).addClass('followed_show').siblings().removeClass('followed_show');
+				})
+			});
+			function getfollowData(data) {
+				console.log(data);
+				if(data.status_code == 10000) {					
+					if(data.data[0]['sp_id']) {						
+						var html = template('foll_goods_tpl', data);
+						$('.mall-advice-list').html('');
+						$('.mall-advice-list').html(html);
+					} else if(data.data[0]['c_id']) {						
+						var htmls = template('foll_shops_tpl', data);
+						$('.followed-shops-list').html('');
+						$('.followed-shops-list').html(htmls);
+					}
+				} else if(data.status_code == 10002) {
+					$('.hasdata').val('0');
+					var tips = '<p style="padding:20px 0px 20px 30px">暂无关注信息</p>';
+					$('.mall-advice-list').html(tips);
+					$('.followed-shops-list').html(tips);					
+					//$('.next_page').css('color', '#e5e5e5');
+					Ajax.pages--;
+					alert(data.msg);
+				}
+			};			
+
+			var Ajax = {
+				pages: null,
+				fun: null,
+				fav: null,
+				pageEle: null,
+				followEle:null,
+				set: function($pages, $fun, $fav, $pEle,$fEle) {
+					this.pages = $pages;
+					this.fun = $fun;
+					this.fav = $fav;
+					this.pageEle = $pEle;
+					this.followEle=$fEle;
+					this.getData();
+					return this;
+				},
+				turnPage: function() {
+					$(Ajax.pageEle).each(function(i) {						
+						$(this).click(function() {	
+							$(this).addClass('current').siblings().removeClass('current');
+							if($(this).hasClass('first_page')) {
+								$('.hasdata').val('');
+								Ajax.pages = 1;
+								Ajax.getData();
+
+							} else if($(this).hasClass('pre_page')) {
+								$('.hasdata').val('');
+								Ajax.pages > 1 ? Ajax.pages-- : Ajax.pages = 1;
+								Ajax.getData();
+
+							} else {
+								if($('.hasdata').val()) {
+									//$(this).css('color', '#e5e5e5');
+									return false;
+								}
+								Ajax.pages++;
+								Ajax.getData();
+							}
+						})
+					})
+
+				},
+				switchShow:function(){
+					$(Ajax.followEle).each(function() {
+						$(this).click(function() {							
+							if($(this).hasClass('follow_goods')) {								
+								Ajax.fav = 1;
+								Ajax.pages=1;
+								$('.hasdata').val('');
+								Ajax.getData();
+								///$('.next_page').css('color', '#999');
+							} else if($(this).hasClass('follow_shop')) {
+								Ajax.pages=1;
+								Ajax.fav = 2;
+								$('.hasdata').val('');
+								//$('.next_page').css('color', '#999');
+								Ajax.getData();	
+							} else {
+								return false;								
+							}
+						})
+					});
+					return this;
+				},
+				getData: function() {
+					var url = 'https://two.zhiqunale.cn/paper/user/get_my_favorite';
+					var argu = {
+						favorite_type: this.fav,
+						uid: cookie.getCookie('uid'),
+						size: 8,
+						device_number: 'pc_online'
+					};
+					argu.pageNum = Ajax.pages;
+					GetList(argu, url, this.fun);
+				}
+			};
+			Ajax.set(1, getfollowData, 1, $('.page_turn span'),$('.follow_select span')).switchShow().turnPage();
+		</script>
+	</body>
+
+</html>

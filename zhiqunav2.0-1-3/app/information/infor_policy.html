@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<title>卖废纸买废纸，上纸去哪了</title>
+	<link rel="stylesheet" href="../../css/product.css" />
+</head>
+<body>
+<div id="information">
+	<div class="information_bar">
+		<ul>
+			<li>
+				<a href="infor_price.html">报价</a>
+			</li>
+			<li class="on">
+				<a href="infor_policy.html">政策</a>
+			</li>
+			<li>
+				<a href="infor_analyze.html">分析</a>
+			</li>
+			<li style="margin:0;">
+				<a href="infor_figure.html">人物</a>
+			</li>
+		</ul>
+	</div>
+	<ul class="information_list">
+		<li class="information_list-item" onclick="Detail(this)">
+			<span class="nId">dsfsdfsdf</span>
+			<div class="txt">
+				<a href="infor_detail.html">
+					<h3>ddddd</h3>
+					<p>ddddddd</p>
+				</a>
+			</div>
+			<div class="time">333333</div>
+		</li>
+		<li class="information_list-item" onclick="Detail(this)">
+			<span class="nId">dsfsdfsdf</span>
+			<div class="txt">
+				<a href="infor_detail.html">
+					<h3>ddddd</h3>
+					<p>ddddddd</p>
+				</a>
+			</div>
+			<div class="time">333333</div>
+		</li>
+		<li class="information_list-item" onclick="Detail(this)">
+			<span class="nId">dsfsdfsdf</span>
+			<div class="txt">
+				<a href="infor_detail.html">
+					<h3>ddddd</h3>
+					<p>ddddddd</p>
+				</a>
+			</div>
+			<div class="time">333333</div>
+		</li>
+		<li class="information_list-item" onclick="Detail(this)">
+			<span class="nId">dsfsdfsdf</span>
+			<div class="txt">
+				<a href="infor_detail.html">
+					<h3>ddddd</h3>
+					<p>ddddddd</p>
+				</a>
+			</div>
+			<div class="time">333333</div>
+		</li>
+	</ul>
+	<div id="pages" class="pages" style="margin-bottom: 30px"></div>
+</div>
+<input class="hidden" data-id="news" type="hidden" />
+<script type="text/javascript" src="../../lib/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="../../lib/pagination.js"></script>
+<script>
+	$(function() {
+		/*分页按钮*/
+		$('#pages').initPagenation({
+			totalCount: 4, //数据总个数,
+			showBtnFirst: true, //是否显示 首页按钮
+			showCount: 10, //每页显示多少个,默认10个
+			showBtnsCount: 5 //数字按钮数量,最多10个,默认10个
+
+		})
+	})
+</script>
+</body>
+
+</html>

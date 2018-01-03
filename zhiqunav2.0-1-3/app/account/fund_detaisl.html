@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="../../css/public.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/personal.css" />
+		<title>卖废纸买废纸，上纸去哪了</title>
+	</head>
+
+	<body>
+		<div class="personalbanner"></div>
+		<div class="personalbox">
+			<!-- 侧边栏-->
+			<div class="personal-aside">
+			</div>
+			<!-- 主要内容-->
+			<div class="purchase" id="fund_box">
+				<h3>明细详情</h3>
+				<div id="fundDetails_co"></div>
+				
+			</div>
+		</div>
+		<input type="hidden" class="Fund" />
+		<script type="text/html" id="fundDetails_tpl">
+			<div class="fund_detail_content">
+					<p class="details1">流水号：<span>{{data.wc_trade_no}}</span></p>
+					<p class="details2">交易类型：<span>提现</span></p>
+					<p class="details2">交易金额：<span>{{data.wc_money}}元</span></p>
+					<p class="details1">银行卡：<span>{{data.wc_bank_name}}<b class="bank_num">（{{data.wc_bankcard_num}}）</b></span></p>
+					<p class="details2">交易时间：<span>{{data.created_at}}</span></p>
+					<p class="details3">余额：<span>{{data.wc_account_balance}}（元）</span></p>
+				</div>
+		</script>
+		<script src="../../lib/jquery-1.8.3.min.js"></script>
+		<script src="../../lib/md5.js"></script>
+		<script src="../../js/secret.js"></script>
+		<script src="../../lib/template-web.js"></script>
+		<script type="text/javascript">			
+			function GetQueryString(name) {
+				var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+				var r = window.location.search.substr(1).match(reg);
+				if(r != null) return unescape(r[2]);
+				return null;
+			}
+			
+			
+			console.log()
+			$('.personal-aside').load('personal_aside.html');
+
+			(function() {
+				var wc_id= unescape(window.location.search.substr(1)).split('=')[1];
+				var url = 'https://two.zhiqunale.cn/Paper/PersonalCenter/detailed_details_withdrawals';
+				var argu = {
+					c_id: cookie.getCookie('uid'),
+					user_state: 1,
+					device_number: 'pc_online',
+					wc_id: wc_id
+				}
+				GetList(argu, url, getFundDetails);
+			})();
+
+			function getFundDetails(data) {
+				console.log(data);
+				if(data.status_code == 10000) {					
+					//将时间戳转换成时间
+					data.data.created_at = getLocalTime(data.data.created_at);					
+					var html = template('fundDetails_tpl', data);
+					document.getElementById('fundDetails_co').innerHTML += html;
+				}
+			}
+		</script>
+	</body>
+
+</html>

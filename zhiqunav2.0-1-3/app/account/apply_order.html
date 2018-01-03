@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+
+	<head lang="en">
+		<meta charset="UTF-8">
+		<title>卖废纸买废纸，上纸去哪了</title>
+		<link rel="stylesheet" href="../../css/personal.css" />
+	</head>
+
+	<body>
+		<!--地址管理-->
+		<div class="personal">
+			<div class="personalbanner"></div>
+			<div class="personalbox">
+				<!-- 侧边栏-->
+				<div class="personal-aside">
+				</div>
+				<!-- 主要内容-->
+				<div class="personal-content">
+					<h1 class="personal-content-title">我的交易</h1>
+					<ul class="order-sel">
+						<li class="on">
+							<a href="javascript:void(0);">供应订单</a>
+						</li>
+						<li>
+							<a href="purchase_order.html">采购订单</a>
+						</li>
+					</ul>
+					<div class="purchase-order">
+						<ul class="purchase-ordersort">
+							<li class="on">待发货 <span>(2)</span></li>
+							<li>待收货 <span>(2)</span></li>
+							<li>待结算 <span>(2)</span></li>
+							<li style="margin-right: 0;">已完成 <span>(2)</span></li>
+						</ul>
+						<div class=""></div>
+						<div class="purchase-ordertable">
+							<table>
+								<tr>
+									<th width="15%">规格</th>
+									<th width="13%">重量</th>
+									<th width="13%">单价</th>
+									<th width="20%">收货地址</th>
+									<th width="13%">操作</th>
+									<th width="13%"></th>
+									<th width="13%"></th>
+								</tr>
+								<tr>
+									<td>国废A级纸</td>
+									<td>30吨</td>
+									<td>2000元/吨</td>
+									<td>安徽省合肥市内森庄园</td>
+									<td>
+										<a class="ordertable-evau" href="">发货</a>
+									</td>
+									<td>
+										<a class="ordertable-chat" href="">聊一聊</a>
+									</td>
+									<td>
+										<a class="ordertable-relation" href="">联系买家</a>
+									</td>
+								</tr>
+								<tr>
+									<td>国废A级纸</td>
+									<td>30吨</td>
+									<td>2000元/吨</td>
+									<td>安徽省合肥市内森庄园</td>
+									<td>
+										<a class="ordertable-evau" href="">发货</a>
+									</td>
+									<td>
+										<a class="ordertable-chat" href="">聊一聊</a>
+									</td>
+									<td>
+										<a class="ordertable-relation" href="">联系买家</a>
+									</td>
+								</tr>
+								<tr>
+									<td>国废A级纸</td>
+									<td>30吨</td>
+									<td>2000元/吨</td>
+									<td>安徽省合肥市内森庄园</td>
+									<td>
+										<a class="ordertable-evau" href="">发货</a>
+									</td>
+									<td>
+										<a class="ordertable-chat" href="">聊一聊</a>
+									</td>
+									<td>
+										<a class="ordertable-relation" href="">联系买家</a>
+									</td>
+								</tr>
+								<tr>
+									<td>国废A级纸</td>
+									<td>30吨</td>
+									<td>2000元/吨</td>
+									<td>安徽省合肥市内森庄园</td>
+									<td>
+										<a class="ordertable-evau" href="">发货</a>
+									</td>
+									<td>
+										<a class="ordertable-chat" href="">聊一聊</a>
+									</td>
+									<td>
+										<a class="ordertable-relation" href="">联系买家</a>
+									</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+					<div class="page_turn"><span class="pre_page">上一页</span><span class="next_page">下一页</span></div>
+				</div>
+			</div>
+		</div>
+		<input type="hidden" class="applyOrder" />
+		<script src="../../lib/jquery-1.8.3.min.js"></script>
+		<script src="../../lib/md5.js"></script>
+		<script src="../../js/secret.js"></script>
+		<script src="../../lib/template-web.js"></script>
+		<script>
+			$('.personal-aside').load('personal_aside.html');
+			$('.purchase-ordersort li').click(function() {
+				$(this).addClass('on').siblings().removeClass('on');
+			});
+			(function() {
+				var url='https://two.zhiqunale.cn/paper/orders/getorderlist';
+				var argu = {
+					user_id: cookie.getCookie('uid'),
+					device_number: 'pc_online',
+					state: 1,
+					order_type: 2,
+					page: 1,
+					size: 10
+				}
+				//GetList(argu,url,getOrderList);
+			})();
+			
+			function getOrderList(data){
+				console.log(data);
+				if(data.status_code==10000){
+					//
+				}
+			};
+		</script>
+	</body>
+
+</html>
