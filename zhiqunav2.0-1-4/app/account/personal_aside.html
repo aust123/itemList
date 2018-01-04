@@ -1,0 +1,48 @@
+
+
+<div id="personal-aside">
+    <div class="personal-aside-item">
+        <h1 class="personal-aside-title">我的交易</h1>
+        <p class="applyOrder"><a href="apply_order.html">我的供应订单</a></p>
+        <p class="purchaseOrder"><a href="purchase_order.html">我的采购订单</a></p>
+        <p class="myQuote"><a href="my_quote.html">我的报价</a></p>
+        <p class="myItention"><a href="my_intention.html">我的采购意向</a></p>
+    </div>
+    <div class="personal-aside-item">
+        <h1 class="personal-aside-title">认证信息</h1>
+        <p class="personalCertificate"><a href="personal_certificate.html">个人认证</a></p>
+    </div>
+    <div class="personal-aside-item">
+        <h1 class="personal-aside-title">企业认证</h1>
+        <p class="packingCertificate"><a href="packing_stal_certificate.html">打包站</a></p>
+        <p class="tradeCertificate"><a href="trade_co_certificate.html">贸易公司</a></p>
+        <p class="paperCertificate"><a href="paper_co_certificate.html">纸厂</a></p>
+    </div>
+    <div class="personal-aside-item">
+        <h1 class="personal-aside-title">个人中心</h1>
+        <p class="accountInfo"><a href="account_info.html">账户信息</a></p>
+        <p class="paymentCode"><a href="payment_code.html">支付密码</a></p>
+        <p class="myRefund"><a href="my_refund.html">退款处理</a></p>
+        <p class="bankCard"><a href="bankcard.html">银行卡管理</a></p>
+        <p class="addressManage"><a href="address_manage.html">收发货地址管理</a></p>
+        <p class="Fund"><a href="fund.html">资金管理</a></p>
+       <!-- <p class="myfollow"><a href="myfollow.html">我的关注</a></p>-->
+        <p class="feedback"><a href="feedback.html">提交反馈</a></p>
+        <p class="iou"><a href="iou.html">小猴白条</a></p>
+    </div>
+    <div class="personal-aside-item">
+        <h1 class="personal-aside-title">我的店铺</h1>
+        <p class="shopInform"><a href="shop_inform.html">店铺资料管理</a></p>
+        <p class="mySupply"><a href="my_supply.html">我的供应</a></p>
+        <p class="myPurchase"><a href="my_purchase.html">我的采购</a></p>
+    </div>
+    <div class="personal-aside-item">
+        <p class="myTeam"><a href="my_team.html">我的团队</a></p>
+    </div>
+</div>
+<script>
+    var pageon=$('input[type=hidden]').attr('class');
+    $('.personal-aside-item p').removeClass('on');
+    $('.personal-aside-item p.'+pageon).addClass('on');
+</script>
+

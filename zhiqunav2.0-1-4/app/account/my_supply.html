@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="../../css/public.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/personal.css" />
+		<title>卖废纸买废纸，上纸去哪了</title>
+	</head>
+
+	<body>
+		<div class="personalbanner"></div>
+		<div class="personalbox">
+			<!-- 侧边栏-->
+			<div class="personal-aside">
+			</div>
+			<!-- 主要内容-->
+			<div class="purchase">
+				<h3>我的供应</h3>
+				<div class="purchase_list">
+					<table>
+						<tr>
+							<th class="th1">货品名称</th>
+							<th class="th2">货品价格</th>
+							<th class="th3">数量（吨）</th>
+							<th class="th4">地址</th>
+							<th class="th5">发布时间</th>
+							<th class="th6">结束时间</th>
+							<th class="th7">操作</th>
+						</tr>
+						<tr>
+							<td>德润打包站</td>
+							<td>2000元</td>
+							<td>100</td>
+							<td>安徽省合肥市蜀山区</td>
+							<td>2017.11.11</td>
+							<td>2017.11.15</td>
+							<td class="option">
+								<a href="###" class="down">下架</a>
+								<a class=" refresh" href="###">刷新</a>
+							</td>
+						</tr>
+						<tr>
+							<td>德润打包站</td>
+							<td>2000元
+								<a class="change_price" href="###"><span>改价格</span></a>
+							</td>
+							<td>100</td>
+							<td>安徽省合肥市蜀山区</td>
+							<td>2017.11.11</td>
+							<td>2017.11.15</td>
+							<td class="option">
+								<a href="###" class="up">上架</a>
+								<a class="up_edit" href="###">编辑</a>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+		<input type="hidden" class="mySupply"/>
+		<script src="../../lib/jquery-1.8.3.min.js"></script>
+		<script type="text/javascript">
+			$('.personal-aside').load('personal_aside.html');
+			
+		</script>
+	</body>
+
+</html>

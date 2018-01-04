@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>卖废纸买废纸，上纸去哪了</title>
+		<link rel="stylesheet" href="../../css/orders.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/personal.css" />
+	</head>
+
+	<body>
+		<div class="personal">
+			<div class="personalbanner"></div>
+			<div class="personalbox">
+				<!-- 侧边栏-->
+				<div class="personal-aside"></div>
+				<!-- 主要内容-->
+				<div class="personal-content" style="min-height: 770px;">
+					<h1 class="personal-content-title">订单详情 <div class="contact"><a id="chat" href="###">聊一聊</a><a id="phone_call" href="###">联系卖家</a></div></h1>
+					<div class="details_content"></div>
+				</div>
+			</div>
+		</div>
+		<script type="text/html" id="order_detail_tpl">
+			<div id="trade_co_info">
+				<ul>
+					<li>
+						<div class="co_logo"><img src="https://two.zhiqunale.cn/{{data.sale_store_headurl}}" /></div>
+						<div>
+							<p class="tarde_co_name">{{data.sale_store_name}}<span id="seller">卖方</span></p>
+							<p class="co_status">
+								{{if data.sale_certification==1}}
+								<img style="width: 16px;" src="../../img/zhoubian_renzheng_shi.png" alt="" /> {{/if}} {{if data.sale_is_company==1}}
+								<img style="width: 22px;" src="../../img/zhoubian_renzheng_qi.png" /> {{/if}} {{if data.sale_is_recommend==1}}
+								<img style="width: 18px;" src="../../img/zhoubian_renzheng_tui.png" /> {{/if}}
+							</p>
+							<p class="score">信用分：{{data.sale_credit_score}}分</p>
+						</div>
+					</li>
+					<li style="margin-bottom: 3px;">
+						<div class="co_logo"><img src="https://two.zhiqunale.cn/{{data.buyer_headurl}}" /></div>
+						<div>
+							<p class="tarde_co_name">{{data.buyer_username}}<span id="buyer">买方</span></p>
+							<p class="co_status">
+								{{if data.buyer_certification==1}}
+								<img style="width: 16px;" src="../../img/zhoubian_renzheng_shi.png" alt="" /> {{/if}} {{if data.buyer_is_company==1}}
+								<img style="width: 22px;" src="../../img/zhoubian_renzheng_qi.png" /> {{/if}} {{if data.buyer_is_recommend==1}}
+								<img style="width: 18px;" src="../../img/zhoubian_renzheng_tui.png" /> {{/if}}
+							</p>
+							<p class="score">信用分：{{data.buyer_credit_score}}分</p>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div class="order_info order_detail">
+				<p>规格：{{data.o_product_specifications}}</p>
+				<p>报价：<span class="order_price">{{data.o_product_price}}元/吨</span></p>
+				<p>收货地址：{{data.address}}</p>
+				<p>发货日期：{{data.o_send_time}}</p>
+				<p>数量：{{data.o_product_weight}}吨</p>
+				<p style="margin-bottom: 0px;">买方支付订金：<span class="order_price">{{data.o_bail_money}}元</span></p>
+			</div>
+			<div class="order_info order_num">
+				<p>订单流水号：{{data.o_order_num}}</p>
+				<p style="margin-bottom: 0px;">订金支付流水号：{{data.o_bail_num}}</p>
+			</div>
+			<!--<div class="order_info driver">
+					<h4>司机信息</h4>
+					<p>司机姓名：李四</p>
+					<p>车牌：皖A—ab5487</p>
+					<p style="margin-bottom: 0px;">联系方式：15788886666</p>
+				</div>-->
+			{{if data.o_state==1}}
+				{{if data.o_buyer_id}}
+					<p class="order_option">
+				<!--订单id-->
+				<span style="display: none;">{{data.o_id}}</span>
+				<!--货品规格-->
+				<b style="display: none;">{{data.o_product_specifications}}</b>
+				<!--货品重量-->
+				<i style="display: none;">{{data.o_product_weight}}</i>
+				<!--卖家id-->
+				<em style="display: none;">{{data.o_saler_id}}</em>
+				<!--订金金额-->
+				<strong style="display: none;">{{data.o_bail_money}}</strong>
+				<a href="###" onclick="">确认发货</a>
+			</p>
+				{{/if}}
+			{{else if data.o_state==2}}
+			{{if data.o_saler_id}}
+				<p class="order_option">
+				<!--订单id-->
+				<span style="display: none;">{{data.o_id}}</span>
+				<!--货品规格-->
+				<b style="display: none;">{{data.o_product_specifications}}</b>
+				<!--货品重量-->
+				<i style="display: none;">{{data.o_product_weight}}</i>
+				<!--卖家id-->
+				<em style="display: none;">{{data.o_saler_id}}</em>
+				<!--订金金额-->
+				<strong style="display: none;">{{data.o_bail_money}}</strong>
+				<a href="###" onclick="confirm(this)">确认收货</a>
+			</p>
+			{{/if}}
+			
+			{{else if data.o_state==3}} {{if data.o_settle_state==1}}
+			<p class="order_option">
+				<a href="###">去结算</a>
+			</p>
+			{{else if data.o_settle_state==2}}
+			<div class="order_info totle_price">
+				<p>货物总价：<span class="order_price">{{data.product_total_price}}元</span></p>
+				<p>（已付定金：{{data.o_bail_money}}元，尾款：{{data.o_final_pay}}）</p>
+				<p id="seller_sure"><span>卖家确认中</span></p>
+			</div>
+			<div class="order_info checklist">
+				<h4>结算清单</h4>
+				<div id="checklist_photos">
+					{{if data.o_settle_photos.length>0}} {{each data.o_settle_photos as value}}
+					<img src="https://two.zhiqunale.cn/{{value}}" /> {{/each}} {{/if}}
+
+				</div>
+			</div>
+			{{else if data.o_settle_state==3}}
+			<div class="order_info totle_price">
+				<p>货物总价：<span class="order_price">{{data.product_total_price}}元</span></p>
+				<p>（已付定金：{{data.o_bail_money}}元，尾款：{{data.o_final_pay}}）</p>
+				<p class="order_option" style="text-align: right;">
+					<a style="margin-right: 20px;" class="change_option" href="###">去付款</a>
+				</p>
+			</div>
+			<div class="order_info checklist">
+				<h4>结算清单</h4>
+				<div id="checklist_photos">
+					{{if data.o_settle_photos.length>0}} {{each data.o_settle_photos as value}}
+					<img src="https://two.zhiqunale.cn/{{value}}" /> {{/each}} {{/if}}
+
+				</div>
+			</div>
+			{{/if}} {{else if data.o_state==4}}
+			<div class="order_info totle_price">
+				<p>货物总价：<span class="order_price">{{data.product_total_price}}元</span></p>
+				<p>（已付定金：{{data.o_bail_money}}元，尾款：{{data.o_final_pay}}）</p>
+				{{if data.o_buyer_jugde==1}}
+				<p id="seller_sure"><span>已评价</span></p>
+				{{else if data.o_buyer_jugde==2}}
+				<p class="order_option" style="text-align: right;">
+					<a style="margin-right: 20px;" href="###">去评价</a>
+				</p>
+				{{/if}}
+			</div>
+			<div class="order_info checklist">
+				<h4>结算清单</h4>
+				<div id="checklist_photos">
+					{{if data.o_settle_photos.length>0}} {{each data.o_settle_photos as value}} {{if value == "null"}}{{/if}}
+					<img src="https://two.zhiqunale.cn/{{value}}" /> {{/each}} {{/if}}
+				</div>
+			</div>
+			{{/if}}
+			<!--<p class="order_option">
+				<a href="###">去结算</a>
+			</p>
+			<div class="order_info totle_price">
+				<p>货物总价：<span class="order_price">10000元</span></p>
+				<p>（已付定金：1000元，尾款：200元）</p>
+				<p id="seller_sure"><span>卖家确认中</span></p>
+			</div>
+			<div class="order_info checklist">
+				<h4>结算清单</h4>
+				<div id="checklist_photos">
+					{{each data.o_settle_photos as value}}
+					<img src="https://two.zhiqunale.cn/{{value}}" /> {{/each}}
+					<img src="../../img/jiesuanqindang.png" />
+					<img src="../../img/jiesuanqindang.png" />
+				</div>
+			</div>-->
+		</script>
+		<script src="../../lib/jquery-1.8.3.min.js"></script>
+		<script src="../../lib/md5.js"></script>
+		<script src="../../js/secret.js"></script>
+		<script src="../../lib/template-web.js"></script>
+		<script type="text/javascript">
+			$('.personal-aside').load('personal_aside.html');
+
+			(function() {
+				/*获取订单id和订单类型*/
+				function getQuery($query) {
+					var query = $query.substring(1);
+					var arr = query.split('&');
+					var allQuery = {};
+					for(var i in arr) {
+						aa = arr[i].split('=');
+						var pro = aa[0];
+						allQuery[pro] = aa[1]
+					}
+					return allQuery;
+				};
+				var query = window.location.search;
+				var queryData = getQuery(query);
+
+				var url = 'https://two.zhiqunale.cn/paper/orders/getorderdetail';
+				var argu = {
+					user_id: cookie.getCookie('uid'),
+					device_number: 'pc_online',
+					order_id: queryData.oid,
+					order_type: queryData.type
+				}
+				GetList(argu, url, getOrderDetail)
+			})();
+
+			function getOrderDetail(data) {
+				console.log(data);
+				if(data.status_code == 10000) {
+					/*时间戳转换成时间*/
+					data.data.o_send_time = getLocalTimes(data.data.o_send_time);
+					var html = template('order_detail_tpl', data);
+					$('.details_content').html(html);
+				}
+			};
+
+			/*确认收货*/
+			function confirm($this) {
+				//$($this).parent().siblings('.hiddens').find('em').html();
+				var url = 'https://two.zhiqunale.cn/paper/orders/buyerclicktoconfirmgetgoods';
+				var argu = {
+					user_id: cookie.getCookie('uid'),
+					device_number: 'pc_online',
+					order_id: $($this).siblings('span').html(),
+					product_name: escape($($this).siblings('b').html()),
+					product_weight: $($this).siblings('i').html(),
+					user_name: escape(localStorage.c_username),
+					sale_id: $($this).siblings('em').html()
+				}
+				GetList(argu, url, getConfirm);
+			};
+
+			function getConfirm(data) {
+				console.log(data);
+				if(data.data.status_code == 10000) {
+					//window.location.reload(true);
+					var q_value=$('.change_option').siblings('span').html();
+					$('.change_option').attr('href','settlement.html?oid='+ q_value).html('去结算');
+				}
+			}
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="../../css/public.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/personal.css" />
+		<title>卖废纸买废纸，上纸去哪了</title>
+	</head>
+
+	<body>
+		<div class="personalbanner"></div>
+		<div class="personalbox">
+			<!-- 侧边栏-->
+			<div class="personal-aside">
+			</div>
+			<!-- 主要内容-->
+			<div class="purchase">
+				<h3>认证信息</h3>
+				<div class="purchase_list">
+					<h2>个人认证 </h2>
+					<div class="certificate_msg">
+						<p><span class="name">姓名&nbsp;：</span><input type="text" id="sm_name" value="" /></p>
+						<p><span class="id_number">身份证&nbsp;：</span><input type="text" id="id_card" value="" maxlength="18" /></p>
+						<p>
+							<span class="id_img">手持身份证照片&nbsp;&nbsp;: </span>
+							<em class="selImg">
+                                <input  type="file" class="idImg_zm" onchange="uploadImg(this)" />
+                                <img id="yyImg" src='../../img/shangchuan_zm.png'>
+                            </em>
+							<em class="selImg">
+                                <input type="file" class="idImg_fm" onchange="uploadImg2(this)" />
+                                <img id="lgImg" src='../../img/shangchuan_fm.png'>
+                            </em>
+						</p>
+						<p style="text-align: center; margin-top: 100px;"><button id="pe_btn">提交</button></p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<input type="hidden" class="personalCertificate" />
+		<script src="../../lib/jquery-1.8.3.min.js"></script>
+		<script src="../../lib/md5.js"></script>
+		<script src="../../js/secret.js"></script>
+		<script src="../../lib/template-web.js"></script>
+		<script type="text/javascript">
+			$('.personal-aside').load('personal_aside.html');
+			/*获取图片url*/
+			function uploadImg($this) {
+				getImgUrl.ele = $this;
+				getImgUrl.imgEle = $('#yyImg');
+				getImgUrl.showFun = showFronImg;
+				getImgUrl.uploadIcon();
+			}
+
+			function showFronImg(data) {
+				console.log(data);
+				if(data.code == 10000) {
+					var newSrc = 'https://two.zhiqunale.cn/' + data.data;
+					getImgUrl.imgEle.attr('src', newSrc);
+					localStorage.pe_front_url = data.data;
+				}
+			};
+
+			function uploadImg2($this) {
+				getImgUrl.ele = $this;
+				getImgUrl.imgEle = $('#lgImg');
+				getImgUrl.showFun = showBackImg;
+				getImgUrl.uploadIcon();
+			}
+
+			function showBackImg(data) {
+				console.log(data);
+				if(data.code == 10000) {
+					var newSrc = 'https://two.zhiqunale.cn/' + data.data;
+					getImgUrl.imgEle.attr('src', newSrc);
+					localStorage.pe_back_turl = data.data;
+				}
+			};
+
+			$('#pe_btn').click(function() {
+				var url = 'https://two.zhiqunale.cn/paper/user/user_certification'
+				var argu = {
+					uid: cookie.getCookie('uid'),
+					sm_name:escape($('#sm_name').val()),
+					id_card: $('#id_card').val(),
+					front_photo:localStorage.pe_front_url,
+					backend_photo:localStorage.pe_back_turl,
+					device_number: 'pc_online'
+				}
+				GetList(argu, url, setPerson);
+			});
+
+			function setPerson(data) {
+				console.log(data);
+				if(data.status_code == 10000) {
+					window.location.href='personal_certificate.html';
+					//var html = template('person_tpl', data);
+					//document.getElementById('person_co').innerHTML = html;
+				} /*else if(data.status_code == 10002) {
+					alert(data.msg);
+				}*/
+			}
+			
+			(function(){
+				if(localStorage.pe_certification){
+					var pe_certification =JSON.parse(localStorage.pe_certification);
+					console.log(pe_certification);
+					$('#sm_name').val(pe_certification.c_sm_name);
+					$('#id_card').val(pe_certification.c_id_card);
+					$('#yyImg').attr('src','https://two.zhiqunale.cn/'+pe_certification.c_id_front_photo);
+					$('#lgImg').attr('src','https://two.zhiqunale.cn/'+pe_certification.c_id_backend_photo);
+				}
+			})();
+		</script>
+	</body>
+
+</html>
