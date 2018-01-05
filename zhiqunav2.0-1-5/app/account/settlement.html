@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>卖废纸买废纸，上纸去哪了</title>
+		<link rel="stylesheet" href="../../css/orders.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/personal.css" />
+	</head>
+
+	<body style="background: #fff;">
+		<div class="personalbanner"></div>
+		<div style="height: 22px; background-color: #f6f6f6;"></div>
+		<div class="shop-rank-content settlement-content" style="padding-top: 15px;">
+			<h1 class="personal-content-title">结算 <div class="refund_box"><a href="###" onclick="toRefund(this)">退款</a></div></h1>
+			<div id="trade_co_info" class="settlement_option">
+				<div>结算尾款<span class="no-front-money">(不包含定金)</span><input type="text" class="settle_money" />元</div>
+				<p class="down_payment"><img src="../../img/zijinguanli_tishi.png" alt="" />已付定金：<span id="yufu">10000</span>元</p>
+				<div class="up_title">上传结算清单</div>
+				<div><a class="upload_box" href="###"><input id="input_file" type="file" onchange="uploadImg(this)"/></a></div>				
+				<ul class="settle_imgs"></ul>
+				<p class="sure_box">
+					<a class="sure_upload" href="###">确认上传</a>
+				</p>
+			</div>
+		</div>
+		<script src="../../lib/jquery-1.8.3.min.js"></script>
+		<script src="../../lib/md5.js"></script>
+		<script src="../../js/secret.js"></script>
+		<script type="text/javascript">
+			(function() {
+				query = decodeURIComponent(window.location.search).substr(5);
+				//console.log(query)
+				var List = JSON.parse(localStorage.order_data);
+				for(var i in List) {
+					for(var j in List[i]) {
+						if(List[i][j] == query) {
+							settleData = List[i];
+							console.log(settleData);
+						}
+					}
+				}
+				$('#yufu').html(settleData['o_bail_money']);
+			})();
+			
+			/*上传结算清单*/
+			
+			function uploadImg($this) {
+				getImgUrl.ele = $this;
+				getImgUrl.showFun = settleImgs;
+				getImgUrl.uploadIcon();
+			}
+			var picUrl = [];
+
+			function settleImgs(data) {
+				if(data.code == 10000) {
+					var html = '<li><img src="' + 'https://two.zhiqunale.cn/' + data.data + '" alt=""/></li>';
+					$('.settle_imgs').append(html);
+					picUrl.push(data.data);					
+				}
+			};
+			/*删除上传的图片*/
+			//    删除上传的图片
+			$('.settle_imgs').delegate('li', 'click', function() {
+				//console.log($(this).find('img').attr('src'));
+				var imgPath = $(this).find('img').attr('src').replace('https://two.zhiqunale.cn/', '');				
+					for(var i in picUrl) {
+						if(picUrl[i] == imgPath) {
+							picUrl.splice(i, 1);
+						}
+					}
+				
+				$(this).remove();
+			})
+			
+			/*确定上传结算清单*/
+			$('.sure_upload').click(function() {
+				//console.log(picUrl);
+				if($('.settle_money').val()!=''){
+					var url = 'https://two.zhiqunale.cn/paper/orders/buyerclicktosettle';
+				var argu = {
+					user_id:cookie.getCookie('uid'),
+					device_number:'pc_online',
+					order_id:query,
+					product_name:escape(settleData['o_product_specifications']),
+					product_weight:settleData['o_product_weight'],
+					user_name:escape(localStorage.c_username),
+					sale_id:settleData['o_saler_id'],
+					final_pay:$('.settle_money').val(),
+					settle_photos:picUrl.join()
+				};				
+				GetList(argu,url,uploadSettlement);	
+				}else{
+					alert('请输入结算尾款');
+				}
+				
+			});
+			
+			function uploadSettlement(data){
+				console.log(data);
+				if(data.status_code==10000){
+					window.confirm(data.msg);
+				}else{
+					window.confirm(data.msg);
+				}
+			};
+			
+			function toRefund($this){
+				var $href = 'apply_refund.html?oid='+query;
+				$($this).attr('href',$href);
+			}
+			
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+
+	<head lang="en">
+		<meta charset="UTF-8">
+		<title>卖废纸买废纸，上纸去哪了</title>
+		<link rel="stylesheet" href="../../css/personal.css" />
+		<style type="text/css">
+			div.page_turn {
+				text-align: center;
+				margin-top: 30px;
+				display: block !important;
+			}
+			
+			div.page_turn span {
+				display: inline-block;
+				width: 50px;
+				height: 20px;
+				font-size: 14px;
+				color: #999;
+				border: 1px solid;
+				border-radius: 6px;
+				padding: 2px 5px;
+				cursor: pointer;
+			}
+			
+			div.page_turn span:hover {
+				color: #00d3af;
+			}
+			
+			div.page_turn .current {
+				color: #00d3af;
+			}
+			
+			div.page_turn span.pre_page {
+				margin: 0 15px;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<div class="personal">
+			<div class="personalbanner"></div>
+			<div class="personalbox">
+				<!-- 侧边栏-->
+				<div class="personal-aside"></div>
+				<!-- 主要内容-->
+				<div class="personal-content">
+					<h1 class="personal-content-title">我的交易</h1>
+					<ul class="order-sel">
+						<li>
+							<a href="apply_order.html">供应订单</a>
+						</li>
+						<li class="on">
+							<a href="javascript:void(0);">采购订单</a>
+						</li>
+					</ul>
+					<div class="purchase-order">
+						<ul class="purchase-ordersort">
+							<li class="dfh on">待发货 <span></span></li>
+							<li class="dsh">待收货 <span></span></li>
+							<li class="djs">待结算 <span></span></li>
+							<li class="ywc" style="margin-right: 0;">已完成 <span></span></li>
+						</ul>
+
+						<div class="purchase-ordertable">
+							<table>
+								<tr>
+									<th width="11%">规格</th>
+									<th width="10%">重量</th>
+									<th width="10%">单价</th>
+									<th width="18%">收货地址</th>
+									<th width="9%">操作</th>
+									<th width="3%"></th>
+									<th width="11%"></th>
+									<th width="10%"></th>
+								</tr>
+							</table>
+							<table class="order_table"></table>
+							<div class="page_turn"><span class="first_page">首页</span><span class="pre_page">上一页</span><span class="next_page">下一页</span></div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<input type="hidden" class="purchaseOrder" />
+		<script type="text/html" id="order_list_tpl">
+			<tr>
+				<th width="11%"></th>
+				<th width="10%"></th>
+				<th width="10%"></th>
+				<th width="18%"></th>
+				<th width="9%"></th>
+				<th width="3%"></th>
+				<th width="11%"></th>
+				<th width="10%"></th>
+			</tr>
+			{{each data value}}
+			<tr>
+				<td>{{value.o_product_specifications}}</td>
+				<td>{{value.o_product_weight}}吨</td>
+				<td>{{value.o_product_price}}元/吨</td>
+				<td>{{value.address}}</td>
+				<td style="display: none;" class="hiddens">
+					<!--订单id-->
+					<span style="display: none;">{{value.o_id}}</span>
+					<!--货品规格-->
+					<b style="display: none;">{{value.o_product_specifications}}</b>
+					<!--货品重量-->
+					<i style="display: none;">{{value.o_product_weight}}</i>
+					<!--卖家id-->
+					<em style="display: none;">{{value.o_saler_id}}</em>
+					<!--订金金额-->
+					<strong style="display: none;">{{value.o_bail_money}}</strong>
+				</td>
+				{{if value.o_state==1}}
+				<td>
+					<a class="ordertable-evau" href="###">待发货</a>
+				</td>
+				{{else if value.o_state==2}}
+				<td>
+					<a class="ordertable-evau" href="###" onclick="confirm(this)">确认收货</a>
+				</td>
+				{{else if value.o_state==3}}
+				<td>
+					{{if value.o_settle_state==1}}
+					<a class="ordertable-evau" href="settlement.html?oid={{value.o_id}}" onclick="toSettlement(this)" target="_blank">去结算</a>
+					{{else if value.o_settle_state==2}}
+					<a class="ordertable-evau" href="###">卖家确认中</a>
+					{{else if value.o_settle_state==3}}
+					<a class="ordertable-evau" href="pay.html?oid={{value.o_id}}">去付款</a>
+					{{/if}}
+
+				</td>
+				{{else if value.o_state==4}}
+				<td>
+					{{if value.o_buyer_jugde==1}}
+					<a class="ordertable-evau" href="###">已评价</a>
+					{{else if value.o_buyer_jugde==2}}
+					<a class="ordertable-evau" href="reviews.html?oid={{value.o_id}}">去评价</a>
+					{{/if}}
+				</td>
+				{{/if}}
+				<td>
+					<a class="to_order_detail" href="order_detail.html?oid={{value.o_id}}&type=1" target="_blank">详情</a>
+				</td>
+				<td>
+					<a class="ordertable-chat" href="">聊一聊</a>
+				</td>
+				<td>
+					<a class="ordertable-relation" href="">联系买家</a>
+				</td>
+			</tr>
+			{{/each}}
+		</script>
+		<script src="../../lib/jquery-1.8.3.min.js"></script>
+		<script src="../../lib/md5.js"></script>
+		<script src="../../js/secret.js"></script>
+		<script src="../../lib/template-web.js"></script>
+		<script>
+			$('.personal-aside').load('personal_aside.html');
+			$('.purchase-ordersort li').click(function() {
+				$(this).addClass('on').siblings().removeClass('on');
+			});
+
+			function getOrderList(data) {
+				console.log(data);
+				if(data.status_code == 10000) {
+					$('.order_table').html('');
+					if(parseInt(data.data.length) > 0) {
+						localStorage.order_data = JSON.stringify(data.data);
+						var html = template('order_list_tpl', data);
+						$('.order_table').html(html);
+					} else {
+						//alert('没有啦');
+					}
+				}
+			};
+
+			var Ajax = {
+				pages: null,
+				fun: null,
+				state: null,
+				pageEle: null,
+				followEle: null,
+				set: function($pages, $fun, $state, $pEle, $fEle) {
+					this.pages = $pages;
+					this.fun = $fun;
+					this.state = $state;
+					this.pageEle = $pEle;
+					this.followEle = $fEle;
+					this.getData();
+					return this;
+				},
+				turnPage: function() {
+					$(Ajax.pageEle).each(function() {
+						$(this).click(function() {
+							$(this).addClass('current').siblings().removeClass('current');
+							if($(this).hasClass('first_page')) {
+								$('.hasdata').val('');
+								Ajax.pages = 1;
+								Ajax.getData();
+
+							} else if($(this).hasClass('pre_page')) {
+								$('.hasdata').val('');
+								Ajax.pages > 1 ? Ajax.pages-- : Ajax.pages = 1;
+								Ajax.getData();
+
+							} else {
+								if($('.hasdata').val()) {
+									return false;
+								}
+								Ajax.pages++;
+								Ajax.getData();
+							}
+						})
+					})
+
+				},
+				switchShow: function() {
+					$(Ajax.followEle).each(function() {
+						$(this).click(function() {
+							if($(this).hasClass('dfh')) {
+								Ajax.state = 1;
+								Ajax.pages = 1;
+								//$('.hasdata').val('');
+								Ajax.getData();
+								///$('.next_page').css('color', '#999');
+							} else if($(this).hasClass('dsh')) {
+								Ajax.pages = 1;
+								Ajax.state = 2;
+								//$('.hasdata').val('');
+								//$('.next_page').css('color', '#999');
+								Ajax.getData();
+							} else if($(this).hasClass('djs')) {
+								Ajax.pages = 1;
+								Ajax.state = 3;
+								//$('.hasdata').val('');
+								//$('.next_page').css('color', '#999');
+								Ajax.getData();
+							} else if($(this).hasClass('ywc')) {
+								Ajax.pages = 1;
+								Ajax.state = 4;
+								Ajax.getData();
+							}
+						})
+					});
+					return this;
+				},
+				getData: function() {
+					var url = 'https://two.zhiqunale.cn/paper/orders/getorderlist';
+					var argu = {
+						user_id: cookie.getCookie('uid'),
+						device_number: 'pc_online',
+						state: this.state,
+						order_type: 1,
+						page: this.pages,
+						size: 10
+					}
+					GetList(argu, url, this.fun);
+				}
+			};
+			Ajax.set(1, getOrderList, 1, $('.page_turn span'), $('.purchase-ordersort li')).switchShow().turnPage();
+
+			/*确认收货*/
+			function confirm($this) {
+				$($this).parent().siblings('.hiddens').find('em').html();
+				var url = 'https://two.zhiqunale.cn/paper/orders/buyerclicktoconfirmgetgoods';
+				var argu = {
+					user_id: cookie.getCookie('uid'),
+					device_number: 'pc_online',
+					order_id: $($this).parent().siblings('.hiddens').find('span').html(),
+					product_name: escape($($this).parent().siblings('.hiddens').find('b').html()),
+					product_weight: $($this).parent().siblings('.hiddens').find('i').html(),
+					user_name: escape(localStorage.c_username),
+					sale_id: $($this).parent().siblings('.hiddens').find('em').html()
+				}
+				GetList(argu, url, getConfirm);
+			};
+
+			function getConfirm(data) {
+				console.log(data);
+				if(data.data.status_code == 10000) {
+					window.location.reload(true);
+				}
+			}
+			/*去结算*/
+			function toSettlement($this) {
+				
+			}
+		</script>
+	</body>
+
+</html>

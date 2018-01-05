@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="../../css/public.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/personal.css" />
+		<title>卖废纸买废纸，上纸去哪了</title>
+	</head>
+
+	<body>
+		<div class="personalbanner"></div>
+		<div class="personalbox">
+			<!-- 侧边栏-->
+			<div class="personal-aside">
+			</div>
+			<!-- 主要内容-->
+			<div class="purchase">
+				<h3>认证信息</h3>
+				<div class="purchase_list">
+
+				</div>
+			</div>
+		</div>
+		<script id="person_tpl" type="text/html">
+			<h2>个人认证 
+						{{if data.c_certification ==1}}
+						<div class="acc_state">已认证</div>
+						{{else if data.c_certification ==2}}
+						<div class="acc_state">认证中...</div>
+						{{else if data.c_certification ==3}}
+						<div class="acc_state">认证被拒绝</div>
+						<p><a class="re_edit" href="pe_certificate.html">重新认证</a></p>
+						{{else}}
+						<div class="acc_state">未认证</div>
+						<p><a class="re_edit" href="pe_certificate.html">去认证</a></p>
+						{{/if}}
+					</h2>
+			<div class="certificate_msg">
+				<p><span class="name">姓名&nbsp;：</span>{{data.c_sm_name}}</p>
+				<p><span class="id_number">身份证&nbsp;：</span>{{data.c_id_card}}</p>
+				<p id="pe_card_img"><span class="id_img">手持身份证照片&nbsp;&nbsp;: </span><img src="https://two.zhiqunale.cn/{{data.c_id_front_photo}}" /><img src="https://two.zhiqunale.cn/{{data.c_id_backend_photo}}" /></p>
+			</div>
+		</script>
+		<input type="hidden" class="personalCertificate" />
+		<script src="../../lib/jquery-1.8.3.min.js"></script>
+		<script src="../../lib/md5.js"></script>
+		<script src="../../js/secret.js"></script>
+		<script src="../../lib/template-web.js"></script>
+		<script type="text/javascript">
+			$('.personal-aside').load('personal_aside.html');
+
+			(function() {
+				var url = 'https://two.zhiqunale.cn/paper/user/get_certification_detail'
+				var argu = {
+					uid: cookie.getCookie('uid'),
+					device_number: 'pc_online'
+				}
+				GetList(argu, url, getPerson);
+			})();
+
+			function getPerson(data) {
+				console.log(data);
+				if(data.status_code == 10000) {
+					data.data.c_sm_name = unescape(data.data.c_sm_name);
+					var html = template('person_tpl', data);
+					$('.purchase_list').html(html);
+					if(data.data.c_certification == 3) {
+						localStorage.pe_certification = JSON.stringify(data.data);
+					}
+				} else if(data.status_code == 10002) {
+					alert(data.msg);
+					var tips = '<h2>个人认证<div class="acc_state"><a class="co_edit"  href="pe_certificate.html">去认证</a></div></h2><p class="tip_text">暂无个人认证信息</p>';
+					$('.purchase_list').html(tips);
+				}
+			}
+		</script>
+	</body>
+
+</html>

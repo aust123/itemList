@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="../../css/public.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/personal.css" />
+		<title>卖废纸买废纸，上纸去哪了</title>
+	</head>
+
+	<body>
+		<div class="personalbanner"></div>
+		<div class="personalbox">
+			<!-- 侧边栏-->
+			<div class="personal-aside">
+			</div>
+			<!-- 主要内容-->
+			<div class="purchase" id="fund_box">
+				<h3>资金管理 <a class="presentation_details" href="fund_record.html"><img src="../../img/zijinguanli_mingxi.png"/>提现明细</a></h3>
+				<div id="fund_co"></div>
+				
+			</div>
+		</div>
+		<input type="hidden" class="Fund"/>
+		<script type="text/html" id="fund_tpl">
+			<div class="fund_content">
+					<p class="balance">账户余额（元）：<span>{{data.c_left_money + data.c_frozen_money}}</span></p>
+					<ul class="fund_state">
+						<li>
+							<p>可提现（元）</p>
+							<span class="available">{{data.c_left_money}}</span>
+						</li>
+						<li>
+							<p>提现中（元）</p>
+							<span>{{data.c_has_cashed}}</span>
+						</li>
+						<li class="last_li">
+							<p>冻结中（元）</p>
+							<span>{{data.c_frozen_money}}</span>
+						</li>
+					</ul>
+					<p>
+						<a class="presentation_rule" href="###"><img src="../../img/zijinguanli_tishi.png" />《纸去哪了》平台提现规则</a>
+					</p>
+					<p class="presentation_option">
+						<a class="presentation_btn" href="fast_cash.html">提&nbsp;现</a>
+						<a class="bank_btn" href="bankcard.html">银行卡管理</a>
+					</p>
+				</div>
+		</script>
+		<script src="../../lib/jquery-1.8.3.min.js"></script>
+		<script src="../../lib/md5.js"></script>
+		<script src="../../js/secret.js"></script>
+		<script src="../../lib/template-web.js"></script>
+		<script type="text/javascript">
+			$('.personal-aside').load('personal_aside.html');
+			
+			(function(){
+				var url = 'https://two.zhiqunale.cn/Paper/PersonalCenter/fund_management';
+				var argu = {
+					c_id:cookie.getCookie('uid'),
+					user_state:1,
+					device_number:'pc_online'
+				}
+				GetList(argu,url,getFund);
+			})()
+			function getFund(data){
+				//console.log(data);
+				if(data.status_code==10000){					
+					cookie.setCookie('available',data.data.c_left_money);					
+					var html = template('fund_tpl',data);
+					document.getElementById('fund_co').innerHTML+=html;
+				}
+			}
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+
+	<head lang="en">
+		<meta charset="UTF-8">
+		<title>卖废纸买废纸，上纸去哪了</title>
+		<link rel="stylesheet" href="../../css/product.css" />
+	</head>
+
+	<body>
+		<div id="prodetail">
+			<!-- 商品图片-->
+			<div class="prodetail-pic">
+				<!--图片预览-->
+				<div class="prodetail-piclist">
+					<div class="prodetail-piclist-lg">
+						<img src="../../img/productdetail_photo_l.png" />
+					</div>
+					<div class="prodetail-piclist-sm">
+						<div class="prodetail-piclist-sm-item">
+							<img src="../../img/productdetail_photo_s.png" />
+						</div>
+						<div class="prodetail-piclist-sm-item">
+							<img src="../../img/zhoubian_photo_1.png" />
+						</div>
+						<div class="prodetail-piclist-sm-item last">
+							<img src="../../img/zhoubian_photo_4.png" />
+						</div>
+					</div>
+					<div class="prodetail-focus">
+						<label>关注商品</label>
+					</div>
+				</div>
+				<!-- 废纸价格-->
+				<div class="prodetail-price">
+					<h1 class="prodetail-price-sort">国废A级纸</h1>
+					<div class="prodetail-price-box">
+						<p style="border-bottom: 1px dotted #B6B6B6;">价格：<b>￥3500元/吨</b></p>
+						<p>地址：<span>安徽省合肥市</span>
+							<a>距离17公里</a>
+						</p>
+					</div>
+					<div class="prodetail-price-chat">
+						<a class="prodetail-price-chat-talk" id="login">聊一聊</a>
+						<a class="prodetail-price-chat-tel">打电话</a>
+						<a class="prodetail-price-chat-buy">立即购买</a>
+					</div>
+				</div>
+			</div>
+			<!-- 商品介绍及评价-->
+			<div class="prodetail-evaluate">
+				<!--个人等级-->
+				<div class="prodetail-info">
+					<div class="prodetail-info-icon">
+						<img src="../../img/productdetail_touxiang.png" />
+						<span>张三</span>
+					</div>
+					<div class="prodetail-info-grade">
+						<p>星级评价：<span>5级</span></p>
+						<p>认证情况：<img src="../../img/productdetail_icon_qyrz.png" /><img src="../../img/productdetail_icon_smrz.png" /></p>
+					</div>
+				</div>
+				<!-- 详情及评价-->
+				<div class="prodetail-summary">
+					<ul class="prodetail-summary-sel">
+						<li class="on">商品详情</li>
+						<li class="comment_btn">累计评价 <span>33333</span></li>
+					</ul>
+					<div class="prodetail-summary-detail on">
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam atque impedit officiis quas. Adipisci architecto blanditiis, consequatur explicabo fuga nam repudiandae soluta temporibus. Harum ipsa nisi quis quos temporibus? Praesentium!
+					</div>
+					<div class="prodetail-summary-evu">
+						<ul>
+							<li>
+								<h3>评价内容评价内容评价内容评价内容评价内容评价内容评价内容评价内容</h3>
+								<h4>
+                            <img src="../../img/productdetail_pingjia_photo.png"/>
+                            <img src="../../img/productdetail_pingjia_photo.png"/>
+                            <img src="../../img/productdetail_pingjia_photo.png"/>
+                        </h4>
+								<p>11.05</p>
+								<span class="prodetail-summary-evu-name">h***j（匿名）</span>
+							</li>
+							<li>
+								<h3>评价内容评价内容评价内容评价内容评价内容评价内容评价内容评价内容</h3>
+								<h4>
+                            <img src="../../img/productdetail_pingjia_photo.png"/>
+                            <img src="../../img/productdetail_pingjia_photo.png"/>
+                            <img src="../../img/productdetail_pingjia_photo.png"/>
+                        </h4>
+								<p>11.05</p>
+								<span class="prodetail-summary-evu-name">h***j（匿名）</span>
+							</li>
+							<li>
+								<h3>评价内容评价内容评价内容评价内容评价内容评价内容评价内容评价内容</h3>
+								<h4>
+                            <img src="../../img/productdetail_pingjia_photo.png"/>
+                            <img src="../../img/productdetail_pingjia_photo.png"/>
+                            <img src="../../img/productdetail_pingjia_photo.png"/>
+                        </h4>
+								<p>11.05</p>
+								<span class="prodetail-summary-evu-name">h***j（匿名）</span>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script src="../../lib/jquery-1.8.3.min.js"></script>
+		<script src="../../lib/md5.js"></script>
+		<script src="../../js/secret.js"></script>
+		<script src="../../lib/template-web.js"></script>
+		<script>
+			$('.prodetail-piclist-sm-item').click(function() {
+				$('.prodetail-piclist-lg img').attr('src', $(this).children('img').attr('src'));
+			});
+
+			$('.prodetail-summary-sel li').click(function() {
+				$(this).addClass('on').siblings().removeClass('on');
+				$('.prodetail-summary>div:eq(' + $(this).index() + ')').addClass('on')
+					.siblings('div').removeClass('on');
+			});
+
+			$('.comment_btn').click(function() {
+				var url = 'https://two.zhiqunale.cn/Paper/PersonalCenter/commodity_evaluation';
+				var argu = {
+					c_id: cookie.getCookie('uid'),
+					user_state: 1,
+					device_number: 'pc_online',
+					product_id:2,
+					product_type:2,
+					pageNum:1,
+					size:2
+				}
+				GetList(argu, url, getComment);
+			})
+			function getComment(data){
+				console.log(data);
+			}
+		</script>
+	</body>
+
+</html>

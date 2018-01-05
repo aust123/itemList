@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>卖废纸买废纸，上纸去哪了</title>
+		<link rel="stylesheet" href="../../css/orders.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/personal.css" />
+	</head>
+
+	<body style="background: #fff;">
+		<div class="personalbanner"></div>
+		<div style="height: 22px; background-color: #f6f6f6;"></div>
+		<div class="shop-rank-content settlement-content" style="padding-top: 15px;">
+			<h1 class="personal-content-title">申请退款</h1>
+			<div id="trade_co_info" class="refund_option">
+				<div class="refund_order_id">订单号：<span></span></div>
+				<div>已支付金额&nbsp;（含定金）&nbsp;共计：<span class="paid_num"></span></div>
+				<div class="refund_money_num">申请退款金额&nbsp;:<input type="text" class="refun_input" />元</div>
+				<p class="down_payment" id="refund_tips"><img src="../../img/zijinguanli_tishi.png" alt="" />申请退款金额不能大于已支付金额！</p>
+				<p class="sure_box">
+					<a class="sure_upload sure_refund" href="###">确认退款</a>
+				</p>
+			</div>
+		</div>
+		<script src="../../lib/jquery-1.8.3.min.js"></script>
+		<script src="../../lib/md5.js"></script>
+		<script src="../../js/secret.js"></script>
+		<script>
+			(function() {
+				query = decodeURIComponent(window.location.search).substr(5);
+				//console.log(query)
+				var List = JSON.parse(localStorage.order_data);
+				for(var i in List) {
+					for(var j in List[i]) {
+						if(List[i][j] == query) {
+							refundData = List[i];
+							console.log(refundData);
+						}
+					}
+				}
+				$('.refund_order_id span').html(refundData['o_order_num']);
+				$('.paid_num').html(refundData['o_bail_money'] + '元')
+			})();
+			$('.sure_refund').click(function() {
+				if($('.refun_input').val() != '') {
+					var url = 'https://two.zhiqunale.cn/paper/orders/buyerapplyrefund';
+					var argu = {
+						user_id: cookie.getCookie('uid'),
+						device_number: 'pc_online',
+						order_id: query,
+						user_name: escape(localStorage.c_username),
+						sale_id: refundData['o_saler_id'],
+						order_state: refundData['o_state'],
+						refund_money: $('.refun_input').val(),
+						bail_money: refundData['o_bail_money']
+
+					};
+					GetList(argu, url, getRefund)
+				} else {
+					alert('请输入退款金额')
+				}
+
+			});
+
+			function getRefund(data) {
+				console.log(data);
+				if(data.status_code==10000){
+					window.confirm(data.msg);
+				}else if(data.status_code==10003){
+					window.confirm(data.msg);
+				}else if(data.status_code==10002){
+					window.confirm(data.msg);
+				}else{
+					window.confirm('退款申请提交失败');
+				}
+			}
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="../../css/public.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/personal.css" />
+		<title>卖废纸买废纸，上纸去哪了</title>
+	</head>
+
+	<body>
+		<div class="personalbanner"></div>
+		<div class="personalbox">
+			<!-- 侧边栏-->
+			<div class="personal-aside">
+			</div>
+			<!-- 主要内容-->
+			<div class="purchase" id="fund_box">
+				<h3>提现明细</h3>
+				<div class="fund_content">
+					<div id="fundList_co"></div>
+
+				</div>
+			</div>
+		</div>
+		<input type="hidden" class="Fund" />
+		<script type="text/html" id="fundList_tpl">
+			
+			<div class="tocash_list">
+				<p class="first_p">提现<span>余额：1000元</span></p>
+				<p class="second_p">-1000元<span>2017-11-11</span></p>
+				<a class="detail_btn" onclick='toDetail(this)'  href="###">详情</a>
+			</div>
+			<!--{{each data as value}}-->
+			<!--<div class="tocash_list">
+				<p class="first_p">提现<span>余额：{{value.wc_account_balance}}元</span></p>
+				<p class="second_p">-{{value.wc_money}}元<span>{{value.created_at}}</span></p>
+				<a class="detail_btn" onclick='toDetail(this)' data-id='{{value.wc_id}}' href="###">详情</a>
+			</div>-->
+			<!--{{/each}}-->
+		</script>
+		<script src="../../lib/jquery-1.8.3.min.js"></script>
+		<script src="../../lib/md5.js"></script>
+		<script src="../../js/secret.js"></script>
+		<script src="../../lib/template-web.js"></script>
+		<script type="text/javascript">
+			$('.personal-aside').load('personal_aside.html');
+			
+			(function() {
+				var url = 'https://two.zhiqunale.cn/Paper/PersonalCenter/presentation_details';
+				var argu = {
+					c_id: cookie.getCookie('uid'),
+					user_state: 1,
+					device_number: 'pc_online',
+					pageNum: 1,
+					size: 5
+				}
+				GetList(argu, url, getFundList);
+			})()
+
+			function getFundList(data) {
+				console.log(data);
+				//if(data.status_code == 10001) {
+					var html = template('fundList_tpl', data);
+					document.getElementById('fundList_co').innerHTML += html;
+				//}
+			}
+			/*跳转至详情页面*/
+			function toDetail($this){
+				var wc_id = $($this).attr('data-id');
+				var query = escape('wc_id='+wc_id);
+				$($this).attr('href',"fund_detaisl.html?"+query);
+			}
+		</script>
+	</body>
+
+</html>
