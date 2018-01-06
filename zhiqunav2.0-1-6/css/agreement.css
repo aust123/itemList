@@ -1,0 +1,82 @@
+
+body,html{
+    font-family:'microsoft yahei';
+    width: 100%;
+}
+*{
+    padding: 0;
+    margin: 0;
+}
+h1,h2,h3,h4,h5,h6,b{
+    font-weight: normal;
+}
+
+/*用户协议-登录*/
+#user-agreement{
+    width: 1140px;
+    margin: 30px auto 0;
+    padding: 0 20px;
+}
+@media screen and (max-width: 1180px){
+    #user-agreement{
+        width: 98%;
+        padding: 0 1%;
+        margin-top: 0;
+    }
+}
+.usagree-til{
+    color: #00d3af;
+    font-size: 24px;
+    font-weight: normal;
+    border-bottom: 1px solid #E5E5E5;
+    padding: 13px 15px;
+    box-shadow: 1px 2px 1px #e5e5e5;
+}
+.usagree-box h2,.usagree-box h3,.usagree-box h4{
+    font-weight: normal;
+}
+.usagree-box h2{
+    font-size: 16px;
+    line-height: 26px;
+    color: #333;
+    text-indent: 2em;
+    margin-top: 20px;
+}
+.usagree-box h3,.usagree-box p{
+    font-size: 16px;
+    line-height: 26px;
+}
+.usagree-box h3{
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: #333;
+}
+.usagree-box p{
+    font-size: 14px;
+    color: #666;
+}
+
+/*用户中心-资金管理协议*/
+.balagree-box h2{
+    text-align: center;
+    color: #000;
+    font-size: 20px;
+    margin: 25px 0 10px;
+}
+.balagree-box h3,.balagree-box p,.balagree-box h4{
+    color: #666;
+    font-size: 16px;
+    text-indent: 2em;
+    line-height: 32px;
+    margin: 25px 0;
+}
+.balagree-box p{
+    text-indent: 0;
+    margin: 0;
+}
+.balagree-box h4{
+    margin: 10px 0;
+}
+.balagree-box b{
+    color: #000;
+}

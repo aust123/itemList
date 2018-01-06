@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="text" name="feedback" id="feedback" value="" />
+		<button class="sub_btn">提交评论</button>
+		<script src="../../lib/jquery-1.8.3.min.js"></script>
+		<script src="../../lib/md5.js"></script>
+		<script src="../../js/secret.js"></script>
+		<script src="../../lib/template-web.js"></script>
+		<script type="text/javascript">
+			$('.sub_btn').click(function(){
+				var url = 'https://two.zhiqunale.cn/Paper/PersonalCenter/submit_feedback';
+				var argu = {
+					c_id:cookie.getCookie('uid'),
+					user_state:1,
+					device_number:'pc_online',
+					feedback_content:escape($('#feedback').val());
+				}
+				GetList(argu,url,getFeed);
+			});
+			function getFeed(data){
+				console.log(data);
+				/*if(data.status_code==10000){					
+					cookie.setCookie('available',data.data.c_left_money);					
+					var html = template('fund_tpl',data);
+					document.getElementById('fund_co').innerHTML+=html;
+				}*/
+			}
+		</script>
+	</body>
+</html>

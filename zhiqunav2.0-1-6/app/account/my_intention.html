@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="../../css/public.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/personal.css" />
+		<title>卖废纸买废纸，上纸去哪了</title>
+	</head>
+
+	<body>
+		<div class="personalbanner"></div>
+		<div class="personalbox">
+			<!-- 侧边栏-->
+			<div class="personal-aside">
+			</div>
+			<!-- 主要内容-->
+			<div class="purchase">
+				<h3>我的采购意向</h3>
+				<div class="purchase_list">
+					<table>
+						<tr>
+							<th class="quote_th1">货品规格</th>
+							<th class="quote_th2" style="width: 150px;">商家名称</th>
+							<th class="quote_th3" style="width:220px;">地址</th>
+							<th class="quote_th4 left_align" style="width: 240px;">状态</th>
+							<th class="quote_th5"></th>
+
+						</tr>
+						<tr>
+							<td>国废A级纸</td>
+							<td>山鹰纸厂</td>
+							<td>安徽省合肥市蜀山区</td>
+							<td class="quote_status left_align">卖家处理中</td>
+							<td>
+								<a class="cancel" href="###"><img src="../../img/my_wodebaojia_cancel.png" />取消</a>
+								<a class="chat" href="###"><img src="../../img/my_wodebaojia_chat.png" />聊一聊</a>
+								<a class="phone" href="###"><img src="../../img/my_wodebaojia_phone.png" />打电话</a>
+							</td>
+						</tr>
+						<tr>
+							<td>国废A级纸</td>
+							<td>山鹰纸厂</td>
+							<td>安徽省合肥市蜀山区</td>
+							<td class="quote_status_agree left_align">卖家已同意<span class="deposit">订金：1000元</span></td>
+							<td>
+								<a class="cancel" href="###"><img src="../../img/my_wodebaojia_cancel.png" />取消</a>
+								<a class="chat" href="###"><img src="../../img/my_wodebaojia_chat.png" />聊一聊</a>
+								<a class="phone" href="###"><img src="../../img/my_wodebaojia_phone.png" />打电话</a>
+							</td>
+						</tr>
+
+					</table>
+				</div>
+			</div>
+		</div>
+		<input type="hidden" class="myItention" />
+		<script src="../../lib/jquery-1.8.3.min.js"></script>
+		<script type="text/javascript">
+			$('.personal-aside').load('personal_aside.html');
+			
+		</script>
+	</body>
+
+</html>

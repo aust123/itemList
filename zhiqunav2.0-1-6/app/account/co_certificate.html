@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="../../css/public.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/personal.css" />
+		<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.3"></script>
+		<title>卖废纸买废纸，上纸去哪了</title>
+	</head>
+
+	<body>
+		<div class="personalbanner"></div>
+		<div class="personalbox">
+			<!-- 侧边栏-->
+			<div class="personal-aside">
+			</div>
+			<!-- 主要内容-->
+			<div class="purchase">
+				<h3>认证信息</h3>
+				<div class="purchase_list">
+					<h2>企业认证</h2>
+					<div class="certificate_msg">
+						<p><span>企业名称&nbsp;：</span><input type="text" id="co_name" value="" /></p>
+						<p><span>企业电话&nbsp;：</span><input type="text" id="co_phone" value="" /></p>
+						<div class="address-addform-item co_company_edit">
+							<span>省 份：</span>
+							<select id="seachprov" name="seachprov" onChange="changeComplexProvince(this.value, sub_array, 'seachcity', 'seachdistrict');">
+							</select>
+						</div>
+						<div class="address-addform-item co_company_edit">
+							<span>城 市：</span>
+							<select id="seachcity" name="homecity" onChange="changeCity(this.value,'seachdistrict','seachdistrict');">
+							</select>
+						</div>
+						<div class="address-addform-item co_company_edit">
+							<span>区 域：</span>
+							<select name="district" id="seachdistrict">
+							</select>
+						</div>
+						<p><span>详细地址&nbsp;：</span><input type="text" id="co_address" value="" /></p>
+						<p class="co_photo"><span>企业资质&nbsp;&nbsp;: </span>
+							<em class="selImg">
+                                <input type="file" class="idImg_fm" onchange="uploadImg1(this)" />
+                                <img id="lgImg" src='../../img/qiyexinxi_shangchuang.png'>
+                            </em>
+						</p>
+						<p style="text-align: center;margin-top: 90px;"><button id="co_btn">提交</button></p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--<input type="hidden" class="tradeCertificate" />-->
+		<div style="display: none;" id="allmap"></div>
+		<script src="../../lib/jquery-1.8.3.min.js"></script>
+		<script src="../../lib/md5.js"></script>
+		<script src="../../js/secret.js"></script>
+		<script src="../../lib/AreaData_min.js"></script>
+		<script src="../../lib/Area.js"></script>
+		<script type="text/javascript">
+			$('.personal-aside').load('personal_aside.html');
+			initComplexArea('seachprov', 'seachcity', 'seachdistrict', area_array, sub_array, '0', '0', '0');
+			function uploadImg1($this) {
+				getImgUrl.ele = $this;
+				getImgUrl.imgEle = $('#lgImg');
+				getImgUrl.showFun = showImg;
+				getImgUrl.uploadIcon();
+			}
+
+			function showImg(data) {
+				console.log(data);
+				if(data.code == 10000) {
+					var newSrc = 'https://two.zhiqunale.cn/' + data.data;
+					getImgUrl.imgEle.attr('src', newSrc);
+					localStorage.co_url = data.data;
+				}
+			};
+			/*获取查询字符串*/
+			query = decodeURIComponent(window.location.search).substr(6);
+			/*提交按钮*/
+			$('#co_btn').click(function() {	
+				var url='';
+				var disc = $('#seachdistrict option:selected').val();
+				if(disc == 0) {
+					disc = '';
+				} else {
+					disc = escape($('#seachdistrict option:selected').html());
+				};
+				if(localStorage.co_reEdit_trade||localStorage.co_reEdit_paper||localStorage.co_reEdit_pack){
+					url = 'https://two.zhiqunale.cn/paper/user/edit_user_company_authentication';
+				}
+				    url = 'https://two.zhiqunale.cn/paper/user/user_company_authentication';
+				var argu = {
+					uid: cookie.getCookie('uid'),
+					device_number: 'pc_online',
+					type:query,
+					company_name: escape($('#co_name').val()),
+					company_detail_address: escape($('#co_address').val()),
+					company_province: escape($('#seachprov').find("option:selected").text()),
+					company_city: escape($('#seachcity').find("option:selected").text()),
+					company_dist: disc,
+					lng: $lng,
+					lat: $lat,
+					company_phone: $('#co_phone').val(),
+					company_zizhi_photo: localStorage.co_url
+				}
+				GetList(argu, url, shopInfo);
+			})
+
+			function shopInfo(data) {
+				console.log(data);
+				if(data.status_code == 10000) {
+					alert('企业认证信息提交成功！');
+				}
+			}
+
+			$('#seachcity').change(function() {
+				getAddress();
+			})
+
+			//获取经纬度
+			function getAddress() {
+				var map = new BMap.Map("allmap");
+				var localSearch = new BMap.LocalSearch(map);
+				localSearch.enableAutoViewport(); //允许自动调节窗体大小				　　
+				//然后我们就可以开始做最关键的一步了， 就是获取地址的具体经纬度：　
+				var keyword = $('#seachcity').find("option:selected").text();　　
+				localSearch.setSearchCompleteCallback(function(searchResult) {　　　　
+					var poi = searchResult.getPoi(0);　　　　
+					//poi.point.lng + "," + poi.point.lat; //获取经度和纬度，将结果显示在文本框中
+					$lng = poi.point.lng;
+					$lat = poi.point.lat;
+					//console.log(poi.point.lng); //经度
+					//console.log(poi.point.lat); //纬度
+					map.centerAndZoom(poi.point, 13);　　
+				});　　
+				localSearch.search(keyword);
+			}
+
+			/*修改地址，渲染地址*/
+			(function() {
+				var co_reEdit_data;
+				if(query==1){
+					localStorage.co_reEdit_trade?localStorage.removeItem('co_reEdit_trade'):null;
+					localStorage.co_reEdit_paper?localStorage.removeItem('co_reEdit_paper'):null;
+					localStorage.co_reEdit_pack?co_reEdit_data=localStorage.co_reEdit_pack:null;
+				}else if(query==2){
+					localStorage.co_reEdit_pack?localStorage.removeItem('co_reEdit_pack'):null;
+					localStorage.co_reEdit_paper?localStorage.removeItem('co_reEdit_paper'):null;
+					localStorage.co_reEdit_pack?co_reEdit_data=localStorage.co_reEdit_trade:null;
+				}else{
+					localStorage.co_reEdit_trade?localStorage.removeItem('co_reEdit_trade'):null;
+					localStorage.co_reEdit_pack?localStorage.removeItem('co_reEdit_pack'):null;
+					localStorage.co_reEdit_pack?co_reEdit_data=localStorage.co_reEdit_paper:null;
+				};
+				if(co_reEdit_data) {					
+					var co_data = JSON.parse(co_reEdit_data);
+					//console.log(co_data);					
+					$('#co_name').val(co_data['cc_company_name']);
+					$('#co_phone').val(co_data['cc_company_phone']);
+					$('#co_address').val(co_data['cc_company_detail_address']);
+					$lng = co_data['cc_lng'];
+					$lat = co_data['cc_lat'];
+					$('#lgImg').attr('src','https://two.zhiqunale.cn/'+co_data['cc_company_zizhi_photo']);
+					
+					var proOpts = $('#seachprov option'),
+						proVal;
+					for(var i = 0; i < proOpts.length; i++) {
+						if($(proOpts[i]).html() == co_data['cc_company_province']) {
+							proVal = $(proOpts[i]).val();
+							$('#seachprov').val(proVal);
+						}
+					}
+					changeComplexProvince(proVal, sub_array, 'seachcity', 'seachdistrict');
+					var ctyOpts = $('#seachcity option'),
+						ctyVal;
+					for(var j = 0; j < ctyOpts.length; j++) {
+						if($(ctyOpts[j]).html() == co_data['cc_company_city']) {
+							ctyVal = $(ctyOpts[j]).val();
+							$('#seachcity').val(ctyVal);
+						}
+					}
+					changeCity(ctyVal, 'seachdistrict', 'seachdistrict');
+					var distOpts = $('#seachdistrict option'),
+						distVal;
+					for(var k = 0; k < distOpts.length; k++) {
+						if($(distOpts[k]).html() == co_data['cc_company_dist']) {
+							distVal = $(distOpts[k]).val();
+							$('#seachdistrict').val(distVal);
+						}
+					}
+
+				}
+
+			})()
+		</script>
+	</body>
+
+</html>
