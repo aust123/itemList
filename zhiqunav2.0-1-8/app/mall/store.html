@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>卖废纸买废纸，上纸去哪了</title>
+    <link rel="stylesheet" href="../../css/product.css"/>
+   
+</head>
+<body>
+<div class="topbar"></div>
+<div class="navbar"></div>
+<!--采购主体内容-->
+<div id="purchase">
+    <div class="purchase-sort">
+        <ul>
+            <li class="on">
+                <a>纸去哪了商城</a>
+            </li>
+            <li>
+                <a href="mallaround.html" target="_blank" style="border: none;">打包站周边</a>
+            </li>
+        </ul>
+    </div>
+    <!-- 左边列表-->
+    <div class="purchase-list">
+        <!-- 搜索条件-->
+        <div class="purchase-list-sear">
+            <div class="purchase-list-sear-item">
+                <span>地区</span>
+                <select id="seachprov" name="seachprov" onChange="changeComplexProvince(this.value, sub_array, 'seachcity', 'seachdistrict');"></select>
+                <select style="display: none;" id="seachcity" name="homecity" onChange="changeCity(this.value,'seachdistrict','seachdistrict');"></select>
+                <select style="display:none;" id="seachdistrict"></select>
+            </div>
+            <div class="purchase-list-sear-item">
+                <span>品类</span>
+                <input class="name" type="text"/>
+            </div>
+            <div class="purchase-list-sear-item">
+                <button type="button" class="nameSear">找货</button>
+            </div>
+            <div class="purchase-list-sear-item purchasing">
+                <a href="issue_purchase.html">发布采购</a>
+            </div>
+        </div>
+        <!-- 对应列表信息-->
+        <div class="purchase-list-item">
+            <table style="table-layout:fixed;">
+                <thead>
+                <tr class="table-th">
+                    <th>供应方</th>
+                    <th>品类</th>
+                    <th>价格(元/吨)</th>
+                    <th>地区</th>
+                    <th>发布时间</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody class="listItem">
+                <script id="listItem" type="text/html">
+                    {{each data as value i}}
+                    <tr data-goodId="{{value.sp_id}}" data-storeId="{{value.sp_uid}}">
+                        <td>{{value.sp_store_name}}</td>
+                        <td>{{value.sp_product_name}}</td>
+                        <td>
+                            <strong><span>{{value.sp_product_price}}</span>元/吨</strong>
+                        </td>
+                        <td>{{value.address}}</td>
+                        <td>{{value.created_at}}</td>
+                        <td class="gobuy">
+                            <button data-goodId="{{value.sp_id}}">购买</button>
+                        </td>
+                    </tr>
+                    {{/each}}
+                </script>
+                </tbody>
+            </table>
+        </div>
+        <!-- 分页-->
+        <div class="page_turn">
+            <span class="pre_page">上一页</span>
+            <span class="next_page">下一页</span>
+        </div>
+    </div>
+    <!-- 右边采购信息-->
+    <div class="purchase-buy">
+    </div>
+</div>
+<div class="footer"></div>
+<input type="hidden" class="head_mall"/>
+
+<script src="../../lib/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="../../lib/template-web.js"></script>
+<script type="text/javascript" src="../../lib/md5.js"></script>
+<script type="text/javascript" src="../../js/secret.js"></script>
+<script type="text/javascript" src="../../lib/Area.js"></script>
+<script type="text/javascript" src="../../lib/AreaData_min.js"></script>
+<script src="../../js/store.js"></script>
+</body>
+</html>

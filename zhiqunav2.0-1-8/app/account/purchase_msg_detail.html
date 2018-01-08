@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>卖废纸买废纸，上纸去哪了</title>
+    <link rel="stylesheet" href="../../css/personal.css"/>
+    <link rel="stylesheet" href="../../css/jquery-ui.min.css"/>
+</head>
+<body>
+<div class="topbar"></div>
+<div class="personalbanner"></div>
+<div class="personalbox">
+    <!-- 侧边栏-->
+    <div class="personal-aside">
+    </div>
+    <!-- 主要内容-->
+    <div class="dealMessage">
+        <div class="dealMessage-detail purchasedetail">
+            <script type="text/html" id="purchasedetail">
+                <h3>
+                    采购消息详情
+                    <label class="kefu"><img src="../../img/my_wodebaojia_chat.png" alt=""/>联系客服</label>
+                    <label class="phone" data-phone="{{pw_buyer_phone}}" style="color: #5FC31E;"><img src="../../img/my_wodebaojia_phone.png" alt=""/>打电话</label>
+                </h3>
+                <h4>我的货品</h4>
+                <div class="mine">
+                    <p>
+                        <span>规格：</span>
+                        {{pw_product_specifications}}
+                    </p>
+                    <p>
+                        <span>价格：</span>
+                        <b>{{pw_product_price}}元/吨</b>
+                    </p>
+                    <p>
+                        <span>起止日期：</span>
+                        {{$imports.dateFormat(sp_start_time)}} --- {{$imports.dateFormat(sp_end_time)}}
+                    </p>
+                </div>
+                <h4>买方报价</h4>
+                <div class="others">
+                    <p style="margin-bottom: 10px;">
+                        <img class="headurl" src="https://two.zhiqunale.cn/{{c_headurl}}"/>
+                        <strong class="storename">{{c_username}}</strong>
+                        {{if c_certification==1}}
+                        <img src="../../img/zhoubian_renzheng_shi.png"/>
+                        {{/if}}
+                        {{if c_is_company==1}}
+                        <img src="../../img/zhoubian_renzheng_qi.png"/>
+                        {{/if}}
+                        {{if c_is_recommend==1}}
+                        <img src="../../img/zhoubian_renzheng_tui.png"/>
+                        {{/if}}
+                        <b style="margin-left: 15px;">信用分：{{store_credit_stage}}分</b>
+                    </p>
+                    <p>
+                        <span>数量：</span>
+                        {{pw_product_weight}}吨
+                    </p>
+                    <p>
+                        <span>收货地址：</span>
+                        {{address}}
+                    </p>
+                    <p>
+                        <span>物流费用：</span>
+                        {{if pw_who_pay_logistic_fee==1}}
+                        <a>买家</a>
+                        {{else}}
+                        <a>卖家</a>
+                        {{/if}}
+                    </p>
+                </div>
+                <div class="state">
+                    <h4>
+                        <span>状态：</span>
+                        {{if pw_state==1}}
+                        <button data-pw_buyer_id="{{pw_buyer_id}}" data-pw_id="{{pw_id}}" class="agree">同意</button>
+                        <button data-pw_buyer_id="{{pw_buyer_id}}" data-pw_id="{{pw_id}}" class="refuse">拒绝</button>
+                        {{else if pw_state==2}}
+                        <a>卖家已同意</a>
+                        {{else if pw_state==3}}
+                        <a>卖家已拒绝</a>
+                        {{else if pw_state==4}}
+                        <a>买家已取消</a>
+                        {{else if pw_state==5}}
+                        <a>买家已同意</a>
+                        {{/if}}
+                    </h4>
+                </div>
+            </script>
+        </div>
+    </div>
+</div>
+<div class="footer"></div>
+<div class="popBox djbox">
+    <div class="popback"></div>
+    <div class="popfront">
+        <div class="popshow">
+            <p>
+                <span>订金：</span>
+                <input class="dj" type="text" onkeyup="value=value.replace(/[^\d.]/g,'') " onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d.]/g,''))"/>
+            </p>
+            <p>
+                <span>发货日期：</span>
+                <input class="sendtime" readonly onpropertychange="onPropertyChange(event)" type="text" id="startTime"/>
+            </p>
+            <p style="text-align: center">
+                <button class="sure">确定</button>
+            </p>
+            <a class="close" href=""><img src="../../img/tanchuang_cancel.png"/></a>
+        </div>
+    </div>
+</div>
+<div class="popBox">
+    <div class="popback"></div>
+    <div class="popfront">
+        <div class="popshow">
+            <p>
+                电话：<span class="popPhone"></span>
+            </p>
+            <p>
+                <button class="popHide">确定</button>
+            </p>
+        </div>
+    </div>
+</div>
+<input type="hidden" class="purchaseMsg" />
+
+<script src="../../lib/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="../../lib/md5.js"></script>
+<script type="text/javascript" src="../../js/secret.js"></script>
+<script type="text/javascript" src="../../lib/template-web.js"></script>
+<script type="text/javascript" src="../../lib/jquery-ui.js"></script>
+<script type="text/javascript" src="../../lib/jquery.ui.datepicker-zh-CN.js"></script>
+<script src="../../js/purchaseMsg_detail.js"></script>
+</body>
+</html>

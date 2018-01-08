@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="../../css/public.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/personal.css" />
+		<title>卖废纸买废纸，上纸去哪了</title>
+	</head>
+
+	<body>
+		<div class="topbar"></div>
+		<div class="personalbanner"></div>
+		<div class="personalbox">
+			<!-- 侧边栏-->
+			<div class="personal-aside">
+			</div>
+			<!-- 主要内容-->
+			<div id="account_info_co"></div>
+		</div>
+		<input type="hidden" class="accountInfo" />
+		<div class="footer"></div>
+		<script type="text/html" id="account_info_tpl">
+			<div class="purchase" id="account_content">
+				<h3>账户信息</h3>
+				<div class="account_info">
+					{{if data.c_store_show_photos}}
+						<div class="info_img"><img style="border-radius:100% ;" src="https://two.zhiqunale.cn/{{data.c_store_headurl}}" /></div>
+					{{else}}
+						<div class="info_img"><img style="border-radius:100% ;" src="../../img/index_touxiang.png" /></div>
+					{{/if}}
+				
+					<div class="info_detail">
+						<h4>{{data.c_store_name}}</h4>
+						<p class="my_first">
+							{{if data.c_main_business==1}}
+							<span class="my_role">打包站</span> {{else if data.c_main_business==2}}
+							<span class="my_role">贸易公司</span> {{else if data.c_main_business==2}}
+							<span class="my_role">纸厂</span> {{else}}
+							<span class="my_role">未知</span> {{/if}}
+							<span class="my_address">{{data.c_store_province}}{{data.c_store_city}}{{data.c_store_dist}}{{data.c_store_detail_address}}</span>
+							<span class="my_score">我的评分：<i>{{data.c_store_serve_jugde}}分</i></span>
+							<span class="my_ranking">我的排名：<b>{{data.ranking}}名</b></span>
+						</p>
+						<p class="my_second">
+							<span>店铺浏览量：<b>{{data.c_store_looks}}次</b></span>
+							<span>店铺关注人数：<b>{{data.c_store_concern}}人</b></span>
+							<!--<span>商品关注人数：<b>20人</b></span>-->
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="strength_show">
+				<h3>实力展示<a href="shop_inform.html?edit=0" class="edit_info">编辑</a></h3>
+				<div class="strength_detail">
+					<p class="text_show">{{data.c_store_show_text}}</p>
+					<div class="img_show">
+						{{each data.c_store_show_photos value}}
+						<img style="width: 170px;height: 150px;" src="https://two.zhiqunale.cn/{{value}}" /> {{/each}}
+
+					</div>
+				</div>
+			</div>
+		</script>
+		<script src="../../lib/jquery-1.8.3.min.js"></script>
+		<script src="../../lib/md5.js"></script>
+		<script src="../../js/secret.js"></script>
+		<script src="../../lib/template-web.js"></script>
+		<script>
+			$('.personal-aside').load('personal_aside.html');
+			$('.topbar').load('../public/topbar.html');
+			$('.footer').load('../public/footer.html');
+			(function() {
+				var url = 'https://two.zhiqunale.cn/Paper/PersonalCenter/get_shop_information';
+				var argu = {
+					c_id: cookie.getCookie('uid'),
+					user_state: 1,
+					device_number: 'pc_online'
+				}
+				GetList(argu, url, getAccountInfo);
+			})()
+
+			function getAccountInfo(data) {
+				console.log(data);
+				if(data.status_code == 10000) {
+					if(data.data.c_store_show_photos) {
+						var img = data.data.c_store_show_photos.split(',');
+						data.data = Unescape(data.data);
+						data.data.c_store_show_photos = img;
+					}
+
+					var html = template('account_info_tpl', data);
+					localStorage.account_data = JSON.stringify(data.data);
+					document.getElementById('account_info_co').innerHTML += html;
+				} else if(data.status_code == 10002) {
+					alert(data.msg);
+				}
+			}
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../../css/personal.css" />
+    <title>卖废纸买废纸，上纸去哪了</title>
+</head>
+<body>
+<div class="topbar"></div>
+<div class="personalbanner"></div>
+<div class="personalbox">
+    <!-- 侧边栏-->
+    <div class="personal-aside">
+    </div>
+    <!-- 主要内容-->
+    <div class="dealMessage">
+        <h3>供应消息</h3>
+        <ul class="order-sel">
+            <li><a href="purchase_msg.html">采购消息</a></li>
+            <li class="on"><a href="javascript:void(0);">供应消息</a></li>
+        </ul>
+        <div class="dealMessage-list">
+            <table class="supplyMsgList">
+                <script type="text/html" id="supplyMsgList">
+                    <tr>
+                        <th>采购方</th>
+                        <th>规格</th>
+                        <th>价格</th>
+                        <th>数量</th>
+                        <th>状态</th>
+                    </tr>
+                    {{each data as value i}}
+                    <tr data-sw_id="{{value.sw_id}}" data-sw_purchase_id="{{value.sw_purchase_id}}" data-sw_saler="{{value.sw_saler}}">
+                        <td style="text-align: left">
+                            <div class="logo">
+                                <img src="https://two.zhiqunale.cn/{{value.c_headurl}}"/>
+                            </div>
+                            <div>
+                                <h4>{{value.c_username}}</h4>
+                                <p class="renzheng">
+                                    {{if value.c_certification==1}}
+                                    <img src="../../img/zhoubian_renzheng_shi.png"/>
+                                    {{/if}}
+                                    {{if value.c_is_company==1}}
+                                    <img src="../../img/zhoubian_renzheng_qi.png"/>
+                                    {{/if}}
+                                    {{if value.c_is_recommend==1}}
+                                    <img src="../../img/zhoubian_renzheng_tui.png"/>
+                                    {{/if}}
+                                </p>
+                                <h4><b>信用分：{{value.store_credit_score}} 分</b></h4>
+                            </div>
+                        </td>
+                        <td>
+                            <p>{{value.sw_product_name}}</p>
+                        </td>
+                        <td>
+                            <p><b>{{value.sw_baojia}}元/吨</b></p>
+                        </td>
+                        <td>
+                            <p>{{value.sw_sale_weight}}吨</p>
+                        </td>
+                        <td>
+                            {{if value.sw_state==1}}
+                            <p>处理中</p>
+                            {{else if value.sw_state==2}}
+                            <p>同意</p>
+                            {{else if value.sw_state==3}}
+                            <p>拒绝</p>
+                            {{else if value.sw_state==4}}
+                            <p>超时</p>
+                            {{else if value.sw_state==5}}
+                            <p>已取消</p>
+                            {{/if}}
+                        </td>
+                    </tr>
+                    {{/each}}
+                </script>
+            </table>
+            <!-- 分页-->
+            <div class="page_turn">
+                <span class="pre_page">上一页</span>
+                <span class="next_page">下一页</span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="footer"></div>
+
+<input type="hidden" class="supplyMsg" />
+<script src="../../lib/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="../../lib/template-web.js"></script>
+<script type="text/javascript" src="../../lib/md5.js"></script>
+<script type="text/javascript" src="../../js/secret.js"></script>
+<script type="text/javascript" src="../../js/supplyMsg.js"></script>
+
+</body>
+</html>

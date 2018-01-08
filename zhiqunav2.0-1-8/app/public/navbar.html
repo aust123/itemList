@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>	
+		<link rel="stylesheet" href="../../css/public.css">	
+	</head>
+	<body>
+		<div id="mall_header">
+			<div class="header_box">
+				<div class="w1180">
+					<a href="###" class="logo"></a>
+					<ul class="nav">
+						<li id="head_home">
+							<a href="../index.html">首页</a>
+						</li>
+						<li id="head_mall">
+							<a target="_blank" href="../mall/store.html"><i class="icon_hot"></i>商城</a>
+						</li>
+						<li id="head_cuo_search" class="sub">
+							<a target="_blank" href="../purchase/buy.html">采购</a>
+						</li>
+						<li id="head_cuo_purchaser">
+							<a class='new' target="_blank" href="../papered/finished_paper.html"><i class="icon_new"></i>成品纸</a>
+						</li>
+						<li id="head_wl">
+							<a target="_blank" href="../search/search.html">废纸搜索</a>
+						</li>
+						<li id="head_baitiao">
+							<a target="_blank" href="../information/infor_price.html">资讯</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<script>
+			var thisPage=$('input[type=hidden]').attr('class');
+			$('.nav li#'+thisPage).addClass('on').siblings().removeClass('on');
+		</script>
+	</body>
+</html>

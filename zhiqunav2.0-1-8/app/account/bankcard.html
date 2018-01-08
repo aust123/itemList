@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+	<head lang="en">
+		<meta charset="UTF-8">
+		<title>卖废纸买废纸，上纸去哪了</title>
+		<link rel="stylesheet" href="../../css/personal.css" />
+	</head>
+
+	<body>
+		<div class="topbar"></div>
+		<!--银行卡管理-->
+		<div class="personal">
+			<div class="personalbanner"></div>
+			<div class="personalbox">
+				<!-- 侧边栏-->
+				<div class="personal-aside">
+				</div>
+				<!-- 主要内容-->
+				<div class="personal-content">
+					<h1 class="personal-content-title">我的银行卡</h1>
+					<div class="bankcard">
+						<ul class="cardlist">
+
+						</ul>
+						<p class="cardbtn">
+							<a href="addcard.html">添加银行卡</a>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<input type="hidden" class="bankCard" />
+		<div class="footer"></div>
+		<script type="text/html" id="bcList_tpl">
+			{{each data value}}
+			<li>
+				<img style="width: 46px;position: relative;top: -5px;" src="https://two.zhiqunale.cn{{value.b_bankcard_imgurl}}" />
+				<b>{{value.b_bank}}</b>
+				<span>尾号{{value.b_bankcard_code.slice(-4)}}储蓄卡</span>
+				<a class="delbankcard" onclick="delCard(this)"></a>
+				<i style="display: none;">{{value.b_id}}</i>
+			</li>
+			{{/each}}
+
+		</script>
+		<script src="../../lib/jquery-1.8.3.min.js"></script>
+		<script src="../../lib/md5.js"></script>
+		<script src="../../js/secret.js"></script>
+		<script src="../../lib/template-web.js"></script>
+		<script>
+			$('.personal-aside').load('personal_aside.html');
+			$('.topbar').load('../public/topbar.html');
+			$('.footer').load('../public/footer.html');
+			/*获取用户银行卡列表*/
+			(function() {
+				var url = 'https://two.zhiqunale.cn/Paper/PersonalCenter/list_of_bank_cards';
+				var argu = {
+					c_id: cookie.getCookie('uid'),
+					user_state: 1,
+					device_number: 'pc_online',
+				};
+				GetList(argu, url, getBankcardList);
+			})();
+
+			function getBankcardList(data) {
+				//console.log(data)
+				if(data.status_code == 10000) {
+					var html = template('bcList_tpl', data);
+					$('.cardlist').html(html);
+				}else{
+					alert('暂无银行卡信息，快去添加吧')
+				}
+			}
+
+			/*删除银行卡*/
+			function delCard($this) {
+				var url = 'https://two.zhiqunale.cn/Paper/PersonalCenter/modify_bank_card';
+				var argu = {
+					c_id: cookie.getCookie('uid'),
+					user_state: 1,
+					device_number: 'pc_online',
+					b_id:$($this).siblings('i').text(),
+					sms_verification:2
+				}
+				GetList(argu, url, deleteBackcard);
+				Del.add($this);				
+			}
+			
+			function deleteBackcard(data) {
+				console.log(data);
+				if(data.status_code == 10000) {
+					Del.remove();
+				}
+			}
+			
+			var Del = {
+				ele: '',
+				add: function(eles) {
+					this.ele = eles;
+				},
+				remove: function remove() {					
+					$(this.ele).parents('li').remove();
+				}
+			}
+			
+		</script>
+	</body>
+
+</html>

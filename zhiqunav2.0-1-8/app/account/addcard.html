@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+
+	<head lang="en">
+		<meta charset="UTF-8">
+		<title>卖废纸买废纸，上纸去哪了</title>
+		<link rel="stylesheet" href="../../css/personal.css" />
+	</head>
+
+	<body>
+		<div class="topbar"></div>
+		<!--添加银行卡-->
+		<div class="personal">
+			<div class="personalbanner"></div>
+			<div class="personalbox">
+				<!-- 侧边栏-->
+				<div class="personal-aside">
+				</div>
+				<!-- 主要内容-->
+				<div class="personal-content">
+					<h1 class="personal-content-title">添加银行卡</h1>
+					<div class="addcard">
+						<div class="addcard-item">
+							<span>持卡人</span>
+							<input class="cardholder" type="text" placeholder="请输入持卡人姓名" />
+							<p>请绑定持卡人本人的银行卡</p>
+						</div>
+						<div class="addcard-item">
+							<span>卡号</span>
+							<input class="bankcode_num" type="text" placeholder="请输入卡号" />
+						</div>
+						<div class="addcard-item">
+							<span>开户行</span>
+							<input class="addcard-item-khh" type="text" placeholder="请输入开户行" />
+
+							<ul class="addcard-item-khhlist">
+
+							</ul>
+
+						</div>
+						<div class="addcard-item">
+							<span>手机号</span>
+							<input id="phone" style="color: #333;" type="text" />
+						</div>
+						<div class="addcard-item">
+							<span>验证码</span>
+							<input class="yzm" style="width: 140px;text-align: center" type="text" placeholder="请输入验证码" />
+							<button class="get_code">获取验证码</button>
+						</div>
+						<div class="addcard-sure">
+							<a id="submit">确认</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<input type="hidden" class="bankCard" />
+		<input type="hidden" id="bn_url" value="" />
+		<input type="hidden" id='bank_code'/>
+		<div class="footer"></div>
+		<script type="text/html" id="bcList_tpl">
+			{{each data value}}
+			<li>
+				<img src="https://two.zhiqunale.cn{{value.bn_img}}" />
+				<p style="display: none;">{{value.bn_img}}</p>
+				<span style="display: none;">{{value.bank_code}}</span>
+				<i>{{value.bn_name}}</i>
+			</li>
+			{{/each}}
+		</script>
+		<script src="../../lib/jquery-1.8.3.min.js"></script>
+		<script src="../../lib/md5.js"></script>
+		<script src="../../js/secret.js"></script>
+		<script src="../../lib/template-web.js"></script>
+		<script>
+			$('.personal-aside').load('personal_aside.html');
+			$('.topbar').load('../public/topbar.html');
+			$('.footer').load('../public/footer.html');
+			$('.addcard-item-khh').click(function() {
+				$('.addcard-item-khhlist').toggleClass('on');
+				$('.addcard-item-khhlist li').click(function() {
+					$('.addcard-item-khh').val($(this).children('i').html());
+					$('#bn_url').val($(this).children('p').html())
+					$('#bank_code').val($(this).children('span').html());
+					$('.addcard-item-khhlist').removeClass('on');
+				});
+			});
+			/*获取银行卡信息列表*/
+			(function() {
+				var url = 'https://two.zhiqunale.cn/paper/common/getbanknamelist';
+				var argu = {
+					user_id: cookie.getCookie('uid'),
+					user_state: 1,
+					device_number: 'pc_online',
+				};
+				GetList(argu, url, getBankcard);
+			})();
+
+			function getBankcard(data) {
+				
+				if(data.status_code == 10000) {
+					var html = template('bcList_tpl', data);
+					$('.addcard-item-khhlist').html(html);
+				}
+			}
+			
+			//添加银行家提交按钮
+			$('#submit').click(function() {
+				if(Check.Test($('#phone'))) {
+					return false;
+				}
+				var url = 'https://two.zhiqunale.cn/Paper/PersonalCenter/adding_bank_cards';
+				var argu = {
+					c_id: cookie.getCookie('uid'),
+					user_state: 1,
+					device_number: 'pc_online',
+					b_cardholder:escape($('.cardholder').val()),
+					b_bankcard_code:$('.bankcode_num').val(),
+					b_bank:escape($('.addcard-item-khh').val()),
+					b_phone:$('#phone').val(),
+					code:$('.yzm').val(),
+					code_id:cookie.getCookie('code_id'),
+					b_bankcard_imgurl:$('#bn_url').val(),
+					bank_code:$('#bank_code').val()
+				};
+				GetList(argu, url, addBankcard);
+			});
+
+			function addBankcard(data) {
+				console.log(data);
+				if(data.status_code==10000){
+					window.confirm('恭喜您，银行卡添加成功！');
+					window.location.href='bankcard.html';
+				}
+			}
+
+			//获取验证码
+			$('.get_code').click(function() {
+				if(Check.Test($('#phone')) || Check.time($('.get_code'))) {
+					return false;
+				}
+				var url = 'https://two.zhiqunale.cn/paper/user/send_code_func';
+				var argu = {
+					phone: $('#phone').val()
+				};
+				GetList(argu, url, getcode);
+			})
+
+			function getcode(data) {
+				if(data.status_code == 10000) {
+					//console.log(data);
+					cookie.setCookie('code_id', data.data.code_id);
+				}
+			}
+		</script>
+	</body>
+
+</html>

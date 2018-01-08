@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+
+	<head lang="en">
+		<meta charset="UTF-8">
+		<title>卖废纸买废纸，上纸去哪了</title>
+		<link rel="stylesheet" href="../../css/personal.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/orders.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/product.css"/>
+	</head>
+
+	<body>
+		<div class="topbar"></div>
+		<!--显示手机号码-->
+		<div class="popBox">
+			<div class="popback"></div>
+			<div class="popfront">
+				<div class="popshow">
+					<p>
+						电话：<span class="popPhone"></span>
+					</p>
+					<p>
+						<button class="popHide">确定</button>
+					</p>
+				</div>
+			</div>
+		</div>
+
+		<!--内容区域-->
+		<div class="personal">
+			<div class="personalbanner"></div>
+			<div class="personalbox">
+				<!-- 侧边栏-->
+				<div class="personal-aside">
+				</div>
+				<!-- 主要内容-->
+				<div class="personal-content">
+					<h1 class="personal-content-title">退款处理</h1>
+					<ul class="order-sel">
+						<li class="on">
+							<a href="javascript:void(0);" class="wsq">我申请的退款</a>
+						</li>
+						<li>
+							<a href="javascript:void(0);" class="wdtk">我的退款</a>
+						</li>
+					</ul>
+					<div class="purchase-order">
+						<div class="wihte_space"></div>
+						<div class="purchase-ordertable" id="refund_list">
+							<table>
+								<tr>
+									<th width="15%">规格</th>
+									<th width="15%">申请退款金额</th>
+									<th width="15%">申请日期</th>
+									<th width="10%" class="options">操作</th>
+									<th width="6%"></th>
+									<th width="13%"></th>
+									<th width="13%"></th>
+								</tr>
+							</table>
+							<table class="refund_order_table"></table>
+							<div class="page_turn"><span class="first_page">首页</span><span class="pre_page">上一页</span><span class="next_page">下一页</span></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<input type="hidden" class="myRefund" />
+		<input type="hidden" class="hasdata" value="" />
+		<div class="footer"></div>
+		<script type="text/html" id="refund_order_list_tpl">
+			<tr>
+				<th width="15%"></th>
+				<th width="15%"></th>
+				<th width="15%"></th>
+				<th width="10%"></th>
+				<th width="6%"></th>
+				<th width="13%"></th>
+				<th width="13%"></th>
+			</tr>
+			{{each data value}}
+			<tr>
+				<td>{{value.o_product_specifications}}</td>
+				<td class="refund_money">{{value.o_refund_money}}元</td>
+				<td>{{value.o_refund_date}}</td>
+				{{if value.state==1}}
+				<!--我申请的退款-->
+				<td class="options">
+					{{if value.o_buyer_apply_refund_state==1}}
+					<a class="ordertable-evau" href="javascript:void(0);">处理中</a>
+					{{else if value.o_buyer_apply_refund_state==2}}
+					<a class="ordertable-evau" href="javascript:void(0);">处理中</a>
+					{{else if value.o_buyer_apply_refund_state==3}}
+					<a class="ordertable-evau" href="javascript:void(0);">已退款</a>
+					{{else if value.o_buyer_apply_refund_state==4}}
+					<a class="ordertable-evau" href="javascript:void(0);">已拒绝</a>
+					{{/if}}
+				</td>
+				{{else if value.state==2}}
+				<!--我的退款-->
+				<td class="options">
+					{{if value.o_buyer_apply_refund_state==1}}
+					<a class="ordertable-evau" href="order_detail.html?oid={{value.o_id}}&state={{value.state}}">处理</a>
+					{{else if value.o_buyer_apply_refund_state==2}}
+					<a class="ordertable-evau" href="order_detail.html?oid={{value.o_id}}&state={{value.state}}">处理</a>
+					{{else if value.o_buyer_apply_refund_state==3}}
+					<a class="ordertable-evau" href="javascript:void(0);">已退款</a>
+					{{else if value.o_buyer_apply_refund_state==4}}
+					<a class="ordertable-evau" href="javascript:void(0);">已拒绝</a>
+					{{/if}}
+				</td>
+				{{/if}}
+
+				<td>
+					<a class="to_order_detail" href="order_detail.html?oid={{value.o_id}}&state={{value.state}}" target="_blank">详情</a>
+				</td>
+				<td>
+					<a class="ordertable-chat" href="javascript:void(0);">聊一聊</a>
+				</td>
+				<td>
+					<a class="ordertable-relation" data-phone='{{value.phone}}' onclick="getPhone(this)" href="javascript:void(0);">联系买家</a>
+				</td>
+			</tr>
+			{{/each}}
+
+		</script>
+		<script src="../../lib/jquery-1.8.3.min.js"></script>
+		<script src="../../lib/md5.js"></script>
+		<script src="../../js/secret.js"></script>
+		<script src="../../lib/template-web.js"></script>
+		<script>
+			$('.personal-aside').load('personal_aside.html');
+			$('.topbar').load('../public/topbar.html');
+			$('.footer').load('../public/footer.html');
+			$('.order-sel li').click(function() {
+				$(this).addClass('on').siblings('li').removeClass('on');
+			});
+
+			function getOrderList(data) {
+				console.log(data);
+				if(data.status_code == 10000) {
+					$('.refund_order_table').html('');
+					for(var i in data.data) {
+						data.data[i]['o_refund_date'] = getLocalTime(data.data[i]['o_refund_date']);
+						data.data[i]['state'] = Ajax.state;
+					};
+					var html = template('refund_order_list_tpl', data);
+					$('.refund_order_table').html(html);
+				} else {
+					$('.hasdata').val('0');
+					alert('暂无更多数据');
+				}
+			};
+
+			var Ajax = {
+				pages: null,
+				fun: null,
+				state: null,
+				pageEle: null,
+				followEle: null,
+				set: function($pages, $fun, $state, $pEle, $fEle) {
+					this.pages = $pages;
+					this.fun = $fun;
+					this.state = $state;
+					this.pageEle = $pEle;
+					this.followEle = $fEle;
+					this.getData();
+					return this;
+				},
+				turnPage: function() {
+					$(Ajax.pageEle).each(function() {
+						$(this).click(function() {
+							$(this).addClass('current').siblings().removeClass('current');
+							if($(this).hasClass('first_page')) {
+								$('.hasdata').val('');
+								Ajax.pages = 1;
+								Ajax.getData();
+
+							} else if($(this).hasClass('pre_page')) {
+								$('.hasdata').val('');
+								Ajax.pages > 1 ? Ajax.pages-- : Ajax.pages = 1;
+								Ajax.getData();
+							} else {
+								if($('.hasdata').val()) {
+									return false;
+								}
+								Ajax.pages++;
+								Ajax.getData();
+							}
+						})
+					})
+
+				},
+				switchShow: function() {
+					$(Ajax.followEle).each(function() {
+						$(this).click(function() {
+							$(Ajax.pageEle).removeClass('current');
+							Ajax.pages = 1;
+							$('.hasdata').val('');
+							if($(this).hasClass('wsq')) {
+								Ajax.state = 1;
+								Ajax.getData();
+							} else if($(this).hasClass('wdtk')) {
+								Ajax.state = 2;
+								Ajax.getData();
+							}
+						})
+					});
+					return this;
+				},
+				getData: function() {
+					var url = 'https://two.zhiqunale.cn/Paper/PersonalCenter/list_of_refund_orders';
+					var argu = {
+						c_id: cookie.getCookie('uid'),
+						device_number: 'pc_online',
+						state: this.state, //1我申请的退款，2我的退款
+						pageNum: this.pages,
+						size: 10,
+						user_state: 1
+					}
+					GetList(argu, url, this.fun);
+				}
+			};
+			Ajax.set(1, getOrderList, 1, $('.page_turn span'), $('.order-sel a')).switchShow().turnPage();
+			
+			//点击显示联系方式
+			function getPhone($this) {
+				var phoneNum = $($this).attr('data-phone');
+				$('.popBox').show(function() {
+					$('.popPhone').html(phoneNum);
+				});
+			};
+			$('.popHide').click(function() {
+				$('.popBox').hide();
+			});
+		</script>
+	</body>
+
+</html>

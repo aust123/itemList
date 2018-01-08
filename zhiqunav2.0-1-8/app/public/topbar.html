@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../../css/public.css" />
+	</head>
+
+	<body>
+		<!--头部-->
+		<div id="mall_header">
+			<div class="topbar">
+				<div class="w1180">
+					<div class="toplink">
+						<a href="index.html"><i class="home"></i>纸去哪了首页</a>
+						<span id="changes">欢迎来到纸去哪了</span>
+						<a href="../login/login.html" id="topbar_login_btn">请登录</a>
+						<div class="company-list" id="span_top_company_show" style="display: none;"></div>
+						<a href="javascript:" id="topbar_quit" style="display: none;">退出</a>
+					</div>
+					<div class="topmenu">
+						<a target="_blank" href="../account/apply_order.html" id="topbar_my_top">我的纸去哪了</a>
+						|
+						<a target="_blank" href="../account/apply_order.html">我的订单</a>
+						|
+						<div class="msn">
+							<a href="../account/personal_message.html" class="msn_center">
+								<div id="msn_box_info">
+									消息中心
+								</div>
+							</a>
+							<div class="msn_box" style="display:none">
+							</div>
+						</div>
+						|
+						<a target="_blank" href="###">帮助中心</a>
+						|
+						<a target="_blank" href="###">在线客服</a>
+						|<span><i class="tel"></i>021-35906666 (8:30-17:30)</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="../../lib/jquery-1.8.3.min.js"></script>
+	<script src="../../lib/md5.js"></script>
+	<script src="../../js/secret.js"></script>
+	<script src="../../js/topbar.js"></script>
+	<script>
+		$.getScript("http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js", function() {
+			localStorage.province = (remote_ip_info["province"]);
+		});
+		
+		
+	</script>
+
+</html>
