@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+	<head lang="en">
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<title>纸去哪了-废纸交易平台</title>
+		<link rel="stylesheet" href="../../css/information.css" />
+	</head>
+
+	<body>
+	<div id="top_bar"></div>
+	<div id="nav_bar"></div>
+	<div class="inforBox">
+		<ul class="infor_bar">
+			<li>
+				<a href="infor_price.html">报价</a>
+			</li>
+			<li>
+				<a href="infor_policy.html">政策</a>
+			</li>
+			<li class="on">
+				<a href="javascript:;">分析</a>
+			</li>
+			<li>
+				<a href="infor_figure.html">人物</a>
+			</li>
+		</ul>
+		<h3 class="infor_title"><img src="../../img/zixun_baojiatoutiao.png"/></h3>
+		<ul class="infor_analyze infor_list">
+		</ul>
+		<!-- 分页-->
+		<div class="addMore">
+			<img src="../../img/message_down.png"/>
+		</div>
+	</div>
+	<div id="footer"></div>
+		<input class="head_baitiao" type="hidden" />
+		<script src="../../lib/jquery-1.8.3.min.js"></script>
+		<script src="../../lib/template-web.js"></script>
+		<script src="../../lib/md5.js"></script>
+		<script type="text/javascript" src="../../js/secret.js"></script>
+		<script id="policy_list" type="text/html">
+			{{each data as value}}
+			<li>
+				<a target="_blank" href="infor_detail.html?nid={{value.n_id}}">
+					{{if value.n_img}}
+					<div class="img">
+						<img src="{{value.n_img}}"/>
+					</div>
+					<div class="txt">
+						<h4>{{value.n_title}}</h4>
+						<p>来源：{{value.n_source}}</p>
+						<p>{{value.n_info}}</p>
+						<p>{{$imports.dateFormat(value.updated_at)}}</p>
+					</div>
+					{{else}}
+					<div class="txt" style="width: 100%;">
+						<h4>{{value.n_title}}</h4>
+						<p>来源：{{value.n_source}}</p>
+						<p>{{value.n_info}}</p>
+						<p>{{$imports.dateFormat(value.updated_at)}}</p>
+					</div>
+					{{/if}}
+
+				</a>
+			</li>
+			{{/each}}
+		</script>
+		<script>
+			$(function() {
+				$('#top_bar').load('../public/topbar.html');
+				$('#nav_bar').load('../public/navbar.html');
+				$('#footer').load('../public/footer.html');
+
+				var page=1;
+
+				$('.addMore img').click(function(){
+					page++;
+					news(page);
+				});
+
+				news(page);
+				function news(page){
+					var obj = {
+						category_id: 3,
+						page: page,
+						size: 10
+					};
+					var pathname = "https://api.zhiqunale.cn/api/news/list";
+					GetList(obj, pathname, BackNews);
+					//获取分析——新闻信息列表回调函数
+					function BackNews(_data) {
+						console.log(_data);
+						if(_data.status_code == 10000) {
+							template.defaults.imports.dateFormat=function(date){
+								return getLocalTimes(date);
+							}
+							var html1 = template('policy_list', _data);
+							$('.infor_analyze').append(html1);
+						}else{
+							alert('无更多数据');
+						}
+					}
+				}
+			});
+
+		</script>
+	</body>
+
+</html>

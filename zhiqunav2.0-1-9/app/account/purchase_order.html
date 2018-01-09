@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+
+	<head lang="en">
+		<meta charset="UTF-8">
+		<title>卖废纸买废纸，上纸去哪了</title>
+		<link rel="stylesheet" href="../../css/personal.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/orders.css"/>
+	</head>
+
+	<body>
+		<div class="topbar"></div>
+		<!--显示手机号码-->
+		<div class="popBox">
+			<div class="popback"></div>
+			<div class="popfront">
+				<div class="popshow">
+					<p>
+						电话：<span class="popPhone"></span>
+					</p>
+					<p>
+						<button class="popHide">确定</button>
+					</p>
+				</div>
+			</div>
+		</div>
+		
+		<div class="personal">
+			<div class="personalbanner"></div>
+			<div class="personalbox">
+				<!-- 侧边栏-->
+				<div class="personal-aside"></div>
+				<!-- 主要内容-->
+				<div class="personal-content">
+					<h1 class="personal-content-title">我的交易</h1>
+					<ul class="order-sel">
+						<li>
+							<a href="apply_order.html">供应订单</a>
+						</li>
+						<li class="on">
+							<a href="javascript:void(0);">采购订单</a>
+						</li>
+					</ul>
+					<div class="purchase-order">
+						<ul class="purchase-ordersort">
+							<li class="dfh on">待发货 <span></span></li>
+							<li class="dsh">待收货 <span></span></li>
+							<li class="djs">待结算 <span></span></li>
+							<li class="ywc" style="margin-right: 0;">已完成 <span></span></li>
+						</ul>
+
+						<div class="purchase-ordertable">
+							<table>
+								<tr>
+									<th width="11%">规格</th>
+									<th width="10%">重量</th>
+									<th width="10%">单价</th>
+									<th width="18%">收货地址</th>
+									<th width="9%">操作</th>
+									<th width="3%"></th>
+									<th width="11%"></th>
+									<th width="10%"></th>
+								</tr>
+							</table>
+							<table class="order_table"></table>
+							<div class="page_turn"><span class="first_page">首页</span><span class="pre_page">上一页</span><span class="next_page">下一页</span></div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="footer"></div>
+		<input type="hidden" class="purchaseOrder" />
+		<input type="hidden" class="hasdata" value="" />
+		<script type="text/html" id="order_list_tpl">
+			<tr>
+				<th width="11%"></th>
+				<th width="10%"></th>
+				<th width="10%"></th>
+				<th width="18%"></th>
+				<th width="9%"></th>
+				<th width="3%"></th>
+				<th width="11%"></th>
+				<th width="10%"></th>
+			</tr>
+			{{each data value}}
+			<tr>
+				<td>{{value.o_product_specifications}}</td>
+				<td>{{value.o_product_weight}}吨</td>
+				<td>{{value.o_product_price}}元/吨</td>
+				<td>{{value.address}}</td>
+				<td style="display: none;" class="hiddens">
+					<!--订单id-->
+					<span style="display: none;">{{value.o_id}}</span>
+					<!--货品规格-->
+					<b style="display: none;">{{value.o_product_specifications}}</b>
+					<!--货品重量-->
+					<i style="display: none;">{{value.o_product_weight}}</i>
+					<!--卖家id-->
+					<em style="display: none;">{{value.o_saler_id}}</em>
+					<!--订金金额-->
+					<strong style="display: none;">{{value.o_bail_money}}</strong>
+				</td>
+				{{if value.o_state==1}}
+				<td>
+					<a class="ordertable-evau" href="javascript:void(0);">待发货</a>
+				</td>
+				{{else if value.o_state==2}}
+				<td>
+					<a class="ordertable-evau" href="javascript:void(0);" onclick="confirm(this)">确认收货</a>
+				</td>
+				{{else if value.o_state==3}}
+				<td>
+					{{if value.o_settle_state==1}}
+					<a class="ordertable-evau" href="settlement.html?oid={{value.o_id}}" target="_blank">去结算</a>
+					{{else if value.o_settle_state==2}}
+					<a class="ordertable-evau" href="javascript:void(0);">卖家确认中</a>
+					{{else if value.o_settle_state==3}}
+					<a class="ordertable-evau" href="pay.html?oid={{value.o_id}}">去付款</a>
+					{{/if}}
+
+				</td>
+				{{else if value.o_state==4}}
+				<td>
+					{{if value.o_buyer_jugde==1}}
+					<a class="ordertable-evau" href="javascript:void(0);">已评价</a>
+					{{else if value.o_buyer_jugde==2}}
+					<a class="ordertable-evau" href="reviews.html?oid={{value.o_id}}">去评价</a>
+					{{/if}}
+				</td>
+				{{/if}}
+				<td>
+					<a class="to_order_detail" href="order_detail.html?oid={{value.o_id}}&type=1" target="_blank">详情</a>
+				</td>
+				<td>
+					<a class="ordertable-chat" href="javascript:void(0);">聊一聊</a>
+				</td>
+				<td>
+					<a data-phone='{{value.o_saler_phone}}' onclick="getPhone(this)"  class="ordertable-relation" href="javascript:void(0);">联系买家</a>
+				</td>
+			</tr>
+			{{/each}}
+		</script>
+		<script src="../../lib/jquery-1.8.3.min.js"></script>
+		<script src="../../lib/md5.js"></script>
+		<script src="../../js/secret.js"></script>
+		<script src="../../lib/template-web.js"></script>
+		<script src="../../js/orderlist.js"></script>
+		<script>
+			$('.personal-aside').load('personal_aside.html');
+			$('.topbar').load('../public/topbar.html');
+			$('.footer').load('../public/footer.html');
+			$('.purchase-ordersort li').click(function() {
+				$(this).addClass('on').siblings().removeClass('on');
+			});
+
+			function getOrderList(data) {
+				console.log(data);
+				if(data.status_code == 10000) {
+					$('.order_table').html('');
+					if(parseInt(data.data.length) > 0) {
+						localStorage.order_data = JSON.stringify(data.data);
+						var html = template('order_list_tpl', data);
+						$('.order_table').html(html);
+					} else {
+						$('.hasdata').val('0');
+					}
+				}else{
+					alert('您还未通过实名认证')
+				}
+			};
+
+			
+			Ajax.set(1, getOrderList, 1, $('.page_turn span'), $('.purchase-ordersort li'),1).switchShow().turnPage();
+
+			/*确认收货*/
+			function confirm($this) {
+				$($this).parent().siblings('.hiddens').find('em').html();
+				var url = 'https://two.zhiqunale.cn/paper/orders/buyerclicktoconfirmgetgoods';
+				var argu = {
+					user_id: cookie.getCookie('uid'),
+					device_number: 'pc_online',
+					order_id: $($this).parent().siblings('.hiddens').find('span').html(),
+					product_name: escape($($this).parent().siblings('.hiddens').find('b').html()),
+					product_weight: $($this).parent().siblings('.hiddens').find('i').html(),
+					user_name: escape(localStorage.c_username),
+					sale_id: $($this).parent().siblings('.hiddens').find('em').html()
+				}
+				GetList(argu, url, getConfirm);
+			};
+
+			function getConfirm(data) {
+				console.log(data);
+				if(data.status_code == 10000) {
+					window.location.reload(true);
+				}
+			}
+			
+		</script>
+	</body>
+
+</html>

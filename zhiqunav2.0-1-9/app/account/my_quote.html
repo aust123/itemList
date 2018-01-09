@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../../css/personal.css"/>
+    <title>卖废纸买废纸，上纸去哪了</title>
+</head>
+<body>
+<div class="topbar"></div>
+<div class="personalbanner"></div>
+<div class="personalbox">
+    <!-- 侧边栏-->
+    <div class="personal-aside">
+    </div>
+    <!-- 主要内容-->
+    <div class="purchase">
+        <h3>我的报价</h3>
+
+        <div class="purchase_list">
+            <script id="purchase_list" type="text/html">
+                <table>
+                    <tr>
+                        <th class="quote_th1">货品规格</th>
+                        <th class="quote_th2">报价（元/吨）</th>
+                        <th class="quote_th3">数量（吨）</th>
+                        <th class="quote_th4">状态</th>
+                        <th class="quote_th5"></th>
+
+                    </tr>
+                    {{each data as value i}}
+                    <tr class="quotedetail" data-swid="{{value.sw_id}}">
+                        <td class="proname">{{value.sw_product_name}}</td>
+                        <td>{{value.sw_baojia}}</td>
+                        <td>{{value.sw_sale_weight}}</td>
+                        {{if value.sw_state==1}}
+                        <td class="quote_status">买家处理中</td>
+                        {{else if value.sw_state==2}}
+                        <td class="quote_status">买家已同意</td>
+                        {{else if value.sw_state==3}}
+                        <td class="quote_status">买家已拒绝</td>
+                        {{else if value.sw_state==5}}
+                        <td class="quote_status">已取消</td>
+                        {{/if}}
+                        <td class="quotechat">
+                            {{if value.sw_state!=5}}
+                            <a data-swid="{{value.sw_id}}" data-buyerid="{{value.sw_buyer}}" data-buyid="{{value.sw_purchase_id}}" class="cancel">
+                                <img src="../../img/my_wodebaojia_cancel.png"/>取消
+                            </a>
+                            {{/if}}
+                            <a class="chat"><img src="../../img/my_wodebaojia_chat.png"/>聊一聊</a>
+                            <a data-phone="{{value.c_phone}}" class="phone"><img src="../../img/my_wodebaojia_phone.png"/>打电话</a>
+                        </td>
+                    </tr>
+                    {{/each}}
+                </table>
+            </script>
+        </div>
+        <!-- 分页-->
+        <div class="page_turn">
+            <span class="pre_page">上一页</span>
+            <span class="next_page">下一页</span>
+        </div>
+    </div>
+</div>
+<div class="popBox">
+    <div class="popback"></div>
+    <div class="popfront">
+        <div class="popshow">
+            <p>
+                电话：<span class="popPhone"></span>
+            </p>
+            <p>
+                <button class="popHide">确定</button>
+            </p>
+        </div>
+    </div>
+</div>
+<div class="footer"></div>
+<input type="hidden" class="myQuote"/>
+<script src="../../lib/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="../../lib/template-web.js"></script>
+<script type="text/javascript" src="../../lib/md5.js"></script>
+<script type="text/javascript" src="../../js/secret.js"></script>
+<script type="text/javascript" src="../../js/my_quote.js"></script>
+</body>
+
+</html>

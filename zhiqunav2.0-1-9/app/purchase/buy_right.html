@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>卖废纸买废纸，上纸去哪了</title>
+    <link rel="stylesheet" href="../../css/product.css"/>
+</head>
+<body>
+<div class="purchase-buy-sel">
+    <div class="purchase-buy-sel-item on">我的报价</div>
+    <div class="purchase-buy-sel-item">我发布的供应</div>
+</div>
+<!--我的报价-->
+<div class="purchase-buy-content active">
+    <div class="purchase-buy-price priceList">
+        <script id="priceList" type="text/html">
+            {{each data as value i}}
+            <div class="purchase-buy-price-item">
+                <a href="quotedetail.html?sd={{value.sw_id}}" target="_blank">
+                    <p>
+                        货品规格：
+                        <span class="proname">{{value.sw_product_name}}</span>
+                    </p>
+                    <p>
+                        报&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;价：
+                        <span>{{value.sw_baojia}} 元/吨</span>
+                    </p>
+                    <p>
+                        数&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;量：
+                        <span>{{value.sw_sale_weight}} 吨</span>
+                    </p>
+                    {{if value.sw_state==1}}
+                    <!-- 处理中-->
+                    <label class="tilmag">买家处理中</label>
+                    {{else if value.sw_state==2}}
+                    <!-- 已同意-->
+                    <label class="tilmag">买家已同意</label>
+                    {{else if value.sw_state==3}}
+                    <!-- 已拒绝-->
+                    <label class="tilmag">买家已拒绝</label>
+                    {{else if value.sw_state==5}}
+                    <!-- 买家已取消-->
+                    <label class="tilmag">已取消</label>
+                    {{/if}}
+                </a>
+                <p class="handle dealing">
+                    {{if value.sw_state!=5}}
+                            <span data-swid="{{value.sw_id}}" data-buyerid="{{value.sw_buyer}}" data-buyid="{{value.sw_purchase_id}}" class="cancelPrice">
+                                <img src="../../img/caigou_icon_cancel.png"/>取消
+                            </span>
+                    {{/if}}
+                    <span><img src="../../img/caigou_icon_chat.png"/>聊一聊</span>
+                    <span class="phone" data-phone="{{value.c_phone}}"><img src="../../img/caigou_icon_phone.png"/>打电话</span>
+                </p>
+            </div>
+            {{/each}}
+            <a target="_blank" href="../account/my_quote.html" class="scanmore">点击查看更多</a>
+        </script>
+    </div>
+</div>
+<!-- 我发布的供应-->
+<div class="purchase-buy-content purchase-buy-apply">
+    <div class="purchase-buy-price applyList">
+        <script type="text/html" id="applyList">
+            {{each data as value i}}
+            <!-- 上架-->
+            <div class="purchase-buy-price-item">
+                <a href="scan_supply.html?gdid={{value.sp_id}}" target="_blank">
+                    <p>
+                        货品名称：
+                        <span>{{value.sp_product_name}}</span>
+                    </p>
+                    <p>
+                        货品价格：
+                        <span>{{value.sp_product_price}} 元/吨</span>
+                    </p>
+                    <p>
+                        地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;址：
+                        <span>{{value.address}}</span>
+                    </p>
+                    <p>
+                        起始时间：
+                        <span>{{value.created_at}}</span>
+                    </p>
+                </a>
+                <p class="handle dealed">
+                    <span class="xiajia" data-spuid="{{value.sp_uid}}" data-spid="{{value.sp_id}}">
+                        <img src="../../img/caigou_icon_xiajia.png"/>下架
+                    </span>
+                    <span class="refresh" data-spid="{{value.sp_id}}">
+                        <img src="../../img/caigou_icon_shuaxin.png"/>刷新
+                    </span>
+                </p>
+            </div>
+            {{/each}}
+            <a href="../account/my_supply.html" class="scanmore">点击查看更多</a>
+        </script>
+    </div>
+</div>
+<div class="popBox">
+    <div class="popback"></div>
+    <div class="popfront">
+        <div class="popshow">
+            <p>
+                电话：<span class="popPhone"></span>
+            </p>
+            <p>
+                <button class="popHide">确定</button>
+            </p>
+        </div>
+    </div>
+</div>
+
+<!--<input type="hidden" class="buyHidden"/>-->
+
+<script src="../../lib/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="../../lib/template-web.js"></script>
+<script type="text/javascript" src="../../lib/md5.js"></script>
+<script type="text/javascript" src="../../js/secret.js"></script>
+<script src="../../js/buy_right.js"></script>
+
+</body>
+</html>

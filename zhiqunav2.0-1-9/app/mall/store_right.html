@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>卖废纸买废纸，上纸去哪了</title>
+    <link rel="stylesheet" href="../../css/product.css"/>
+</head>
+<body>
+<div class="purchase-buy-sel">
+    <div class="purchase-buy-sel-item on">我的采购意向</div>
+    <div class="purchase-buy-sel-item">我发布的采购</div>
+</div>
+<!--我的采购意向-->
+<div class="purchase-buy-content purchase-buy-intention active">
+    <div class="purchase-buy-price buyPurpose">
+        <script id="buyPurpose" type="text/html">
+            {{each data as value i}}
+            <div data-goodId="{{value.pw_supply_id}}" class="purchase-buy-price-item">
+                <p>
+                    货品规格：
+                    <span class="goodgg">{{value.pw_product_specifications}}</span>
+                </p>
+                <p>
+                    商家名称：
+                    <span>{{value.c_store_name}}</span>
+                </p>
+                <p>
+                    地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;址：
+                    <span>{{value.address}}</span>
+                </p>
+                {{if value.pw_state==1}}
+                <!-- 卖家处理中-->
+                <p class="handle dealing">
+                    <span class="cancelPurpose" data-id="{{value.pw_sender_id}}" data-buyId="{{value.pw_id}}">
+                        <img src="../../img/caigou_icon_cancel.png"/>取消
+                    </span>
+                    <span>
+                        <img src="../../img/caigou_icon_chat.png"/>聊一聊
+                    </span>
+                    <span class="phone" data-phone="{{value.pw_sender_phone}}">
+                        <img src="../../img/caigou_icon_phone.png"/>打电话
+                    </span>
+                </p>
+                <label class="tilmag">卖家处理中</label>
+                {{else if value.pw_state==2}}
+                <!-- 卖家已同意-->
+                <p class="handle dealed">
+                    <span class="cancelPurpose" data-id="{{value.pw_sender_id}}" data-buyId="{{value.pw_id}}">
+                        <img src="../../img/caigou_icon_cancel.png"/>取消
+                    </span>
+                    <span data-pw_is_pay_bail="{{value.pw_is_pay_bail}}" class="agreePurpose" data-id="{{value.pw_sender_id}}" data-buyId="{{value.pw_id}}">
+                        <img src="../../img/caigou_icon_agree.png"/>同意
+                    </span>
+                </p>
+                {{if value.pw_is_pay_bail==1}}
+                <p class="purmoney">定金：{{value.pw_is_pay_bail_money}}元</p>
+                {{/if}}
+                <label class="tilmag">卖家已同意</label>
+                {{else if value.pw_state==3}}
+                <!-- 卖家已拒绝-->
+                <p class="handle dealed">
+                    <span>
+                        <img src="../../img/caigou_icon_chat.png"/>聊一聊
+                    </span>
+                    <span class="phone" data-phone="{{value.pw_sender_phone}}">
+                        <img src="../../img/caigou_icon_phone.png"/>打电话
+                    </span>
+                </p>
+                <label class="tilmag">卖家已拒绝</label>
+                {{else if value.pw_state==4}}
+                <!-- 买家已取消-->
+                <p class="handle dealed">
+                    <span>
+                        <img src="../../img/caigou_icon_chat.png"/>聊一聊
+                    </span>
+                    <span class="phone" data-phone="{{value.pw_sender_phone}}">
+                        <img src="../../img/caigou_icon_phone.png"/>打电话
+                    </span>
+                </p>
+                <label class="tilmag">买家已取消</label>
+                {{else if value.pw_state==5}}
+                <!-- 买家已同意-->
+                <p class="handle dealed">
+                    <span>
+                        <img src="../../img/caigou_icon_chat.png"/>聊一聊
+                    </span>
+                    <span class="phone" data-phone="{{value.pw_sender_phone}}">
+                        <img src="../../img/caigou_icon_phone.png"/>打电话
+                    </span>
+                </p>
+                <label class="tilmag">买家已同意</label>
+                {{/if}}
+            </div>
+            {{/each}}
+            <a href="../account/my_intention.html" class="scanmore">点击查看更多</a>
+        </script>
+    </div>
+</div>
+<!-- 我发布的采购-->
+<div class="purchase-buy-content purchase-buy-apply">
+    <div class="purchase-buy-price buyRequire">
+        <script type="text/html" id="buyRequire">
+            {{each data as value i}}
+            <div class="purchase-buy-price-item">
+                <a href="purchase_detail.html?rqid={{value.pn_id}}" target="_blank">
+                    <p>
+                        货品规格：
+                        <span>{{value.pn_product_specifications}}</span>
+                    </p>
+
+                    <p>
+                        货品价格：
+                        <span><strong class="reqprice">{{value.pn_product_price}}</strong>元</span>
+                    </p>
+
+                    <p>
+                        地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;址：
+                        <span>{{value.address}}</span>
+                    </p>
+
+                    <p>
+                        货品数量：
+                        <span>{{value.pn_product_weight}}吨</span>
+                    </p>
+                </a>
+
+                <p class="handle dealed">
+                   <span class="cancelRequ" data-reqid="{{value.pn_id}}">
+                       <img src="../../img/caigou_icon_cancel.png"/>取消
+                   </span>
+                    <span data-uid="{{value.pn_uid}}" data-reqid="{{value.pn_id}}" class="editRequire">
+                        <img src="../../img/caigou_icon_bianji.png"/>编辑
+                    </span>
+                </p>
+            </div>
+            {{/each}}
+            <a href="../account/my_purchase.html" class="scanmore">点击查看更多</a>
+        </script>
+    </div>
+</div>
+
+<div class="popBox relationBox">
+    <div class="popback"></div>
+    <div class="popfront">
+        <div class="popshow">
+            <p>
+                电话：<span class="popPhone"></span>
+            </p>
+            <p>
+                <button class="popHide">确定</button>
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="popBox paybox">
+    <div class="popback"></div>
+    <div class="popfront">
+        <div class="popshow">
+            <h3>选择支付方式</h3>
+            <ul class="payments">
+                <li class="njpay">
+                    <img src="../../img/nanjingyinhang.png" alt=""/>南京银行
+                </li>
+                <li class="alipay_pc_direct">
+                    <img src="../../img/zhifubao.png" alt=""/>支付宝
+                </li>
+                <li class="wx_pub_qr">
+                    <img src="../../img/weixingzhifu.png" alt=""/>微信
+                    <div class="intentionewm" id="qrcode"></div>
+                </li>
+                <li class="upacp_pc">
+                    <img src="../../img/yinglian.png" alt=""/>银联
+                </li>
+                <li class="yue">
+                    <img src="../../img/yuebao.png" alt=""/>余额
+                </li>
+            </ul>
+            <a class="closePaybox" href="javascript:;"><img src="../../img/tanchuang_cancel.png"/></a>
+        </div>
+    </div>
+</div>
+
+
+<script src="../../lib/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="../../lib/template-web.js"></script>
+<script type="text/javascript" src="../../lib/md5.js"></script>
+<script type="text/javascript" src="../../js/secret.js"></script>
+<script type="text/javascript" src="../../lib/pingpp.js"></script>
+<script type="text/javascript" src="../../lib/qrcode.min.js"></script>
+<script src="../../js/store_right.js"></script>
+</body>
+</html>

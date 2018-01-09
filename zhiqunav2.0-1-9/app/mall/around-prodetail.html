@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>卖废纸买废纸，上纸去哪了</title>
+    <link rel="stylesheet" href="../../css/product.css"/>
+</head>
+<body style="background: #fff;">
+<div class="topbar"></div>
+<div class="navbar"></div>
+<div id="prodetail">
+
+    <div class="prodetail-pic">
+        <script type="text/html" id="prodetail-pic">
+            <!-- 商品banner-->
+            <div class="prodetail-banner">
+                <img src="https://two.zhiqunale.cn/{{data.pag_photo}}"/>
+            </div>
+
+            <!-- 废纸价格-->
+            <div class="prodetail-price">
+                <h1 class="prodetail-price-sort">{{data.pagc_name}}</h1>
+                <div class="prodetail-price-box">
+                    <p>产品名称：<span>{{data.pag_name}}</span></p>
+                    <p>生产厂家：<span>{{data.pab_name}}</span></p>
+                    <p style="border-bottom: 1px dotted #B6B6B6;">价格：<b>￥{{data.pag_price}}元/吨</b></p>
+                    <p>发货地址：<span>{{data.pag_address}}</span></p>
+                </div>
+                <div class="prodetail-price-chat">
+                    <a data-phone="{{data.pag_sale_phone}}" class="prodetail-price-chat-tel">打电话</a>
+                </div>
+            </div>
+        </script>
+    </div>
+    <!-- 商品详情-->
+    <div class="prodetail-summary" style="width:1180px;border: none;">
+        <script type="text/html" id="prodetail-summary">
+            <div class="prodetail-summary-detail on" style="padding: 10px 0;min-height: 0;">
+                {{data.pag_simple_info}}
+            </div>
+            <div class="prodetail-summimg">
+                {{each data.pag_photos as value i}}
+                <div class="prodetail-summimg-item">
+                    <img src="https://two.zhiqunale.cn/{{value}}"/>
+                </div>
+                {{/each}}
+            </div>
+        </script>
+    </div>
+</div>
+<div class="footer"></div>
+
+<div class="popBox">
+    <div class="popback"></div>
+    <div class="popfront">
+        <div class="popshow">
+            <p>
+                电话：<span class="popPhone"></span>
+            </p>
+            <p>
+                <button class="popHide">确定</button>
+            </p>
+        </div>
+    </div>
+</div>
+
+<script src="../../lib/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="../../lib/template-web.js"></script>
+<script type="text/javascript" src="../../lib/md5.js"></script>
+<script type="text/javascript" src="../../js/secret.js"></script>
+<script type="application/javascript" src="../../js/aroundprodetail.js"></script>
+</body>
+</html>

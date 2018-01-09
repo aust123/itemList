@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>卖废纸买废纸，上纸去哪了</title>
+    <link rel="stylesheet" href="../../css/product.css"/>
+</head>
+<body>
+<div class="topbar"></div>
+<div class="navbar"></div>
+<div id="prodetail">
+    <div class="prodetail-pic">
+        <!-- 商品banner-->
+        <div class="prodetail-banner">
+            <div class="prodetail-bannerlist">
+                <script type="text/html" id="prodetail-bannerlist">
+                    {{each sp_product_photos as value i}}
+                    {{if i==0}}
+                    <div class="prodetail-banneritem on">
+                        <img src="https://two.zhiqunale.cn/{{value}}"/>
+                    </div>
+                    {{else}}
+                    <div class="prodetail-banneritem">
+                        <img src="https://two.zhiqunale.cn/{{value}}"/>
+                    </div>
+                    {{/if}}
+                    {{/each}}
+                </script>
+            </div>
+            <div class="icon pro-prev"></div>
+            <div class="icon pro-next"></div>
+        </div>
+
+        <!-- 废纸价格-->
+        <div class="prodetail-price">
+            <script type="text/html" id="prodetail-price">
+                <h1 class="prodetail-price-sort">{{data.supply_detail_data.sp_beizhu}}</h1>
+                <div class="prodetail-price-box">
+                    <p>产品名称：<span>{{data.supply_detail_data.sp_product_name}}</span></p>
+                    <p style="border-bottom: 1px dotted #B6B6B6;">价格：<b>￥{{data.supply_detail_data.sp_product_price}}元/吨</b></p>
+                    <p>发货地址：<span>{{data.supply_detail_data.address}}</span><a>距离{{data.supply_detail_data.dis}}公里</a></p>
+                </div>
+                <div class="prodetail-price-chat">
+                    <a href="JavaScript:;">聊一聊</a>
+                    <a data-phone="{{data.store_data.c_phone}}" class="prodetail-price-chat-tel">打电话</a>
+                    <a href="intention.html?gid={{data.supply_detail_data.sp_id}}" class="prodetail-price-chat-buy">立即购买</a>
+                </div>
+            </script>
+        </div>
+    </div>
+    <!-- 关注-->
+    <div class="prodetail-focus">
+        <script type="text/html" id="prodetail-focus">
+            {{if favorite_state==2}}
+            <label class="addfocus">加关注</label>
+            {{else}}
+            <label class="cancelfocus">已关注</label>
+            {{/if}}
+        </script>
+    </div>
+    <!-- 商品介绍及评价-->
+    <div class="prodetail-evaluate">
+        <!--个人等级-->
+        <div class="prodetail-info">
+            <script type="text/html" id="prodetail-info">
+                <div class="prodetail-info-icon">
+                    {{if c_headurl}}
+                    <p>
+                        <img src="https://two.zhiqunale.cn/{{c_headurl}}"/>
+                    </p>
+                    {{/if}}
+                    <p>
+                        <span data-userid="{{c_id}}">{{c_username}}</span>
+                    </p>
+                </div>
+                <div class="prodetail-info-grade">
+                    <p>星级评价：<span>{{store_credit_stage}}级</span></p>
+                    <p>认证情况：</p>
+                    <p>
+                        {{if c_is_company==1}}
+                        <img src="../../img/productdetail_icon_qyrz.png"/>
+                        {{/if}}
+                        {{if c_certification==1}}
+                        <img src="../../img/productdetail_icon_smrz.png"/>
+                        {{/if}}
+                        {{if c_is_recommend==1}}
+                        <img src="../../img/zhoubian_renzheng_tui.png"/>
+                        {{/if}}
+                    </p>
+                </div>
+            </script>
+        </div>
+        <!-- 详情及评价-->
+        <div class="prodetail-summary">
+                <ul class="prodetail-summary-sel">
+                    <script type="text/html" id="prodetail-summary-sel">
+                        <li class="on">商品详情</li>
+                        <li>累计评价 <span>（{{judgeNum}}）</span></li>
+                    </script>
+                </ul>
+                <div class="prodetail-summary-detail on">
+                    <script type="text/html" id="prodetail-summary-detail">
+                        {{sp_beizhu}}
+                    </script>
+                </div>
+                <div class="prodetail-summary-evu">
+                    <ul class="proevaluation">
+                        <script id="proevaluation" type="text/html">
+                            {{each data as value i}}
+                            <li>
+                                <h3>{{value.j_product_judge}}</h3>
+                                <h4>
+                                    {{each j_photos as photo i}}
+                                    <img src="https://two.zhiqunale.cn/{{photo}}"/>
+                                    {{/each}}
+                                </h4>
+                                <p>
+                                    <span style="margin-right:20px;">{{$imports.dateFormat(value.updated_at)}}</span>
+                                    {{value.j_product_score}}分
+                                </p>
+                                <span class="prodetail-summary-evu-name">{{value.c_username}}</span>
+                            </li>
+                            {{/each}}
+                        </script>
+                    </ul>
+                </div>
+        </div>
+    </div>
+</div>
+<div class="footer"></div>
+<div class="popBox">
+    <div class="popback"></div>
+    <div class="popfront">
+        <div class="popshow">
+            <p>
+                电话：<span class="popPhone"></span>
+            </p>
+            <p>
+                <button class="popHide">确定</button>
+            </p>
+        </div>
+    </div>
+</div>
+
+<div id="allmap" style="display: none;"></div>
+<input type="hidden" class="storeHidden"/>
+
+<script type="text/javascript" src="../../lib/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="../../lib/template-web.js"></script>
+<script type="text/javascript" src="../../lib/md5.js"></script>
+<script type="text/javascript" src="../../js/secret.js"></script>
+
+<script type="application/javascript" src="../../js/prodetail.js"></script>
+</body>
+</html>

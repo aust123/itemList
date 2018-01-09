@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="../../css/personal.css" />
+		<title>卖废纸买废纸，上纸去哪了</title>
+	</head>
+	<body>
+	<div class="topbar"></div>
+		<div class="personalbanner"></div>
+		<div class="personalbox">
+			<!-- 侧边栏-->
+			<div class="personal-aside">
+			</div>
+			<!-- 主要内容-->
+			<div class="purchase">
+				<h3>我的采购意向</h3>
+				<div class="purchase_list">
+					<script type="text/html" id="purchase_list">
+						<table style="width:auto;">
+							<tr>
+								<th class="quote_th1">货品规格</th>
+								<th class="quote_th2" style="width: 150px;">商家名称</th>
+								<th class="quote_th3" style="width:220px;">地址</th>
+								<th class="quote_th4 left_align" style="width: 240px;">状态</th>
+								<th class="quote_th5"></th>
+							</tr>
+							{{each data as value i}}
+							<tr data-goodId="{{value.pw_supply_id}}">
+								<td class="goodgg">{{value.pw_product_specifications}}</td>
+								<td>{{value.c_store_name}}</td>
+								<td>{{value.address}}</td>
+								{{if value.pw_state==1}}
+								<td class="quote_status left_align">卖家处理中</td>
+								<td>
+									<a data-id="{{value.pw_sender_id}}" data-buyId="{{value.pw_id}}" class="cancel" href="javascript:;">
+										<img src="../../img/my_wodebaojia_cancel.png" />取消
+									</a>
+									<a class="chat" href="javascript:;"><img src="../../img/my_wodebaojia_chat.png" />聊一聊</a>
+									<a data-phone="{{value.pw_sender_phone}}" class="phone"><img src="../../img/my_wodebaojia_phone.png" />打电话</a>
+								</td>
+								{{else if value.pw_state==2}}
+								<td class="quote_status_agree left_align">卖家已同意
+									<span class="deposit">订金：{{value.pw_is_pay_bail_money}}元</span>
+								</td>
+								<td>
+									<a class="cancel" data-id="{{value.pw_sender_id}}" data-buyId="{{value.pw_id}}" href="javascript:;">
+										<img src="../../img/my_wodebaojia_cancel.png" />取消
+                    				</a>
+                    				<a data-pw_is_pay_bail="{{value.pw_is_pay_bail}}" class="agreePurpose" data-id="{{value.pw_sender_id}}" data-buyId="{{value.pw_id}}">
+                        				<img src="../../img/my_wodebaojia_agree.png"/>同意
+                    				</a>
+								</td>
+								{{else if value.pw_state==3}}
+								<td class="quote_status left_align">卖家已拒绝</td>
+								<td></td>
+								{{else if value.pw_state==4}}
+								<td class="quote_status left_align">买家已取消</td>
+								<td></td>
+								{{else if value.pw_state==5}}
+								<td class="quote_status left_align">买家已同意</td>
+								<td></td>
+								{{/if}}
+							</tr>
+							{{/each}}
+						</table>
+					</script>
+				</div>
+				<!-- 分页-->
+				<div class="page_turn">
+					<span class="pre_page">上一页</span>
+					<span class="next_page">下一页</span>
+				</div>
+			</div>
+		</div>
+	<div class="footer"></div>
+	<div class="popBox relationbox">
+		<div class="popback"></div>
+		<div class="popfront">
+			<div class="popshow">
+				<p>
+					电话：<span class="popPhone"></span>
+				</p>
+				<p>
+					<button class="popHide">确定</button>
+				</p>
+			</div>
+		</div>
+	</div>
+
+	<div class="popBox paybox">
+		<div class="popback"></div>
+		<div class="popfront">
+			<div class="popshow">
+				<h3>选择支付方式</h3>
+				<ul class="payments">
+					<li class="njpay">
+						<img src="../../img/nanjingyinhang.png" alt=""/>南京银行
+					</li>
+					<li class="alipay_pc_direct">
+						<img src="../../img/zhifubao.png" alt=""/>支付宝
+					</li>
+					<li class="wx_pub_qr">
+						<img src="../../img/weixingzhifu.png" alt=""/>微信
+						<div class="intentionewm" id="qrcode"></div>
+					</li>
+					<li class="upacp_pc">
+						<img src="../../img/yinglian.png" alt=""/>银联
+					</li>
+					<li class="yue">
+						<img src="../../img/yuebao.png" alt=""/>余额
+					</li>
+				</ul>
+				<a class="closePaybox" href="javascript:;"><img src="../../img/tanchuang_cancel.png"/></a>
+			</div>
+		</div>
+	</div>
+
+		<input type="hidden" class="myItention" />
+	<script src="../../lib/jquery-1.8.3.min.js"></script>
+	<script type="text/javascript" src="../../lib/template-web.js"></script>
+	<script type="text/javascript" src="../../lib/md5.js"></script>
+	<script type="text/javascript" src="../../js/secret.js"></script>
+	<script type="text/javascript" src="../../lib/pingpp.js"></script>
+	<script type="text/javascript" src="../../lib/qrcode.min.js"></script>
+	<script type="text/javascript" src="../../js/my_intention.js"></script>
+	</body>
+
+</html>
