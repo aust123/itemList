@@ -1,0 +1,138 @@
+
+@import url("public.css");
+
+.inforBox{
+    width: 1100px;
+    padding: 0 40px;
+    margin: 0 auto;
+    background: #fff;
+}
+.infor_bar{
+    height:72px;
+    line-height:72px;
+    border-bottom:1px solid #e0e0e0;
+}
+.infor_bar li{
+    float:left;
+    font-size:16px;
+    margin: 0 30px;
+}
+.infor_bar li a{
+    color: #666;
+}
+.infor_bar li.on a{
+    color:#c7181e;
+    font-weight: bold;
+    font-size: 22px;
+}
+.infor_title{
+    margin: 40px 0;
+}
+.infor_list li{
+    padding: 30px 0;
+    border-bottom:1px solid #e0e0e0;
+    overflow: hidden;
+}
+.infor_list .img{
+    float: left;
+    margin-right: 30px;
+    display: inline-block;
+    width: 100px;
+}
+.infor_list .img img{
+    width: 100px;
+    height: 100px;
+}
+.infor_list .txt{
+    float: left;
+    display: inline-block;
+    width: 960px;
+}
+.infor_list .txt h4{
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 5px;
+}
+.infor_list .txt p{
+    font-size: 16px;
+    color: #999;
+    line-height: 28px;
+    word-break: break-all;
+}
+
+/*详情*/
+.infor_detail{
+    width:1180px;
+    margin:0 auto;
+    margin-bottom: 100px;
+}
+.infor_detail .bread{
+    margin:50px 20px;
+    font-size:20px;
+}
+.bread a{
+    color:#666;
+}
+.detail .til{
+    padding:0 20px 20px;
+}
+.til h3{
+    font-size:20px;
+    font-weight:bold;
+    margin-bottom:20px;
+    color: #333;
+}
+.til span{
+    font-size:16px;
+    color:#666;
+    font-weight: normal;
+}
+.til .share{
+    margin:25px 0;
+    font-size:22px;
+}
+.bshare-custom{
+    display: inline-block;
+}
+.bshare-custom a{
+    width: 32px!important;
+    height: 32px!important;
+    padding: 0!important;
+    overflow: hidden!important;
+    margin-left: 25px;
+}
+.detail .txt{
+    padding:40px 20px;
+    font-size:18px;
+    color:#666;
+    line-height:36px;
+}
+
+span.nId{
+	display: none;
+}
+/*咨询详情页面样式*/
+#details{
+    background: #fff;
+    padding: 20px;
+}
+div#details span{
+	font-size: 16px !important;
+    color: #666;
+    line-height: 26px;
+    display: inline-block;
+    margin-bottom: 15px;
+}
+div#details p{
+    font-size: 16px !important;
+    color: #666;
+    line-height: 26px;
+}
+
+.addMore{
+    text-align: center;
+}
+.addMore img{
+    margin: 20px 0;
+    cursor: pointer;
+}

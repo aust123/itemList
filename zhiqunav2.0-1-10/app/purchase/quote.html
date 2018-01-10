@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>卖废纸买废纸，上纸去哪了</title>
+    <link rel="stylesheet" href="../../css/product.css"/>
+    <link rel="stylesheet" href="../../css/jquery-ui.min.css"/>
+    <style>
+        .purchase-buy{
+            position: relative;
+            top: 50px;
+        }
+    </style>
+</head>
+<body style="background:#fff;">
+<div class="topbar"></div>
+<div class="navbar"></div>
+<div id="allmap"></div>
+<!--报价内容-->
+<div id="purchase">
+    <!-- 左边列表-->
+    <div class="purchase-list">
+        <!-- 报价-->
+        <div class="issuePurchase quote">
+            <h3>报价</h3>
+            <div class="beforequote">
+                <script type="text/html" id="beforequote">
+                    <div data-buyerid="{{c_id}}" class="beforequote-item quoteheadurl">
+                        {{if c_headurl}}
+                        <img class="headurl" src="https://two.zhiqunale.cn/{{c_headurl}}"/>
+                        {{/if}}
+                        <i>{{c_username}}</i>
+                        {{if c_certification==1}}
+                        <img src="../../img/productdetail_icon_smrz.png"/>
+                        {{/if}}
+                        {{if c_is_recommend==1}}
+                        <img src="../../img/zhoubian_renzheng_tui.png"/>
+                        {{/if}}
+                        {{if c_is_company==1}}
+                        <img src="../../img/productdetail_icon_qyrz.png"/>
+                        {{/if}}
+                        <b>信用分：{{store_credit_stage}}</b>
+                    </div>
+                    <div class="beforequote-item">
+                        <span>规格：</span><strong class="hpgg">{{pn_product_specifications}}</strong>
+                    </div>
+                    <div class="beforequote-item">
+                        <span>价格：</span><b><strong class="price">{{pn_product_price}}</strong>元/吨</b>
+                    </div>
+                    <div class="beforequote-item">
+                        <span>数量：</span>{{pn_product_weight}}吨
+                    </div>
+                    <div class="beforequote-item">
+                        <span>地址：</span><strong class="addr">{{address}}</strong>
+                    </div>
+                    <div class="beforequote-item">
+                        <span>起止日期：</span>{{$imports.dateFormat(pn_start_time)}} -- {{$imports.dateFormat(pn_end_time)}}
+                    </div>
+                    <div class="beforequote-item">
+                        <span class="fee" data-logistic_fee="{{pn_logistic_fee}}">物流费用负责方：</span>
+                        {{if pn_logistic_fee==1}}
+                        <a>买方</a>
+                        {{else}}
+                        <a>卖方</a>
+                        {{/if}}
+                    </div>
+                </script>
+            </div>
+            <div class="issuePurchase-form">
+                <div class="issuePurchase-item beforequote-item">
+                    <span>订金：</span><input class="dingjin" type="text" onkeyup="value=value.replace(/[^\d.]/g,'') " onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d.]/g,''))"/>元
+                </div>
+                <div class="issuePurchase-item beforequote-item">
+                    <span>数量：</span><input class="quoteWeight" type="text"  onkeyup="value=value.replace(/[^\d.]/g,'') " onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d.]/g,''))"/>吨
+                </div>
+                <div class="issuePurchase-item beforequote-item">
+                    <span>价格：</span><input class="quotePrice" type="text" onkeyup="value=value.replace(/[^\d.]/g,'') " onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d.]/g,''))"/>元/吨
+                </div>
+                <div class="issuePurchase-item beforequote-item">
+                    <span>发货日期：</span>
+                    <!--日期插件-->
+                    <input readonly onpropertychange="onPropertyChange(event)" type="text" id="startTime"/>
+                </div>
+                <div class="issuePurchase-item">
+                    <button class="issueSure">确认</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 右边采购信息-->
+    <div class="purchase-buy">
+    </div>
+</div>
+<div class="footer"></div>
+<input type="hidden" class="buyHidden"/>
+
+<script src="../../lib/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="../../lib/md5.js"></script>
+<script type="text/javascript" src="../../js/secret.js"></script>
+<script type="text/javascript" src="../../lib/template-web.js"></script>
+<script type="text/javascript" src="../../lib/jquery-ui.js"></script>
+<script type="text/javascript" src="../../lib/jquery.ui.datepicker-zh-CN.js"></script>
+<script src="../../js/quote.js"></script>
+</body>
+</html>

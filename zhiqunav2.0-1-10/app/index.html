@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>卖废纸买废纸，上纸去哪了</title>
+		<!--<meta http-equiv="X-UA-Compatible" content="chrome=1,IE=edge" />-->
+		<meta content="" name="keywords">
+		<meta content="" name="description">
+		<link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+		<!-- 首页所需样式 -->
+		<link rel="stylesheet" href="../css/public.css">
+		<link rel="stylesheet" href="../css/idangerous.swiper.css">
+		<link rel="stylesheet" href="../css/index-new.css">
+		<!--<script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=99r9aLLIxfCbYN0Q8IpO6ZPoytbckZEk"></script>-->
+	</head>
+
+	<body>
+		<!--头部-->
+		<div id="mall_header">
+			<div class="topbar">
+				<div class="w1180">
+					<div class="toplink">
+						<a href="index.html"><i class="home"></i>纸去哪了首页</a>
+						<span id="changes">欢迎来到纸去哪了</span>
+						<a href="login/login.html" id="topbar_login_btn">请登录</a>
+						<div class="company-list" id="span_top_company_show" style="display: none;"></div>
+						<a href="javascript:" id="topbar_quit" style="display: none;">退出</a>
+					</div>
+					<div class="topmenu">
+						<a target="_blank" href="javascript:;" id="topbar_my_top">我的纸去哪了</a>
+						|
+						<a target="_blank" class="myorder" href="javascript:;">我的订单</a>
+						|
+						<div class="msn">
+							<a href="javascript:;" class="msn_center">
+								<div id="msn_box_info">
+									消息中心
+								</div>
+							</a>
+							<div class="msn_box" style="display:none">
+							</div>
+						</div>
+						|
+						<a target="_blank" href="###">帮助中心</a>
+						|
+						<a target="_blank" href="###">在线客服</a>
+						|<span><i class="tel"></i>021-35906666 (8:30-17:30)</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="mall_header">
+			<div class="header_box">
+				<div class="w1180">
+					<a href="###" class="logo"></a>
+					<ul class="nav">
+						<li id="head_home" class="on">
+							<a href="###">首页</a>
+						</li>
+						<li id="head_mall">
+							<a target="_blank" href="mall/store.html"><i class="icon_hot"></i>商城</a>
+						</li>
+						<li id="head_cuo_search" class="sub">
+							<a target="_blank" href="purchase/buy.html">采购</a>
+						</li>
+						<li id="head_cuo_purchaser">
+							<a class='new' target="_blank" href="papered/finished_paper.html"><i class="icon_new"></i>成品纸</a>
+						</li>
+						<li id="head_wl">
+							<a target="_blank" href="search/search.html">废纸搜索</a>
+						</li>
+						<li id="head_baitiao">
+							<a target="_blank" href="information/infor_price.html">资讯</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!--banner图-->
+		<div class="banner">
+			
+			<div class="banner-left">
+				
+				<h3>供应商<div class="co_province">
+					<select id="seachprov" name="seachprov" onChange="changeComplexProvince(this.value, sub_array, 'seachcity', 'seachdistrict');"></select>				
+				
+					<select style="display: none;" id="seachcity" name="homecity" onChange="changeCity(this.value,'seachdistrict','seachdistrict');">
+					</select>
+					<select style="display: none;" name="district" id="seachdistrict">
+					</select>
+				</div>
+				</h3>
+				<div class="banner-left-outer">
+				<div class="banner-left-section">
+					<ul></ul>
+				</div>
+				</div>
+				</div>
+				<script type="text/html" id="co_list_tpl">
+					{{each data.rank_list value}}
+					<li>
+							<a target="_blank" href="mall/store_detail.html?cid={{value.c_id}}" class="co_info">
+								<p class="co_name"><img class="header_img" src="https://two.zhiqunale.cn/{{value.c_headurl}}" alt="" /><span>{{value.c_username}}</span>
+									{{if value.c_certification==1}}
+									<img src="../img/shouye_shimingrenzheng.png" alt="" />
+									{{/if}}
+									{{if value.c_is_company==1}}
+									<img src="../img/shouye_qiyerenzheng.png" />
+									{{/if}}
+									{{if value.c_is_recommend==1}}
+									<img src="../img/shouye_tuijian.png" />
+									{{/if}}
+								</p>
+								<p>成交量：{{value.total_num}}吨</p>
+								<p>地址：{{value.address}}</p>
+							</a>
+						</li>
+						{{/each}}
+				</script>
+			<div class="banner-middle">
+				<div class="banner-slide">
+					<div class="swiper-container swiper-banner">
+						<!--banner-->
+						<div class="swiper-wrapper" id="banner-img" style="width: 3800px; height: 340px; transform: translate3d(-3040px, 0px, 0px); transition-duration: 0.3s;">
+
+						</div>
+						<div class="icon swiper-button-prev banner-prev"></div>
+						<div class="icon swiper-button-next banner-next"></div>
+						<div class="pagination-wrap">
+							<div class="pagination">
+								<span class="swiper-pagination-switch"></span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="banner-right">
+				<div class="login-action">
+					<div class="head-wrap">
+						<div class="head">
+							<img src="../img/index_touxiang.png">
+						</div>
+						<div class="welcome">
+							Hi，欢迎来到纸去哪了网！
+						</div>
+						<div class="login-action-button">
+							<a href="login/login.html" class="bt-login">登录</a>
+						</div>
+					</div>
+				</div>
+
+				<div class="login-slide">
+					<div class="tabs">
+						<a href="###">纸去哪了资讯</a>
+					</div>
+					<div class="login-marquee">
+						<ul>
+							<li>
+								<a href="javascript:void(0);">纸去哪了早知道-20171110</a>
+							</li>
+							<li>
+								<a href="javascript:void(0);">纸去哪了早知道-20171110</a>
+							</li>
+							<li>
+								<a href="javascript:void(0);">纸去哪了早知道-20171110</a>
+							</li>
+							<li>
+								<a href="javascript:void(0);">纸去哪了早知道-20171110</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="login-project">
+					<dl>
+						<dt>
+                        <i class="icon icon-zs"><img src="../img/index_home.png"/></i>
+                    </dt>
+						<dd>
+							废纸信息
+							<div class="ewm">
+								<!--废纸信息二维码-->
+								<img src="../img/wx.jpg" alt="">
+								<span>关注废纸信息</span>
+							</div>
+						</dd>
+					</dl>
+					<dl>
+						<dt>
+                        <i class="icon icon-wl"></i>
+                    </dt>
+						<dd>
+							小猴物流
+							<div class="ewm">
+								<!--小猴物流app下载二维码-->
+								<img src="../img/wx.jpg" alt="">
+								<span>下载小猴物流</span>
+							</div>
+						</dd>
+					</dl>
+					<dl class="mar0">
+						<dt>
+                        <i class="icon icon-sd"></i>
+                    </dt>
+						<dd>
+							纸去哪了
+							<div class="ewm">
+								<!--纸去哪了二维码-->
+								<img src="../img/wx.jpg" alt="">
+								<span>关注纸去哪了</span>
+							</div>
+						</dd>
+					</dl>
+				</div>
+			</div>
+		</div>
+		<!--内容区域-->
+		<div class="index-main">
+			<p class="cooperate_company">合作纸厂
+				<a class="more_info" href="javascript:void(0);">更多></a>
+			</p>
+			<div class="index-ad co_factory swiper-container">
+				<div class="ad_slide swiper-wrapper" style="width: 5900px; height: 74px; transform: translate3d(-3540px, 0px, 0px); transition-duration: 0.3s;">
+					<div class="swiper-slide" style="width: 295px; height: 74px;">
+						<a href="javascript:void(0);"><img src="../img/index_logo_qiahao.png"></a><span class="line"></span></div>
+					<div class="swiper-slide" style="width: 295px; height: 74px;">
+						<a href="javascript:void(0);"><img src="../img/index_logo_shanying.png"></a><span class="line"></span></div>
+					<div class="swiper-slide" style="width: 295px; height: 74px;">
+						<a href="javascript:void(0);"><img src="../img/index_logo_derun.png"></a><span class="line"></span></div>
+				</div>
+				<div class="icon swiper-button-prev ad-prev"></div>
+				<div class="icon swiper-button-next ad-next"></div>
+			</div>
+			<!--合作贸易公司-->
+			<p class="cooperate_company">合作贸易公司
+				<a class="more_info" href="javascript:void(0);">更多></a>
+			</p>
+			<div class="index-ad co_company swiper-container">
+				<div class="ad_slide swiper-wrapper" style="width: 5900px; height: 74px; transform: translate3d(-3540px, 0px, 0px); transition-duration: 0.3s;">
+					<div class="swiper-slide" style="width: 295px; height: 74px;">
+						<a href="javascript:void(0);"><img src="../img/index_logo_derun.png"></a><span class="line"></span></div>
+					<div class="swiper-slide" style="width: 295px; height: 74px;">
+						<a href="javascript:void(0);"><img src="../img/index_logo_qiahao.png"></a><span class="line"></span></div>
+					<div class="swiper-slide" style="width: 295px; height: 74px;">
+						<a href="javascript:void(0);"><img src="../img/index_logo_shanying.png"></a><span class="line"></span></div>
+				</div>
+				<div class="icon swiper-button-prev  ad-prevs"></div>
+				<div class="icon swiper-button-next  ad-nexts"></div>
+			</div>
+
+			<div class="index-shop" id="mallDiv">
+				<div class="public-title">
+					<div class="title-heading">纸去哪了动态
+						<a class="more_info" href="javascript:void(0);">更多></a>
+					</div>
+				</div>
+				<div class="shop-left">
+					<div class="shop-title">最近成交动态</div>
+
+					<div class="slick swiper-container" id="mallLatestOrder">
+						<div class="swiper-wrapper" id="news" style="width: 259px; height: 1792px; transform: translate3d(0px, -896px, 0px); transition-duration: 0.3s;">
+	
+
+						</div>
+					</div>
+				</div>
+				<div class="shop-right">
+					<div class="shop-title">最新采购</div>
+					<table>
+						<thead>
+							<tr>
+								<th style="width:109px;">品名</th>
+								<th style="width:109px;">地区</th>
+								<th style="width:109px;">纸厂</th>
+								<th style="width:109px;">数量</th>
+								<th style="width:109px;">价格（元/吨）</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>国废A级纸</td>
+								<td>杭州</td>
+								<td>山鹰纸厂</td>
+								<td>1吨</td>
+								<td>2000</td>
+							</tr>
+							<tr>
+								<td>国废A级纸</td>
+								<td>杭州</td>
+								<td>山鹰纸厂</td>
+								<td>1吨</td>
+								<td>2000</td>
+							</tr>
+							<tr>
+								<td>国废A级纸</td>
+								<td>杭州</td>
+								<td>山鹰纸厂</td>
+								<td>1吨</td>
+								<td>2000</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		<!--底部-->
+		<div id="footer">
+			<div class="advantage">
+				<ul class="w1180" id="footer_content">
+					<li>
+						<div class="footer_div1">商城直售纸厂</div>
+						<a href="javascript:void(0);">如何采购废纸</a>
+						<a href="javascript:void(0);">采购流程 </a>
+					</li>
+					<li>
+						<div class="footer_div2">免费发布需求</div>
+						<a href="javascript:void(0);">如何免费发布采购需求 </a>
+						<a href="javascript:void(0);">如何发布物流需求</a>
+					</li>
+					<li class="thelast">
+						<div class="footer_div3">免费找车</div>
+						<a href="javascript:void(0);">如何免费找车</a>
+						<a href="javascript:void(0);" style="color: #333;cursor: default;">如何免费找车</a>
+					</li>
+				</ul>
+			</div>
+			<div class="copyright">
+				<div class="link">
+					<a href="javascript:void(0);">关于我们</a>
+					|
+					<a href="javascript:void(0);">法律声明</a>
+					|
+					<a href="javascript:void(0);">诚聘英才</a>
+					|
+					<a href="javascript:void(0);">投资洽谈</a>
+					|
+					<a href="javascript:void(0);">联系我们</a>
+					|
+					<a href="javascript:void(0);">常见问题</a>
+				</div>
+				<p>COPYRIGHT ©
+					<a href="javascript:void(0);">纸去哪了网</a> 浙ICP备 13013915号-3 ICP证：浙B2-20140148</p>
+			</div>
+		</div>
+		<!--banner图-->
+		<script type="text/html" id="banner_tpl">
+			{{each data.banner value}}
+			<div class="swiper-slide swiper-slide-duplicate" style="width: 760px; height: 388px;">
+				<a style="display: inline-block;width: 100%;height: 100%;" target="_blank" href="{{value.ba_link}}"><img src="https://two.zhiqunale.cn{{value.ba_img}}" style="width:100%;height:100%"></a>
+
+			</div>
+			{{/each}}
+
+		</script>
+		<!--滚动信息-->
+		<script type="text/html" id="news_tpl">
+			{{each data.news value}}
+			<div class="swiper-item swiper-slide">
+				<p class="p-top">{{value}}</p>
+			</div>
+			{{/each}}
+
+		</script>
+		<script src="../lib/jquery-1.8.3.min.js"></script>
+		<script src="../lib/idangerous.swiper.min.js"></script>
+		<script src="../lib/AreaData_min.js"></script>
+		<script src="../lib/Area.js"></script>
+		<script type="application/javascript" src="../lib/md5.js"></script>
+		<script src="../lib/template-web.js"></script>
+		<script type="text/javascript" src="../lib/homePage.js"></script>
+		<script src="../js/secret.js"></script>
+		<script src="../js/topbar.js"></script>
+		<script type="text/javascript">
+			initComplexArea('seachprov', 'seachcity', 'seachdistrict', area_array, sub_array, '0', '0', '0');
+			/*(function() {
+							var geolocation = new BMap.Geolocation();
+							geolocation.getCurrentPosition(function(r) {
+								if(this.getStatus() == BMAP_STATUS_SUCCESS) {
+									cookie.setCookie('userlng', r.point.lng);
+									cookie.setCookie('userlat', r.point.lat);
+									cookie.setCookie('province', r.address.province);
+									setTimeout(function() {
+										var url = 'https://two.zhiqunale.cn/paper/paperbuy/getiwant';
+										var argu = {
+											province: cookie.getCookie('province')
+										};
+										//GetList(argu, url, getRanks);
+									}, 0);
+								} else {
+									alert('failed' + this.getStatus());
+								}
+							}, {
+								enableHighAccuracy: true
+							});
+
+
+						})();*/
+			$('#seachprov').change(function(){				
+				var pro = $(this).find("option:selected").text();				
+				if(pro.indexOf('请')>=0){
+					argu.province='全国';								
+				}else{
+					argu.province=$(this).find("option:selected").text();	
+				}
+				GetList(argu, url, getRanks);				
+			})
+			var url = 'https://two.zhiqunale.cn/paper/paperbuy/getiwant';
+			var argu = {
+				province: '全国'
+			};
+			GetList(argu, url, getRanks);
+			function getRanks(data) {
+				console.log(data);
+				if(data.status_code == 10000) {
+					var html = template('banner_tpl', data);
+					$('#banner-img').html(html);
+					var list = template('co_list_tpl',data);
+					$('.banner-left-section ul').html(list);
+					setTimeout(function() {
+						banner.fn_swiper();
+					}, 10);
+					var news = template('news_tpl', data);
+					$('#news').html(news);
+					setTimeout(function() {
+						mall.fn_del_action();
+					}, 100);
+					
+				}
+			}
+		</script>
+
+	</body>
+
+</html>

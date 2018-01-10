@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>卖废纸买废纸，上纸去哪了</title>
+    <link rel="stylesheet" type="text/css" href="../../css/personal.css" />
+</head>
+<body style="background: #fff;">
+<div class="topbar"></div>
+<div class="navbar"></div>
+<div class="ioubanner">
+    <img src="../../img/baitiao_banner.png"/>
+</div>
+<div class="ioubox">
+    <div class="ioubox-item">
+        <span>姓名</span>
+        <input type="text" class="name" placeholder="请填写姓名"/>
+    </div>
+    <div class="ioubox-item">
+        <span>电话</span>
+        <input type="text" class="phone" placeholder="请填写电话号码"/>
+    </div>
+    <div class="ioubox-item">
+        <span style="margin-right: 10px;">地址</span>
+        <select id="seachprov" name="seachprov" onChange="changeComplexProvince(this.value, sub_array, 'seachcity', 'seachdistrict');"></select>
+        <select id="seachcity" name="homecity" onChange="changeCity(this.value,'seachdistrict','seachdistrict');"></select>
+        <select id="seachdistrict"></select>
+    </div>
+    <div class="ioubox-item">
+        <span>详细地址</span>
+        <textarea class="detail" placeholder="请填写详细地址"></textarea>
+    </div>
+    <div class="ioubox-item">
+        <span>借款金额（元）</span>
+        <input type="text" class="money" placeholder="请填写借款金额" onkeyup="value=value.replace(/[^\d]/g,'') " onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))"/>
+    </div>
+    <div class="ioubox-item">
+        <span>资金用途</span>
+        <input type="text" class="yongtu" placeholder="请填写资金用途"/>
+    </div>
+    <div class="ioubox-item">
+        <span>还款周期（月）</span>
+        <input type="text" class="zhouqi" placeholder="请填写还款周期" onkeyup="value=value.replace(/[^\d]/g,'') " onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))"/>
+    </div>
+    <div class="ioubox-item">
+        <button class="iousubmit">提交</button>
+        <p>提交代表同意 <a href="">《纸去哪了》小猴白条用户协议</a></p>
+    </div>
+</div>
+<div class="footer"></div>
+<input type="hidden" class="feedback"/>
+<script src="../../lib/jquery-1.8.3.min.js"></script>
+<script src="../../lib/md5.js"></script>
+<script src="../../js/secret.js"></script>
+<script src="../../js/cookie.js"></script>
+<script type="text/javascript" src="../../lib/Area.js"></script>
+<script type="text/javascript" src="../../lib/AreaData_min.js"></script>
+<script src="../../js/iou.js"></script>
+</body>
+</html>
