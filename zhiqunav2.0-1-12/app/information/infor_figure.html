@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv = "X-UA-Compatible" content = "IE=edge,chrome=1" />
+    <title>纸去哪了-废纸交易平台</title>
+   <link rel="stylesheet" href="../../css/information.css"/>
+</head>
+<body>
+
+<div id="top_bar"></div>
+<div id="nav_bar"></div>
+<div class="inforBox">
+    <ul class="infor_bar">
+        <li>
+            <a href="infor_price.html">报价</a>
+        </li>
+        <li>
+            <a href="infor_policy.html">政策</a>
+        </li>
+        <li>
+            <a href="infor_analyze.html">分析</a>
+        </li>
+        <li class="on">
+            <a href="javascript:;">人物</a>
+        </li>
+    </ul>
+    <h3 class="infor_title"><img src="../../img/zixun_renwutoutiao.png"/></h3>
+    <ul class="infor_figure infor_list">
+    </ul>
+</div>
+<div id="footer"></div>
+<input class="head_baitiao" type="hidden" />
+    <script src="../../lib/jquery-1.8.3.min.js"></script>
+<script src="../../lib/md5.js"></script>
+<script src="../../js/secret.js"></script>
+    <script>
+        $(function(){
+            $('#top_bar').load('../public/topBar.html');
+            $('#nav_bar').load('../public/navBar.html');
+            $('#footer').load('../public/footer.html');
+        })
+    </script>
+</body>
+</html>

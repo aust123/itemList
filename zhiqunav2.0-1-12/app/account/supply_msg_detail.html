@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>卖废纸买废纸，上纸去哪了</title>
+    <link rel="stylesheet" href="../../css/personal.css"/>
+</head>
+<body>
+<div class="topbar"></div>
+<div class="personalbanner"></div>
+<div class="personalbox">
+    <!-- 侧边栏-->
+    <div class="personal-aside">
+    </div>
+    <!-- 主要内容-->
+    <div class="dealMessage">
+        <div class="dealMessage-detail supplydetail">
+            <script type="text/html" id="supplydetail">
+                <h3>
+                    供应消息详情
+                    <label class="kefu"><img src="../../img/my_wodebaojia_chat.png"/>联系客服</label>
+                    <label class="phone" data-phone="{{c_phone}}" style="color: #5FC31E;"><img src="../../img/my_wodebaojia_phone.png"/>打电话</label>
+                </h3>
+                <h4>我的采购</h4>
+                <div class="mine">
+                    <p>
+                        <span>规格：</span>
+                        <strong class="proname">{{sw_product_name}}</strong>
+                    </p>
+                    <p>
+                        <span>价格：</span>
+                        <b>{{pn_product_price}}元/吨</b>
+                    </p>
+                    <p>
+                        <span>起止日期：</span>
+                        {{$imports.dateFormat(pn_start_time)}} --- {{$imports.dateFormat(pn_end_time)}}
+                    </p>
+                </div>
+                <h4>卖方报价</h4>
+                <div class="others">
+                    <p style="margin-bottom: 10px;">
+                        <img class="headurl" src="https://two.zhiqunale.cn/{{c_headurl}}"/>
+                        {{c_username}}
+                        {{if c_certification==1}}
+                        <img src="../../img/zhoubian_renzheng_shi.png"/>
+                        {{/if}}
+                        {{if c_is_company==1}}
+                        <img src="../../img/zhoubian_renzheng_qi.png"/>
+                        {{/if}}
+                        {{if c_is_recommend==1}}
+                        <img src="../../img/zhoubian_renzheng_tui.png"/>
+                        {{/if}}
+                        <b style="margin-left: 15px;">信用分：{{store_credit_score}}分</b>
+                    </p>
+                    <p>
+                        <span>供应价：</span>
+                        <b>{{sw_baojia}}元/吨</b>
+                    </p>
+                    <p>
+                        <span>数量：</span>
+                        {{sw_sale_weight}}吨
+                    </p>
+                    <p>
+                        <span>订金：</span>
+                        <b class="dingjin" data-dingjin="{{sw_is_pay_bail}}">{{sw_bail_money}}元</b>
+                    </p>
+                    <p>
+                        <span>物流费用：</span>
+                        {{if sw_who_pay_logistic==1}}
+                        <a>买家</a>
+                        {{else}}
+                        <a>卖家</a>
+                        {{/if}}
+                    </p>
+                </div>
+                <div class="state">
+                    <h4>
+                        <span>状态：</span>
+                        {{if sw_state==1}}
+                        <button data-sw_purchase_id="{{sw_purchase_id}}" data-sw_saler="{{sw_saler}}" data-sw_id="{{sw_id}}" class="agree">同意</button>
+                        <button data-sw_saler="{{sw_saler}}" data-sw_id="{{sw_id}}" class="refuse">拒绝</button>
+                        {{else if sw_state==2}}
+                        <a>已同意</a>
+                        {{else if sw_state==3}}
+                        <a>已拒绝</a>
+                        {{else if sw_state==4}}
+                        <a>超时</a>
+                        {{else if sw_state==5}}
+                        <a>已取消</a>
+                        {{/if}}
+                    </h4>
+                    <!--{{if sw_is_pay_bail==1}}-->
+                    <!--<ul class="payments">-->
+                        <!--<li style="text-align: center;padding: 10px 12px;">选择支付方式</li>-->
+                        <!--<li>-->
+                            <!--<h5 class="njpay"><img src="../../img/nanjingyinhang.png" alt=""/>银行卡支付</h5>-->
+                        <!--</li>-->
+                        <!--<li>-->
+                            <!--<h5 class="alipay_pc_direct"><img src="../../img/zhifubao.png" alt=""/>支付宝</h5>-->
+                        <!--</li>-->
+                        <!--<li>-->
+                            <!--<h5 class="wx_pub_qr"><img src="../../img/weixingzhifu.png" alt=""/>微信</h5>-->
+                        <!--</li>-->
+                        <!--<li>-->
+                            <!--<h5 class="upacp_pc"><img src="../../img/yinglian.png" alt=""/>p++支付</h5>-->
+                        <!--</li>-->
+                        <!--<li>-->
+                            <!--<h5 class="yue"><img src="../../img/yuebao.png" alt=""/>余额</h5>-->
+                        <!--</li>-->
+                    <!--</ul>-->
+                    <!--{{/if}}-->
+                </div>
+            </script>
+        </div>
+    </div>
+</div>
+<div class="footer"></div>
+<!--<div class="ewmshow" id="qrcode"></div>-->
+<div class="ppbox">
+</div>
+<input type="hidden" class="supplyMsg" />
+
+<script src="../../lib/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="../../lib/md5.js"></script>
+<script type="text/javascript" src="../../js/secret.js"></script>
+<script type="text/javascript" src="../../lib/template-web.js"></script>
+<script type="text/javascript" src="../../lib/pingpp.js"></script>
+<script type="text/javascript" src="../../lib/qrcode.min.js"></script>
+<script src="../../js/supplyMsg_detail.js"></script>
+</body>
+</html>

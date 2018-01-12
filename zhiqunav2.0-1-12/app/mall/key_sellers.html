@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>卖废纸买废纸，上纸去哪了</title>
+    <link rel="stylesheet" href="../../css/product.css"/>
+    <link rel="stylesheet" href="../../css/jquery-ui.min.css"/>
+    <style>
+        .supplypaper{
+            border: 1px solid #e5e5e5;
+            border-radius: 4px;
+            width: 248px;
+            height: 44px;
+            padding: 6px 12px;
+            margin-right: 18px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+<div class="topbar"></div>
+<!--一键卖货-->
+<div id="intention">
+    <div class="intention-banner"></div>
+    <div class="intention">
+        <h3>卖货</h3>
+        <div class="intention-form">
+            <div class="intention-item">
+                <span>供应纸厂</span>
+                <select class="supplypaper">
+                    <option value="0">请选择纸厂</option>
+                    <script type="text/html" id="supplypaper">
+                        {{each data as value}}
+                        <option data-paper_type="{{value.paper_type}}" data-address="{{value.address}}" value="{{value.paper_id}}">{{value.paper_name}}</option>
+                        {{/each}}
+                    </script>
+                </select>
+            </div>
+            <div class="intention-item">
+                <span>货品名称</span>
+                <input class="saleName" type="text"/>
+            </div>
+            <div class="intention-item">
+                <span>货品重量（吨）</span>
+                <input class="saleWeight" type="text" onkeyup="value=value.replace(/[^\d.]/g,'')" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d.]/g,''))"/>
+            </div>
+            <div class="intention-item">
+                <span>发货日期</span>
+                <!--日期插件-->
+                <input readonly onpropertychange="onPropertyChange(event)" type="text" id="startTime"/>
+            </div>
+            <div class="intention-item">
+                <span>物流费用负责方：</span>
+                <ul class="fufei">
+                    <li data-fee="1" class="on">买方</li>
+                    <li data-fee="2">卖方</li>
+                </ul>
+            </div>
+            <div class="intention-item" style="text-align:center;">
+                <button class="issueSure" style="width:280px;">确认提交</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="footer"></div>
+
+<script src="../../lib/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="../../lib/md5.js"></script>
+<script type="text/javascript" src="../../js/secret.js"></script>
+<script type="text/javascript" src="../../lib/template-web.js"></script>
+<script type="text/javascript" src="../../lib/jquery-ui.js"></script>
+<script type="text/javascript" src="../../lib/jquery.ui.datepicker-zh-CN.js"></script>
+<script src="../../js/keySellers.js"></script>
+</body>
+</html>

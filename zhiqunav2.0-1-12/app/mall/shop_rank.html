@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>卖废纸买废纸，上纸去哪了</title>
+		<link rel="stylesheet" href="../../css/orders.css" />
+		<link rel="shortcut icon" href="../favicon.png" type="image/x-icon" />
+	</head>
+
+	<body style="background: #fff;">
+		<div class="topbar"></div>
+		<div class="shop-rank-content">
+			<h1 class="personal-content-title">店铺排名</h1>
+			<div id="trade_co_info" class="shop_rank">
+				<ul></ul>
+			</div>
+		</div>
+		<div class="footer"></div>
+		<script type="text/html" id="ranks_tpl">
+			{{if data.recommend_store.length>0}} {{each data.recommend_store value}}
+			<li>
+				<div class="co_logo"><img src="https://two.zhiqunale.cn/{{value.c_store_headurl}}" /></div>
+				<div>
+					<p class="tarde_co_name">
+						<a style="color: #333;" href="store_detail.html?cid={{value.c_id}}">{{value.c_store_name}}</a>
+					</p>
+					<p class="co_status">
+						{{if value.c_certification==1}}
+						<img style="width: 16px;" src="../../img/zhoubian_renzheng_shi.png" /> {{/if}} {{if value.c_is_company==1}}
+						<img style="width: 22px;" src="../../img/zhoubian_renzheng_qi.png" /> {{/if}} {{if value.c_is_recommend==1}}
+						<img style="width: 18px;" src="../../img/zhoubian_renzheng_tui.png" /> {{/if}}
+					</p>
+				</div>
+				<div class="co_address">{{value.address}}</div>
+			</li>
+			{{/each}} {{/if}}
+
+		</script>
+		<script src="../../lib/jquery-1.8.3.min.js"></script>
+		<script src="../../lib/md5.js"></script>
+		<script src="../../js/secret.js"></script>
+		<script src="../../lib/template-web.js"></script>
+		<script>
+			$('.topbar').load('../public/topbar.html');
+			$('.footer').load('../public/footer.html');
+			(function() {
+				var argu=null;
+				var url = 'https://two.zhiqunale.cn/paper/paperbuy/getiwant';
+				if(cookie.getCookie('uid')) {
+					 argu = {
+						user_id: cookie.getCookie('uid'),
+						province: cookie.getCookie('province'),
+						device_number: 'pc_online'
+					};
+				} else {
+					 argu = {
+						province: cookie.getCookie('province')
+					};
+				};
+				console.log(argu)
+				GetList(argu, url, getRanks);
+			})();
+
+			function getRanks(data) {
+				console.log(data);
+				if(data.status_code == 10000) {
+					var html = template('ranks_tpl', data);
+					$('.shop_rank ul').html(html);
+				}
+			}
+		</script>
+
+	</body>
+
+</html>
