@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+	<head lang="en">
+		<meta charset="UTF-8">
+		<title>卖废纸买废纸，上纸去哪了</title>
+		<link rel="stylesheet" href="../../css/personal.css" />
+	</head>
+
+	<body>
+		<div class="topbar"></div>
+		<!--地址管理-->
+		<div class="personal">
+			<div class="personalbanner"></div>
+			<div class="personalbox">
+				<!-- 侧边栏-->
+				<div class="personal-aside">
+				</div>
+				<!-- 主要内容-->
+				<div class="personal-content">
+					<h1 class="personal-content-title">支付密码</h1>
+					<div class="paymentcode">
+						<div class="addcard-item">
+							<span>手机号</span>
+							<input id="phone" type="text" style="color: #333;" placeholder="请输入手机号" />
+						</div>
+						<div class="addcard-item">
+							<span>验证码</span>
+							<input class="yzm" style="width: 140px;" type="text" maxlength="6" placeholder="请输入验证码" />
+							<button class="get_code">获取验证码</button>
+						</div>
+						<div class="addcard-item">
+							<span>支付密码</span>
+							<input id="paycode" maxlength="6" type="password" placeholder="请输入支付密码" />
+						</div>
+						<div class="addcard-item">
+							<span>确认支付密码</span>
+							<input id="repaycode" maxlength="6" type="password" placeholder="请确认支付密码" />
+						</div>
+						<div class="addcard-sure">
+							<a id="paysure">确认</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="footer"></div>
+		<input type="hidden" class="paymentCode" />
+		<script src="../../lib/jquery-1.8.3.min.js"></script>
+		<script src="../../lib/md5.js"></script>
+		<script src="../../js/secret.js"></script>
+		<script>
+			$('.personal-aside').load('personal_aside.html');
+			$('.topbar').load('../public/topbar.html');
+			$('.footer').load('../public/footer.html');
+			//    验证
+			$('#paysure').click(function() {
+				/*(new RegExp(/^\d{6}$/).test($('#paycode').val())) &&
+					((new RegExp(/^\d{6}$/).test($('#paycode').val())) && ($('#paycode').val() == $('#repaycode').val())) &&
+					(new RegExp(/^\d{11}$/).test($('#phone').val()))*/
+				if($('#phone').val()!=''&& $('#paycode').val()!=''&&$('#repaycode').val()!=''&&$('.yzm').val()!='') 
+				{
+					var url = 'https://two.zhiqunale.cn/Paper/PersonalCenter/set_payment_password';
+					var argu = {
+						phone: $('#phone').val(),
+						pay_password:$('#paycode').val(),
+						repeat_password:$('#repaycode').val(),
+						code:$('.yzm').val(),
+						code_id:cookie.getCookie('code_id'),
+						c_id:cookie.getCookie('uid'),
+						user_state:1,
+						device_number:'pc_online'
+					};
+					GetList(argu, url, setPayCode);
+				}else{
+					window.confirm('密码设置失败，请核对您提交的信息！');
+				}
+			});
+			
+			function setPayCode(data){
+				//console.log(data);
+				if(data.status_code==10000){
+					window.confirm('您的支付密码设置成功！');
+					//跳转去哪？
+				}else if(data.status_code==10001){
+					window.confirm('密码长度不正确！')
+				}else if(data.status_code==10002){
+					window.confirm('两次密码不一致！')
+				}
+			}
+			
+			//获取验证码
+			$('.get_code').click(function() {
+				if(Check.Test($('#phone')) || Check.time($('.get_code'))) {
+					return false;
+				}
+				var url = 'https://two.zhiqunale.cn/paper/user/send_code_func';
+				var argu = {
+					phone: $('#phone').val()
+				};
+				GetList(argu, url, getcode);
+			})
+
+			function getcode(data) {
+				if(data.status_code == 10000) {
+					//console.log(data);
+					cookie.setCookie('code_id', data.data.code_id);
+				}else if(data.status_code == 10005){
+					alert(data.msg);
+				}else if(data.status_code == 10006){
+					alert(data.msg);
+				}
+			}
+
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>卖废纸买废纸，上纸去哪了</title>
+    <link rel="stylesheet" href="../../css/product.css"/>
+    <style>
+        .issuePurchase-item{
+            line-height: 30px;
+        }
+    </style>
+</head>
+<body style="background: #fff;">
+<div class="topbar"></div>
+<div class="navbar"></div>
+<div id="allmap"></div>
+<!--采购主体内容-->
+<div id="purchase">
+    <!-- 左边列表-->
+    <div class="purchase-list">
+        <!-- 发布采购-->
+        <div class="issuePurchase">
+            <h3>供应商品详情</h3>
+            <div class="issuePurchase-form supplydetail">
+                <script type="text/html" id="supplydetail">
+                    <div class="issuePurchase-item">
+                        <span>货品规格：</span>{{sp_product_name}}
+                    </div>
+                    <div class="issuePurchase-item">
+                        <span>货品重量：</span>{{sp_product_weight}}吨
+                    </div>
+                    <div class="issuePurchase-item">
+                        <span>货品价格：</span>{{sp_product_price}}元/吨
+                    </div>
+                    <div class="issuePurchase-item">
+                        <span>起止时间：</span>{{$imports.dateFormat(sp_start_time)}}---{{$imports.dateFormat(sp_end_time)}}
+                    </div>
+                    <div class="issuePurchase-item">
+                        <span>详细地址：</span>{{address}}
+                    </div>
+                    <div class="issuePurchase-item">
+                        <span>备注：</span>{{sp_beizhu}}
+                    </div>
+                    <div class="issuePurchase-item">
+                        <ul class="upload-list" style="padding-left: 60px;">
+                            {{each sp_product_photos as value i}}
+                            <li>
+                                <img src="https://two.zhiqunale.cn/{{value}}"/>
+                            </li>
+                            {{/each}}
+                        </ul>
+                    </div>
+                </script>
+            </div>
+        </div>
+    </div>
+    <!-- 右边采购信息-->
+    <div class="purchase-buy">
+    </div>
+</div>
+<div class="footer"></div>
+<input type="hidden" class="buyHidden"/>
+
+<script src="../../lib/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="../../lib/md5.js"></script>
+<script type="text/javascript" src="../../js/secret.js"></script>
+<script type="text/javascript" src="../../lib/template-web.js"></script>
+<script src="../../js/scan_supply.js"></script>
+</body>
+</html>

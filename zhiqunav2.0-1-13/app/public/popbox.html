@@ -1,0 +1,74 @@
+
+<!--弹出框-->
+
+<div class="popBox relationBox">
+	<div class="popback"></div>
+	<div class="popfront">
+		<div class="popshow">
+			<p>
+				电话：<span class="popPhone"></span>
+			</p>
+			<p>
+				<button class="popHide">确定</button>
+			</p>
+		</div>
+	</div>
+</div>
+
+<div class="popBox paybox">
+	<div class="popback"></div>
+	<div class="popfront">
+		<div class="popshow">
+			<h3>选择支付方式</h3>
+			<ul class="payments">
+				<li class="njpay">
+					<img src="../../img/nanjingyinhang.png" alt=""/>银行卡支付
+				</li>
+				<li class="alipay_pc_direct">
+					<img src="../../img/zhifubao.png" alt=""/>支付宝
+				</li>
+				<li class="wx_pub_qr">
+					<img src="../../img/weixingzhifu.png" alt=""/>微信
+					<div class="intentionewm" id="qrcode"></div>
+				</li>
+				<li class="upacp_pc">
+					<img src="../../img/yinglian.png" alt=""/>p++支付
+				</li>
+				<li class="yue">
+					<img src="../../img/yuebao.png" alt=""/>余额
+				</li>
+			</ul>
+			<a class="closePaybox" href="javascript:;"><img src="../../img/tanchuang_cancel.png"/></a>
+		</div>
+	</div>
+</div>
+
+<div class="popBox paypwd">
+	<div class="popback"></div>
+	<div class="popfront">
+		<div class="popshow">
+			<p>请输入密码</p>
+			<p>
+				<input class="pwdtxt" type="password"/>
+			</p>
+			<p>
+				<button class="pwdsure">确定</button>
+			</p>
+			<a class="closePaypwd" href="javascript:;"><img src="../../img/tanchuang_cancel.png"/></a>
+		</div>
+	</div>
+</div>
+
+<script>
+	$('.closePaybox').click(function(){
+		$('.paybox').hide(function(){
+			$('.intentionewm').html('');
+		});
+	});
+	$('.relationBox .popHide').click(function(){
+		$('.relationBox').hide();
+	});
+	$('.closePaypwd').click(function(){
+		$('.paypwd').hide();
+	});
+</script>
