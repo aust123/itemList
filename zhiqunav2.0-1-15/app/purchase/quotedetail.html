@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>卖废纸买废纸，上纸去哪了</title>
+    <link rel="stylesheet" href="../../css/product.css"/>
+    <link rel="stylesheet" href="../../css/jquery-ui.min.css"/>
+    <style>
+        .issuePurchase-item.beforequote-item{
+            margin-bottom: 0;
+        }
+        .beforequote-item span{
+            text-align: left;
+        }
+        .purchase-buy{
+            position: relative;
+            top: 50px;
+        }
+    </style>
+</head>
+<body style="background:#fff;">
+<div class="topbar"></div>
+<div class="navbar"></div>
+<div id="allmap"></div>
+<!--报价内容-->
+<div id="purchase">
+    <!-- 左边列表-->
+    <div class="purchase-list">
+        <!-- 报价-->
+        <div class="issuePurchase quote">
+            <h3>报价详情</h3>
+            <div class="quotedetail">
+                <script type="text/html" id="quotedetail">
+                    <div class="beforequote" data-sw_id="{{sw_id}}">
+                        <div data-sw_buyer="{{sw_buyer}}" data-sw_purchase_id="{{sw_purchase_id}}" class="beforequote-item quoteheadurl">
+                            <img class="headurl" src="https://two.zhiqunale.cn/{{c_headurl}}"/>
+                            <i>{{c_username}}</i>
+                            {{if c_certification==1}}
+                            <img src="../../img/productdetail_icon_smrz.png"/>
+                            {{/if}}
+                            {{if c_is_recommend==1}}
+                            <img src="../../img/zhoubian_renzheng_tui.png"/>
+                            {{/if}}
+                            {{if c_is_company==1}}
+                            <img src="../../img/productdetail_icon_qyrz.png"/>
+                            {{/if}}
+                            <b>信用分：{{store_credit_score}}</b>
+                        </div>
+                        <div class="beforequote-item">
+                            <span>规格：</span><strong class="hpgg">{{sw_product_name}}</strong>
+                        </div>
+                        <div class="beforequote-item">
+                            <span>价格：</span><b><strong class="price">{{pn_product_price}}</strong>元/吨</b>
+                        </div>
+                        <div class="beforequote-item">
+                            <span>数量：</span>{{pn_product_weight}}吨
+                        </div>
+                        <div class="beforequote-item">
+                            <span>地址：</span><strong class="addr">{{sw_reiceve_address}}</strong>
+                        </div>
+                        <div class="beforequote-item">
+                            <span>起止日期：</span>{{$imports.dateFormat(pn_start_time)}} -- {{$imports.dateFormat(pn_end_time)}}
+                        </div>
+                        <div class="beforequote-item">
+                            <span class="fee" data-logistic_fee="{{pn_logistic_fee}}">物流费用负责方：</span>
+                            {{if sw_who_pay_logistic==1}}
+                            <a>买方</a>
+                            {{else}}
+                            <a>卖方</a>
+                            {{/if}}
+                        </div>
+                    </div>
+                    <div class="issuePurchase-form">
+                        <div class="issuePurchase-item beforequote-item">
+                            <span>订金：</span>
+                            {{sw_bail_money}}元
+                        </div>
+                        <div class="issuePurchase-item beforequote-item">
+                            <span>数量：</span>{{sw_sale_weight}}吨
+                        </div>
+                        <div class="issuePurchase-item beforequote-item">
+                            <span>价格：</span>{{sw_baojia}}元/吨
+                        </div>
+                        <div class="issuePurchase-item beforequote-item">
+                            <span>发货日期：</span>{{$imports.dateFormat(sw_send_time)}}
+                        </div>
+                        <div class="issuePurchase-item beforequote-item">
+                            <span>供应意向状态：</span>
+                            {{if sw_state==1}}
+                            <a>处理中</a>
+                            {{else if sw_state==2}}
+                            <a>同意</a>
+                            {{else if sw_state==3}}
+                            <a>拒绝</a>
+                            {{else if sw_state==4}}
+                            <a>超时</a>
+                            {{else if sw_state==5}}
+                            <a>已取消</a>
+                            {{/if}}
+                        </div>
+                    </div>
+                </script>
+            </div>
+        </div>
+    </div>
+    <!-- 右边采购信息-->
+    <div class="purchase-buy">
+    </div>
+</div>
+<div class="footer"></div>
+<!--<input type="hidden" class="buyHidden"/>-->
+
+<script src="../../lib/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="../../lib/md5.js"></script>
+<script type="text/javascript" src="../../js/secret.js"></script>
+<script type="text/javascript" src="../../lib/template-web.js"></script>
+<script src="../../js/quotedetail.js"></script>
+</body>
+</html>
