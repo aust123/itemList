@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>卖废纸买废纸，上纸去哪了</title>
+		<link rel="stylesheet" href="../../css/orders.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/personal.css" />
+	</head>
+
+	<body>
+		<div class="topbar"></div>
+		<div class="personalbanner"></div>
+		<div id="add_remark_content">
+			<div class="order_remark">
+				<h1 class="personal-content-title">订单备注</h1>
+				<div class="add_remarks">
+					<ul class="add_remarks_list">
+						<li>
+							<p class="slelct_cost">添加备注：
+								<select name="cost" class="cost">
+									<option value="">请选择</option>
+								</select>
+								<span class="del_remark">删除</span>
+							</p>
+							<p><textarea name="remark_write" placeholder="请填写备注信息！" class="remark_write" value=""></textarea></p>
+						</li>
+					</ul>
+					<p>
+						<a href="javascript:void(0);" class="add_remark_btn">添加</a>
+					</p>
+				</div>
+				<div class="add_remark_img">
+					<div class="up_title remark_imgs">添加备注图片</div>
+					<div>
+						<a class="upload_box" href="###"><input id="input_file" type="file" onchange="uploadImg(this)" /></a><span class="upload_tips">（最多可以上传9张！）</span></div>
+					<ul class="settle_imgs"></ul>
+				</div>
+				<p class="sure_box">
+					<a href="javascript:void(0)" class="sure_upload">保存</a>
+				</p>
+			</div>
+		</div>
+		<div class="footer"></div>
+		<script src="../../lib/jquery-1.8.3.min.js"></script>
+		<script src="../../lib/md5.js"></script>
+		<script src="../../js/secret.js"></script>
+		<script type="text/javascript">
+			$('.topbar').load('../public/topbar.html');
+			$('.footer').load('../public/footer.html');
+			$('.add_remark_btn').click(function() {
+				$('.add_remarks_list').append($('.add_remarks_list li').clone())
+			});
+
+			$(".add_remarks_list").delegate("span", "click", function() {
+				if($('.add_remarks_list li').length > 1) {
+					$(this).parent().parent().remove();
+				}
+			});
+			/*获取订单id*/
+			function getQuery($query) {
+				var que = $query.substring(1);
+				var arr = que.split('&');
+				var allQuery = {};
+				for(var i in arr) {
+					aa = arr[i].split('=');
+					var pro = aa[0];
+					allQuery[pro] = aa[1]
+				}
+				return allQuery;
+			};
+
+			/*获取备注词条*/
+			(function() {
+				var url = 'https://two.zhiqunale.cn/paper/remark/getlemma';
+				var argu = {
+					user_id: cookie.getCookie('uid'),
+					device_number: 'pc_online'
+				};
+				GetList(argu, url, getRemarkWord);
+			})();
+
+			function getRemarkWord(data) {
+				console.log(data);
+				if(data.status_code == 10000) {
+					for(var i in data.data) {
+						$(".cost").append("<option value=" + data.data[i]["l_id"] + ">" + data.data[i]["lemma_name"] + "</option>");
+					};
+					setRemarkLemma();
+				}
+			};
+
+			/*编辑订单备注信息开始*/
+
+			function setRemarkLemma() {
+				query = window.location.search;
+				queryData = getQuery(query);
+				if(queryData.ed){			
+				if(localStorage.remark_datas) {
+					var remark_datas = JSON.parse(localStorage.remark_datas);
+					console.log(remark_datas);
+					var remark_content = remark_datas.remark_content;
+					if(remark_datas.buyer_remark_photos) {
+						var remark_photos = remark_datas.buyer_remark_photos;
+					} else if(remark_datas.saler_remark_photos) {
+						var remark_photos = remark_datas.buyer_remark_photos;
+					};
+				};
+				/*编辑订单备注时渲染备注的图片*/
+				for(var k in remark_photos) {
+					var html = '<li><img src="' + 'https://two.zhiqunale.cn/' + remark_photos[k] + '" alt=""/></li>';
+					$('.settle_imgs').append(html);
+					picUrl.push(remark_photos[k]);
+				};
+				
+				/*编辑订单备注时渲染备注的内容*/
+				for(var j = 0; j < remark_content.length; j++) {
+					//$('.add_remarks_list').append($('.add_remarks_list li').eq(0).clone());
+					var tpl = $('.add_remarks_list li').eq(0);
+					var cost = $(tpl).find('.cost');
+					var costOpts = $(cost).find('option');
+					var costVal;
+				
+					for(var i = 0; i < costOpts.length; i++) {
+						if($(costOpts[i]).html() ==remark_content[j]['remark_lemma']) {
+							costVal = $(costOpts[i]).val();
+							$(cost).val(costVal);
+						}
+					};
+					$(tpl).find('.remark_write').val(remark_content[j]['remark_content']);					
+					
+					$('.add_remarks_list').append($(tpl));
+				};		
+				console.log($('.add_remarks_list li').length)
+				}
+			}
+
+			/*编辑订单备注信息结束*/
+			/*提交订单备注的信息*/
+			$('.sure_upload').click(function() {
+				
+				//console.log(queryData);
+				var li_length = $('.add_remarks_list li');
+				var remark_arr = [];
+				for(var i = 0; i < li_length.length; i++) {
+					var remarks = {};
+					if($(li_length[i]).find('.cost').find("option:selected").val() != '') {
+						remarks['remark_lemma'] = escape($(li_length[i]).find('.cost').find("option:selected").text());
+					};
+					if($(li_length[i]).find('.remark_write').val() != '') {
+						remarks['remark_content'] = escape($(li_length[i]).find('.remark_write').val());
+					};
+					remark_arr.push(remarks);
+				};
+				console.log(remark_arr);
+
+				/*订单备注图片和备注内容不能同时为空*/
+				if(picUrl.length == 0 && JSON.stringify(remark_arr[0]) == '{}') {
+					alert('请输入订单备注信息');
+					return false;
+				} else {
+					//获取的司机信息转换成JSON字符串	
+					var remark_data = JSON.stringify(remark_arr);
+				};
+				console.log(remark_data);
+				var url = 'https://two.zhiqunale.cn/paper/remark/addorderremark';
+				var argu = {
+					user_id: cookie.getCookie('uid'),
+					device_number: 'pc_online',
+					order_id: queryData.oid,
+					order_type: queryData.type,
+					remark_json_encode: remark_data,
+					remark_photos: picUrl.join()
+				};
+				console.log(argu);
+				GetList(argu, url, submitRemark);
+			});
+
+			function submitRemark(data) {
+				console.log(data);
+				if(data.status_code == 10000) {
+					window.confirm('订单备注添加成功')
+				} else {
+					alert('订单备注添加失败');
+				}
+			}
+
+			/*/*上传备注图片开始*/
+
+			function uploadImg($this) {
+				getImgUrl.ele = $this;
+				getImgUrl.showFun = settleImgs;
+				getImgUrl.uploadIcon();
+			}
+			var picUrl = [];
+
+			function settleImgs(data) {
+				if(data.code == 10000) {
+					if($('.settle_imgs li').length > 8) {
+						alert('最多可上传9张照片');
+					} else {
+						var html = '<li><img src="' + 'https://two.zhiqunale.cn/' + data.data + '" alt=""/></li>';
+						$('.settle_imgs').append(html);
+						picUrl.push(data.data);
+					}
+
+				}
+			};
+			/*删除上传的图片*/
+			$('.settle_imgs').delegate('li', 'click', function() {
+				//console.log($(this).find('img').attr('src'));
+				var imgPath = $(this).find('img').attr('src').replace('https://two.zhiqunale.cn/', '');
+				for(var i in picUrl) {
+					if(picUrl[i] == imgPath) {
+						picUrl.splice(i, 1);
+					}
+				}
+
+				$(this).remove();
+			});
+
+			/*上传备注图片结束*/
+		</script>
+	</body>
+
+</html>

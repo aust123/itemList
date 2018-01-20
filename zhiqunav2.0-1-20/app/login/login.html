@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="../../css/public.css" />
+		<title>卖废纸买废纸，上纸去哪了</title>		
+	</head>
+
+	<body>
+		<div class="topbar"></div>
+		<div class="personalbanner"></div>
+		<div class="login_box">
+			<div class="login_content">
+				<p class="logo_img"></p>
+				<form action="" method="">
+					<div><input class="telphone" placeholder="请输入手机号" maxlength="11" type="text" value="" /><span class="get_code">获取验证码</span></div>
+					<div><input class="yanzheng" placeholder="请输入验证码" maxlength="6" type="text" value="" /></div>
+					<p>短信验证码默认通过短信形式发送给您，显示为四位数字</p>
+					<div><input class="recommend_phone" placeholder="请输入推荐人手机号" maxlength="11" type="text" value="" /></div>
+					<div><input id="submit_button" type="button" value="确认" /></div>
+				</form>
+				<p>点击“确认”按钮，代表同意
+					<a class="agreement" href="agreement.html">纸去哪了协议</a>
+				</p>
+			</div>
+		</div>
+		
+		<script src="../../lib/jquery-1.8.3.min.js"></script>
+		<script src="../../lib/md5.js"></script>
+		<script src="../../js/secret.js"></script>
+		<script>
+			$('.topbar').load('../public/topbar.html');
+			$('.footer').load('../public/footer.html');
+			/*获取验证码*/
+			$('.get_code').click(function() {
+				if(Test($('.telphone'))||time($('.get_code'))) {
+					return false;
+				};
+				var url = 'https://two.zhiqunale.cn/paper/user/send_code_func';
+				var argu = {
+					phone: $('.telphone').val()
+				};
+				GetList(argu, url, getcode);
+			})
+
+			function getcode(data) {
+				if(data.status_code == 10000) {
+					console.log(data);
+					cookie.setCookie('code_id', data.data.code_id);
+				}else if(data.status_code == 10005){
+					alert(data.msg);
+				}else if(data.status_code == 10006){
+					alert(data.msg);
+				}
+			}
+
+			//登录
+			$('#submit_button').click(function() {
+				if(Test($('.telphone'))) {
+					return false;
+				};
+				var url = 'https://two.zhiqunale.cn/paper/user/consumer_login';
+				var argu = {
+					phone: $('.telphone').val(),
+					code: $('.yanzheng').val(),
+					code_id: parseInt(cookie.getCookie('code_id')),
+					tuijianren: $('.recommend_phone').val(),
+					device_number: 'pc_online'
+				};
+				GetList(argu, url, loginIn);
+			})
+
+			
+			function loginIn(data) {
+				console.log(data);
+				if(data.status_code == 10000) {
+					cookie.setCookie('uid', data.data.uid);
+					cookie.setCookie('user_phone', data.data.user_phone);
+					cookie.setCookie('username', data.data.username);
+					window.location.href = '../index.html';
+				} else if(data.status_code == 10043 || data.status_code == 10044) {
+					window.confirm('验证码不正确');
+				} else if(data.status_code == 10003) {
+					window.confirm(data.msg);
+				}
+			}
+			//验证手机号码
+			function Test(ele) {
+				if(ele.val() == '') {
+					alert('手机号不能为空');
+					return true;
+				} else if(!(/^1[34578]\d{9}$/.test(ele.val()))) {
+					alert('请输入正确的手机号码');
+					return true;
+				}
+			}
+
+			//点击获取验证码倒计时
+			function time(ele) {
+				if(ele.html().indexOf('s') > 0) {
+					return true;
+				}
+				var time = 60;
+				var t = setInterval(function() {
+					time--;
+					ele.html(time + " s");
+					if(time == 0) {
+						clearInterval(t);
+						ele.html("重新获取");
+					}
+				}, 1000)
+
+			}
+		</script>
+
+	</body>
+
+</html>

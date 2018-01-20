@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>卖废纸买废纸，上纸去哪了</title>
+		<link rel="stylesheet" href="../../css/orders.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/personal.css" />
+	</head>
+
+	<body>
+		<div class="topbar"></div>
+		<!--弹框信息提示-->
+		<div class="background"></div>
+		<div class="popupBox">
+			<div id="select_driver_msg">
+				<h4>是否上传司机信息？</h4>
+				<p class="select_tips">（点击不上传将直接发货！）</p>
+				<div id="delete_content">
+					<a href="javascript:void(0)" id="cancel">不上传</a>
+					<a href="driver.html" target="_blank" id="make_sure">上传</a>
+				</div>
+			</div>
+		</div>
+		<!--显示手机号码-->
+		<div class="ppbox">
+		</div>
+
+		<div class="personal">
+			<div class="personalbanner"></div>
+			<div class="personalbox">
+				<!-- 侧边栏-->
+				<div class="personal-aside"></div>
+				<!-- 主要内容-->
+				<div class="personal-content" style="min-height: 770px;">
+					<div class="details_content"></div>
+				</div>
+			</div>
+		</div>
+		<div class="footer"></div>
+		<script type="text/html" id="order_detail_tpl">
+
+			<!--判断是否是退款订单-->
+			{{if data.o_refund_money}}
+			<!--退款订单详情-->
+			{{if data.state==1}}
+			<h1 class="personal-content-title">订单详情 <div class="contact"><a id="chat" href="javascript:void(0);">聊一聊</a><a id="phone_call" data-phone='{{data.saler.c_phone}}'  onclick="getPhone(this)" href="javascript:void(0);">联系卖家</a></div></h1> {{else if data.state==2}}
+			<h1 class="personal-content-title">订单详情 <div class="contact"><a id="chat" href="javascript:void(0);">聊一聊</a><a id="phone_call" data-phone='{{data.buyer.c_phone}}'  onclick="getPhone(this)" href="javascript:void(0);">联系卖家</a></div></h1> {{/if}}
+			<div id="trade_co_info" class="order_detail_new">
+				<ul>
+					<li>
+						<div class="co_logo"><img src="https://two.zhiqunale.cn/{{data.saler.c_store_headurl}}" /></div>
+						<div>
+							<p class="tarde_co_name">{{data.saler.c_store_name}}<span id="seller">卖方</span></p>
+							<p class="co_status">
+								{{if data.saler.c_certification==1}}
+								<img style="width: 16px;" src="../../img/zhoubian_renzheng_shi.png" alt="" /> {{/if}} {{if data.saler.c_is_company==1}}
+								<img style="width: 22px;" src="../../img/zhoubian_renzheng_qi.png" /> {{/if}} {{if data.saler.c_is_recommend==1}}
+								<img style="width: 18px;" src="../../img/zhoubian_renzheng_tui.png" /> {{/if}}
+							</p>
+							<p class="score">信用分：{{data.saler.c_store_credit_jugde}}分</p>
+						</div>
+					</li>
+					<li style="margin-bottom: 3px;">
+						<div class="co_logo"><img src="https://two.zhiqunale.cn/{{data.buyer.c_headurl}}" /></div>
+						<div>
+							<p class="tarde_co_name">{{data.buyer.c_username}}<span id="buyer">买方</span></p>
+							<p class="co_status">
+								{{if data.buyer.c_certification==1}}
+								<img style="width: 16px;" src="../../img/zhoubian_renzheng_shi.png" alt="" /> {{/if}} {{if data.buyer.c_is_company==1}}
+								<img style="width: 22px;" src="../../img/zhoubian_renzheng_qi.png" /> {{/if}} {{if data.buyer.c_is_recommend==1}}
+								<img style="width: 18px;" src="../../img/zhoubian_renzheng_tui.png" /> {{/if}}
+							</p>
+							<p class="score">信用分：{{data.buyer.c_personal_jugde_score}}分</p>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div class="order_info order_detail">
+				<p>规格：{{data.o_product_specifications}}</p>
+				<p>报价：<span class="order_price">{{data.o_baojia}}元/吨</span></p>
+				<p>收货地址：{{data.o_receive_address}}</p>
+				<p>发货日期：{{data.o_send_time}}</p>
+				<p>数量：{{data.o_product_weight}}吨</p>
+				<p style="margin-bottom: 0px;">买方支付订金：<span class="order_price">{{data.o_bail_money}}元</span></p>
+			</div>
+			<div class="order_info order_num">
+				<p>订单流水号：{{data.o_order_num}}</p>
+				<p>订金支付流水号：{{data.o_bail_num}}</p>
+				<p style="margin-bottom: 0px;">退款订单流水号：{{data.o_refund_num}}</p>
+			</div>
+
+			<!--退款金额-->
+
+			<div class="order_info totle_price" style="border: none;">
+				<p>申请退款金额：<span class="order_price">{{data.o_refund_money}}元</span></p>
+				<p>申请日期：{{data.o_refund_date}}</p>
+				{{if data.state==1}}
+				<!--我申请的退款-->
+				<!--我的退款-->
+				{{if data.o_buyer_apply_refund_state==1}}
+				<p id="seller_sure"><span>申请中</span></p>
+				{{else if data.o_buyer_apply_refund_state==2}}
+				<p id="seller_sure"><span>重新申请中</span></p>
+				{{else if data.o_buyer_apply_refund_state==3}}
+				<p id="seller_sure"><span>已同意</span></p>
+				{{else ifdata.o_buyer_apply_refund_state==4}}
+				<p id="seller_sure"><span>已拒绝</span></p>
+				{{/if}} {{else if data.state==2}}
+				<!--我的退款-->
+				{{if data.o_buyer_apply_refund_state==1}}
+				<p class="order_option">
+					<!--订单id-->
+					<span style="display: none;">{{data.o_id}}</span>
+					<!--货品规格-->
+					<b style="display: none;">{{data.o_product_specifications}}</b>
+					<!--货品重量-->
+					<i style="display: none;">{{data.o_product_weight}}</i>
+					<!--卖家id-->
+					<em style="display: none;">{{data.o_buyer_id}}</em>
+					<!--卖家店铺名-->
+					<strong style="display: none;">{{data.sale_store_name}}</strong>
+					<a class="agree_btn" href="javascript:void(0);" onclick="resolveRefundApply(this)">同意申请</a>
+					<a class="refuse_btn" href="javascript:void(0);" onclick='resolveRefundApply(this)'>拒绝申请</a>
+				</p>
+				{{else if data.o_buyer_apply_refund_state==2}}
+				<p class="order_option">
+					<!--订单id-->
+					<span style="display: none;">{{data.o_id}}</span>
+					<!--货品规格-->
+					<!--<b style="display: none;">{{data.o_product_specifications}}</b>-->
+					<!--货品重量-->
+					<!--<i style="display: none;">{{data.o_product_weight}}</i>-->
+					<!--卖家id-->
+					<!--<em style="display: none;">{{data.o_buyer_id}}</em>-->
+					<!--卖家店铺名-->
+					<!--<strong style="display: none;">{{data.sale_store_name}}</strong>-->
+					<a class="agree_btn" href="javascript:void(0);" onclick="resolveRefundApply(this)">同意申请</a>
+					<a class="refuse_btn" href="javascript:void(0);" onclick='resolveRefundApply(this)'>拒绝申请</a>
+				</p>
+				{{else if data.o_buyer_apply_refund_state==3}}
+				<!--<p id="seller_sure"><span>已退款</span></p>-->
+				{{else ifdata.o_buyer_apply_refund_state==4}}
+				<!--<p id="seller_sure"><span>已拒绝</span></p>-->
+				{{/if}} {{/if}}
+			</div>
+
+			<!--退款订单详情-->
+			{{else}}
+			<!--非退款订单详情-->
+			{{if data.o_saler_phone}} {{if data.remark_content.length>0}}
+			<h1 class="personal-content-title">订单详情 <div class="contact"><a id="remark" href="add_remark.html?oid={{data.o_id}}&type=1&ed=1">编辑备注</a><a id="chat" href="javascript:void(0);">聊一聊</a><a id="phone_call" data-phone='{{data.o_saler_phone}}'  onclick="getPhone(this)" href="javascript:void(0);">联系卖家</a></div></h1> {{else}}
+			<h1 class="personal-content-title">订单详情 <div class="contact"><a id="remark" href="add_remark.html?oid={{data.o_id}}&type=1">添加备注</a><a id="chat" href="javascript:void(0);">聊一聊</a><a id="phone_call" data-phone='{{data.o_saler_phone}}'  onclick="getPhone(this)" href="javascript:void(0);">联系卖家</a></div></h1> {{/if}} {{else if data.o_buyer_phone}} {{if data.remark_content.length>0}}
+			<h1 class="personal-content-title">订单详情 <div class="contact"><a id="remark" href="add_remark.html?oid={{data.o_id}}&type=2&ed=1">编辑备注</a><a id="chat" href="javascript:void(0);">聊一聊</a><a id="phone_call" data-phone='{{data.o_buyer_phone}}'  onclick="getPhone(this)" href="javascript:void(0);">联系买家</a></div></h1>{{else}}
+			<h1 class="personal-content-title">订单详情 <div class="contact"><a id="remark" href="add_remark.html?oid={{data.o_id}}&type=2">添加备注</a><a id="chat" href="javascript:void(0);">聊一聊</a><a id="phone_call" data-phone='{{data.o_buyer_phone}}'  onclick="getPhone(this)" href="javascript:void(0);">联系买家</a></div></h1> {{/if}} {{/if}}
+			<div id="trade_co_info" class="order_detail_new">
+				<ul>
+					<li>
+						<div class="co_logo"><img src="https://two.zhiqunale.cn/{{data.sale_store_headurl}}" /></div>
+						<div>
+							<p class="tarde_co_name">{{data.sale_store_name}}<span id="seller">卖方</span></p>
+							<p class="co_status">
+								{{if data.sale_certification==1}}
+								<img style="width: 16px;" src="../../img/zhoubian_renzheng_shi.png" alt="" /> {{/if}} {{if data.sale_is_company==1}}
+								<img style="width: 22px;" src="../../img/zhoubian_renzheng_qi.png" /> {{/if}} {{if data.sale_is_recommend==1}}
+								<img style="width: 18px;" src="../../img/zhoubian_renzheng_tui.png" /> {{/if}}
+							</p>
+							<p class="score">信用分：{{data.sale_credit_score}}分</p>
+						</div>
+					</li>
+					<li style="margin-bottom: 3px;">
+						<div class="co_logo"><img src="https://two.zhiqunale.cn/{{data.buyer_headurl}}" /></div>
+						<div>
+							<p class="tarde_co_name">{{data.buyer_username}}<span id="buyer">买方</span></p>
+							<p class="co_status">
+								{{if data.buyer_certification==1}}
+								<img style="width: 16px;" src="../../img/zhoubian_renzheng_shi.png" alt="" /> {{/if}} {{if data.buyer_is_company==1}}
+								<img style="width: 22px;" src="../../img/zhoubian_renzheng_qi.png" /> {{/if}} {{if data.buyer_is_recommend==1}}
+								<img style="width: 18px;" src="../../img/zhoubian_renzheng_tui.png" /> {{/if}}
+							</p>
+							<p class="score">信用分：{{data.buyer_credit_score}}分</p>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div class="order_info order_detail">
+				<p>规格：{{data.o_product_specifications}}</p>
+				<p>报价：<span class="order_price">{{data.o_product_price}}元/吨</span></p>
+				<p>收货地址：{{data.address}}</p>
+				<p>发货日期：{{data.o_send_time}}</p>
+				<p>供应纸厂：{{data.paper_name}}</p>
+				<p>数量：{{data.o_product_weight}}吨</p>
+				<p style="margin-bottom: 0px;">买方支付订金：<span class="order_price">{{data.o_bail_money}}元</span></p>
+			</div>
+			<div class="order_info order_num">
+				<p>订单流水号：{{data.o_order_num}}</p>
+				<p style="margin-bottom: 0px;">订金支付流水号：{{data.o_bail_num}}</p>
+			</div>
+			{{if data.drivers}} {{if data.drivers.length>0}} {{each data.drivers value}}
+			<div class="order_info driver">
+				<h4>司机信息</h4>
+				<p>司机姓名：{{value.lo_driver_name}}</p>
+				<p>车牌：{{value.lo_plat_num}}</p>
+				<p style="margin-bottom: 0px;">联系方式：{{value.lo_driver_phone}}</p>
+			</div>
+			{{/each}} {{/if}}{{/if}}
+
+			<!--如果有总价这个参数，就显示-->
+			{{if data.product_total_price}}
+			<div class="order_info totle_price">
+				<p>货物总价：<span class="order_price">{{data.product_total_price}}元</span></p>
+				<p>（已付定金：{{data.o_bail_money}}元，尾款：{{data.o_final_pay}}）</p>
+			</div>
+			{{/if}}
+
+			<!--订单状态时待发货时，判断是供应订单还是采购订单-->
+			{{if data.o_state==1}}
+			<!--判断是采购订单还是供应订单，o_buyer_id为供应订单，o_saler_id为采购订单-->
+			{{if data.o_buyer_id}}
+			<p class="order_option">
+				<!--订单id-->
+				<span style="display: none;">{{data.o_id}}</span>
+				<!--货品规格-->
+				<b style="display: none;">{{data.o_product_specifications}}</b>
+				<!--货品重量-->
+				<i style="display: none;">{{data.o_product_weight}}</i>
+				<!--买家id-->
+				<em style="display: none;">{{data.o_buyer_id}}</em>
+				<!--订金金额-->
+				<!--<strong style="display: none;">{{data.o_bail_money}}</strong>-->
+				<!--确认发货，需判断是否上传司机信息-->
+				<a href="javascript:void(0);" onclick="confirmShipment(this)">确认发货</a>
+			</p>
+			{{else if data.o_saler_id}}
+			<p id="seller_sure"><span>待发货</span></p>
+			{{/if}} {{else if data.o_state==2}}
+			<!--订单状态时待收货时，判断是供应订单还是采购订单-->
+			{{if data.o_saler_id}}
+			<p class="order_option">
+				<!--订单id-->
+				<span style="display: none;">{{data.o_id}}</span>
+				<!--货品规格-->
+				<b style="display: none;">{{data.o_product_specifications}}</b>
+				<!--货品重量-->
+				<i style="display: none;">{{data.o_product_weight}}</i>
+				<!--卖家id-->
+				<em style="display: none;">{{data.o_saler_id}}</em>
+				<!--订金金额-->
+				<strong style="display: none;">{{data.o_bail_money}}</strong>
+				<a href="javascript:void(0);" onclick="confirm(this)">确认收货</a>
+			</p>
+			{{else if data.o_buyer_id}}
+			<p id="seller_sure"><span>待收货</span></p>
+			{{/if}}
+			<!--订单状态是待结算时-->
+			{{else if data.o_state==3}}
+			<!--判断订单是供应订单还是采购订单，o_saler_id是采购订单，o_buyer_id为供应订单-->
+			<!--采购订单时-->
+			{{if data.o_saler_id}}
+			<!--订单的结算状态时1-->
+			{{if data.o_settle_state==1}}
+			<p class="order_option">
+				<a href="settlement.html?oid={{data.o_id}}">去结算</a>
+			</p>
+			<!--订单结算状态是2-->
+			{{else if data.o_settle_state==2}}
+			<p id="seller_sure"><span>卖家确认中</span></p>
+			<!--订单结算状态是3-->
+			{{else if data.o_settle_state==3}}
+			<p class="order_option" style="text-align: right;">
+				<a href="javascript:;" style="margin-right: 20px;" class="change_option" data-o_final_pay="{{data.o_final_pay}}" data-oid='{{data.o_id}}' onclick="gotopay(this)">去付款</a>
+			</p>
+			{{/if}}
+
+			<!--供应订单时-->
+			{{else if data.o_buyer_id}}
+			<!--订单结算状态为1时-->
+			{{if data.o_settle_state==1}}
+			<p id="seller_sure"><span>买方结算中</span></p>
+			<!--订单结算状态为2时-->
+			{{else if data.o_settle_state==2}}
+			<p class="order_option">
+				<!--订单id-->
+				<span style="display: none;">{{data.o_id}}</span>
+				<!--货品规格-->
+				<b style="display: none;">{{data.o_product_specifications}}</b>
+				<!--货品重量-->
+				<i style="display: none;">{{data.o_product_weight}}</i>
+				<!--卖家id-->
+				<em style="display: none;">{{data.o_buyer_id}}</em>
+				<!--卖家店铺名-->
+				<strong style="display: none;">{{data.sale_store_name}}</strong>
+				<a class="agree_btn" href="javascript:void(0);" onclick="resolveSettle(this)">同意结算</a>
+				<a class="refuse_btn" href="javascript:void(0);" onclick='resolveSettle(this)'>拒绝结算</a>
+			</p>
+			<!--订单结算状态为3时-->
+			{{else if data.o_settle_state==3}}
+			<p id="seller_sure"><span>买方付款中</span></p>
+			{{/if}} {{/if}}
+
+			<!--订单状态是已完成-->
+			{{else if data.o_state==4}}
+			<!--判断订单是否评价 -->
+			<!--供应订单时-->
+			{{if data.o_buyer_id}} {{if data.o_saler_judge==1}}
+			<p id="seller_sure"><span>已评价</span></p>
+			{{else if data.o_saler_judge==2}}
+			<p class="order_option" style="text-align: right;">
+				<a style="margin-right: 20px;" href="reviews.html?oid={{data.o_id}}">去评价</a>
+			</p>
+			{{/if}}
+			<!--采购订单时-->
+			{{else if data.o_saler_id}} {{if data.o_buyer_jugde==1}}
+			<p id="seller_sure"><span>已评价</span></p>
+			{{else if data.o_buyer_jugde==2}}
+			<p class="order_option" style="text-align: right;">
+				<a style="margin-right: 20px;" href="reviews.html?oid={{data.o_id}}">去评价</a>
+			</p>
+			{{/if}} {{/if}} {{/if}} {{if data.o_settle_photos}} {{if data.o_settle_photos.length>0}}
+			<div class="order_info checklist">
+				<h4>结算清单</h4>
+				<div id="checklist_photos">
+					{{each data.o_settle_photos as value}}
+					<img src="https://two.zhiqunale.cn/{{value}}" /> {{/each}}
+				</div>
+			</div>
+			{{/if}} {{/if}}
+			<!--订单备注信息-->
+			{{if data.remark_content.length>0}}
+			<div class="order_info remark_info">
+				<h4>备注</h4> {{each data.remark_content value}}
+				<div class="remark_detail">
+					<div>备注项目：<span>{{value.remark_lemma}}</span></div>
+					<div class="remark_content_details"><span>备注内容：</span><span class="order_remark_content">{{value.remark_content}}</span></div>
+
+				</div>
+				{{/each}}
+				{{if data.buyer_remark_photos}}
+				{{if data.buyer_remark_photos.length>0}}
+				<div class="remark_img_title">备注图片：</div>
+				<div id="remark_imgs" style="margin-top: 10px;">
+					{{each data.buyer_remark_photos value}}
+					<img src="https://two.zhiqunale.cn/{{value}}" /> 
+					{{/each}}
+				</div>
+				{{/if}}
+				{{else if data.saler_remark_photos}}
+				{{if data.buyer_remark_photos.length>0}}
+				<div class="remark_img_title">备注图片：</div>
+				<div id="remark_imgs" style="margin-top: 10px;">
+					{{each data.buyer_remark_photos value}}					
+					<img src="https://two.zhiqunale.cn/{{value}}" /> 					
+					{{/each}}
+				</div>
+				{{/if}}
+				{{/if}}
+			</div>
+			{{/if}}
+			<!--非退款订单详情-->
+			{{/if}}
+
+		</script>
+		<script src="../../lib/jquery-1.8.3.min.js"></script>
+		<script src="../../lib/md5.js"></script>
+		<script src="../../js/secret.js"></script>
+		<script src="../../lib/template-web.js"></script>
+		<script type="text/javascript">
+			$('.personal-aside').load('personal_aside.html');
+			$('.topbar').load('../public/topbar.html');
+			$('.footer').load('../public/footer.html');
+			$('.ppbox').load('../public/popbox.html');
+			/*获取订单id和订单类型*/
+			function getQuery($query) {
+				var que = $query.substring(1);
+				var arr = que.split('&');
+				var allQuery = {};
+				for(var i in arr) {
+					aa = arr[i].split('=');
+					var pro = aa[0];
+					allQuery[pro] = aa[1]
+				}
+				return allQuery;
+			};
+			/*渲染订单详情页面*/
+			(function() {
+				query = window.location.search;
+				queryData = getQuery(query);
+				console.log(queryData);
+				var url = null;
+				var argu = null;
+				if(queryData.state) {
+					url = 'https://two.zhiqunale.cn/Paper/PersonalCenter/refund_order_details';
+					argu = {
+						c_id: cookie.getCookie('uid'),
+						device_number: 'pc_online',
+						user_state: 1,
+						o_id: queryData.oid
+					}
+
+				} else {
+					url = 'https://two.zhiqunale.cn/paper/remark/getorderdetail';
+					argu = {
+						user_id: cookie.getCookie('uid'),
+						device_number: 'pc_online',
+						order_id: queryData.oid,
+						order_type: queryData.type
+					}
+				}
+				GetList(argu, url, getOrderDetail)
+			})();
+
+			function getOrderDetail(data) {
+				console.log(data);
+				var remark_datas={};
+				if(data.status_code == 10000) {
+					/*时间戳转换成时间*/
+					if(data.data.o_refund_date) {
+						/*退款时间*/
+						data.data.o_refund_date = getLocalTime(data.data.o_refund_date);
+						data.data.state = queryData.state;
+					};
+					/*采购订单的备注图片*/
+					if(data.data.buyer_remark_photos){
+						/*去除订单备注图片的''*/
+						if(data.data.buyer_remark_photos.length>0){
+							if(data.data.buyer_remark_photos[0]==""){
+							data.data.buyer_remark_photos.pop(data.data.buyer_remark_photos[0]);
+							};
+							remark_datas.buyer_remark_photos=data.data.buyer_remark_photos;
+						};
+					};
+					/*供应订单的备注图片*/
+					if(data.data.saler_remark_photos){
+						/*去除订单备注图片的''*/
+						if(data.data.saler_remark_photos.length>0){
+							if(data.data.saler_remark_photos[0]==""){
+							data.data.saler_remark_photos.pop(data.data.saler_remark_photos[0]);
+							};
+							remark_datas.saler_remark_photos=data.data.saler_remark_photos
+						};
+					}
+					if(data.data.remark_content){
+						if(data.data.remark_content.length>0){
+							remark_datas.remark_content=data.data.remark_content;
+						}
+					};
+					/*订单备注信息，存入缓存*/
+					if(JSON.stringify(remark_datas)!="{}"){
+						localStorage.remark_datas=JSON.stringify(remark_datas);
+					};	
+					
+					data.data.o_send_time = getLocalTime(data.data.o_send_time);
+					var html = template('order_detail_tpl', data);
+					$('.details_content').html(html);
+				}
+			};
+
+			/*确认收货*/
+			function confirm($this) {
+				//$($this).parent().siblings('.hiddens').find('em').html();
+				var url = 'https://two.zhiqunale.cn/paper/orders/buyerclicktoconfirmgetgoods';
+				var argu = {
+					user_id: cookie.getCookie('uid'),
+					device_number: 'pc_online',
+					order_id: $($this).siblings('span').html(),
+					product_name: escape($($this).siblings('b').html()),
+					product_weight: $($this).siblings('i').html(),
+					user_name: escape(localStorage.c_username),
+					sale_id: $($this).siblings('em').html()
+				}
+				GetList(argu, url, getConfirm);
+			};
+
+			function getConfirm(data) {
+				console.log(data);
+				if(data.status_code == 10000) {
+					//window.location.reload(true);
+					var q_value = $('.change_option').siblings('span').html();
+					$('.change_option').attr('href', 'settlement.html?oid=' + q_value).html('去结算');
+				}
+			};
+
+			/*卖家同意/拒绝结算操作*/
+			function resolveSettle($this) {
+				var url = '';
+				if($($this).hasClass('agree_btn')) {
+					url = 'https://two.zhiqunale.cn/paper/orders/saleagreesettle';
+				} else {
+					url = 'https://two.zhiqunale.cn/paper/orders/saledenysettle';
+				}
+				var argu = {
+					user_id: cookie.getCookie('uid'),
+					device_number: 'pc_online',
+					order_id: $($this).siblings('span').html(),
+					product_name: $($this).siblings('b').html(),
+					product_weight: $($this).siblings('i').html(),
+					store_name: $($this).siblings('strong').html(),
+					buyer_id: $($this).siblings('em').html()
+				}
+				GetList(argu, url, getSettlementData)
+			};
+
+			function getSettlementData(data) {
+				console.log(data);
+				if(data.status_code == 10000) {
+					window.location.reload(true);
+				}
+			};
+
+			/*卖家确认发货*/
+			function confirmShipment($this) {
+				$(".popupBox,.background").fadeIn(200);
+				sendGoods = {
+					user_id: cookie.getCookie('uid'),
+					device_number: 'pc_online',
+					order_id: $($this).siblings('span').html(),
+					product_name: escape($($this).siblings('b').html()),
+					product_weight: $($this).siblings('i').html(),
+					store_name: escape(localStorage.c_username),
+					buyer_id: $($this).siblings('em').html()
+				}
+
+			};
+
+			function getConfirmSend(data) {
+				console.log(data);
+				if(data.status_code == 10000) {
+					window.confirm(data.msg);
+					window.location.reload(true);
+				} else {
+					window.confirm('发货失败')
+				}
+			}
+
+			var is_upload = null;
+			var sendGoods = null;
+			/*单击空白区域和 确定/删除按钮模态框消失*/
+			$('.popupBox').click(function(e) {
+				var ev = e ? e : window.event;
+				if(ev.target == $('#cancel')[0]) {
+					is_upload = 2;
+					/*不上传司机信息*/
+					var url = 'https://two.zhiqunale.cn/paper/orders/saleclicktosendgoods';
+					sendGoods.is_upload_driver_info = is_upload;
+					GetList(sendGoods, url, getConfirmSend);
+					$(".popupBox,.background").fadeOut(200);
+				} else if(ev.target == $('#make_sure')[0]) {
+					is_upload = 1;
+					sendGoods.is_upload_driver_info = is_upload;
+					localStorage.driver_obj = JSON.stringify(sendGoods);
+					$(".popupBox,.background").fadeOut(200);
+				} else if(ev.target == $(".popupBox")[0]) {
+					$(".popupBox,.background").fadeOut(200);
+				}
+			})
+
+			/*处理退款申请*/
+			function resolveRefundApply($this) {
+				var urls = 'https://two.zhiqunale.cn/Paper/PersonalCenter/refund_operation';
+				var is_agree = null;
+				is_agree = $($this).hasClass('agree_btn') ? 1 : 2;
+				var obj = {
+					c_id: cookie.getCookie('uid'),
+					device_number: 'pc_online',
+					user_state: 1,
+					o_id: $($this).siblings('span').html(),
+					saler_agree_refund: is_agree,
+					refund_operation: 2
+				};
+				GetList(obj, urls, callBack);
+			};
+
+			function callBack(data) {
+				console.log(data);
+				if(data.status_code == 10000) {
+					alert('操作成功');
+					window.location.reload(true);
+				}
+
+			};
+
+			//点击显示联系方式
+			function getPhone($this) {
+				var phoneNum = $($this).attr('data-phone');
+				$('.relationBox').show(function() {
+					$('.popPhone').html(phoneNum);
+				});
+			};
+
+			//付款
+			function gotopay(This) {
+				if($(This).attr('data-o_final_pay') > 0) {
+					$('.paybox').show(function() {
+						$('.paybox li').click(function() {
+							paystyle = $(this).attr('class');
+							if(paystyle == 'njpay') {
+								window.location.href = '../account/bankcard.html?oid=' + $('.change_option').attr('data-oid');
+							} else if(paystyle == 'yue') {
+								$('.paybox').hide();
+								$('.paypwd').show(function() {
+									$('.pwdsure').click(function() {
+										if($('.pwdtxt').val() != '') {
+											agreepur(paystyle, $('.pwdtxt').val());
+										} else {
+											alert('密码不能为空');
+										}
+									});
+								});
+							} else {
+								agreepur(paystyle);
+							}
+						});
+					});
+				} else {
+					agreepur();
+				}
+			}
+
+			function agreepur(channel, paypwd) {
+				var agrPurpath = 'https://two.zhiqunale.cn/paper/orders/buyerclicktopay';
+				var agrPurparam = {
+					user_id: cookie.getCookie('uid'),
+					device_number: 'pc_online',
+					user_name: cookie.getCookie('username'),
+					order_id: $('.change_option').attr('data-oid')
+				}
+				if(channel) {
+					agrPurparam.channel = channel;
+				}
+				if(paypwd) {
+					agrPurparam.pay_password = paypwd;
+				}
+				GetList(agrPurparam, agrPurpath, agrPur);
+			}
+
+			function agrPur(_data) {
+				payment(_data);
+			}
+		</script>
+	</body>
+
+</html>

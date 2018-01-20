@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>卖废纸买废纸，上纸去哪了</title>
+    <link rel="stylesheet" href="../../css/product.css"/>
+    <link rel="stylesheet" href="../../css/jquery-ui.min.css"/>
+</head>
+<body style="background: #fff;">
+<div class="topbar"></div>
+<div class="navbar"></div>
+<!--采购主体内容-->
+<div id="purchase">
+    <div class="purchase-sort">
+        <ul>
+            <li class="on">
+                <a>纸去哪了商城</a>
+            </li>
+            <li>
+                <a href="mallaround.html" target="_blank" style="border: none;">打包站周边</a>
+            </li>
+        </ul>
+    </div>
+    <!-- 左边列表-->
+    <div class="purchase-list">
+        <!-- 发布采购-->
+        <div class="issuePurchase">
+            <h3>发布采购</h3>
+            <div class="issuePurchase-form">
+                <div class="issuePurchase-item">
+                    <span>货品规格：</span><input class="issueName" type="text"/>
+                </div>
+                <div class="issuePurchase-item">
+                    <span>货品重量：</span><input class="issueWeight" type="text"/>吨
+                </div>
+                <div class="issuePurchase-item">
+                    <span>货品价格：</span><input class="issuePrice" type="text"/>元/吨
+                </div>
+                <div class="issuePurchase-item">
+                    <span>采购需求开始时间：</span>
+                    <!--日期插件-->
+                    <input onpropertychange="onPropertyChange(event)" type="text" id="startTime"/>
+                </div>
+                <div class="issuePurchase-item">
+                    <span>采购需求结束时间：</span>
+                    <input type="text" id="endTime"/>
+                </div>
+                <div class="issuePurchase-item">
+                    <span>物流费用支付方：</span>
+                    <label><input checked type="radio" name="wuliu" value="1"/>买方</label>
+                    <label><input type="radio" name="wuliu" value="2"/>卖方</label>
+                </div>
+                <div class="issuePurchase-item">
+                    <span>备注：</span><textarea class="beizhu"></textarea>
+                </div>
+                <div class="issuePurchase-item">
+                    <span>收货地址：</span>
+                    <div class="userAddr">
+                        <script type="text/html" id="userAddr">
+                            {{each data as value i}}
+                            {{if value.a_is_default==1}}
+                            <label>
+                                <input checked type="radio" name="addr" value="{{value.a_id}}"/>
+                                <!--{{value.a_province}}{{value.a_city}}{{value.a_dist}}{{value.a_detail}}-->
+                                {{value.address}}（{{value.a_username}}：{{value.a_phone}}）
+                            </label>
+                            {{else}}
+                            <label>
+                                <input type="radio" name="addr" value="{{value.a_id}}"/>
+                                {{value.address}}（{{value.a_username}}：{{value.a_phone}}）
+                            </label>
+                            {{/if}}
+                            {{/each}}
+                        </script>
+                    </div>
+                </div>
+                <div class="issuePurchase-item">
+                    <div class="detail-upload">
+                        <a><input type="file" onchange="uploadImg(this)" /></a>
+                        <b>上传真实的图片（最多10张），点击删除</b>
+                    </div>
+                    <ul class="upload-list">
+                    </ul>
+                </div>
+                <div class="issuePurchase-item">
+                    <button class="issueSure">确认发布</button>
+                </div>
+                <div class="issuePurchase-item">
+                    <p class="issueDard"><a href="">纸去哪了发布规范</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 右边采购信息-->
+    <div class="purchase-buy">
+    </div>
+</div>
+<div class="footer"></div>
+<input type="hidden" class="storeHidden"/>
+
+<script src="../../lib/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="../../lib/md5.js"></script>
+<script type="text/javascript" src="../../js/secret.js"></script>
+<script type="text/javascript" src="../../lib/template-web.js"></script>
+<script type="text/javascript" src="../../lib/jquery-ui.js"></script>
+<script type="text/javascript" src="../../lib/jquery.ui.datepicker-zh-CN.js"></script>
+<script src="../../js/issue_purchase.js"></script>
+</body>
+</html>

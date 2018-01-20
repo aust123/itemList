@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="../../css/public.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/personal.css" />
+		<title>卖废纸买废纸，上纸去哪了</title>
+	</head>
+
+	<body>
+		<div class="topbar"></div>
+		<!--弹出框-->
+		<div class="background"></div>
+		<div class="popupBox">
+			<div id="resubmit_box">
+				<img id="close" src="../../img/tanchuang_cancel.png" />
+				<div class="password_box">
+					<h3>请输入支付密码</h3>
+					<div class="input_box">
+						<input type="password" value="" maxlength="1" />
+						<input type="password" value="" maxlength="1" />
+						<input type="password" value="" maxlength="1" />
+						<input type="password" value="" maxlength="1" />
+						<input type="password" value="" maxlength="1" />
+						<input type="password" value="" maxlength="1" />
+					</div>
+				</div>
+				<a href="###" id="sure_btn">确&nbsp;&nbsp;定</a>
+			</div>
+		</div>
+		<div class="personalbanner"></div>
+		<div class="personalbox">
+			<!-- 侧边栏-->
+			<div class="personal-aside"></div>
+			<!-- 主要内容-->
+			<div class="purchase" id="fund_box">
+				<h3>提现</h3>
+				<div class="fast_cash_content">
+					<div class="select_bank_card">
+						<span>选择银行卡：</span>
+						<div class="bank_card_list">
+							<!--<p><img src="../../img/zijinguanli_tixian_zs.png" />招商银行<span>尾号8888储蓄卡</span></p>-->
+
+						</div>
+					</div>
+					<div><span class="cash_count">提现金额：</span><input class="cash_money" type="text" />元 <b class="u_money">可用余额20，000元</b></div>
+					<p class="rule_p">
+						<a class="presentation_rule" href="###"><img src="../../img/zijinguanli_tishi.png" />《纸去哪了》平台提现规则</a>
+					</p>
+					<p class="sure_cash">
+						<a class="presentation_btn" href="###">确认提现</a>
+					</p>
+				</div>
+			</div>
+		</div>
+		<input type="hidden" class="Fund" />
+		<input type="hidden" id="b_id" />
+		<div class="footer"></div>
+		<script type="text/html" id="bcList_tpl">
+			{{each data value}}
+			<p><img style="width: 46px;" src="https://two.zhiqunale.cn{{value.b_bankcard_imgurl}}" />{{value.b_bank}}<span>尾号{{value.b_bankcard_code.slice(-4)}}储蓄卡</span><i style="display: none;">{{value.b_id}}</i></p>
+
+			{{/each}}
+
+		</script>
+		<script src="../../lib/jquery-1.8.3.min.js"></script>
+		<script src="../../lib/md5.js"></script>
+		<script src="../../js/secret.js"></script>
+		<script src="../../lib/template-web.js"></script>
+		<script type="text/javascript">
+			$('.personal-aside').load('personal_aside.html');
+			$('.topbar').load('../public/topbar.html');
+			$('.footer').load('../public/footer.html');
+			/*获取用户银行卡列表*/
+			(function() {
+				var url = 'https://two.zhiqunale.cn/Paper/PersonalCenter/list_of_bank_cards';
+				var argu = {
+					c_id: cookie.getCookie('uid'),
+					user_state: 1,
+					device_number: 'pc_online',
+				};
+				GetList(argu, url, getBankcardList);
+			})();
+			
+			function getBankcardList(data) {
+				console.log(data)
+				if(data.status_code == 10000) {
+					var html = template('bcList_tpl', data);
+					$('.bank_card_list').html(html);
+				}
+			}
+			
+			$('.u_money').html('可用余额'+cookie.getCookie('available')+'元');
+			
+			
+			$(function() {
+				/*模态款*/
+				$(".presentation_btn").click(function() {
+					$(".popupBox,.background").fadeIn(200);
+					$('.input_box input').eq(0).focus();
+				})
+				/*单击空白区域和 确定/删除按钮模态框消失*/
+				$('.popupBox').click(function(e) {
+					var ev = e ? e : window.event;
+					if(ev.target == $("#close")[0] /*|| ev.target == $('#sure_btn')[0]*/ ) {
+						$(".popupBox,.background").fadeOut(200);
+						$('.input_box input').val('');
+					}
+				});
+
+				/*-----支付密码输入控制-----*/
+				//判断输入的密码是否为数字  
+				$('.input_box input').on("input propertychange", function(e) {
+					var _this = $(this);
+					var ev = e;
+					inputFun(_this, ev);
+				});
+				//监听backspace事件  
+				$('.input_box input').on("keyup", function(e) {
+					var _this = $(this);
+					var ev = e;
+					var val = _this.val();
+					if(val != '') {
+						if(ev.keyCode >= 48 && ev.keyCode <= 56 || ev.keyCode >= 96 && ev.keyCode <= 105) {
+							_this.next().focus().val(ev.key);
+						}
+					}
+					keyupFun(_this, ev);
+				});
+
+				//判断输入的密码还是否为数字  
+				function inputFun(value, e) {
+					var reg = new RegExp("^[0-9]*$");
+					var val = value.val();
+					if(!reg.test(val) || val == "") {
+						value.val('');
+					} else {
+						value.next().focus();
+					}
+				}
+				//监听backspace事件  
+				function keyupFun(value, e) {
+					var k = e.keyCode;
+					var kcode = e.key;
+					//console.log(k);
+					var vals = value.val();
+					if(k == 8) { //8是backspace的keyCode	
+						value.prev().focus();
+					} else {
+						return false;
+					}
+				}
+				$('#sure_btn').click(function() {
+					var str = '';
+					$('.input_box input').each(function(i) {
+						str += $(this).val();
+					})
+					
+					var url = 'https://two.zhiqunale.cn/Paper/PersonalCenter/withdrawals';
+					var argu = {
+						c_id: cookie.getCookie('uid'),
+						user_state: 1,
+						device_number: 'pc_online',
+						wc_bankcard_id: $('#b_id').val(),
+						wc_money: $('.cash_money').val(),
+						payment_password: str
+					}
+					GetList(argu, url, getCash)
+				});
+
+				function getCash(data) {
+					console.log(data);
+					if(data.status_code==10005){
+						alert(data.msg);
+					}else if(data.status_code==10001){
+						$(".popupBox,.background").fadeOut(200);
+						alert(data.msg)
+					}else if(data.status_code==10000){
+						$(".popupBox,.background").fadeOut(200);
+						alert('您的提现申请提交成功，请耐心等待！');
+					}
+				}
+				/*选择提现的银行卡*/
+				$('.bank_card_list').on('click', 'p', function() {
+					$(this).css('background-image', 'url(../../img/zijinguanli_tixian_choice2.png)')
+						.siblings('p').css('background-image', 'url(../../img/zijinguanli_tixian_choice.png)');
+					$('#b_id').val($(this).children('i').html());
+				})
+			})
+		</script>
+	</body>
+
+</html>

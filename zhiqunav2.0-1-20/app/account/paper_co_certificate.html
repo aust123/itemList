@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="../../css/public.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/personal.css" />
+		<title>卖废纸买废纸，上纸去哪了</title>
+	</head>
+
+	<body>
+		<div class="topbar"></div>
+		<div class="personalbanner"></div>
+		<div class="personalbox">
+			<!-- 侧边栏-->
+			<div class="personal-aside">
+			</div>
+			<!-- 主要内容-->
+			<div class="purchase">
+				<h3>认证信息</h3>
+				<div class="purchase_list"></div>
+			</div>
+		</div>
+		<div class="footer"></div>
+		<input type="hidden" class="paperCertificate" />
+		<script type="text/html" id="co_certifition_tpl">
+			<h2>企业认证——纸厂
+				{{if data.c_paper_state==1}}
+				<div class="acc_state">已认证</div>
+				{{else if data.c_paper_state==2||data.c_paper_state==0}}
+				<div class="acc_state">认证中</div>
+				{{else if data.c_paper_state==3}}
+				<div class="acc_state">认证被拒绝</div>
+				<p><a class="re_edit" href="co_certificate.html">重新认证</a></p>
+				{{/if}}
+			</h2>
+			<div class="certificate_msg">
+				<p><span>企业名称&nbsp;：</span>{{data.cc_company_name}}</p>
+				<p><span>企业地址&nbsp;：</span>{{data.cc_company_province}}{{data.cc_company_city}}{{data.cc_company_dist}}{{data.cc_company_detail_address}}</p>
+				<p><span>企业电话&nbsp;：</span>{{data.cc_company_phone}}</p>
+				<p><span>企业资质&nbsp;&nbsp;: </span><img style="width: 180px;height: 111px;" src="https://two.zhiqunale.cn/{{data.cc_company_zizhi_photo}}" /></p>
+			</div>
+		</script>
+		<script src="../../lib/jquery-1.8.3.min.js"></script>
+		<script src="../../lib/md5.js"></script>
+		<script src="../../js/secret.js"></script>
+		<script src="../../lib/template-web.js"></script>
+		<script type="text/javascript">
+			$('.personal-aside').load('personal_aside.html');
+			$('.topbar').load('../public/topbar.html');
+			$('.footer').load('../public/footer.html');
+			(function() {
+				var url = 'https://two.zhiqunale.cn/paper/user/get_company_authentication_info';
+				var argu = {
+					uid: cookie.getCookie('uid'),
+					device_number: 'pc_online',
+					type: 3
+				}
+				GetList(argu, url, getCompany);
+			})();
+
+			function getCompany(data) {
+				console.log(data);
+				console.log(typeof localStorage.c_paper_state);
+				if(data.status_code == 10000) {					
+					if(!$.isEmptyObject(data.data)) {						
+						data.data = Unescape(data.data);
+						data.data.c_paper_state = localStorage.c_paper_state;
+						if(localStorage.c_paper_state==3){
+							localStorage.co_reEdit_paper=JSON.stringify(data.data);
+						}
+						var html = template('co_certifition_tpl', data);
+						$('.purchase_list').html(html);
+					} else {
+						var tips = '<h2>企业认证——纸厂<div class="acc_state"><a class="co_edit"  href="co_certificate.html?type=3">去认证</a></div></h2><p class="tip_text">暂无企业认证信息</p>';
+						$('.purchase_list').html(tips);
+					}
+				} else if(data.status_code == 10002) {
+					alert(data.msg);
+				}
+			}
+			
+		</script>
+	</body>
+
+</html>
