@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="utf-8">
+    <title>卖废纸买废纸，上纸去哪了</title>
+    <link rel="stylesheet" href="../../css/product.css"/>
+    <link rel="stylesheet" href="../../css/jquery-ui.min.css"/>
+</head>
+<body>
+<div class="topbar"></div>
+<!--一键卖货-->
+<div id="intention">
+    <div class="intention-banner"></div>
+    <div class="intention">
+        <h3>一键卖货</h3>
+        <div class="intention-form">
+            <div class="intention-item">
+                <span>纸厂名称</span>
+                <input class="papername" type="text" readonly/>
+            </div>
+            <div class="intention-item" style="position:relative;">
+                <span>贸易公司</span>
+                <input class="selFirm" type="text" readonly placeholder="请选择贸易公司"/>
+                <ul class="supplyfirm">
+                </ul>
+            </div>
+            <div class="intention-item">
+                <span>货品名称</span>
+                <input class="saleName" type="text" placeholder="请填写货品名称"/>
+            </div>
+            <div class="intention-item">
+                <span>货品重量（吨）</span>
+                <input placeholder="请填写货品重量" class="saleWeight" type="text"/>
+            </div>
+            <div class="intention-item">
+                <span>发货日期</span>
+                <!--日期插件-->
+                <input placeholder="请填写发货日期" readonly onpropertychange="onPropertyChange(event)" type="text" id="startTime"/>
+            </div>
+            <div class="intention-item">
+                <span>物流费用负责方：</span>
+                <ul class="fufei">
+                    <li data-fee="1" class="on">买方</li>
+                    <li data-fee="2">卖方</li>
+                </ul>
+            </div>
+            <div class="intention-item" style="text-align:center;">
+                <button class="issueSure" style="width:280px;">确认提交</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="footer"></div>
+<script type="text/html" id="supplyfirm">
+    {{each data as value i}}
+    <li data-trade_id="{{value.trade_id}}" data-trade_name="{{value.trade_name}}">
+        <div class="lilf">
+            <img src="https://two.zhiqunale.cn/{{value.trade_headurl}}"/>
+        </div>
+        <div class="lict">
+            <p>{{value.trade_name}}</p>
+            <p><b>信用分：{{value.credit_score}}分</b></p>
+        </div>
+        <div class="lirt">
+            {{if value.is_certification}}
+            <img src="../../img/productdetail_icon_smrz.png" alt="实名认证"/>
+            {{/if}}
+            {{if value.is_company}}
+            <img src="../../img/zhoubian_renzheng_qi.png" alt="企业认证"/>
+            {{/if}}
+            {{if value.is_recommend}}
+            <img src="../../img/zhoubian_renzheng_tui.png" alt="平台推荐"/>
+            {{/if}}
+        </div>
+    </li>
+    {{/each}}
+</script>
+
+<script src="../../lib/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="../../lib/md5.js"></script>
+<script type="text/javascript" src="../../js/secret.js"></script>
+<script type="text/javascript" src="../../lib/template-web.js"></script>
+<script type="text/javascript" src="../../lib/jquery-ui.js"></script>
+<script type="text/javascript" src="../../lib/jquery.ui.datepicker-zh-CN.js"></script>
+<script type="text/javascript">
+    $('.papername').val(GetQueryString('panm'));
+
+    getFirms();
+    //获取纸厂合作贸易公司列表
+    function getFirms(){
+        var path='https://two.zhiqunale.cn/paper/paperaround/getpaperservertradelist';
+        var param={
+            paper_id:GetQueryString('sid'),
+            paper_type:GetQueryString('ptype')
+        }
+        if(cookie.getCookie('uid')){
+            param.user_id=cookie.getCookie('uid');
+            param.device_number='pc_online';
+        }
+        GetList(param,path,getfirm);
+    }
+    function getfirm(_data){
+        if(_data.status_code=='10000'){
+            var html=template('supplyfirm',_data);
+            $('.supplyfirm').append(html);
+        }
+    }
+    $('.selFirm').click(function(){
+        $('.supplyfirm').show();
+    });
+    $('.supplyfirm').delegate('li','click',function(){
+        $(this).addClass('on').siblings().removeClass('on');
+        $('.selFirm').val($(this).attr('data-trade_name'));
+        $('.supplyfirm').hide();
+    });
+
+    $('.issueSure').click(function(){
+        var sid=$('.supplyfirm li.on').attr('data-trade_id');
+        if(sid){
+            var addr=GetQueryString('addr');
+            var paper=$('.papername').val();
+            issueSure(sid,addr,paper);
+        }else{
+            alert('请选择贸易公司');
+        }
+    });
+</script>
+<script src="../../js/keySellers.js"></script>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>卖废纸买废纸，上纸去哪了</title>
+    <link rel="stylesheet" href="../../css/product.css"/>
+    <style>
+        .intention-item{
+            padding: 0 60px;
+        }
+        .intention-item span{
+            margin-right: 20px;
+            line-height: 28px;
+            text-align: left;
+            width: auto;
+        }
+        .intention-item button{
+            width:160px;
+            height: 50px;
+            background: #fff;
+            border-radius: 5px;
+            border: 1px solid #00d3af;
+            font-size: 20px;
+            color: #00d3af;
+            cursor: pointer;
+        }
+        .intention-item button:hover{
+            background: #00D3AF;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+<div class="topbar"></div>
+<!--一键卖货-->
+<div id="intention">
+    <div class="intention-banner"></div>
+    <div class="intention">
+        <h3>卖货</h3>
+        <div class="intention-form supplydetail">
+            <script type="text/html" id="supplydetail">
+                <div class="intention-item">
+                    <span>供应纸厂：</span>
+                    {{c_username}}
+                </div>
+                <div class="intention-item">
+                    <span>收货地址：</span>
+                    {{sw_reiceve_address}}
+                </div>
+                <div class="intention-item">
+                    <span>货品名称：</span>
+                    <a class="proname">{{sw_product_name}}</a>
+                </div>
+                <div class="intention-item">
+                    <span>货品重量（吨）：</span>
+                    {{sw_sale_weight}}
+                </div>
+                <div class="intention-item">
+                    <span>发货日期：</span>
+                    {{$imports.dateFormat(sw_send_time)}}
+                </div>
+                <div class="intention-item">
+                    <span>物流费用负责方：</span>
+                    {{if sw_who_pay_logistic==1}}
+                    买家
+                    {{else}}
+                    卖家
+                    {{/if}}
+                </div>
+                <div class="intention-item" style="text-align:center;">
+                    <button data-sw_id="{{sw_id}}" data-sw_saler="{{sw_saler}}" class="agreesupply" style="margin-right: 100px;">同意</button>
+                    <button class="refuse" data-sw_id="{{sw_id}}" data-sw_saler="{{sw_saler}}">拒绝</button>
+                </div>
+            </script>
+        </div>
+    </div>
+</div>
+<div class="footer"></div>
+
+<script src="../../lib/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="../../lib/md5.js"></script>
+<script type="text/javascript" src="../../js/secret.js"></script>
+<script type="text/javascript" src="../../lib/template-web.js"></script>
+<script src="../../js/supplyMsg_detail.js"></script>
+<script type="application/javascript">
+    $('.supplydetail').delegate('.agreesupply','click',function(){
+        var agpath='https://two.zhiqunale.cn/paper/papermill/buyeracceptquoteprice';
+        var agparam={
+            user_id:cookie.getCookie('uid'),
+            user_name:cookie.getCookie('username'),
+            device_number:'pc_online',
+            sw_id:$(this).attr('data-sw_id'),
+            sale_id:$(this).attr('data-sw_saler'),
+            product_name:$('.proname').html()
+        }
+        GetList(agparam,agpath,agrsupp);
+        function agrsupp(_data){
+            if(_data.status_code=='10000'){
+                alert(_data.msg);
+                window.close();
+            }
+        }
+    });
+</script>
+</body>
+</html>

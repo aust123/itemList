@@ -1,0 +1,390 @@
+@import url("public.css");
+/*----------店铺详情------------*/
+.store_header{
+	width: 100%;
+	background-color: #fff;
+}
+.store_img{
+	width: 100%;
+	height: 428px;
+}
+.store_img img{
+	width: 100%;
+	height: 100%;
+}
+.store_info{
+	border-bottom:1px solid #e0e0e0 ;
+}
+.store_info ul{
+	height: 87px;
+	padding: 20px 0px;
+	box-sizing: border-box;	
+	text-align: center;
+}
+.store_info ul li{
+	font-size: 20px;
+	display: inline-block;
+	width: 310px;	
+	text-align: center;
+	color: #333;
+	border-right:1px solid #e5e5e5;	
+}
+.store_info li.last_li{
+	border: 0px;
+}
+.store_info ul li p{
+	margin-bottom: 10px;
+	
+}
+.store_info ul li span{
+	font-size: 18px;
+	color:#999 ;
+}
+/*店铺信息内容区域*/
+.store_content{
+	width: 1180px;
+	margin: 0 auto;
+	overflow: hidden;
+	margin-top: 16px;
+	margin-bottom: 46px;
+}
+.store_content>div{
+	float: left;
+}
+/*店铺信息内容区域左侧部分*/
+.store_info_left{
+	width: 238px;
+}
+.store_info_left>div{
+	background-color: #fff;
+}
+.store_info_left h3{
+	font-size: 16px;
+	color: #333;
+}
+.store_info_left p{
+	font-size: 14px;
+	color: #666;
+}
+.store_info_left p span{
+	color: #999;
+}
+p.seller_name{
+	color: #333;
+	font-size: 16px;	
+	margin: 18px 0;
+}
+.seller_name img{
+	width: 74px;
+	height: 74px;
+	margin-right: 18px;
+	vertical-align: middle;
+}
+div.seller_info{
+	padding:22px 20px 18px 20px;
+}
+
+p.third_p{
+	margin-top: 12px;
+}
+
+div.follow_info{
+	border-top: 1px  solid #e5e5e5;
+	padding: 18px 7px;
+}
+div.follow_info>p{
+	padding:0px 13px;
+	margin-bottom: 24px;
+}
+div.option{
+	margin-top: 10px;
+	padding: 18px 20px 16px 20px;
+}
+div.option h3{
+	margin-bottom: 16px;
+}
+div.option a{
+	display: block;
+	padding-left: 40px;
+	height: 30px;
+	font-size: 14px;
+	margin-bottom: 10px;
+	position: relative;
+	color: #fff;
+}
+div.option a span{
+	position: relative;
+	top: 7px;
+	left: 40px;
+	z-index: 2;
+}
+div.option a img{
+	position: absolute;	
+}
+/*店铺信息内容区域右侧部分*/
+.store_info_right{
+	margin-left: 10px;
+	width: 932px;
+}
+.store_info_right>div{
+	background-color: #fff;
+	margin-bottom: 16px;
+}
+.integrity_level>h4{
+	height: 45px;
+	line-height: 45px;
+	color: #333;
+	font-size: 18px;
+	padding-left: 23px;
+	border-bottom:1px solid #e5e5e5 ;
+	background: url(../img/bg_left.png) no-repeat;
+	background-position: left center;
+}
+.integrity_level>h4{
+	height: 45px;
+	line-height: 45px;
+	color: #333;
+	font-size: 18px;
+	padding-left: 23px;
+	border-bottom:1px solid #e5e5e5 ;
+	background: url(../img/bg_left.png) no-repeat;
+	background-position: left center;
+	font-weight: normal;
+}
+/*主营纸厂*/
+.server_paper{
+	font-size: 16px;
+	color: #333;
+	margin-top: 24px;
+	padding-bottom: 40px;
+	padding-left: 23px
+}
+
+
+.integrity_level ul li{
+	display: inline-block;
+}
+.integrity_level ul li p{
+	color: #333;
+	font-size: 18px;
+}
+.integrity_level ul li span{
+	color: #999;
+	font-size: 16px;
+}
+li.level_li{
+	width: 237px;
+	border-right: 1px solid #e5e5e5;
+	padding-top: 10px;
+	position: relative;
+	top: -25px;
+}
+li.level_li p.level_p span{
+	margin: 0 4px;
+}
+i#level_count{
+	font-style: normal;
+	font-size: 22px;
+}
+li.level_li p.level_p>img{
+	vertical-align: middle;
+}
+li.level_li p{
+	margin-bottom: 22px;
+	text-align: center;
+}
+li.judge_li {
+	margin-top: 34px;
+	margin-left: 48px;
+	padding-bottom: 12px;
+}
+li.judge_li p{
+	margin-bottom: 20px;
+}
+b.attestation_status{
+	font-weight: normal;
+	display: inline-block;
+	background-color: #ff5000 ;
+	color: #fff;
+	width: 80px;
+	height: 25px;
+	border-radius: 5px;
+	margin-right: 24px;
+	text-align: center;
+	line-height: 25px;	
+	font-size: 16px;
+}
+a.rank_state{
+	color: #666;
+	font-size: 16px;
+	
+}
+a.rank_state img{
+	margin-right: 10px;
+	vertical-align: middle;
+}
+/*价格走势图*/
+div.price_chart{
+	margin-top: 14px;
+	text-align: center;
+}
+div.price_chart img{
+	width: 374px;
+	
+}
+/*实力展示*/
+div.power_show{	
+	padding: 20px 21px 16px 21px;
+}
+p.text_show{
+	color: #333;
+	font-size:16px ;
+	line-height: 1.5;
+	margin-bottom: 15px;
+}
+p.power_img,ul.supply_pro{
+	white-space: nowrap;
+	overflow-x: auto;
+	overflow-y: hidden;
+}
+p.power_img>img{
+	width: 154px;
+	height: 154px;
+	margin-right: 24px;
+}
+/*供应信息*/
+div.more_info{
+	float: right;
+	font-size: 16px;
+	margin-right: 20px;
+}
+div.more_info a{
+	color: #999;
+	font-weight: normal;	
+}
+div.supply_info{
+	padding: 36px 20px 16px 20px;
+}
+ul.supply_pro li{
+	display: inline-block;
+	margin-right: 24px;
+}
+ul.supply_pro li a{
+	display: block;	
+}
+ul.supply_pro li a:hover{
+	text-decoration: none;
+}
+.supply_info .supply_pro li p{
+	color: #333;
+	font-size: 14px;
+	margin-top: 4px;
+}
+.supply_info .supply_pro li span{
+	color: #FF5000;	
+}
+ul.supply_pro li img{
+	display: block;
+	height: 154px;
+	width: 154px;
+	margin-bottom: 12px;
+}
+/*采购信息*/
+div.purchase_info{
+	padding-top: 5px;
+	padding-bottom: 25px;
+}
+div.purchase_info table{
+	
+}
+div.purchase_info th{
+	color: #333;
+	font-size: 16px;
+	text-align: center;
+	font-weight:normal ;
+	height: 38px;
+	line-height: 38px;
+}
+.info1{
+	width: 105px;
+}
+.info2{
+	width: 146px;
+}
+.info3{
+	width: 110px;
+}
+.info4{
+	width: 240px;
+}
+.info5{
+	width: 182px;
+}
+.info6{
+	width: 148px;
+}
+div.purchase_info td{
+	text-align: center;
+	color: #333;
+	font-size: 14px;
+	height: 32px;
+	line-height: 32px;
+}
+
+
+/*弹出框*/
+
+.popBox {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	display: none;
+}
+
+.popBox .popback {
+	background-color: #000;
+	opacity: 0.4;
+	filter: alpha(opacity=40);
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.popBox .popfront {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.popfront .popshow {
+	width: 220px;
+	height: 110px;
+	padding: 20px 20px;
+	border-radius: 8px;
+	background: #f7f7f7;
+	margin: 0 auto;
+	position: relative;
+	top: 36%;
+}
+
+.popshow p {
+	line-height: 50px;
+	font-size: 16px;
+	letter-spacing: 2px;
+}
+
+.popHide {
+	background: #ff5000;
+	border: none;
+	border-radius: 4px;
+	color: #fff;
+	padding: 8px 12px;
+	cursor: pointer;
+}

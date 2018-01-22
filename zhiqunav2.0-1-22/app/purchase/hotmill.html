@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>卖废纸买废纸，上纸去哪了</title>
+    <link rel="stylesheet" href="../../css/product.css"/>
+</head>
+<body style="background:#fff;">
+<div class="topbar"></div>
+<div class="navbar"></div>
+<!--热门纸厂-->
+<div class="w1180 hotmill">
+    <h2 class="hotmill-title">
+        热门纸厂
+    </h2>
+    <div class="hotmill-list">
+        <script type="text/html" id="hotmill-list">
+            {{each data as value}}
+            <div data-detail_address="{{value.detail_address}}" data-type="{{value.paper_type}}" data-snm="{{value.paper_name}}" data-paper_id="{{value.paper_id}}" class="hotmill-item">
+                <div>
+                    <b>{{value.paper_name}}</b>
+                </div>
+                <div>{{value.address}}</div>
+                <div>
+                    <a href="javascript:;">一键卖货</a>
+                </div>
+            </div>
+            {{/each}}
+        </script>
+    </div>
+    <p class="addMore">
+        <img src="../../img/message_down.png"/>
+    </p>
+</div>
+
+<div class="footer"></div>
+
+<script src="../../lib/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="../../lib/template-web.js"></script>
+<script type="text/javascript" src="../../lib/md5.js"></script>
+<script type="text/javascript" src="../../js/secret.js"></script>
+<script src="../../js/hotmill.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>卖废纸买废纸，上纸去哪了</title>
+    <link rel="stylesheet" href="../../css/product.css"/>
+</head>
+<body style="background:#f6f6f6;">
+<div class="topbar"></div>
+<div class="navbar"></div>
+
+<!--采购意向-->
+<div id="intention">
+    <div class="intention-banner"></div>
+    <div class="intention">
+        <h3>采购意向</h3>
+        <div class="beforeintention">
+            <script type="text/html" id="beforeintention">
+                <div class="bfinten-left">
+                    <img src="https://two.zhiqunale.cn/{{sp_fengmian_photo}}"/>
+                </div>
+                <div data-sp_uid="{{sp_uid}}" data-sp_id="{{sp_id}}" class="bfinten-right">
+                    <h4>{{sp_product_name}}</h4>
+                    <p>{{sp_store_name}}</p>
+                    <p><b>{{sp_product_price}}元</b></p>
+                </div>
+            </script>
+        </div>
+        <div class="intention-form">
+            <div class="intention-item">
+                <span>请输入采购数量：</span>
+                <input class="intenWeight" type="text"/>吨
+            </div>
+            <div class="intention-item">
+                <span>物流费用负责方：</span>
+                <ul class="fufei">
+                    <li data-fee="1" class="on">买方</li>
+                    <li data-fee="2">卖方</li>
+                </ul>
+            </div>
+            <div class="intention-item">
+                <span>收货信息：</span>
+                <div class="addrs">
+                    <script id="addrs" type="text/html">
+                        {{if a_is_default==1}}
+                        <label>
+                            <input data-a_id="{{a_id}}" checked name="addr" type="radio"/><b class="uname">{{a_username}}</b>（<b class="uphone">{{a_phone}}</b>）
+                            <p>{{address}}</p>
+                            <p class="address-all" style="display: none;">
+                                <span>{{a_province}}</span>
+                                <span>{{a_city}}</span>
+                                <span>{{a_dist}}</span>
+                                <span>{{a_detail}}</span>
+                            </p>
+                        </label>
+                        {{else}}
+                        <label>
+                            <input data-a_id="{{a_id}}" name="addr" type="radio"/><b class="uname">{{a_username}}</b>（<b class="uphone">{{a_phone}}</b>）
+                            <p>{{address}}</p>
+                            <p class="address-all" style="display: none;">
+                                <span>{{a_province}}</span>
+                                <span>{{a_city}}</span>
+                                <span>{{a_dist}}</span>
+                                <span>{{a_detail}}</span>
+                            </p>
+                        </label>
+                        {{/if}}
+                    </script>
+                </div>
+            </div>
+            <div class="intention-item">
+                <button class="issueSure">提交采购意向</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="footer"></div>
+<input type="hidden" class="storeHidden"/>
+
+<script src="../../lib/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="../../lib/md5.js"></script>
+<script type="text/javascript" src="../../js/secret.js"></script>
+<script type="text/javascript" src="../../lib/template-web.js"></script>
+
+<script src="../../js/intention.js"></script>
+</body>
+</html>

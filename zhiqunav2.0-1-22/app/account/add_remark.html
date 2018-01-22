@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>卖废纸买废纸，上纸去哪了</title>
+		<link rel="stylesheet" href="../../css/orders.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/personal.css" />
+	</head>
+
+	<body>
+		<div class="topbar"></div>
+		<div class="personalbanner"></div>
+		<div id="add_remark_content">
+			<div class="order_remark">
+				<h1 class="personal-content-title">订单备注</h1>
+				<div class="add_remarks">
+					<ul class="add_remarks_list">
+						<li>
+							<p class="slelct_cost">添加备注：
+								<select name="cost" class="cost">
+									<option value="">请选择</option>
+								</select>
+								<span class="del_remark">删除</span>
+							</p>
+							<p><textarea name="remark_write" placeholder="请填写备注信息！" class="remark_write" value=""></textarea></p>
+						</li>
+					</ul>
+					<p>
+						<a href="javascript:void(0);" class="add_remark_btn">添加</a>
+					</p>
+				</div>
+				<div class="add_remark_img">
+					<div class="up_title remark_imgs">添加备注图片</div>
+					<div>
+						<a class="upload_box" href="###"><input id="input_file" type="file" onchange="uploadImg(this)" /></a><span class="upload_tips">（最多可以上传9张！）</span></div>
+					<ul class="settle_imgs"></ul>
+				</div>
+				<p class="sure_box">
+					<a href="javascript:void(0)" class="sure_upload">保存</a>
+				</p>
+			</div>
+		</div>
+		<div class="footer"></div>
+		<script src="../../lib/jquery-1.8.3.min.js"></script>
+		<script src="../../lib/md5.js"></script>
+		<script src="../../js/secret.js"></script>
+		<script src="../../js/remark.js"></script>
+		<script type="text/javascript">			
+			$('.topbar').load('../public/topbar.html');
+			$('.footer').load('../public/footer.html');
+			
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="../../css/mall.css" />
+		<!--<link rel="shortcut icon" href="../favicon.png" type="image/x-icon" />-->
+		<title>卖废纸买废纸，上纸去哪了</title>
+	</head>
+
+	<body>
+		<!--显示手机号码-->
+		<div class="popBox" style="z-index: 10;">
+			<div class="popback"></div>
+			<div class="popfront">
+				<div class="popshow">
+					<p>
+						电话：<span class="popPhone"></span>
+					</p>
+					<p>
+						<button class="popHide">确定</button>
+					</p>
+				</div>
+			</div>
+		</div>
+		<div class="topbar"></div>
+		<div id="store_detail"></div>
+		<div class="footer"></div>
+		<script type="text/html" id="storeDetail_tpl">
+			<div class="store_header">
+				<div class="store_img"><img src="../../img/shopdetail_banner.png" /></div>
+				<div class="store_info">
+					<ul>
+						<li>
+							<p>{{data.store_data.c_store_looks}}次</p>
+							<span>近期浏览</span>
+						</li>
+						<li>
+							<p>{{data.store_data.c_store_concern}}人</p>
+							<span>关注了他</span>
+						</li>
+						<li>
+							<p>{{data.store_data.recent_connect_person}}人</p>
+							<span>近期联系</span>
+						</li>
+						<li class="last_li">
+							<p>{{data.store_data.store_credit_stage}}级</p>
+							<span>诚信等级</span>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="store_content">
+				<div class="store_info_left">
+					<div class="seller_info">
+						<h3>商家信息</h3> {{if data.store_data.c_headurl}}
+						<p class="seller_name" style="overflow: hidden; white-space: nowrap;text-overflow: ellipsis;"><img style="border-radius: 50%;" src="https://two.zhiqunale.cn/{{data.store_data.c_headurl}}" />{{data.store_data.c_username}}</p>
+						{{else}}
+						<p class="seller_name" style="overflow: hidden; white-space: nowrap;text-overflow: ellipsis;"><img style="border-radius: 50%;" src="../../img/index_touxiang.png" />{{data.store_data.c_username}}</p>
+						{{/if}}
+						<p>{{data.store_data.address}}</p>
+						<p class="third_p">经纪人/代办&nbsp;主营：{{data.store_data.c_main_business}}</p>
+					</div>
+					<div class="follow_info">
+						<p><span>近期浏览：</span>{{data.store_data.c_store_looks}}次</p>
+						<p><span>关注了他：</span>{{data.store_data.c_store_concern}}人</p>
+						<p><span>近期联系：</span>{{data.store_data.recent_connect_person}}人</p>
+						<p style="margin: 0;"><span>诚信等级：</span>{{data.store_data.store_credit_stage}}级</p>
+					</div>
+					<div class="option">
+						<h3>提供服务</h3> {{if data.store_data.favorite_state==1}}
+						<a class="to_follow" onclick="switchFollow(this)" href="###"><img src="../../img/shopdetail_btn_g.png" /><span>已关注</span></a>
+						{{else}}
+						<a class="to_follow" onclick="switchFollow(this)" href="###"><img src="../../img/shopdetail_btn_g.png" /><span>加关注</span></a>
+						{{/if}}
+						<a class="to_call" href="###" data-phone='{{data.store_data.c_phone}}' onclick="getPhone(this)"><img src="../../img/shopdetail_btn_g2.png" /><span>打电话</span></a>
+						<a data-sid="{{data.store_data.c_id}}" class="to_buy" href="javascript:;"><img src="../../img/shopdetail_btn_o.png" /><span>一键卖货</span></a>
+					</div>
+				</div>
+				<div class="store_info_right">
+					<!--诚信等级-->
+					<div class="integrity_level">
+						<h4>诚信等级</h4>
+						<ul>
+							<li class="level_li">
+								<p><i id="level_count">{{data.store_data.store_credit_stage}}</i>级</p>
+								<p class="level_p"><img src="../../img/level_line.png" /><span>一般</span><img src="../../img/level_line.png" /></p>
+							</li>
+							<li class="judge_li">
+								<p>信誉评价：{{data.store_data.c_store_credit_jugde}}<span>（{{data.store_data.c_store_jugde_count}}个评价）</span></p>
+								<p>线上交易：￥0<span>（0单成交）</span></p>
+
+								<p>
+									{{if data.store_data.c_certification==1}}
+									<b class="attestation_status">已认证</b> {{else if data.store_data.c_certification==2}}
+									<b class="attestation_status">认证中</b> {{else if data.store_data.c_certification==3}}
+									<b class="attestation_status">认证被拒绝</b> {{else}}
+									<b class="attestation_status">未认证</b> {{/if}}
+									<a href="###" class="rank_state"><img src="../../img/shopdetail_tishi.png" />等级说明</a>
+								</p>
+							</li>
+						</ul>
+					</div>
+					<!--主营纸厂-->
+					{{if data.store_data.c_main_business==2}}
+					<div class="integrity_level">
+						<h4>主营纸厂&nbsp;:&nbsp;{{data.store_data.main_paper}}</h4>
+						<div class="server_paper">
+							服务纸厂&nbsp;：&nbsp;<span>{{data.store_data.server_paper}}</span>
+						</div>
+					</div>
+					{{/if}}
+					<!--店铺收货价格走势图-->
+					<div class="integrity_level">
+						<h4>店铺收货价格走势图</h4>
+						<div class="price_chart">
+							<div id="main" style="width: 374px;height:200px;margin:auto ;"></div>
+						</div>
+					</div>
+					<!--实力展示-->
+					<div class="integrity_level">
+						<h4>实力展示</h4>
+						<div class="power_show">
+							{{if data.store_data.c_store_show_text}}
+							<p class="text_show">{{data.store_data.c_store_show_text}}</p>
+							<p class="power_img">
+								{{each data.store_data.c_store_show_photos value}}
+								<img src="https://two.zhiqunale.cn/{{value}}" /> {{/each}}
+							</p>
+							{{else}}
+							<p style="color: #333;font-size: 16px;">暂无店铺信息</p>
+							{{/if}}
+						</div>
+					</div>
+					<!--供应信息-->
+					<div class="integrity_level">
+						<h4>供应信息 <div class="more_info"><a href="###">去店铺></a></div></h4>
+						<div class="supply_info">
+							{{if data.supply_data.length>0}}
+
+							<ul class="supply_pro">
+								{{each data.supply_data value}}
+								<li>
+									<a href="###">
+										{{if value.sp_fengmian_photo !=''}}
+										<img src="https://two.zhiqunale.cn/{{value.sp_fengmian_photo}}" />
+										{{else}}
+										<img src="../../img/timg.png" />
+										{{/if}}
+										
+										<!--<p>A级纸</p>
+										<p>价格：<span>2000元</span></p>-->
+									</a>
+								</li>
+								{{/each}}
+
+							</ul>
+							{{else}}
+							<p style="color: #333;font-size: 16px;">暂无供应信息</p>
+							{{/if}}
+						</div>
+					</div>
+					<!--采购信息-->
+					<div class="integrity_level">
+						<h4>采购信息<div class="more_info"><a href="###">更多></a></div></h4>
+						<div class="supply_info">
+							{{if data.purchase_data.length>0}}
+							<ul class="supply_pro">
+								{{each data.purchase_data value}}
+								<li>
+									<a href="###">
+										{{if value.pn_fengmian_photo !=''}}
+										<img src="https://two.zhiqunale.cn/{{value.pn_fengmian_photo}}" />
+										{{else}}
+										<img src="../../img/timg.png" />
+										{{/if}}
+										
+										<p>{{value.pn_product_specifications}}</p>
+										<!--<p>价格：<span>2000元</span></p>-->
+									</a>
+								</li>
+								{{/each}}
+
+							</ul>
+							<!--<table>
+								<tr>
+									<th class="info1">规格</th>
+									<th class="info2">价格</th>
+									<th class="info3">数量</th>
+									<th class="info4">地址</th>
+									<th class="info5">起止日期</th>
+									<th class="info6">物流费用负责方</th>
+								</tr>
+								<tr>
+									<td>国废A级纸</td>
+									<td>2000元</td>
+									<td>100吨</td>
+									<td>安徽省合肥市蜀山区内森庄园</td>
+									<td>2017.11.11-2017.11.18</td>
+									<td>买方</td>
+								</tr>
+								<tr>
+									<td>国废A级纸</td>
+									<td>2000元</td>
+									<td>100吨</td>
+									<td>安徽省合肥市蜀山区内森庄园</td>
+									<td>2017.11.11-2017.11.18</td>
+									<td>买方</td>
+								</tr>
+							</table>-->
+							{{else}}
+							<p style="color: #333;font-size: 16px;">暂无采购信息</p>
+							{{/if}}
+						</div>
+					</div>
+				</div>
+			</div>
+		</script>
+
+		<script src="../../lib/jquery-1.8.3.min.js"></script>
+		<script src="../../lib/echarts.min.js"></script>
+		<script src="../../lib/md5.js"></script>
+		<script src="../../js/secret.js"></script>
+		<script src="../../lib/template-web.js"></script>
+		<script type="text/javascript">
+			$('.topbar').load('../public/topbar.html');
+			$('.footer').load('../public/footer.html');
+
+			//一键卖货
+			$('#store_detail').delegate('.to_buy','click',function(){
+				if(cookie.getCookie('uid')){
+					window.location.href='key_sellers.html?sid='+$(this).attr('data-sid');
+				}else{
+					window.open('../login/login.html');
+				}
+			});
+
+			(function() {
+				var url = 'https://two.zhiqunale.cn/paper/papermill/getstoredetail';
+				var argu = null;
+				if(cookie.getCookie('uid')) {
+					argu = {
+						user_id: cookie.getCookie('uid'),
+						device_number: 'pc_online',
+						store_id: GetQueryString('cid')
+					};
+				} else {
+					argu = {
+						store_id: GetQueryString('cid')
+					};
+				}
+				GetList(argu, url, getStoreDetail);
+			})()
+
+			function getStoreDetail(data) {
+				console.log(data);
+				if(data.status_code == 10000) {
+					var html = template('storeDetail_tpl', data);
+					$('#store_detail').html(html);
+					setTimeout(function() {
+						if(data.data.receive_price.length > 0) {
+							var day = [],
+								avg_price = [];
+							for(var i in data.data.receive_price) {
+								day.push(data.data.receive_price[i]['day']);
+								avg_price.push(data.data.receive_price[i]['avg_price']);
+							};
+							drawChart(day, avg_price);
+						} else {
+							var p = '<p style="color: #333;font-size: 16px;margin-left: 20px;padding-bottom: 20px;text-align: left;">暂无商铺价格走势信息</p>';
+							$('.price_chart').append(p).find('#main').css('display', "none");
+						}
+
+					}, 5);
+				}
+			}
+
+			/*添加关注，取消关注 switchFollow*/
+			function switchFollow($this) {
+				if($($this).find('span').text().indexOf('已') >= 0) {
+					return false;
+				}
+				var url = 'https://two.zhiqunale.cn/paper/user/follow_product_store';
+				var argu = {
+					uid: cookie.getCookie('uid'),
+					favorite_type: 2,
+					favorite_id: 20,
+					favorite_state: 2,
+					device_number: 'pc_online',
+				};
+				GetList(argu, url, getFollow);
+			};
+
+			function getFollow(data) {
+				console.log(data);
+				if(data.status_code == 10000) {
+					$('.to_follow').find('span').text('已关注');
+					//alert('关注成功');
+				}
+			};
+
+			//点击显示联系方式
+			function getPhone($this) {
+				var phoneNum = $($this).attr('data-phone');
+				$('.popBox').show(function() {
+					$('.popPhone').html(phoneNum);
+				});
+			};
+			$('.popHide').click(function() {
+				$('.popBox').hide();
+			});
+
+			function drawChart($day, $avg_price) {
+				// 基于准备好的dom，初始化echarts实例
+				var myChart = echarts.init(document.getElementById('main'));
+				// 指定图表的配置项和数据
+				var option = {
+					title: {},
+					tooltip: {
+						show: true,
+						trigger: 'axis'
+					},
+					grid: {
+						left: '3%',
+						right: '4%',
+						bottom: '3%',
+						containLabel: true,
+						width: 400,
+						height: 200
+					},
+					legend: {},
+					toolbox: {
+						show: true,
+						orient: 'vertical',
+						itemSize: 10,
+						feature: {}
+					},
+					xAxis: {
+						type: 'category',
+						boundaryGap: true,
+						splitLine: {
+							show: false,
+							interval: 0,
+							lineStyle: {
+								// 使用深浅的间隔色
+								color: '#00d3af',
+							}
+						},
+						//data: []
+						axisLine: {
+							lineStyle: {
+								color: '#00d3af',
+								width: 2, //这里是为了突出显示加上的
+							}
+						}
+					},
+					yAxis: {
+						type: 'value',
+						axisLine: {
+							lineStyle: {
+								color: '#00d3af',
+								width: 2, //这里是为了突出显示加上的
+							}
+						},
+						splitLine: {
+							show: true,
+							interval: 0,
+							lineStyle: {
+								// 使用深浅的间隔色
+								color: '#00d3af',
+							}
+						},
+						axisLabel: {
+							formatter: '{value} 元'
+						}
+					},
+					series: [{
+						name: '均价',
+						stack: '总量',
+						type: 'line',
+						itemStyle: {
+							normal: {
+								color: "#00d3af", //图标颜色
+								label: {
+									show: true
+								}
+							}
+						},
+						lineStyle: {
+							normal: {
+								width: 2, //连线粗细
+								color: "#00d3af" //连线颜色
+							}
+						},
+						symbol: 'roundRect',
+						symbolSize: '8',
+						data: []
+					}]
+				};
+				// 使用刚指定的配置项和数据显示图表。
+				myChart.setOption(option);
+				// 填入数据
+				myChart.setOption({
+					xAxis: {
+						data: $day
+					},
+					series: [{
+						// 根据名字对应到相应的系列
+						name: '价格',
+						data: $avg_price
+					}]
+				});
+			}
+		</script>
+
+	</body>
+
+</html>
