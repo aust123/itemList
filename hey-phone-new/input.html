@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>hey</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="css/index.css" />
+		<script type="text/javascript">
+			(function() {
+				var html = document.documentElement;
+				var width = html.getBoundingClientRect().width;
+				html.style.fontSize = width / 18 + 'px';
+				//1rem=60;
+			})()
+		</script>
+	</head>
+
+	<body>
+		<header><img class="logo" src="img/logo.png" /><span class="navbar"><img src="img/tab_n.png"/></span></header>
+		<div class="form_content">
+			<section class="inputs">
+				<div class="phone_input">
+					<span>Phone&nbsp;:</span><input type="text" name="phone" id="phone_num" value="" maxlength="11" />
+				</div>
+				<div class="wechat_input">
+					<span>Wechat&nbsp;:</span><input type="text" name="phone" id="phone_num" value="" maxlength="11" />
+				</div>
+				<div class="imtoken_input">
+					<span>imToken&nbsp;:</span><input type="text" name="phone" id="phone_num" value="" maxlength="11" />
+				</div>
+			</section>
+			<section class="upload_imtoken_code upload">
+				<div class="upload_imtoken_input">
+					<em>
+						<input type="file" />
+					</em>
+					<span>Upload imToken QR code</span>
+				</div>
+			</section>
+			<section class="upload_wechat_center upload">
+				<div class="upload_wechat_center">
+				<em>
+						<input type="file" />
+					</em>
+				<span>Upload Wechat Personal Center</span>
+				</div>
+			</section>
+			<section class="upload_wechat_moment upload">
+				<div class="upload_wechat_moment">
+				<em>
+						<input type="file" />
+					</em>
+				<span>Upload Wehcat Moments</span>
+				</div>
+			</section>
+			<section class="inputs submit"><span>submit</span></section>
+		</div>
+	</body>
+
+</html>
