@@ -2,10 +2,12 @@ a,
 img {
 	outline: 0;
 }
+
 img,
 input {
 	vertical-align: middle
 }
+
 a,
 abbr,
 acronym,
@@ -91,21 +93,27 @@ var,
 video {
 	margin: 0;
 	padding: 0;
-	border: 0
+	border: 0;
 }
+
 html {
 	-webkit-text-size-adjust: none
 }
+
 body {
 	font-family: "Microsoft Yahei", "微软雅黑", Tahoma, Arial, Helvetica, STHeiti;
 	font-size: 12px;
 	color: #333;
 	background-color: #fff;
 }
+
 input {
 	border: 0
 }
+
+
 /* 设置默认字体 */
+
 body,
 button,
 input,
@@ -126,13 +134,16 @@ h2 {
 h3 {
 	font-size: 14px;
 }
+
 h4,
 h5,
 h6 {
 	font-size: 100%;
 }
 
+
 /* 将斜体扶正 */
+
 code,
 kbd,
 pre,
@@ -140,16 +151,25 @@ samp,
 tt {
 	font-family: "Courier New", Courier, monospace;
 }
+
+
 /* 重置列表元素 */
+
 ul,
 ol {
 	list-style: none;
 }
+
+
 /* 重置文本格式元素 */
+
 a {
 	text-decoration: none;
 }
+
+
 /* 注：optgroup 无法扶正 */
+
 button,
 input,
 select,
@@ -157,267 +177,439 @@ textarea {
 	font-size: 100%;
 }
 
+
 /* 重置表格元素 */
+
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-.left{
+
+.left {
 	float: left;
 }
-.right{
+
+.right {
 	float: right;
 }
+
+
 /*头部导航样式*/
-.header{
-	position: relative;
+
+.header {
+	position: fixed;
+	top: 62px;
 	z-index: 11;
+	width: 100%;
+	height: 51px;
 }
-.nav{
-	margin-top: 62px;
+
+/*div.change {
+	background-color: rgba(0, 0, 0, 0.5) !important;
+	top: 0px !important;
+}*/
+
+.nav {
 	overflow: hidden;
 }
-a.logo{	
+
+a.logo {
 	margin-left: 200px;
 }
-.nav ul{	
+a.logo img{
+	width: 112px;
+	height: 51px;
+}
+.navbar {
+	position: relative;
+	top: 17px;
+}
+
+.nav ul {
 	margin-right: 120px;
 }
-.nav li{
+
+.nav li {
 	float: left;
 	margin-right: 80px;
 }
-.nav li a{
+
+.nav li a {
 	font-size: 16px;
 	color: #fff;
 }
-.nav li .on{
+
+.nav li .on {
 	color: #f0833a;
 }
+
+
 /*banner*/
+
+
 /*banner 点击按钮*/
-.pagination{
+.banner-prev,.banner-next{
+	display: none;
+}
+.pagination {
 	position: relative;
-	bottom: 40px !important;
+	bottom: 40px;
 }
-.swiper-pagination-bullet-active {   
-     width: 18px;
-    height: 6px;
-    display: inline-block;
-   background: url(../img/lunbo_n.png) no-repeat;
-   background-size:contain ;
+
+.swiper-pagination-bullet-active {
+	width: 18px;
+	height: 6px;
+	display: inline-block;
+	background: url(../img/lunbo_n.png) no-repeat;
+	background-size: contain;
 }
+
 
 .swiper-pagination-bullet {
-    width: 18px;
-    height: 6px;
-    display: inline-block;
-   background: url(../img/lunbo_p.png) no-repeat;
-   background-size:cover ;
-    
+	width: 18px;
+	height: 6px;
+	display: inline-block;
+	background: url(../img/lunbo_p.png) no-repeat;
+	background-size: cover;
+}
+
+@media only screen and (min-width: 100px) and (max-width: 414px) {
+	.swiper-pagination-bullet,.swiper-pagination-bullet-active  {
+		display: none !important;
+	}
 }
 /*banner 点击按钮*/
 
-.banner,.content{
+.banner,
+.content {
 	position: relative;
 	top: -113px;
 	width: 100%;
 	overflow: hidden;
 }
-.imgs{
-	position: relative;
+
+.imgs {
+	position: relative;	
 }
-.text{
+.imgs img{
+	height: 856px;
+	width: 100%;
+}
+.text {
 	position: absolute;
 	left: 693px;
 	top: 378px;
 }
-.text p{
-	color: #fff;	
+
+.text p {
+	color: #fff;
 }
-.banner-title{
+
+.banner-title {
 	font-size: 50px;
 	margin-bottom: 28px;
-	letter-spacing: 10px;	
+	letter-spacing: 10px;
 }
-.banner-tip{
+
+.banner-tip {
 	font-size: 20px;
 	letter-spacing: 5px;
 }
+
+
 /*信息介绍区域样式*/
-.introduce ul>li{
+
+.introduce ul>li {
 	height: 540px;
 	text-align: center;
-	overflow: hidden;	
+	overflow: hidden;
 	padding: 165px 428px 0px;
 	box-sizing: border-box;
 }
-.introduce ul>li:nth-of-type(even){
+
+.introduce ul>li:nth-of-type(even) {
 	background-color: #f6f6f6;
 }
-.intro-logo.right{
+
+.intro-logo.right {
 	margin-left: 180px;
 }
-.intro-logo.left{
-	margin-right: 180px;	
+.intro-logo img{
+	width: 209px;
+	border-radius: 50%;
 }
-.intro-text{
+.intro-logo.left {
+	margin-right: 180px;
+}
+
+.intro-text {
 	width: 656px;
 }
-.introduce h3{
+
+.introduce h3 {
 	font-size: 28px;
 	color: #333;
 	margin-bottom: 80px;
 	text-align: center;
 	font-weight: normal;
 }
-.intro-text p{
+
+.intro-text p {
 	font-size: 16px;
 	color: #666;
 	text-align: center;
 	line-height: 1.8;
 }
+
+
 /*创始团队*/
-li#team{
-	padding:98px 293px 0px;
-	height: 720px;		
+
+li#team {
+	padding: 98px 270px 0px;
+	height: 720px;
 }
-li#team h3,#applications h3{
+
+li#team h3,
+#applications h3 {
 	margin-bottom: 104px;
 }
-#team ol,#applications ol{
+
+#team ol,
+#applications ol {
+	width: 9999px;
 	overflow: hidden;
 }
-#team li,#applications li{
+#team ol{
+	position: relative;
+	left: -375px;
+}
+#team li,
+#applications li {
 	float: left;
 }
-#team ol li:nth-of-type(2){
-	margin: 0 253px;
+
+
+#team li{
+	width: 270px;
+	padding-right: 236px;
 }
-.member-name{
+/*创始团队样式*/
+.team-list {
+	width: 1340px;
+	overflow: hidden;
+}
+/*创始团队切换按钮*/
+.swiper-button-prev.team-prev{
+	left: 280px;
+	z-index: 222;
+	top: 57% !important;
+}
+.swiper-button-next.team-next{
+	right:280px;
+	z-index: 222;
+	top: 57% !important;
+}
+.member-photo img{
+	width: 208px;
+	height: 208px;
+	border-radius: 50%;
+}
+.member-name {
 	font-size: 20px;
 	color: #303030;
 	font-weight: bold;
 	margin: 30px 0;
 }
-.member-name b{
+
+.member-name b {
 	color: #ff8431;
 	margin-left: 16px;
+	display: block;
+	margin-top: 10px;
 }
-.member-info{
+
+.member-info {
 	color: #666;
 	font-size: 16px;
 	text-align: center;
 	width: 267px;
 	line-height: 1.4;
 }
+
+
 /*应用举例*/
-li#applications{
-	padding:98px 316px 0px;
-	height: 916px;	
+
+li#applications {
+	padding: 98px 372px 0px;
+	height: 1010px;
+	
 }
-#applications li{
-	margin-right: 60px;
+
+#applications li {
+	/*margin-right: 32px;*/
+	width: 380px ;
+	padding-right: 30px;
+	box-sizing: border-box;
 }
-.applications-list{
+#applications .swiper-slide{
+	width: 380px;
+}
+
+/*区块链应用样式*/
+.applications-list {
 	width: 1140px;
 	overflow: hidden;
 }
-.applications-list ol{
+
+.applications-list ol {
 	width: 99999px;
-	
 }
-.example-photo>img{
-	width:380px;
+
+.example-photo>img {
+	width: 100%;
 	height: 304px;
 }
-.example-info{
+
+.example-info {
 	font-size: 16px;
-	color: #666;
-	padding: 0 13px 12px;
+	color: #666;	
 	margin-top: 40px;
-	width: 380px;
+	width: 100%;
 	box-sizing: border-box;
 	text-align: initial;
 }
-.example-info>p{
+
+.example-info>p {
 	line-height: 1.8;
 }
-span.example-title{
+
+span.example-title {
 	display: block;
 	margin-bottom: 40px;
-	
 }
+.applications-list ol{
+	position: relative;
+	left: -350px;
+}
+/*应用举例切换按钮*/
+.swiper-button-prev.app-prev{
+	left: 316px;
+	z-index: 222;
+	top: 76% !important;
+}
+.swiper-button-next.app-next{
+	right:316px;
+	z-index: 222;
+	top: 76% !important;
+}
+
 /*钱包*/
-#wallet{
+
+#wallet {
 	padding: 138px 465px 0px;
 }
-#wallet h3{
-	margin-bottom:60px ;
+
+#wallet h3 {
+	margin-bottom: 60px;
 }
-#wallet .intro-logo{
+
+#wallet .intro-logo {
 	margin-right: 104px;
 }
-.download{
+
+.download {
 	margin-top: 70px;
-	
 }
-.download a{
+
+.download a {
 	display: inline-block;
-	width: 246px;
+	width: 226px;
 	height: 62px;
-	border: 2px solid rgba(0,0,0,0.1);
+	border: 2px solid rgba(0, 0, 0, 0.1);
 	line-height: 62px;
-	padding-left:50px;
 	box-sizing: border-box;
 	color: #666;
 	font-size: 20px;
 	border-radius: 10px;
-	
+	text-align: initial;
 }
-a.android{
-	background: url(../img/imtoken_android.png) no-repeat;
-	background-position: 29px center;
-	margin-right: 13px;
+a.android img{
+	width:30px ;
+	height: 36px;
+	margin-left: 29px;
+	vertical-align: -10px;
+	margin-right: 16px;
 }
-a.iphone{
-	padding-left:25px;
-	background: url(../img/imtoken_iphone.png) no-repeat;
-	background-position: 29px center;
+a.iphone img{
+	width: 24px;
+	height: 32px;
+	vertical-align: -5px;
+	margin-left: 29px;
+	margin-right: 36px;
 }
+a.android {	
+	margin-right: 16px;	
+}
+
+
+
 /*底部footer样式*/
-.footer{
+
+.footer {
 	height: 466px;
 	text-align: center;
 	background-color: #111316;
 }
-.footer h3{
+
+.footer h3 {
 	font-size: 22px;
 	color: #fff;
-	margin-bottom:122px;
+	margin-bottom: 122px;
 	padding-top: 120px;
 }
+
 .connect {
 	position: relative;
 }
-.connect dl{
+
+.connect dl {
 	display: inline-block;
 	position: relative;
 	margin-right: 100px;
 }
-.connect dl:nth-of-type(4){
+
+.connect dl:nth-of-type(4) {
 	margin: 0px;
 }
-.connect dl:hover .wechart_account{
+
+.connect dl:hover .wechart_account {
 	display: block;
 }
-.copyright{
+
+.copyright {
 	font-size: 12px;
 	color: #b7b7b3;
 	margin-top: 72px;
 }
+.facebook{
+	width: 10px;
+	height: 19px;
+}
+.wechat{
+	width: 22px;
+	height: 19px;
+}
+.twitter{
+	width: 20px;
+	height: 17px;
+}
+.telegram{
+	width: 22px;
+	height: 18px;
+}
+
 /*联系方式*/
-.wechart_account{
+.wechart_account {
 	position: absolute;
 	top: -293px;
 	left: -110px;
@@ -431,19 +623,13 @@ a.iphone{
 	position: absolute;
 	display: none;
 }
-.wechart_account p{
+
+.wechart_account p {
 	font-size: 14px;
 	color: #666;
 	margin-top: 20px;
-	
 }
-/*#test{
-	display: inline-block;
-	width: 20px;
-	height: 20px;
-	background: url(../img/bottom_wechat.png) no-repeat;
-	background-size:contain;
+.wechart_account img{
+	width: 178px;
+	height: 178px;
 }
-#test:hover{
-	background-color: #f0833a;
-}*/
