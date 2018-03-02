@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>fundManage</title>
+		<link rel="stylesheet" type="text/css" href="css/common.css" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<script type="text/javascript">
+			(function() {
+				var html = document.documentElement;
+				var width = html.getBoundingClientRect().width;
+				html.style.fontSize = width / 15 + 'px';
+				//1rem=50;
+			})();
+		</script>
+	</head>
+
+	<body style="background-color:#f1f1f1 ;">
+		<!--头部-->
+		<header class="header">
+			<a class="back" href="javascript:void(0);" onclick="javascript:history.go(-1)"><img src="img/title_jiantou.png" /></a>
+			<span class="title">资金管理</span>
+		</header>
+		<!--内容区域-->
+		<div class="cash_content ">
+			<div class="balance">
+				<p>账户余额&nbsp;（元）</p>
+				<p>20，000.00</p>
+				<p>提现中（元）：1,000.00</p>
+			</div>
+			<div class="cash_option">
+				<a href="enchashment.html">提现 <img src="img/jiantou_right.png"/></a>
+				<a href="mybankcard.html">银行卡管理 <img src="img/jiantou_right.png"/></a>
+			</div>
+		</div>
+
+	</body>
+
+</html>

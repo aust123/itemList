@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>enchashment</title>
+		<link rel="stylesheet" type="text/css" href="css/common.css" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<script type="text/javascript">
+			(function() {
+				var html = document.documentElement;
+				var width = html.getBoundingClientRect().width;
+				html.style.fontSize = width / 15 + 'px';
+				//1rem=50;
+			})();			
+		</script>
+	</head>
+
+	<body style="background-color:#f1f1f1 ;">
+		<!--头部-->
+		<header class="header">
+			<a class="back"  href="javascript:void(0);" onclick="javascript:history.go(-1)"><img src="img/title_jiantou.png"/></a>
+			<span class="title">提现</span>		
+		</header>		
+		<!--内容区域-->
+		<div class="cash_content " >
+			<div style="padding: 0;">
+			<a class="selected_card" href="mybankcard.html">
+				<img class="bankcard_logo" src="img/bank_zhaoshang.png" alt=""/>
+				<div class="bankcard_msg">
+					<p>招商银行</p>
+					<p>尾号3558储蓄卡</p>
+				</div>
+				<img class="right_arrow" src="img/jiantou_right.png"/>
+			</a>
+			</div>
+			<div class="cash_sum">
+				<p>提现金额</p>
+				<p><b>￥</b><input type="text" id="money_count"  /></p>	
+				<p>可用余额&nbsp;<span>20,000</span>元</p>
+			</div>
+		</div>
+		<p class="cash_rule"><img src="img/sqreturn_tishi.png"/><a href="###">《纸去哪了》平台提现规则</a></p>
+		<p class="release_box" id="cash_submit"><span class="release_btn">确认提现</span></p>
+	</body>
+
+</html>

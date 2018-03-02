@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>bankDeposit</title>
+		<link rel="stylesheet" type="text/css" href="css/common.css" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<script type="text/javascript">
+			(function() {
+				var html = document.documentElement;
+				var width = html.getBoundingClientRect().width;
+				html.style.fontSize = width / 15 + 'px';
+				//1rem=50;
+			})();
+		</script>
+	</head>
+
+	<body style="background-color:#f1f1f1 ;">
+		<!--头部-->
+		<header class="header">
+			<a class="back" href="javascript:void(0);" onclick="javascript:history.go(-1)"><img src="img/title_jiantou.png" /></a>
+			<span class="title">选择开户行</span>
+		</header>
+		<!--内容区域-->
+		<div class="cash_content ">
+			<div style="padding: 0;">
+				<a class="selected_bank" href="###">
+					<img class="bankcard_logo" src="img/bank_zhaoshang.png" alt="" />
+					<span class="bank_name">招商银行</span>					
+				</a>
+				<a class="selected_bank" href="###">
+					<img class="bankcard_logo" src="img/bank_zhongguo.png" alt="" />
+					<span class="bank_name">中国银行</span>					
+				</a>
+			</div>
+		</div>
+		
+	</body>
+
+</html>
