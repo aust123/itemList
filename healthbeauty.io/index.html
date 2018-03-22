@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>HEY</title>
+		<link rel="stylesheet" href="css/swiper-3.4.2.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/index.css" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	</head>
+
+	<body>
+		<div class="hey_content"></div>
+		<script type="text/html" id="hey_tpl">
+			<div class="header">
+				<div class="nav">
+					<a href="###" class="logo left"><img src="img/logo.png" /></a>
+					<ul class="right navbar">
+						<li>
+							<a class="on home" onclick="moveTo(this)" href="###">{{nav.home}}</a>
+						</li>
+						<li>
+							<a class="white" onclick="moveTo(this)" href="HEY-Whitepaper.html">{{nav.whitebook}}</a>
+						</li>
+						<li>
+							<a class="team-work" onclick="moveTo(this)" href="###">{{nav.team}}</a>
+						</li>
+						<li>
+							<a class="wallets" onclick="moveTo(this)" href="###">{{nav.wallet}}</a>
+						</li>
+						<li>
+							<a href="javascript:void(0);" class="language"><span>EN</span>/<span class="on">中文</span>/<span>한국어</span></a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<!--这是banner-->
+			<div class="banner ">
+				<div class="swiper-container swiper-banner">
+					<div class="swiper-wrapper imgs">
+						{{each banner value}}
+						<div class="swiper-slide">
+							<img src="{{value.banner_img}}" />
+							<div class="text">
+								<p class="banner-title">{{value.baner_title}}</p>
+								<p class="banner-tip">{{value.baner_tips}}</p>
+							</div>
+						</div>
+						{{/each}}
+					</div>
+					<!-- 如果需要分页器 -->
+					<div class="swiper-pagination pagination"></div>
+					<!-- 如果需要导航按钮 -->
+					<div class="swiper-button-prev banner-prev"></div>
+					<div class="swiper-button-next banner-next"></div>
+				</div>
+			</div>
+			<!--内容区域-->
+			<div class="content">
+				<div class="introduce">
+					<ul>
+						{{each introduce value}}
+						<li style=" position:relative;">
+							<div class="intro-logo" style="  position: absolute;top: 50%;transform: translateY(-50%);"><img src="{{value.intro_img}}" /></div>
+							<div class="intro-text">
+								<h3>{{value.title}}</h3>
+								<p>{{value.detail}}</p>
+							</div>
+						</li>
+						{{/each}}
+						<!--创始团队-->
+						<li id="team">
+							<h3>{{founder.founder_title}}</h3>
+							<div class="team-list">
+								<div class="team-contain swiper-container">
+									<ol class="swiper-wrapper">
+										{{each founder.founder_list value}}
+										<li class="swiper-slide">
+											<p class="member-photo"><img src="{{value.founder_img}}" /></p>
+											<h2 class="member-name">{{value.founder_name}}<b>{{value.position}}</b></h2>
+											<p class="member-info">{{value.experience}}</p>
+										</li>
+										{{/each}}
+									</ol>
+								</div>
+								<div class="swiper-button-prev team-prev"></div>
+								<div class="swiper-button-next team-next"></div>
+							</div>
+
+						</li>
+						<!--应用场景举例-->
+						<li id="applications">
+							<h3>{{applys.apply_title}}</h3>
+							<div class="applications-list ">
+								<div class="contain swiper-container">
+									<ol class="swiper-wrapper">
+										{{each applys.applys_list value}}
+										<li class="swiper-slide">
+											<p class="example-photo"><img src="{{value.sub_img}}" /></p>
+											<div class="example-info">
+												<span class="example-title">{{value.sub_title}}</span>
+												<p>{{value.sub_detail}}</p>
+											</div>
+										</li>
+										{{/each}}
+									</ol>
+									<!-- 如果需要导航按钮 -->
+
+								</div>
+								<div class="swiper-button-prev app-prev"></div>
+								<div class="swiper-button-next app-next"></div>
+							</div>
+						</li>
+						<li id="wallet">
+							<div class="wallet-logo left"><img style="border-radius: 0px;" src="img/wallet.png" /></div>
+							<div class=" wallet-info left">
+								<p class="wallet-address">
+									<span class="address-title">钱包地址：</span>
+									<span class="address-num" onclick="copyText(this)" onmouseenter="enter()" onmouseleave="leave()">0x781Bbe5cb7c1eE0b310b0278Fa16568b0CaBD9F5</span>
+									<textarea id="copy_hide" rows="" cols=""></textarea>
+									<i class="tip">点击钱包地址可复制</i>
+								</p>
+								<p class="wallet-remark">备&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注：1ETH=12，000HEY</p>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="footer">
+				<h3>Contact us</h3>
+				<div class="connect">
+					<dl>
+						<dt><a href="###"><img class="facebook" src="img/bottom_facebook.png" alt="" /></a></dt>
+						<dd></dd>
+					</dl>
+					<dl>
+						<dt>
+                        <a href="###"><img class="twitter" src="img/bottom_twitter.png" alt="" /></a>
+                    </dt>
+						<dd></dd>
+					</dl>
+					<dl>
+						<dt>
+                       <a href="###"><img class="wechat" src="img/bottom_wechat.png" alt="" /></a>
+                    </dt>
+						<dd>
+							<div class="wechart_account">
+								<img src="img/erweima.png" alt="" />
+								<p>WECHART:healthbeautycoins</p>
+							</div>
+						</dd>
+					</dl>
+					<dl>
+						<dt>
+                      <a href="###"><img class="telegram" src="img/bottom_telegram.png" alt="" /></a>
+                    </dt>
+						<dd></dd>
+					</dl>
+				</div>
+				<p class="copyright">copyright©hey2017</p>
+			</div>
+		</script>
+
+		<script src="js/jquery-1.8.3.min.js"></script>
+		<script src="js/swiper-3.4.2.jquery.min.js"></script>
+		<script src="js/template-web.js"></script>
+		<script src="js/index.js"></script>
+		<script type="text/javascript">
+			/*$('.language span').click(function(){				
+							 this.addClass('on').siblings().removeClass('on');
+						});
+						*/
+			getData('js/china.json');
+
+			function getData($url) {
+				$.ajax({
+					type: "get",
+					url: $url,
+					async: true,
+					success: function(data) {
+						console.log(data);
+						var html = template('hey_tpl', data);
+						$('.hey_content').html(html);
+					},
+					error: function(err) {
+						console.log(err)
+					}
+				});
+			}
+			
+			
+			function enter(){
+				$('.tip').fadeIn();				
+			};
+			function leave(){
+				$('.tip').fadeOut();				
+			};
+			
+			function copyText(_this) {			
+				var text = $(_this).text();				
+				var input = document.getElementById("copy_hide");
+				input.value = text; // 修改文本框的内容
+				input.select(); // 选中文本
+				document.execCommand("copy"); // 执行浏览器复制命令
+				alert("复制成功");
+			}
+		</script>
+
+	</body>
+
+</html>

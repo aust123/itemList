@@ -1,0 +1,724 @@
+a,
+img {
+	outline: 0;
+}
+
+img,
+input {
+	vertical-align: middle
+}
+
+a,
+abbr,
+acronym,
+address,
+applet,
+article,
+aside,
+audio,
+b,
+big,
+blockquote,
+body,
+canvas,
+caption,
+center,
+cite,
+code,
+dd,
+del,
+details,
+dfn,
+div,
+dl,
+dt,
+em,
+embed,
+fieldset,
+figcaption,
+figure,
+footer,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+header,
+hgroup,
+hr,
+html,
+i,
+iframe,
+img,
+ins,
+kbd,
+label,
+legend,
+li,
+mark,
+menu,
+nav,
+object,
+ol,
+output,
+p,
+pre,
+q,
+ruby,
+s,
+samp,
+section,
+small,
+span,
+strike,
+strong,
+sub,
+summary,
+sup,
+table,
+tbody,
+td,
+textarea,
+tfoot,
+th,
+thead,
+time,
+tr,
+tt,
+u,
+ul,
+var,
+video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+html {
+	-webkit-text-size-adjust: none
+}
+
+body {
+	font-family: "Microsoft Yahei", "微软雅黑", Tahoma, Arial, Helvetica, STHeiti;
+	font-size: 12px;
+	color: #333;
+	background-color: #fff;
+}
+
+input {
+	border: 0
+}
+
+
+/* 设置默认字体 */
+
+body,
+button,
+input,
+select,
+textarea {
+	outline: none;
+	font: 12px/1 Microsoft Yahei, Tahoma, Helvetica, Arial, "\5b8b\4f53", sans-serif;
+}
+
+h1 {
+	font-size: 18px;
+}
+
+h2 {
+	font-size: 16px;
+}
+
+h3 {
+	font-size: 14px;
+}
+
+h4,
+h5,
+h6 {
+	font-size: 100%;
+}
+
+
+/* 将斜体扶正 */
+
+code,
+kbd,
+pre,
+samp,
+tt {
+	font-family: "Courier New", Courier, monospace;
+}
+
+
+/* 重置列表元素 */
+
+ul,
+ol {
+	list-style: none;
+}
+
+
+/* 重置文本格式元素 */
+
+a {
+	text-decoration: none;
+}
+
+
+/* 注：optgroup 无法扶正 */
+
+button,
+input,
+select,
+textarea {
+	font-size: 100%;
+}
+
+
+/* 重置表格元素 */
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+.left {
+	float: left;
+}
+
+.right {
+	float: right;
+}
+
+
+/*头部导航样式*/
+
+.header {
+	position: fixed;
+	top: 62px;
+	z-index: 11;
+	width: 100%;
+	height: 51px;
+}
+
+
+/*div.change {
+	background-color: rgba(0, 0, 0, 0.5) !important;
+	top: 0px !important;
+}*/
+
+.nav {
+	overflow: hidden;
+}
+
+a.logo {
+	margin-left: 200px;
+}
+
+a.logo img {
+	width: 112px;
+	height: 51px;
+}
+
+.navbar {
+	position: relative;
+	top: 17px;
+}
+
+.nav ul {
+	margin-right: 120px;
+}
+
+.nav li {
+	float: left;
+	margin-right: 80px;
+}
+
+.nav li a {
+	font-size: 16px;
+	color: #fff;
+}
+
+.nav li .on {
+	color: #f0833a;
+}
+
+
+/*banner*/
+
+
+/*banner 点击按钮*/
+
+.banner-prev,
+.banner-next {
+	display: none;
+}
+
+.pagination {
+	position: relative;
+	bottom: 40px !important;
+}
+
+.swiper-pagination-bullet-active {
+	width: 18px;
+	height: 6px;
+	display: inline-block;
+	background: url(../img/lunbo_n.png) no-repeat;
+	background-size: contain;
+}
+
+.swiper-pagination-bullet {
+	width: 18px;
+	height: 6px;
+	display: inline-block;
+	background: url(../img/lunbo_p.png) no-repeat;
+	background-size: cover;
+}
+
+@media only screen and (min-width: 100px) and (max-width: 414px) {
+	.swiper-pagination-bullet,
+	.swiper-pagination-bullet-active {
+		display: none !important;
+	}
+}
+
+
+/*banner 点击按钮*/
+
+.banner,
+.content {
+	position: relative;
+	/*top: -113px;*/
+	width: 100%;
+	overflow: hidden;
+}
+
+.imgs {
+	position: relative;
+}
+
+.imgs img {
+	height: 856px;
+	width: 100%;
+}
+
+.text {
+	position: absolute;
+	left: 693px;
+	top: 378px;
+}
+
+.text p {
+	color: #fff;
+}
+
+.banner-title {
+	font-size: 50px;
+	margin-bottom: 28px;
+	letter-spacing: 10px;
+}
+
+.banner-tip {
+	font-size: 20px;
+	letter-spacing: 5px;
+}
+
+
+/*信息介绍区域样式*/
+
+.introduce ul>li {
+	/*min-height: 540px;*/
+	text-align: center;
+	overflow: hidden;
+	/*padding: 165px 428px 0px;*/
+	padding: 125px 428px;
+	box-sizing: border-box;
+}
+
+.introduce ul>li:nth-of-type(even) {
+	background-color: #f6f6f6;
+}
+
+.introduce ul>li:nth-of-type(6) .intro-logo {
+	position: relative;
+	top: -40%;
+}
+
+.introduce ul>li:nth-of-type(even) .intro-logo,
+.intro-text {
+	float: right;
+}
+
+.introduce ul>li:nth-of-type(even) .intro-logo {
+	margin-left: 880px;
+	margin-right: 0 !important;
+}
+
+.introduce ul>li:nth-of-type(odd) .intro-text {
+	margin-left: 400px;
+}
+
+.intro-logo,
+.intro-text {
+	float: left;
+}
+
+.intro-logo {
+	margin-right: 180px;
+}
+
+.intro-logo img {
+	width: 209px;
+	border-radius: 50%;
+}
+
+.intro-text {
+	width: 656px;
+}
+
+.introduce h3 {
+	font-size: 28px;
+	color: #333;
+	margin-bottom: 80px;
+	text-align: center;
+	font-weight: normal;
+}
+
+.intro-text p {
+	font-size: 16px;
+	color: #666;
+	text-align: center;
+	line-height: 1.8;
+}
+
+
+/*创始团队*/
+
+li#team {
+	padding: 98px 270px 0px;
+}
+
+li#team h3,
+#applications h3 {
+	margin-bottom: 104px;
+}
+
+#team ol,
+#applications ol {
+	width: 9999px;
+	overflow: hidden;
+}
+
+#team ol {
+	position: relative;
+	left: -375px;
+}
+
+#team li,
+#applications li {
+	float: left;
+}
+
+#team li {
+	width: 270px;
+	padding-right: 236px;
+}
+
+
+/*创始团队样式*/
+
+.team-list {
+	width: 1340px;
+	overflow: hidden;
+}
+
+
+/*创始团队切换按钮*/
+
+.swiper-button-prev.team-prev {
+	left: 280px;
+	z-index: 222;
+	top: 67% !important;
+}
+
+.swiper-button-next.team-next {
+	right: 280px;
+	z-index: 222;
+	top: 67% !important;
+}
+
+.member-photo img {
+	width: 208px;
+	height: 208px;
+	border-radius: 50%;
+}
+
+.member-name {
+	font-size: 20px;
+	color: #303030;
+	font-weight: bold;
+	margin: 30px 0;
+}
+
+.member-name b {
+	color: #ff8431;
+	margin-left: 16px;
+	display: block;
+	margin-top: 10px;
+}
+
+.member-info {
+	color: #666;
+	font-size: 16px;
+	text-align: center;
+	width: 267px;
+	line-height: 1.4;
+}
+
+
+/*应用举例*/
+
+li#applications {
+	/*padding: 98px 372px 0px;
+	height: 1010px;*/
+	padding: 100px 372px 0px;
+}
+
+#applications li {
+	/*margin-right: 32px;*/
+	width: 380px;
+	padding-right: 30px;
+	box-sizing: border-box;
+}
+
+#applications .swiper-slide {
+	width: 380px;
+}
+
+
+/*区块链应用样式*/
+
+.applications-list {
+	width: 1140px;
+	overflow: hidden;
+}
+
+.applications-list ol {
+	width: 99999px;
+}
+
+.example-photo>img {
+	width: 100%;
+	height: 304px;
+}
+
+.example-info {
+	font-size: 16px;
+	color: #666;
+	margin-top: 40px;
+	width: 100%;
+	box-sizing: border-box;
+	text-align: initial;
+}
+
+.example-info>p {
+	line-height: 1.8;
+}
+
+span.example-title {
+	display: block;
+	margin-bottom: 40px;
+}
+
+.applications-list ol {
+	position: relative;
+	left: -350px;
+}
+
+
+/*应用举例切换按钮*/
+
+.swiper-button-prev.app-prev {
+	left: 316px;
+	z-index: 222;
+	top: 82% !important;
+}
+
+.swiper-button-next.app-next {
+	right: 316px;
+	z-index: 222;
+	top: 82% !important;
+}
+
+
+/*钱包*/
+
+
+/*#wallet {
+	padding: 138px 465px 0px;
+}*/
+
+#wallet {
+	padding: 170px 465px;
+	position: relative;
+}
+
+#wallet .wallet-logo {
+	margin-right: 160px;
+}
+
+.wallet-logo img {
+	width: 236px;
+	height: 200px;
+}
+
+.wallet-info {
+	font-size: 28px;
+	color: #333;
+	text-align: left;
+	position: absolute;
+	top: 170px;
+	left: 860px;
+}
+
+.wallet-address {
+	width: 620px;
+	margin-bottom: 60px;
+	word-wrap: break-word;
+	word-break: normal;
+	word-break: break-all;
+	position: relative;
+	line-height: 1.5;
+}
+
+.address-title {
+	width: 25%;
+	position: relative;
+	bottom: 40px;
+	display: inline-block;
+}
+
+.address-num {
+	width: 72%;
+	display: inline-block;
+}
+
+
+/*底部footer样式*/
+
+.footer {
+	height: 466px;
+	text-align: center;
+	background-color: #111316;
+	position: relative;
+	/*top: -113px;*/
+}
+
+.footer h3 {
+	font-size: 22px;
+	color: #fff;
+	margin-bottom: 122px;
+	padding-top: 120px;
+}
+
+.connect {
+	position: relative;
+}
+
+.connect dl {
+	display: inline-block;
+	position: relative;
+	margin-right: 100px;
+}
+
+.connect dl:nth-of-type(4) {
+	margin: 0px;
+}
+
+.connect dl:hover .wechart_account {
+	display: block;
+}
+
+.copyright {
+	font-size: 12px;
+	color: #b7b7b3;
+	margin-top: 72px;
+}
+
+.facebook {
+	width: 10px;
+	height: 19px;
+}
+
+.wechat {
+	width: 22px;
+	height: 19px;
+}
+
+.twitter {
+	width: 20px;
+	height: 17px;
+}
+
+.telegram {
+	width: 22px;
+	height: 18px;
+}
+
+
+/*联系方式*/
+
+.wechart_account {
+	position: absolute;
+	top: -293px;
+	left: -110px;
+	width: 246px;
+	height: 276px;
+	text-align: center;
+	background-color: #f1f1f1;
+	border-radius: 15px;
+	padding-top: 33px;
+	box-sizing: border-box;
+	position: absolute;
+	display: none;
+}
+
+.wechart_account p {
+	font-size: 14px;
+	color: #666;
+	margin-top: 20px;
+}
+
+.wechart_account img {
+	width: 178px;
+	height: 178px;
+}
+
+#copy_hide {
+	background-color: transparent;
+	position: absolute;
+	top: 0;
+	left: 26%;
+	z-index: -10;
+	opacity: 0;
+}
+
+.tip {
+	display: inline-block;
+	background-color: #333;
+	width: 150px;
+	color: #fff;
+	height: 30px;
+	text-align: center;
+	line-height: 30px;
+	border-radius: 4px;
+	display: none;
+	position: absolute;
+	top: -32px;
+	left: 75%;
+	opacity: 0.8;
+	font-size: 12px;
+}

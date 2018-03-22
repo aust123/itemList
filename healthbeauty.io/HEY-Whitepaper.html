@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HEY-Whitepaper</title>
+</head>
+<body>
+<script type="text/javascript" src="js/pdfobject.js"></script>
+<script type="text/javascript">
+    window.onload = function (){
+        var success = new PDFObject({ url: "HEY-Whitepaper.pdf" ,pdfOpenParams: { scrollbars: '0', toolbar: '0', statusbar: '0'}}).embed("pdf1");
+    };
+</script>
+
+<div id="pdf1" style="width:100%;">It appears you don't have Adobe Reader or PDF support in this web browser. <a href="HEY-Whitepaper.pdf">Click here to download the PDF</a></div>
+<script>
+var height=window.innerHeight;
+document.getElementById('pdf1').style.height = height+"px";
+</script>
+</body>
+</html>
