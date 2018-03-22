@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>hey</title>
+		<link rel="stylesheet" href="css/swiper-3.4.2.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/index.css" />
+		<script src="js/clipboard.min.js"></script>
+	</head>
+
+	<body>
+		<header><img class="logo" src="img/logo.png" /><span class="navbar"><img class="nav_img" src="img/tab_n.png"/></span></header>
+		<div class="hey_content"></div>
+		<!--微信二维码-->
+		<script type="text/html" id="hey_tpl">
+			<section class="banner">
+				<div class="swiper-container swiper-banner">
+					<div class="swiper-wrapper">
+						{{each banner value}}
+						<div class="swiper-slide banner_contain ">
+							<img src="{{value.banner_img}}" />
+							<div class="text">
+								<div class="banner-title">
+									<h2>HEY</h2>
+									<p>{{value.baner_title}}</p>
+								</div>
+								<p class="banner-tip">{{value.baner_tips}}</p>
+							</div>
+						</div>
+						{{/each}}
+					</div>
+					<div class="swiper-pagination pagination"></div>
+				</div>
+			</section>
+			<!--导航-->
+			<nav class="nav_content">
+				<h3>HEY链</h3>
+				<p class="website">www.healthbeauty.io</p>
+				<div class="connect"><img src="img/hey-logo.png" />
+					<p>wechat</p>
+				</div>
+				<ul class="nav_list">
+					<li>
+						<a class="on home" onclick="moveTo(this)" href="###">{{nav.home}}</a>
+					</li>
+					<li>
+						<a href="HEY-Whitepaper.html" onclick="moveTo(this)">{{nav.whitebooke}}</a>
+					</li>
+					<li>
+						<a href="###" onclick="moveTo(this)" class="team-work">{{nav.team}}</a>
+					</li>
+					<li>
+						<a href="###" onclick="moveTo(this)" class="wallets">{{nav.wallet}}</a>
+					</li>
+				</ul>
+				<p class="copyright">copyright©hey2017</p>
+			</nav>
+			<!--内容区域-->
+			<section class="content">
+				<div class="hey_info">
+					<ul class="hey_info_list">
+						{{each introduce value}}
+						<li>
+							<div class="info_name"><img src="{{value.intro_img}}" /></div>
+							<h3>{{value.title}}</h3>
+							<p class="info_detail">{{value.detail}}</p>
+						</li>
+						{{/each}}
+						<!--创始团队-->
+						<li id="found_team">
+							<h3>{{founder.founder_title}}</h3>
+							<div class="team_members swiper-container">
+								<ol class="team_members_list swiper-wrapper">
+									{{each founder.founder_list value}}
+									<li class="swiper-slide">
+										<div class="member_icon"><img src="{{value.founder_img}}" /></div>
+										<p class="member_name">{{value.founder_name}}</p>
+										<p class="member_place">{{value.position}}</p>
+									</li>
+									{{/each}}
+								</ol>
+							</div>
+						</li>
+						<!--应用举例-->
+						<li id="applications">
+							<h3>{{applys.apply_title}}</h3>
+							<div class="examples swiper-container">
+								<ol class="examples_list swiper-wrapper">
+									{{each applys.applys_list value}}
+									<li class="swiper-slide">
+										<div class="example-photo"><img src="{{value.sub_img}}" /></div>
+										<div class="example-info">
+											<span class="example-title">{{value.sub_title}}</span>
+											<p>{{value.sub_detail}}</p>
+										</div>
+									</li>
+									{{/each}}
+								</ol>
+
+							</div>
+						</li>
+						<!--钱包-->
+						<li id="wallet">
+							<h3>{{wallet.name}}</h3>
+							<span class="tip">点击钱包地址可复制</span>
+							<p style="cursor: pointer" onclick="">地址：<span style="cursor: pointer" onclick="" class="btn" id="foo" data-clipboard-target="#foo"  data-clipboard-action="copy" >0x781Bbe5cb7c1eE0b310b0278Fa16568b0CaBD9F5</span></p>
+							<p>备注：1ETH=12，000HEY</p>
+							<div class="wallet_logo"><img src="img/wallet.png" /></div>
+						</li>
+					</ul>
+				</div>
+			</section>
+			<!--底部footer-->
+			<div class="footer">
+				<h3>CONNECT US</h3>
+				<div class="connect_type">
+					<a href="###"><img class="facebook" src="img/bottom_facebook.png" alt="" /></a>
+					<a href="###"><img class="twitter" src="img/bottom_twitter.png" alt="" /></a>
+					<a href="###"><img class="wechat" src="img/bottom_wechat.png" alt="" /></a>
+					<a href="###"><img class="telegram" src="img/bottom_telegram.png" alt="" /></a>
+				</div>
+				<p class="footer_copyright">copyright©hey2017</p>
+				<!--微信二维码图片-->
+				<div class="wechat_code">
+					<div class="code_box">
+						<img src="img/hey-logo132.png" />
+						<p>WECHAT&nbsp;:&nbsp;healthbeautycoins</p>
+					</div>
+					<p class="code_copyright">copyright©hey2017</p>
+				</div>
+			</div>
+		</script>
+		<script src="js/jquery-1.8.3.min.js"></script>
+		<script src="js/swiper-3.4.2.jquery.min.js"></script>
+		<script src="js/template-web.js"></script>
+		<script src="js/index.js"></script>
+		<script>
+			getData('js/china.json');
+
+			function getData($url) {
+				$.ajax({
+					type: "get",
+					url: $url,
+					async: true,
+					success: function(data) {
+						var html = template('hey_tpl', data);
+						$('.hey_content').html(html);
+					},
+					error: function(err) {
+						console.log(err);
+					}
+				});
+			};
+			window.onscroll = function() {
+				if($(window).scrollTop() >= $('#wallet').offset().top) { //alert('到了')
+					$('.tip').fadeIn();
+				} else {
+					$('.tip').fadeOut();
+				}
+			};
+
+			var clipboard = new ClipboardJS('.btn');
+			clipboard.on('success', function(e) {
+				//console.info('Action:', e.action);
+				//console.info('Text:', e.text);
+				//console.info('Trigger:', e.trigger);
+				e.clearSelection();
+				alert('复制成功')
+			});
+			clipboard.on('error', function(e) {
+				console.error('Action:', e.action);
+				console.error('Trigger:', e.trigger);
+			});
+		</script>
+	</body>
+
+</html>

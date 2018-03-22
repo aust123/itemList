@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>hey</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="css/index.css" />
+		<script type="text/javascript">
+			(function() {
+				var html = document.documentElement;
+				var width = html.getBoundingClientRect().width;
+				html.style.fontSize = width / 18 + 'px';
+				//1rem=60;
+			})()
+		</script>
+	</head>
+
+	<body>
+		<header><img class="logo" src="img/logo.png" /><span class="navbar"><img src="img/tab_n.png"/></span></header>
+		<div class="form_content">
+			<section class="inputs">
+				<div class="phone_input">
+					<span>Phone&nbsp;:</span><input type="text" name="phone" id="phone_num" value="" maxlength="11" />
+				</div>
+				<div class="wechat_input">
+					<span>Wechat&nbsp;:</span><input type="text" name="phone" id="phone_num" value="" maxlength="11" />
+				</div>
+				<div class="imtoken_input">
+					<span>imToken&nbsp;:</span><input type="text" name="phone" id="phone_num" value="" maxlength="11" />
+				</div>
+			</section>
+			<section class="upload_imtoken_code upload">
+				<div class="upload_imtoken_input">
+					<em>
+						<input type="file" />
+						<img class="imtoken_icon" src="img/icon_upload.png" alt="" />
+					</em>
+					<span>Upload imToken QR code</span>
+				</div>
+			</section>
+			<section class="upload_wechat_center upload">
+				<div class="upload_wechat_center">
+					<em>
+						<input type="file"  id="up" onchange="uploadImg(this)"/>
+						<img class="wechat_center_icon" src="img/icon_upload.png" alt="" />
+					</em>
+					<span>Upload Wechat Personal Center</span>
+				</div>
+			</section>
+			<section class="upload_wechat_moment upload">
+				<div class="upload_wechat_moment">
+					<em>
+						<input type="file" />
+						<img class="wechat_moment_icon" src="img/icon_upload.png" alt="" />
+					</em>
+					<span>Upload Wehcat Moments</span>
+				</div>
+			</section>
+			<section class="inputs submit"><span>submit</span></section>
+		</div>
+		<script src="js/jquery-1.8.3.min.js"></script>
+		<script>
+			function GetList($data, $url, $fun) {
+				$.ajax({
+					type: "post",
+					dataType: "json",
+					crossDomain: true,
+					contentType: 'application/x-www-form-urlencoded;charset=UTF-8',
+					url: $url,
+					data: $data,
+					async: true,
+					success: function(data) {
+						$fun(data);
+					},
+					error: function(XMLHttpRequest, textStatus, errorThrown) {
+						console.log(JSON.stringify(XMLHttpRequest));
+						console.log(JSON.stringify(textStatus));
+						console.log(errorThrown);
+						console.log("请求不到服务器");
+					}
+				});
+			};
+
+			$('.submit span').click(function() {
+				console.log(222)
+				var url = 'https://admin.healthybeauty.io/index.pnp/Api/Checkcode/add_form';
+				var obj = {
+					phone: 15705131911,
+					wx_id: 123456,
+					im_token: 111111,
+					wx_pyq_img: 11111,
+					wx_grzx: 6666,
+					in_token_img: 88888
+				};
+				GetList(obj, url, CallBack);
+			})
+
+			function CallBack(data) {
+				console.log(data)
+			}
+
+			var getImgUrl = {
+				ele: '',
+				base64Src: '',
+				imgEle: '',
+				showFun: '',
+				uploadIcon: function() {					
+					var file = this.ele;					
+					if(file.files && file.files[0]) {
+						var ext = file.value.substring(file.value.lastIndexOf(".") + 1).toLowerCase();
+						if(ext != 'png' && ext != 'jpg' && ext != 'jpeg') {
+							alert("图片的格式必须为png或者jpg或者jpeg格式！");
+							return false;
+						} else {
+							var reader = new FileReader();
+							reader.onload = function(evt) {
+								//img.src =evt.target.result;
+								console.log(evt.target.result)
+								getImgUrl.base64Src = evt.target.result;
+								getImgUrl.ajaxImg();
+							}
+							reader.readAsDataURL(file.files[0]);
+						}
+					}
+
+				},
+				ajaxImg: function() {
+					$.ajax({
+						type: 'post',
+						url: 'https://admin.healthybeauty.io/index.php/Api/Checkcode/receivePcFile',
+						data: {
+							pic: getImgUrl.base64Src
+						},
+						success: function(data) {
+							getImgUrl.showFun(data);
+						},
+						error: function(XMLHttpRequest, textStatus, errorThrown) {
+							console.log('请求错误！');
+							console.log(XMLHttpRequest);
+							console.log(textStatus);
+							console.log(errorThrown);
+						}
+					})
+				}
+
+			};
+
+			function uploadImg($this) {
+				getImgUrl.ele = $this;
+				getImgUrl.imgEle = $('.wechat_center_icon');
+				getImgUrl.showFun = logoShow;
+				getImgUrl.uploadIcon();
+			};
+
+			function logoShow(data) {
+				console.log(data)
+			}
+
+			
+			
+		</script>
+	</body>
+
+</html>
