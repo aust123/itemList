@@ -1,0 +1,1610 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+	<head>
+		<meta charset="utf-8">
+		<title>HEY - 美容大师</title>
+
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+		<link rel="stylesheet" href="css/main.min.css">
+	</head>
+
+	<body>
+		<button class="header__bars menu-btn hidden-lg hidden-md" type="button">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+		<div id="page-wrap">
+			<div class="sections-wrap__overflow"></div>
+			<nav class="nav">
+				<div class="nav__table">
+					<ul>
+						<li>
+							<a href="#Video">什么是HeyChain?</a>
+						</li>
+						<li>
+							<a href="#Unit">最新动态</a>
+						</li>
+						<li>
+							<a href="#Solutions">项目技术</a>
+						</li>
+						<li>
+							<a href="#About">项目优势</a>
+						</li>
+						<li>
+							<a href="#Roadmap">路线图</a>
+						</li>
+						<li>
+							<a href="#Districts">应用场景</a>
+						</li>					
+
+						<li>
+							<a href="#Team">团队介绍</a>
+						</li>
+						<li>
+							<a href="#Partners">合作机构</a>
+						</li>
+						<li>
+							<a href="#Advisors">以太地址</a>
+						</li>
+					</ul>
+				</div>
+			</nav>
+			<header class="header hidden-xs">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12">
+							<a href="#s_1" class="header__logo">
+								<img src="img/logo.png" alt="" class="header__logo__img">
+							</a>
+							<div class="header__right">
+								<div class="footer__lang">
+									<div class="footer__lang__current">
+										<span class="sp-ico sp-ico-lang sp-ico-lang-cn"></span>
+										<span>中文</span>
+										<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="7px" height="5px">
+											<path fill-rule="evenodd" opacity="0.502" fill="rgb(255, 255, 255)" d="M0.000,1.244 L3.500,5.000 L7.000,1.244 L5.857,-0.000 L3.500,2.529 L1.143,-0.000 L0.000,1.244 Z" />
+										</svg>
+									</div>
+									<ul class="footer__lang__list">
+										<li>
+											<a href="/"><span class="sp-ico sp-ico-lang sp-ico-lang-en"></span><span>en</span></a>
+										</li>
+										<li>
+											<a href="/ko/"><span class="sp-ico sp-ico-lang sp-ico-lang-ko"></span><span>한국어</span></a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</header>
+
+			<footer class="footer hidden-sm hidden-xs">
+				<div class="container">
+					<div class="footer__copyright">copyright©hey2017</div>
+				</div>
+			</footer>
+			<canvas id="page-bg-2" class="page-bg"></canvas>
+			<div id="fullpage" class="sections-wrap">
+				<section class="section s_1 head-home">
+					<div id="webgl-container">
+						<canvas id="webgl-canvas" class="s_1__bg"></canvas>
+					</div>
+					<div class="s_1__header hidden-lg hidden-md hidden-sm">
+						<div class="container">
+							<div class="row">
+								<div class="col-xs-12">
+									<div class="footer__lang">
+										<div class="footer__lang__current">
+											<span class="sp-ico sp-ico-lang sp-ico-lang-cn"></span>
+											<span>中文</span>
+											<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="7px" height="5px">
+												<path fill-rule="evenodd" opacity="0.502" fill="rgb(255, 255, 255)" d="M0.000,1.244 L3.500,5.000 L7.000,1.244 L5.857,-0.000 L3.500,2.529 L1.143,-0.000 L0.000,1.244 Z" />
+											</svg>
+										</div>
+										<ul class="footer__lang__list">
+											<li>
+												<a href="/"><span class="sp-ico sp-ico-lang sp-ico-lang-en"></span><span>en</span></a>
+											</li>
+											<li>
+												<a href="/ru/"><span class="sp-ico sp-ico-lang sp-ico-lang-ru"></span><span>ru</span></a>
+											</li>
+											<li>
+												<a href="/jp/"><span class="sp-ico sp-ico-lang sp-ico-lang-ja"></span><span>日本語</span></a>
+											</li>
+											<li>
+												<a href="/ko/"><span class="sp-ico sp-ico-lang sp-ico-lang-ko"></span><span>한국어</span></a>
+											</li>
+											<li>
+												<a href="/es/"><span class="sp-ico sp-ico-lang sp-ico-lang-es"></span><span>es</span></a>
+											</li>
+											<li>
+												<a href="/fr/"><span class="sp-ico sp-ico-lang sp-ico-lang-fr"></span><span>fr</span></a>
+											</li>
+										</ul>
+									</div>
+									<a href="/" class="header__logo">
+										<img src="img/logo.png" alt="" class="header__logo__img">
+									</a>
+
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="container">
+						<div class="row">
+							<div class="col-xs-12">
+								<h1 class="s_1__h">下一代互联网</h1>
+								<div class="s_1__title">由区块链支持的创造3D/VR兼容网页空间的开源平台</div>
+								<div class="clearfix"></div>
+								<div id="startTime" class="s_1__countdown s_2__thumb_video" style="width:400px;margin-right:100px;white-space:normal;">
+									<div class="s_1__countdown__top">
+										<div class="s_1__countdown__title">不要错过单元销售和分配</div>
+									</div>
+									<div class="clearfix"></div>
+									<div>
+										<div class="s_1__countdown__cell">
+											<span class="s_1__days s_1__countdown__digit">&nbsp;</span>
+											<span class="s_1__countdown__label">天</span>
+										</div>
+										<div class="s_1__countdown__cell">
+											<span class="s_1__houers s_1__countdown__digit">&nbsp;</span>
+											<span class="s_1__countdown__label">小时</span>
+										</div>
+										<div class="s_1__countdown__cell">
+											<span class="s_1__minutes s_1__countdown__digit">&nbsp;</span>
+											<span class="s_1__countdown__label">分钟</span>
+										</div>
+										<div class="s_1__countdown__cell">
+											<span class="s_1__seconds s_1__countdown__digit">&nbsp;</span>
+											<span class="s_1__countdown__label">秒</span>
+										</div>
+									</div>
+									<div class="s_1__countdown__title"></div>
+								</div>
+								<div class="clearfix"></div>
+								<div class="s_1__links">
+									<a href="http://goo.gl/y1cVMm" target="_blank" class="s_1__contribute hidden-xs"><span class="fa fa-paper-plane"></span> Telegram group</a>
+									<div class="s_1__raised_link">
+										<a onclick="top.open('https://mark.space/info/','_blank');"><span>贡献统计</span></a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+				
+<section class="section s_2">
+					<div class="container">
+						<div class="row">
+							<div class="col-xs-12">
+								<h2 class="s_title" data-before="video gallery">什么是HeyChain?</h2>
+								<div id="s_2__tab-1" class="s_2__tab">
+									<p>HealthbeautyChain，简称HeyChain,打造全球首个医疗美容全产业联盟链，利用区块链分布式储存技术对医美药品流通、医院资质、医师资质，培训机构资质、消费者数据等进行去中心化数据存储，整合金融保险机构，为消费者提供可靠、可信、便捷的医美消费生态服务平台。</p>
+									<a href=" http://whitepaper.healthbeauty.io/generic/web/viewer.html">[ 白皮书下载 ]</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+<section class="section s_3">
+					<canvas id="page-bg-3" class="page-bg"></canvas>
+					<div class="container">
+						<div class="row">
+							<div class="col-xs-12">
+								<h2 class="s_title" data-before="城区介绍">最新动态</h2>
+								<div class="s_3__carousel-wrap">
+									<div class="s_3__carousel owl-carousel">
+										<div class="s_3__slide" data-descr="#district-descr-1">
+											<img src="img/dis-1.jpg" alt="">
+											<h3 class="s_3__slide__title">社区</h3>
+											<a href="https://mark.space/demo/?11k5" target="_blank" class="s_3__slide__more">探索产品演示</a>
+										</div>
+										<div class="s_3__slide" data-descr="#district-descr-2">
+											<img src="img/dis-1.jpg" alt="">
+											<h3 class="s_3__slide__title">公馆区</h3>
+											<a href="https://mark.space/demo/?11l6" target="_blank" class="s_3__slide__more">探索产品演示</a>
+										</div>
+										<div class="s_3__slide" data-descr="#district-descr-3">
+											<img src="img/dis-1.jpg" alt="">
+											<h3 class="s_3__slide__title">购物区</h3>
+											<a href="https://mark.space/demo/?11l2" target="_blank" class="s_3__slide__more">探索产品演示</a>
+										</div>
+										<div class="s_3__slide" data-descr="#district-descr-4">
+											<img src="img/dis-1.jpg" alt="">
+											<h3 class="s_3__slide__title">商业区</h3>
+											<a href="https://mark.space/demo/?11f9" target="_blank" class="s_3__slide__more">探索产品演示</a>
+										</div>
+										<div class="s_3__slide" data-descr="#district-descr-5">
+											<img src="img/dis-1.jpg" alt="">
+											<h3 class="s_3__slide__title">教育区</h3>
+											<!-- <a href="https://mark.space/demo/?11k5" target="_blank" class="s_3__slide__more">Explore more</a> -->
+										</div>
+									</div>
+								</div>
+								<div class="s_3__descr">
+									<div id="district-descr-1" class="district-descr active">
+										<p>
+											不要再去参观博物馆或艺术画廊了。在纽约，您只需点击一下即可访问伦敦国家美术馆，就像在现实生活中体验的一样。
+										</p>
+									</div>
+									<div id="district-descr-2" class="district-descr">
+										<p>
+											您可以创造自己独特的内饰，按照自己喜好的设计风格，并邀请您的朋友参观！
+											<br>名人公寓;
+											<br>我的公寓 - 向朋友们展示我的生活（想住）。
+										</p>
+									</div>
+									<div id="district-descr-3" class="district-descr">
+										<p>
+											那些喜欢离线购买的人很快就会改变主意，因为在互联网上购买的东西会变得比以往任何时候都容易。您将节省宝贵的时间访问实体店，同时仍享有相同的购物体验。
+										</p>
+									</div>
+									<div id="district-descr-4" class="district-descr">
+										<p>
+											商业沟通从未如此有效。您现在可以与所有地点的合作伙伴沟通，以及如果他们与您在同一个房间，节省时间和金钱。
+										</p>
+									</div>
+									<div id="district-descr-5" class="district-descr">
+										<p>
+											快来了
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+				
+				
+<section class="section s_4">
+					<canvas id="page-bg-4" class="page-bg"></canvas>
+					<div class="container">
+						<div class="row">
+							<div class="col-xs-12">
+								<h2 class="s_title" data-before="挑战和解决方案">项目技术</h2>
+								<div class="s_4__wrap d-table" style="width: 60%;line-height: 2;">
+									HEYChain联盟链底层架构将采用分布式账本技术框架，并兼容超级账本 Fabric 全球标准。Fabric是数字事件(交易)的账簿，在HeyChain上，这个账簿将由多个参与者共享，每个参与者都在系统中拥有权益。账簿只有在所有参与者达成共识的情况下才能够更新，并且信息一旦记录就永远不能修改。HeyChain将解决医美行业的药品生产流通、医师从业资格证注册、医疗机构资质注册、手术全程数据记录、出现问题溯源等问题			
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+<section class="section s_2">
+					<div class="container">
+						<div class="row">
+							<div class="col-xs-12">
+								<h2 class="s_title" data-before="about">项目优势</h2>
+								<div id="s_2__tab-1" class="s_2__tab">
+									<div class="s_4__wrap d-table">
+										<div class="s_2__video__corner s_2__video__corner-tl hidden-xs"></div>
+										<div class="s_2__video__corner s_2__video__corner-tr hidden-xs"></div>
+										<div class="s_2__video__corner s_2__video__corner-br hidden-xs"></div>
+										<div class="s_2__video__corner s_2__video__corner-bl hidden-xs"></div>
+										<ul class="s_4__nav d-table-cell hidden-xs">
+											<li class="active">
+												<a href="#s_2__tab-2-1">医美市场前景巨大 </a>
+											</li>
+											<li>
+												<a href="#s_2__tab-2-2">曼哈顿全球运营中心</a>
+											</li>
+											<li>
+												<a href="#s_2__tab-2-3">10万粉丝社群基础</a>
+											</li>
+											<li>
+												<a href="#s_2__tab-2-4">百家欧美机构合作</a>
+											</li>
+											<li>
+												<a href="#s_2__tab-2-5">倡导全球合伙人机制</a>
+											</li>
+										</ul>
+										<div class="s_4__text d-table-cell">
+											<div class="s_2__video__border s_2__video__border-top-bottom hidden-xs"></div>
+											<div class="s_2__video__border s_2__video__border-left-right hidden-xs"></div>
+											<div class="s_4__tab active" id="s_2__tab-2-1">
+												<a href="#s_2__tab-2-1" class="hidden-lg hidden-md hidden-sm s_4__tab__title">关于本项目 </a>
+												<div class="d-table">
+													<div class="d-table-cell">
+														<p>医美市场前景巨大：随着颜值经济崛起以及消费升级，医疗美容行业蓬勃发展，全球医疗美容行业平均年增长在10%以上，有分析师预测2018年总项目容量将达到约8,000万例。</p>
+														<!--<p>从技术上讲，MARK.SPACE是互联网的新一代。 兼容的网站，一方面是独立的（因为他们有自己的域名），同时在阻止者和全球搜索引擎上被统一的交易和会计系统。 此外，任何用户都可以免费访问宇宙中的每个3D / VR / AR（虚拟现实/增强现实）空间MARK.SPACE</p>-->
+													</div>
+													<div class="s_2__video__corner s_2__video__corner-br hidden-lg hidden-md hidden-sm"></div>
+													<div class="s_2__video__corner s_2__video__corner-bl hidden-lg hidden-md hidden-sm"></div>
+													<div class="s_2__video__border s_2__video__border-top-bottom hidden-lg hidden-md hidden-sm"></div>
+													<div class="s_2__video__border s_2__video__border-left-right hidden-lg hidden-md hidden-sm"></div>
+												</div>
+											</div>
+											<div class="s_4__tab" id="s_2__tab-2-2" style="display: none;">
+												<a href="#s_2__tab-2-2" class="hidden-lg hidden-md hidden-sm s_4__tab__title">虚拟现实</a>
+												<div class="d-table">
+													<div class="d-table-cell">
+														<p>美籍华人Tina Mars 身兼世界华商青商联盟秘书长、世界华商纽约总会秘书长，是国际时尚传媒业界精英、华尔街区块链投资项目主要倡导人之一，公关能力范围辐射全球四十余个国家。Tina作为HEY项目联合创始人，将在美国曼哈顿建立全球运营中心，主要负责HEY项目的全球实施和推广。</p>
+													</div>
+													<div class="s_2__video__corner s_2__video__corner-br hidden-lg hidden-md hidden-sm"></div>
+													<div class="s_2__video__corner s_2__video__corner-bl hidden-lg hidden-md hidden-sm"></div>
+													<div class="s_2__video__border s_2__video__border-top-bottom hidden-lg hidden-md hidden-sm"></div>
+													<div class="s_2__video__border s_2__video__border-left-right hidden-lg hidden-md hidden-sm"></div>
+												</div>
+											</div>
+											<div class="s_4__tab" id="s_2__tab-2-3" style="display: none;">
+												<a href="#s_2__tab-2-3" class="hidden-lg hidden-md hidden-sm s_4__tab__title">电子商务</a>
+												<div class="d-table">
+													<div class="d-table-cell">
+														<p>HEY目前已经建立起强大的社区，包括微信群、qq群、电报群、头条号、公众号等，粉丝数量达10万左右。建立起了100多人的推广团队，全球币圈社群覆盖超过100万人，其中中国大陆地区QQ群、微信群、电报群覆盖超过10000个。</p>
+													</div>
+													<div class="s_2__video__corner s_2__video__corner-br hidden-lg hidden-md hidden-sm"></div>
+													<div class="s_2__video__corner s_2__video__corner-bl hidden-lg hidden-md hidden-sm"></div>
+													<div class="s_2__video__border s_2__video__border-top-bottom hidden-lg hidden-md hidden-sm"></div>
+													<div class="s_2__video__border s_2__video__border-left-right hidden-lg hidden-md hidden-sm"></div>
+												</div>
+											</div>
+											<div class="s_4__tab" id="s_2__tab-2-4" style=" display: none;">
+												<a href="#s_2__tab-2-4" class="hidden-lg hidden-md hidden-sm s_4__tab__title">区块链</a>
+												<div class="d-table">
+													<div class="d-table-cell">
+														<p>HEY最大优势就是落地快，目前，项目已经与5家正规医疗美容整形医院正式签署战略合作协议，与上百家医美机构达成合作意向。HEY将具体应用到医美机构及医师资质查询、药物数据监管、整形预测系统、电子病历系统、第三方数据库等商业场景。</p>
+													</div>
+													<div class="s_2__video__corner s_2__video__corner-br hidden-lg hidden-md hidden-sm"></div>
+													<div class="s_2__video__corner s_2__video__corner-bl hidden-lg hidden-md hidden-sm"></div>
+													<div class="s_2__video__border s_2__video__border-top-bottom hidden-lg hidden-md hidden-sm"></div>
+													<div class="s_2__video__border s_2__video__border-left-right hidden-lg hidden-md hidden-sm"></div>
+												</div>
+											</div>
+											<div class="s_4__tab" id="s_2__tab-2-5" style=" display: none;">
+												<a href="#s_2__tab-2-5" class="hidden-lg hidden-md hidden-sm s_4__tab__title">社交网络和博客圈</a>
+												<div class="d-table">
+													<div class="d-table-cell">
+														<p>项目在硅谷拥有研发中心，全球运营总部位于曼哈顿，已有中国内地和美国洛杉矶等地技术团队超过30人，合作机构十几家。各国项目落地合伙人也在招募中。</p>
+													</div>
+													<div class="s_2__video__corner s_2__video__corner-br hidden-lg hidden-md hidden-sm"></div>
+													<div class="s_2__video__corner s_2__video__corner-bl hidden-lg hidden-md hidden-sm"></div>
+													<div class="s_2__video__border s_2__video__border-top-bottom hidden-lg hidden-md hidden-sm"></div>
+													<div class="s_2__video__border s_2__video__border-left-right hidden-lg hidden-md hidden-sm"></div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+<section class="section s_5">
+					<canvas id="page-bg-5" class="page-bg"></canvas>
+					<div class="container">
+						<div class="row">
+							<div class="col-lg-10 col-md-10">
+								<h2 class="s_title" data-before="路线图">路线图</h2>
+								<div class="s_5__timeline">
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 857.18 111.15">
+										<path class="cls-1" d="M1460,535l-19.08-18.16a97.07,97.07,0,0,0-130.56-3L1286,535l-21.56,20A94.58,94.58,0,0,1,1139,557.86l-5.54-4.69a237.73,237.73,0,0,1-38.13-40.85l-7.9-10.76A74.61,74.61,0,0,0,970.79,497l-21,24.4a155,155,0,0,1-26.33,24.21l-10.93,7.94a101.9,101.9,0,0,1-117.92,1.29L766,535l-8.11-5a120.16,120.16,0,0,0-38.29-15.43,167.26,167.26,0,0,0-42.5-3.29,148.23,148.23,0,0,0-65,19.13L604,535" transform="translate(-603.51 -470.09)" />
+										<path class="cls-2" d="M1460,535l-19.08-18.16a97.07,97.07,0,0,0-130.56-3L1286,535l-21.56,20A94.58,94.58,0,0,1,1139,557.86l-5.54-4.69a237.73,237.73,0,0,1-38.13-40.85l-7.9-10.76A74.61,74.61,0,0,0,970.79,497l-21,24.4a155,155,0,0,1-26.33,24.21l-10.93,7.94a101.9,101.9,0,0,1-117.92,1.29L766,535l-8.11-5a120.16,120.16,0,0,0-38.29-15.43,167.26,167.26,0,0,0-42.5-3.29,148.23,148.23,0,0,0-65,19.13L604,535" transform="translate(-603.51 -470.09)" />
+									</svg>
+									<div class="s_5__timeline__block">
+										<a href="#s_5__tab-1" class="s_5__timeline__year s_5__timeline__year-1">
+											<div class="s_5__timeline__checkbox checked"></div>
+											<div class="s_5__timeline__label">2018 Q1</div>
+										</a>
+										<div class="s_5__timeline__table hidden-lg hidden-md hidden-sm" style="float: left; margin-top: 45px;">
+											<div class="s_5__timeline__table__wrap" style="float: left;">
+												<div class="d-table">
+													<div class="d-table-cell s_5__tabs__col">
+														代币开发工作初步完成，首批代码上传服务器，产品模型确定。
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="s_5__timeline__block">
+										<a href="#s_5__tab-2" class="s_5__timeline__year s_5__timeline__year-2">
+											<div class="s_5__timeline__checkbox checked"></div>
+											<div class="s_5__timeline__label">2018 Q2</div>
+										</a>
+										<div class="s_5__timeline__table hidden-lg hidden-md hidden-sm" style="float: left;margin-top: 45px;">
+											<div class="s_5__timeline__table__wrap" style="float: left;">
+												<div class="d-table">
+													<div class="d-table-cell s_5__tabs__col">
+														完成，30%代币销售，社区粉丝15万，1.0医院saas系统上线，20家资源使用产品
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="s_5__timeline__block">
+										<a href="#s_5__tab-3" class="s_5__timeline__year s_5__timeline__year-3">
+											<div class="s_5__timeline__checkbox checked"></div>
+											<div class="s_5__timeline__label">2018 Q3-Q4</div>
+										</a>
+										<div class="s_5__timeline__table hidden-lg hidden-md hidden-sm" style="float: left;margin-top: 45px;">
+											<div class="s_5__timeline__table__wrap" style="float: left;">
+												<div class="d-table">
+													<div class="d-table-cell s_5__tabs__col">
+														完成，社区粉丝累计20万，联盟链研发完成内测，全球三大运营中心搭建，累计30家资源使用HeyChain产品
+													</div>
+
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="s_5__timeline__block">
+										<a href="#s_5__tab-4" class="s_5__timeline__year s_5__timeline__year-4 active">
+											<div class="s_5__timeline__checkbox checked"></div>
+											<div class="s_5__timeline__label">2019 Q1-Q2</div>
+										</a>
+										<div class="s_5__timeline__table hidden-lg hidden-md hidden-sm" style="float: left;margin-top: 45px;">
+											<div class="s_5__timeline__table__wrap" style="float: left;">
+												<div class="d-table">
+													<div class="d-table-cell s_5__tabs__col">
+														全球20国项目路演，超过100个机构数据上联盟链，吸纳20个项目上HEY链
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="s_5__timeline__block">
+										<a href="#s_5__tab-5" class="s_5__timeline__year s_5__timeline__year-5">
+											<div class="s_5__timeline__checkbox"></div>
+											<div class="s_5__timeline__label">2019 Q3-Q4</div>
+										</a>
+										<div class="s_5__timeline__table hidden-lg hidden-md hidden-sm" style="float: left;margin-top: 45px;">
+											<div class="s_5__timeline__table__wrap" style="float: left;">
+												<div class="d-table">
+													<div class="d-table-cell s_5__tabs__col">
+														代币销售启动 (阶段2)
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="s_5__timeline__block">
+										<a href="#s_5__tab-6" class="s_5__timeline__year s_5__timeline__year-6">
+											<div class="s_5__timeline__checkbox"></div>
+											<div class="s_5__timeline__label">2020</div>
+										</a>
+										<div class="s_5__timeline__table hidden-lg hidden-md hidden-sm" style="float: left;margin-top: 45px;">
+											<div class="s_5__timeline__table__wrap" style="float: left;">
+												<div class="d-table">
+													<div class="d-table-cell s_5__tabs__col">
+														启动社会区
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</section>
+								
+<section class="section s_3">
+					<canvas id="page-bg-3" class="page-bg"></canvas>
+					<div class="container">
+						<div class="row">
+							<div class="col-xs-12">
+								<h2 class="s_title" data-before="城区介绍">应用场景</h2>
+								<div class="s_3__carousel-wrap">
+									<div class="s_3__carousel owl-carousel">
+										<div class="s_3__slide" data-descr="#district-descr-1">
+											<img src="img/dis-1.jpg" alt="">
+											<h3 class="s_3__slide__title">社区</h3>
+											<a href="https://mark.space/demo/?11k5" target="_blank" class="s_3__slide__more">探索产品演示</a>
+										</div>
+										<div class="s_3__slide" data-descr="#district-descr-2">
+											<img src="img/dis-1.jpg" alt="">
+											<h3 class="s_3__slide__title">公馆区</h3>
+											<a href="https://mark.space/demo/?11l6" target="_blank" class="s_3__slide__more">探索产品演示</a>
+										</div>
+										<div class="s_3__slide" data-descr="#district-descr-3">
+											<img src="img/dis-1.jpg" alt="">
+											<h3 class="s_3__slide__title">购物区</h3>
+											<a href="https://mark.space/demo/?11l2" target="_blank" class="s_3__slide__more">探索产品演示</a>
+										</div>
+										<div class="s_3__slide" data-descr="#district-descr-4">
+											<img src="img/dis-1.jpg" alt="">
+											<h3 class="s_3__slide__title">商业区</h3>
+											<a href="https://mark.space/demo/?11f9" target="_blank" class="s_3__slide__more">探索产品演示</a>
+										</div>
+										<div class="s_3__slide" data-descr="#district-descr-5">
+											<img src="img/dis-1.jpg" alt="">
+											<h3 class="s_3__slide__title">教育区</h3>
+											<!-- <a href="https://mark.space/demo/?11k5" target="_blank" class="s_3__slide__more">Explore more</a> -->
+										</div>
+									</div>
+								</div>
+								<div class="s_3__descr">
+									<div id="district-descr-1" class="district-descr active">
+										<p>
+											不要再去参观博物馆或艺术画廊了。在纽约，您只需点击一下即可访问伦敦国家美术馆，就像在现实生活中体验的一样。
+										</p>
+									</div>
+									<div id="district-descr-2" class="district-descr">
+										<p>
+											您可以创造自己独特的内饰，按照自己喜好的设计风格，并邀请您的朋友参观！
+											<br>名人公寓;
+											<br>我的公寓 - 向朋友们展示我的生活（想住）。
+										</p>
+									</div>
+									<div id="district-descr-3" class="district-descr">
+										<p>
+											那些喜欢离线购买的人很快就会改变主意，因为在互联网上购买的东西会变得比以往任何时候都容易。您将节省宝贵的时间访问实体店，同时仍享有相同的购物体验。
+										</p>
+									</div>
+									<div id="district-descr-4" class="district-descr">
+										<p>
+											商业沟通从未如此有效。您现在可以与所有地点的合作伙伴沟通，以及如果他们与您在同一个房间，节省时间和金钱。
+										</p>
+									</div>
+									<div id="district-descr-5" class="district-descr">
+										<p>
+											快来了
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+				
+<section class="section s_8">
+					<canvas id="page-bg-8" class="page-bg"></canvas>
+					<div class="container">
+						<div class="row">
+							<div class="col-xs-12">
+								<h2 class="s_title" data-before="团队">团队介绍</h2>
+								<div class="s_8__wrap">
+									<div class="s_8__staff_wrap hidden-xs" data-scrolltext="向右滑动以探索其余的团队">
+										<div class="s_8__staff__card_col">
+											<div class="s_8__staff__card">
+
+												<div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/photo_1.png" alt=""></div>
+												<div class="s_8__staff__data">
+													<div class="s_8__staff__name">Yana Kontorovich</div>
+													<div class="s_8__staff__post">首席执行官兼创始人，经济科学博士。 女实业家，投资者</div>
+													<div class="s_8__staff__soc">
+														<a href="https://www.facebook.com/yana.kontorovitch" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+														<a href="https://www.youtube.com/watch?v=CpG1Hd18PB0" target="_blank"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+													</div>
+												</div>
+											</div>
+											<div class="s_8__staff__card">
+
+												<div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/photo_2.png" alt=""></div>
+												<div class="s_8__staff__data">
+													<div class="s_8__staff__name">Denis Polulyakhov</div>
+													<div class="s_8__staff__post">联合创始人, 12年经验的IT企业家</div>
+													<div class="s_8__staff__soc">
+														<a href="https://www.facebook.com/tonymontanamsk" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+														<a href="https://www.linkedin.com/in/denis-polulyakhov-11161580/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+														<a href="https://www.youtube.com/watch?v=Tv6g_nynJY8" target="_blank"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="s_8__staff__card_col">
+											<div class="s_8__staff__card">
+
+												<div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/photo_3.png" alt=""></div>
+												<div class="s_8__staff__data">
+													<div class="s_8__staff__name">Evgeni Malkin</div>
+													<div class="s_8__staff__post">联合创始人</div>
+													<div class="s_8__staff__soc">
+														<a href="https://www.instagram.com/e.malkin71geno/" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+														<a href="https://en.wikipedia.org/wiki/Evgeni_Malkin" target="_blank"><i class="fa fa-wikipedia-w" aria-hidden="true"></i></a>
+													</div>
+												</div>
+											</div>
+											<div class="s_8__staff__card">
+
+												<div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/photo_4.png" alt=""></div>
+												<div class="s_8__staff__data">
+													<div class="s_8__staff__name">Vladislav Utushkin</div>
+													<div class="s_8__staff__post">广告商营销人员，分析师，顾问</div>
+													<div class="s_8__staff__soc">
+														<a href="https://www.facebook.com/v.utushkin" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="s_8__staff__card_col">
+											<div class="s_8__staff__card">
+
+												<div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/photo_5.png" alt=""></div>
+												<div class="s_8__staff__data">
+													<div class="s_8__staff__name">Oleg Ershov</div>
+													<div class="s_8__staff__post">联合创始人，市场营销人员，企业家，公共事件的组织者</div>
+													<div class="s_8__staff__soc">
+														<a href="https://www.linkedin.com/in/oleg-ershov/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+														<a href="https://www.youtube.com/watch?v=8_epCqUseqY" target="_blank"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+													</div>
+												</div>
+											</div>
+											<div class="s_8__staff__card">
+
+												<div class="s_8__staff__avatar" title="25 years of experience in IT & web development. Founder & CEO «Site Makers». Author of MARK projects."><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/photo_6.png" alt=""></div>
+												<div class="s_8__staff__data">
+													<div class="s_8__staff__name">Vladimir Shliapin</div>
+													<div class="s_8__staff__post">CTO, 发明家，IT开发人员（25年），数学硕士</div>
+													<div class="s_8__staff__soc">
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="s_8__staff__card_col">
+											<div class="s_8__staff__card">
+
+												<div class="s_8__staff__avatar" title="27 years of experience in IT & web development. CTO «Site Makers»."><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/photo_7.png" alt=""></div>
+												<div class="s_8__staff__data">
+													<div class="s_8__staff__name">Alexander Shtankovsky</div>
+													<div class="s_8__staff__post">开发人员主管,<br>IT开发人员（27年），<br>数学硕士</div>
+													<div class="s_8__staff__soc">
+													</div>
+												</div>
+											</div>
+											<div class="s_8__staff__card">
+
+												<div class="s_8__staff__avatar" title="5年多的加密货币投资经验。投资顾问，信息渠道创始人和日本加密投资作者的课程"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/photo_7.png" alt=""></div>
+												<div class="s_8__staff__data">
+													<div class="s_8__staff__name">Kentaro Harada</div>
+													<div class="s_8__staff__post">MARK.SPACE日本大使, 密码专家</div>
+													<div class="s_8__staff__soc">
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="s_8__staff__card_col">
+											<div class="s_8__staff__card">
+
+												<div class="s_8__staff__avatar" title="信息学数学家。 总部设在日本，自2011年起。日语流利。 东京商学院毕业。 在他自己的YouTube频道上撰写关于日本（超过65万用户）。"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/photo_9.png" alt=""></div>
+												<div class="s_8__staff__data">
+													<div class="s_8__staff__name">Dmitry Shamov</div>
+													<div class="s_8__staff__post">日本的官方代表</div>
+													<div class="s_8__staff__soc">
+													</div>
+												</div>
+											</div>
+											<div class="s_8__staff__card">
+
+												<div class="s_8__staff__avatar" title="曾女士拥有20 国际资本市场工作经验及企业管理、业务开发、市场开拓、大型项目管理经验。曾为法国巴黎银行（中国）有限公司董事总经理、法国巴黎银行证券服务公司中国总经理、法国巴黎银行证券服务公司亚洲开发主任、德国证券交易所亚洲业务开发执行总监，并担任过国际明讯银行 (Clearstream）以及卢森堡银行等机构的不同管理职位。有深厚的国际工作背景，并创建过自己的企业，过往工作经历先后覆盖多重行业。曾女士拥有欧洲工商管理学院（INSEAD） MBA、法国南锡大学计算机硕士、上海交通大学自动控制学士学位。"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/Ilya_Khokhryakov.jpg" alt=""></div>
+												<div class="s_8__staff__data">
+													<div class="s_8__staff__name">Jing Zeng</div>
+													<div class="s_8__staff__post">业务开发主任（中国）</div>
+													<div class="s_8__staff__soc">
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="s_8__staff__card_col">
+											<div class="s_8__staff__card">
+												<div class="s_8__staff__letter s_8__staff__letter-fill">A</div>
+												<div class="s_8__staff__avatar" title="Salimov先生有超过18年的企业及创业经验。他的职业生涯从18岁做软件开发就开始了。他先后在英国石油公司、BR交易、美林、Booz&Co、Skolkovo基金、Primerry等企业从事过业务开发、咨询、高管等职位。Salimov以杰出成绩毕业于伦敦经济学院并取得信息技术管理硕士学位，并拥有欧洲工商管理学院（INSEAD）MBA 学位。（该校被金融时报评为全球MBA 第一名）"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/Ilya_Khokhryakov.jpg" alt=""></div>
+												<div class="s_8__staff__data">
+													<div class="s_8__staff__name">Almir Salimov</div>
+													<div class="s_8__staff__post">业务开发主任（亚洲）</div>
+													<div class="s_8__staff__soc">
+													</div>
+												</div>
+											</div>
+											<div class="s_8__staff__card">
+												<div class="s_8__staff__letter s_8__staff__letter-border">M</div>
+												<div class="s_8__staff__avatar" title="Melissa是一名加密内容专家，拥有金融和工程背景。 她共同创立了亚洲区块链协会，积极参与东南亚的隐密社区，与Cryptocentral.net和Ethereum越南社区共同组织。"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/Ilya_Khokhryakov.jpg" alt=""></div>
+												<div class="s_8__staff__data">
+													<div class="s_8__staff__name">Melissa Yoon Pei Lin</div>
+													<div class="s_8__staff__post">亚洲地区领袖</div>
+													<div class="s_8__staff__soc">
+														<a href="https://www.linkedin.com/in/melissa-yoon-540269151/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="s_8__staff__card_col">
+											<div class="s_8__staff__card">
+
+												<div class="s_8__staff__avatar" title="欧先生拥有超过3年的全球宏观对冲基金外汇交易经验，2年军方口译经验，以及2年的企业管理经验。 欧先生拥有宾夕法尼亚大学荣誉学士学位"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/Ilya_Khokhryakov.jpg" alt=""></div>
+												<div class="s_8__staff__data">
+													<div class="s_8__staff__name">David Oh</div>
+													<div class="s_8__staff__post">业务发展经理(韩国)</div>
+													<div class="s_8__staff__soc">
+														<a href="https://www.linkedin.com/in/david-oh-02661b101/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+													</div>
+												</div>
+											</div>
+											<div class="s_8__staff__card">
+
+												<div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/Ilya_Khokhryakov.jpg" alt=""></div>
+												<div class="s_8__staff__data">
+													<div class="s_8__staff__name">Victor Skrynnikov</div>
+													<div class="s_8__staff__post">领导Ux / Ui网页设计师</div>
+													<div class="s_8__staff__soc">
+														<a href="https://www.behance.net/thelegacy" target="_blank"><i class="fa fa-behance" aria-hidden="true"></i></a>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="s_8__staff__card_col">
+											<div class="s_8__staff__card">
+
+												<div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/Ilya_Khokhryakov.jpg" alt=""></div>
+												<div class="s_8__staff__data">
+													<div class="s_8__staff__name">Dmitry Machikhin</div>
+													<div class="s_8__staff__post">电子商务总监</div>
+													<div class="s_8__staff__soc">
+													</div>
+												</div>
+											</div>
+											<div class="s_8__staff__card">
+
+												<div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/Ilya_Khokhryakov.jpg" alt=""></div>
+												<div class="s_8__staff__data">
+													<div class="s_8__staff__name">Siruz Faramarz</div>
+													<div class="s_8__staff__post">VR＆3D部门主管</div>
+													<div class="s_8__staff__soc">
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="s_8__staff__card_col">
+											<div class="s_8__staff__card">
+
+												<div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/Ilya_Khokhryakov.jpg" alt=""></div>
+												<div class="s_8__staff__data">
+													<div class="s_8__staff__name">Roman Zhuravlev</div>
+													<div class="s_8__staff__post">网络工程负责人</div>
+													<div class="s_8__staff__soc">
+													</div>
+												</div>
+											</div>
+											<div class="s_8__staff__card">
+
+												<div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/Ilya_Khokhryakov.jpg" alt=""></div>
+												<div class="s_8__staff__data">
+													<div class="s_8__staff__name">Pavel Tretyakov</div>
+													<div class="s_8__staff__post">电子商务总监</div>
+													<div class="s_8__staff__soc">
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="s_8__staff__card_col">
+											<div class="s_8__staff__card">
+
+												<div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/Ilya_Khokhryakov.jpg" alt=""></div>
+												<div class="s_8__staff__data">
+													<div class="s_8__staff__name">Dmitriy Filonenko</div>
+													<div class="s_8__staff__post">营销，电子营销</div>
+													<div class="s_8__staff__soc">
+													</div>
+												</div>
+											</div>
+											<div class="s_8__staff__card">
+
+												<div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/Ilya_Khokhryakov.jpg" alt=""></div>
+												<div class="s_8__staff__data">
+													<div class="s_8__staff__name">Julia Stafford</div>
+													<div class="s_8__staff__post">数字广告主管</div>
+													<div class="s_8__staff__soc">
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="s_8__staff__card_col">
+											<div class="s_8__staff__card">
+
+												<div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/Ilya_Khokhryakov.jpg" alt=""></div>
+												<div class="s_8__staff__data">
+													<div class="s_8__staff__name">Ekaterina Yukhtanova</div>
+													<div class="s_8__staff__post">设计师负责人</div>
+													<div class="s_8__staff__soc">
+													</div>
+												</div>
+											</div>
+											<div class="s_8__staff__card">
+
+												<div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/Ilya_Khokhryakov.jpg" alt=""></div>
+												<div class="s_8__staff__data">
+													<div class="s_8__staff__name">Dmitry Didenko</div>
+													<div class="s_8__staff__post">执行制片人</div>
+													<div class="s_8__staff__soc">
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="s_8__staff__card_col">
+											<div class="s_8__staff__card">
+
+												<div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/Ilya_Khokhryakov.jpg" alt=""></div>
+												<div class="s_8__staff__data">
+													<div class="s_8__staff__name">Alexandra Golovina</div>
+													<div class="s_8__staff__post">通信专家，<br>内容创建者。<br>社会学博士</div>
+													<div class="s_8__staff__soc">
+														<a href="http://www.linkedin.com/in/alexandra-golovina" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+														<a href="https://www.youtube.com/watch?v=98v7RPthEj4" target="_blank"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+													</div>
+												</div>
+											</div>
+											<div class="s_8__staff__card">
+
+												<div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/Ilya_Khokhryakov.jpg" alt=""></div>
+												<div class="s_8__staff__data">
+													<div class="s_8__staff__name">Alexandr Lysikov</div>
+													<div class="s_8__staff__post">项目管理 - 区块链专家</div>
+													<div class="s_8__staff__soc">
+														<a href="https://www.facebook.com/sasha.lysikov.1" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+														<a href="https://www.linkedin.com/in/lysikov-alexander/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="s_8__staff__card_col">
+											<div class="s_8__staff__card">
+
+												<div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/Ilya_Khokhryakov.jpg" alt=""></div>
+												<div class="s_8__staff__data">
+													<div class="s_8__staff__name">Boris Baranov</div>
+													<div class="s_8__staff__post">编辑，本地化，<br>社区经理</div>
+													<div class="s_8__staff__soc">
+														<a href="http://www.linkedin.com/in/borisbaranov" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+														<a href="https://www.youtube.com/watch?v=-q9-cYS_ghU" target="_blank"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+													</div>
+												</div>
+											</div>
+											<div class="s_8__staff__card">
+
+												<div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/Ilya_Khokhryakov.jpg" alt=""></div>
+												<div class="s_8__staff__data">
+													<div class="s_8__staff__name">Darya Kolessova</div>
+													<div class="s_8__staff__post">亚洲地区社区经理</div>
+													<div class="s_8__staff__soc">
+														<a href="https://www.facebook.com/profile.php?id=100009540560973" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+														<a href="http://linkedin.com/in/darya-kolessova-a5b60256" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+														<a href="https://www.youtube.com/watch?v=RvciX9-d5hA&t=1s" target="_blank"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="s_8__staff__card_col">
+											<div class="s_8__staff__card">
+
+												<div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/Ilya_Khokhryakov.jpg" alt=""></div>
+												<div class="s_8__staff__data">
+													<div class="s_8__staff__name">Andrey Sinyakov</div>
+													<div class="s_8__staff__post">亚洲地区社区经理(中国）</div>
+													<div class="s_8__staff__soc">
+														<a href="https://www.facebook.com/andy.morane" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+														<a href="https://www.youtube.com/watch?v=mqn9yhG9GhA" target="_blank"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+													</div>
+												</div>
+											</div>
+											<div class="s_8__staff__card">
+
+												<div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/Ilya_Khokhryakov.jpg" alt=""></div>
+												<div class="s_8__staff__data">
+													<div class="s_8__staff__name">Joji Natsui</div>
+													<div class="s_8__staff__post">亚洲区社区经理（日本），<br>SMM经理</div>
+													<div class="s_8__staff__soc">
+														<a href="https://www.facebook.com/wishandgush" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+														<a href="https://www.linkedin.com/in/joji-natsui-7745a9127/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+														<a href="https://www.youtube.com/watch?v=Pks82-1QkQg" target="_blank"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="s_8__staff__card_col">
+											<div class="s_8__staff__card">
+
+												<div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/Ilya_Khokhryakov.jpg" alt=""></div>
+												<div class="s_8__staff__data">
+													<div class="s_8__staff__name">Yaroslav Karpov</div>
+													<div class="s_8__staff__post">亚洲地区社区经理，<br>翻译（日本）</div>
+													<div class="s_8__staff__soc">
+														<a href="https://www.facebook.com/yaroslav.karpov.566" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+														<a href="https://www.linkedin.com/in/yaroslav-karpov-3b792a14b" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+														<a href="https://www.youtube.com/watch?v=_HkCoHE_5MM" target="_blank"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+													</div>
+												</div>
+											</div>
+											<div class="s_8__staff__card">
+
+												<div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/Ilya_Khokhryakov.jpg" alt=""></div>
+												<div class="s_8__staff__data">
+													<div class="s_8__staff__name">Alexander Melikhov</div>
+													<div class="s_8__staff__post">界面设计师</div>
+													<div class="s_8__staff__soc">
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="s_8__staff__card_col">
+											<div class="s_8__staff__card">
+
+												<div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/Ilya_Khokhryakov.jpg" alt=""></div>
+												<div class="s_8__staff__data">
+													<div class="s_8__staff__name">Daria Churilova</div>
+													<div class="s_8__staff__post">设计师，化身的创造者</div>
+													<div class="s_8__staff__soc">
+													</div>
+												</div>
+											</div>
+											<div class="s_8__staff__card">
+
+												<div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/Ilya_Khokhryakov.jpg" alt=""></div>
+												<div class="s_8__staff__data">
+													<div class="s_8__staff__name">Boris Lazarev</div>
+													<div class="s_8__staff__post">前端程序员</div>
+													<div class="s_8__staff__soc">
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="s_8__staff__card_col">
+											<div class="s_8__staff__card">
+
+												<div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/Ilya_Khokhryakov.jpg" alt=""></div>
+												<div class="s_8__staff__data">
+													<div class="s_8__staff__name">Elena Andreeva</div>
+													<div class="s_8__staff__post">数据库，内容管理器</div>
+													<div class="s_8__staff__soc">
+													</div>
+												</div>
+											</div>
+											<div class="s_8__staff__card">
+
+												<div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/Ilya_Khokhryakov.jpg" alt=""></div>
+												<div class="s_8__staff__data">
+													<div class="s_8__staff__name">Ekaterina Soloveva </div>
+													<div class="s_8__staff__post">高级律师</div>
+													<div class="s_8__staff__soc">
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="s_8__staff__card_col">
+											<div class="s_8__staff__card">
+
+												<div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/Ilya_Khokhryakov.jpg" alt=""></div>
+												<div class="s_8__staff__data">
+													<div class="s_8__staff__name">Maria Moscateli</div>
+													<div class="s_8__staff__post">欧洲地区社区经理 - 意大利</div>
+													<div class="s_8__staff__soc">
+													</div>
+												</div>
+											</div>
+											<div class="s_8__staff__card">
+
+												<div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/Ilya_Khokhryakov.jpg" alt=""></div>
+												<div class="s_8__staff__data">
+													<div class="s_8__staff__name">Anton Bugaev</div>
+													<div class="s_8__staff__post">CRM经理</div>
+													<div class="s_8__staff__soc">
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="s_8__staff__card_col">
+											<div class="s_8__staff__card">
+
+												<div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/Ilya_Khokhryakov.jpg" alt=""></div>
+												<div class="s_8__staff__data">
+													<div class="s_8__staff__name">Ilya Khokhryakov</div>
+													<div class="s_8__staff__post">3D全景专业摄影师</div>
+													<div class="s_8__staff__soc">
+													</div>
+												</div>
+											</div>
+											<div class="s_8__staff__card">
+
+												<div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/Ilya_Khokhryakov.jpg" alt=""></div>
+												<div class="s_8__staff__data">
+													<div class="s_8__staff__name">Maria Ermakova </div>
+													<div class="s_8__staff__post">设计师</div>
+													<div class="s_8__staff__soc">
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="s_8__staff__card_col">
+											<div class="s_8__staff__card">
+
+												<div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/Olga_Sorokodumova.jpg" alt=""></div>
+												<div class="s_8__staff__data">
+													<div class="s_8__staff__name">Olga Sorokodumova</div>
+													<div class="s_8__staff__post">B2B伙伴关系经理</div>
+													<div class="s_8__staff__soc">
+													</div>
+												</div>
+											</div>
+											<div class="s_8__staff__card">
+
+												<div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/Olga_Sorokodumova.jpg" alt=""></div>
+												<div class="s_8__staff__data">
+													<div class="s_8__staff__name">Lubov Taran</div>
+													<div class="s_8__staff__post">社区经理</div>
+													<div class="s_8__staff__soc">
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- mobile stuff -->
+									<div class="hidden-lg hidden-md hidden-sm s_8__staff__list-xs">
+										<div class="s_8__staff__card">
+
+											<div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/Olga_Sorokodumova.jpg" alt=""></div>
+											<div class="s_8__staff__data">
+												<div class="s_8__staff__name">Yana Kontorovich</div>
+												<div class="s_8__staff__post">首席执行官兼创始人，经济科学博士。 女实业家，投资者</div>
+												<div class="s_8__staff__soc">
+													<a href="https://www.facebook.com/yana.kontorovitch" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+													<a href="https://www.youtube.com/watch?v=CpG1Hd18PB0" target="_blank"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+												</div>
+											</div>
+										</div>
+										<div class="s_8__staff__card">
+											<div class="s_8__staff__letter s_8__staff__letter-border">E</div>
+											<div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/Olga_Sorokodumova.jpg" alt=""></div>
+											<div class="s_8__staff__data">
+												<div class="s_8__staff__name">Evgeni Malkin</div>
+												<div class="s_8__staff__post">联合创始人</div>
+												<div class="s_8__staff__soc">
+													<a href="https://www.instagram.com/e.malkin71geno/" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+													<a href="https://en.wikipedia.org/wiki/Evgeni_Malkin" target="_blank"><i class="fa fa-wikipedia-w" aria-hidden="true"></i></a>
+												</div>
+											</div>
+										</div>
+										<div class="s_8__staff__card">
+											<div class="s_8__staff__letter s_8__staff__letter-fill">O</div>
+											<div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/Olga_Sorokodumova.jpg" alt=""></div>
+											<div class="s_8__staff__data">
+												<div class="s_8__staff__name">Oleg Ershov</div>
+												<div class="s_8__staff__post">联合创始人，市场营销人员，企业家，公共事件的组织者</div>
+												<div class="s_8__staff__soc">
+													<a href="https://www.linkedin.com/in/oleg-ershov/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+													<a href="https://www.youtube.com/watch?v=8_epCqUseqY" target="_blank"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+												</div>
+											</div>
+										</div>
+										<div class="s_8__staff__card">
+											<div class="s_8__staff__letter s_8__staff__letter-border">D</div>
+											<div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/Olga_Sorokodumova.jpg" alt=""></div>
+											<div class="s_8__staff__data">
+												<div class="s_8__staff__name">Denis Polulyakhov</div>
+												<div class="s_8__staff__post">联合创始人, 12年经验的IT企业家</div>
+												<div class="s_8__staff__soc">
+													<a href="https://www.facebook.com/tonymontanamsk" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+													<a href="https://www.linkedin.com/in/denis-polulyakhov-11161580/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+													<a href="https://www.youtube.com/watch?v=Tv6g_nynJY8" target="_blank"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+												</div>
+											</div>
+										</div>
+										<div class="s_8__staff__card">
+											<div class="s_8__staff__letter s_8__staff__letter-fill">V</div>
+											<div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/Olga_Sorokodumova.jpg" alt=""></div>
+											<div class="s_8__staff__data">
+												<div class="s_8__staff__name">Vladislav Utushkin</div>
+												<div class="s_8__staff__post">广告商营销人员，分析师，顾问</div>
+												<div class="s_8__staff__soc">
+													<a href="https://www.facebook.com/v.utushkin" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+												</div>
+											</div>
+										</div>
+										<div class="s_8__staff__card">
+											<div class="s_8__staff__letter s_8__staff__letter-border">V</div>
+											<div class="s_8__staff__avatar" title="25 years of experience in IT & web development. Founder & CEO «Site Makers». Author of MARK projects."><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/Olga_Sorokodumova.jpg" alt=""></div>
+											<div class="s_8__staff__data">
+												<div class="s_8__staff__name">Vladimir Shliapin</div>
+												<div class="s_8__staff__post">CTO, 发明家，<br>IT开发人员（25年），<br>数学硕士</div>
+												<div class="s_8__staff__soc">
+												</div>
+											</div>
+										</div>
+										<div class="s_8__staff__card hidden">
+											<div class="s_8__staff__letter s_8__staff__letter-fill">A</div>
+											<div class="s_8__staff__avatar" title="27 years of experience in IT & web development. CTO «Site Makers»."><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/Olga_Sorokodumova.jpg" alt=""></div>
+											<div class="s_8__staff__data">
+												<div class="s_8__staff__name">Alexander Shtankovsky</div>
+												<div class="s_8__staff__post">开发人员主管,<br>IT开发人员（27年），<br>数学硕士</div>
+												<div class="s_8__staff__soc">
+												</div>
+											</div>
+										</div>
+										<div class="s_8__staff__card hidden">
+											<div class="s_8__staff__letter s_8__staff__letter-border">K</div>
+											<div class="s_8__staff__avatar" title="5年多的加密货币投资经验。投资顾问，信息渠道创始人和日本加密投资作者的课程"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/Olga_Sorokodumova.jpg" alt=""></div>
+											<div class="s_8__staff__data">
+												<div class="s_8__staff__name">Kentaro Harada</div>
+												<div class="s_8__staff__post">MARK.SPACE日本大使, 密码专家</div>
+												<div class="s_8__staff__soc">
+												</div>
+											</div>
+										</div>
+										<div class="s_8__staff__card hidden">
+											<div class="s_8__staff__letter s_8__staff__letter-fill">D</div>
+											<div class="s_8__staff__avatar" title="信息学数学家。 总部设在日本，自2011年起。日语流利。 东京商学院毕业。 在他自己的YouTube频道上撰写关于日本（超过65万用户）。"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/Olga_Sorokodumova.jpg" alt=""></div>
+											<div class="s_8__staff__data">
+												<div class="s_8__staff__name">Dmitry Shamov</div>
+												<div class="s_8__staff__post">日本的官方代表</div>
+												<div class="s_8__staff__soc">
+												</div>
+											</div>
+										</div>
+										<div class="s_8__staff__card hidden">
+											<div class="s_8__staff__letter s_8__staff__letter-border">J</div>
+											<div class="s_8__staff__avatar" title="曾女士拥有20 国际资本市场工作经验及企业管理、业务开发、市场开拓、大型项目管理经验。曾为法国巴黎银行（中国）有限公司董事总经理、法国巴黎银行证券服务公司中国总经理、法国巴黎银行证券服务公司亚洲开发主任、德国证券交易所亚洲业务开发执行总监，并担任过国际明讯银行 (Clearstream）以及卢森堡银行等机构的不同管理职位。有深厚的国际工作背景，并创建过自己的企业，过往工作经历先后覆盖多重行业。曾女士拥有欧洲工商管理学院（INSEAD） MBA、法国南锡大学计算机硕士、上海交通大学自动控制学士学位。"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/Olga_Sorokodumova.jpg" alt=""></div>
+											<div class="s_8__staff__data">
+												<div class="s_8__staff__name">Jing Zeng</div>
+												<div class="s_8__staff__post">业务开发主任（中国）</div>
+												<div class="s_8__staff__soc">
+												</div>
+											</div>
+										</div>
+										<div class="s_8__staff__card hidden">
+											<div class="s_8__staff__letter s_8__staff__letter-fill">A</div>
+											<div class="s_8__staff__avatar" title="Salimov先生有超过18年的企业及创业经验。他的职业生涯从18岁做软件开发就开始了。他先后在英国石油公司、BR交易、美林、Booz&Co、Skolkovo基金、Primerry等企业从事过业务开发、咨询、高管等职位。Salimov以杰出成绩毕业于伦敦经济学院并取得信息技术管理硕士学位，并拥有欧洲工商管理学院（INSEAD）MBA 学位。（该校被金融时报评为全球MBA 第一名）"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/Olga_Sorokodumova.jpg" alt=""></div>
+											<div class="s_8__staff__data">
+												<div class="s_8__staff__name">Almir Salimov</div>
+												<div class="s_8__staff__post">业务开发主任（亚洲）</div>
+												<div class="s_8__staff__soc">
+												</div>
+											</div>
+										</div>
+										<div class="s_8__staff__card hidden">
+											<div class="s_8__staff__letter s_8__staff__letter-border">M</div>
+											<div class="s_8__staff__avatar" title="Melissa是一名加密内容专家，拥有金融和工程背景。 她共同创立了亚洲区块链协会，积极参与东南亚的隐密社区，与Cryptocentral.net和Ethereum越南社区共同组织。"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/Olga_Sorokodumova.jpg" alt=""></div>
+											<div class="s_8__staff__data">
+												<div class="s_8__staff__name">Melissa Yoon Pei Lin</div>
+												<div class="s_8__staff__post">亚洲地区领袖</div>
+												<div class="s_8__staff__soc">
+													<a href="https://www.linkedin.com/in/melissa-yoon-540269151/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+												</div>
+											</div>
+										</div>
+										<div class="s_8__staff__card hidden">
+											<div class="s_8__staff__letter s_8__staff__letter-fill">A</div>
+											<div class="s_8__staff__avatar" title="欧先生拥有超过3年的全球宏观对冲基金外汇交易经验，2年军方口译经验，以及2年的企业管理经验。 欧先生拥有宾夕法尼亚大学荣誉学士学位 "><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/Olga_Sorokodumova.jpg" alt=""></div>
+											<div class="s_8__staff__data">
+												<div class="s_8__staff__name">David Oh</div>
+												<div class="s_8__staff__post">业务发展经理(韩国)</div>
+												<div class="s_8__staff__soc">
+													<a href="https://www.linkedin.com/in/david-oh-02661b101/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+												</div>
+											</div>
+										</div>
+										<div class="s_8__staff__card hidden">
+											<div class="s_8__staff__letter s_8__staff__letter-border">V</div>
+											<div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/Olga_Sorokodumova.jpg" alt=""></div>
+											<div class="s_8__staff__data">
+												<div class="s_8__staff__name">Victor Skrynnikov</div>
+												<div class="s_8__staff__post">领导Ux / Ui网页设计师</div>
+												<div class="s_8__staff__soc">
+													<a href="https://www.behance.net/thelegacy" target="_blank"><i class="fa fa-behance" aria-hidden="true"></i></a>
+												</div>
+											</div>
+										</div>
+										<div class="s_8__staff__card hidden">
+											<div class="s_8__staff__letter s_8__staff__letter-fill">D</div>
+											<div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/Olga_Sorokodumova.jpg" alt=""></div>
+											<div class="s_8__staff__data">
+												<div class="s_8__staff__name">Dmitry Machikhin</div>
+												<div class="s_8__staff__post">电子商务总监</div>
+												<div class="s_8__staff__soc">
+												</div>
+											</div>
+										</div>
+										<div class="s_8__staff__card hidden">
+											<div class="s_8__staff__letter s_8__staff__letter-border">S</div>
+											<div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/Olga_Sorokodumova.jpg" alt=""></div>
+											<div class="s_8__staff__data">
+												<div class="s_8__staff__name">Siruz Faramarz</div>
+												<div class="s_8__staff__post">VR＆3D部门主管</div>
+												<div class="s_8__staff__soc">
+												</div>
+											</div>
+										</div>
+										<div class="s_8__staff__card hidden">
+											<div class="s_8__staff__letter s_8__staff__letter-fill">R</div>
+											<div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/Olga_Sorokodumova.jpg" alt=""></div>
+											<div class="s_8__staff__data">
+												<div class="s_8__staff__name">Roman Zhuravlev</div>
+												<div class="s_8__staff__post">网络工程负责人</div>
+												<div class="s_8__staff__soc">
+												</div>
+											</div>
+										</div>
+										<div class="s_8__staff__card hidden">
+											<div class="s_8__staff__letter s_8__staff__letter-border">P</div>
+											<div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/Olga_Sorokodumova.jpg" alt=""></div>
+											<div class="s_8__staff__data">
+												<div class="s_8__staff__name">Pavel Tretyakov</div>
+												<div class="s_8__staff__post">电子商务总监</div>
+												<div class="s_8__staff__soc">
+												</div>
+											</div>
+										</div>
+										<div class="s_8__staff__card hidden">
+											<div class="s_8__staff__letter s_8__staff__letter-fill">D</div>
+											<div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/Olga_Sorokodumova.jpg" alt=""></div>
+											<div class="s_8__staff__data">
+												<div class="s_8__staff__name">Dmitriy Filonenko</div>
+												<div class="s_8__staff__post">营销，电子营销</div>
+												<div class="s_8__staff__soc">
+													<a href="https://www.linkedin.com/in/dmitryfilonenko/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+												</div>
+											</div>
+										</div>
+										<div class="s_8__staff__card hidden">
+											<div class="s_8__staff__letter s_8__staff__letter-border">J</div>
+											<div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/Olga_Sorokodumova.jpg" alt=""></div>
+											<div class="s_8__staff__data">
+												<div class="s_8__staff__name">Julia Stafford</div>
+												<div class="s_8__staff__post">数字广告主管</div>
+												<div class="s_8__staff__soc">
+												</div>
+											</div>
+										</div>
+										<div class="s_8__staff__card hidden">
+											<div class="s_8__staff__letter s_8__staff__letter-fill">E</div>
+											<div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/Olga_Sorokodumova.jpg" alt=""></div>
+											<div class="s_8__staff__data">
+												<div class="s_8__staff__name">Ekaterina Yukhtanova</div>
+												<div class="s_8__staff__post">设计师负责人</div>
+												<div class="s_8__staff__soc">
+												</div>
+											</div>
+										</div>
+										<div class="s_8__staff__card hidden">
+											<div class="s_8__staff__letter s_8__staff__letter-border">D</div>
+											<div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/Olga_Sorokodumova.jpg" alt=""></div>
+											<div class="s_8__staff__data">
+												<div class="s_8__staff__name">Dmitry Didenko</div>
+												<div class="s_8__staff__post">执行制片人</div>
+												<div class="s_8__staff__soc">
+												</div>
+											</div>
+										</div>
+										<div class="s_8__staff__card hidden">
+											<div class="s_8__staff__letter s_8__staff__letter-fill">A</div>
+											<div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/Olga_Sorokodumova.jpg" alt=""></div>
+											<div class="s_8__staff__data">
+												<div class="s_8__staff__name">Alexandra Golovina</div>
+												<div class="s_8__staff__post">通信专家，<br>内容创建者。<br>社会学博士</div>
+												<div class="s_8__staff__soc">
+													<a href="http://www.linkedin.com/in/alexandra-golovina" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+													<a href="https://www.youtube.com/watch?v=98v7RPthEj4" target="_blank"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+												</div>
+											</div>
+										</div>
+										<div class="s_8__staff__card hidden">
+											<div class="s_8__staff__letter s_8__staff__letter-border">A</div>
+											<div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/Olga_Sorokodumova.jpg" alt=""></div>
+											<div class="s_8__staff__data">
+												<div class="s_8__staff__name">Alexandr Lysikov</div>
+												<div class="s_8__staff__post">项目管理 - 区块链专家</div>
+												<div class="s_8__staff__soc">
+													<a href="https://www.facebook.com/sasha.lysikov.1" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+													<a href="https://www.linkedin.com/in/lysikov-alexander/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+												</div>
+											</div>
+										</div>
+										<div class="s_8__staff__card hidden">
+											<div class="s_8__staff__letter s_8__staff__letter-fill">B</div>
+											<div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/Olga_Sorokodumova.jpg" alt=""></div>
+											<div class="s_8__staff__data">
+												<div class="s_8__staff__name">Boris Baranov</div>
+												<div class="s_8__staff__post">编辑，本地化，<br>社区经理</div>
+												<div class="s_8__staff__soc">
+													<a href="http://www.linkedin.com/in/borisbaranov" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+													<a href="https://www.youtube.com/watch?v=-q9-cYS_ghU" target="_blank"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+												</div>
+											</div>
+										</div>
+										<div class="s_8__staff__card hidden">
+											<div class="s_8__staff__letter s_8__staff__letter-border">D</div>
+											<div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/Olga_Sorokodumova.jpg" alt=""></div>
+											<div class="s_8__staff__data">
+												<div class="s_8__staff__name">Darya Kolessova</div>
+												<div class="s_8__staff__post">亚洲地区社区经理</div>
+												<div class="s_8__staff__soc">
+													<a href="https://www.facebook.com/profile.php?id=100009540560973" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+													<a href="http://linkedin.com/in/darya-kolessova-a5b60256" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+													<a href="https://www.youtube.com/watch?v=RvciX9-d5hA&t=1s" target="_blank"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+												</div>
+											</div>
+										</div>
+										<div class="s_8__staff__card hidden">
+											<div class="s_8__staff__letter s_8__staff__letter-fill">A</div>
+											<div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/Olga_Sorokodumova.jpg" alt=""></div>
+											<div class="s_8__staff__data">
+												<div class="s_8__staff__name">Andrey Sinyakov</div>
+												<div class="s_8__staff__post">亚洲地区社区经理(中国）</div>
+												<div class="s_8__staff__soc">
+													<a href="https://www.facebook.com/andy.morane" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+													<a href="https://www.youtube.com/watch?v=mqn9yhG9GhA" target="_blank"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+												</div>
+											</div>
+										</div>
+										<div class="s_8__staff__card hidden">
+											<div class="s_8__staff__letter s_8__staff__letter-border">J</div>
+											<div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/Olga_Sorokodumova.jpg" alt=""></div>
+											<div class="s_8__staff__data">
+												<div class="s_8__staff__name">Joji Natsui</div>
+												<div class="s_8__staff__post">亚洲区社区经理（日本），SMM经理</div>
+												<div class="s_8__staff__soc">
+													<a href="https://www.facebook.com/wishandgush" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+													<a href="https://www.linkedin.com/in/joji-natsui-7745a9127/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+													<a href="https://www.youtube.com/watch?v=Pks82-1QkQg" target="_blank"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+												</div>
+											</div>
+										</div>
+										<div class="s_8__staff__card hidden">
+											<div class="s_8__staff__letter s_8__staff__letter-fill">Y</div>
+											<div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/Olga_Sorokodumova.jpg" alt=""></div>
+											<div class="s_8__staff__data">
+												<div class="s_8__staff__name">Yaroslav Karpov</div>
+												<div class="s_8__staff__post">亚洲地区社区经理，翻译（日本）</div>
+												<div class="s_8__staff__soc">
+													<a href="https://www.facebook.com/yaroslav.karpov.566" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+													<a href="https://www.linkedin.com/in/yaroslav-karpov-3b792a14b" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+													<a href="https://www.youtube.com/watch?v=_HkCoHE_5MM" target="_blank"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+												</div>
+											</div>
+										</div>
+										<div class="s_8__staff__card hidden">
+											<div class="s_8__staff__letter s_8__staff__letter-border">A</div>
+											<div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/Olga_Sorokodumova.jpg" alt=""></div>
+											<div class="s_8__staff__data">
+												<div class="s_8__staff__name">Alexander Melikhov</div>
+												<div class="s_8__staff__post">界面设计师</div>
+												<div class="s_8__staff__soc">
+												</div>
+											</div>
+										</div>
+										<div class="s_8__staff__card hidden">
+											<div class="s_8__staff__letter s_8__staff__letter-fill">D</div>
+											<div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/Olga_Sorokodumova.jpg" alt=""></div>
+											<div class="s_8__staff__data">
+												<div class="s_8__staff__name">Daria Churilova</div>
+												<div class="s_8__staff__post">设计师，化身的创造者</div>
+												<div class="s_8__staff__soc">
+												</div>
+											</div>
+										</div>
+										<div class="s_8__staff__card hidden">
+											<div class="s_8__staff__letter s_8__staff__letter-border">B</div>
+											<div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/Olga_Sorokodumova.jpg" alt=""></div>
+											<div class="s_8__staff__data">
+												<div class="s_8__staff__name">Boris Lazarev</div>
+												<div class="s_8__staff__post">前端程序员</div>
+												<div class="s_8__staff__soc">
+												</div>
+											</div>
+										</div>
+										<div class="s_8__staff__card hidden">
+											<div class="s_8__staff__letter s_8__staff__letter-fill">E</div>
+											<div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/Olga_Sorokodumova.jpg" alt=""></div>
+											<div class="s_8__staff__data">
+												<div class="s_8__staff__name">Elena Andreeva</div>
+												<div class="s_8__staff__post">数据库，内容管理器</div>
+												<div class="s_8__staff__soc">
+												</div>
+											</div>
+										</div>
+										<div class="s_8__staff__card hidden">
+											<div class="s_8__staff__letter s_8__staff__letter-border">E</div>
+											<div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/Olga_Sorokodumova.jpg" alt=""></div>
+											<div class="s_8__staff__data">
+												<div class="s_8__staff__name">Ekaterina Soloveva </div>
+												<div class="s_8__staff__post">高级律师</div>
+												<div class="s_8__staff__soc">
+												</div>
+											</div>
+										</div>
+										<div class="s_8__staff__card hidden">
+											<div class="s_8__staff__letter s_8__staff__letter-fill">M</div>
+											<div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/Olga_Sorokodumova.jpg" alt=""></div>
+											<div class="s_8__staff__data">
+												<div class="s_8__staff__name">Maria Moscateli</div>
+												<div class="s_8__staff__post">欧洲地区社区经理 - 意大利</div>
+												<div class="s_8__staff__soc">
+												</div>
+											</div>
+										</div>
+										<div class="s_8__staff__card hidden">
+											<div class="s_8__staff__letter s_8__staff__letter-border">A</div>
+											<div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/Olga_Sorokodumova.jpg" alt=""></div>
+											<div class="s_8__staff__data">
+												<div class="s_8__staff__name">Anton Bugaev</div>
+												<div class="s_8__staff__post">CRM经理</div>
+												<div class="s_8__staff__soc">
+												</div>
+											</div>
+										</div>
+										<div class="s_8__staff__card hidden">
+											<div class="s_8__staff__letter s_8__staff__letter-fill">I</div>
+											<div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/Olga_Sorokodumova.jpg" alt=""></div>
+											<div class="s_8__staff__data">
+												<div class="s_8__staff__name">Ilya Khokhryakov</div>
+												<div class="s_8__staff__post">3D全景专业摄影师</div>
+												<div class="s_8__staff__soc">
+												</div>
+											</div>
+										</div>
+										<div class="s_8__staff__card hidden">
+											<div class="s_8__staff__letter s_8__staff__letter-border">М</div>
+											<div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/Olga_Sorokodumova.jpg" alt=""></div>
+											<div class="s_8__staff__data">
+												<div class="s_8__staff__name">Maria Ermakova </div>
+												<div class="s_8__staff__post">设计师</div>
+												<div class="s_8__staff__soc">
+												</div>
+											</div>
+										</div>
+										<div class="s_8__staff__card hidden">
+											<div class="s_8__staff__letter s_8__staff__letter-fill">O</div>
+											<div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/Olga_Sorokodumova.jpg" alt=""></div>
+											<div class="s_8__staff__data">
+												<div class="s_8__staff__name">Olga Sorokodumova</div>
+												<div class="s_8__staff__post">B2B伙伴关系经理</div>
+												<div class="s_8__staff__soc">
+												</div>
+											</div>
+										</div>
+										<div class="s_8__staff__card hidden">
+											<div class="s_8__staff__letter s_8__staff__letter-fill">L</div>
+											<div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/Olga_Sorokodumova.jpg" alt=""></div>
+											<div class="s_8__staff__data">
+												<div class="s_8__staff__name">Lubov Taran</div>
+												<div class="s_8__staff__post">社区经理</div>
+												<div class="s_8__staff__soc">
+												</div>
+											</div>
+										</div>
+
+									</div>
+									<div class="text-center">
+										<button class="s_8__staff__more hidden-lg hidden-md hidden-sm">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 462.088 462.088" style="enable-background:new 0 0 462.088 462.088;" xml:space="preserve" width="25px" height="25px">
+                      <g>
+                        <g>
+                          <g>
+                            <path d="M417.041,202.182c-7.483,0-13.896-5.345-16.034-12.827     c-18.172-80.171-88.723-136.826-172.101-136.826S74.977,109.184,56.805,189.355c-2.138,8.552-10.689,13.896-19.241,11.758     s-13.896-10.689-11.758-19.241c21.379-95.137,105.826-161.411,203.1-161.411s181.721,66.275,203.1,161.411     c2.138,8.552-3.207,17.103-11.758,19.241C419.179,201.113,418.11,202.182,417.041,202.182z" fill="#FFFFFF" />
+                          </g>
+                          <path d="M422.386,206.458c-2.138,0-4.276,0-6.414-1.069l-55.585-23.517    c-8.552-3.207-11.758-12.827-8.552-21.379s12.827-11.758,21.379-8.552l40.62,17.103l17.103-40.62    c3.207-8.552,12.827-11.758,21.379-8.552s11.758,12.827,8.552,21.379l-23.517,55.585c-2.138,4.276-4.276,7.483-8.552,8.552    C426.662,206.458,424.524,206.458,422.386,206.458z" fill="#FFFFFF" />
+                          <g>
+                            <path d="M232.113,441.627c-97.274,0-181.721-66.275-203.1-161.411     c-2.138-8.552,3.207-17.103,11.758-19.241s17.103,3.207,19.241,11.758c18.172,80.171,88.723,136.826,172.101,136.826     s153.929-56.654,172.101-136.826c2.138-8.552,10.689-13.896,19.241-11.758s13.896,10.69,11.758,19.241     C413.834,375.352,330.456,441.627,232.113,441.627z" fill="#FFFFFF" />
+                          </g>
+                          <path d="M16.185,343.284c-2.138,0-4.276,0-6.414-1.069c-8.552-3.207-11.758-12.827-8.552-21.379    l23.517-55.585c3.207-8.552,12.827-11.758,21.379-8.552l55.585,23.517c8.552,3.207,11.758,12.827,8.552,21.379    c-3.207,8.552-12.827,11.758-21.379,8.552l-40.62-17.103L31.15,332.594C29.013,339.008,22.599,343.284,16.185,343.284z" fill="#FFFFFF" />
+                        </g>
+                      </g>
+                    </svg>Load more</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+								
+<section class="section s_8">
+					<canvas id="page-bg-8" class="page-bg"></canvas>
+					<div class="container">
+						<div class="row">
+							<div class="col-xs-12">
+								<h2 class="s_title" data-before="Advisors">合作机构</h2>
+								<div class="s_8__wrap">
+									<div class="s_8__staff_wrap hidden-xs" data-scrolltext="向右滑动以探索其余的团队">
+										<div class="s_8__staff__card_col" style="width: 828px;">
+											<ul class="partner">
+												<li><img src="img/partner_1.png" /></li>
+												<li><img src="img/partner_2.png" /></li>
+												<li><img src="img/partner_3.png" /></li>
+												<li><img src="img/partner_4.png" /></li>
+												<li><img src="img/partner_5.png" /></li>
+												<li><img src="img/partner_6.png" /></li>
+												<li><img src="img/partner_7.png" /></li>
+												<li><img src="img/partner_8.png" /></li>
+												<li><img src="img/partner_9.png" /></li>
+												<li><img src="img/partner_10.png" /></li>
+												<li><img src="img/partner_11.png" /></li>
+												<li><img src="img/partner_12.png" /></li>
+
+											</ul>
+										</div>
+										<div class="s_8__staff__card_col" style="width: 828px;margin-left: 100px;">
+											<ul class="partner">
+												<li><img src="img/partner_13.png" /></li>
+												<li><img src="img/partner_14.png" /></li>
+												<li><img src="img/partner_15.png" /></li>
+												<li><img src="img/partner_16.png" /></li>
+												<li><img src="img/partner_17.png" /></li>
+												<li><img src="img/partner_18.png" /></li>
+												<li><img src="img/partner_19.png" /></li>
+												<li><img src="img/partner_20.png" /></li>
+												<li><img src="img/partner_21.png" /></li>
+												<li><img src="img/partner_22.png" /></li>
+												<li><img src="img/partner_23.png" /></li>
+											</ul>
+										</div>
+
+									</div>
+									<!-- mobile stuff -->
+									<div class="hidden-lg hidden-md hidden-sm s_8__staff__list-xs">
+										<div class="s_8__staff__card">
+											<div class="s_8__staff__letter s_8__staff__letter-fill">E</div>
+											<div class="s_8__staff__avatar" title=" 10年以上金融科技经验。 在支付领域，用户身份识别和银行基础设施领域实施了顶级公司的SaaS。 Cryptopay总经理。 参与区块链项目的创建：GoCoin，Changetip，Uphold，Credits，Blockex，Trueflip.io，Dao.casino。"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/Olga_Sorokodumova.jpg" alt=""></div>
+											<div class="s_8__staff__data">
+												<div class="s_8__staff__name">Eric Benz</div>
+												<div class="s_8__staff__post">董事总经理,CRYPTOPAY</div>
+												<div class="s_8__staff__soc">
+													<a href="https://www.facebook.com/benzeric" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+													<a href="https://www.linkedin.com/in/ericbenz84/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+												</div>
+											</div>
+										</div>
+										<div class="s_8__staff__card">
+											<div class="s_8__staff__letter s_8__staff__letter-fill">S</div>
+											<div class="s_8__staff__avatar" title="在AI，区块链，加密货币＆加密资产，代币销售，数字娱乐，新媒体，社交媒体，移动/电子商务，物联网和智能消费设备方面拥有20年的经验。 AVO Partners Group的普通合伙人及Southern International Capital普通合伙人。 Gibraltar Stock Exchange顾问，Southern International Capital普通合伙人，Next-TV总裁，STM数码控股集团董事长。"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/Olga_Sorokodumova.jpg" alt=""></div>
+											<div class="s_8__staff__data">
+												<div class="s_8__staff__name">Samson(Sam) Lee</div>
+												<div class="s_8__staff__post">大湾区TechFin Asso董事长。 CoinStreet首席执行官. Ethereum S. China社区联合创始人</div>
+												<div class="s_8__staff__soc">
+													<a href="https://www.linkedin.com/in/samsonlee/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+												</div>
+											</div>
+										</div>
+										<div class="s_8__staff__card">
+											<div class="s_8__staff__letter s_8__staff__letter-border">R</div>
+											<div class="s_8__staff__avatar" title="许多成功的代币销售顾问。 斯洛伐克爱尔兰商会会员，ISO TC307 NSAI国家镜像委员会委员.Reuben曾在全球的技术，电信和制药行业的主要跨国公司和初创公司担任销售，业务开发，财务和运营等职位。"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/Olga_Sorokodumova.jpg" alt=""></div>
+											<div class="s_8__staff__data">
+												<div class="s_8__staff__name">Reuben Godfrey</div>
+												<div class="s_8__staff__post">Blockchain Association of Ireland和Ireland's Crypto Coast联合创始人</div>
+												<div class="s_8__staff__soc">
+													<a href="https://www.linkedin.com/in/reuben-godfrey-1a18055/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+												</div>
+											</div>
+										</div>
+										<div class="s_8__staff__card">
+											<div class="s_8__staff__letter s_8__staff__letter-border">R</div>
+											<div class="s_8__staff__avatar" title="RUNE是COSS团队管理和支持的领袖也是项目冠军。 他是商业和初创顾问，企业家和公众演讲者。他创办了很多互联网公司，包括在与多国团队合作顶尖领导的18年经验。"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/Olga_Sorokodumova.jpg" alt=""></div>
+											<div class="s_8__staff__data">
+												<div class="s_8__staff__name">Rune Evensen</div>
+												<div class="s_8__staff__post">新加坡交易所www.coss.io联合创始人和 梦想家。</div>
+												<div class="s_8__staff__soc">
+												</div>
+											</div>
+										</div>
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				
+<section class="section s_9">
+					<div class="container">
+						<div class="row">
+							<div class="col-xs-11">
+								<div class="s_9__wrap">
+									<h2 class="s_title" data-before="搭档">以太地址</h2>
+									<div class="s_9__partners ">
+										<p class="radio"><span>1ETH=12,000HEY</span></p>
+										<p class="tip">目前HEY支持kcash钱包、imtoken钱包、ZAG钱包。请使用以上钱包转帐。</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+			</div>
+			<script src="js/scripts.min.js" async></script>
+
+	</body>
+
+</html>

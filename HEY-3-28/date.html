@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#showDateDiff {}
+			#day,#hour,#minutes,#seconds{
+				font-size: 64px;
+				font-family:"Roboto Mono",monospace,"Times New Roman";
+				font-weight: normal;
+				font-weight: 300;
+			}
+			.text{
+				font-size:20px;
+				font-weight: normal;
+				color: #999;
+				
+			}
+			.time div{
+				float: left;
+				margin-left: 20px;
+				
+			}
+			.time{
+				overflow: hidden;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="showDateDiff"></div>
+		<div class="time">
+			<div>
+				<b id="day"></b>
+				<b class="text">天</b>
+			</div>
+			<div>
+				<b id="hour"></b>
+				<b class="text">小时</b>
+			</div>
+			<div>
+				<b id="minutes"></b>
+				<b class="text">分钟</b>
+			</div>
+			<div>
+				<b id="seconds"></b>
+				<b class="text">秒</b>
+			</div>
+		</div>
+			
+
+		
+		<script type="text/javascript">
+			function fnDateDiff(year, month, day, showDateDiff, $day, $hour, $minutes, $second) {
+				var now = new Date();
+				var endDate = new Date(year, month - 1, day);
+				var leftTime = endDate.getTime() - now.getTime();
+				var leftsecond = parseInt(leftTime / 1000);
+				var day1 = Math.floor(leftsecond / (60 * 60 * 24));
+				var hour = Math.floor((leftsecond - day1 * 24 * 60 * 60) / 3600);
+				var minute = Math.floor((leftsecond - day1 * 24 * 60 * 60 - hour * 3600) / 60);
+				var second = Math.floor(leftsecond - day1 * 24 * 60 * 60 - hour * 3600 - minute * 60);
+				var show = document.getElementById(showDateDiff);
+				var _day = document.getElementById($day);
+				var _hour = document.getElementById($hour);
+				var _minutes = document.getElementById($minutes);
+				var _second = document.getElementById($second);
+				show.innerHTML = "距离" + year + "年" + month + "月" + day + "日还有：" + day1 + "天" + hour + "小时" + minute + "分" + second + "秒";
+				_day.innerHTML = day1;
+				_hour.innerHTML = hour;
+				_minutes.innerHTML = minute;
+				_second.innerHTML = second;
+			}
+			setInterval(function() {
+				fnDateDiff(2018, 4, 31, 'showDateDiff',"day", "hour", "minutes", "seconds");
+			}, 1000);
+		</script>
+	</body>
+
+</html>
