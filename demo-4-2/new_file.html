@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+	<head>
+		<meta charset="utf-8">
+		<title>HEY - 美容大师</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+		<link rel="stylesheet" href="css/main.min.css">
+		<link rel="stylesheet" type="text/css" href="css/animate.css" />
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+	</head>
+
+	<body>
+		<button class="header__bars menu-btn hidden-lg hidden-md" type="button">
+    		<span></span>
+    		<span></span>
+    		<span></span>
+ 		</button>
+		<div id="page-wrap">
+			<div class="sections-wrap__overflow"></div>
+			<nav class="nav">
+				<div class="nav__table">
+					<ul>
+						<li>
+							<a href="#Video">什么是HeyChain?</a>
+						</li>
+						<li>
+							<a href="#Unit">最新动态</a>
+						</li>
+						<li>
+							<a href="#Solutions">项目技术</a>
+						</li>
+						<li>
+							<a href="#About">项目优势</a>
+						</li>
+						<li>
+							<a href="#Roadmap">路线图</a>
+						</li>
+						<li>
+							<a href="#Districts">应用场景</a>
+						</li>
+						<li>
+							<a href="#Team">团队介绍</a>
+						</li>
+						<li>
+							<a href="#Partners">合作机构</a>
+						</li>
+						<li>
+							<a href="#Advisors">以太地址</a>
+						</li>
+					</ul>
+				</div>
+			</nav>
+			<header class="header hidden-xs">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12">
+							<a href="#s_1" class="header__logo">
+								<img src="img/logo.png" alt="" class="header__logo__img">
+							</a>
+							<div class="header__right">
+								<div class="footer__lang">
+									<div class="footer__lang__current">
+										<span class="sp-ico sp-ico-lang sp-ico-lang-cn"></span>
+										<span class="china">中文</span>
+										<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="7px" height="5px">
+											<path fill-rule="evenodd" opacity="0.502" fill="rgb(255, 255, 255)" d="M0.000,1.244 L3.500,5.000 L7.000,1.244 L5.857,-0.000 L3.500,2.529 L1.143,-0.000 L0.000,1.244 Z"></path>
+										</svg>
+									</div>
+									<ul class="footer__lang__list">
+										<li>
+											<a href="javascript:void(0);"><span class="sp-ico sp-ico-lang sp-ico-lang-en"></span><span>en</span></a>
+										</li>
+										<li>
+											<a href="javascript:void(0);"><span class="sp-ico sp-ico-lang sp-ico-lang-ko"></span><span>한국어</span></a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</header>
+
+			<div class="header-mob hidden-lg hidden-md hidden-sm">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12">
+							<a href="javascript:void(0);" class="header-mob__logobox">
+								<div class="header-mob__logo"><img src="img/logo_p.png" alt=""></div>
+							</a>
+							<!--<a href="javascript:void(0);"  class="header-mob__contribute">我的账户</a>-->
+						</div>
+					</div>
+				</div>
+			</div>
+			<footer class="footer hidden-sm hidden-xs">
+				<div class="container">
+					<div class="footer__copyright">
+						<span>copyright©hey2017</span>
+						<a href="javascript:void(0);"><img src="img/bottom_facebook.png" /></a>
+						<a href="javascript:void(0);"><img src="img/bottom_twitter.png" /></a>
+						<a href="javascript:void(0);"><img src="img/bottom_wechat.png" /></a>
+						<a href="javascript:void(0);"><img src="img/bottom_telegram.png" /></a>
+					</div>
+				</div>
+			</footer>
+			<canvas id="page-bg-2" class="page-bg"></canvas>
+			<div id="fullpage" class="sections-wrap">
+				<section class="section s_1 head-home">
+					<div id="webgl-container">
+						<canvas id="webgl-canvas" class="s_1__bg"></canvas>
+					</div>
+					<div class="s_1__header hidden-lg hidden-md hidden-sm">
+						<div class="container">
+							<div class="row">
+								<div class="col-xs-12">
+									<div class="footer__lang">
+										<div class="footer__lang__current">
+											<span class="sp-ico sp-ico-lang sp-ico-lang-cn"></span>
+											<span class="china">中文</span>
+											<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="7px" height="5px">
+												<path fill-rule="evenodd" opacity="0.502" fill="rgb(255, 255, 255)" d="M0.000,1.244 L3.500,5.000 L7.000,1.244 L5.857,-0.000 L3.500,2.529 L1.143,-0.000 L0.000,1.244 Z"></path>
+											</svg>
+										</div>
+										<ul class="footer__lang__list">
+											<li>
+												<a href="javascript:void(0);"><span class="sp-ico sp-ico-lang sp-ico-lang-en"></span><span>en</span></a>
+											</li>
+											<li>
+												<a href="javascript:void(0);"><span class="sp-ico sp-ico-lang sp-ico-lang-ko"></span><span>한국어</span></a>
+											</li>
+										</ul>
+									</div>
+									<a href="/" class="header__logo">
+										<img src="img/logo.png" alt="" class="header__logo__img">
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="container">
+						<div class="row">
+							<div class="col-xs-12">
+								<h1 class="s_1__h">下一代互联网</h1>
+								<div class="s_1__title">由区块链支持的创造3D/VR兼容网页空间的开源平台</div>
+								<div class="clearfix"></div>
+								<div id="startTime" class="s_1__countdown s_2__thumb_video" style="width:400px;margin-right:100px;white-space:normal;">
+									<div class="s_1__countdown__top">
+										<div class="s_1__countdown__title">不要错过单元销售和分配</div>
+									</div>
+									<div class="clearfix"></div>
+									<div>
+										<div class="s_1__countdown__cell">
+											<span class="s_1__days s_1__countdown__digit">&nbsp;</span>
+											<span class="s_1__countdown__label">天</span>
+										</div>
+										<div class="s_1__countdown__cell">
+											<span class="s_1__houers s_1__countdown__digit">&nbsp;</span>
+											<span class="s_1__countdown__label">小时</span>
+										</div>
+										<div class="s_1__countdown__cell">
+											<span class="s_1__minutes s_1__countdown__digit">&nbsp;</span>
+											<span class="s_1__countdown__label">分钟</span>
+										</div>
+										<div class="s_1__countdown__cell">
+											<span class="s_1__seconds s_1__countdown__digit">&nbsp;</span>
+											<span class="s_1__countdown__label">秒</span>
+										</div>
+									</div>
+									<div class="s_1__countdown__title"></div>
+								</div>
+								<div class="clearfix"></div>
+								<div class="s_1__links">
+									<a href="javascript:void(0);" target="_blank" class="s_1__contribute hidden-xs"><span class="fa fa-paper-plane"></span> Telegram group</a>
+									<div class="s_1__raised_link">
+										<a href="javascript:void(0);"><span>贡献统计</span></a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<section class="section s_2">
+					<div class="container">
+						<div class="row">
+							<div class="col-xs-12">
+								<h2 class="s_title" data-before="video gallery">什么是HeyChain?</h2>
+								<div id="s_2__tab-1" class="s_2__tab">
+									<p class="abstract">HealthbeautyChain，简称HeyChain,打造全球首个医疗美容全产业联盟链，利用区块链分布式储存技术对医美药品流通、医院资质、医师资质，培训机构资质、消费者数据等进行去中心化数据存储，整合金融保险机构，为消费者提供可靠、可信、便捷的医美消费生态服务平台。</p>
+									<a href=" http://whitepaper.healthbeauty.io/generic/web/viewer.html" target="_blank">[ 白皮书下载 ]</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+				<section class="section s_3">
+					<canvas id="page-bg-3" class="page-bg"></canvas>
+					<div class="container">
+						<div class="row">
+							<div class="col-xs-12">
+								<h2 class="s_title" data-before="城区介绍">最新动态</h2>
+								<div class="s_3__carousel-wrap">
+									<div class="s_3__carousel owl-carousel" id="new_state">
+										<div class="s_3__slide news" data-descr="#district-descr-1">
+											<img src="img/newest_img1.png" alt="">
+											<p>2018最新动态</p>
+											<!--<h3 class="s_3__slide__title">社区</h3>
+											<a href="https://mark.space/demo/?11k5" target="_blank" class="s_3__slide__more">探索产品演示</a>-->
+										</div>
+										<div class="s_3__slide news" data-descr="#district-descr-2">
+											<img src="img/newest_img2.png" alt="">
+											<p>2018最新动态</p>
+											<!--<h3 class="s_3__slide__title">公馆区</h3>
+											<a href="https://mark.space/demo/?11l6" target="_blank" class="s_3__slide__more">探索产品演示</a>-->
+										</div>
+										<div class="s_3__slide news" data-descr="#district-descr-3">
+											<img src="img/newest_img3.png" alt="">
+											<p>2018最新动态</p>
+											<!--<h3 class="s_3__slide__title">购物区</h3>
+											<a href="https://mark.space/demo/?11l2" target="_blank" class="s_3__slide__more">探索产品演示</a>-->
+										</div>
+										<div class="s_3__slide news" data-descr="#district-descr-4">
+											<img src="img/newest_img2.png" alt="">
+											<p>2018最新动态</p>
+											<!--<h3 class="s_3__slide__title">商业区</h3>
+											<a href="https://mark.space/demo/?11f9" target="_blank" class="s_3__slide__more">探索产品演示</a>-->
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<section class="section s_4">
+					<canvas id="page-bg-4" class="page-bg"></canvas>
+					<div class="container">
+						<div class="row">
+							<div class="col-xs-12">
+								<h2 class="s_title" data-before="挑战和解决方案">项目技术</h2>
+								<div class="s_4__wrap d-table">
+									<p class="technology">HEYChain联盟链底层架构将采用分布式账本技术框架，并兼容超级账本 Fabric 全球标准。Fabric是数字事件(交易)的账簿，在HeyChain上，这个账簿将由多个参与者共享，每个参与者都在系统中拥有权益。账簿只有在所有参与者达成共识的情况下才能够更新，并且信息一旦记录就永远不能修改。HeyChain将解决医美行业的药品生产流通、医师从业资格证注册、医疗机构资质注册、手术全程数据记录、出现问题溯源等问题
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+				<section class="section s_2">
+					<div class="container">
+						<div class="row">
+							<div class="col-xs-12">
+								<h2 class="s_title" data-before="about">项目优势</h2>
+								<div id="s_2__tab-1" class="s_2__tab">
+									<div class="s_4__wrap d-table">
+										<div class="s_2__video__corner s_2__video__corner-tl hidden-xs"></div>
+										<div class="s_2__video__corner s_2__video__corner-tr hidden-xs"></div>
+										<div class="s_2__video__corner s_2__video__corner-br hidden-xs"></div>
+										<div class="s_2__video__corner s_2__video__corner-bl hidden-xs"></div>
+										<ul class="s_4__nav d-table-cell hidden-xs">
+											<li class="active">
+												<a href="#s_2__tab-2-1">医美市场前景巨大 </a>
+											</li>
+											<li>
+												<a href="#s_2__tab-2-2">曼哈顿全球运营中心</a>
+											</li>
+											<li>
+												<a href="#s_2__tab-2-3">10万粉丝社群基础</a>
+											</li>
+											<li>
+												<a href="#s_2__tab-2-4">百家欧美机构合作</a>
+											</li>
+											<li>
+												<a href="#s_2__tab-2-5">倡导全球合伙人机制</a>
+											</li>
+										</ul>
+										<div class="s_4__text d-table-cell">
+											<div class="s_2__video__border s_2__video__border-top-bottom hidden-xs"></div>
+											<div class="s_2__video__border s_2__video__border-left-right hidden-xs"></div>
+											<div class="s_4__tab active" id="s_2__tab-2-1">
+												<a href="#s_2__tab-2-1" class="hidden-lg hidden-md hidden-sm s_4__tab__title">关于本项目 </a>
+												<div class="d-table">
+													<div class="d-table-cell">
+														<p class="advantage">医美市场前景巨大：随着颜值经济崛起以及消费升级，医疗美容行业蓬勃发展，全球医疗美容行业平均年增长在10%以上，有分析师预测2018年总项目容量将达到约8,000万例。</p>
+														<!--<p>从技术上讲，MARK.SPACE是互联网的新一代。 兼容的网站，一方面是独立的（因为他们有自己的域名），同时在阻止者和全球搜索引擎上被统一的交易和会计系统。 此外，任何用户都可以免费访问宇宙中的每个3D / VR / AR（虚拟现实/增强现实）空间MARK.SPACE</p>-->
+													</div>
+													<div class="s_2__video__corner s_2__video__corner-br hidden-lg hidden-md hidden-sm"></div>
+													<div class="s_2__video__corner s_2__video__corner-bl hidden-lg hidden-md hidden-sm"></div>
+													<div class="s_2__video__border s_2__video__border-top-bottom hidden-lg hidden-md hidden-sm"></div>
+													<div class="s_2__video__border s_2__video__border-left-right hidden-lg hidden-md hidden-sm"></div>
+												</div>
+											</div>
+											<div class="s_4__tab" id="s_2__tab-2-2" style="display: none;">
+												<a href="#s_2__tab-2-2" class="hidden-lg hidden-md hidden-sm s_4__tab__title">虚拟现实</a>
+												<div class="d-table">
+													<div class="d-table-cell">
+														<p class="advantage">美籍华人Tina Mars 身兼世界华商青商联盟秘书长、世界华商纽约总会秘书长，是国际时尚传媒业界精英、华尔街区块链投资项目主要倡导人之一，公关能力范围辐射全球四十余个国家。Tina作为HEY项目联合创始人，将在美国曼哈顿建立全球运营中心，主要负责HEY项目的全球实施和推广。</p>
+													</div>
+													<div class="s_2__video__corner s_2__video__corner-br hidden-lg hidden-md hidden-sm"></div>
+													<div class="s_2__video__corner s_2__video__corner-bl hidden-lg hidden-md hidden-sm"></div>
+													<div class="s_2__video__border s_2__video__border-top-bottom hidden-lg hidden-md hidden-sm"></div>
+													<div class="s_2__video__border s_2__video__border-left-right hidden-lg hidden-md hidden-sm"></div>
+												</div>
+											</div>
+											<div class="s_4__tab" id="s_2__tab-2-3" style="display: none;">
+												<a href="#s_2__tab-2-3" class="hidden-lg hidden-md hidden-sm s_4__tab__title">电子商务</a>
+												<div class="d-table">
+													<div class="d-table-cell">
+														<p class="advantage">HEY目前已经建立起强大的社区，包括微信群、qq群、电报群、头条号、公众号等，粉丝数量达10万左右。建立起了100多人的推广团队，全球币圈社群覆盖超过100万人，其中中国大陆地区QQ群、微信群、电报群覆盖超过10000个。</p>
+													</div>
+													<div class="s_2__video__corner s_2__video__corner-br hidden-lg hidden-md hidden-sm"></div>
+													<div class="s_2__video__corner s_2__video__corner-bl hidden-lg hidden-md hidden-sm"></div>
+													<div class="s_2__video__border s_2__video__border-top-bottom hidden-lg hidden-md hidden-sm"></div>
+													<div class="s_2__video__border s_2__video__border-left-right hidden-lg hidden-md hidden-sm"></div>
+												</div>
+											</div>
+											<div class="s_4__tab" id="s_2__tab-2-4" style=" display: none;">
+												<a href="#s_2__tab-2-4" class="hidden-lg hidden-md hidden-sm s_4__tab__title">区块链</a>
+												<div class="d-table">
+													<div class="d-table-cell">
+														<p class="advantage">HEY最大优势就是落地快，目前，项目已经与5家正规医疗美容整形医院正式签署战略合作协议，与上百家医美机构达成合作意向。HEY将具体应用到医美机构及医师资质查询、药物数据监管、整形预测系统、电子病历系统、第三方数据库等商业场景。</p>
+													</div>
+													<div class="s_2__video__corner s_2__video__corner-br hidden-lg hidden-md hidden-sm"></div>
+													<div class="s_2__video__corner s_2__video__corner-bl hidden-lg hidden-md hidden-sm"></div>
+													<div class="s_2__video__border s_2__video__border-top-bottom hidden-lg hidden-md hidden-sm"></div>
+													<div class="s_2__video__border s_2__video__border-left-right hidden-lg hidden-md hidden-sm"></div>
+												</div>
+											</div>
+											<div class="s_4__tab" id="s_2__tab-2-5" style=" display: none;">
+												<a href="#s_2__tab-2-5" class="hidden-lg hidden-md hidden-sm s_4__tab__title">社交网络和博客圈</a>
+												<div class="d-table">
+													<div class="d-table-cell">
+														<p class="advantage">项目在硅谷拥有研发中心，全球运营总部位于曼哈顿，已有中国内地和美国洛杉矶等地技术团队超过30人，合作机构十几家。各国项目落地合伙人也在招募中。</p>
+													</div>
+													<div class="s_2__video__corner s_2__video__corner-br hidden-lg hidden-md hidden-sm"></div>
+													<div class="s_2__video__corner s_2__video__corner-bl hidden-lg hidden-md hidden-sm"></div>
+													<div class="s_2__video__border s_2__video__border-top-bottom hidden-lg hidden-md hidden-sm"></div>
+													<div class="s_2__video__border s_2__video__border-left-right hidden-lg hidden-md hidden-sm"></div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+				<section class="section s_5">
+					<canvas id="page-bg-5" class="page-bg"></canvas>
+					<div class="container">
+						<div class="row">
+							<div class="col-lg-10 col-md-10">
+								<h2 class="s_title" data-before="路线图">路线图</h2>
+								<div class="s_5__timeline">
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 757.18 111.15">
+										<path class="cls-1" d="M1460,535l-19.08-18.16a97.07,97.07,0,0,0-130.56-3L1286,535l-21.56,20A94.58,94.58,0,0,1,1139,557.86l-5.54-4.69a237.73,237.73,0,0,1-38.13-40.85l-7.9-10.76A74.61,74.61,0,0,0,970.79,497l-21,24.4a155,155,0,0,1-26.33,24.21l-10.93,7.94a101.9,101.9,0,0,1-117.92,1.29L766,535l-8.11-5a120.16,120.16,0,0,0-38.29-15.43,167.26,167.26,0,0,0-42.5-3.29,148.23,148.23,0,0,0-65,19.13L604,535" transform="translate(-603.51 -470.09)"></path>
+										<path class="cls-2" d="M1460,535l-19.08-18.16a97.07,97.07,0,0,0-130.56-3L1286,535l-21.56,20A94.58,94.58,0,0,1,1139,557.86l-5.54-4.69a237.73,237.73,0,0,1-38.13-40.85l-7.9-10.76A74.61,74.61,0,0,0,970.79,497l-21,24.4a155,155,0,0,1-26.33,24.21l-10.93,7.94a101.9,101.9,0,0,1-117.92,1.29L766,535l-8.11-5a120.16,120.16,0,0,0-38.29-15.43,167.26,167.26,0,0,0-42.5-3.29,148.23,148.23,0,0,0-65,19.13L604,535" transform="translate(-603.51 -470.09)"></path>
+									</svg>
+									<div class="s_5__timeline__block">
+										<a href="#s_5__tab-1" class="s_5__timeline__year s_5__timeline__year-1">
+											<div class="s_5__timeline__checkbox checked"></div>
+											<div class="s_5__timeline__label">2018 Q1</div>
+										</a>
+										<div class="s_5__timeline__table hidden-lg hidden-md hidden-sm" style="float: left; margin-top: 45px;">
+											<div class="s_5__timeline__table__wrap" style="float: left;">
+												<div class="d-table">
+													<div class="d-table-cell s_5__tabs__col">
+														代币开发工作初步完成，首批代码上传服务器，产品模型确定。
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="s_5__timeline__block">
+										<a href="#s_5__tab-2" class="s_5__timeline__year s_5__timeline__year-2">
+											<div class="s_5__timeline__checkbox checked"></div>
+											<div class="s_5__timeline__label">2018 Q2</div>
+										</a>
+
+										<div class="s_5__timeline__table hidden-lg hidden-md hidden-sm" style="float: left;margin-top: 45px;">
+											<div class="s_5__timeline__table__wrap" style="float: left;">
+												<div class="d-table">
+													<div class="d-table-cell s_5__tabs__col">
+														完成，30%代币销售，社区粉丝15万，1.0医院saas系统上线，20家资源使用产品
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="s_5__timeline__block">
+										<a href="#s_5__tab-3" class="s_5__timeline__year s_5__timeline__year-3">
+											<div class="s_5__timeline__checkbox checked"></div>
+											<div class="s_5__timeline__label">2018 Q3-Q4</div>
+										</a>
+										<div class="s_5__timeline__table hidden-lg hidden-md hidden-sm" style="float: left;margin-top: 45px;">
+											<div class="s_5__timeline__table__wrap" style="float: left;">
+												<div class="d-table">
+													<div class="d-table-cell s_5__tabs__col">
+														完成，社区粉丝累计20万，联盟链研发完成内测，全球三大运营中心搭建，累计30家资源使用HeyChain产品
+													</div>
+
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="s_5__timeline__block">
+										<a href="#s_5__tab-4" class="s_5__timeline__year s_5__timeline__year-4 active">
+											<div class="s_5__timeline__checkbox"></div>
+											<div class="s_5__timeline__label">2019 Q1-Q2</div>
+										</a>
+										<div class="s_5__timeline__table hidden-lg hidden-md hidden-sm" style="float: left;margin-top: 45px;">
+											<div class="s_5__timeline__table__wrap" style="float: left;">
+												<div class="d-table">
+													<div class="d-table-cell s_5__tabs__col">
+														全球20国项目路演，超过100个机构数据上联盟链，吸纳20个项目上HEY链
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<section class="section s_3">
+					<canvas id="page-bg-3" class="page-bg"></canvas>
+					<div class="container">
+						<div class="row">
+							<div class="col-xs-12">
+								<h2 class="s_title" data-before="城区介绍">应用场景</h2>
+								<div class="s_3__carousel-wrap">
+									<div class="s_3__carousel owl-carousel app_contain">
+										<div class="s_3__slide application" data-descr="#district-descr-1">
+											<img src="img/application_img1.png" alt="">
+											<p>1、消费者如何选择正规的医疗整形机构和医师</p>
+											<p>消费者可以通过HEY-chain查询到注册在链上的具有从业资格证的医师和具有医疗资质的正规医疗机构，链上的证件和资质可以通过和监管机构的合作保证真实可靠，且数据可不篡改。</p>
+
+										</div>
+										<div class="s_3__slide application" data-descr="#district-descr-2">
+											<img src="img/application_img2.png" alt="">
+											<p>2、消费者怎样保证整形药物正规无问题</p>
+											<p>HEY将会和全球医疗整形医药公司合作，保证在HEY的合作生态圈中的医药从源头便已经上链，制药商、批发商和整形医疗机构等都能够在区块链上记录药品运送，这在实践中意味着，在分发过程的每个步骤中，计算机网络都能证明药品出货的原产地和真实性——使得药品盗窃和以假换真更加困难。</p>
+
+										</div>
+										<div class="s_3__slide application" data-descr="#district-descr-3">
+											<img src="img/application_img3.png" alt="">
+											<p>3、消费者如何保证医疗整形效果</p>
+											<p>HEY链上应用将会开发整形预测系统，通过系统定制自己的整形效果，并通过哈希值记录自己的医疗效果对比，为整形效果评价、问题回溯实现去中心化应用。</p>
+
+										</div>
+										<div class="s_3__slide application" data-descr="#district-descr-4">
+											<img src="img/application_img4.png" alt="">
+											<p>4、怎样让医疗整形数据全程透明且无篡改</p>
+											<p>HEY链上的医疗机构要对接HEY自研开发的电子病历系统，将会对数据做去中心化的存储，全部医疗数据都要上链存储，系统将会启动隐私保护机制，除非发生医患问题，数据会被医患双方查询，可以做到问题回溯，在这之中不会出现数据隐私泄露问题。</p>
+
+										</div>
+										<div class="s_3__slide application" data-descr="#district-descr-5">
+											<img src="img/application_img5.png" alt="">
+											<p>5、如何完善消费者、医疗机构等评价数据库</p>
+											<p>HEY链将通过权限设置隐私保护，并为监管单位所用，以完善消费者、医疗机构、医师、培训机构、制药厂之间的评价数据库。</p>
+										</div>
+									</div>
+								</div>
+								<!--<div class="s_3__descr">
+								</div>-->
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<section class="section s_8">
+					<canvas id="page-bg-8" class="page-bg"></canvas>
+					<div class="container">
+						<div class="row">
+							<div class="col-xs-12">
+								<h2 class="s_title" data-before="团队">团队介绍</h2>
+								<div class="s_8__wrap">
+									<div class="s_8__staff_wrap hidden-xs" data-scrolltext="向右滑动以探索其余的团队">
+										<div class="s_8__staff__card_col">
+											<div class="s_8__staff__card">
+												<div class="s_8__staff__avatar" title='连续多个项目获得顶级投资机构大额融资。2015年开始研究区块链，在2016年年初初步组建完成区块链技术团队。'><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/photo_1.png" alt=""></div>
+												<div class="s_8__staff__data">
+													<div class="s_8__staff__name">Steven Liu </div>
+													<div class="s_8__staff__post">创始人,从事软件开发多年，专注研究互联网B2B商业模型</div>
+												</div>
+											</div>
+											<div class="s_8__staff__card">
+												<div class="s_8__staff__avatar" title="国际时尚传媒业界精英、华尔街区块链投资项目主要倡导人之一，公关能力范围辐射全球四十余个国家，负责HEY项目的全球实施和推广。"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/photo_2.png" alt=""></div>
+												<div class="s_8__staff__data">
+													<div class="s_8__staff__name">Tina Mars</div>
+													<div class="s_8__staff__post">联合创始人,世界华商青商联盟秘书长、世界华商纽约总会秘书长</div>
+												</div>
+											</div>
+										</div>
+										<div class="s_8__staff__card_col">
+											<div class="s_8__staff__card">
+												<div class="s_8__staff__avatar" title="资深比特币矿产挖矿、投资人。负责HEY全球医美机构加盟模式输出。"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/photo_3.png" alt=""></div>
+												<div class="s_8__staff__data">
+													<div class="s_8__staff__name">Timothy Scott Mercurio</div>
+													<div class="s_8__staff__post">联合创始人,美国教育产业企业家，全球Richmond English Discovery Center创始人</div>
+												</div>
+											</div>
+											<div class="s_8__staff__card">
+												<div class="s_8__staff__avatar" title="从事技术架构研发十余年，研究区块链技术超过三年，负责HEY技术团队的管理工作"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/photo_4.png" alt=""></div>
+												<div class="s_8__staff__data">
+													<div class="s_8__staff__name">田金波</div>
+													<div class="s_8__staff__post">首席技术官,前惠普 IBM Senior Consultant高级顾问</div>
+												</div>
+											</div>
+										</div>
+										<div class="s_8__staff__card_col">
+											<div class="s_8__staff__card">
+												<div class="s_8__staff__avatar" title="12年接触比特币,负责HEY的联盟链全球发展合作，并同全球交易所对接上币工作"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/photo_8.png" alt=""></div>
+												<div class="s_8__staff__data">
+													<div class="s_8__staff__name">项羽</div>
+													<div class="s_8__staff__post">联合创始人,计算机专业硕士，中国链圈资深人士，专注虚拟币技术分析，多种虚拟币大户玩家</div>
+												</div>
+											</div>
+											<div class="s_8__staff__card">
+												<div class="s_8__staff__avatar" title="个人为明星项目维C理财 闪修侠 影大人天使投资人，区块链、虚拟币4年投资经验。Kevin先生将会负责HEY医疗软件面向医美机构、制药厂商做全球推广。"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/photo_12.png" alt=""></div>
+												<div class="s_8__staff__data">
+													<div class="s_8__staff__name">Kevin Fu</div>
+													<div class="s_8__staff__post">联合创始人,通信工程专业，前清华同方行业事业部总经理，10年企业软件管理、营销经验</div>
+												</div>
+											</div>
+										</div>
+										<div class="s_8__staff__card_col">
+											<div class="s_8__staff__card">
+												<div class="s_8__staff__avatar" title="先后在中国北京大学分子研究所、加州大学圣地亚分校医学院细胞分子医学院从事研究工作。Feng Y先生拥有全球众多上游医药厂商资源，并了解医药产业的痛点，负责HEY同全球医药厂商对接药品上链，数据溯源的具体工作."><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/photo_14.png" alt=""></div>
+												<div class="s_8__staff__data">
+													<div class="s_8__staff__name">Feng Y</div>
+													<div class="s_8__staff__post">联合创始人,中国北京大学硕博连读，美国加州大学博士后,拥有全球众多上游医药厂商资源</div>
+												</div>
+											</div>
+											<div class="s_8__staff__card">
+												<div class="s_8__staff__avatar" title="杨先生作为医美行业资深人士，拥有众多资源，将在中国以及日韩负责HEY同各大医美机构的合作。"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/photo_7.png" alt=""></div>
+												<div class="s_8__staff__data">
+													<div class="s_8__staff__name">杨万里</div>
+													<div class="s_8__staff__post">联合创始人,星脉投资集团联合创始人，行业咨询专家，从事医疗整形美容行业10年</div>
+												</div>
+											</div>
+										</div>
+										<div class="s_8__staff__card_col">
+											<div class="s_8__staff__card">
+												<div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/photo_6.png" alt=""></div>
+												<div class="s_8__staff__data">
+													<div class="s_8__staff__name">EvansHurles</div>
+													<div class="s_8__staff__post">加拿大项目合伙人,加拿大markham premium cosmetic centre外科医生，魁北克整形协会副会长。</div>
+													<div class="s_8__staff__soc">
+													</div>
+												</div>
+											</div>
+											<div class="s_8__staff__card">
+												<div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/photo_5.png" alt=""></div>
+												<div class="s_8__staff__data">
+													<div class="s_8__staff__name">Ekatepnha </div>
+													<div class="s_8__staff__post">俄罗斯项目合伙人,俄罗斯Vladivostok私立医院，俄罗斯“再建整形术”导师，多家俄罗斯私立整形美容机构合伙人兼咨询师。</div>
+
+												</div>
+											</div>
+										</div>
+										<div class="s_8__staff__card_col">
+											<div class="s_8__staff__card">
+												<div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/photo_9.png" alt=""></div>
+												<div class="s_8__staff__data">
+													<div class="s_8__staff__name">朴政焕</div>
+													<div class="s_8__staff__post">韩国项目合伙人,韩国新帝瑞娜整形医院合伙人，韩国激光美肤协会会长。</div>
+
+												</div>
+											</div>
+											<div class="s_8__staff__card">
+												<div class="s_8__staff__avatar" title="通信和信息技术培养工程区块链高级授课专家，全球区块链职业教育培训布道师，中国链乎智能合约审计师团队、众创书籍发起人与践行者。"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/photo_11.png" alt=""></div>
+												<div class="s_8__staff__data">
+													<div class="s_8__staff__name">孔壹 </div>
+													<div class="s_8__staff__post">区块链技术顾问,孔壹学院 & 链乎创始人，资深讲师，区块链底层开发者、架构师，全球区块链职业教育培训布道师</div>
+
+												</div>
+											</div>
+										</div>
+										<div class="s_8__staff__card_col">
+											<div class="s_8__staff__card">
+												<div class="s_8__staff__avatar" title="曾投资“来租我吧”“积木旅行”“座头鲸旅行”“MikeCRM麦克”等项目，多个项目获利退出，拥有丰富的项目投资经验。"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/photo_10.png" alt=""></div>
+												<div class="s_8__staff__data">
+													<div class="s_8__staff__name">元元</div>
+													<div class="s_8__staff__post">投资机构顾问,君达云投创始人，专注于股权投资</div>
+												</div>
+											</div>
+											<div class="s_8__staff__card">
+												<div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/photo_13.png" alt=""></div>
+												<div class="s_8__staff__data">
+													<div class="s_8__staff__name">杨绍兵 </div>
+													<div class="s_8__staff__post">医疗整形美容投资顾问,星脉医疗投资集团董事长，专注医疗整形美容产业投资</div>
+												</div>
+											</div>
+										</div>
+
+									</div>
+									<!-- mobile stuff -->
+									<div class="hidden-lg hidden-md hidden-sm s_8__staff__list-xs" style="display: block;">
+										<!--<div class="s_8__staff__card">
+											<div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/photo_1.png" alt=""></div>
+											<div class="s_8__staff__data">
+												<div class="s_8__staff__name">Steven Liu</div>
+												<div class="s_8__staff__post">创始人</div>
+											</div>
+										</div>
+										<div class="s_8__staff__card hidden">
+											<div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/photo_2.png" alt=""></div>
+											<div class="s_8__staff__data">
+												<div class="s_8__staff__name">Tina Mars</div>
+												<div class="s_8__staff__post">联合创始人</div>
+											</div>
+										</div>-->
+										<div class="s_8__staff__card">
+											<div class="s_8__staff__avatar" title='连续多个项目获得顶级投资机构大额融资。2015年开始研究区块链，在2016年年初初步组建完成区块链技术团队。'><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/photo_1.png" alt=""></div>
+											<div class="s_8__staff__data">
+												<div class="s_8__staff__name">Steven Liu </div>
+												<div class="s_8__staff__post">创始人,从事软件开发多年，专注研究互联网B2B商业模型</div>
+											</div>
+										</div>
+										<div class="s_8__staff__card">
+											<div class="s_8__staff__avatar" title="国际时尚传媒业界精英、华尔街区块链投资项目主要倡导人之一，公关能力范围辐射全球四十余个国家，负责HEY项目的全球实施和推广。"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/photo_2.png" alt=""></div>
+											<div class="s_8__staff__data">
+												<div class="s_8__staff__name">Tina Mars</div>
+												<div class="s_8__staff__post">联合创始人,世界华商青商联盟秘书长、世界华商纽约总会秘书长</div>
+											</div>
+										</div>
+										<div class="s_8__staff__card">
+											<div class="s_8__staff__avatar" title="资深比特币矿产挖矿、投资人。负责HEY全球医美机构加盟模式输出。"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/photo_3.png" alt=""></div>
+											<div class="s_8__staff__data">
+												<div class="s_8__staff__name">Timothy Scott Mercurio</div>
+												<div class="s_8__staff__post">联合创始人,美国教育产业企业家，全球Richmond English Discovery Center创始人</div>
+											</div>
+										</div>
+										<div class="s_8__staff__card">
+											<div class="s_8__staff__avatar" title="从事技术架构研发十余年，研究区块链技术超过三年，负责HEY技术团队的管理工作"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/photo_4.png" alt=""></div>
+											<div class="s_8__staff__data">
+												<div class="s_8__staff__name">田金波</div>
+												<div class="s_8__staff__post">首席技术官,前惠普 IBM Senior Consultant高级顾问</div>
+											</div>
+										</div>
+										<div class="s_8__staff__card">
+											<div class="s_8__staff__avatar" title="12年接触比特币,负责HEY的联盟链全球发展合作，并同全球交易所对接上币工作"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/photo_8.png" alt=""></div>
+											<div class="s_8__staff__data">
+												<div class="s_8__staff__name">项羽</div>
+												<div class="s_8__staff__post">联合创始人,计算机专业硕士，中国链圈资深人士，专注虚拟币技术分析，多种虚拟币大户玩家</div>
+											</div>
+										</div>
+										<div class="s_8__staff__card">
+											<div class="s_8__staff__avatar" title="个人为明星项目维C理财 闪修侠 影大人天使投资人，区块链、虚拟币4年投资经验。Kevin先生将会负责HEY医疗软件面向医美机构、制药厂商做全球推广。"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/photo_12.png" alt=""></div>
+											<div class="s_8__staff__data">
+												<div class="s_8__staff__name">Kevin Fu</div>
+												<div class="s_8__staff__post">联合创始人,通信工程专业，前清华同方行业事业部总经理，10年企业软件管理、营销经验</div>
+											</div>
+										</div>
+										<div class="s_8__staff__card">
+											<div class="s_8__staff__avatar" title="先后在中国北京大学分子研究所、加州大学圣地亚分校医学院细胞分子医学院从事研究工作。Feng Y先生拥有全球众多上游医药厂商资源，并了解医药产业的痛点，负责HEY同全球医药厂商对接药品上链，数据溯源的具体工作."><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/photo_14.png" alt=""></div>
+											<div class="s_8__staff__data">
+												<div class="s_8__staff__name">Feng Y</div>
+												<div class="s_8__staff__post">联合创始人,中国北京大学硕博连读，美国加州大学博士后,拥有全球众多上游医药厂商资源</div>
+											</div>
+										</div>
+										<div class="s_8__staff__card">
+											<div class="s_8__staff__avatar" title="杨先生作为医美行业资深人士，拥有众多资源，将在中国以及日韩负责HEY同各大医美机构的合作。"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/photo_7.png" alt=""></div>
+											<div class="s_8__staff__data">
+												<div class="s_8__staff__name">杨万里</div>
+												<div class="s_8__staff__post">联合创始人,星脉投资集团联合创始人，行业咨询专家，从事医疗整形美容行业10年</div>
+											</div>
+										</div>
+										<div class="s_8__staff__card">
+											<div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/photo_6.png" alt=""></div>
+											<div class="s_8__staff__data">
+												<div class="s_8__staff__name">EvansHurles</div>
+												<div class="s_8__staff__post">加拿大项目合伙人,加拿大markham premium cosmetic centre外科医生，魁北克整形协会副会长。</div>
+												<div class="s_8__staff__soc">
+												</div>
+											</div>
+										</div>
+										<div class="s_8__staff__card">
+											<div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/photo_5.png" alt=""></div>
+											<div class="s_8__staff__data">
+												<div class="s_8__staff__name">Ekatepnha</div>
+												<div class="s_8__staff__post">俄罗斯项目合伙人,俄罗斯Vladivostok私立医院，俄罗斯“再建整形术”导师，多家俄罗斯私立整形美容机构合伙人兼咨询师。</div>
+
+											</div>
+										</div>
+										<div class="s_8__staff__card">
+											<div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/photo_9.png" alt=""></div>
+											<div class="s_8__staff__data">
+												<div class="s_8__staff__name">朴政焕</div>
+												<div class="s_8__staff__post">韩国项目合伙人,韩国新帝瑞娜整形医院合伙人，韩国激光美肤协会会长。</div>
+
+											</div>
+										</div>
+										<div class="s_8__staff__card">
+											<div class="s_8__staff__avatar" title="通信和信息技术培养工程区块链高级授课专家，全球区块链职业教育培训布道师，中国链乎智能合约审计师团队、众创书籍发起人与践行者。"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/photo_11.png" alt=""></div>
+											<div class="s_8__staff__data">
+												<div class="s_8__staff__name">孔壹 </div>
+												<div class="s_8__staff__post">区块链技术顾问,孔壹学院 & 链乎创始人，资深讲师，区块链底层开发者、架构师，全球区块链职业教育培训布道师</div>
+
+											</div>
+										</div>
+										<div class="s_8__staff__card">
+											<div class="s_8__staff__avatar" title="曾投资“来租我吧”“积木旅行”“座头鲸旅行”“MikeCRM麦克”等项目，多个项目获利退出，拥有丰富的项目投资经验。"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/photo_10.png" alt=""></div>
+											<div class="s_8__staff__data">
+												<div class="s_8__staff__name">元元</div>
+												<div class="s_8__staff__post">投资机构顾问,君达云投创始人，专注于股权投资</div>
+											</div>
+										</div>
+										<div class="s_8__staff__card">
+											<div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="img/photo_13.png" alt=""></div>
+											<div class="s_8__staff__data">
+												<div class="s_8__staff__name">杨绍兵 </div>
+												<div class="s_8__staff__post">医疗整形美容投资顾问,星脉医疗投资集团董事长，专注医疗整形美容产业投资</div>
+											</div>
+										</div>
+									</div>
+									<!--<div class="text-center">
+										<button class="s_8__staff__more hidden-lg hidden-md hidden-sm">
+                    						<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 462.088 462.088" style="enable-background:new 0 0 462.088 462.088;" xml:space="preserve" width="25px" height="25px">
+                     						 <g>
+                        					<g>
+                         					 <g>
+                           			 		<path d="M417.041,202.182c-7.483,0-13.896-5.345-16.034-12.827     c-18.172-80.171-88.723-136.826-172.101-136.826S74.977,109.184,56.805,189.355c-2.138,8.552-10.689,13.896-19.241,11.758     s-13.896-10.689-11.758-19.241c21.379-95.137,105.826-161.411,203.1-161.411s181.721,66.275,203.1,161.411     c2.138,8.552-3.207,17.103-11.758,19.241C419.179,201.113,418.11,202.182,417.041,202.182z" fill="#FFFFFF"></path>
+                          					</g>
+                          					<path d="M422.386,206.458c-2.138,0-4.276,0-6.414-1.069l-55.585-23.517    c-8.552-3.207-11.758-12.827-8.552-21.379s12.827-11.758,21.379-8.552l40.62,17.103l17.103-40.62    c3.207-8.552,12.827-11.758,21.379-8.552s11.758,12.827,8.552,21.379l-23.517,55.585c-2.138,4.276-4.276,7.483-8.552,8.552    C426.662,206.458,424.524,206.458,422.386,206.458z" fill="#FFFFFF"></path>
+                          					<g>
+                          			 		 <path d="M232.113,441.627c-97.274,0-181.721-66.275-203.1-161.411     c-2.138-8.552,3.207-17.103,11.758-19.241s17.103,3.207,19.241,11.758c18.172,80.171,88.723,136.826,172.101,136.826     s153.929-56.654,172.101-136.826c2.138-8.552,10.689-13.896,19.241-11.758s13.896,10.69,11.758,19.241     C413.834,375.352,330.456,441.627,232.113,441.627z" fill="#FFFFFF"></path>
+                         					 </g>
+                        			 		 <path d="M16.185,343.284c-2.138,0-4.276,0-6.414-1.069c-8.552-3.207-11.758-12.827-8.552-21.379    l23.517-55.585c3.207-8.552,12.827-11.758,21.379-8.552l55.585,23.517c8.552,3.207,11.758,12.827,8.552,21.379    c-3.207,8.552-12.827,11.758-21.379,8.552l-40.62-17.103L31.15,332.594C29.013,339.008,22.599,343.284,16.185,343.284z" fill="#FFFFFF"></path>
+                       						 </g>
+                    				  		</g>
+                   					 		</svg>
+                   					 		Load more
+											</button>
+									</div>-->
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<section class="section s_8">
+					<canvas id="page-bg-8" class="page-bg"></canvas>
+					<div class="container">
+						<div class="row">
+							<div class="col-xs-12">
+								<h2 class="s_title" data-before="Advisors">合作机构</h2>
+								<div class="s_8__wrap" style="margin-top: -50px;">
+									<div class="s_8__staff_wrap hidden-xs" data-scrolltext="向右滑动以探索其余的团队">
+										<div class="s_8__staff__card_col" style="width: 828px;">
+											<ul class="partner">
+												<li><img src="img/partner_1.png" /></li>
+												<li><img src="img/partner_2.png" /></li>
+												<li><img src="img/partner_3.png" /></li>
+												<li><img src="img/partner_4.png" /></li>
+												<li><img src="img/partner_5.png" /></li>
+												<li><img src="img/partner_6.png" /></li>
+												<li><img src="img/partner_7.png" /></li>
+												<li><img src="img/partner_8.png" /></li>
+												<li><img src="img/partner_9.png" /></li>
+												<li><img src="img/partner_10.png" /></li>
+												<li><img src="img/partner_11.png" /></li>
+												<li><img src="img/partner_12.png" /></li>
+											</ul>
+										</div>
+										<div class="s_8__staff__card_col" style="width: 828px;margin-left: 100px;">
+											<ul class="partner">
+												<li><img src="img/partner_13.png" /></li>
+												<li><img src="img/partner_14.png" /></li>
+												<li><img src="img/partner_15.png" /></li>
+												<li><img src="img/partner_16.png" /></li>
+												<li><img src="img/partner_17.png" /></li>
+												<li><img src="img/partner_18.png" /></li>
+												<li><img src="img/partner_19.png" /></li>
+												<li><img src="img/partner_20.png" /></li>
+												<li><img src="img/partner_21.png" /></li>
+												<li><img src="img/partner_22.png" /></li>
+												<li><img src="img/partner_23.png" /></li>
+											</ul>
+										</div>
+									</div>
+									<!-- mobile stuff -->
+									<div class="hidden-lg hidden-md hidden-sm s_8__staff__list-xs">
+
+										<div class="s_8__staff_wrap cooperate hidden-lg hidden-md" data-scrolltext="向右滑动以探索其余的团队">
+											<p><img src="img/partner_1.png" /><img src="img/partner_2.png" /></p>
+											<p><img src="img/partner_3.png" /><img src="img/partner_4.png" /></p>
+											<p><img src="img/partner_5.png" /><img src="img/partner_6.png" /></p>
+											<p><img src="img/partner_7.png" /><img src="img/partner_8.png" /></p>
+											<p><img src="img/partner_9.png" /><img src="img/partner_10.png" /></p>
+											<p><img src="img/partner_11.png" /><img src="img/partner_12.png" /></p>
+											<p><img src="img/partner_13.png" /><img src="img/partner_14.png" /></p>
+											<p><img src="img/partner_15.png" /><img src="img/partner_16.png" /></p>
+											<p><img src="img/partner_17.png" /><img src="img/partner_18.png" /></p>
+											<p><img src="img/partner_19.png" /><img src="img/partner_20.png" /></p>
+											<p><img src="img/partner_23.png" /><img src="img/partner_22.png" /></p>
+											<p><img src="img/partner_21.png" /></p>
+											
+											
+											<!--<div class="s_8__staff__card_col" style="width: 828px;">
+												<ul class="partner">
+													<li><img src="img/partner_1.png" /></li>
+													<li><img src="img/partner_1.png" /></li>
+													<li><img src="img/partner_3.png" /></li>
+													<li><img src="img/partner_4.png" /></li>
+													<li><img src="img/partner_5.png" /></li>
+													<li><img src="img/partner_6.png" /></li>
+													<li><img src="img/partner_7.png" /></li>
+													<li><img src="img/partner_8.png" /></li>
+												</ul>
+											</div>
+											<div class="s_8__staff__card_col" style="width: 828px;margin-left: 100px;">
+												<ul class="partner">
+													<li><img src="img/partner_9.png" /></li>
+													<li><img src="img/partner_10.png" /></li>
+													<li><img src="img/partner_11.png" /></li>
+													<li><img src="img/partner_12.png" /></li>
+													<li><img src="img/partner_13.png" /></li>
+													<li><img src="img/partner_14.png" /></li>
+													<li><img src="img/partner_15.png" /></li>
+													<li><img src="img/partner_16.png" /></li>
+												</ul>
+											</div>
+											<div class="s_8__staff__card_col" style="width: 828px;margin-left: 100px;">
+												<ul class="partner">
+													<li><img src="img/partner_17.png" /></li>
+													<li><img src="img/partner_18.png" /></li>
+													<li><img src="img/partner_19.png" /></li>
+													<li><img src="img/partner_20.png" /></li>
+													<li><img src="img/partner_21.png" /></li>
+													<li><img src="img/partner_22.png" /></li>
+													<li><img src="img/partner_23.png" /></li>
+												</ul>
+											</div>-->
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+				<section class="section s_9">
+					<div class="container">
+						<div class="row">
+							<div class="col-xs-11">
+								<div class="s_9__wrap">
+									<h2 class="s_title " data-before="搭档">以太地址</h2>
+									<div class="s_9__partners ">
+										<p class="radio"><span>1 ETH = 12,000 HEY</span></p>
+										<p class="tip">目前HEY支持kcash钱包、imtoken钱包、ZAG钱包。请使用以上钱包转帐。</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+			</div>
+			<script src="js/scripts.js" async></script>
+
+		</div>
+
+		<script type="text/javascript">
+			//图片地址的域名  http://admin.healthbeauty.io/data/upload/
+			$('.china').click(function() {
+				console.log(22)
+				$.ajax({
+					type: "get",
+					url: "daohang.json",
+					async: true,
+					success: function(data) {
+						console.log(data)
+					},
+					error: function(err) {
+						console.log(err)
+					}
+				});
+			})
+		</script>
+	</body>
+
+</html>
