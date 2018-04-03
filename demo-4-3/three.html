@@ -1,0 +1,2414 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8">
+  <title>MARK.SPACE - 下一代互联网</title>
+  <meta name="description" content="创造3D/VR空间（网站）的平台 由密码经济链接。">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="css/main.min.css?5">
+  <meta name="theme-color" content="#071621">
+  <meta name="msapplication-navbutton-color" content="#071621">
+  <meta name="apple-mobile-web-app-status-bar-style" content="#071621">
+<meta name="msvalidate.01" content="474D1142972914F156E1599D53CC9073" />
+<meta name='wmail-verification' content='d3331ab27111759188c81aa40e94b504' />
+<meta name="yandex-verification" content="0d349b77872d2c13" />
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-TJRN7CT');</script>
+<!-- End Google Tag Manager -->
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TJRN7CT" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+  <style>
+   @media only screen and (min-width:768px) {
+    .preload { position:fixed;top:0;left:0;right:0;bottom:0;text-align:center;z-index:1000;background-color:#041b2b;-webkit-transition:opacity 1s ease-out;transition:opacity 1s ease-out;}
+    .preload-hide { opacity:0; }
+    .preload svg {
+      vertical-align: middle;
+      display: inline-block;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-top: -80px;
+      margin-left: -80px;
+      -webkit-animation-duration: 2.5s;
+      animation-duration: 2.5s;
+      -webkit-animation-fill-mode: both;
+      animation-fill-mode: both;
+      -webkit-animation-iteration-count: infinite;
+      animation-iteration-count: infinite;
+      -webkit-backface-visibility: visible;
+      backface-visibility: visible;
+      -webkit-animation-name: flip;
+      animation-name: flip;
+      -webkit-transform: perspective(500px) rotate3d(0, 1, 0, -360deg);
+      transform: perspective(500px) rotate3d(0, 1, 0, -360deg)
+    }
+  }
+  @media only screen and (max-width:767px) {
+   .preload {display: none}
+  }
+
+   @-webkit-keyframes flip {
+     from {
+       -webkit-transform: perspective(500px) rotate3d(0, 1, 0, -360deg);
+       transform: perspective(500px) rotate3d(0, 1, 0, -360deg);
+       -webkit-animation-timing-function: ease-out;
+       animation-timing-function: ease-out
+     }
+     40% {
+       -webkit-transform: perspective(500px) translate3d(0, 0, 100px) rotate3d(0, 1, 0, -190deg);
+       transform: perspective(500px) translate3d(0, 0, 100px) rotate3d(0, 1, 0, -190deg);
+       -webkit-animation-timing-function: ease-out;
+       animation-timing-function: ease-out
+     }
+     50% {
+       -webkit-transform: perspective(500px) translate3d(0, 0, 100px) rotate3d(0, 1, 0, -170deg);
+       transform: perspective(500px) translate3d(0, 0, 100px) rotate3d(0, 1, 0, -170deg);
+       -webkit-animation-timing-function: ease-in;
+       animation-timing-function: ease-in
+     }
+     80% {
+       -webkit-transform: perspective(500px) scale3d(.95, .95, .95);
+       transform: perspective(500px) scale3d(.95, .95, .95);
+       -webkit-animation-timing-function: ease-in;
+       animation-timing-function: ease-in
+     }
+     to {
+       -webkit-transform: perspective(500px) rotate3d(0, 1, 0, -360deg);
+       transform: perspective(500px) rotate3d(0, 1, 0, -360deg);
+       -webkit-animation-timing-function: ease-in;
+       animation-timing-function: ease-in
+     }
+   }
+
+   @keyframes flip {
+     from {
+       -webkit-transform: perspective(500px) rotate3d(0, 1, 0, -360deg);
+       transform: perspective(500px) rotate3d(0, 1, 0, -360deg);
+       -webkit-animation-timing-function: ease-out;
+       animation-timing-function: ease-out
+     }
+     40% {
+       -webkit-transform: perspective(500px) translate3d(0, 0, 100px) rotate3d(0, 1, 0, -190deg);
+       transform: perspective(500px) translate3d(0, 0, 100px) rotate3d(0, 1, 0, -190deg);
+       -webkit-animation-timing-function: ease-out;
+       animation-timing-function: ease-out
+     }
+     50% {
+       -webkit-transform: perspective(500px) translate3d(0, 0, 100px) rotate3d(0, 1, 0, -170deg);
+       transform: perspective(500px) translate3d(0, 0, 100px) rotate3d(0, 1, 0, -170deg);
+       -webkit-animation-timing-function: ease-in;
+       animation-timing-function: ease-in
+     }
+     80% {
+       -webkit-transform: perspective(500px) scale3d(.95, .95, .95);
+       transform: perspective(500px) scale3d(.95, .95, .95);
+       -webkit-animation-timing-function: ease-in;
+       animation-timing-function: ease-in
+     }
+     to {
+       -webkit-transform: perspective(500px) rotate3d(0, 1, 0, -360deg);
+       transform: perspective(500px) rotate3d(0, 1, 0, -360deg);
+       -webkit-animation-timing-function: ease-in;
+       animation-timing-function: ease-in
+     }
+   }
+  </style>
+  <div class="preload">
+    <svg class="animated" xmlns="http://www.w3.org/2000/svg" width="161" height="161" viewBox="0 0 161 161">
+      <g fill="#FEFEFE" fill-rule="evenodd">
+        <path d="M113.317 50.03l-11.182 16.232-5.337-19.068a9.168 9.168 0 0 1 1.585-8.014 9.167 9.167 0 0 1 7.331-3.618c3.493 0 6.549 1.846 8.173 4.937 1.624 3.093 1.412 6.655-.57 9.532zM59.375 66.263L48.193 50.031c-1.981-2.877-2.195-6.44-.57-9.532 1.625-3.091 4.68-4.937 8.175-4.937a9.163 9.163 0 0 1 7.33 3.618c1.761 2.3 2.34 5.214 1.592 7.988l-5.345 19.094zm60.401-28.857c-2.703-5.145-7.71-8.285-13.474-8.485-4.695-.164-9.292 1.76-12.416 5.267-3.638 4.08-4.913 9.547-3.501 14.775l6.837 24.43-16.467 23.905-16.467-23.904 6.846-24.461c1.402-5.195.133-10.643-3.488-14.721-3.117-3.512-7.708-5.445-12.401-5.293-5.78.188-10.802 3.33-13.511 8.487-2.795 5.32-2.429 11.45.98 16.4l14.327 20.796-9.496 33.925a1.574 1.574 0 0 0 1.516 1.998h3.64c.705 0 1.325-.47 1.515-1.15l7.738-27.642 18.153 26.35a.786.786 0 0 0 1.296 0l18.153-26.35 7.738 27.643c.19.68.81 1.15 1.516 1.15h3.639a1.574 1.574 0 0 0 1.515-1.999l-9.496-33.925 14.328-20.796c3.41-4.95 3.775-11.08.98-16.4z" />
+        <path d="M80.258 5.842c-41.033 0-74.416 33.383-74.416 74.416 0 41.032 33.383 74.415 74.416 74.415 41.032 0 74.415-33.383 74.415-74.415 0-41.033-33.383-74.416-74.415-74.416m0 154.673C36.004 160.515 0 124.512 0 80.258 0 36.004 36.004 0 80.258 0s80.257 36.004 80.257 80.258-36.003 80.257-80.257 80.257" />
+        <path d="M86.152 127.231c0 .305-.079.57-.24.797-.159.226-.373.415-.645.568a3.336 3.336 0 0 1-.955.343 5.66 5.66 0 0 1-1.154.114c-.275 0-.542-.011-.798-.035a4.255 4.255 0 0 1-2.154-.792l.965-1.03c.318.206.638.357.96.453a3.359 3.359 0 0 0 1.568.093c.16-.035.287-.081.386-.137a.556.556 0 0 0 .206-.18.34.34 0 0 0 .06-.185.364.364 0 0 0-.081-.234.744.744 0 0 0-.277-.189 3.551 3.551 0 0 0-.515-.175c-.214-.06-.48-.124-.798-.195a7.367 7.367 0 0 1-.923-.259 2.616 2.616 0 0 1-.678-.352 1.37 1.37 0 0 1-.418-.49 1.491 1.491 0 0 1-.14-.677c0-.276.067-.524.2-.744.134-.22.322-.407.564-.563.243-.156.532-.275.87-.357a4.628 4.628 0 0 1 1.1-.123c.435 0 .862.033 1.286.097.422.065.862.22 1.319.467l-.771 1.127a3.3 3.3 0 0 0-.972-.344 5.632 5.632 0 0 0-.884-.07c-.275 0-.497.037-.666.11-.172.073-.257.194-.257.366 0 .075.027.144.081.205a.842.842 0 0 0 .277.18c.132.06.301.118.511.173.21.056.467.119.771.19a6 6 0 0 1 1.15.355c.289.133.511.277.667.432.156.156.258.323.31.502.05.18.075.366.075.56M89.986 125.559h1.33c.34 0 .582-.068.725-.202a.64.64 0 0 0 .216-.486.654.654 0 0 0-.21-.486c-.141-.133-.385-.2-.732-.2h-1.329v1.374zm1.62-2.616c.44 0 .815.055 1.125.163.313.11.567.254.762.436.198.182.343.388.434.616.09.229.137.467.137.713 0 .247-.057.484-.166.713a1.87 1.87 0 0 1-.49.617c-.217.182-.48.327-.792.435a3.22 3.22 0 0 1-1.07.164h-1.56v2.21H88.18v-6.067h3.426zM109.172 122.943h5.447v1.242h-3.645v1.145h3.112v1.24h-3.112v1.198h3.645v1.242h-5.447zM107.793 128.362c-.379.4-1.2.69-2.056.69-1.957 0-3.31-1.227-3.31-3.085 0-1.712 1.128-3.084 3.3-3.084.84 0 1.552.272 1.93.621l-.64 1.024c-.342-.197-.694-.366-1.29-.366-.973 0-1.767.63-1.767 1.805 0 1.057.776 1.807 1.912 1.807.45 0 .947-.136 1.37-.434l.55 1.022zM97.161 126.809h1.673l-.808-1.943h-.057l-.808 1.943zm-2.62 2.193l2.814-6.068h1.349l2.815 6.068h-1.775l-.39-.93h-2.713l-.382.93H94.54zM78.295 128.23a.854.854 0 1 1-1.709.001.854.854 0 0 1 1.709 0M50.514 129.01v-2.917h-.046l-1.385 2.257h-.576l-1.384-2.257h-.046v2.917h-1.59v-6.067h1.488l1.857 3.066h.019l1.85-3.066h1.448v6.067zM55.865 126.817h1.673l-.809-1.942h-.056l-.808 1.942zm-2.62 2.193l2.815-6.067h1.347l2.815 6.067h-1.774l-.39-.93h-2.713l-.38.93h-1.72zM62.944 124.263v1.29h1.85c.38 0 .687-.232.687-.65a.68.68 0 0 0-.177-.455c-.149-.158-.344-.185-.51-.185h-1.85zm-1.625 4.747v-6.067H64.7c.92 0 1.496.27 1.886.678.325.344.52.79.52 1.292 0 .743-.427 1.328-1.115 1.68l1.394 2.417h-1.84l-1.16-2.137h-1.441v2.137h-1.625zM70.413 125.22l2.388-2.277h2.062l-2.573 2.407 2.944 3.66H73.22l-2.072-2.61-.734.696v1.914h-1.635v-6.067h1.635z" />
+      </g>
+    </svg>
+  </div>
+  <button class="header__bars menu-btn hidden-lg hidden-md" type="button">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+  <div id="page-wrap">
+    <div class="sections-wrap__overflow"></div>
+    <nav class="nav">
+      <div class="nav__table">
+        <ul>
+          <li><a href="#Video">视频</a></li>
+          <li><a href="#About">关于</a></li>
+          <li><a href="#Solutions">挑战和解决方案</a></li>
+          <li><a href="#Districts">城区介绍</a></li>
+          <li><a href="#Unit">小区</a></li>
+<!--          <li><a href="#CryptoValley">Crypto-Valley</a></li>-->
+          <li><a href="#Roadmap">路线图</a></li>
+          <li><a href="#Partners">搭档</a></li>
+          <li><a href="#Press">媒体报道</a></li>
+          <li><a href="#Team">团队</a></li>
+          <li><a href="#Advisors">顾问</a></li>
+          <li><a href="#Documents">文件</a></li>
+          <li><a href="#Tuned">敬请关注</a></li>
+        </ul>
+      </div>
+    </nav>
+    <header class="header hidden-xs">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12">
+            <a href="#s_1" class="header__logo">
+              <img src="/img/logo_white.svg" alt="" class="header__logo__img">
+            </a>
+            <div class="header__right">
+              <a href="https://goo.gl/y1cVMm" target="_blank" class=" header__telegram"><i class="fa fa-paper-plane" aria-hidden="true"></i></a>
+              <a href="https://mark.space/demo" target="_blank" class=" header__auth header__demo">试试我们DEMO</a>
+              <a href="https://mark.space/sandbox" target="_blank" class="header__auth header__demo">空间构建工具</a>
+              <a href="https://ico.markspace.io/user/login/" target="_blank" id="header-auth-btn" class="header__auth">我的账户</a>
+              <a href="https://ico.markspace.io/user/login/" target="_blank" id="header-contribute-btn" class="header__auth header__contribute " style="display: none">我的账户</a>
+            <div class="footer__lang">
+              <div class="footer__lang__current">
+                <span class="sp-ico sp-ico-lang sp-ico-lang-cn"></span>
+                <span>中文</span>
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="7px" height="5px">
+                  <path fill-rule="evenodd" opacity="0.502" fill="rgb(255, 255, 255)" d="M0.000,1.244 L3.500,5.000 L7.000,1.244 L5.857,-0.000 L3.500,2.529 L1.143,-0.000 L0.000,1.244 Z" />
+                </svg>
+              </div>
+              <ul class="footer__lang__list">
+                <li><a href="/"><span class="sp-ico sp-ico-lang sp-ico-lang-en"></span><span>en</span></a></li>
+                <li><a href="/ru/"><span class="sp-ico sp-ico-lang sp-ico-lang-ru"></span><span>ru</span></a></li>
+                <li><a href="/jp/"><span class="sp-ico sp-ico-lang sp-ico-lang-ja"></span><span>日本語</span></a></li>
+                <li><a href="/ko/"><span class="sp-ico sp-ico-lang sp-ico-lang-ko"></span><span>한국어</span></a></li>
+                <li><a href="/es/"><span class="sp-ico sp-ico-lang sp-ico-lang-es"></span><span>es</span></a></li>
+                <li><a href="/fr/"><span class="sp-ico sp-ico-lang sp-ico-lang-fr"></span><span>fr</span></a></li>
+              </ul>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <div class="header-mob hidden-lg hidden-md hidden-sm">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12">
+            <a href="#s_1"><div class="header-mob__logo"><img src="/img/logo_white.svg" alt=""></div></a>
+            <a href="https://ico.markspace.io/user/login/" target="_blank" class="header-mob__contribute">我的账户</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="footer hidden-sm hidden-xs">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="footer__copyright">
+                  ©2018 mark.space &nbsp;&nbsp; 140 Paya Lebar Road, #10-09, Singapore 409015
+				  <br><a href="/#Tuned">美国，新加披和中国公民无法参与MARK.SPACE代币出售</a>
+            </div>
+            <div class="footer__soc no-visible">
+              <a href="https://goo.gl/y1cVMm" target="_blank"><i class="fa fa-paper-plane" aria-hidden="true"></i></a>
+              <a href="https://bitcointalk.org/index.php?topic=2294605.0" target="_blank"><i class="fa fa-btc" aria-hidden="true"></i></a>
+              <a href="https://goo.gl/FpcGoJ" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+              <a href="https://medium.com/@markspace" target="_blank"><i class="fa fa-medium" aria-hidden="true"></i></a>
+              <a href="https://goo.gl/ASDCRT" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+              <a href="https://reddit.com/r/markspace" target="_blank"><i class="fa fa-reddit-alien" aria-hidden="true"></i></a>
+              <a href="https://goo.gl/Tah3re" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+              <a href="https://goo.gl/tjHbrc" target="_blank"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
+              <a href="https://www.instagram.com/markspace_io/" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <canvas id="page-bg-2" class="page-bg"></canvas>
+    <div id="fullpage" class="sections-wrap">
+      <section class="section s_1 head-home">
+        <div id="webgl-container">
+          <canvas id="webgl-canvas" class="s_1__bg"></canvas>
+        </div>
+        <div class="s_1__header hidden-lg hidden-md hidden-sm">
+          <div class="container">
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="footer__lang">
+              <div class="footer__lang__current">
+                <span class="sp-ico sp-ico-lang sp-ico-lang-cn"></span>
+                <span>中文</span>
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="7px" height="5px">
+                  <path fill-rule="evenodd" opacity="0.502" fill="rgb(255, 255, 255)" d="M0.000,1.244 L3.500,5.000 L7.000,1.244 L5.857,-0.000 L3.500,2.529 L1.143,-0.000 L0.000,1.244 Z" />
+                </svg>
+              </div>
+              <ul class="footer__lang__list">
+                <li><a href="/"><span class="sp-ico sp-ico-lang sp-ico-lang-en"></span><span>en</span></a></li>
+                <li><a href="/ru/"><span class="sp-ico sp-ico-lang sp-ico-lang-ru"></span><span>ru</span></a></li>
+                <li><a href="/jp/"><span class="sp-ico sp-ico-lang sp-ico-lang-ja"></span><span>日本語</span></a></li>
+                <li><a href="/ko/"><span class="sp-ico sp-ico-lang sp-ico-lang-ko"></span><span>한국어</span></a></li>
+                <li><a href="/es/"><span class="sp-ico sp-ico-lang sp-ico-lang-es"></span><span>es</span></a></li>
+                <li><a href="/fr/"><span class="sp-ico sp-ico-lang sp-ico-lang-fr"></span><span>fr</span></a></li>
+              </ul>
+            </div>
+                <a href="/" class="header__logo">
+                  <img src="/img/logo_white.svg" alt="" class="header__logo__img">
+                </a>
+                <div class="header__right">
+                  <a href="https://mark.space/demo" target="_blank" class="header__auth header__demo">试试我们DEMO</a>
+                  <a href="https://mark.space/sandbox" target="_blank" class="header__auth header__demo">空间构建工具</a>
+                  <a href="https://ico.markspace.io/user/login/" target="_blank" class="header__auth ">我的账户</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="container">
+          <div class="row">
+            <div class="col-xs-12">
+              <h1 class="s_1__h">下一代互联网</h1>
+              <div class="s_1__title">由区块链支持的创造3D/VR兼容网页空间的开源平台</div>
+              <div class="clearfix"></div>
+              <div id="startTime" class="s_1__countdown s_2__thumb_video" style="width:400px;margin-right:100px;white-space:normal;">
+                <div class="s_1__countdown__top">
+                  <div class="s_1__countdown__title">不要错过单元销售和分配</div>
+                </div>
+                <div class="clearfix"></div>
+                <div>
+                  <div class="s_1__countdown__cell">
+                    <span class="s_1__days s_1__countdown__digit">&nbsp;</span>
+                    <span class="s_1__countdown__label">天</span>
+                  </div>
+                  <div class="s_1__countdown__cell">
+                    <span class="s_1__houers s_1__countdown__digit">&nbsp;</span>
+                    <span class="s_1__countdown__label">小时</span>
+                  </div>
+                  <div class="s_1__countdown__cell">
+                    <span class="s_1__minutes s_1__countdown__digit">&nbsp;</span>
+                    <span class="s_1__countdown__label">分钟</span>
+                  </div>
+                  <div class="s_1__countdown__cell">
+                    <span class="s_1__seconds s_1__countdown__digit">&nbsp;</span>
+                    <span class="s_1__countdown__label">秒</span>
+                  </div>
+                </div>
+                <div class="s_1__countdown__title"></div>
+              </div>
+              <div class="clearfix"></div>
+              <div class="s_1__links">
+                <a href="http://goo.gl/y1cVMm" target="_blank" class="s_1__contribute hidden-xs"><span class="fa fa-paper-plane"></span> Telegram group</a>
+                <div class="s_1__raised_link"><a onclick="top.open('https://mark.space/info/','_blank');"><span>贡献统计</span></a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="section s_2">
+        <div class="container">
+          <div class="row">
+            <div class="col-xs-12">
+              <h2 class="s_title" data-before="video gallery">什么是MARK.SPACE</h2>
+              <div id="s_2__tab-1" class="s_2__tab">
+                <div class="s_2__current_video">
+                  <div class="s_2__video__corner s_2__video__corner-tl"></div>
+                  <div class="s_2__video__corner s_2__video__corner-tr"></div>
+                  <div class="s_2__video__corner s_2__video__corner-br"></div>
+                  <div class="s_2__video__corner s_2__video__corner-bl"></div>
+                  <div class="s_2__video__border s_2__video__border-top-bottom"></div>
+                  <div class="s_2__video__border s_2__video__border-left-right"></div>
+                  <div class="s_2__video__wrap">
+				    <iframe width="553" height="312" src="//rutube.ru/play/embed/eabbb596db966f668ce34acee952a6ca" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
+                  </div>
+                </div>
+                <div class="s_2__thumb_video">
+                  <ul>
+                    <li><a href="//rutube.ru/play/embed/efa82bfaad860cf7ab7efb5d6b18cdc4?autoStart=true"><img src="/img/video/video-6.jpg" alt=""></a></li>
+                    <li><a href="//rutube.ru/play/embed/6e7326d2f464041dd1bfd4e961e83a2b?autoStart=true"><img src="/img/video/video-2.jpg" alt=""></a></li>
+                    <li><a href="//rutube.ru/play/embed/f1b581e093167d84c1a7c3ea5822e58a?autoStart=true"><img src="/img/video/video-11.jpg" alt="" width="165px"></a></li>
+                    <li><a href="//rutube.ru/play/embed/bd180dc89d1d0c71c80aa3b41ce8ad0d?autoStart=true"><img src="/img/video/video-1.jpg" alt=""></a></li>
+                    <li><a href="//rutube.ru/play/embed/340efa13dacf6bc9b64a180ead82940a?autoStart=true"><img src="/img/video/video-8.jpg" alt="" width="165px"></a></li>
+                    <li><a href="//rutube.ru/play/embed/cad3dcae39244c0afd170a6a715c0019?autoStart=true"><img src="/img/video/video-9.jpg" alt="" width="165px"></a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="section s_2">
+        <div class="container">
+          <div class="row">
+            <div class="col-xs-12">
+              <h2 class="s_title" data-before="about">关于</h2>
+              <div id="s_2__tab-1" class="s_2__tab">
+                <div class="s_4__wrap d-table">
+                  <div class="s_2__video__corner s_2__video__corner-tl hidden-xs"></div>
+                  <div class="s_2__video__corner s_2__video__corner-tr hidden-xs"></div>
+                  <div class="s_2__video__corner s_2__video__corner-br hidden-xs"></div>
+                  <div class="s_2__video__corner s_2__video__corner-bl hidden-xs"></div>
+                  <ul class="s_4__nav d-table-cell hidden-xs">
+                    <li class="active"><a href="#s_2__tab-2-1">关于本项目 </a></li>
+                    <li><a href="#s_2__tab-2-2">虚拟现实</a></li>
+                    <li><a href="#s_2__tab-2-3">电子商务</a></li>
+                    <li><a href="#s_2__tab-2-4">区块链</a></li>
+                    <li><a href="#s_2__tab-2-5">社交网络和博客圈</a></li>
+                  </ul>
+                  <div class="s_4__text d-table-cell">
+                    <div class="s_2__video__border s_2__video__border-top-bottom hidden-xs"></div>
+                    <div class="s_2__video__border s_2__video__border-left-right hidden-xs"></div>
+                    <div class="s_4__tab active" id="s_2__tab-2-1">
+                      <a href="#s_2__tab-2-1" class="hidden-lg hidden-md hidden-sm s_4__tab__title">关于本项目 </a>
+                      <div class="d-table">
+                        <div class="d-table-cell">
+                          <p>MARK.SPACE - 替代现实，可在任何浏览器中使用，无需预先安装和注册。 该平台兼容任何VR耳机; 商店，办公室，银行，电影院，俱乐部，感兴趣社区和个人空间的世界。</p>
+                          <p>从技术上讲，MARK.SPACE是互联网的新一代。 兼容的网站，一方面是独立的（因为他们有自己的域名），同时在阻止者和全球搜索引擎上被统一的交易和会计系统。 此外，任何用户都可以免费访问宇宙中的每个3D / VR / AR（虚拟现实/增强现实）空间MARK.SPACE</p>
+                        </div>
+                        <div class="s_2__video__corner s_2__video__corner-br hidden-lg hidden-md hidden-sm"></div>
+                        <div class="s_2__video__corner s_2__video__corner-bl hidden-lg hidden-md hidden-sm"></div>
+                        <div class="s_2__video__border s_2__video__border-top-bottom hidden-lg hidden-md hidden-sm"></div>
+                        <div class="s_2__video__border s_2__video__border-left-right hidden-lg hidden-md hidden-sm"></div>
+                      </div>
+                    </div>
+                    <div class="s_4__tab" id="s_2__tab-2-2" style="display: none;">
+                      <a href="#s_2__tab-2-2" class="hidden-lg hidden-md hidden-sm s_4__tab__title">虚拟现实</a>
+                      <div class="d-table">
+                        <div class="d-table-cell">
+                          <p>AR / VR市场份额将从2017年的114亿美元增长到2021年的2150亿美元。 VR不仅涉及游戏，还涉及电子商务，商业，教育，科学，电影业等领域。所有空间MARK.SPACE - 在任何浏览器中都能正常工作的3D区域。它们与所有VR耳机兼容。这个决定使用户和内容提供者的观众增加了十倍。没有必要为我们的平台提供专用眼镜或头盔，这为互联网经济的发展提供了绝对独特的机会。</p>
+                        </div>
+                        <div class="s_2__video__corner s_2__video__corner-br hidden-lg hidden-md hidden-sm"></div>
+                        <div class="s_2__video__corner s_2__video__corner-bl hidden-lg hidden-md hidden-sm"></div>
+                        <div class="s_2__video__border s_2__video__border-top-bottom hidden-lg hidden-md hidden-sm"></div>
+                        <div class="s_2__video__border s_2__video__border-left-right hidden-lg hidden-md hidden-sm"></div>
+                      </div>
+                    </div>
+                    <div class="s_4__tab" id="s_2__tab-2-3" style="display: none;">
+                      <a href="#s_2__tab-2-3" class="hidden-lg hidden-md hidden-sm s_4__tab__title">电子商务</a>
+                      <div class="d-table">
+                        <div class="d-table-cell">
+                          <p>有15亿互联网买家和2.6万亿以上美元的总市场份额。 您可以购买您想要的一切 - 使用互联网上提供的服务。 MARK.SPACE平台将电子商务提升到一个全新的水平，而不仅仅是视觉能力。 3D / VR商店看起来比真实的要好得多。</p>
+                        </div>
+                        <div class="s_2__video__corner s_2__video__corner-br hidden-lg hidden-md hidden-sm"></div>
+                        <div class="s_2__video__corner s_2__video__corner-bl hidden-lg hidden-md hidden-sm"></div>
+                        <div class="s_2__video__border s_2__video__border-top-bottom hidden-lg hidden-md hidden-sm"></div>
+                        <div class="s_2__video__border s_2__video__border-left-right hidden-lg hidden-md hidden-sm"></div>
+                      </div>
+                    </div>
+                    <div class="s_4__tab" id="s_2__tab-2-4" style=" display: none;">
+                      <a href="#s_2__tab-2-4" class="hidden-lg hidden-md hidden-sm s_4__tab__title">区块链</a>
+                      <div class="d-table">
+                        <div class="d-table-cell">
+                          <p>单位是形成宇宙要素的基础：有源地址的虚拟房地产。 MARK.SPACE单位的财产登记记录在该块上维护。 这确保了存储所有者数据的可靠性。 该单位可以通过智能合同出售或出租给其他用户。</p>
+                        </div>
+                        <div class="s_2__video__corner s_2__video__corner-br hidden-lg hidden-md hidden-sm"></div>
+                        <div class="s_2__video__corner s_2__video__corner-bl hidden-lg hidden-md hidden-sm"></div>
+                        <div class="s_2__video__border s_2__video__border-top-bottom hidden-lg hidden-md hidden-sm"></div>
+                        <div class="s_2__video__border s_2__video__border-left-right hidden-lg hidden-md hidden-sm"></div>
+                      </div>
+                    </div>
+                    <div class="s_4__tab" id="s_2__tab-2-5" style=" display: none;">
+                      <a href="#s_2__tab-2-5" class="hidden-lg hidden-md hidden-sm s_4__tab__title">社交网络和博客圈</a>
+                      <div class="d-table">
+                        <div class="d-table-cell">
+                          <p>他们的观众超过30亿人。 它们已经成为消费内容和通信的主要渠道。 凭借3D / VR的视觉功能和强大的平台通讯工具（p2p语音通讯，空间物体互动，多线程广播），MARK.SPACE用户的社交虚拟生活将与理想的现实生活非常相似，毫不费力。</p>
+                        </div>
+                        <div class="s_2__video__corner s_2__video__corner-br hidden-lg hidden-md hidden-sm"></div>
+                        <div class="s_2__video__corner s_2__video__corner-bl hidden-lg hidden-md hidden-sm"></div>
+                        <div class="s_2__video__border s_2__video__border-top-bottom hidden-lg hidden-md hidden-sm"></div>
+                        <div class="s_2__video__border s_2__video__border-left-right hidden-lg hidden-md hidden-sm"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="section s_4">
+        <canvas id="page-bg-4" class="page-bg"></canvas>
+        <div class="container">
+          <div class="row">
+            <div class="col-xs-12">
+              <h2 class="s_title" data-before="挑战和解决方案">挑战和解决方案</h2>
+              <div class="s_4__wrap d-table">
+                <div class="s_2__video__corner s_2__video__corner-tl hidden-xs"></div>
+                <div class="s_2__video__corner s_2__video__corner-tr hidden-xs"></div>
+                <div class="s_2__video__corner s_2__video__corner-br hidden-xs"></div>
+                <div class="s_2__video__corner s_2__video__corner-bl hidden-xs"></div>
+                <ul class="s_4__nav d-table-cell hidden-xs">
+                  <li class="active"><a href="#s_4__tab-1">虚拟现实在电子商务中</a></li>
+                  <li><a href="#s_4__tab-2">挖矿机的另一种选择</a></li>
+                  <li><a href="#s_4__tab-3">交网络集中化</a></li>
+                  <li><a href="#s_4__tab-4">对代币的不利影响</a></li>
+                </ul>
+                <div class="s_4__text d-table-cell">
+                  <div class="s_2__video__border s_2__video__border-top-bottom hidden-xs"></div>
+                  <div class="s_2__video__border s_2__video__border-left-right hidden-xs"></div>
+                  <div class="s_4__tab active" id="s_4__tab-1" style="background-image: url(/img/solutions/1.png);">
+                    <a href="#s_4__tab-1" class="hidden-lg hidden-md hidden-sm s_4__tab__title">虚拟现实在电子商务中</a>
+                    <div class="d-table">
+                      <div class="d-table-cell">
+                        <p>目前商业项目虚拟化的需求难以实现。 就成本和创造虚拟商店而言，这些项目的合并是不可能的。</p>
+                        <p>
+                          <strong>解决方案</strong>
+                          <br>我们已经建立了一个平台，使您可以编程和建模商业虚拟空间，而无需编程技能和3D建模。</p>
+                      </div>
+                      <div class="s_2__video__corner s_2__video__corner-br hidden-lg hidden-md hidden-sm"></div>
+                      <div class="s_2__video__corner s_2__video__corner-bl hidden-lg hidden-md hidden-sm"></div>
+                      <div class="s_2__video__border s_2__video__border-top-bottom hidden-lg hidden-md hidden-sm"></div>
+                      <div class="s_2__video__border s_2__video__border-left-right hidden-lg hidden-md hidden-sm"></div>
+                    </div>
+                  </div>
+                  <div class="s_4__tab" id="s_4__tab-2" style="background-image: url(/img/solutions/2.png); display: none;">
+                    <a href="#s_4__tab-2" class="hidden-lg hidden-md hidden-sm s_4__tab__title">挖矿机的另一种选择</a>
+                    <div class="d-table">
+                      <div class="d-table-cell">
+                        <p>开采加密货币的复杂性正在迅速增长，许多加密货币最初使用POS或计划切换到它而不是POW。矿工的财务状况受到威胁。</p>
+                        <p>
+                          <strong>解决方案</strong>
+                          <br>MARK.SPACE是成千上万的高端渲染器，需要创造数TB的内容。 我们已经创建了分散渲染和数据存储的协议。 矿工将能够下载我们的程序来执行渲染。 为了存储数据，他们将以我们的MRK代币的形式获得奖励。 另外，我们的生态系统意味着大量的交易。</p>
+                      </div>
+                      <div class="s_2__video__corner s_2__video__corner-br hidden-lg hidden-md hidden-sm"></div>
+                      <div class="s_2__video__corner s_2__video__corner-bl hidden-lg hidden-md hidden-sm"></div>
+                      <div class="s_2__video__border s_2__video__border-top-bottom hidden-lg hidden-md hidden-sm"></div>
+                      <div class="s_2__video__border s_2__video__border-left-right hidden-lg hidden-md hidden-sm"></div>
+                    </div>
+                  </div>
+                  <div class="s_4__tab" id="s_4__tab-3" style="background-image: url(/img/solutions/3.png); display: none;">
+                    <a href="#s_4__tab-3" class="hidden-lg hidden-md hidden-sm s_4__tab__title">交网络集中化</a>
+                    <div class="d-table">
+                      <div class="d-table-cell">
+                        <p>受欢迎的社会群体，以及广告收入，由一家公司拥有和经营。</p>
+                        <p>
+                          <strong>解决方案</strong>
+                          <br>成为MARK.SPACE社区的创建者，您可以在“商业”，“社区”，“购物”和“住宅”等区域进行选择。 这些社区将分配您的管理角色和收入。</p>
+                      </div>
+                      <div class="s_2__video__corner s_2__video__corner-br hidden-lg hidden-md hidden-sm"></div>
+                      <div class="s_2__video__corner s_2__video__corner-bl hidden-lg hidden-md hidden-sm"></div>
+                      <div class="s_2__video__border s_2__video__border-top-bottom hidden-lg hidden-md hidden-sm"></div>
+                      <div class="s_2__video__border s_2__video__border-left-right hidden-lg hidden-md hidden-sm"></div>
+                    </div>
+                  </div>
+                  <div class="s_4__tab" id="s_4__tab-4" style="background-image: url(/img/solutions/4.png); display: none;">
+                    <a href="#s_4__tab-4" class="hidden-lg hidden-md hidden-sm s_4__tab__title">对代币的不利影响</a>
+                    <div class="d-table">
+                      <div class="d-table-cell">
+                        <p>许多代币销售被指责其代币没有真正的价值，实际上是无用的。 因此，他们的汇率总是下降。</p>
+                        <p>
+                          <strong>我们的解决方案</strong>
+                          <br>我们的MRK代币是内部货币（效用货币）。所有用户都可以使用它们：销售真实和虚拟商品和服务;雇用员工并为他们的工作付款，创造单位 - 填充物品和内容及其个性化。矿工将获得平台支持的代币。单位的价格固定在代币上，单位数量有限。该单位的价值总是在增长，这可以被“抽”出来。每个“单位”都可以有流行和强大的邻居（例如一个知名品牌）。所有这些因素都是代币价格上涨的不可争议的推动力。
+                        </p>
+                      </div>
+                      <div class="s_2__video__corner s_2__video__corner-br hidden-lg hidden-md hidden-sm"></div>
+                      <div class="s_2__video__corner s_2__video__corner-bl hidden-lg hidden-md hidden-sm"></div>
+                      <div class="s_2__video__border s_2__video__border-top-bottom hidden-lg hidden-md hidden-sm"></div>
+                      <div class="s_2__video__border s_2__video__border-left-right hidden-lg hidden-md hidden-sm"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="section s_3">
+        <canvas id="page-bg-3" class="page-bg"></canvas>
+        <div class="container">
+          <div class="row">
+            <div class="col-xs-12">
+              <h2 class="s_title" data-before="城区介绍">城区介绍</h2>
+              <div class="s_3__carousel-wrap">
+                <div class="s_3__carousel owl-carousel">
+                  <div class="s_3__slide" data-descr="#district-descr-1">
+                    <img src="/img/districts/dis-1.jpg" alt="">
+                    <h3 class="s_3__slide__title">社区</h3>
+                    <a href="https://mark.space/demo/?11k5" target="_blank" class="s_3__slide__more">探索产品演示</a>
+                  </div>
+                  <div class="s_3__slide" data-descr="#district-descr-2">
+                    <img src="/img/districts/dis-2.jpg" alt="">
+                    <h3 class="s_3__slide__title">公馆区</h3>
+                    <a href="https://mark.space/demo/?11l6" target="_blank" class="s_3__slide__more">探索产品演示</a>
+                  </div>
+                  <div class="s_3__slide" data-descr="#district-descr-3">
+                    <img src="/img/districts/dis-3.jpg" alt="">
+                    <h3 class="s_3__slide__title">购物区</h3>
+                    <a href="https://mark.space/demo/?11l2" target="_blank" class="s_3__slide__more">探索产品演示</a>
+                  </div>
+                  <div class="s_3__slide" data-descr="#district-descr-4">
+                    <img src="/img/districts/dis-4.jpg" alt="">
+                    <h3 class="s_3__slide__title">商业区</h3>
+                    <a href="https://mark.space/demo/?11f9" target="_blank" class="s_3__slide__more">探索产品演示</a>
+                  </div>
+                  <div class="s_3__slide" data-descr="#district-descr-5">
+                    <img src="/img/districts/dis-5.jpg" alt="">
+                    <h3 class="s_3__slide__title">教育区</h3>
+                    <!-- <a href="https://mark.space/demo/?11k5" target="_blank" class="s_3__slide__more">Explore more</a> -->
+                  </div>
+                </div>
+              </div>
+              <div class="s_3__descr">
+                <div id="district-descr-1" class="district-descr active">
+                  <p>
+                    不要再去参观博物馆或艺术画廊了。在纽约，您只需点击一下即可访问伦敦国家美术馆，就像在现实生活中体验的一样。
+                  </p>
+                </div>
+                <div id="district-descr-2" class="district-descr">
+                  <p>
+                    您可以创造自己独特的内饰，按照自己喜好的设计风格，并邀请您的朋友参观！
+                    <br>名人公寓;
+                    <br>我的公寓 - 向朋友们展示我的生活（想住）。
+                  </p>
+                </div>
+                <div id="district-descr-3" class="district-descr">
+                  <p>
+                    那些喜欢离线购买的人很快就会改变主意，因为在互联网上购买的东西会变得比以往任何时候都容易。您将节省宝贵的时间访问实体店，同时仍享有相同的购物体验。
+                  </p>
+                </div>
+                <div id="district-descr-4" class="district-descr">
+                  <p>
+                    商业沟通从未如此有效。您现在可以与所有地点的合作伙伴沟通，以及如果他们与您在同一个房间，节省时间和金钱。
+                  </p>
+                </div>
+                <div id="district-descr-5" class="district-descr">
+                  <p>
+                    快来了
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="section s_11">
+        <canvas id="page-bg-11" class="page-bg"></canvas>
+        <div class="container">
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="s_11__left">
+                <h2 class="s_title" data-before="小区">小区</h2>
+                <div class="s_11__descr hidden-xs">
+                  <p>
+                    MARK.SPACE 小区：VR房地产
+                    <br>MARK.SPACE平台包括很多8米*8米的虚拟空间，称为小区。小区可作居住，社群，购物中心和商业区使用。每个区域有自己的规则、功能和开发工具。
+                  </p>
+                  <p>每个城市至少包括：个城市-一个城区, 个城区-一个街区, 个街区 - 260 个小区, 个小区 - 1 个单元
+					<br>每个城市最多包括: 个城市 - 35 个城区, 个城区 - 35 个街区, 个街区 -260 小区, 个小区- 35 个单元
+					<br>每个城市最多共计包括: 35 个城区, 1,225 街区, 318,500 小区, 11,147,500 单元
+				  </p>
+                  <p>代币价格受市场波动性影响，尤其在代币众筹后往往会有跌幅。为此我们免费赠送代每个众筹参与者一个位于MARK.SPACE邻里中的“小区”，在此小区内您可以创建您的项目，或者将其出租给其他人。小区不能在交易所上交易，其价格也与代币价格无关联。
+                    <br>MARK.SPACE 小区： 您的VP（VR）地产
+                  </p>
+                </div>
+                <div class="s_11__ico">
+                  <ul>
+                    <li>
+                      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 295.238 295.238" style="enable-background:new 0 0 295.238 295.238;" xml:space="preserve" width="39px" height="39px">
+                        <g>
+                          <g>
+                            <g>
+                              <path d="M147.619,0C66.219,0,0,66.224,0,147.619s66.219,147.619,147.619,147.619s147.619-66.224,147.619-147.619     S229.019,0,147.619,0z M147.619,285.714c-76.143,0-138.095-61.948-138.095-138.095S71.476,9.524,147.619,9.524     s138.095,61.948,138.095,138.095S223.762,285.714,147.619,285.714z" fill="#FFFFFF" class="color_part" />
+                              <path d="M255.7,129.952l0.019-0.019c-0.01-0.01-0.014-0.014-0.024-0.024c-8.495-51.995-53.714-91.814-108.076-91.814     S48.038,77.914,39.548,129.91c-0.01,0.01-0.014,0.014-0.024,0.024l0.019,0.019c-0.938,5.752-1.448,11.652-1.448,17.667     c0,60.39,49.129,109.524,109.524,109.524s109.524-49.133,109.524-109.524C257.143,141.605,256.633,135.705,255.7,129.952z      M147.619,47.619c45.295,0,83.6,30.295,95.852,71.671c-26.952-20.957-62.348-33.576-95.852-33.576     c-33.504,0-68.895,12.619-95.852,33.581C64.019,77.914,102.324,47.619,147.619,47.619z M53.752,181.771     c6.643-5.852,24.314-19.867,41.486-19.867c17.357,0,28.571,13.086,28.571,33.333c0,19.348-9.495,36.629-14.69,44.652     C83.481,229.152,63.329,207.995,53.752,181.771z M186.11,239.895c-5.2-8.005-14.681-25.243-14.681-44.657     c0-20.248,11.214-33.333,28.571-33.333c17.124,0,34.829,14.019,41.481,19.876C231.905,208,211.752,229.157,186.11,239.895z      M244.525,171.852c-9.086-7.448-26.533-19.471-44.524-19.471c-22.429,0-38.095,17.624-38.095,42.857     c0,20.49,9.048,38.405,15.005,47.986c-9.267,2.843-19.1,4.395-29.29,4.395c-10.19,0-20.026-1.552-29.292-4.395     c5.957-9.581,15.005-27.495,15.005-47.986c0-25.233-15.667-42.857-38.095-42.857c-17.99,0-35.438,12.024-44.524,19.471     c-1.948-7.776-3.095-15.862-3.095-24.233c0-4.452,0.395-8.805,0.962-13.105c26.052-24.276,63.662-39.276,99.038-39.276     c35.381,0,72.99,15,99.038,39.276c0.567,4.3,0.962,8.652,0.962,13.105C247.62,155.99,246.472,164.076,244.525,171.852z" fill="#FFFFFF" class="color_part" />
+                              <path d="M147.619,109.523c-13.129,0-23.81,10.681-23.81,23.81c0,13.129,10.681,23.81,23.81,23.81     c13.129,0,23.81-10.681,23.81-23.81C171.429,120.204,160.748,109.523,147.619,109.523z M147.619,147.619     c-7.876,0-14.286-6.41-14.286-14.286s6.41-14.286,14.286-14.286s14.286,6.41,14.286,14.286     C161.905,141.209,155.495,147.619,147.619,147.619z" fill="#FFFFFF" class="color_part" />
+                              <path d="M286.052,68.438l8.843-3.538c-9.919-24.814-39.562-54.462-59.433-64.4L231.2,9.019     C249.171,18.005,277.048,45.919,286.052,68.438z" fill="#FFFFFF" class="color_part" />
+                              <rect x="104.762" y="128.571" width="9.524" height="9.524" fill="#FFFFFF" class="color_part" />
+                              <rect x="180.952" y="128.571" width="9.524" height="9.524" fill="#FFFFFF" class="color_part" />
+                              <rect x="133.333" y="266.667" width="9.524" height="9.524" fill="#FFFFFF" class="color_part" />
+                              <rect x="152.381" y="266.667" width="9.524" height="9.524" fill="#FFFFFF" class="color_part" />
+                              <path d="M9.186,226.8l-8.843,3.538c9.924,24.81,39.567,54.462,59.433,64.395l4.262-8.519     C46.067,277.233,18.19,249.319,9.186,226.8z" fill="#FFFFFF" class="color_part" />
+                            </g>
+                          </g>
+                        </g>
+                      </svg>
+                      <h3>汽车业务</h3></li>
+                    <li>
+                      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve" width="39px" height="39px">
+                        <g>
+                          <g>
+                            <path d="M454.976,43.056c-3.591-3.588-9.411-3.591-13.003,0l-95.329,95.326c-3.592,3.591-3.592,9.411-0.001,13.003    c1.796,1.795,4.148,2.692,6.502,2.692c2.352,0,4.706-0.897,6.502-2.692l95.329-95.326    C458.566,52.467,458.566,46.646,454.976,43.056z" fill="#FFFFFF" class="color_part" />
+                          </g>
+                        </g>
+                        <g>
+                          <g>
+                            <path d="M480.9,68.571c-3.592-3.589-9.412-3.589-13.003,0l-95.328,95.328c-3.59,3.592-3.59,9.412-0.001,13.003    c1.796,1.795,4.15,2.692,6.502,2.692c2.352,0,4.706-0.897,6.502-2.692L480.9,81.573C484.491,77.982,484.491,72.161,480.9,68.571z" fill="#FFFFFF" class="color_part" />
+                          </g>
+                        </g>
+                        <g>
+                          <g>
+                            <path d="M390.969,229.548L509.307,111.21c3.591-3.592,3.591-9.412,0-13.003c-3.592-3.588-9.412-3.591-13.003,0L377.968,216.545    c-14.579,14.578-36.871,18.403-55.47,9.521c-3.7-1.766-8.118-0.873-10.839,2.193l-40.209,45.303    c-0.016,0.017-0.034,0.032-0.05,0.05c-0.016,0.018-0.028,0.037-0.044,0.055L97.567,469.464c-0.044,0.05-0.088,0.101-0.131,0.152    c-0.573,0.673-1.114,1.264-1.662,1.813c-11.475,11.474-30.145,11.473-41.615,0c-5.558-5.557-8.619-12.948-8.619-20.808    s3.061-15.25,8.629-20.818c0.534-0.537,1.124-1.076,1.803-1.654c0.052-0.043,0.102-0.087,0.152-0.131l108.648-96.434    c3.798-3.371,4.143-9.182,0.773-12.979c-3.371-3.799-9.183-4.146-12.979-0.773L43.99,414.202    c-1.038,0.885-1.967,1.742-2.833,2.609c-9.031,9.031-14.005,21.038-14.005,33.81c0,12.771,4.973,24.779,14.004,33.81    c9.323,9.321,21.566,13.982,33.812,13.981c12.241,0,24.487-4.659,33.803-13.976c0.883-0.881,1.738-1.811,2.616-2.839    l132.432-149.206l132.434,149.208c0.877,1.029,1.732,1.959,2.609,2.834c9.321,9.321,21.565,13.981,33.809,13.981    c12.245,0,24.49-4.661,33.812-13.982c18.64-18.643,18.64-48.975,0.005-67.613c-0.88-0.883-1.811-1.738-2.838-2.615    l-152.391-135.26l29.815-33.592C345.231,253.911,372.565,247.949,390.969,229.548z M431.514,428.019    c0.05,0.044,0.101,0.088,0.152,0.131c0.673,0.573,1.264,1.114,1.813,1.662c11.473,11.474,11.473,30.143,0.001,41.615    c-11.475,11.473-30.144,11.473-41.622-0.005c-0.543-0.543-1.086-1.135-1.659-1.808c-0.043-0.051-0.087-0.102-0.131-0.152    L256.111,318.54l22.939-25.845L431.514,428.019z" fill="#FFFFFF" class="color_part" />
+                          </g>
+                        </g>
+                        <g>
+                          <g>
+                            <path d="M427.379,16.278c-3.592-3.589-9.412-3.589-13.003,0L296.04,134.617c-18.406,18.404-24.366,45.735-15.807,69.897    l-36.415,32.322l-34.998-31.064c18.099-35.612,11.492-78.851-17.222-107.566c-28.518-28.518-61.55-48.587-93.011-56.508    c-32.843-8.267-61.001-2.748-79.295,15.545s-23.814,46.455-15.545,79.296c7.922,31.459,27.99,64.491,56.51,93.008    c28.714,28.716,71.952,35.323,107.566,17.223c0,0,34.225,38.558,34.659,39.048c1.817,2.047,4.342,3.09,6.88,3.09    c2.171,0,4.349-0.764,6.1-2.318l81.866-72.664c3.065-2.721,3.958-7.141,2.193-10.839c-8.884-18.601-5.058-40.891,9.521-55.468    L427.379,29.281C430.97,25.689,430.97,19.869,427.379,16.278z M210.131,266.737l-33.468-37.706    c-2.964-3.339-7.902-4.069-11.702-1.722c-29.478,18.177-67.188,13.754-91.704-10.763c-26.204-26.203-44.557-56.21-51.68-84.497    c-6.625-26.317-2.819-48.267,10.718-61.803C45.83,56.708,67.78,52.904,94.096,59.53c28.287,7.122,58.296,25.474,84.498,51.678    c24.516,24.515,28.94,62.225,10.762,91.703c-2.344,3.801-1.617,8.737,1.722,11.702l38.888,34.516L210.131,266.737z" fill="#FFFFFF" class="color_part" />
+                          </g>
+                        </g>
+                      </svg>
+                      <h3>餐厅业务</h3></li>
+                    <li>
+                      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve" width="40" height="40">
+                        <g>
+                          <g>
+                            <g>
+                              <path d="M128,392.533c14.114,0,25.6-11.486,25.6-25.6v-25.6h25.6c14.114,0,25.6-11.486,25.6-25.6s-11.486-25.6-25.6-25.6h-25.6     v-25.6c0-14.114-11.486-25.6-25.6-25.6s-25.6,11.486-25.6,25.6v25.6H76.8c-14.114,0-25.6,11.486-25.6,25.6s11.486,25.6,25.6,25.6     h25.6v25.6C102.4,381.047,113.886,392.533,128,392.533z M76.8,324.267c-4.71,0-8.533-3.831-8.533-8.533S72.09,307.2,76.8,307.2     h34.133c4.719,0,8.533-3.823,8.533-8.533v-34.133c0-4.702,3.823-8.533,8.533-8.533s8.533,3.831,8.533,8.533v34.133     c0,4.71,3.814,8.533,8.533,8.533H179.2c4.71,0,8.533,3.831,8.533,8.533s-3.823,8.533-8.533,8.533h-34.133     c-4.719,0-8.533,3.823-8.533,8.533v34.133c0,4.702-3.823,8.533-8.533,8.533s-8.533-3.831-8.533-8.533V332.8     c0-4.71-3.814-8.533-8.533-8.533H76.8z" fill="#FFFFFF" class="color_part" />
+                              <path d="M384,187.733h-59.733v-76.8c0-23.526-19.14-42.667-42.667-42.667c-23.526,0-42.667,19.14-42.667,42.667     c0,14.114-11.486,25.6-25.6,25.6c-14.114,0-25.6-11.486-25.6-25.6V8.533c0-4.71-3.814-8.533-8.533-8.533     s-8.533,3.823-8.533,8.533v102.4c0,23.526,19.14,42.667,42.667,42.667c23.526,0,42.667-19.14,42.667-42.667     c0-14.114,11.486-25.6,25.6-25.6s25.6,11.486,25.6,25.6v85.333c0,4.71,3.814,8.533,8.533,8.533H384     c60.134,0,110.933,50.799,110.933,110.933v136.986c0,27.179-25.225,42.214-42.667,42.214c-24.772,0-39.467-16.068-58.069-36.412     c-26.88-29.397-60.339-65.988-138.197-65.988c-77.739,0-111.078,36.514-137.856,65.852     c-18.637,20.42-33.357,36.548-58.411,36.548c-17.818,0-42.667-16.23-42.667-42.667V315.733     C17.067,255.599,67.866,204.8,128,204.8h153.6c4.719,0,8.533-3.823,8.533-8.533s-3.814-8.533-8.533-8.533H128     c-69.385,0-128,58.615-128,128v136.533C0,487.467,31.479,512,59.733,512c32.572,0,51.251-20.454,71.014-42.103     C156.553,441.634,185.788,409.6,256,409.6c70.332,0,99.703,32.111,125.602,60.442C401.331,491.614,419.977,512,452.267,512     C480.521,512,512,487.654,512,452.719V315.733C512,246.349,453.385,187.733,384,187.733z" fill="#FFFFFF" class="color_part" />
+                              <path d="M435.2,341.333c14.114,0,25.6-11.486,25.6-25.6s-11.486-25.6-25.6-25.6s-25.6,11.486-25.6,25.6     S421.086,341.333,435.2,341.333z M435.2,307.2c4.71,0,8.533,3.831,8.533,8.533s-3.823,8.533-8.533,8.533     s-8.533-3.831-8.533-8.533S430.49,307.2,435.2,307.2z" fill="#FFFFFF" class="color_part" />
+                              <path d="M384,238.933c-14.114,0-25.6,11.486-25.6,25.6s11.486,25.6,25.6,25.6s25.6-11.486,25.6-25.6S398.114,238.933,384,238.933     z M384,273.067c-4.71,0-8.533-3.831-8.533-8.533c0-4.702,3.823-8.533,8.533-8.533s8.533,3.831,8.533,8.533     C392.533,269.235,388.71,273.067,384,273.067z" fill="#FFFFFF" class="color_part" />
+                              <path d="M332.8,290.133c-14.114,0-25.6,11.486-25.6,25.6s11.486,25.6,25.6,25.6c14.114,0,25.6-11.486,25.6-25.6     S346.914,290.133,332.8,290.133z M332.8,324.267c-4.71,0-8.533-3.831-8.533-8.533s3.823-8.533,8.533-8.533     c4.71,0,8.533,3.831,8.533,8.533S337.51,324.267,332.8,324.267z" fill="#FFFFFF" class="color_part" />
+                              <path d="M384,392.533c14.114,0,25.6-11.486,25.6-25.6s-11.486-25.6-25.6-25.6s-25.6,11.486-25.6,25.6     S369.886,392.533,384,392.533z M384,358.4c4.71,0,8.533,3.831,8.533,8.533s-3.823,8.533-8.533,8.533s-8.533-3.831-8.533-8.533     S379.29,358.4,384,358.4z" fill="#FFFFFF" class="color_part" />
+                            </g>
+                          </g>
+                        </g>
+                      </svg>
+                      <h3>游戏业务</h3></li>
+                    <li>
+                      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 56.823 56.823" style="enable-background:new 0 0 56.823 56.823;" xml:space="preserve" width="39px" height="39px">
+                        <g>
+                          <path d="M36.272,25.308c0.106,0.036,0.215,0.053,0.321,0.053c0.417,0,0.806-0.262,0.947-0.679c0.313-0.918,1.314-1.411,2.232-1.1   c1.962,0.664,4.103-0.389,4.768-2.352c0.178-0.522-0.102-1.091-0.625-1.269c-0.525-0.177-1.091,0.103-1.269,0.626   c-0.312,0.919-1.313,1.412-2.232,1.1c-1.959-0.661-4.102,0.39-4.768,2.352C35.469,24.561,35.749,25.13,36.272,25.308z" fill="#FFFFFF" class="color_part" />
+                          <path d="M38.638,18.34c0.106,0.036,0.215,0.053,0.321,0.053c0.417,0,0.806-0.262,0.947-0.679c0.151-0.445,0.466-0.805,0.888-1.013   s0.899-0.238,1.344-0.087c1.962,0.664,4.102-0.389,4.768-2.353c0.178-0.522-0.103-1.091-0.625-1.269   c-0.523-0.18-1.091,0.103-1.268,0.626c-0.312,0.92-1.311,1.413-2.232,1.101c-0.952-0.323-1.971-0.257-2.871,0.188   c-0.9,0.444-1.574,1.213-1.897,2.164C37.834,17.594,38.115,18.162,38.638,18.34z" fill="#FFFFFF" class="color_part" />
+                          <path d="M41.002,11.372c0.107,0.036,0.215,0.053,0.322,0.053c0.417,0,0.806-0.262,0.947-0.679c0.23-0.678,0.971-1.043,1.648-0.813   c0.835,0.283,1.73,0.225,2.521-0.164c0.79-0.39,1.381-1.064,1.665-1.899c0.178-0.522-0.102-1.091-0.625-1.269   c-0.525-0.179-1.091,0.103-1.269,0.626c-0.112,0.329-0.345,0.595-0.656,0.748c-0.311,0.153-0.663,0.176-0.993,0.063   c-1.722-0.581-3.601,0.343-4.185,2.064C40.2,10.626,40.479,11.194,41.002,11.372z" fill="#FFFFFF" class="color_part" />
+                          <path d="M48.246,25.234c-0.174-0.119-0.37-0.187-0.57-0.213c1.987-6.457,3.077-12.783,3.233-18.808   c0.049-1.895-0.877-4.425-2.744-5.596c-0.896-0.563-2.364-1.027-4.27-0.046c-2.987,1.541-5.123,6.074-6.839,9.718   c-0.099,0.21-0.196,0.415-0.292,0.618c-0.379-1.743-1.531-3.234-3.169-4.012c-0.386-1.856-1.858-3.31-3.708-3.687   c-0.02-0.104-0.045-0.206-0.076-0.309c-0.381-1.302-1.53-2.282-2.859-2.44c-0.749-0.089-1.491,0.066-2.125,0.437   c-0.54-0.301-1.146-0.461-1.768-0.461c-1.739,0-3.2,1.213-3.581,2.836c-1.901,0.518-3.295,2.263-3.31,4.291   c-2.169,0.56-3.749,2.52-3.749,4.851c0,0.618,0.116,1.23,0.339,1.807c-0.563,0.695-0.875,1.565-0.875,2.478   c0,0.548,0.113,1.076,0.326,1.564c-0.999-1.09-2.405-1.981-3.984-1.923c-0.552,0.018-0.986,0.479-0.969,1.031   c0.017,0.541,0.461,0.969,0.999,0.969c0.034,0.001,0.065-0.002,0.097-0.002c0.937,0,1.808,0.62,2.442,1.34   c-1.586,0.457-3.498,1.201-4.39,2.883c-0.537,1.015-0.6,2.26-0.242,3.686c-0.173,0.289-0.268,0.625-0.25,0.983l1.702,24.187   c0.155,3.033,2.655,5.408,5.691,5.408h28.071c3.036,0,5.536-2.375,5.69-5.39l1.745-25.028c0-0.006,0.001-0.012,0.001-0.018   C48.84,25.927,48.627,25.496,48.246,25.234z M37.58,13.767c0.396-0.739,0.828-1.655,1.285-2.626   c1.503-3.192,3.563-7.563,5.946-8.793C45.681,1.9,46.43,1.891,47.102,2.31c1.159,0.728,1.841,2.565,1.808,3.851   c-0.153,5.912-1.233,12.134-3.211,18.494c-0.065,0.209-0.209,0.631-0.414,1.21l-1.704,0.757c-0.037,0.017-0.073,0.035-0.108,0.057   c-0.492,0.295-1.044,0.441-1.596,0.447c-0.552-0.006-1.103-0.152-1.595-0.447l-0.713-0.428c-0.82-0.492-1.739-0.738-2.658-0.738   c-0.011,0-0.022,0.002-0.034,0.002c-0.93-0.006-1.862,0.237-2.692,0.736l-0.712,0.428c-0.397,0.238-0.836,0.354-1.28,0.404   c0.025-0.087,0.054-0.172,0.08-0.258c0.274-0.931,0.568-1.849,0.876-2.76c0.117-0.346,0.239-0.69,0.361-1.033   c0.257-0.723,0.526-1.437,0.804-2.146c0.124-0.317,0.245-0.637,0.373-0.951C35.559,17.808,36.521,15.745,37.58,13.767z    M24.832,16.139c0.117-0.15,0.231-0.296,0.339-0.438c0-0.002,0.001-0.003,0.002-0.004c0.079-0.105,0.148-0.214,0.206-0.323   c0.246-0.463,0.304-0.983,0.19-1.491l4.174-0.913c0.028,0.128,0.058,0.255,0.106,0.373c0.187,0.458,0.521,0.839,0.986,1.105   c0.152,0.084,0.311,0.168,0.475,0.255c0.135,0.071,0.27,0.145,0.406,0.219c0.065,0.035,0.131,0.07,0.196,0.106   c0.119,0.067,0.234,0.141,0.35,0.214c0.099,0.061,0.197,0.124,0.293,0.191c0.111,0.077,0.217,0.162,0.323,0.248   c0.093,0.076,0.182,0.159,0.27,0.244c0.095,0.093,0.189,0.188,0.276,0.292c0.154,0.184,0.302,0.375,0.423,0.604   c-0.424,0.936-0.823,1.891-1.209,2.854c-0.06,0.149-0.124,0.294-0.183,0.443c-1.096,0.278-2.155,0.798-3.463,1.729   c-1.648,1.171-2.875,1.482-4.897,1.189l-0.607-2.779C23.076,18.378,23.969,17.24,24.832,16.139z M29.791,10.066   c0.026-0.005,0.052-0.008,0.078-0.008c0.189,0,0.366,0.135,0.407,0.325c0.032,0.144-0.022,0.257-0.058,0.312   c-0.035,0.054-0.114,0.149-0.257,0.18l-5.524,1.209c-0.22,0.048-0.444-0.098-0.492-0.316c-0.048-0.219,0.097-0.444,0.316-0.492   l2.935-0.642L29.791,10.066z M26.559,25.533c-0.076,0.005-0.153,0.007-0.229,0.015c-0.545,0.055-1.083,0.193-1.594,0.423   l-0.191-0.875c0.288,0.024,0.575,0.048,0.844,0.048c1.744,0,3.148-0.519,4.762-1.667c0.508-0.362,0.958-0.636,1.386-0.863   c-0.092,0.261-0.183,0.521-0.272,0.783c-0.064,0.188-0.133,0.373-0.195,0.562c-0.294,0.89-0.574,1.787-0.835,2.692l-0.665-0.398   c-0.82-0.492-1.739-0.738-2.658-0.738c-0.012,0-0.025,0.002-0.037,0.002C26.769,25.515,26.664,25.527,26.559,25.533z    M14.598,15.192l0.655-0.54l-0.425-0.733c-0.266-0.46-0.407-0.98-0.407-1.506c0-1.62,1.269-2.941,2.889-3.009l1.214-0.051   l-0.283-1.182c-0.048-0.198-0.072-0.393-0.072-0.578c0-1.288,1.006-2.373,2.29-2.471l0.924-0.07l0-0.995   c0.029-0.899,0.77-1.622,1.677-1.622c0.522,0,0.896,0.238,1.117,0.438l0.701,0.633l0.672-0.664   c0.308-0.304,0.731-0.446,1.167-0.396c0.536,0.063,1.02,0.481,1.176,1.018c0.053,0.18,0.068,0.354,0.047,0.531l-0.117,1.117h1.126   c1.437,0,2.639,1.123,2.738,2.557l0.045,0.657l0.621,0.218c1.563,0.549,2.591,2.028,2.556,3.683   c-0.015,0.707-0.243,1.388-0.656,1.985c-0.669-0.568-1.39-0.951-1.996-1.27c-0.157-0.083-0.309-0.163-0.462-0.248   c-0.
+043-0.024-0.095-0.066-0.113-0.171c-0.024-0.144,0.03-0.317,0.139-0.444c0.436-0.506,0.611-1.196,0.47-1.847l-0.121-0.551   c-0.121-0.556-0.453-1.031-0.933-1.339c-0.479-0.307-1.049-0.41-1.604-0.288l-0.268,0.059c-0.003,0.001-0.006,0-0.009,0.001   l-2.935,0.642l-2.864,0.625c-0.555,0.121-1.03,0.452-1.338,0.933c-0.308,0.479-0.41,1.05-0.289,1.605l0.06,0.272   c0,0.001,0,0.002,0,0.003c0,0.001,0.001,0.002,0.001,0.004l0.059,0.271c0.145,0.666,0.608,1.227,1.237,1.497   c0.156,0.067,0.286,0.194,0.331,0.323c0.026,0.074,0.011,0.112-0.047,0.208c0,0,0,0,0,0.001c-0.099,0.133-0.206,0.268-0.315,0.407   c-0.11,0.14-0.224,0.287-0.34,0.439c-0.039,0.051-0.076,0.104-0.115,0.156c-0.083,0.113-0.166,0.228-0.248,0.348   c-0.045,0.065-0.088,0.132-0.132,0.2c-0.076,0.117-0.149,0.238-0.221,0.362c-0.042,0.072-0.083,0.143-0.123,0.218   c-0.075,0.14-0.143,0.287-0.21,0.437c-0.029,0.064-0.06,0.125-0.086,0.192c-0.088,0.218-0.166,0.446-0.228,0.686   c-0.01,0.038-0.014,0.079-0.023,0.118c-0.048,0.204-0.087,0.415-0.112,0.635c-0.01,0.088-0.012,0.18-0.018,0.271   c-0.008,0.118-0.023,0.23-0.023,0.353c-0.004-0.005-0.008-0.01-0.012-0.015c-0.014-0.018-0.028-0.034-0.041-0.052   c-0.174-0.229-0.348-0.44-0.523-0.64c-0.055-0.063-0.111-0.124-0.167-0.184c-0.147-0.159-0.294-0.308-0.442-0.448   c-0.048-0.045-0.096-0.094-0.145-0.138c-0.187-0.167-0.375-0.32-0.564-0.456c-0.053-0.038-0.107-0.07-0.16-0.106   c-0.142-0.095-0.284-0.183-0.428-0.261c-0.07-0.038-0.139-0.075-0.21-0.109c-0.149-0.073-0.299-0.135-0.45-0.189   c-0.05-0.018-0.1-0.042-0.15-0.058c-0.164-0.052-0.329-0.094-0.495-0.125c-0.019-0.004-0.038-0.002-0.057-0.005   c-0.034-0.006-0.067-0.019-0.101-0.024c-0.116-0.017-0.226-0.01-0.34-0.018c-0.08-0.005-0.159-0.022-0.239-0.022   c-0.024,0-0.049,0.006-0.074,0.006c-0.155,0.002-0.305,0.02-0.456,0.039c-0.075,0.01-0.15,0.016-0.225,0.03   c-0.197,0.036-0.388,0.086-0.577,0.146c-0.029,0.009-0.057,0.016-0.086,0.026c-0.498,0.169-0.97,0.408-1.412,0.697   c-0.091-0.225-0.139-0.467-0.139-0.716C13.885,16.113,14.145,15.564,14.598,15.192z M8.173,23.495   c0.423-0.797,1.45-1.405,3.233-1.915c0.834-0.238,1.608-0.683,2.236-1.283c0.285-0.273,0.552-0.504,0.81-0.714   c0.806-0.655,1.501-1.011,2.13-1.092c0.014-0.002,0.028-0.004,0.042-0.005c0.199-0.022,0.392-0.016,0.579,0.017   c0.049,0.009,0.099,0.026,0.149,0.039c0.093,0.023,0.185,0.046,0.278,0.083c0.06,0.023,0.12,0.058,0.181,0.086   c0.087,0.042,0.173,0.08,0.26,0.133c0.068,0.041,0.136,0.094,0.204,0.141c0.081,0.057,0.162,0.109,0.244,0.175   c0.076,0.061,0.152,0.135,0.228,0.204c0.076,0.069,0.152,0.132,0.228,0.209c0.084,0.085,0.169,0.184,0.254,0.279   c0.069,0.077,0.138,0.148,0.208,0.231c0.095,0.114,0.191,0.244,0.287,0.37c0.061,0.08,0.121,0.152,0.182,0.237   c0.109,0.152,0.219,0.321,0.329,0.489c0.048,0.074,0.097,0.14,0.145,0.216c0.159,0.251,0.319,0.518,0.48,0.802   c0.736,1.299,0.98,3.218,0.66,4.889c-0.053-0.005-0.105-0.013-0.158-0.021c-0.381-0.065-0.748-0.187-1.082-0.387l-0.713-0.428   c-0.82-0.492-1.739-0.738-2.658-0.738c-0.011,0-0.022,0.002-0.034,0.002c-0.93-0.006-1.862,0.237-2.692,0.736l-0.347,0.208   c-0.605,0.363-1.283,0.546-1.961,0.552c-0.679-0.006-1.356-0.188-1.961-0.552l-1.345-0.808c0,0-0.001,0-0.001-0.001   c-0.177-0.105-0.368-0.177-0.564-0.213C7.847,24.645,7.903,24.005,8.173,23.495z M45.074,51.313   c-0.101,1.968-1.724,3.51-3.694,3.51H13.308c-1.971,0-3.593-1.542-3.695-3.529L7.949,27.652l0.87,0.522   c0.943,0.566,2.002,0.844,3.058,0.838c1.057,0.006,2.115-0.272,3.058-0.838l0.347-0.208c0.492-0.296,1.043-0.442,1.595-0.448   c0.552,0.006,1.103,0.152,1.596,0.448l0.713,0.428c0.902,0.541,1.924,0.773,2.934,0.718c0.09-0.004,0.18-0.004,0.271-0.012   c0.011-0.001,0.021-0.007,0.033-0.008c0.683-0.077,1.353-0.292,1.971-0.644c0.058-0.021,0.12-0.022,0.174-0.054l0.713-0.428   c0.492-0.296,1.043-0.442,1.595-0.448c0.552,0.006,1.103,0.152,1.596,0.448l0.713,0.428c0.757,0.453,1.599,0.688,2.446,0.723   c0.017,0.001,0.035,0.003,0.052,0.003c0.292,0.009,0.584,0,0.874-0.041c0.166-0.021,0.327-0.063,0.49-0.1   c0.079-0.019,0.158-0.036,0.236-0.059c0.444-0.123,0.879-0.284,1.284-0.527h0l0.713-0.428c0.492-0.296,1.043-0.442,1.595-0.448   c0.552,0.006,1.103,0.152,1.596,0.448l0.7
+13,0.428c0.826,0.495,1.753,0.738,2.679,0.734c0.015,0,0.031,0.003,0.046,0.003   c0.898,0,1.797-0.234,2.603-0.704l1.962-0.872c0.042-0.019,0.072-0.055,0.111-0.079l0.153-0.068L45.074,51.313z" fill="#FFFFFF" class="color_part" />
+                          <path d="M11.911,43.004h7c0.552,0,1-0.447,1-1s-0.448-1-1-1h-7c-0.552,0-1,0.447-1,1S11.359,43.004,11.911,43.004z" fill="#FFFFFF" class="color_part" />
+                          <path d="M11.911,47.004h9c0.552,0,1-0.447,1-1s-0.448-1-1-1h-9c-0.552,0-1,0.447-1,1S11.359,47.004,11.911,47.004z" fill="#FFFFFF" class="color_part" />
+                          <path d="M22.911,49.004h-11c-0.552,0-1,0.447-1,1s0.448,1,1,1h11c0.552,0,1-0.447,1-1S23.463,49.004,22.911,49.004z" fill="#FFFFFF" class="color_part" />
+                          <path d="M28.911,49.004h-2c-0.552,0-1,0.447-1,1s0.448,1,1,1h2c0.552,0,1-0.447,1-1S29.463,49.004,28.911,49.004z" fill="#FFFFFF" class="color_part" />
+                        </g>
+                      </svg>
+                      <h3>购物</h3></li>
+                    <li>
+                      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 485 485" style="enable-background:new 0 0 485 485;" xml:space="preserve" width="39" height="39">
+                        <path d="M455,102.524l30-0.049l-0.154-94.821L390.024,7.5l-0.049,30l43.74,0.071l-58.574,58.574  c-26.385-21.595-59.129-33.339-93.68-33.339c-23.563,0-46.285,5.462-66.723,15.785c-20.013-10.09-42.607-15.784-66.508-15.784  C66.496,62.807,0,129.303,0,211.038c0,76.672,58.514,139.933,133.231,147.476v47.601H91.663v30h41.568V477.5h30v-41.384H204.8v-30  h-41.569v-47.601c18.358-1.853,35.734-7.076,51.508-15.03c20.439,10.322,43.161,15.784,66.723,15.784  c39.594,0,76.818-15.419,104.815-43.416c27.998-27.997,43.417-65.221,43.417-104.815c0-34.551-11.744-67.295-33.339-93.68  l58.574-58.574L455,102.524z M148.231,329.269C83.038,329.269,30,276.231,30,211.038S83.038,92.807,148.231,92.807  c12.773,0,25.075,2.044,36.608,5.808c-2.809,2.422-5.542,4.958-8.192,7.608c-57.795,57.795-57.795,151.835,0,209.63  c2.65,2.65,5.383,5.186,8.192,7.607C173.306,327.225,161.004,329.269,148.231,329.269z M266.462,211.038  c0,40.529-20.502,76.356-51.676,97.667c-6.001-4.115-11.67-8.808-16.926-14.065c-46.098-46.099-46.098-121.105,0-167.204  c5.257-5.257,10.925-9.95,16.926-14.065C245.96,134.682,266.462,170.509,266.462,211.038z M365.064,294.64  c-22.331,22.331-52.021,34.629-83.602,34.629c-12.67,0-25.035-1.984-36.743-5.797c31.657-27.206,51.743-67.517,51.743-112.434  c0-44.918-20.086-85.228-51.744-112.434c11.709-3.813,24.073-5.797,36.744-5.797c31.581,0,61.271,12.298,83.602,34.629  s34.629,52.021,34.629,83.602S387.395,272.309,365.064,294.64z" fill="#FFFFFF" class="color_part" />
+                      </svg>
+                      <h3>18+</h3></li>
+                    <li>
+                      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve" width="51px" height="51px">
+                        <g>
+                          <g>
+                            <g>
+                              <path d="M330.474,230.57l-103.136-53.555c-8.024-4.168-17.809-3.842-25.541,0.854c-7.727,4.695-12.528,13.227-12.528,22.269     V307.6c0,9.055,4.81,17.595,12.559,22.29c4.07,2.464,8.738,3.767,13.498,3.767c4.188,0,8.361-1.025,12.07-2.963l103.136-53.903     c8.641-4.513,14.001-13.376,13.991-23.131C344.511,243.911,339.127,235.063,330.474,230.57z M321.084,258.711h-0.001     l-103.138,53.904c-1.718,0.899-3.895,0.829-5.55-0.173c-1.683-1.02-2.728-2.875-2.728-4.843V200.138     c0-1.963,1.043-3.815,2.72-4.834c0.897-0.544,1.918-0.818,2.943-0.818c0.895,0,1.792,0.209,2.604,0.631l103.138,53.556     c1.88,0.976,3.049,2.898,3.052,5.012C324.125,255.805,322.96,257.731,321.084,258.711z" fill="#FFFFFF" class="color_part" />
+                              <path d="M490.444,106.148v0.001c-19.915-23.675-54.938-33.333-120.882-33.333H142.434c-67.52,0-103.159,10.287-123.013,35.508     C0,132.998,0,166.742,0,213.446v85.109c0,38.36,3.237,77.555,26.725,104.375c21.66,24.734,58.427,36.254,115.709,36.254h227.129     c57.17,0,89.279-8.413,110.831-29.039C502.547,388.944,512,355.571,512,298.555v-85.109     C512,164.107,510.5,129.984,490.444,106.148z M491.602,298.555c0,50.908-7.57,79.874-25.312,96.853     c-17.35,16.604-45.373,23.378-96.726,23.378H142.434c-104.416,0-122.035-37.09-122.035-120.23v-85.109     c0-42.602,0-73.383,15.051-92.504c15.503-19.695,46.498-27.728,106.985-27.728v-0.001h227.128     c59.199,0,89.699,7.552,105.273,26.066v0.001c15.6,18.539,16.766,49.32,16.766,94.165V298.555z" fill="#FFFFFF" class="color_part" />
+                            </g>
+                          </g>
+                        </g>
+                        <g>
+                          <g>
+                            <path d="M341.673,387.57h-9.179c-5.633,0-10.199,4.566-10.199,10.199c0,5.633,4.566,10.199,10.199,10.199h9.179    c5.633,0,10.199-4.566,10.199-10.199C351.872,392.136,347.306,387.57,341.673,387.57z" fill="#FFFFFF" class="color_part" />
+                          </g>
+                        </g>
+                        <g>
+                          <g>
+                            <path d="M292.717,387.57H131.57c-5.633,0-10.199,4.566-10.199,10.199c0,5.633,4.566,10.199,10.199,10.199h161.147    c5.633,0,10.199-4.566,10.199-10.199C302.916,392.136,298.35,387.57,292.717,387.57z" fill="#FFFFFF" class="color_part" />
+                          </g>
+                        </g>
+                      </svg>
+                      <h3>电影和娱乐</h3></li>
+                    <li>
+                      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 60 60" style="enable-background:new 0 0 60 60;" xml:space="preserve" width="41px" height="41px">
+                        <g>
+                          <path d="M60,8V0H0v8h2v40H1c-0.553,0-1,0.447-1,1s0.447,1,1,1h1h27v2c0,0.047,0.021,0.088,0.027,0.134   C27.292,52.571,26,54.131,26,56c0,2.206,1.794,4,4,4s4-1.794,4-4c0-1.869-1.292-3.429-3.027-3.866C30.979,52.088,31,52.047,31,52   v-2h27h1c0.553,0,1-0.447,1-1s-0.447-1-1-1h-1V8H60z M32,56c0,1.103-0.897,2-2,2s-2-0.897-2-2s0.897-2,2-2S32,54.897,32,56z M2,2   h56v4H2V2z M56,48H4V8h52V48z" fill="#FFFFFF" class="color_part" />
+                          <path d="M36,45c0.553,0,1-0.447,1-1v-3c0-0.553-0.447-1-1-1s-1,0.447-1,1v3C35,44.553,35.447,45,36,45z" fill="#FFFFFF" class="color_part" />
+                          <path d="M40,36c-0.553,0-1,0.447-1,1v7c0,0.553,0.447,1,1,1s1-0.447,1-1v-7C41,36.447,40.553,36,40,36z" fill="#FFFFFF" class="color_part" />
+                          <path d="M44,38c-0.553,0-1,0.447-1,1v5c0,0.553,0.447,1,1,1s1-0.447,1-1v-5C45,38.447,44.553,38,44,38z" fill="#FFFFFF" class="color_part" />
+                          <path d="M48,31c-0.553,0-1,0.447-1,1v12c0,0.553,0.447,1,1,1s1-0.447,1-1V32C49,31.447,48.553,31,48,31z" fill="#FFFFFF" class="color_part" />
+                          <path d="M52,35c-0.553,0-1,0.447-1,1v8c0,0.553,0.447,1,1,1s1-0.447,1-1v-8C53,35.447,52.553,35,52,35z" fill="#FFFFFF" class="color_part" />
+                          <path d="M10,40h10c0.553,0,1-0.447,1-1s-0.447-1-1-1H10c-0.553,0-1,0.447-1,1S9.447,40,10,40z" fill="#FFFFFF" class="color_part" />
+                          <path d="M25,42H10c-0.553,0-1,0.447-1,1s0.447,1,1,1h15c0.553,0,1-0.447,1-1S25.553,42,25,42z" fill="#FFFFFF" class="color_part" />
+                          <path d="M19.5,34c2.879,0,5.508-1.071,7.528-2.827c0.028-0.022,0.062-0.032,0.088-0.058c0.016-0.016,0.021-0.037,0.036-0.054   c2.125-1.901,3.542-4.571,3.799-7.574l0.019-0.016l0.02-0.44c0.004-0.088-0.004-0.174-0.002-0.262C30.988,22.679,31,22.591,31,22.5   c0-0.122-0.015-0.241-0.018-0.362c-0.006-0.177-0.013-0.354-0.027-0.53c-0.018-0.239-0.047-0.474-0.08-0.708   c-0.02-0.142-0.04-0.284-0.065-0.425c-0.047-0.263-0.106-0.521-0.17-0.778c-0.029-0.115-0.056-0.231-0.089-0.345   c-0.076-0.265-0.164-0.525-0.258-0.782c-0.04-0.11-0.078-0.221-0.121-0.33c-0.096-0.241-0.205-0.475-0.317-0.707   c-0.06-0.124-0.116-0.25-0.18-0.372c-0.103-0.195-0.216-0.382-0.33-0.57c-0.091-0.152-0.178-0.306-0.276-0.454   c-0.088-0.131-0.185-0.255-0.278-0.383c-0.138-0.19-0.272-0.382-0.422-0.564c0-0.001-0.001-0.001-0.002-0.002   c-0.233-0.283-0.476-0.558-0.737-0.819c-0.248-0.248-0.511-0.478-0.779-0.701c-0.015-0.013-0.029-0.027-0.045-0.04   c-0.17-0.14-0.35-0.265-0.527-0.394c-0.142-0.104-0.281-0.212-0.428-0.31c-0.13-0.086-0.264-0.161-0.397-0.242   c-0.21-0.128-0.42-0.254-0.638-0.368c-0.096-0.05-0.194-0.094-0.291-0.141c-0.262-0.128-0.527-0.249-0.8-0.357   c-0.076-0.03-0.153-0.056-0.229-0.084c-0.292-0.109-0.587-0.208-0.889-0.293c-0.079-0.022-0.158-0.041-0.238-0.061   c-0.291-0.075-0.585-0.141-0.884-0.193c-0.11-0.019-0.221-0.034-0.332-0.051c-0.261-0.038-0.523-0.069-0.79-0.089   c-0.159-0.012-0.318-0.018-0.477-0.024C19.758,11.015,19.631,11,19.5,11c-0.093,0-0.183,0.012-0.275,0.014   c-0.086,0.002-0.171-0.006-0.256-0.002l-0.395,0.024l-0.01,0.011C12.66,11.527,8,16.475,8,22.5C8,28.841,13.159,34,19.5,34z    M26.411,28.997L21.414,24h7.456C28.564,25.917,27.686,27.643,26.411,28.997z M20.298,13.04c0.104,0.008,0.208,0.018,0.311,0.03   c0.227,0.027,0.451,0.061,0.673,0.103c0.067,0.013,0.134,0.024,0.201,0.038c0.272,0.058,0.541,0.126,0.804,0.207   c0.016,0.005,0.033,0.009,0.049,0.014c2.962,0.928,5.304,3.27,6.232,6.232c0.005,0.016,0.009,0.033,0.014,0.049   c0.081,0.263,0.149,0.531,0.207,0.804c0.014,0.067,0.025,0.134,0.038,0.201c0.042,0.222,0.076,0.446,0.103,0.673   c0.012,0.103,0.021,0.207,0.03,0.311c0.008,0.098,0.01,0.199,0.015,0.298H20v-8.975C20.099,13.031,20.199,13.032,20.298,13.04z    M18,13.13v9.833l0.001,0.031c0,0.005,0.001,0.009,0.001,0.014L18.037,24h0.549l6.31,6.31C23.362,31.373,21.504,32,19.5,32   c-5.238,0-9.5-4.262-9.5-9.5C10,17.773,13.474,13.853,18,13.13z" fill="#FFFFFF" class="color_part" />
+                          <path d="M39,19h8c0.553,0,1-0.447,1-1s-0.447-1-1-1h-8c-0.553,0-1,0.447-1,1S38.447,19,39,19z" fill="#FFFFFF" class="color_part" />
+                          <path d="M51.29,17.29C51.109,17.479,51,17.74,51,18s0.109,0.52,0.29,0.71C51.479,18.89,51.74,19,52,19s0.52-0.11,0.71-0.29   C52.89,18.52,53,18.26,53,18s-0.11-0.521-0.29-0.71C52.34,16.92,51.66,16.92,51.29,17.29z" fill="#FFFFFF" class="color_part" />
+                          <path d="M49,14h3c0.553,0,1-0.447,1-1s-0.447-1-1-1h-3c-0.553,0-1,0.447-1,1S48.447,14,49,14z" fill="#FFFFFF" class="color_part" />
+                          <path d="M39,14h2c0.553,0,1-0.447,1-1s-0.447-1-1-1h-2c-0.553,0-1,0.447-1,1S38.447,14,39,14z" fill="#FFFFFF" class="color_part" />
+                          <path d="M45,14c0.26,0,0.52-0.11,0.71-0.29C45.89,13.52,46,13.26,46,13c0-0.271-0.11-0.521-0.29-0.71c-0.37-0.37-1.05-0.37-1.42,0   C44.109,12.479,44,12.74,44,13s0.109,0.52,0.29,0.71C44.479,13.89,44.74,14,45,14z" fill="#FFFFFF" class="color_part" />
+                        </g>
+                      </svg>
+                      <h3>赌场</h3></li>
+                    <li>
+                      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve" width="41px" height="41px">
+                        <g>
+                          <path d="M80,240h272c8.822,0,16-7.178,16-16V88c0-8.822-7.178-16-16-16H80c-8.822,0-16,7.178-16,16v136   C64,232.822,71.178,240,80,240z M176,224V88h80v136H176z M352,224h-80V88h80V224z M80,88h80v136H80V88z" fill="#FFFFFF" class="color_part" />
+                          <path d="M120,296c-4.418,0-8,3.582-8,8c0,8.822-7.178,16-16,16s-16-7.178-16-16s7.178-16,16-16c4.418,0,8-3.582,8-8s-3.582-8-8-8   c-17.645,0-32,14.355-32,32s14.355,32,32,32s32-14.355,32-32C128,299.582,124.418,296,120,296z" fill="#FFFFFF" class="color_part" />
+                          <path d="M200,296c-4.418,0-8,3.582-8,8c0,8.822-7.178,16-16,16s-16-7.178-16-16s7.178-16,16-16c4.418,0,8-3.582,8-8s-3.582-8-8-8   c-17.645,0-32,14.355-32,32s14.355,32,32,32s32-14.355,32-32C208,299.582,204.418,296,200,296z" fill="#FFFFFF" class="color_part" />
+                          <path d="M280,296c-4.418,0-8,3.582-8,8c0,8.822-7.178,16-16,16s-16-7.178-16-16s7.178-16,16-16c4.418,0,8-3.582,8-8s-3.582-8-8-8   c-17.645,0-32,14.355-32,32s14.355,32,32,32s32-14.355,32-32C288,299.582,284.418,296,280,296z" fill="#FFFFFF" class="color_part" />
+                          <path d="M368,304c0-4.418-3.582-8-8-8s-8,3.582-8,8c0,8.822-7.178,16-16,16s-16-7.178-16-16s7.178-16,16-16c4.418,0,8-3.582,8-8   s-3.582-8-8-8c-17.645,0-32,14.355-32,32s14.355,32,32,32S368,321.645,368,304z" fill="#FFFFFF" class="color_part" />
+                          <path d="M472,288V182.987c13.786-3.561,24-16.104,24-30.987c0-17.645-14.355-32-32-32s-32,14.355-32,32   c0,14.884,10.214,27.426,24,30.987V288h-8v-16c0-13.233-10.767-24-24-24h-8V40c0-22.056-17.944-40-40-40H56   C33.944,0,16,17.944,16,40v432c0,22.056,17.944,40,40,40h320c22.056,0,40-17.944,40-40v-96h8c13.233,0,24-10.767,24-24v-16h24   c13.234,0,24-10.766,24-24S485.234,288,472,288z M448,152c0-8.822,7.178-16,16-16s16,7.178,16,16s-7.178,16-16,16   S448,160.822,448,152z M376,496H56c-13.234,0-24-10.766-24-24v-88h296c4.418,0,8-3.582,8-8s-3.582-8-8-8H32V40   c0-13.234,10.766-24,24-24h320c13.234,0,24,10.766,24,24v328h-40c-4.418,0-8,3.582-8,8s3.582,8,8,8h40v88   C400,485.234,389.234,496,376,496z M432,352c0,4.411-3.589,8-8,8h-8v-96h8c4.411,0,8,3.589,8,8V352z M472,320h-24v-16h24   c4.411,0,8,3.589,8,8S476.411,320,472,320z" fill="#FFFFFF" class="color_part" />
+                          <path d="M248,416H80c-8.822,0-16,7.178-16,16v16c0,8.822,7.178,16,16,16h168c8.822,0,16-7.178,16-16v-16   C264,423.178,256.822,416,248,416z M248,448H80v-16h168V448z" fill="#FFFFFF" class="color_part" />
+                          <path d="M368,416h-56c-8.822,0-16,7.178-16,16v16c0,8.822,7.178,16,16,16h56c8.822,0,16-7.178,16-16v-16   C384,423.178,376.822,416,368,416z M368,448h-56v-16h56V448z" fill="#FFFFFF" class="color_part" />
+                          <path d="M149.981,133.3c0.085-0.095,0.17-0.19,0.25-0.289c0.089-0.11,0.171-0.224,0.253-0.339c0.069-0.096,0.139-0.191,0.204-0.29   c0.077-0.117,0.147-0.237,0.217-0.358c0.062-0.105,0.123-0.21,0.18-0.319c0.061-0.116,0.115-0.234,0.17-0.353   c0.055-0.12,0.11-0.239,0.16-0.361c0.045-0.112,0.085-0.226,0.125-0.34c0.047-0.132,0.093-0.265,0.133-0.4   c0.033-0.113,0.06-0.227,0.088-0.342c0.034-0.137,0.068-0.274,0.094-0.413c0.024-0.126,0.04-0.252,0.058-0.379   c0.018-0.129,0.038-0.257,0.05-0.388c0.014-0.153,0.018-0.306,0.023-0.46c0.003-0.09,0.014-0.179,0.014-0.269   c0-0.019-0.003-0.037-0.003-0.055c-0.001-0.175-0.014-0.35-0.026-0.525c-0.006-0.089-0.007-0.18-0.017-0.268   c-0.019-0.176-0.05-0.351-0.08-0.526c-0.015-0.084-0.023-0.171-0.041-0.254c-0.034-0.163-0.081-0.324-0.125-0.485   c-0.025-0.091-0.043-0.185-0.071-0.274c-0.041-0.131-0.094-0.259-0.142-0.388c-0.042-0.115-0.079-0.232-0.127-0.344   c-0.04-0.093-0.089-0.184-0.133-0.276c-0.068-0.144-0.132-0.29-0.208-0.429c-0.042-0.077-0.093-0.151-0.138-0.227   c-0.089-0.151-0.176-0.302-0.275-0.446c-0.05-0.074-0.109-0.144-0.162-0.216c-0.103-0.141-0.206-0.282-0.318-0.416   c-0.011-0.013-0.02-0.027-0.031-0.04c-0.06-0.07-0.126-0.132-0.187-0.2c-0.104-0.114-0.206-0.229-0.316-0.337   c-0.094-0.093-0.194-0.178-0.292-0.265c-0.095-0.085-0.188-0.17-0.287-0.25c-0.112-0.09-0.227-0.173-0.343-0.256   c-0.095-0.069-0.188-0.138-0.286-0.203c-0.119-0.078-0.24-0.149-0.362-0.22c-0.104-0.061-0.207-0.122-0.313-0.178   c-0.118-0.062-0.238-0.117-0.358-0.172c-0.118-0.055-0.236-0.11-0.357-0.159c-0.114-0.046-0.229-0.086-0.345-0.126   c-0.131-0.046-0.262-0.093-0.396-0.132c-0.115-0.034-0.232-0.061-0.348-0.089c-0.135-0.033-0.27-0.067-0.408-0.094   c-0.129-0.025-0.259-0.041-0.389-0.059c-0.126-0.018-0.251-0.038-0.379-0.05c-0.16-0.015-0.319-0.019-0.48-0.024   C144.172,120.01,144.087,120,144,120H96c-4.418,0-8,3.582-8,8v8c0,4.418,3.582,8,8,8s8-3.582,8-8h22.762   C119.633,146.557,112,162.798,112,184c0,4.418,3.582,8,8,8s8-3.582,8-8c0-31.247,20.269-49.117,21.192-49.914   c0.069-0.059,0.128-0.123,0.195-0.184c0.112-0.102,0.225-0.204,0.331-0.312C149.81,133.496,149.895,133.398,149.981,133.3z" fill="#FFFFFF" class="color_part" />
+                          <path d="M245.981,133.3c0.085-0.095,0.17-0.19,0.25-0.289c0.089-0.11,0.171-0.224,0.253-0.339c0.069-0.096,0.139-0.191,0.204-0.29   c0.077-0.117,0.147-0.237,0.217-0.358c0.062-0.105,0.123-0.21,0.18-0.319c0.061-0.116,0.115-0.234,0.17-0.353   c0.055-0.12,0.11-0.239,0.16-0.361c0.045-0.112,0.085-0.226,0.125-0.34c0.047-0.132,0.093-0.265,0.133-0.4   c0.033-0.113,0.06-0.227,0.088-0.342c0.034-0.137,0.068-0.274,0.094-0.413c0.024-0.126,0.04-0.252,0.058-0.379   c0.018-0.129,0.038-0.257,0.05-0.388c0.014-0.153,0.018-0.306,0.023-0.46c0.003-0.09,0.014-0.179,0.014-0.269   c0-0.019-0.003-0.037-0.003-0.055c-0.001-0.175-0.014-0.35-0.026-0.525c-0.006-0.089-0.007-0.18-0.017-0.268   c-0.019-0.176-0.05-0.351-0.08-0.526c-0.015-0.084-0.023-0.171-0.041-0.254c-0.034-0.163-0.081-0.324-0.125-0.485   c-0.025-0.091-0.043-0.185-0.071-0.274c-0.041-0.131-0.094-0.259-0.142-0.388c-0.042-0.115-0.079-0.232-0.127-0.344   c-0.04-0.093-0.089-0.184-0.133-0.276c-0.068-0.144-0.132-0.29-0.208-0.429c-0.042-0.077-0.093-0.151-0.138-0.227   c-0.089-0.151-0.176-0.302-0.275-0.446c-0.05-0.074-0.109-0.144-0.162-0.216c-0.103-0.141-0.206-0.282-0.318-0.416   c-0.011-0.013-0.02-0.027-0.031-0.04c-0.06-0.07-0.126-0.132-0.187-0.2c-0.104-0.114-0.206-0.229-0.316-0.337   c-0.094-0.093-0.194-0.178-0.292-0.265c-0.095-0.085-0.188-0.17-0.287-0.25c-0.111-0.09-0.227-0.172-0.342-0.256   c-0.095-0.069-0.189-0.139-0.287-0.203c-0.118-0.078-0.24-0.148-0.361-0.219c-0.104-0.061-0.208-0.123-0.315-0.179   c-0.117-0.062-0.237-0.116-0.356-0.172c-0.119-0.055-0.237-0.11-0.358-0.16c-0.113-0.046-0.228-0.085-0.343-0.125   c-0.132-0.047-0.263-0.093-0.398-0.133c-0.114-0.034-0.23-0.06-0.346-0.089c-0.136-0.033-0.271-0.068-0.41-0.094   c-0.129-0.025-0.258-0.041-0.388-0.059c-0.126-0.018-0.252-0.038-0.38-0.05c-0.159-0.015-0.319-0.019-0.479-0.024   C240.172,120.01,240.087,120,240,120h-48c-4.418,0-8,3.582-8,8v8c0,4.418,3.582,8,8,8s8-3.582,8-8h22.762   C215.633,146.557,208,162.798,208,184c0,4.418,3.582,8,8,8s8-3.582,8-8c0-31.247,20.269-49.117,21.192-49.914   c0.069-0.059,0.128-0.123,0.195-0.184c0.112-0.102,0.225-0.204,0.331-0.312C245.81,133.496,245.895,133.398,245.981,133.3z" fill="#FFFFFF" class="color_part" />
+                          <path d="M288,144c4.418,0,8-3.582,8-8h22.762C311.633,146.557,304,162.798,304,184c0,4.418,3.582,8,8,8s8-3.582,8-8   c0-31.247,20.269-49.117,21.192-49.914c0.069-0.059,0.128-0.123,0.195-0.184c0.112-0.102,0.225-0.204,0.331-0.312   c0.092-0.094,0.177-0.192,0.263-0.29c0.085-0.095,0.17-0.19,0.25-0.289c0.089-0.11,0.171-0.224,0.253-0.339   c0.069-0.096,0.139-0.191,0.204-0.29c0.077-0.117,0.147-0.237,0.217-0.358c0.062-0.105,0.123-0.21,0.18-0.319   c0.061-0.116,0.115-0.234,0.17-0.353c0.055-0.12,0.11-0.239,0.16-0.361c0.045-0.112,0.085-0.226,0.125-0.34   c0.047-0.132,0.093-0.265,0.133-0.4c0.033-0.113,0.06-0.227,0.088-0.342c0.034-0.137,0.068-0.274,0.094-0.413   c0.024-0.126,0.04-0.252,0.058-0.379c0.018-0.129,0.038-0.257,0.05-0.388c0.014-0.153,0.018-0.306,0.023-0.46   c0.003-0.09,0.014-0.179,0.014-0.269c0-0.019-0.003-0.037-0.003-0.055c-0.001-0.175-0.014-0.35-0.026-0.525   c-0.006-0.089-0.007-0.18-0.017-0.268c-0.019-0.176-0.05-0.351-0.08-0.526c-0.015-0.084-0.023-0.171-0.041-0.254   c-0.034-0.163-0.081-0.324-0.125-0.485c-0.025-0.091-0.043-0.185-0.071-0.274c-0.041-0.131-0.094-0.259-0.142-0.388   c-0.042-0.115-0.079-0.232-0.127-0.344c-0.04-0.093-0.089-0.184-0.133-0.276c-0.068-0.144-0.132-0.29-0.208-0.429   c-0.042-0.077-0.093-0.151-0.138-0.227c-0.089-0.151-0.176-0.302-0.275-0.446c-0.05-0.074-0.109-0.144-0.162-0.216   c-0.103-0.141-0.206-0.282-0.318-0.416c-0.011-0.013-0.02-0.027-0.031-0.04c-0.06-0.071-0.127-0.133-0.189-0.201   c-0.103-0.113-0.205-0.228-0.314-0.335c-0.096-0.094-0.196-0.18-0.295-0.269c-0.094-0.083-0.186-0.168-0.284-0.247   c-0.112-0.091-0.229-0.174-0.345-0.258c-0.094-0.068-0.186-0.137-0.283-0.201c-0.119-0.079-0.242-0.15-0.365-0.222   c-0.103-0.06-0.205-0.121-0.311-0.177c-0.118-0.062-0.239-0.118-0.36-0.174c-0.117-0.054-0.234-0.109-0.354-0.158   c-0.115-0.046-0.23-0.086-0.347-0.127c-0.131-0.046-0.261-0.092-0.395-0.132c-0.115-0.034-0.232-0.061-0.349-0.09   c-0.135-0.033-0.269-0.067-0.407-0.093c-0.129-0.025-0.26-0.041-0.39-0.06c-0.126-0.018-0.251-0.038-0.378-0.049   c-0.16-0.015-0.319-0.019-0.48-0.024C336.172,120.01,336.087,120,336,120h-48c-4.418,0-8,3.582-8,8v8   C280,140.418,283.582,144,288,144z" fill="#FFFFFF" class="color_part" />
+                        </g>
+                      </svg>
+                      <h3>简报</h3></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="s_11__right">
+                <div class="s_11__map">
+                </div>
+              </div>
+              <div class="s_11__descr hidden-lg hidden-md hidden-sm">
+                  <p>
+                    MARK.SPACE 小区：VR房地产
+                    <br>MARK.SPACE平台包括很多8米*8米的虚拟空间，称为小区。小区可作居住，社群，购物中心和商业区使用。每个区域有自己的规则、功能和开发工具。
+                  </p>
+                  <p>每个城市至少包括：个城市-一个城区, 个城区-一个街区, 个街区 - 260 个小区, 个小区 - 1 个单元
+					<br>每个城市最多包括: 个城市 - 35 个城区, 个城区 - 35 个街区, 个街区 -260 小区, 个小区- 35 个单元
+					<br>每个城市最多共计包括: 35 个城区, 1,225 街区, 318,500 小区, 11,147,500 单元
+				  </p>
+                  <p>代币价格受市场波动性影响，尤其在代币众筹后往往会有跌幅。为此我们免费赠送代每个众筹参与者一个位于MARK.SPACE邻里中的“小区”，在此小区内您可以创建您的项目，或者将其出租给其他人。小区不能在交易所上交易，其价格也与代币价格无关联。
+                    <br>MARK.SPACE 小区： 您的VP地产
+                  </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="section s_5">
+        <canvas id="page-bg-5" class="page-bg"></canvas>
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-10 col-md-10">
+              <h2 class="s_title" data-before="路线图">路线图</h2>
+              <div class="s_5__timeline">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 857.18 111.15">
+                  <path class="cls-1" d="M1460,535l-19.08-18.16a97.07,97.07,0,0,0-130.56-3L1286,535l-21.56,20A94.58,94.58,0,0,1,1139,557.86l-5.54-4.69a237.73,237.73,0,0,1-38.13-40.85l-7.9-10.76A74.61,74.61,0,0,0,970.79,497l-21,24.4a155,155,0,0,1-26.33,24.21l-10.93,7.94a101.9,101.9,0,0,1-117.92,1.29L766,535l-8.11-5a120.16,120.16,0,0,0-38.29-15.43,167.26,167.26,0,0,0-42.5-3.29,148.23,148.23,0,0,0-65,19.13L604,535" transform="translate(-603.51 -470.09)" />
+                  <path class="cls-2" d="M1460,535l-19.08-18.16a97.07,97.07,0,0,0-130.56-3L1286,535l-21.56,20A94.58,94.58,0,0,1,1139,557.86l-5.54-4.69a237.73,237.73,0,0,1-38.13-40.85l-7.9-10.76A74.61,74.61,0,0,0,970.79,497l-21,24.4a155,155,0,0,1-26.33,24.21l-10.93,7.94a101.9,101.9,0,0,1-117.92,1.29L766,535l-8.11-5a120.16,120.16,0,0,0-38.29-15.43,167.26,167.26,0,0,0-42.5-3.29,148.23,148.23,0,0,0-65,19.13L604,535" transform="translate(-603.51 -470.09)" />
+                </svg>
+                <div class="s_5__timeline__block">
+                  <a href="#s_5__tab-1" class="s_5__timeline__year s_5__timeline__year-1">
+                    <div class="s_5__timeline__checkbox checked"></div>
+                    <div class="s_5__timeline__label">2015</div>
+                  </a>
+                  <div class="s_5__timeline__table hidden-lg hidden-md hidden-sm">
+                    <div class="s_5__timeline__table__wrap">
+                      <div class="d-table">
+                        <div class="d-table-cell s_5__tabs__col">
+                          <strong>5月-6月</strong>
+                          <br>思想形成，MARK.SPACE概念发展
+                        </div>
+                        <div class="d-table-cell s_5__tabs__col">
+                          <strong>7月 -  9月 </strong>
+                          <br>营销研究，假设确认
+                        </div>
+                        <div class="d-table-cell s_5__tabs__col">
+                          <strong>10月 -  12月</strong>
+                          <br>准备技术任务开发，团队组建
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="s_5__timeline__block">
+                  <a href="#s_5__tab-2" class="s_5__timeline__year s_5__timeline__year-2">
+                    <div class="s_5__timeline__checkbox checked"></div>
+                    <div class="s_5__timeline__label">2016</div>
+                  </a>
+                  <div class="s_5__timeline__table hidden-lg hidden-md hidden-sm">
+                    <div class="s_5__timeline__table__wrap">
+                      <div class="d-table">
+                        <div class="d-table-cell s_5__tabs__col">
+                          <strong>1月 -  5月</strong>
+                          <br>开发Alpha版引擎
+                        </div>
+                        <div class="d-table-cell s_5__tabs__col">
+                          <strong>6月 -  8月 </strong>
+                          <br>Alpha版本的启动和测试（仅限电子商务区）
+                        </div>
+                        <div class="d-table-cell s_5__tabs__col">
+                          <strong>9月 -  11月</strong>
+                          <br>Beta版本的启动和测试（仅限电子商务区）
+                        </div>
+                        <div class="d-table-cell s_5__tabs__col">
+                          <strong>12月</strong>
+                          <br>启动时尚品牌展示平台
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="s_5__timeline__block">
+                  <a href="#s_5__tab-3" class="s_5__timeline__year s_5__timeline__year-3">
+                    <div class="s_5__timeline__checkbox checked"></div>
+                    <div class="s_5__timeline__label">2017</div>
+                  </a>
+                  <div class="s_5__timeline__table hidden-lg hidden-md hidden-sm">
+                    <div class="s_5__timeline__table__wrap">
+                      <div class="d-table">
+                        <div class="d-table-cell s_5__tabs__col">
+                          <strong>1月 -  5月</strong>
+                          <br>启动第一个电子商务项目的平台(时尚电子商务)
+                        </div>
+                        <div class="d-table-cell s_5__tabs__col">
+                          <strong>6月 </strong>
+                          <br>为个人，商业和社会区推出Alpha版本
+                        </div>
+                        <div class="d-table-cell s_5__tabs__col">
+                          <strong>6月–7月</strong>
+                          <br>MARK.SPACE平台分散概念的发展
+                        </div>
+                        <div class="d-table-cell s_5__tabs__col">
+                          <strong>8月-9月</strong>
+                          <br>MARK.SPACE平台块解决方案的实施研究
+                        </div>
+                        <div class="d-table-cell s_5__tabs__col">
+                          <strong>10月</strong>
+                          <br>白皮书告
+                        </div>
+                        <div class="d-table-cell s_5__tabs__col">
+                          <strong>11月 - 12月</strong>
+                          <br>代币预售启动
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="s_5__timeline__block">
+                  <a href="#s_5__tab-4" class="s_5__timeline__year s_5__timeline__year-4 active">
+                    <div class="s_5__timeline__checkbox checked"></div>
+                    <div class="s_5__timeline__label">2018</div>
+                  </a>
+                  <div class="s_5__timeline__table hidden-lg hidden-md hidden-sm">
+                    <div class="s_5__timeline__table__wrap">
+                      <div class="d-table">
+                        <div class="d-table-cell s_5__tabs__col">
+                          <strong>1月 - 2月</strong>
+                          <br>代币销售启动 (阶段1)
+                        </div>
+                        <div class="d-table-cell s_5__tabs__col">
+                          <strong>4月</strong>
+                          <br>开始虚拟房地产/单位销售
+                        </div>
+                        <div class="d-table-cell s_5__tabs__col">
+                          <strong>7月</strong>
+                          <br>区块链实现
+                        </div>
+                        <div class="d-table-cell s_5__tabs__col">
+                          <strong>10月</strong>
+                          <br>启动公馆区
+                        </div>
+                        <div class="d-table-cell s_5__tabs__col">
+                          <strong>12月</strong>
+                          <br>启始购物区
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="s_5__timeline__block">
+                  <a href="#s_5__tab-5" class="s_5__timeline__year s_5__timeline__year-5">
+                    <div class="s_5__timeline__checkbox"></div>
+                    <div class="s_5__timeline__label">2019</div>
+                  </a>
+                  <div class="s_5__timeline__table hidden-lg hidden-md hidden-sm">
+                    <div class="s_5__timeline__table__wrap">
+                      <div class="d-table">
+                        <div class="d-table-cell s_5__tabs__col">
+                          <strong>1月</strong>
+                          <br>代币销售启动 (阶段2)
+                        </div>
+                        <div class="d-table-cell s_5__tabs__col">
+                          <strong>3月</strong>
+                          <br>启动商业区
+                        </div>
+                        <div class="d-table-cell s_5__tabs__col">
+                          <strong>9月</strong>
+                          <br>Distributed rendering
+                        </div>
+                        <div class="d-table-cell s_5__tabs__col">
+                          <strong>12月</strong>
+                          <br>MOSL language available to developer
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="s_5__timeline__block">
+                  <a href="#s_5__tab-6" class="s_5__timeline__year s_5__timeline__year-6">
+                    <div class="s_5__timeline__checkbox"></div>
+                    <div class="s_5__timeline__label">2020</div>
+                  </a>
+                  <div class="s_5__timeline__table hidden-lg hidden-md hidden-sm">
+                    <div class="s_5__timeline__table__wrap">
+                      <div class="d-table">
+                        <div class="d-table-cell s_5__tabs__col">
+                          <strong>2月</strong>
+                          <br>启动社会区
+                        </div>
+                        <div class="d-table-cell s_5__tabs__col">
+                          <strong>4月 </strong>
+                          <br>部广告网络
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="s_5__tabs hidden-xs">
+                <div class="s_5__tab" id="s_5__tab-1" style="display: none">
+                  <div class="d-table">
+                    <div class="d-table-cell s_5__tabs__col">
+                      <strong>5月-6月</strong>
+                      <br>思想形成，MARK.SPACE概念发展
+                    </div>
+                    <div class="d-table-cell s_5__tabs__col">
+                      <strong>7月 -  9月 </strong>
+                      <br>营销研究，假设确认
+                    </div>
+                    <div class="d-table-cell s_5__tabs__col">
+                      <strong>10月 -  12月</strong>
+                      <br>准备技术任务开发，团队组建
+                    </div>
+                  </div>
+                </div>
+                <div class="s_5__tab" id="s_5__tab-2" style="display: none">
+                  <div class="d-table">
+                    <div class="d-table-cell s_5__tabs__col">
+                      <strong>1月 -  5月</strong>
+                      <br>开发Alpha版引擎
+                    </div>
+                    <div class="d-table-cell s_5__tabs__col">
+                      <strong>6月 -  8月 </strong>
+                      <br>Alpha版本的启动和测试（仅限电子商务区）
+                    </div>
+                    <div class="d-table-cell s_5__tabs__col">
+                      <strong>9月 -  11月</strong>
+                      <br>Beta版本的启动和测试（仅限电子商务区）
+                    </div>
+                    <div class="d-table-cell s_5__tabs__col">
+                      <strong>12月</strong>
+                      <br>启动时尚品牌展示平台
+                    </div>
+                  </div>
+                </div>
+                <div class="s_5__tab" id="s_5__tab-3" style="display: none">
+                  <div class="d-table">
+                    <div class="d-table-cell s_5__tabs__col">
+                      <strong>1月 -  5月</strong>
+                      <br>启动第一个电子商务项目的平台(时尚电子商务)
+                    </div>
+                    <div class="d-table-cell s_5__tabs__col">
+                      <strong>6月 </strong>
+                      <br>为个人，商业和社会区推出Alpha版本
+                    </div>
+                    <div class="d-table-cell s_5__tabs__col">
+                      <strong>6月–7月</strong>
+                      <br>MARK.SPACE平台分散概念的发展
+                    </div>
+                    <div class="d-table-cell s_5__tabs__col">
+                      <strong>8月-9月</strong>
+                      <br>MARK.SPACE平台块解决方案的实施研究
+                    </div>
+                    <div class="d-table-cell s_5__tabs__col">
+                      <strong>10月</strong>
+                      <br>白皮书告
+                    </div>
+                    <div class="d-table-cell s_5__tabs__col">
+                      <strong>11月 - 12月</strong>
+                      <br>代币预售启动
+                    </div>
+                  </div>
+                </div>
+                <div class="s_5__tab" id="s_5__tab-4">
+                  <div class="d-table">
+                    <div class="d-table-cell s_5__tabs__col">
+                      <strong>1月 - 2月</strong>
+                      <br>代币销售启动 (阶段1)
+                    </div>
+                    <div class="d-table-cell s_5__tabs__col">
+                      <strong>4月</strong>
+                      <br>开始虚拟房地产/单位销售
+                    </div>
+                    <div class="d-table-cell s_5__tabs__col">
+                      <strong>7月</strong>
+                      <br>区块链实现
+                    </div>
+                    <div class="d-table-cell s_5__tabs__col">
+                      <strong>10月</strong>
+                      <br>启动公馆区
+                    </div>
+                    <div class="d-table-cell s_5__tabs__col">
+                      <strong>12月</strong>
+                      <br>启动商业区
+                    </div>
+                  </div>
+                </div>
+                <div class="s_5__tab" id="s_5__tab-5" style="display: none">
+                  <div class="d-table">
+                    <div class="d-table-cell s_5__tabs__col">
+                      <strong>1月</strong>
+                      <br>代币销售启动 (阶段2)
+                    </div>
+                    <div class="d-table-cell s_5__tabs__col">
+                      <strong>3月</strong>
+                      <br>启动购物区
+                    </div>
+                    <div class="d-table-cell s_5__tabs__col">
+                      <strong>9月 </strong>
+                      <br>分布式呈现
+                    </div>
+                    <div class="d-table-cell s_5__tabs__col">
+                      <strong>12月</strong>
+                      <br>MOSL语言可供开发人员使用
+                    </div>
+                  </div>
+                </div>
+                <div class="s_5__tab" id="s_5__tab-6" style="display: none">
+                  <div class="d-table">
+                    <div class="d-table-cell s_5__tabs__col">
+                      <strong>2月</strong>
+                      <br>启动社会区
+                    </div>
+                    <div class="d-table-cell s_5__tabs__col">
+                      <strong>4月 </strong>
+                      <br>部广告网络
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="section s_9">
+        <div class="container">
+          <div class="row">
+            <div class="col-xs-11">
+              <div class="s_9__wrap">
+                <h2 class="s_title" data-before="搭档">搭档</h2>
+                <div class="s_9__partners ">
+                  <div class="d-table">
+                    <div class="d-table-row">
+                      <div class="s_9__partner-cell d-table-cell">
+                        <a href="https://hitbtc.com/" target="_blank" class="sprite-partner s_9__partner sprite-partner_25"></a>
+                      </div>
+                      <div class="s_9__partner-cell d-table-cell">
+                        <a href="https://coss.io/" target="_blank" class="sprite-partner s_9__partner sprite-partner_26"></a>
+                      </div>
+                      <div class="s_9__partner-cell d-table-cell">
+                        <a href="https://www.bancor.network" target="_blank" class="sprite-press s_9__partner sprite-press_11"></a>
+                      </div>
+                      <div class="s_9__partner-cell d-table-cell">
+                        <a href=" https://promo.midex.com" target="_blank" class="sprite-partner s_9__partner sprite-partner_27"></a>
+                      </div>
+<!--
+					  <div class="s_9__partner-cell d-table-cell">
+					    <a href="https://www.jaguar.com/" target="_blank" class="sprite-partner s_9__partner sprite-partner_23"></a>
+					  </div>
+					  <div class="s_9__partner-cell d-table-cell">
+					    <a href="https://www.landrover.com/" target="_blank" class="sprite-partner s_9__partner sprite-partner_24"></a>
+					  </div>
+-->
+                      <div class="s_9__partner-cell d-table-cell">
+                        <a href="http://www.anna-stevar.com/" target="_blank" class="sprite-partner s_9__partner sprite-partner_17"></a>
+                      </div>
+                    </div>
+                    <div class="d-table-row">
+                      <div class="s_9__partner-cell d-table-cell">
+                        <a href="http://www.twinset.com/" target="_blank" class="sprite-partner s_9__partner sprite-partner_14"></a>
+                      </div>
+                      <div class="s_9__partner-cell d-table-cell">
+                        <a href="http://www.desigual.com/" target="_blank" class="sprite-partner s_9__partner sprite-partner_1"></a>
+                      </div>
+                      <div class="s_9__partner-cell d-table-cell">
+                        <a href="http://www.fabiboutique.com/" target="_blank" class="sprite-partner s_9__partner sprite-partner_7"></a>
+                      </div>
+                      <div class="s_9__partner-cell d-table-cell">
+                        <a href="http://ermastudio.ru/" target="_blank" class="sprite-partner s_9__partner sprite-partner_16"></a>
+                      </div>
+                      <div class="s_9__partner-cell d-table-cell">
+                        <a href="http://www.trussardi.com/" target="_blank" class="sprite-partner s_9__partner sprite-partner_2"></a>
+                      </div>
+                    </div>
+                    <div class="d-table-row">
+                      <div class="s_9__partner-cell d-table-cell">
+                        <a href="https://www.moreschi.it/" target="_blank" class="sprite-partner s_9__partner sprite-partner_10"></a>
+                      </div>
+                      <div class="s_9__partner-cell d-table-cell">
+                        <a href="http://www.baldinini-shop.com/" target="_blank" class="sprite-partner s_9__partner sprite-partner_3"></a>
+                      </div>
+                      <div class="s_9__partner-cell d-table-cell">
+                        <a href="https://roccop.it/" target="_blank" class="sprite-partner s_9__partner sprite-partner_9"></a>
+                      </div>
+                      <div class="s_9__partner-cell d-table-cell">
+                        <a href="http://www.pinko.com/" target="_blank" class="sprite-partner s_9__partner sprite-partner_12"></a>
+                      </div>
+                      <div class="s_9__partner-cell d-table-cell">
+                        <a href="http://gmtlegal.com/" target="_blank" class="sprite-partner s_9__partner sprite-partner_22"></a>
+                      </div>
+                    </div>
+                    <div class="d-table-row">
+                      <div class="s_9__partner-cell d-table-cell">
+                        <a href="http://www.dstrezzed.com/" target="_blank" class="sprite-partner s_9__partner sprite-partner_4"></a>
+                      </div>
+                      <div class="s_9__partner-cell d-table-cell">
+                        <a href="http://satorisan.com/" target="_blank" class="sprite-partner s_9__partner sprite-partner_5"></a>
+                      </div>
+                      <div class="s_9__partner-cell d-table-cell">
+                        <a href="https://www.fratellirossetti.com/" target="_blank" class="sprite-partner s_9__partner sprite-partner_8"></a>
+                      </div>
+                      <div class="s_9__partner-cell d-table-cell">
+                        <a href="https://www.patriziapepe.com/" target="_blank" class="sprite-partner s_9__partner sprite-partner_11"></a>
+                      </div>
+                      <div class="s_9__partner-cell d-table-cell">
+                        <a href="http://www.mashatsigal.com/" target="_blank" class="sprite-partner s_9__partner sprite-partner_15"></a>
+                      </div>
+                    </div>
+                    <div class="d-table-row">
+                      <div class="s_9__partner-cell d-table-cell">
+                        <a href="http://alice-street.com/" target="_blank" class="sprite-partner s_9__partner sprite-partner_18"></a>
+                      </div>
+                      <div class="s_9__partner-cell d-table-cell">
+                        <a href="http://portnoybeso.ru/" target="_blank" class="sprite-partner s_9__partner sprite-partner_20"></a>
+                      </div>
+                      <div class="s_9__partner-cell d-table-cell">
+                        <a href="http://bruunsbazaar.com/" target="_blank" class="sprite-partner s_9__partner sprite-partner_6"></a>
+                      </div>
+                      <div class="s_9__partner-cell d-table-cell">
+                        <a href="https://www.facebook.com/karinavessna/" target="_blank" class="sprite-partner s_9__partner sprite-partner_19"></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="section s_9">
+        <div class="container">
+          <div class="row">
+            <div class="col-xs-11">
+              <div class="s_9__wrap">
+                <h2 class="s_title" data-before="媒体报道">媒体报道</h2>
+                <div class="s_9__partners ">
+                  <div class="d-table">
+                    <div class="d-table-row">
+                      <div class="s_9__partner-cell d-table-cell">
+                        <a href="https://www.coinschedule.com/blog/2018/01/06/mark-space-blockchain-based-universe/" target="_blank" class="sprite-press s_9__partner sprite-press_15"></a>
+                      </div>
+                      <div class="s_9__partner-cell d-table-cell">
+                        <a href="https://www.forbes.com/sites/andrewarnold/2017/12/19/80-of-millennials-want-to-buy-a-home-and-virtual-reality-is-upending-the-process/#3dfc33ed4ce3" target="_blank" class="sprite-press s_9__partner sprite-press_8"></a>
+                      </div>
+                      <div class="s_9__partner-cell d-table-cell">
+                        <a href="http://the-blockchain.com/2017/10/16/mark-space-announces-launch-blockchain-powered-vr-platform-upcoming-token-crowdsale/" target="_blank" class="sprite-press s_9__partner sprite-press_6"></a>
+                      </div>
+                      <div class="s_9__partner-cell d-table-cell">
+                        <a href="http://www.the-blockchain.com/2017/11/22/mark-space-jaguar-land-rover-announce-cooperation/" target="_blank" class="sprite-press s_9__partner sprite-press_6"></a>
+                      </div>
+                      <div class="s_9__partner-cell d-table-cell">
+                        <a href="https://cointelegraph.com/press-releases/markspace-announces-crypto-valley-launch" target="_blank" class="sprite-press s_9__partner sprite-press_14"></a>
+                      </div>
+                    </div>
+                    <div class="d-table-row">
+                      <div class="s_9__partner-cell d-table-cell">
+                        <a href="https://icobench.com/ico/mark-space" target="_blank" class="sprite-press s_9__partner sprite-press_2"></a>
+                      </div>
+                      <div class="s_9__partner-cell d-table-cell">
+                        <a href="https://www.ccn.com/announcement-of-cooperation/" target="_blank" class="sprite-press s_9__partner sprite-press_10"></a>
+                      </div>
+                      <div class="s_9__partner-cell d-table-cell">
+                        <a href="https://www.coinjinja.com/ico/mark-space" target="_blank" class="sprite-press s_9__partner sprite-press_12"></a>
+                      </div>
+                      <div class="s_9__partner-cell d-table-cell">
+                        <a href="https://www.coinschedule.com/icos/e1521/mark.space.html" target="_blank" class="sprite-press s_9__partner sprite-press_3"></a>
+                      </div>
+                      <div class="s_9__partner-cell d-table-cell">
+                        <a href="http://cryptocurrencymagazine.com/mark-space-blockchain-based-vr-3d-opensource-platform" target="_blank" class="sprite-press s_9__partner sprite-press_13"></a>
+                      </div>
+                    </div>
+                    <div class="d-table-row">
+                      <div class="s_9__partner-cell d-table-cell">
+                        <a href="https://icos.tokendesk.io/ico/mark-space/" target="_blank" class="sprite-press s_9__partner sprite-press_7"></a>
+                      </div>
+                      <div class="s_9__partner-cell d-table-cell">
+                        <a href="https://news-blockchain.net/2017/12/19/jaguar-land-rover-russia-going-open-virtual-office-mark-space/" target="_blank" class="sprite-press s_9__partner sprite-press_9"></a>
+                      </div>
+                      <div class="s_9__partner-cell d-table-cell">
+                        <a href="https://icowatchlist.com/ico/markspace" target="_blank" class="sprite-press s_9__partner sprite-press_4"></a>
+                      </div>
+                      <div class="s_9__partner-cell d-table-cell">
+                        <a href="https://www.rt.com/business/417332-bitcoin-blockchain-mcafee-5-years/" target="_blank" class="sprite-press s_9__partner sprite-press_16"></a>
+                      </div>
+                      <div class="s_9__partner-cell d-table-cell">
+                        <a href="https://www.rbc.ru/rbcfreenews/5a796bdc9a794732dda8b787?from=main" target="_blank" class="sprite-press s_9__partner sprite-press_17"></a>
+                      </div>
+                    </div>
+                    <div class="d-table-row">
+                      <div class="s_9__partner-cell d-table-cell">
+                        <a href="http://www.banki.ru/news/lenta/?id=10265561" target="_blank" class="sprite-press s_9__partner sprite-press_18"></a>
+                      </div>
+                      <div class="s_9__partner-cell d-table-cell">
+                        <a href="https://secretmag.ru/news/khokkeist-evgenii-malkin-vlozhilsya-v-internet-novogo-pokoleniya-na-blokcheine-06-02-2018.htm" target="_blank" class="sprite-press s_9__partner sprite-press_19"></a>
+                      </div>
+                      <div class="s_9__partner-cell d-table-cell">
+                        <a href="https://tvrain.ru/news/hokkeist_malkin-456967/" target="_blank" class="sprite-press s_9__partner sprite-press_20"></a>
+                      </div>
+                      <div class="s_9__partner-cell d-table-cell">
+                        <a href="https://www.sports.ru/hockey/1059954675.html" target="_blank" class="sprite-press s_9__partner sprite-press_21"></a>
+                      </div>
+                      <div class="s_9__partner-cell d-table-cell">
+                        <a href="http://firrma.ru/data/news/104275/" target="_blank" class="sprite-press s_9__partner sprite-press_22"></a>
+                      </div>
+                      <div class="s_9__partner-cell d-table-cell">
+                        <a href="https://optionmag.fr/analyse-des-ico/ico-de-mark-space-avis-doptionmag/" target="_blank" class="sprite-press s_9__partner sprite-press_23"></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <section class="section s_8">
+        <canvas id="page-bg-8" class="page-bg"></canvas>
+        <div class="container">
+          <div class="row">
+            <div class="col-xs-12">
+              <h2 class="s_title" data-before="团队">团队</h2>
+              <div class="s_8__wrap">
+                <div class="s_8__staff_wrap hidden-xs" data-scrolltext="向右滑动以探索其余的团队">
+                  <div class="s_8__staff__card_col">
+                    <div class="s_8__staff__card">
+                      <div class="s_8__staff__letter s_8__staff__letter-fill">Y</div>
+                      <div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="/img/stuff/Yana_Kontorovich.jpg" alt=""></div>
+                      <div class="s_8__staff__data">
+                        <div class="s_8__staff__name">Yana Kontorovich</div>
+                        <div class="s_8__staff__post">首席执行官兼创始人，经济科学博士。 女实业家，投资者</div>
+                        <div class="s_8__staff__soc">
+                          <a href="https://www.facebook.com/yana.kontorovitch" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                          <a href="https://www.youtube.com/watch?v=CpG1Hd18PB0" target="_blank"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="s_8__staff__card">
+                      <div class="s_8__staff__letter s_8__staff__letter-border">D</div>
+                      <div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="/img/stuff/Denis_Polulyakhov.jpg" alt=""></div>
+                      <div class="s_8__staff__data">
+                        <div class="s_8__staff__name">Denis Polulyakhov</div>
+                        <div class="s_8__staff__post">联合创始人, 12年经验的IT企业家</div>
+                        <div class="s_8__staff__soc">
+                          <a href="https://www.facebook.com/tonymontanamsk" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                          <a href="https://www.linkedin.com/in/denis-polulyakhov-11161580/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                          <a href="https://www.youtube.com/watch?v=Tv6g_nynJY8" target="_blank"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="s_8__staff__card_col">
+                    <div class="s_8__staff__card">
+                      <div class="s_8__staff__letter s_8__staff__letter-border">E</div>
+                      <div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="/img/stuff/Evgeni_Malkin.jpg" alt=""></div>
+                      <div class="s_8__staff__data">
+                        <div class="s_8__staff__name">Evgeni Malkin</div>
+                        <div class="s_8__staff__post">联合创始人</div>
+                        <div class="s_8__staff__soc">
+                          <a href="https://www.instagram.com/e.malkin71geno/" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                          <a href="https://en.wikipedia.org/wiki/Evgeni_Malkin" target="_blank"><i class="fa fa-wikipedia-w" aria-hidden="true"></i></a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="s_8__staff__card">
+                      <div class="s_8__staff__letter s_8__staff__letter-fill">V</div>
+                      <div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="/img/stuff/Vladislav_Utushkin.jpg" alt=""></div>
+                      <div class="s_8__staff__data">
+                        <div class="s_8__staff__name">Vladislav Utushkin</div>
+                        <div class="s_8__staff__post">广告商营销人员，分析师，顾问</div>
+                        <div class="s_8__staff__soc">
+                          <a href="https://www.facebook.com/v.utushkin" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="s_8__staff__card_col">
+                    <div class="s_8__staff__card">
+                      <div class="s_8__staff__letter s_8__staff__letter-fill">O</div>
+                      <div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="/img/stuff/Oleg_Ershov.jpg" alt=""></div>
+                      <div class="s_8__staff__data">
+                        <div class="s_8__staff__name">Oleg Ershov</div>
+                        <div class="s_8__staff__post">联合创始人，市场营销人员，企业家，公共事件的组织者</div>
+                        <div class="s_8__staff__soc">
+                          <a href="https://www.linkedin.com/in/oleg-ershov/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                          <a href="https://www.youtube.com/watch?v=8_epCqUseqY" target="_blank"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="s_8__staff__card">
+                      <div class="s_8__staff__letter s_8__staff__letter-border">V</div>
+                      <div class="s_8__staff__avatar" title="25 years of experience in IT & web development. Founder & CEO «Site Makers». Author of MARK projects."><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="/img/stuff/Vladimir_Shliapin.jpg" alt=""></div>
+                      <div class="s_8__staff__data">
+                        <div class="s_8__staff__name">Vladimir Shliapin</div>
+                        <div class="s_8__staff__post">CTO, 发明家，IT开发人员（25年），数学硕士</div>
+                        <div class="s_8__staff__soc">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="s_8__staff__card_col">
+                    <div class="s_8__staff__card">
+                      <div class="s_8__staff__letter s_8__staff__letter-border">A</div>
+                      <div class="s_8__staff__avatar" title="27 years of experience in IT & web development. CTO «Site Makers»."><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="/img/stuff/Alexander_Shtankovsky.jpg" alt=""></div>
+                      <div class="s_8__staff__data">
+                        <div class="s_8__staff__name">Alexander Shtankovsky</div>
+                        <div class="s_8__staff__post">开发人员主管,<br>IT开发人员（27年），<br>数学硕士</div>
+                        <div class="s_8__staff__soc">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="s_8__staff__card">
+                      <div class="s_8__staff__letter s_8__staff__letter-border">K</div>
+                      <div class="s_8__staff__avatar" title="5年多的加密货币投资经验。投资顾问，信息渠道创始人和日本加密投资作者的课程"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="/img/stuff/Kentaro_Harada.jpg" alt=""></div>
+                      <div class="s_8__staff__data">
+                        <div class="s_8__staff__name">Kentaro Harada</div>
+                        <div class="s_8__staff__post">MARK.SPACE日本大使, 密码专家</div>
+                        <div class="s_8__staff__soc">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="s_8__staff__card_col">
+	                <div class="s_8__staff__card">
+  	                  <div class="s_8__staff__letter s_8__staff__letter-fill">D</div>
+    	              <div class="s_8__staff__avatar" title="信息学数学家。 总部设在日本，自2011年起。日语流利。 东京商学院毕业。 在他自己的YouTube频道上撰写关于日本（超过65万用户）。"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="/img/stuff/Shamov_Dmitriy.jpg" alt=""></div>
+      	              <div class="s_8__staff__data">
+        	            <div class="s_8__staff__name">Dmitry Shamov</div>
+          	            <div class="s_8__staff__post">日本的官方代表</div>
+            	        <div class="s_8__staff__soc">
+              	        </div>
+                      </div>
+                  	</div>
+	                <div class="s_8__staff__card">
+  	                  <div class="s_8__staff__letter s_8__staff__letter-border">J</div>
+    	              <div class="s_8__staff__avatar" title="曾女士拥有20 国际资本市场工作经验及企业管理、业务开发、市场开拓、大型项目管理经验。曾为法国巴黎银行（中国）有限公司董事总经理、法国巴黎银行证券服务公司中国总经理、法国巴黎银行证券服务公司亚洲开发主任、德国证券交易所亚洲业务开发执行总监，并担任过国际明讯银行 (Clearstream）以及卢森堡银行等机构的不同管理职位。有深厚的国际工作背景，并创建过自己的企业，过往工作经历先后覆盖多重行业。曾女士拥有欧洲工商管理学院（INSEAD） MBA、法国南锡大学计算机硕士、上海交通大学自动控制学士学位。"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="/img/stuff/Jing_Zeng.jpg" alt=""></div>
+      	              <div class="s_8__staff__data">
+        	            <div class="s_8__staff__name">Jing Zeng</div>
+          	            <div class="s_8__staff__post">Business development director (China)</div>
+            	        <div class="s_8__staff__soc">
+              	        </div>
+                      </div>
+                  	</div>
+                  </div>
+                  <div class="s_8__staff__card_col">
+	                <div class="s_8__staff__card">
+  	                  <div class="s_8__staff__letter s_8__staff__letter-fill">D</div>
+    	              <div class="s_8__staff__avatar" title="欧先生拥有超过3年的全球宏观对冲基金外汇交易经验，2年军方口译经验，以及2年的企业管理经验。 欧先生拥有宾夕法尼亚大学荣誉学士学位"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="/img/stuff/David_Oh.jpg" alt=""></div>
+      	              <div class="s_8__staff__data">
+        	            <div class="s_8__staff__name">David Oh</div>
+          	            <div class="s_8__staff__post">业务发展经理(韩国)</div>
+            	        <div class="s_8__staff__soc">
+						<a href="https://www.linkedin.com/in/david-oh-02661b101/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+              	        </div>
+                      </div>
+                  	</div>
+	                <div class="s_8__staff__card">
+                      <div class="s_8__staff__letter s_8__staff__letter-border">V</div>
+                      <div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="/img/stuff/Victor-Skrynnikov.jpg" alt=""></div>
+                      <div class="s_8__staff__data">
+                        <div class="s_8__staff__name">Victor Skrynnikov</div>
+                        <div class="s_8__staff__post">领导Ux / Ui网页设计师</div>
+                        <div class="s_8__staff__soc">
+                          <a href="https://www.behance.net/thelegacy" target="_blank"><i class="fa fa-behance" aria-hidden="true"></i></a>
+                        </div>
+                      </div>
+                  	</div>
+                  </div>
+                  <div class="s_8__staff__card_col">
+                    <div class="s_8__staff__card">
+                      <div class="s_8__staff__letter s_8__staff__letter-border">D</div>
+                      <div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="/img/stuff/Dmitry_Machikhin.jpg" alt=""></div>
+                      <div class="s_8__staff__data">
+                        <div class="s_8__staff__name">Dmitry Machikhin</div>
+                        <div class="s_8__staff__post">电子商务总监</div>
+                        <div class="s_8__staff__soc">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="s_8__staff__card">
+                      <div class="s_8__staff__letter s_8__staff__letter-fill">S</div>
+                      <div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="/img/stuff/Siruz_Faramarz.jpg" alt=""></div>
+                      <div class="s_8__staff__data">
+                        <div class="s_8__staff__name">Siruz Faramarz</div>
+                        <div class="s_8__staff__post">VR＆3D部门主管</div>
+                        <div class="s_8__staff__soc">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="s_8__staff__card_col">
+                    <div class="s_8__staff__card">
+                      <div class="s_8__staff__letter s_8__staff__letter-fill">R</div>
+                      <div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="/img/stuff/Roman_Zhuravlev.jpg" alt=""></div>
+                      <div class="s_8__staff__data">
+                        <div class="s_8__staff__name">Roman Zhuravlev</div>
+                        <div class="s_8__staff__post">网络工程负责人</div>
+                        <div class="s_8__staff__soc">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="s_8__staff__card">
+                      <div class="s_8__staff__letter s_8__staff__letter-border">P</div>
+                      <div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="/img/stuff/Pavel_Tretyakov.jpg" alt=""></div>
+                      <div class="s_8__staff__data">
+                        <div class="s_8__staff__name">Pavel Tretyakov</div>
+                        <div class="s_8__staff__post">电子商务总监</div>
+                        <div class="s_8__staff__soc">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="s_8__staff__card_col">
+                    <div class="s_8__staff__card">
+                      <div class="s_8__staff__letter s_8__staff__letter-border">D</div>
+                      <div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="/img/stuff/Dmitriy_Filonenko.jpg" alt=""></div>
+                      <div class="s_8__staff__data">
+                        <div class="s_8__staff__name">Dmitriy Filonenko</div>
+                        <div class="s_8__staff__post">营销，电子营销</div>
+                        <div class="s_8__staff__soc">
+						<a href="https://www.linkedin.com/in/dmitryfilonenko/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="s_8__staff__card">
+                      <div class="s_8__staff__letter s_8__staff__letter-fill">J</div>
+                      <div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="/img/stuff/Julia_Stafford.jpg" alt=""></div>
+                      <div class="s_8__staff__data">
+                        <div class="s_8__staff__name">Julia Stafford</div>
+                        <div class="s_8__staff__post">数字广告主管</div>
+                        <div class="s_8__staff__soc">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="s_8__staff__card_col">
+                    <div class="s_8__staff__card">
+                      <div class="s_8__staff__letter s_8__staff__letter-border">E</div>
+                      <div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="/img/stuff/Ekaterina_Yukhtanova.jpg" alt=""></div>
+                      <div class="s_8__staff__data">
+                        <div class="s_8__staff__name">Ekaterina Yukhtanova</div>
+                        <div class="s_8__staff__post">设计师负责人</div>
+                        <div class="s_8__staff__soc">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="s_8__staff__card">
+                      <div class="s_8__staff__letter s_8__staff__letter-border">D</div>
+                      <div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="/img/stuff/Dmity_Didenko.jpg" alt=""></div>
+                      <div class="s_8__staff__data">
+                        <div class="s_8__staff__name">Dmitry Didenko</div>
+                        <div class="s_8__staff__post">执行制片人</div>
+                        <div class="s_8__staff__soc">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="s_8__staff__card_col">
+                    <div class="s_8__staff__card">
+                      <div class="s_8__staff__letter s_8__staff__letter-border">A</div>
+                      <div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="/img/stuff/Alexandra_Golovina.jpg" alt=""></div>
+                      <div class="s_8__staff__data">
+                        <div class="s_8__staff__name">Alexandra Golovina</div>
+                        <div class="s_8__staff__post">通信专家，<br>内容创建者。<br>社会学博士</div>
+                        <div class="s_8__staff__soc">
+                          <a href="http://www.linkedin.com/in/alexandra-golovina" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                          <a href="https://www.youtube.com/watch?v=98v7RPthEj4" target="_blank"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="s_8__staff__card">
+                      <div class="s_8__staff__letter s_8__staff__letter-fill">A</div>
+                      <div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="/img/stuff/Alexandr_Lysikov.jpg" alt=""></div>
+                      <div class="s_8__staff__data">
+                        <div class="s_8__staff__name">Alexandr Lysikov</div>
+                        <div class="s_8__staff__post">项目管理 - 区块链专家</div>
+                        <div class="s_8__staff__soc">
+                          <a href="https://www.facebook.com/sasha.lysikov.1" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+						  <a href="https://www.linkedin.com/in/lysikov-alexander/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                        </div>
+                      </div>
+           	        </div>
+                  </div>
+                  <div class="s_8__staff__card_col">
+                    <div class="s_8__staff__card">
+                      <div class="s_8__staff__letter s_8__staff__letter-fill">B</div>
+                      <div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="/img/stuff/Boris_Baranov.jpg" alt=""></div>
+                      <div class="s_8__staff__data">
+                        <div class="s_8__staff__name">Boris Baranov</div>
+                        <div class="s_8__staff__post">编辑，本地化，<br>社区经理</div>
+                        <div class="s_8__staff__soc">
+                          <a href="http://www.linkedin.com/in/borisbaranov" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                          <a href="https://www.youtube.com/watch?v=-q9-cYS_ghU" target="_blank"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="s_8__staff__card">
+                      <div class="s_8__staff__letter s_8__staff__letter-border">D</div>
+                      <div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="/img/stuff/Darya_Kolessova.jpg" alt=""></div>
+                      <div class="s_8__staff__data">
+                        <div class="s_8__staff__name">Darya Kolessova</div>
+                        <div class="s_8__staff__post">亚洲地区社区经理</div>
+                        <div class="s_8__staff__soc">
+                          <a href="https://www.facebook.com/profile.php?id=100009540560973" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                          <a href="http://linkedin.com/in/darya-kolessova-a5b60256" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                          <a href="https://www.youtube.com/watch?v=RvciX9-d5hA&t=1s" target="_blank"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="s_8__staff__card_col">
+                    <div class="s_8__staff__card">
+                      <div class="s_8__staff__letter s_8__staff__letter-border">A</div>
+                      <div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="/img/stuff/Andrey_Sinyakov.jpg" alt=""></div>
+                      <div class="s_8__staff__data">
+                        <div class="s_8__staff__name">Andrey Sinyakov</div>
+                        <div class="s_8__staff__post">亚洲地区社区经理(中国）</div>
+                        <div class="s_8__staff__soc">
+                          <a href="https://www.facebook.com/andy.morane" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                          <a href="https://www.youtube.com/watch?v=mqn9yhG9GhA" target="_blank"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="s_8__staff__card">
+                      <div class="s_8__staff__letter s_8__staff__letter-fill">J</div>
+                      <div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="/img/stuff/Joji_Natsui.jpg" alt=""></div>
+                      <div class="s_8__staff__data">
+                        <div class="s_8__staff__name">Joji Natsui</div>
+                        <div class="s_8__staff__post">亚洲区社区经理（日本），<br>SMM经理</div>
+                        <div class="s_8__staff__soc">
+                          <a href="https://www.facebook.com/wishandgush" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                          <a href="https://www.linkedin.com/in/joji-natsui-7745a9127/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                          <a href="https://www.youtube.com/watch?v=Pks82-1QkQg" target="_blank"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="s_8__staff__card_col">
+                    <div class="s_8__staff__card">
+                      <div class="s_8__staff__letter s_8__staff__letter-fill">Y</div>
+                      <div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="/img/stuff/Yaroslav_Karpov.jpg" alt=""></div>
+                      <div class="s_8__staff__data">
+                        <div class="s_8__staff__name">Yaroslav Karpov</div>
+                        <div class="s_8__staff__post">亚洲地区社区经理，<br>翻译（日本）</div>
+                        <div class="s_8__staff__soc">
+                          <a href="https://www.facebook.com/yaroslav.karpov.566" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+						  <a href="https://www.linkedin.com/in/yaroslav-karpov-3b792a14b" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                          <a href="https://www.youtube.com/watch?v=_HkCoHE_5MM" target="_blank"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="s_8__staff__card">
+                      <div class="s_8__staff__letter s_8__staff__letter-border">A</div>
+                      <div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="/img/stuff/Alexandr_Melikhov.jpg" alt=""></div>
+                      <div class="s_8__staff__data">
+                        <div class="s_8__staff__name">Alexander Melikhov</div>
+                        <div class="s_8__staff__post">界面设计师</div>
+                        <div class="s_8__staff__soc">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="s_8__staff__card_col">
+                    <div class="s_8__staff__card">
+                      <div class="s_8__staff__letter s_8__staff__letter-border">D</div>
+                      <div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="/img/stuff/Daria_Churilova.jpg" alt=""></div>
+                      <div class="s_8__staff__data">
+                        <div class="s_8__staff__name">Daria Churilova</div>
+                        <div class="s_8__staff__post">设计师，化身的创造者</div>
+                        <div class="s_8__staff__soc">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="s_8__staff__card">
+                      <div class="s_8__staff__letter s_8__staff__letter-fill">B</div>
+                      <div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="/img/stuff/Boris_Lazarev.jpg" alt=""></div>
+                      <div class="s_8__staff__data">
+                        <div class="s_8__staff__name">Boris Lazarev</div>
+                        <div class="s_8__staff__post">前端程序员</div>
+                        <div class="s_8__staff__soc">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="s_8__staff__card_col">
+                    <div class="s_8__staff__card">
+                      <div class="s_8__staff__letter s_8__staff__letter-fill">E</div>
+                      <div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="/img/stuff/Elena_Andreeva.jpg" alt=""></div>
+                      <div class="s_8__staff__data">
+                        <div class="s_8__staff__name">Elena Andreeva</div>
+                        <div class="s_8__staff__post">数据库，内容管理器</div>
+                        <div class="s_8__staff__soc">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="s_8__staff__card">
+                      <div class="s_8__staff__letter s_8__staff__letter-border">E</div>
+                      <div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="/img/stuff/Ekaterina_Solovieva.jpg" alt=""></div>
+                      <div class="s_8__staff__data">
+                        <div class="s_8__staff__name">Ekaterina Soloveva </div>
+                        <div class="s_8__staff__post">高级律师</div>
+                        <div class="s_8__staff__soc">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="s_8__staff__card_col">
+                    <div class="s_8__staff__card">
+                      <div class="s_8__staff__letter s_8__staff__letter-border">M</div>
+                      <div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="/img/stuff/Mary_Moscatelli.jpg" alt=""></div>
+                      <div class="s_8__staff__data">
+                        <div class="s_8__staff__name">Maria Moscateli</div>
+                        <div class="s_8__staff__post">欧洲地区社区经理 - 意大利</div>
+                        <div class="s_8__staff__soc">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="s_8__staff__card">
+                      <div class="s_8__staff__letter s_8__staff__letter-fill">A</div>
+                      <div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="/img/stuff/Anton_Bugaev.jpg" alt=""></div>
+                      <div class="s_8__staff__data">
+                        <div class="s_8__staff__name">Anton Bugaev</div>
+                        <div class="s_8__staff__post">CRM经理</div>
+                        <div class="s_8__staff__soc">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="s_8__staff__card_col">
+                    <div class="s_8__staff__card">
+                      <div class="s_8__staff__letter s_8__staff__letter-fill">I</div>
+                      <div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="/img/stuff/Ilya_Khokhryakov.jpg" alt=""></div>
+                      <div class="s_8__staff__data">
+                        <div class="s_8__staff__name">Ilya Khokhryakov</div>
+                        <div class="s_8__staff__post">3D全景专业摄影师</div>
+                        <div class="s_8__staff__soc">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="s_8__staff__card">
+                      <div class="s_8__staff__letter s_8__staff__letter-border">М</div>
+                      <div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="/img/stuff/Maria_Ermakova.jpg" alt=""></div>
+                      <div class="s_8__staff__data">
+                        <div class="s_8__staff__name">Maria Ermakova </div>
+                        <div class="s_8__staff__post">设计师</div>
+                        <div class="s_8__staff__soc">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="s_8__staff__card_col">
+                    <div class="s_8__staff__card">
+                      <div class="s_8__staff__letter s_8__staff__letter-border">O</div>
+                      <div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="/img/stuff/Olga_Sorokodumova.jpg" alt=""></div>
+                      <div class="s_8__staff__data">
+                        <div class="s_8__staff__name">Olga Sorokodumova</div>
+                        <div class="s_8__staff__post">B2B伙伴关系经理</div>
+                        <div class="s_8__staff__soc">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="s_8__staff__card">
+                      <div class="s_8__staff__letter s_8__staff__letter-fill">L</div>
+                      <div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="/img/stuff/Lubov_Taran.jpg" alt=""></div>
+                      <div class="s_8__staff__data">
+                        <div class="s_8__staff__name">Lubov Taran</div>
+                        <div class="s_8__staff__post">社区经理</div>
+                        <div class="s_8__staff__soc">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- mobile stuff -->
+                <div class="hidden-lg hidden-md hidden-sm s_8__staff__list-xs">
+                  <div class="s_8__staff__card">
+                    <div class="s_8__staff__letter s_8__staff__letter-fill">Y</div>
+                    <div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="/img/stuff/Yana_Kontorovich.jpg" alt=""></div>
+                    <div class="s_8__staff__data">
+                      <div class="s_8__staff__name">Yana Kontorovich</div>
+                      <div class="s_8__staff__post">首席执行官兼创始人，经济科学博士。 女实业家，投资者</div>
+                      <div class="s_8__staff__soc">
+                        <a href="https://www.facebook.com/yana.kontorovitch" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                        <a href="https://www.youtube.com/watch?v=CpG1Hd18PB0" target="_blank"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="s_8__staff__card">
+                    <div class="s_8__staff__letter s_8__staff__letter-border">E</div>
+                    <div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="/img/stuff/Evgeni_Malkin.jpg" alt=""></div>
+                    <div class="s_8__staff__data">
+                      <div class="s_8__staff__name">Evgeni Malkin</div>
+                      <div class="s_8__staff__post">联合创始人</div>
+                      <div class="s_8__staff__soc">
+                        <a href="https://www.instagram.com/e.malkin71geno/" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                        <a href="https://en.wikipedia.org/wiki/Evgeni_Malkin" target="_blank"><i class="fa fa-wikipedia-w" aria-hidden="true"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="s_8__staff__card">
+                    <div class="s_8__staff__letter s_8__staff__letter-fill">O</div>
+                    <div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="/img/stuff/Oleg_Ershov.jpg" alt=""></div>
+                    <div class="s_8__staff__data">
+                      <div class="s_8__staff__name">Oleg Ershov</div>
+                      <div class="s_8__staff__post">联合创始人，市场营销人员，企业家，公共事件的组织者</div>
+                      <div class="s_8__staff__soc">
+                        <a href="https://www.linkedin.com/in/oleg-ershov/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                        <a href="https://www.youtube.com/watch?v=8_epCqUseqY" target="_blank"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="s_8__staff__card">
+                    <div class="s_8__staff__letter s_8__staff__letter-border">D</div>
+                    <div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="/img/stuff/Denis_Polulyakhov.jpg" alt=""></div>
+                    <div class="s_8__staff__data">
+                      <div class="s_8__staff__name">Denis Polulyakhov</div>
+                      <div class="s_8__staff__post">联合创始人, 12年经验的IT企业家</div>
+                      <div class="s_8__staff__soc">
+                        <a href="https://www.facebook.com/tonymontanamsk" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                        <a href="https://www.linkedin.com/in/denis-polulyakhov-11161580/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                        <a href="https://www.youtube.com/watch?v=Tv6g_nynJY8" target="_blank"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="s_8__staff__card">
+                    <div class="s_8__staff__letter s_8__staff__letter-fill">V</div>
+                    <div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="/img/stuff/Vladislav_Utushkin.jpg" alt=""></div>
+                    <div class="s_8__staff__data">
+                      <div class="s_8__staff__name">Vladislav Utushkin</div>
+                      <div class="s_8__staff__post">广告商营销人员，分析师，顾问</div>
+                      <div class="s_8__staff__soc">
+                        <a href="https://www.facebook.com/v.utushkin" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="s_8__staff__card">
+                    <div class="s_8__staff__letter s_8__staff__letter-border">V</div>
+                    <div class="s_8__staff__avatar" title="25 years of experience in IT & web development. Founder & CEO «Site Makers». Author of MARK projects."><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="/img/stuff/Vladimir_Shliapin.jpg" alt=""></div>
+                    <div class="s_8__staff__data">
+                      <div class="s_8__staff__name">Vladimir Shliapin</div>
+                      <div class="s_8__staff__post">CTO, 发明家，<br>IT开发人员（25年），<br>数学硕士</div>
+                      <div class="s_8__staff__soc">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="s_8__staff__card hidden">
+                    <div class="s_8__staff__letter s_8__staff__letter-fill">A</div>
+                    <div class="s_8__staff__avatar" title="27 years of experience in IT & web development. CTO «Site Makers»."><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="/img/stuff/Alexander_Shtankovsky.jpg" alt=""></div>
+                    <div class="s_8__staff__data">
+                      <div class="s_8__staff__name">Alexander Shtankovsky</div>
+                      <div class="s_8__staff__post">开发人员主管,<br>IT开发人员（27年），<br>数学硕士</div>
+                      <div class="s_8__staff__soc">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="s_8__staff__card hidden">
+                    <div class="s_8__staff__letter s_8__staff__letter-border">K</div>
+                    <div class="s_8__staff__avatar" title="5年多的加密货币投资经验。投资顾问，信息渠道创始人和日本加密投资作者的课程"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="/img/stuff/Kentaro_Harada.jpg" alt=""></div>
+                    <div class="s_8__staff__data">
+                      <div class="s_8__staff__name">Kentaro Harada</div>
+                      <div class="s_8__staff__post">MARK.SPACE日本大使, 密码专家</div>
+                      <div class="s_8__staff__soc">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="s_8__staff__card hidden">
+                    <div class="s_8__staff__letter s_8__staff__letter-fill">D</div>
+                    <div class="s_8__staff__avatar" title="信息学数学家。 总部设在日本，自2011年起。日语流利。 东京商学院毕业。 在他自己的YouTube频道上撰写关于日本（超过65万用户）。"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="/img/stuff/Shamov_Dmitriy.jpg" alt=""></div>
+                    <div class="s_8__staff__data">
+                      <div class="s_8__staff__name">Dmitry Shamov</div>
+                      <div class="s_8__staff__post">日本的官方代表</div>
+                      <div class="s_8__staff__soc">
+                      </div>
+                    </div>
+                  </div>
+	              <div class="s_8__staff__card hidden">
+  	                <div class="s_8__staff__letter s_8__staff__letter-border">J</div>
+    	            <div class="s_8__staff__avatar" title="曾女士拥有20 国际资本市场工作经验及企业管理、业务开发、市场开拓、大型项目管理经验。曾为法国巴黎银行（中国）有限公司董事总经理、法国巴黎银行证券服务公司中国总经理、法国巴黎银行证券服务公司亚洲开发主任、德国证券交易所亚洲业务开发执行总监，并担任过国际明讯银行 (Clearstream）以及卢森堡银行等机构的不同管理职位。有深厚的国际工作背景，并创建过自己的企业，过往工作经历先后覆盖多重行业。曾女士拥有欧洲工商管理学院（INSEAD） MBA、法国南锡大学计算机硕士、上海交通大学自动控制学士学位。"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="/img/stuff/Jing_Zeng.jpg" alt=""></div>
+      	            <div class="s_8__staff__data">
+        	          <div class="s_8__staff__name">Jing Zeng</div>
+          	          <div class="s_8__staff__post">业务开发主任（中国）</div>
+            	      <div class="s_8__staff__soc">
+              	      </div>
+                    </div>
+                  </div>
+	              <div class="s_8__staff__card hidden">
+  	                <div class="s_8__staff__letter s_8__staff__letter-fill">A</div>
+    	            <div class="s_8__staff__avatar" title="欧先生拥有超过3年的全球宏观对冲基金外汇交易经验，2年军方口译经验，以及2年的企业管理经验。 欧先生拥有宾夕法尼亚大学荣誉学士学位 "><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="/img/stuff/David_Oh.jpg" alt=""></div>
+      	            <div class="s_8__staff__data">
+        	          <div class="s_8__staff__name">David Oh</div>
+          	          <div class="s_8__staff__post">业务发展经理(韩国)</div>
+            	      <div class="s_8__staff__soc">
+						<a href="https://www.linkedin.com/in/david-oh-02661b101/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+              	      </div>
+                    </div>
+                  </div>
+                  <div class="s_8__staff__card hidden">
+                    <div class="s_8__staff__letter s_8__staff__letter-border">V</div>
+                    <div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="/img/stuff/Victor-Skrynnikov.jpg" alt=""></div>
+                    <div class="s_8__staff__data">
+                      <div class="s_8__staff__name">Victor Skrynnikov</div>
+                      <div class="s_8__staff__post">领导Ux / Ui网页设计师</div>
+                      <div class="s_8__staff__soc">
+                        <a href="https://www.behance.net/thelegacy" target="_blank"><i class="fa fa-behance" aria-hidden="true"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="s_8__staff__card hidden">
+                    <div class="s_8__staff__letter s_8__staff__letter-fill">D</div>
+                    <div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="/img/stuff/Dmitry_Machikhin.jpg" alt=""></div>
+                    <div class="s_8__staff__data">
+                      <div class="s_8__staff__name">Dmitry Machikhin</div>
+                      <div class="s_8__staff__post">电子商务总监</div>
+                      <div class="s_8__staff__soc">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="s_8__staff__card hidden">
+                    <div class="s_8__staff__letter s_8__staff__letter-border">S</div>
+                    <div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="/img/stuff/Siruz_Faramarz.jpg" alt=""></div>
+                    <div class="s_8__staff__data">
+                      <div class="s_8__staff__name">Siruz Faramarz</div>
+                      <div class="s_8__staff__post">VR＆3D部门主管</div>
+                      <div class="s_8__staff__soc">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="s_8__staff__card hidden">
+                    <div class="s_8__staff__letter s_8__staff__letter-fill">R</div>
+                    <div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="/img/stuff/Roman_Zhuravlev.jpg" alt=""></div>
+                    <div class="s_8__staff__data">
+                      <div class="s_8__staff__name">Roman Zhuravlev</div>
+                      <div class="s_8__staff__post">网络工程负责人</div>
+                      <div class="s_8__staff__soc">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="s_8__staff__card hidden">
+                    <div class="s_8__staff__letter s_8__staff__letter-border">P</div>
+                    <div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="/img/stuff/Pavel_Tretyakov.jpg" alt=""></div>
+                    <div class="s_8__staff__data">
+                      <div class="s_8__staff__name">Pavel Tretyakov</div>
+                      <div class="s_8__staff__post">电子商务总监</div>
+                      <div class="s_8__staff__soc">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="s_8__staff__card hidden">
+                    <div class="s_8__staff__letter s_8__staff__letter-fill">D</div>
+                    <div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="/img/stuff/Dmitriy_Filonenko.jpg" alt=""></div>
+                    <div class="s_8__staff__data">
+                      <div class="s_8__staff__name">Dmitriy Filonenko</div>
+                      <div class="s_8__staff__post">营销，电子营销</div>
+                      <div class="s_8__staff__soc">
+						<a href="https://www.linkedin.com/in/dmitryfilonenko/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="s_8__staff__card hidden">
+                    <div class="s_8__staff__letter s_8__staff__letter-border">J</div>
+                    <div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="/img/stuff/Julia_Stafford.jpg" alt=""></div>
+                    <div class="s_8__staff__data">
+                      <div class="s_8__staff__name">Julia Stafford</div>
+                      <div class="s_8__staff__post">数字广告主管</div>
+                      <div class="s_8__staff__soc">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="s_8__staff__card hidden">
+                    <div class="s_8__staff__letter s_8__staff__letter-fill">E</div>
+                    <div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="/img/stuff/Ekaterina_Yukhtanova.jpg" alt=""></div>
+                    <div class="s_8__staff__data">
+                      <div class="s_8__staff__name">Ekaterina Yukhtanova</div>
+                      <div class="s_8__staff__post">设计师负责人</div>
+                      <div class="s_8__staff__soc">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="s_8__staff__card hidden">
+                    <div class="s_8__staff__letter s_8__staff__letter-border">D</div>
+                    <div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="/img/stuff/Dmity_Didenko.jpg" alt=""></div>
+                    <div class="s_8__staff__data">
+                      <div class="s_8__staff__name">Dmitry Didenko</div>
+                      <div class="s_8__staff__post">执行制片人</div>
+                      <div class="s_8__staff__soc">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="s_8__staff__card hidden">
+                    <div class="s_8__staff__letter s_8__staff__letter-fill">A</div>
+                    <div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="/img/stuff/Alexandra_Golovina.jpg" alt=""></div>
+                    <div class="s_8__staff__data">
+                      <div class="s_8__staff__name">Alexandra Golovina</div>
+                      <div class="s_8__staff__post">通信专家，<br>内容创建者。<br>社会学博士</div>
+                      <div class="s_8__staff__soc">
+                        <a href="http://www.linkedin.com/in/alexandra-golovina" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                        <a href="https://www.youtube.com/watch?v=98v7RPthEj4" target="_blank"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="s_8__staff__card hidden">
+                    <div class="s_8__staff__letter s_8__staff__letter-border">A</div>
+                    <div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="/img/stuff/Alexandr_Lysikov.jpg" alt=""></div>
+                    <div class="s_8__staff__data">
+                      <div class="s_8__staff__name">Alexandr Lysikov</div>
+                      <div class="s_8__staff__post">项目管理 - 区块链专家</div>
+                      <div class="s_8__staff__soc">
+                          <a href="https://www.facebook.com/sasha.lysikov.1" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+						  <a href="https://www.linkedin.com/in/lysikov-alexander/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="s_8__staff__card hidden">
+                    <div class="s_8__staff__letter s_8__staff__letter-fill">B</div>
+                    <div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="/img/stuff/Boris_Baranov.jpg" alt=""></div>
+                    <div class="s_8__staff__data">
+                      <div class="s_8__staff__name">Boris Baranov</div>
+                      <div class="s_8__staff__post">编辑，本地化，<br>社区经理</div>
+                      <div class="s_8__staff__soc">
+                        <a href="http://www.linkedin.com/in/borisbaranov" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                        <a href="https://www.youtube.com/watch?v=-q9-cYS_ghU" target="_blank"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="s_8__staff__card hidden">
+                    <div class="s_8__staff__letter s_8__staff__letter-border">D</div>
+                    <div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="/img/stuff/Darya_Kolessova.jpg" alt=""></div>
+                    <div class="s_8__staff__data">
+                      <div class="s_8__staff__name">Darya Kolessova</div>
+                      <div class="s_8__staff__post">亚洲地区社区经理</div>
+                      <div class="s_8__staff__soc">
+                        <a href="https://www.facebook.com/profile.php?id=100009540560973" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                        <a href="http://linkedin.com/in/darya-kolessova-a5b60256" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                        <a href="https://www.youtube.com/watch?v=RvciX9-d5hA&t=1s" target="_blank"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="s_8__staff__card hidden">
+                    <div class="s_8__staff__letter s_8__staff__letter-fill">A</div>
+                    <div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="/img/stuff/Andrey_Sinyakov.jpg" alt=""></div>
+                    <div class="s_8__staff__data">
+                      <div class="s_8__staff__name">Andrey Sinyakov</div>
+                      <div class="s_8__staff__post">亚洲地区社区经理(中国）</div>
+                      <div class="s_8__staff__soc">
+                        <a href="https://www.facebook.com/andy.morane" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                        <a href="https://www.youtube.com/watch?v=mqn9yhG9GhA" target="_blank"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="s_8__staff__card hidden">
+                    <div class="s_8__staff__letter s_8__staff__letter-border">J</div>
+                    <div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="/img/stuff/Joji_Natsui.jpg" alt=""></div>
+                    <div class="s_8__staff__data">
+                      <div class="s_8__staff__name">Joji Natsui</div>
+                      <div class="s_8__staff__post">亚洲区社区经理（日本），SMM经理</div>
+                      <div class="s_8__staff__soc">
+                        <a href="https://www.facebook.com/wishandgush" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                        <a href="https://www.linkedin.com/in/joji-natsui-7745a9127/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                        <a href="https://www.youtube.com/watch?v=Pks82-1QkQg" target="_blank"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="s_8__staff__card hidden">
+                    <div class="s_8__staff__letter s_8__staff__letter-fill">Y</div>
+                    <div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="/img/stuff/Yaroslav_Karpov.jpg" alt=""></div>
+                    <div class="s_8__staff__data">
+                      <div class="s_8__staff__name">Yaroslav Karpov</div>
+                      <div class="s_8__staff__post">亚洲地区社区经理，翻译（日本）</div>
+                      <div class="s_8__staff__soc">
+                        <a href="https://www.facebook.com/yaroslav.karpov.566" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+						<a href="https://www.linkedin.com/in/yaroslav-karpov-3b792a14b" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                        <a href="https://www.youtube.com/watch?v=_HkCoHE_5MM" target="_blank"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="s_8__staff__card hidden">
+                    <div class="s_8__staff__letter s_8__staff__letter-border">A</div>
+                    <div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="/img/stuff/Alexandr_Melikhov.jpg" alt=""></div>
+                    <div class="s_8__staff__data">
+                      <div class="s_8__staff__name">Alexander Melikhov</div>
+                      <div class="s_8__staff__post">界面设计师</div>
+                      <div class="s_8__staff__soc">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="s_8__staff__card hidden">
+                    <div class="s_8__staff__letter s_8__staff__letter-fill">D</div>
+                    <div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="/img/stuff/Daria_Churilova.jpg" alt=""></div>
+                    <div class="s_8__staff__data">
+                      <div class="s_8__staff__name">Daria Churilova</div>
+                      <div class="s_8__staff__post">设计师，化身的创造者</div>
+                      <div class="s_8__staff__soc">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="s_8__staff__card hidden">
+                    <div class="s_8__staff__letter s_8__staff__letter-border">B</div>
+                    <div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="/img/stuff/Boris_Lazarev.jpg" alt=""></div>
+                    <div class="s_8__staff__data">
+                      <div class="s_8__staff__name">Boris Lazarev</div>
+                      <div class="s_8__staff__post">前端程序员</div>
+                      <div class="s_8__staff__soc">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="s_8__staff__card hidden">
+                    <div class="s_8__staff__letter s_8__staff__letter-fill">E</div>
+                    <div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="/img/stuff/Elena_Andreeva.jpg" alt=""></div>
+                    <div class="s_8__staff__data">
+                      <div class="s_8__staff__name">Elena Andreeva</div>
+                      <div class="s_8__staff__post">数据库，内容管理器</div>
+                      <div class="s_8__staff__soc">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="s_8__staff__card hidden">
+                    <div class="s_8__staff__letter s_8__staff__letter-border">E</div>
+                    <div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="/img/stuff/Ekaterina_Solovieva.jpg" alt=""></div>
+                    <div class="s_8__staff__data">
+                      <div class="s_8__staff__name">Ekaterina Soloveva </div>
+                      <div class="s_8__staff__post">高级律师</div>
+                      <div class="s_8__staff__soc">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="s_8__staff__card hidden">
+                    <div class="s_8__staff__letter s_8__staff__letter-fill">M</div>
+                    <div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="/img/stuff/Mary_Moscatelli.jpg" alt=""></div>
+                    <div class="s_8__staff__data">
+                      <div class="s_8__staff__name">Maria Moscateli</div>
+                      <div class="s_8__staff__post">欧洲地区社区经理 - 意大利</div>
+                      <div class="s_8__staff__soc">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="s_8__staff__card hidden">
+                    <div class="s_8__staff__letter s_8__staff__letter-border">A</div>
+                    <div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="/img/stuff/Anton_Bugaev.jpg" alt=""></div>
+                    <div class="s_8__staff__data">
+                      <div class="s_8__staff__name">Anton Bugaev</div>
+                      <div class="s_8__staff__post">CRM经理</div>
+                      <div class="s_8__staff__soc">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="s_8__staff__card hidden">
+                    <div class="s_8__staff__letter s_8__staff__letter-fill">I</div>
+                    <div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="/img/stuff/Ilya_Khokhryakov.jpg" alt=""></div>
+                    <div class="s_8__staff__data">
+                      <div class="s_8__staff__name">Ilya Khokhryakov</div>
+                      <div class="s_8__staff__post">3D全景专业摄影师</div>
+                      <div class="s_8__staff__soc">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="s_8__staff__card hidden">
+                    <div class="s_8__staff__letter s_8__staff__letter-border">М</div>
+                    <div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="/img/stuff/Maria_Ermakova.jpg" alt=""></div>
+                    <div class="s_8__staff__data">
+                      <div class="s_8__staff__name">Maria Ermakova </div>
+                      <div class="s_8__staff__post">设计师</div>
+                      <div class="s_8__staff__soc">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="s_8__staff__card hidden">
+                    <div class="s_8__staff__letter s_8__staff__letter-fill">O</div>
+                    <div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="/img/stuff/Olga_Sorokodumova.jpg" alt=""></div>
+                    <div class="s_8__staff__data">
+                      <div class="s_8__staff__name">Olga Sorokodumova</div>
+                      <div class="s_8__staff__post">B2B伙伴关系经理</div>
+                      <div class="s_8__staff__soc">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="s_8__staff__card hidden">
+                    <div class="s_8__staff__letter s_8__staff__letter-fill">L</div>
+                    <div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="/img/stuff/Lubov_Taran.jpg" alt=""></div>
+                    <div class="s_8__staff__data">
+                      <div class="s_8__staff__name">Lubov Taran</div>
+                      <div class="s_8__staff__post">社区经理</div>
+                      <div class="s_8__staff__soc">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="text-center">
+                  <button class="s_8__staff__more hidden-lg hidden-md hidden-sm">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 462.088 462.088" style="enable-background:new 0 0 462.088 462.088;" xml:space="preserve" width="25px" height="25px">
+                      <g>
+                        <g>
+                          <g>
+                            <path d="M417.041,202.182c-7.483,0-13.896-5.345-16.034-12.827     c-18.172-80.171-88.723-136.826-172.101-136.826S74.977,109.184,56.805,189.355c-2.138,8.552-10.689,13.896-19.241,11.758     s-13.896-10.689-11.758-19.241c21.379-95.137,105.826-161.411,203.1-161.411s181.721,66.275,203.1,161.411     c2.138,8.552-3.207,17.103-11.758,19.241C419.179,201.113,418.11,202.182,417.041,202.182z" fill="#FFFFFF" />
+                          </g>
+                          <path d="M422.386,206.458c-2.138,0-4.276,0-6.414-1.069l-55.585-23.517    c-8.552-3.207-11.758-12.827-8.552-21.379s12.827-11.758,21.379-8.552l40.62,17.103l17.103-40.62    c3.207-8.552,12.827-11.758,21.379-8.552s11.758,12.827,8.552,21.379l-23.517,55.585c-2.138,4.276-4.276,7.483-8.552,8.552    C426.662,206.458,424.524,206.458,422.386,206.458z" fill="#FFFFFF" />
+                          <g>
+                            <path d="M232.113,441.627c-97.274,0-181.721-66.275-203.1-161.411     c-2.138-8.552,3.207-17.103,11.758-19.241s17.103,3.207,19.241,11.758c18.172,80.171,88.723,136.826,172.101,136.826     s153.929-56.654,172.101-136.826c2.138-8.552,10.689-13.896,19.241-11.758s13.896,10.69,11.758,19.241     C413.834,375.352,330.456,441.627,232.113,441.627z" fill="#FFFFFF" />
+                          </g>
+                          <path d="M16.185,343.284c-2.138,0-4.276,0-6.414-1.069c-8.552-3.207-11.758-12.827-8.552-21.379    l23.517-55.585c3.207-8.552,12.827-11.758,21.379-8.552l55.585,23.517c8.552,3.207,11.758,12.827,8.552,21.379    c-3.207,8.552-12.827,11.758-21.379,8.552l-40.62-17.103L31.15,332.594C29.013,339.008,22.599,343.284,16.185,343.284z" fill="#FFFFFF" />
+                        </g>
+                      </g>
+                    </svg>Load more</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="section s_8">
+        <canvas id="page-bg-8" class="page-bg"></canvas>
+        <div class="container">
+          <div class="row">
+            <div class="col-xs-12">
+              <h2 class="s_title" data-before="Advisors">顾问</h2>
+              <div class="s_8__wrap">
+                <div class="s_8__staff_wrap hidden-xs" data-scrolltext="向右滑动以探索其余的团队">
+                  <div class="s_8__staff__card_col">
+	                <div class="s_8__staff__card">
+                      <div class="s_8__staff__letter s_8__staff__letter-fill">E</div>
+                      <div class="s_8__staff__avatar" title=" 10年以上金融科技经验。 在支付领域，用户身份识别和银行基础设施领域实施了顶级公司的SaaS。 Cryptopay总经理。 参与区块链项目的创建：GoCoin，Changetip，Uphold，Credits，Blockex，Trueflip.io，Dao.casino。"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="/img/stuff/Eric_Benz.jpg" alt=""></div>
+                      <div class="s_8__staff__data">
+                        <div class="s_8__staff__name">Eric Benz</div>
+                        <div class="s_8__staff__post">董事总经理,CRYPTOPAY</div>
+                        <div class="s_8__staff__soc">
+	                      <a href="https://www.facebook.com/benzeric" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+    	                  <a href="https://www.linkedin.com/in/ericbenz84/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                        </div>
+                      </div>
+                  	</div>
+                    <div class="s_8__staff__card">
+                      <div class="s_8__staff__letter s_8__staff__letter-border">R</div>
+                      <div class="s_8__staff__avatar" title="RUNE是COSS团队管理和支持的领袖也是项目冠军。 他是商业和初创顾问，企业家和公众演讲者。他创办了很多互联网公司，包括在与多国团队合作顶尖领导的18年经验。"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="/img/advisors/Rune_Evensen.jpg" alt=""></div>
+                      <div class="s_8__staff__data">
+                        <div class="s_8__staff__name">Rune Evensen</div>
+                        <div class="s_8__staff__post">新加坡交易所www.coss.io联合创始人和 梦想家。</div>
+                        <div class="s_8__staff__soc">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="s_8__staff__card_col">
+                    <div class="s_8__staff__card">
+                      <div class="s_8__staff__letter s_8__staff__letter-border">S</div>
+                      <div class="s_8__staff__avatar" title="在AI，区块链，加密货币＆加密资产，代币销售，数字娱乐，新媒体，社交媒体，移动/电子商务，物联网和智能消费设备方面拥有20年的经验。 AVO Partners Group的普通合伙人及Southern International Capital普通合伙人。 Gibraltar Stock Exchange顾问，Southern International Capital普通合伙人，Next-TV总裁，STM数码控股集团董事长。"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="/img/advisors/Samson_Lee.jpg" alt=""></div>
+                      <div class="s_8__staff__data">
+                        <div class="s_8__staff__name">Samson(Sam) Lee</div>
+                        <div class="s_8__staff__post">大湾区TechFin Asso董事长。 CoinStreet首席执行官. Ethereum S. China社区联合创始人</div>
+                        <div class="s_8__staff__soc">
+                          <a href="https://www.linkedin.com/in/samsonlee/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="s_8__staff__card">
+                      <div class="s_8__staff__letter s_8__staff__letter-fill">R</div>
+                      <div class="s_8__staff__avatar" title="许多成功的代币销售顾问。 斯洛伐克爱尔兰商会会员，ISO TC307 NSAI国家镜像委员会委员.Reuben曾在全球的技术，电信和制药行业的主要跨国公司和初创公司担任销售，业务开发，财务和运营等职位。"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="/img/advisors/Reuben_Godfrey.jpg" alt=""></div>
+                      <div class="s_8__staff__data">
+                        <div class="s_8__staff__name">Reuben Godfrey</div>
+                        <div class="s_8__staff__post">Blockchain Association of Ireland和Ireland's Crypto Coast联合创始人</div>
+                        <div class="s_8__staff__soc">
+                          <a href="https://www.linkedin.com/in/reuben-godfrey-1a18055/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- mobile stuff -->
+                <div class="hidden-lg hidden-md hidden-sm s_8__staff__list-xs">
+	              <div class="s_8__staff__card">
+                    <div class="s_8__staff__letter s_8__staff__letter-fill">E</div>
+                    <div class="s_8__staff__avatar" title=" 10年以上金融科技经验。 在支付领域，用户身份识别和银行基础设施领域实施了顶级公司的SaaS。 Cryptopay总经理。 参与区块链项目的创建：GoCoin，Changetip，Uphold，Credits，Blockex，Trueflip.io，Dao.casino。"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="/img/stuff/Eric_Benz.jpg" alt=""></div>
+                    <div class="s_8__staff__data">
+                      <div class="s_8__staff__name">Eric Benz</div>
+                      <div class="s_8__staff__post">董事总经理,CRYPTOPAY</div>
+                      <div class="s_8__staff__soc">
+	                    <a href="https://www.facebook.com/benzeric" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+    	                <a href="https://www.linkedin.com/in/ericbenz84/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="s_8__staff__card">
+                    <div class="s_8__staff__letter s_8__staff__letter-fill">S</div>
+                    <div class="s_8__staff__avatar" title="在AI，区块链，加密货币＆加密资产，代币销售，数字娱乐，新媒体，社交媒体，移动/电子商务，物联网和智能消费设备方面拥有20年的经验。 AVO Partners Group的普通合伙人及Southern International Capital普通合伙人。 Gibraltar Stock Exchange顾问，Southern International Capital普通合伙人，Next-TV总裁，STM数码控股集团董事长。"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="/img/advisors/Samson_Lee.jpg" alt=""></div>
+                    <div class="s_8__staff__data">
+                      <div class="s_8__staff__name">Samson(Sam) Lee</div>
+                      <div class="s_8__staff__post">大湾区TechFin Asso董事长。 CoinStreet首席执行官. Ethereum S. China社区联合创始人</div>
+                      <div class="s_8__staff__soc">
+                        <a href="https://www.linkedin.com/in/samsonlee/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="s_8__staff__card">
+                    <div class="s_8__staff__letter s_8__staff__letter-border">R</div>
+                    <div class="s_8__staff__avatar" title="许多成功的代币销售顾问。 斯洛伐克爱尔兰商会会员，ISO TC307 NSAI国家镜像委员会委员.Reuben曾在全球的技术，电信和制药行业的主要跨国公司和初创公司担任销售，业务开发，财务和运营等职位。"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="/img/advisors/Reuben_Godfrey.jpg" alt=""></div>
+                    <div class="s_8__staff__data">
+                      <div class="s_8__staff__name">Reuben Godfrey</div>
+                      <div class="s_8__staff__post">Blockchain Association of Ireland和Ireland's Crypto Coast联合创始人</div>
+                      <div class="s_8__staff__soc">
+                        <a href="https://www.linkedin.com/in/reuben-godfrey-1a18055/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="s_8__staff__card">
+                    <div class="s_8__staff__letter s_8__staff__letter-border">R</div>
+                    <div class="s_8__staff__avatar" title="RUNE是COSS团队管理和支持的领袖也是项目冠军。 他是商业和初创顾问，企业家和公众演讲者。他创办了很多互联网公司，包括在与多国团队合作顶尖领导的18年经验。"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="/img/advisors/Rune_Evensen.jpg" alt=""></div>
+                    <div class="s_8__staff__data">
+                      <div class="s_8__staff__name">Rune Evensen</div>
+                      <div class="s_8__staff__post">新加坡交易所www.coss.io联合创始人和 梦想家。</div>
+                      <div class="s_8__staff__soc">
+                      </div>
+                    </div>
+                  </div>
+	            </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="section s_6">
+        <canvas id="page-bg-6" class="page-bg"></canvas>
+        <div class="container">
+          <div class="row">
+            <div class="col-xs-12">
+              <h2 class="s_title" data-before="文件">文件</h2>
+              <div class="s_6__wrap">
+                <div class="s_6__doc">
+                  <a href="/files/wp/WP_cn.pdf" target="_blank">
+                    <span class="s_6__doc__img">
+                      <img src="/img/docs/1.jpg" alt="">
+                    </span>
+                    <h3 class="s_6__doc__label">白皮书</h3>
+                  </a>
+                </div>
+                <div class="s_6__doc">
+                  <a href="/files/milestones/milestones_en.pdf" target="_blank">
+                    <span class="s_6__doc__img">
+                      <img src="/img/docs/2.jpg" alt="">
+                    </span>
+                    <h3 class="s_6__doc__label">里程碑</h3>
+                  </a>
+                </div>
+                <div class="s_6__doc">
+                  <a href="/files/Markspace_TOKEN_SALE_TERMS_AND_CONDITIONS.pdf" target="_blank">
+                    <span class="s_6__doc__img">
+                      <img src="/img/docs/3.jpg" alt="">
+                    </span>
+                    <h3 class="s_6__doc__label">代币销售条款</h3>
+                  </a>
+                </div>
+                <div class="s_6__doc">
+                  <a href="/files/MARKSPACE_PRIVACY_POLICY.pdf" target="_blank">
+                    <span class="s_6__doc__img">
+                      <img src="/img/docs/4.jpg" alt="">
+                    </span>
+                    <h3 class="s_6__doc__label">隐私政策</h3>
+                  </a>
+                </div>
+                <div class="s_6__doc">
+                  <a href="/files/presentation/bookletmarkspace_cn.pdf" target="_blank">
+                    <span class="s_6__doc__img">
+                      <img src="/img/docs/6.jpg" alt="">
+                    </span>
+                    <h3 class="s_6__doc__label">简介下载</h3>
+                  </a>
+                </div>
+                <div class="s_6__doc">
+                  <a href="/files/contest/apartment_challenge_cn.pdf" target="_blank">
+                    <span class="s_6__doc__img">
+                      <img src="/img/docs/7.jpg" alt="">
+                    </span>
+                    <h3 class="s_6__doc__label">公寓设计比赛</h3>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="section s_12">
+        <canvas id="page-bg-12" class="page-bg"></canvas>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 col-xs-12">
+              <h2 class="s_title" data-before="stay tuned!">敬请关注</h2>
+
+<div class="s_12__subscribe" id="mc_embed_signup">
+<form method="POST" action="https://cp.unisender.com/ru/subscribe?hash=6n7y3swyarqaxfd534ifudxorqb53rpxbuc4uj7z6tau4buhrf4iy" target="_blank"><input type="hidden" name="charset" value="UTF-8"><input type="hidden" name="default_list_id" value="12303965"><input type="hidden" name="overwrite" value="2"><input type="hidden" name="is_v5" value="1">
+<input type="hidden" name="SOURCE" value="stay_tuned">
+<input type="email" value="" name="email" class="s_12__subscribe__mail" placeholder="email address" required>
+<input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="s_12__subscribe__submit">
+</form>
+</div>
+            </div>
+            <div class="col-lg-5 col-md-5 col-xs-12">
+              <div class="s_12__text">
+                <p>本网站发布的信息不是公开发行的“MARK.SPACE”。您根据本网站上发布的信息对您做出的决定负责。您没有权利，如果您是美国居民（税务或其他）或绿卡持有人以及中国，或您代表这些国家，您无权购买“MARK.SPACE”代币。</p>
+                <p>MARK.SPACE, 140 Paya Lebar Road #10-09 AZ@Paya Lebar Singapore 409015</p>
+              </div>
+            </div>
+          </div>
+            <div class="col-xs-12">
+              <div class="footer__links">
+                <div class="footer__soc">
+                  <a href="http://goo.gl/y1cVMm" target="_blank"><i class="fa fa-paper-plane" aria-hidden="true"></i><span>Telegram</span></a>
+                  <a href="https://goo.gl/2BPDwL" target="_blank"><i class="fa fa-btc" aria-hidden="true"></i><span>Bitcointalk</span></a>
+                  <a href="https://goo.gl/FpcGoJ" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i><span>Facebook</span></a>
+                  <a href="https://medium.com/@markspace" target="_blank"><i class="fa fa-medium" aria-hidden="true"></i><span>Medium</span></a>
+                  <a href="https://goo.gl/ASDCRT" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i><span>Twitter</span></a>
+                  <a href="https://reddit.com/r/markspace" target="_blank"><i class="fa fa-reddit-alien" aria-hidden="true"></i><span>Reddit</span></a>
+                  <a href="https://goo.gl/Tah3re" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i><span>Linkedin</span></a>
+                  <a href="https://goo.gl/tjHbrc" target="_blank"><i class="fa fa-youtube-play" aria-hidden="true"></i><span>Youtube</span></a>
+                  <a href="https://www.instagram.com/markspace_io/" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i><span>Instagram</span></a>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="s_12__footer hidden-lg hidden-md ">
+          <div class="container">
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="footer__links hidden-xs">
+                  <div class="footer__soc no-visible">
+                    <a href="https://goo.gl/y1cVMm" target="_blank"><i class="fa fa-paper-plane" aria-hidden="true"></i></a>
+                    <a href="https://goo.gl/2BPDwL" target="_blank"><i class="fa fa-btc" aria-hidden="true"></i></a>
+                    <a href="https://goo.gl/FpcGoJ" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                    <a href="https://medium.com/@markspace" target="_blank"><i class="fa fa-medium" aria-hidden="true"></i></a>
+                    <a href="https://goo.gl/ASDCRT" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                    <a href="https://reddit.com/r/markspace" target="_blank"><i class="fa fa-reddit-alien" aria-hidden="true"></i></a>
+                    <a href="https://goo.gl/Tah3re" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                    <a href="https://goo.gl/tjHbrc" target="_blank"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
+                    <a href="https://www.instagram.com/markspace_io/" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                  </div>
+                </div>
+                <div class="footer__copyright">
+                  ©2018 mark.space &nbsp;&nbsp; 140 Paya Lebar Road, #10-09, Singapore 409015
+				  <br><a href="/#Tuned">美国，新加披和中国公民无法参与MARK.SPACE代币出售</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <script src="js/scripts.min.js?13" async></script>
+
+<script type="text/javascript">
+setTimeout(function(){
+(function(){    if (typeof carrotquest === 'undefined') {      var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true;      s.src = '//cdn.carrotquest.io/api.min.js';      var x = document.getElementsByTagName('head')[0]; x.appendChild(s);      carrotquest = {}; window.carrotquestasync = []; carrotquest.settings = {};      m = ['connect', 'track', 'identify', 'auth', 'open', 'onReady', 'addCallback', 'removeCallback', 'trackMessageInteraction'];      function Build(name, args){return function(){window.carrotquestasync.push(name, arguments);} }      for (var i = 0; i < m.length; i++) carrotquest[m[i]] = Build(m[i]);    }  })();  carrotquest.connect('12589-7b8bb919cadc76902b3636b0c3');
+},1000);
+</script>
+<!-- Twitter universal website tag code -->
+<script>
+setTimeout(function(){
+!function(e,t,n,s,u,a){e.twq||(s=e.twq=function(){s.exe?s.exe.apply(s,arguments):s.queue.push(arguments);
+},s.version='1.1',s.queue=[],u=t.createElement(n),u.async=!0,u.src='//static.ads-twitter.com/uwt.js',
+a=t.getElementsByTagName(n)[0],a.parentNode.insertBefore(u,a))}(window,document,'script');
+// Insert Twitter Pixel ID and Standard Event data below
+twq('init','nyfjz');
+twq('track','PageView');
+},1200);
+</script>
+<!-- End Twitter universal website tag code -->
+<style>
+#carrotquest-messenger-collapsed #carrotquest-collapsed-text #carrotquest-collapsed-text-text-cont {font:400 11px/12px Roboto;max-width:80px;max-height:50px;color:#000;margin:5px 8px;}
+</style>
+<script src="//mark.space/edit.js"></script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<title>china3</title>
+
+	<body>
+		<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+		<div id="main_map" style="height:400px"></div>
+		<!-- ECharts单文件引入 -->
+		<script type="text/javascript" src="js/echarts.js"></script>
+		<script type="text/javascript">
+			// 路径配置
+			require.config({
+				paths: {
+					echarts: 'http://echarts.baidu.com/build/dist'
+				}
+			});
+
+			// 使用
+			require(
+				[
+					'echarts',
+					'echarts/chart/bar', // 使用柱状图就加载bar模块，按需加载
+					'echarts/chart/map', // 使用柱状图就加载bar模块，按需加载
+					'echarts/chart/pie'
+				],
+				function(ec) {
+					// 基于准备好的dom，初始化echarts图表
+					var myChart_map = ec.init(document.getElementById('main_map'));
+
+					var itemStyle = {
+						normal: {
+							label: {
+								show: true,
+								formatter: '{b}',
+								textStyle: {
+									fontSize: 10,
+									fontWeight: 'bold'
+								}
+							}
+						},
+						emphasis: {
+							label: {
+								show: true
+							}
+						}
+					};
+
+					option = {
+						tooltip: {
+							trigger: 'item',
+							formatter: '{b}'
+						},
+						series: [{
+							name: '中国',
+							type: 'map',
+							mapType: 'china',
+							selectedMode: 'multiple',
+							label: {
+								normal: {
+									show: true
+								},
+								emphasis: {
+									show: true
+								}
+							},
+							data: [{
+								name: '广东',
+								selected: true
+							}]
+						}]
+					};
+
+					// 为echarts对象加载数据
+					myChart_map.setOption(option);
+				}
+			);
+		</script>
+	</body>
