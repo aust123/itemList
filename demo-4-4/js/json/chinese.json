@@ -1,0 +1,251 @@
+{
+	"introduce": [
+		{
+			"id": "32",
+			"introduce_cn": "HealthbeautyChain\uff0c\u7b80\u79f0HeyChain,\u6253\u9020\u5168\u7403\u9996\u4e2a\u533b\u7597\u7f8e\u5bb9\u5168\u4ea7\u4e1a\u8054\u76df\u94fe\uff0c\u5229\u7528\u533a\u5757\u94fe\u5206\u5e03\u5f0f\u50a8\u5b58\u6280\u672f\u5bf9\u533b\u7f8e\u836f\u54c1\u6d41\u901a\u3001\u533b\u9662\u8d44\u8d28\u3001\u533b\u5e08\u8d44\u8d28\uff0c\u57f9\u8bad\u673a\u6784\u8d44\u8d28\u3001\u6d88\u8d39\u8005\u6570\u636e\u7b49\u8fdb\u884c\u53bb\u4e2d\u5fc3\u5316\u6570\u636e\u5b58\u50a8\uff0c\u6574\u5408\u91d1\u878d\u4fdd\u9669\u673a\u6784\uff0c\u4e3a\u6d88\u8d39\u8005\u63d0\u4f9b\u53ef\u9760\u3001\u53ef\u4fe1\u3001\u4fbf\u6377\u7684\u533b\u7f8e\u6d88\u8d39\u751f\u6001\u670d\u52a1\u5e73\u53f0\u3002\n\uff08\u767d\u76ae\u4e66\u4e0b\u8f7d\uff09\u767d\u76ae\u4e66:",
+			"url": "http:\/\/whitepaper.healthbeauty.io\/generic\/web\/viewer.html"
+		}
+	],
+	"tech": [
+		{
+			"id": "10",
+			"introduce_cn": "HEYChain\u8054\u76df\u94fe\u5e95\u5c42\u67b6\u6784\u5c06\u91c7\u7528\u5206\u5e03\u5f0f\u8d26\u672c\u6280\u672f\u6846\u67b6\uff0c\u5e76\u517c\u5bb9\u8d85\u7ea7\u8d26\u672c Fabric \u5168\u7403\u6807\u51c6\u3002Fabric\u662f\u6570\u5b57\u4e8b\u4ef6(\u4ea4\u6613)\u7684\u8d26\u7c3f\uff0c\u5728HeyChain\u4e0a\uff0c\u8fd9\u4e2a\u8d26\u7c3f\u5c06\u7531\u591a\u4e2a\u53c2\u4e0e\u8005\u5171\u4eab\uff0c\u6bcf\u4e2a\u53c2\u4e0e\u8005\u90fd\u5728\u7cfb\u7edf\u4e2d\u62e5\u6709\u6743\u76ca\u3002\u8d26\u7c3f\u53ea\u6709\u5728\u6240\u6709\u53c2\u4e0e\u8005\u8fbe\u6210\u5171\u8bc6\u7684\u60c5\u51b5\u4e0b\u624d\u80fd\u591f\u66f4\u65b0\uff0c\u5e76\u4e14\u4fe1\u606f\u4e00\u65e6\u8bb0\u5f55\u5c31\u6c38\u8fdc\u4e0d\u80fd\u4fee\u6539\u3002HeyChain\u5c06\u89e3\u51b3\u533b\u7f8e\u884c\u4e1a\u7684\u836f\u54c1\u751f\u4ea7\u6d41\u901a\u3001\u533b\u5e08\u4ece\u4e1a\u8d44\u683c\u8bc1\u6ce8\u518c\u3001\u533b\u7597\u673a\u6784\u8d44\u8d28\u6ce8\u518c\u3001\u624b\u672f\u5168\u7a0b\u6570\u636e\u8bb0\u5f55\u3001\u51fa\u73b0\u95ee\u9898\u6eaf\u6e90\u7b49\u95ee\u9898\u3002"
+		}
+	],
+	"goodness": [
+		{
+			"id": "11",
+			"introduce_cn": "\u968f\u7740\u989c\u503c\u7ecf\u6d4e\u5d1b\u8d77\u4ee5\u53ca\u6d88\u8d39\u5347\u7ea7\uff0c\u533b\u7597\u7f8e\u5bb9\u884c\u4e1a\u84ec\u52c3\u53d1\u5c55\uff0c\u5168\u7403\u533b\u7597\u7f8e\u5bb9\u884c\u4e1a\u5e73\u5747\u5e74\u589e\u957f\u572810%\u4ee5\u4e0a\uff0c\u6709\u5206\u6790\u5e08\u9884\u6d4b2018\u5e74\u603b\u9879\u76ee\u5bb9\u91cf\u5c06\u8fbe\u5230\u7ea68,000\u4e07\u4f8b\u3002",
+			"title_cn": "\u533b\u7f8e\u5e02\u573a\u524d\u666f\u5de8\u5927"
+		}, {
+			"id": "33",
+			"introduce_cn": "\u7f8e\u7c4d\u534e\u4ebaTina Mars \u8eab\u517c\u4e16\u754c\u534e\u5546\u9752\u5546\u8054\u76df\u79d8\u4e66\u957f\u3001\u4e16\u754c\u534e\u5546\u7ebd\u7ea6\u603b\u4f1a\u79d8\u4e66\u957f\uff0c\u662f\u56fd\u9645\u65f6\u5c1a\u4f20\u5a92\u4e1a\u754c\u7cbe\u82f1\u3001\u534e\u5c14\u8857\u533a\u5757\u94fe\u6295\u8d44\u9879\u76ee\u4e3b\u8981\u5021\u5bfc\u4eba\u4e4b\u4e00\uff0c\u516c\u5173\u80fd\u529b\u8303\u56f4\u8f90\u5c04\u5168\u7403\u56db\u5341\u4f59\u4e2a\u56fd\u5bb6\u3002Tina\u4f5c\u4e3aHEY\u9879\u76ee\u8054\u5408\u521b\u59cb\u4eba\uff0c\u5c06\u5728\u7f8e\u56fd\u66fc\u54c8\u987f\u5efa\u7acb\u5168\u7403\u8fd0\u8425\u4e2d\u5fc3\uff0c\u4e3b\u8981\u8d1f\u8d23HEY\u9879\u76ee\u7684\u5168\u7403\u5b9e\u65bd\u548c\u63a8\u5e7f\u3002",
+			"title_cn": "\u66fc\u54c8\u987f\u5168\u7403\u8fd0\u8425\u4e2d\u5fc3"
+		}, {
+			"id": "34",
+			"introduce_cn": "HEY\u76ee\u524d\u5df2\u7ecf\u5efa\u7acb\u8d77\u5f3a\u5927\u7684\u793e\u533a\uff0c\u5305\u62ec\u5fae\u4fe1\u7fa4\u3001qq\u7fa4\u3001\u7535\u62a5\u7fa4\u3001\u5934\u6761\u53f7\u3001\u516c\u4f17\u53f7\u7b49\uff0c\u7c89\u4e1d\u6570\u91cf\u8fbe10\u4e07\u5de6\u53f3\u3002\u5efa\u7acb\u8d77\u4e86100\u591a\u4eba\u7684\u63a8\u5e7f\u56e2\u961f\uff0c\u5168\u7403\u5e01\u5708\u793e\u7fa4\u8986\u76d6\u8d85\u8fc7100\u4e07\u4eba\uff0c\u5176\u4e2d\u4e2d\u56fd\u5927\u9646\u5730\u533aQQ\u7fa4\u3001\u5fae\u4fe1\u7fa4\u3001\u7535\u62a5\u7fa4\u8986\u76d6\u8d85\u8fc710000\u4e2a\u3002",
+			"title_cn": "10\u4e07\u7c89\u4e1d\u793e\u7fa4\u57fa\u7840"
+		}, {
+			"id": "35",
+			"introduce_cn": "HEY\u6700\u5927\u4f18\u52bf\u5c31\u662f\u843d\u5730\u5feb\uff0c\u76ee\u524d\uff0c\u9879\u76ee\u5df2\u7ecf\u4e0e5\u5bb6\u6b63\u89c4\u533b\u7597\u7f8e\u5bb9\u6574\u5f62\u533b\u9662\u6b63\u5f0f\u7b7e\u7f72\u6218\u7565\u5408\u4f5c\u534f\u8bae\uff0c\u4e0e\u4e0a\u767e\u5bb6\u533b\u7f8e\u673a\u6784\u8fbe\u6210\u5408\u4f5c\u610f\u5411\u3002HEY\u5c06\u5177\u4f53\u5e94\u7528\u5230\u533b\u7f8e\u673a\u6784\u53ca\u533b\u5e08\u8d44\u8d28\u67e5\u8be2\u3001\u836f\u7269\u6570\u636e\u76d1\u7ba1\u3001\u6574\u5f62\u9884\u6d4b\u7cfb\u7edf\u3001\u7535\u5b50\u75c5\u5386\u7cfb\u7edf\u3001\u7b2c\u4e09\u65b9\u6570\u636e\u5e93\u7b49\u5546\u4e1a\u573a\u666f\u3002",
+			"title_cn": "\u767e\u5bb6\u533b\u7f8e\u673a\u6784\u5408\u4f5c"
+		}, {
+			"id": "36",
+			"introduce_cn": "\u9879\u76ee\u5728\u7845\u8c37\u62e5\u6709\u7814\u53d1\u4e2d\u5fc3\uff0c\u5168\u7403\u8fd0\u8425\u603b\u90e8\u4f4d\u4e8e\u66fc\u54c8\u987f\uff0c\u5df2\u6709\u4e2d\u56fd\u5185\u5730\u548c\u7f8e\u56fd\u6d1b\u6749\u77f6\u7b49\u5730\u6280\u672f\u56e2\u961f\u8d85\u8fc730\u4eba\uff0c\u5408\u4f5c\u673a\u6784\u5341\u51e0\u5bb6\u3002\u5404\u56fd\u9879\u76ee\u843d\u5730\u5408\u4f19\u4eba\u4e5f\u5728\u62db\u52df\u4e2d\u3002",
+			"title_cn": "\u5021\u5bfc\u5168\u7403\u5408\u4f19\u4eba\u673a\u5236"
+		}
+	],
+	"way": [
+		{
+			"id": "12",
+			"introduce_cn": "\u4ee3\u5e01\u5f00\u53d1\u5de5\u4f5c\u521d\u6b65\u5b8c\u6210\uff0c\u9996\u6279\u4ee3\u7801\u4e0a\u4f20\u670d\u52a1\u5668\uff0c\u4ea7\u54c1\u6a21\u578b\u786e\u5b9a\u3002",
+			"title_cn": "2018 Q1",
+			"listorder": "1"
+		}, {
+			"id": "13",
+			"introduce_cn": "\u5168\u740320\u56fd\u9879\u76ee\u8def\u6f14\uff0c\u8d85\u8fc7100\u4e2a\u673a\u6784\u6570\u636e\u4e0a\u8054\u76df\u94fe\uff0c\u5438\u7eb320\u4e2a\u9879\u76ee\u4e0aHEY\u94fe",
+			"title_cn": "2019 Q1\u5230Q2",
+			"listorder": "4"
+		}, {
+			"id": "14",
+			"introduce_cn": "\u5b8c\u6210\u793e\u533a\u7c89\u4e1d\u7d2f\u8ba120\u4e07\uff0c\u8054\u76df\u94fe\u7814\u53d1\u5b8c\u6210\u5185\u6d4b\uff0c\u5168\u7403\u4e09\u5927\u8fd0\u8425\u4e2d\u5fc3\u642d\u5efa\uff0c\u7d2f\u8ba130\u5bb6\u8d44\u6e90\u4f7f\u7528HeyChain\u4ea7\u54c1",
+			"title_cn": "2018 Q3\u5230Q4",
+			"listorder": "3"
+		}, {
+			"id": "15",
+			"introduce_cn": "\u5b8c\u621030%\u4ee3\u5e01\u9500\u552e\uff0c\u793e\u533a\u7c89\u4e1d15\u4e07\uff0c1.0\u533b\u9662saas\u7cfb\u7edf\u4e0a\u7ebf\uff0c20\u5bb6\u8d44\u6e90\u4f7f\u7528\u4ea7\u54c1",
+			"title_cn": "2018 Q2",
+			"listorder": "2"
+		}
+	],
+	"application": [
+		{
+			"id": "16",
+			"introduce_cn": "",
+			"title_cn": "",
+			"listorder": "1",
+			"pic": "admin\/20180402\/5ac1f15c73762.png"
+		}, {
+			"id": "37",
+			"introduce_cn": "",
+			"title_cn": "",
+			"listorder": "2",
+			"pic": "admin\/20180402\/5ac1f17c0bbf1.png"
+		}, {
+			"id": "38",
+			"introduce_cn": "",
+			"title_cn": "",
+			"listorder": "3",
+			"pic": "admin\/20180402\/5ac1f188a9fd8.png"
+		}, {
+			"id": "39",
+			"introduce_cn": "",
+			"title_cn": "",
+			"listorder": "4",
+			"pic": "admin\/20180402\/5ac1f19da0d25.png"
+		}, {
+			"id": "40",
+			"introduce_cn": "",
+			"title_cn": "",
+			"listorder": "5",
+			"pic": "admin\/20180402\/5ac1f1a7b7c7d.png"
+		}
+	],
+	"team": [
+		{
+			"id": "16",
+			"introduce_cn": "",
+			"title_cn": "",
+			"listorder": "1",
+			"pic": "admin\/20180402\/5ac1f15c73762.png"
+		}, {
+			"id": "37",
+			"introduce_cn": "",
+			"title_cn": "",
+			"listorder": "2",
+			"pic": "admin\/20180402\/5ac1f17c0bbf1.png"
+		}, {
+			"id": "38",
+			"introduce_cn": "",
+			"title_cn": "",
+			"listorder": "3",
+			"pic": "admin\/20180402\/5ac1f188a9fd8.png"
+		}, {
+			"id": "39",
+			"introduce_cn": "",
+			"title_cn": "",
+			"listorder": "4",
+			"pic": "admin\/20180402\/5ac1f19da0d25.png"
+		}, {
+			"id": "40",
+			"introduce_cn": "",
+			"title_cn": "",
+			"listorder": "5",
+			"pic": "admin\/20180402\/5ac1f1a7b7c7d.png"
+		}
+		
+	],
+	"organization": [
+		{
+			"id": "16",
+			"title_cn": "",
+			"listorder": "1",
+			"pic": "admin\/20180402\/5ac1f15c73762.png"
+		}, {
+			"id": "37",
+			"title_cn": "",
+			"listorder": "2",
+			"pic": "admin\/20180402\/5ac1f17c0bbf1.png"
+		}, {
+			"id": "38",
+			"title_cn": "",
+			"listorder": "3",
+			"pic": "admin\/20180402\/5ac1f188a9fd8.png"
+		}, {
+			"id": "39",
+			"title_cn": "",
+			"listorder": "4",
+			"pic": "admin\/20180402\/5ac1f19da0d25.png"
+		}, {
+			"id": "40",
+			"title_cn": "",
+			"listorder": "5",
+			"pic": "admin\/20180402\/5ac1f1a7b7c7d.png"
+		}
+	],
+	"address": [
+		{
+			"id": "25",
+			"introduce_cn": "\u76ee\u524dHEY\u652f\u6301kcash\u94b1\u5305\u3001imtoken\u94b1\u5305\u3001ZAG\u94b1\u5305\u3002\u8bf7\u4f7f\u7528\u4ee5\u4e0a\u94b1\u5305\u8f6c\u5e10\u3002",
+			"url": "0x781Bbe5cb7c1eE0b310b0278Fa16568b0CaBD9F5",
+			"title_cn": "1ETH=12,000HEY"
+		}
+	],
+	"contact": [
+		{
+			"id": "2",
+			"contact_cn": "",
+			"pic": "admin\/20180402\/5ac1f50ce8066.png",
+			"url": "",
+			"qrcode": ""
+		}, {
+			"id": "3",
+			"contact_cn": "\u5fae\u4fe1",
+			"pic": "admin\/20180331\/5abf3585ef327.png",
+			"url": "",
+			"qrcode": "admin\/20180331\/5abf358c3dc79.png"
+		}, {
+			"id": "5",
+			"contact_cn": "",
+			"pic": "admin\/20180402\/5ac1f5264fa46.png",
+			"url": "",
+			"qrcode": ""
+		}, {
+			"id": "6",
+			"contact_cn": "",
+			"pic": "admin\/20180402\/5ac1f54305e31.png",
+			"url": "",
+			"qrcode": ""
+		}
+	],
+	"activity": [
+		{
+			"id": "6",
+			"introduce_cn": "2018\u5e743\u6708\u6700\u65b0\u52a8\u6001!",
+			"url": "",
+			"pic": "admin\/20180402\/5ac1f58651a1b.png",
+			"listorder": "1"
+		}, {
+			"id": "76",
+			"introduce_cn": "\u4e94\u4e00\u653e\u5047\u671f\u95f4HEY\u5c06\u643a\u624bImtoken\u4e3e\u884c\u53d1\u7ea2\u5305\u6d3b\u52a8!",
+			"url": "",
+			"pic": "admin\/20180402\/5ac1f5b892e76.png",
+			"listorder": "2"
+		}, {
+			"id": "77",
+			"introduce_cn": "\u516d\u6708\uff0chey\u5c06\u4e0e\u60a8\u5206\u4eab\u53d1\u5e03\u9192\u76ee\u8fdb\u5c55\u53ca\u5a92\u4f53\u62a5\u9053\u3002",
+			"url": "",
+			"pic": "admin\/20180402\/5ac1f5df92b71.png",
+			"listorder": "3"
+		}
+	],
+	"daohang": [
+		{
+			"id": "1",
+			"daohang_cn": "\u4ec0\u4e48\u662fHeyChain?",
+			"listorder": "1"
+		}, {
+			"id": "2",
+			"daohang_cn": "\u6700\u65b0\u52a8\u6001",
+			"listorder": "2"
+		}, {
+			"id": "3",
+			"daohang_cn": "\u9879\u76ee\u6280\u672f",
+			"listorder": "3"
+		}, {
+			"id": "4",
+			"daohang_cn": "\u9879\u76ee\u4f18\u52bf",
+			"listorder": "4"
+		}, {
+			"id": "5",
+			"daohang_cn": "\u8fd1\u671f\u8def\u7ebf\u56fe",
+			"listorder": "5"
+		}, {
+			"id": "6",
+			"daohang_cn": "\u5e94\u7528\u573a\u666f",
+			"listorder": "6"
+		}, {
+			"id": "7",
+			"daohang_cn": "\u56e2\u961f\u4ecb\u7ecd",
+			"listorder": "7"
+		}, {
+			"id": "8",
+			"daohang_cn": "\u5408\u4f5c\u673a\u6784",
+			"listorder": "8"
+		}, {
+			"id": "9",
+			"daohang_cn": "\u4ee5\u592a\u5730\u5740",
+			"listorder": "9"
+		}
+	]
+}
