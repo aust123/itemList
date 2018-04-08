@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="zh">
+	<head>
+		<meta charset="utf-8">
+		<title>HEY - for Beauty</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+		<meta http-equiv="Cache-Control" content="no-cache"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<!--<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">-->
+		<link rel="stylesheet" href="css/main.min.css">
+		<link rel="stylesheet" type="text/css" href="css/animate.css" />
+		<script src="js/clipboard.min.js"></script>
+	</head>
+
+	<body>
+		<button class="header__bars menu-btn hidden-lg hidden-md" type="button">
+    		<span></span>
+    		<span></span>
+    		<span></span>
+ 		</button>
+		<header class="header hidden-xs">
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12">
+						<a href="#s_1" class="header__logo">
+							<img src="img/logo.png" alt="" class="header__logo__img">
+						</a>
+						<div class="header__right">
+							<div class="footer__lang">
+								<div class="footer__lang__current">
+									<span class="sp-ico sp-ico-lang sp-ico-lang-cn"></span>
+									<span class="current_lang">中文</span>
+									<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="7px" height="5px">
+										<path fill-rule="evenodd" opacity="0.502" fill="rgb(255, 255, 255)" d="M0.000,1.244 L3.500,5.000 L7.000,1.244 L5.857,-0.000 L3.500,2.529 L1.143,-0.000 L0.000,1.244 Z"></path>
+									</svg>
+								</div>
+								<ul class="footer__lang__list">
+									<li><!--onclick="switchLang(this)"-->
+										<a href="en.html"><span class="sp-ico sp-ico-lang sp-ico-lang-en"></span><span class="lang">EN</span></a>
+									</li>
+									<li><!--onclick="switchLang(this)"-->
+										<a href="ko.html"><span class="sp-ico sp-ico-lang sp-ico-lang-ko"></span><span class="lang">한국어</span></a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
+		<!--内容渲染-->
+		<div class="hey_content"></div>
+		<!--模板-->
+		<script type="text/html" id="hey_tpl">
+			<div id="page-wrap">
+				<div class="sections-wrap__overflow"></div>
+				<nav class="nav">
+					<div class="nav__table">
+						<ul>
+							{{each daohang value i}} {{if value.listorder==1}}
+							<li>
+								{{if value.daohang_cn}}
+								<a href="#Video">{{value.daohang_cn}}</a>
+								{{else if value.daohang_en}}
+								<a href="#Video">{{value.daohang_en}}</a>
+								{{else if value.daohang_korea}}
+								<a href="#Video">{{value.daohang_korea}}</a>
+								{{/if}}
+							</li>
+							{{else if value.listorder==2}}
+							<li>
+								{{if value.daohang_cn}}
+								<a href="#Unit">{{value.daohang_cn}}</a>
+								{{else if value.daohang_en}}
+								<a href="#Unit">{{value.daohang_en}}</a>
+								{{else if value.daohang_korea}}
+								<a href="#Unit">{{value.daohang_korea}}</a>
+								{{/if}}
+							</li>
+							{{else if value.listorder==3}}
+							<li>
+								{{if value.daohang_cn}}
+								<a href="#Solutions">{{value.daohang_cn}}</a>
+								{{else if value.daohang_en}}
+								<a href="#Solutions">{{value.daohang_en}}</a>
+								{{else if value.daohang_korea}}
+								<a href="#Solutions">{{value.daohang_korea}}</a>
+								{{/if}}
+							</li>
+							{{else if value.listorder==4}}
+							<li>
+								{{if value.daohang_cn}}
+								<a href="#About">{{value.daohang_cn}}</a>
+								{{else if value.daohang_en}}
+								<a href="#About">{{value.daohang_en}}</a>
+								{{else if value.daohang_korea}}
+								<a href="#About">{{value.daohang_korea}}</a>
+								{{/if}}
+							</li>
+							{{else if value.listorder==5}}
+							<li>
+								{{if value.daohang_cn}}
+								<a href="#Roadmap">{{value.daohang_cn}}</a>
+								{{else if value.daohang_en}}
+								<a href="#Roadmap">{{value.daohang_en}}</a>
+								{{else if value.daohang_korea}}
+								<a href="#Roadmap">{{value.daohang_korea}}</a>
+								{{/if}}
+							</li>
+							{{else if value.listorder==6}}
+							<li>
+								{{if value.daohang_cn}}
+								<a href="#Districts">{{value.daohang_cn}}</a>
+								{{else if value.daohang_en}}
+								<a href="#Districts">{{value.daohang_en}}</a>
+								{{else if value.daohang_korea}}
+								<a href="#Districts">{{value.daohang_korea}}</a>
+								{{/if}}
+							</li>
+							{{else if value.listorder==7}}
+							<li>
+								{{if value.daohang_cn}}
+								<a href="#Team">{{value.daohang_cn}}</a>
+								{{else if value.daohang_en}}
+								<a href="#Team">{{value.daohang_en}}</a>
+								{{else if value.daohang_korea}}
+								<a href="#Team">{{value.daohang_korea}}</a>
+								{{/if}}
+							</li>
+							{{else if value.listorder==8}}
+							<li>
+								{{if value.daohang_cn}}
+								<a href="#Partners">{{value.daohang_cn}}</a>
+								{{else if value.daohang_en}}
+								<a href="#Partners">{{value.daohang_en}}</a>
+								{{else if value.daohang_korea}}
+								<a href="#Partners">{{value.daohang_korea}}</a>
+								{{/if}}
+							</li>
+							{{else if value.listorder==9}}
+							<li>
+								{{if value.daohang_cn}}
+								<a href="#Advisors">{{value.daohang_cn}}</a>
+								{{else if value.daohang_en}}
+								<a href="#Advisors">{{value.daohang_en}}</a>
+								{{else if value.daohang_korea}}
+								<a href="#Advisors">{{value.daohang_korea}}</a>
+								{{/if}}
+							</li>
+							{{/if}} {{/each}}
+						</ul>
+					</div>
+				</nav>
+
+				<div class="header-mob hidden-lg hidden-md hidden-sm">
+					<div class="container">
+						<div class="row">
+							<div class="col-xs-12">
+								<a href="javascript:void(0);" class="header-mob__logobox">
+									<div class="header-mob__logo"><img src="img/logo_p.png" alt=""></div>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<footer class="footer  hidden-xs">
+					<div class="container">
+						<h2 class="s_title hidden-lg hidden-md hidden-sm">CONTACT US</h2>
+						<div class="footer__copyright">
+							<span class="hidden-xs">copyright©hey2018</span> {{each contact value}} {{if value.id==3}}
+							<a class="wechat" href="javascript:void(0);">
+								<img src="http://admin.healthbeauty.io/data/upload/{{value.pic}}" />
+								<div class="wechart_account">
+									<img src="img/erweima.png" alt="" />
+									<p>WECHART:healthbeautycoins</p>
+								</div>
+							</a>
+							{{else}}
+							<a href="javascript:void(0);"><img src="http://admin.healthbeauty.io/data/upload/{{value.pic}}" /></a>
+							{{/if}} {{/each}}
+						</div>
+						<p class=" hidden-lg hidden-md hidden-sm"><span>copyright©hey2018</span></p>
+					</div>
+				</footer>
+				<canvas id="page-bg-2" class="page-bg"></canvas>
+				<div id="fullpage" class="sections-wrap">
+					<section class="section s_1 head-home">
+						<div id="webgl-container">
+							<canvas id="webgl-canvas" class="s_1__bg"></canvas>
+						</div>
+						<div class="s_1__header hidden-lg hidden-md hidden-sm">
+							<div class="container">
+								<div class="row">
+									<div class="col-xs-12">
+										<div class="footer__lang">
+											<div class="footer__lang__current">
+												<span class="sp-ico sp-ico-lang sp-ico-lang-cn"></span>
+												<span class="current_lang">中文</span>
+												<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="7px" height="5px">
+													<path fill-rule="evenodd" opacity="0.502" fill="rgb(255, 255, 255)" d="M0.000,1.244 L3.500,5.000 L7.000,1.244 L5.857,-0.000 L3.500,2.529 L1.143,-0.000 L0.000,1.244 Z"></path>
+												</svg>
+											</div>
+											<ul class="footer__lang__list">
+												<li><!--onclick="switchLang(this)"-->
+													<a href="en.html"><span class="sp-ico sp-ico-lang sp-ico-lang-en"></span><span class="lang">EN</span></a>
+												</li>
+												<li><!--onclick="switchLang(this)"-->
+													<a href="ko.html"><span class="sp-ico sp-ico-lang sp-ico-lang-ko"></span><span class="lang">한국어</span></a>
+												</li>
+											</ul>
+										</div>
+										<a href="/" class="header__logo">
+											<img src="img/logo.png" alt="" class="header__logo__img">
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="container">
+							<div class="row">
+								<div class="col-xs-12">
+									<h1 class="s_1__h">下一代互联网</h1>
+									<div class="s_1__title">基于区块链美容开源平台</div>
+									<div class="clearfix"></div>
+									<div id="startTime" class="s_1__countdown s_2__thumb_video" style="width:400px;margin-right:100px;white-space:normal;">
+										<div class="s_1__countdown__top">
+											<div class="s_1__countdown__title">距离本期发售截止时间</div>
+										</div>
+										<div class="clearfix"></div>
+										<div>
+											<div class="s_1__countdown__cell">
+												<span class="s_1__days s_1__countdown__digit">&nbsp;</span>
+												<span class="s_1__countdown__label">天</span>
+											</div>
+											<div class="s_1__countdown__cell">
+												<span class="s_1__houers s_1__countdown__digit">&nbsp;</span>
+												<span class="s_1__countdown__label">小时</span>
+											</div>
+											<div class="s_1__countdown__cell">
+												<span class="s_1__minutes s_1__countdown__digit">&nbsp;</span>
+												<span class="s_1__countdown__label">分钟</span>
+											</div>
+											<div class="s_1__countdown__cell">
+												<span class="s_1__seconds s_1__countdown__digit">&nbsp;</span>
+												<span class="s_1__countdown__label">秒</span>
+											</div>
+										</div>
+										<div class="s_1__countdown__title"></div>
+									</div>
+									<div class="clearfix"></div>
+									<!--<div class="s_1__links">
+										<a href="javascript:void(0);" target="_blank" class="s_1__contribute hidden-xs"><span class="fa fa-paper-plane"></span> Telegram group</a>
+										<div class="s_1__raised_link">
+											<a href="javascript:void(0);"><span>贡献统计</span></a>
+										</div>
+									</div>-->
+								</div>
+							</div>
+						</div>
+					</section>
+					<section class="section s_2">
+						<div class="container">
+							<div class="row">
+								<div class="col-xs-12">
+									<h2 class="s_title" data-before="video gallery">什么是HeyChain?</h2> {{each introduce value}}
+									<div id="s_2__tab-1" class="s_2__tab">
+										{{if value.introduce_cn}}
+										<p class="abstract">{{value.introduce_cn}}</p>
+										{{else if value.introduce_en}}
+										<p class="abstract">{{value.introduce_en}}</p>
+										{{else if value.introduce_korea}}
+										<p class="abstract">{{value.introduce_korea}}</p>
+										{{/if}}
+										<a class="whitepaper" href="{{value.url}}" target="_blank">[ 白皮书下载 ]</a>
+									</div>
+									{{/each}}
+								</div>
+							</div>
+						</div>
+					</section>
+					<section class="section s_3">
+						<canvas id="page-bg-3" class="page-bg"></canvas>
+						<div class="container">
+							<div class="row">
+								<div class="col-xs-12">
+									<h2 class="s_title" data-before="城区介绍">最新动态</h2>
+									<div class="s_3__carousel-wrap">
+										<div class="s_3__carousel owl-carousel" id="new_state">
+											{{each activity value}}
+											<div class="s_3__slide news" data-descr="#district-descr-1">
+												<img src="http://admin.healthbeauty.io/data/upload/{{value.pic}}" alt=""> {{if value.introduce_cn}}
+												<p>{{value.introduce_cn}}</p>
+												{{else if value.introduce_en }}
+												<p>{{value.introduce_en}}</p>
+												{{else if value.introduce_korea}}
+												<p>{{value.introduce_korea}}</p>
+												{{/if}}
+											</div>
+											{{/each}}
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</section>
+					<section class="section s_4">
+						<canvas id="page-bg-4" class="page-bg"></canvas>
+						<div class="container">
+							<div class="row">
+								<div class="col-xs-12">
+									<h2 class="s_title" data-before="挑战和解决方案">项目技术</h2>
+									<div class="s_4__wrap d-table">
+										{{each tech value}} {{if value.introduce_cn}}
+										<p class="technology">{{value.introduce_cn}}</p>
+										{{else if value.introduce_en}}
+										<p class="technology">{{value.introduce_en}}</p>
+										{{else if value.introduce_korea}}
+										<p class="technology">{{value.introduce_korea}}</p>
+										{{/if}} {{/each}}
+									</div>
+								</div>
+							</div>
+						</div>
+					</section>
+					<section class="section s_2">
+						<div class="container">
+							<div class="row">
+								<div class="col-xs-12">
+									<h2 class="s_title" data-before="about">项目优势</h2>
+									<div id="s_2__tab-1" class="s_2__tab">
+										<div class="s_4__wrap d-table">
+											<div class="s_2__video__corner s_2__video__corner-tl hidden-xs"></div>
+											<div class="s_2__video__corner s_2__video__corner-tr hidden-xs"></div>
+											<div class="s_2__video__corner s_2__video__corner-br hidden-xs"></div>
+											<div class="s_2__video__corner s_2__video__corner-bl hidden-xs"></div>
+											<ul class="s_4__nav d-table-cell hidden-xs">
+												{{each goodness value index}} {{if index==0}}
+												<li class="active">
+													{{if value.title_cn}}
+													<a href="#s_2__tab-2-1">{{value.title_cn}} </a>
+													{{else if value.title_en}}
+													<a href="#s_2__tab-2-1">{{value.title_en}} </a>
+													{{else if value.title_korea}}
+													<a href="#s_2__tab-2-1">{{value.title_korea}} </a>
+													{{/if}}
+
+												</li>
+												{{else}}
+												<li>
+													{{if value.title_cn}}
+													<a href="#s_2__tab-2-{{index+1}}">{{value.title_cn}}</a>
+													{{else if value.title_en}}
+													<a href="#s_2__tab-2-{{index+1}}">{{value.title_en}}</a>
+													{{else if value.title_korea}}
+													<a href="#s_2__tab-2-{{index+1}}">{{value.title_korea}}</a>
+													{{/if}}
+
+												</li>
+												{{/if}} {{/each}}
+
+											</ul>
+											<div class="s_4__text d-table-cell">
+												<div class="s_2__video__border s_2__video__border-top-bottom hidden-xs"></div>
+												<div class="s_2__video__border s_2__video__border-left-right hidden-xs"></div>
+												{{each goodness value index}} {{if index==0}}
+												<div class="s_4__tab active" id="s_2__tab-2-1">
+													<a href="#s_2__tab-2-1" class="hidden-lg hidden-md hidden-sm s_4__tab__title">{{value.title_cn}}</a>
+													<div class="d-table">
+														<div class="d-table-cell">
+															{{if value.introduce_cn}}
+															<p class="advantage">{{value.introduce_cn}}</p>
+															{{else if value.introduce_en}}
+															<p class="advantage">{{value.introduce_en}}</p>
+															{{else if value.introduce_korea}}
+															<p class="advantage">{{value.introduce_korea}}</p>
+															{{/if}}
+														</div>
+														<div class="s_2__video__corner s_2__video__corner-br hidden-lg hidden-md hidden-sm"></div>
+														<div class="s_2__video__corner s_2__video__corner-bl hidden-lg hidden-md hidden-sm"></div>
+														<div class="s_2__video__border s_2__video__border-top-bottom hidden-lg hidden-md hidden-sm"></div>
+														<div class="s_2__video__border s_2__video__border-left-right hidden-lg hidden-md hidden-sm"></div>
+													</div>
+												</div>
+												{{else}}
+												<div class="s_4__tab" id="s_2__tab-2-{{index+1}}" style="display: none;">
+													<a href="#s_2__tab-2-{{index+1}}" class="hidden-lg hidden-md hidden-sm s_4__tab__title">{{value.title_cn}}</a>
+													<div class="d-table">
+														<div class="d-table-cell">
+															{{if value.introduce_cn}}
+															<p class="advantage">{{value.introduce_cn}}</p>
+															{{else if value.introduce_en}}
+															<p class="advantage">{{value.introduce_en}}</p>
+															{{else if value.introduce_korea}}
+															<p class="advantage">{{value.introduce_korea}}</p>
+															{{/if}}
+														</div>
+														<div class="s_2__video__corner s_2__video__corner-br hidden-lg hidden-md hidden-sm"></div>
+														<div class="s_2__video__corner s_2__video__corner-bl hidden-lg hidden-md hidden-sm"></div>
+														<div class="s_2__video__border s_2__video__border-top-bottom hidden-lg hidden-md hidden-sm"></div>
+														<div class="s_2__video__border s_2__video__border-left-right hidden-lg hidden-md hidden-sm"></div>
+													</div>
+												</div>
+												{{/if}} {{/each}}
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</section>
+					<section class="section s_5">
+						<canvas id="page-bg-5" class="page-bg"></canvas>
+						<div class="container">
+							<div class="row">
+								<div class="col-lg-10 col-md-10">
+									<h2 class="s_title" data-before="路线图">路线图</h2>
+									<div class="s_5__timeline">
+										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 757.18 111.15">
+											<!--<path class="cls-1" d="M1460,535l-19.08-18.16a97.07,97.07,0,0,0-130.56-3L1286,535l-21.56,20A94.58,94.58,0,0,1,1139,557.86l-5.54-4.69a237.73,237.73,0,0,1-38.13-40.85l-7.9-10.76A74.61,74.61,0,0,0,970.79,497l-21,24.4a155,155,0,0,1-26.33,24.21l-10.93,7.94a101.9,101.9,0,0,1-117.92,1.29L766,535l-8.11-5a120.16,120.16,0,0,0-38.29-15.43,167.26,167.26,0,0,0-42.5-3.29,148.23,148.23,0,0,0-65,19.13L604,535" transform="translate(-603.51 -470.09)"></path>
+										<path class="cls-2" d="M1460,535l-19.08-18.16a97.07,97.07,0,0,0-130.56-3L1286,535l-21.56,20A94.58,94.58,0,0,1,1139,557.86l-5.54-4.69a237.73,237.73,0,0,1-38.13-40.85l-7.9-10.76A74.61,74.61,0,0,0,970.79,497l-21,24.4a155,155,0,0,1-26.33,24.21l-10.93,7.94a101.9,101.9,0,0,1-117.92,1.29L766,535l-8.11-5a120.16,120.16,0,0,0-38.29-15.43,167.26,167.26,0,0,0-42.5-3.29,148.23,148.23,0,0,0-65,19.13L604,535" transform="translate(-603.51 -470.09)"></path>-->
+											<path class="cls-1" d="m28.45718,79.4218c7.4124,6.55568 74.72582,-128.41343 206.35669,-36.4011c131.63087,92.01233 240.48904,49.86549 302.31326,12.53892c61.82422,-37.32657 134.83799,-60.69522 208.40011,23.50605" />
+											<path class="cls-2" d="m28.45718,79.4218c7.4124,6.55568 74.72582,-128.41343 206.35669,-36.4011c131.63087,92.01233 240.48904,49.86549 302.31326,12.53892c61.82422,-37.32657 134.83799,-60.69522 208.40011,23.50605" />
+										</svg>
+										{{each way value}} {{if value.listorder==1}}
+										<div class="s_5__timeline__block">
+											<a href="#s_5__tab-1" class="s_5__timeline__year s_5__timeline__year-1">
+												<div class="s_5__timeline__checkbox checked"></div>
+												{{if value.title_cn}}
+												<div class="s_5__timeline__label">{{value.title_cn}}</div>
+												{{else if value.title_en}}
+												<div class="s_5__timeline__label">{{value.title_en}}</div>
+												{{else if value.title_korea}}
+												<div class="s_5__timeline__label">{{value.title_korea}}</div>
+												{{/if}}
+
+											</a>
+											<div class="s_5__timeline__table s_5_timeline_1  " style="float: left; margin-top: 45px;">
+												<div class="s_5__timeline__table__wrap" style="float: left;">
+													<div class="d-table">
+														{{if value.introduce_cn}}
+														<div class="d-table-cell s_5__tabs__col">
+															{{value.introduce_cn}}
+														</div>
+														{{else if value.introduce_en}}
+														<div class="d-table-cell s_5__tabs__col">
+															{{value.introduce_en}}
+														</div>
+														{{else if value.introduce_korea}}
+														<div class="d-table-cell s_5__tabs__col">
+															{{value.introduce_korea}}
+														</div>
+														{{/if}}
+
+													</div>
+												</div>
+											</div>
+										</div>
+										{{else if value.listorder==2}}
+										<div class="s_5__timeline__block">
+											<a href="#s_5__tab-2" class="s_5__timeline__year s_5__timeline__year-2">
+												<div class="s_5__timeline__checkbox checked"></div>
+												{{if value.title_cn}}
+												<div class="s_5__timeline__label">{{value.title_cn}}</div>
+												{{else if value.title_en}}
+												<div class="s_5__timeline__label">{{value.title_en}}</div>
+												{{else if value.title_korea}}
+												<div class="s_5__timeline__label">{{value.title_korea}}</div>
+												{{/if}}
+											</a>
+
+											<div class="s_5__timeline__table  s_5_timeline_2  " style="float: left;margin-top: 45px;">
+												<div class="s_5__timeline__table__wrap" style="float: left;">
+													<div class="d-table">
+														{{if value.introduce_cn}}
+														<div class="d-table-cell s_5__tabs__col">
+															{{value.introduce_cn}}
+														</div>
+														{{else if value.introduce_en}}
+														<div class="d-table-cell s_5__tabs__col">
+															{{value.introduce_en}}
+														</div>
+														{{else if value.introduce_korea}}
+														<div class="d-table-cell s_5__tabs__col">
+															{{value.introduce_korea}}
+														</div>
+														{{/if}}
+													</div>
+												</div>
+											</div>
+										</div>
+										{{else if value.listorder==3}}
+										<div class="s_5__timeline__block">
+											<a href="#s_5__tab-3" class="s_5__timeline__year s_5__timeline__year-3">
+												<div class="s_5__timeline__checkbox checked"></div>
+												{{if value.title_cn}}
+												<div class="s_5__timeline__label">{{value.title_cn}}</div>
+												{{else if value.title_en}}
+												<div class="s_5__timeline__label">{{value.title_en}}</div>
+												{{else if value.title_korea}}
+												<div class="s_5__timeline__label">{{value.title_korea}}</div>
+												{{/if}}
+											</a>
+											<div class="s_5__timeline__table s_5_timeline_3  " style="float: left;margin-top: 45px;">
+												<div class="s_5__timeline__table__wrap" style="float: left;">
+													<div class="d-table">
+														{{if value.introduce_cn}}
+														<div class="d-table-cell s_5__tabs__col">
+															{{value.introduce_cn}}
+														</div>
+														{{else if value.introduce_en}}
+														<div class="d-table-cell s_5__tabs__col">
+															{{value.introduce_en}}
+														</div>
+														{{else if value.introduce_korea}}
+														<div class="d-table-cell s_5__tabs__col">
+															{{value.introduce_korea}}
+														</div>
+														{{/if}}
+
+													</div>
+												</div>
+											</div>
+										</div>
+										{{else if value.listorder==4}}
+										<div class="s_5__timeline__block">
+											<a href="#s_5__tab-4" class="s_5__timeline__year s_5__timeline__year-4 active">
+												<div class="s_5__timeline__checkbox"></div>
+												{{if value.title_cn}}
+												<div class="s_5__timeline__label">{{value.title_cn}}</div>
+												{{else if value.title_en}}
+												<div class="s_5__timeline__label">{{value.title_en}}</div>
+												{{else if value.title_korea}}
+												<div class="s_5__timeline__label">{{value.title_korea}}</div>
+												{{/if}}
+											</a>
+											<div class="s_5__timeline__table  s_5_timeline_4  " style="float: left;margin-top: 45px;">
+												<div class="s_5__timeline__table__wrap" style="float: left;">
+													<div class="d-table">
+														{{if value.introduce_cn}}
+														<div class="d-table-cell s_5__tabs__col">
+															{{value.introduce_cn}}
+														</div>
+														{{else if value.introduce_en}}
+														<div class="d-table-cell s_5__tabs__col">
+															{{value.introduce_en}}
+														</div>
+														{{else if value.introduce_korea}}
+														<div class="d-table-cell s_5__tabs__col">
+															{{value.introduce_korea}}
+														</div>
+														{{/if}}
+													</div>
+												</div>
+											</div>
+										</div>
+										{{/if}} {{/each}}
+									</div>
+								</div>
+							</div>
+						</div>
+					</section>
+
+					<section class="section s_3">
+						<canvas id="page-bg-3" class="page-bg"></canvas>
+						<div class="container">
+							<div class="row">
+								<div class="col-xs-12">
+									<h2 class="s_title" data-before="城区介绍">应用场景</h2>
+									<div class="s_3__carousel-wrap">
+										<div class="s_3__carousel owl-carousel app_contain">
+											{{each application value}}
+											<div class="s_3__slide application">
+												<img src="http://admin.healthbeauty.io/data/upload/{{value.pic}}" alt=""> {{if value.title_cn}}
+												<p>{{value.title_cn}}</p>
+												{{else if value.title_en}}
+												<p>{{value.title_en}}</p>
+												{{else if value.title_korea}}
+												<p>{{value.title_korea}}</p>
+												{{/if}} {{if value.introduce_cn}}
+												<p>{{value.introduce_cn}}</p>
+												{{else if value.introduce_en}}
+												<p>{{value.introduce_en}}</p>
+												{{else if value.introduce_korea}}
+												<p>{{value.introduce_korea}}</p>
+												{{/if}}
+											</div>
+											{{/each}}
+										</div>
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</section>
+					<section class="section s_8">
+						<canvas id="page-bg-8" class="page-bg"></canvas>
+						<div class="container">
+							<div class="row">
+								<div class="col-xs-12">
+									<h2 class="s_title" data-before="团队">团队介绍</h2>
+									<div class="s_8__wrap">
+										<div class="s_8__staff_wrap hidden-xs" data-scrolltext="向右滑动查看更多团队成员">
+											{{each team value i}} {{if i%2==0}}
+											<div class="s_8__staff__card_col">
+												<div class="s_8__staff__card">
+													<div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="http://admin.healthbeauty.io/data/upload/{{team[i].pic}}" alt=""></div>
+													<div class="s_8__staff__data">
+														{{if team[i].title_cn}}
+														<div class="s_8__staff__name">{{team[i].title_cn}}</div>
+														{{else if team[i].title_en}}
+														<div class="s_8__staff__name">{{team[i].title_en}}</div>
+														{{else if team[i].title_korea}}
+														<div class="s_8__staff__name">{{team[i].title_korea}}</div>
+														{{/if}} {{if team[i].introduce_cn}}
+														<div class="s_8__staff__post">{{team[i].introduce_cn}}</div>
+														{{else if team[i].introduce_en}}
+														<div class="s_8__staff__post">{{team[i].introduce_en}}</div>
+														{{else if team[i].introduce_korea}}
+														<div class="s_8__staff__post">{{team[i].introduce_korea}}</div>
+														{{/if}}
+
+													</div>
+												</div>
+												{{if team[i+1]}}
+												<div class="s_8__staff__card">
+													<div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="http://admin.healthbeauty.io/data/upload/{{team[i+1].pic}}" alt=""></div>
+													<div class="s_8__staff__data">
+														{{if team[i+1].title_cn}}
+														<div class="s_8__staff__name">{{team[i+1].title_cn}}</div>
+														{{else if team[i+1].title_en}}
+														<div class="s_8__staff__name">{{team[i+1].title_en}}</div>
+														{{else if team[i+1].title_korea}}
+														<div class="s_8__staff__name">{{team[i+1].title_korea}}</div>
+														{{/if}} {{if team[i+1].introduce_cn}}
+														<div class="s_8__staff__post">{{team[i+1].introduce_cn}}</div>
+														{{else if team[i+1].introduce_en}}
+														<div class="s_8__staff__post">{{team[i+1].introduce_en}}</div>
+														{{else if team[i+1].introduce_korea}}
+														<div class="s_8__staff__post">{{team[i+1].introduce_korea}}</div>
+														{{/if}}
+													</div>
+												</div>
+												{{/if}}
+											</div>
+											{{/if}} {{/each}}
+										</div>
+										<!-- mobile stuff -->
+										<div class="hidden-lg hidden-md hidden-sm s_8__staff__list-xs" style="display: block;">
+											{{each team value i}} {{if i
+											<=5}} <div class="s_8__staff__card">
+												<div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="http://admin.healthbeauty.io/data/upload/{{value.pic}}" alt=""></div>
+												<div class="s_8__staff__data">
+													{{if value.title_cn}}
+													<div class="s_8__staff__name">{{value.title_cn}}</div>
+													{{else if value.title_en}}
+													<div class="s_8__staff__name">{{value.title_en}}</div>
+													{{else if value.title_korea}}
+													<div class="s_8__staff__name">{{value.title_korea}}</div>
+													{{/if}} {{if value.introduce_cn}}
+													<div class="s_8__staff__post">{{value.introduce_cn}}</div>
+													{{else if value.introduce_en}}
+													<div class="s_8__staff__post">{{value.introduce_en}}</div>
+													{{else if value.introduce_korea}}
+													<div class="s_8__staff__post">{{value.introduce_korea}}</div>
+													{{/if}}
+
+												</div>
+										</div>
+										{{else}}
+										<div class="s_8__staff__card hidden">
+											<div class="s_8__staff__avatar"><img class="lazy" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="http://admin.healthbeauty.io/data/upload/{{value.pic}}" alt=""></div>
+											<div class="s_8__staff__data">
+												{{if value.title_cn}}
+												<div class="s_8__staff__name">{{value.title_cn}}</div>
+												{{else if value.title_en}}
+												<div class="s_8__staff__name">{{value.title_en}}</div>
+												{{else if value.title_korea}}
+												<div class="s_8__staff__name">{{value.title_korea}}</div>
+												{{/if}} {{if value.introduce_cn}}
+												<div class="s_8__staff__post">{{value.introduce_cn}}</div>
+												{{else if value.introduce_en}}
+												<div class="s_8__staff__post">{{value.introduce_en}}</div>
+												{{else if value.introduce_korea}}
+												<div class="s_8__staff__post">{{value.introduce_korea}}</div>
+												{{/if}}
+											</div>
+										</div>
+										{{/if}} {{/each}}
+
+									</div>
+									<div class="text-center">
+										<button class="s_8__staff__more hidden-lg hidden-md hidden-sm">
+                    						<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 462.088 462.088" style="enable-background:new 0 0 462.088 462.088;" xml:space="preserve" width="25px" height="25px">
+                     						 <g>
+                        					<g>
+                         					 <g>
+                           			 		<path d="M417.041,202.182c-7.483,0-13.896-5.345-16.034-12.827     c-18.172-80.171-88.723-136.826-172.101-136.826S74.977,109.184,56.805,189.355c-2.138,8.552-10.689,13.896-19.241,11.758     s-13.896-10.689-11.758-19.241c21.379-95.137,105.826-161.411,203.1-161.411s181.721,66.275,203.1,161.411     c2.138,8.552-3.207,17.103-11.758,19.241C419.179,201.113,418.11,202.182,417.041,202.182z" fill="#FFFFFF"></path>
+                          					</g>
+                          					<path d="M422.386,206.458c-2.138,0-4.276,0-6.414-1.069l-55.585-23.517    c-8.552-3.207-11.758-12.827-8.552-21.379s12.827-11.758,21.379-8.552l40.62,17.103l17.103-40.62    c3.207-8.552,12.827-11.758,21.379-8.552s11.758,12.827,8.552,21.379l-23.517,55.585c-2.138,4.276-4.276,7.483-8.552,8.552    C426.662,206.458,424.524,206.458,422.386,206.458z" fill="#FFFFFF"></path>
+                          					<g>
+                          			 		 <path d="M232.113,441.627c-97.274,0-181.721-66.275-203.1-161.411     c-2.138-8.552,3.207-17.103,11.758-19.241s17.103,3.207,19.241,11.758c18.172,80.171,88.723,136.826,172.101,136.826     s153.929-56.654,172.101-136.826c2.138-8.552,10.689-13.896,19.241-11.758s13.896,10.69,11.758,19.241     C413.834,375.352,330.456,441.627,232.113,441.627z" fill="#FFFFFF"></path>
+                         					 </g>
+                        			 		 <path d="M16.185,343.284c-2.138,0-4.276,0-6.414-1.069c-8.552-3.207-11.758-12.827-8.552-21.379    l23.517-55.585c3.207-8.552,12.827-11.758,21.379-8.552l55.585,23.517c8.552,3.207,11.758,12.827,8.552,21.379    c-3.207,8.552-12.827,11.758-21.379,8.552l-40.62-17.103L31.15,332.594C29.013,339.008,22.599,343.284,16.185,343.284z" fill="#FFFFFF"></path>
+                       						 </g>
+                    				  		</g>
+                   					 		</svg>
+                   					 		More
+											</button>
+									</div>
+								</div>
+							</div>
+						</div>
+				</div>
+				</section>
+
+				<section class="section s_8">
+					<canvas id="page-bg-8" class="page-bg"></canvas>
+					<div class="container">
+						<div class="row">
+							<div class="col-xs-12">
+								<h2 class="s_title" data-before="Advisors">合作机构</h2>
+								<div class="s_8__wrap" style="margin-top: -50px;">
+									<div class="s_8__staff_wrap hidden-xs" data-scrolltext="向右滑动查看更多">
+										<div class="s_8__staff__card_col cooperate" style="width: 828px;">
+											<ul class="partner">
+												{{each organization value i}}
+												<li><img src="http://admin.healthbeauty.io/data/upload/{{value.pic}}" /></li>
+												{{/each}}
+											</ul>
+										</div>
+										{{if organization_2.length>0}}
+										<div class="s_8__staff__card_col cooperate" style="width: 828px;margin-left: 100px;">
+											<ul class="partner">
+												{{each organization_2 value i}}
+												<li><img src="http://admin.healthbeauty.io/data/upload/{{value.pic}}" /></li>
+												{{/each}}
+											</ul>
+										</div>
+										{{/if}}
+									</div>
+									<!-- mobile stuff -->
+									<div class="hidden-lg hidden-md  cooperate hidden-sm s_8__staff__list-xs">
+										<!--<p>
+											{{each organization value i}}
+											{{if i%2==0}}
+											<img src="http://admin.healthbeauty.io/data/upload/{{organization[i].pic}}" />											
+											{{if organization[i+1]}}
+											<img src="http://admin.healthbeauty.io/data/upload/{{organization[i+1].pic}}" />
+											{{/if}}
+											{{/if}}
+											{{/each}}
+										</p>-->
+										{{each organization value i}}
+										{{if i%2==0}}
+										<p>											
+											<img src="http://admin.healthbeauty.io/data/upload/{{organization[i].pic}}" />											
+											{{if organization[i+1]}}
+											<img src="http://admin.healthbeauty.io/data/upload/{{organization[i+1].pic}}" />
+											{{/if}}																				
+										</p>
+										{{/if}}	
+										{{/each}}
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+				<section class="section s_9">
+					<div class="container">
+						<div class="row">
+							<div class="col-xs-11">
+								<div class="s_9__wrap">
+									<h2 class="s_title " data-before="">以太地址</h2> {{each address value}}
+									<div class="s_9__partners ">
+										{{if value.title_cn}}
+										<p class="radio"><span>{{value.title_cn}}</span></p>
+										{{else if value.title_en}}}
+										<p class="radio"><span>{{value.title_en}}</span></p>
+										{{else if value.title_korea}}}
+										<p class="radio"><span>{{value.title_korea}}</span></p>
+										{{/if}}
+										<p class="wallet-address" style="cursor: pointer" onclick="">
+											<span class="address-title">地址：</span>
+											<span class="address-num btn" style="cursor: pointer" onclick="" id="foo" data-clipboard-target="#foo" data-clipboard-action="copy" onmouseenter="enter()" onmouseleave="leave()">{{value.url}}</span>
+											<textarea id="copy_hide" rows="" cols=""></textarea>
+											<i class="wallet_tip">click to copy</i>
+										</p>
+										{{if value.introduce_cn}}
+										<p class="tip">{{value.introduce_cn}}</p>
+										{{else if value.introduce_en}}
+										<p class="tip">{{value.introduce_en}}</p>
+										{{else if value.introduce_korea}}
+										<p class="tip">{{value.introduce_korea}}</p>
+										{{/if}}
+
+									</div>
+									{{/each}}
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+			</div>
+
+		</script>
+		<!--获取用户ip地址-->
+		<script type="text/javascript" src="http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js"></script>
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<script src="js/template-web.js"></script>
+
+		<!--<script src="js/script.js" defer="defer"></script>-->
+		<script type="text/javascript">
+			console.log(remote_ip_info.country);
+			//图片地址的域名  http://admin.healthbeauty.io/data/upload/
+			
+			/*数组排序*/
+			function CB(arr) {
+				for(var i = 0; i < arr.length; i++) {
+					console.log()
+					for(var j = i + 1; j < arr.length; j++) {
+						if(arr[i]['listorder']) {
+							if(arr[i]['listorder'] > arr[j]['listorder']) {
+								var temp = arr[i];
+								arr[i] = arr[j];
+								arr[j] = temp;
+							}
+						}
+					}
+
+				}
+				return arr;
+			}
+			getData('js/json/chinese.json');
+
+			function getData(_url) {
+				$.ajax({
+					type: "get",
+					url: _url,
+					async: true,
+					success: function(data) {
+						console.log(data);						
+						data.way = CB(data.way);
+						data.daohang = CB(data.daohang);
+						if(data.organization.length >= 12) {
+							data.organization_2 = data.organization.splice(12);
+						} else {
+							data.organization_2 = [];
+						};
+						var html = template('hey_tpl', data);
+						$('.hey_content').html(html);
+					},
+					error: function(err) {
+						console.log(err)
+					}
+				});
+			}
+
+			/*function switchLang(_this) {
+				
+				var lang = $(_this).find('.lang').html();
+				var cssname = $(_this).find('.sp-ico');
+				$('.current_lang').html(lang);
+				if($('.footer__lang__current .sp-ico-lang').hasClass('sp-ico-lang-cn')) {
+					$('.footer__lang__current .sp-ico-lang').removeClass('sp-ico-lang-cn');
+					if(lang == 'EN') {
+						getData('js/json/english.json');
+						$('.footer__lang__current .sp-ico-lang').addClass('sp-ico-lang-en');
+						$(_this).find('.sp-ico').removeClass('sp-ico-lang-en').addClass('sp-ico-lang-cn');
+
+					} else if(lang == '한국어') {
+						getData('js/json/koren.json');
+						$('.footer__lang__current .sp-ico-lang').addClass('sp-ico-lang-ko');
+						$(_this).find('.sp-ico').removeClass('sp-ico-lang-ko').addClass('sp-ico-lang-cn');
+
+					};
+					$(_this).find('.lang').html('中文');
+
+				} else if($('.footer__lang__current .sp-ico-lang').hasClass('sp-ico-lang-en')) {
+					$('.footer__lang__current .sp-ico-lang').removeClass('sp-ico-lang-en')
+					if(lang == '中文') {
+						getData('js/json/chinese.json');
+						$('.footer__lang__current .sp-ico-lang').addClass('sp-ico-lang-cn');
+						$(_this).find('.sp-ico').removeClass('sp-ico-lang-cn').addClass('sp-ico-lang-en');
+
+					} else if(lang == '한국어') {
+						getData('js/json/koren.json');
+						$('.footer__lang__current .sp-ico-lang').addClass('sp-ico-lang-ko');
+						$(_this).find('.sp-ico').removeClass('sp-ico-lang-ko').addClass('sp-ico-lang-en');
+
+					}
+					$(_this).find('.lang').html('EN');
+				} else {
+					$('.footer__lang__current .sp-ico-lang').removeClass('sp-ico-lang-ko');
+					if(lang == 'EN') {
+						getData('js/json/english.json');
+						$('.footer__lang__current .sp-ico-lang').addClass('sp-ico-lang-en');
+						$(_this).find('.sp-ico').removeClass('sp-ico-lang-en').addClass('sp-ico-lang-ko');
+
+					} else if(lang == '中文') {
+						getData('js/json/chinese.json');
+						$('.footer__lang__current .sp-ico-lang').addClass('sp-ico-lang-cn');
+						$(_this).find('.sp-ico').removeClass('sp-ico-lang-cn').addClass('sp-ico-lang-ko');
+
+					}
+					$(_this).find('.lang').html('한국어');
+				}
+
+				$('.footer__lang').removeClass('active');
+
+			}*/
+
+			function enter() {
+				$('.wallet_tip').fadeIn();
+			};
+
+			function leave() {
+				$('.wallet_tip').fadeOut();
+			};
+
+			var clipboard = new ClipboardJS('.btn');
+			clipboard.on('success', function(e) {
+				//console.info('Action:', e.action);
+				//console.info('Text:', e.text);
+				//console.info('Trigger:', e.trigger);
+				e.clearSelection();
+				alert('复制成功')
+			});
+			clipboard.on('error', function(e) {
+				console.error('Action:', e.action);
+				console.error('Trigger:', e.trigger);
+			});
+		</script>
+		<script src="js/script.js" defer="defer"></script>
+	</body>
+
+</html>
