@@ -169,16 +169,21 @@
 					<div class="container">
 						<h2 class="s_title hidden-lg hidden-md hidden-sm">CONTACT US</h2>
 						<div class="footer__copyright">
-							<span class="hidden-xs">copyright©hey2018</span> {{each contact value}} {{if value.id==3}}
+							<span class="hidden-xs">copyright©hey2018</span> {{each contact value}}
+							{{if value.id==3}}
 							<a class="wechat" href="javascript:void(0);">
-								<img src="http://admin.healthbeauty.io/data/upload/{{value.pic}}" />
+								<img src="http://admin.healthbeauty.io/data/upload/{{value.pic}}"/>
 								<div class="wechart_account">
 									<img src="img/erweima.png" alt="" />
 									<p>WECHART:healthbeautycoins</p>
 								</div>
 							</a>
 							{{else}}
+							{{if value.url}}
+							<a href="{{value.url}}" target="_blank"><img src="http://admin.healthbeauty.io/data/upload/{{value.pic}}" /></a>
+							{{else}}
 							<a href="javascript:void(0);"><img src="http://admin.healthbeauty.io/data/upload/{{value.pic}}" /></a>
+							{{/if}}
 							{{/if}} {{/each}}
 						</div>
 						<p class=" hidden-lg hidden-md hidden-sm"><span>copyright©hey2018</span></p>

@@ -7491,8 +7491,7 @@ a {
 	display: inline-block;
 }
 
-.footer__copyright a {
-	text-decoration: underline;
+.footer__copyright a {	
 	margin-left: 100px;
 	position: relative;
 }
