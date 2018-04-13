@@ -13,21 +13,27 @@ function UDate2() {
 		t2 = t + n * 60000 + 180 * 60000;
 	return t2;
 }
-
+console.log(UDate2())
 function UDateT(t0) {
+	console.log(t0)
 	var d = new Date(t0),
 		t = d.getTime(),
-		n = d.getTimezoneOffset(),
+		n = d.getTimezoneOffset(),	
 		t2 = t + n * 60000 + 180 * 60000;
+		
 	return(new Date(t2));
 }
+
+console.log(UDate())
 var ttt = UDate().getTimezoneOffset(),
 	xxx = parseInt((-180 - ttt) / 60),
-	qqq = (new Date(2018, 4, 3, 12, 59, 59)).getTime() + xxx * 60 * 60 * 1000,
+	qqq = (new Date(2018, 3, 14, 23, 59, 59)).getTime() ,//+ xxx * 60 * 60 * 1000,
 	www = new Date(qqq);
 //console.log(ttt);
 //console.log(xxx)
-//console.log(qqq)
+//console.log(qqq);
+console.log(www)
+
 top.SSS = (www.getUTCFullYear()) + '/' + ('0' + (www.getMonth() + 1)).slice(-2) + '/' + ('0' + www.getDate()).slice(-2) + ' ' + ('0' + www.getHours()).slice(-2) + ':' + ('0' + www.getMinutes()).slice(-2) + ':' + ('0' + www.getSeconds()).slice(-2);
 
 ! function(t, e) {
@@ -8318,7 +8324,6 @@ $(function() {
 		$(".preload").addClass("preload-hide"), setTimeout(function() {
 			$(".preload").css("z-index", "-100").remove()
 		}, 800)
-		
 		
 		
 		

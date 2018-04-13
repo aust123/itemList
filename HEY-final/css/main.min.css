@@ -6891,7 +6891,7 @@ body {
 	line-height: 50px;
 	font-weight: 300;
 	letter-spacing: .01em;
-	text-transform: uppercase;
+	/*text-transform: uppercase;*/
 	position: relative;
 	font-family: Roboto, sans-serif;
 	margin: 0px 0px 30px 0px;
@@ -8175,11 +8175,11 @@ a {
 }
 
 .app_contain .owl-next {
-	top: -40% !important;
+	/*top: -40% !important;*/
 }
 
 .app_contain .owl-prev {
-	top: 30%;
+	/*top: 30%;*/
 }
 
 
@@ -8950,7 +8950,7 @@ a {
 	text-align: center;
 	line-height: 136px;
 	margin-bottom: 20px;
-	text-shadow: 8px 5px 8px #FF8431;
+	text-shadow: 2px 2px 4px #FF8431;
 	box-shadow: 0px 0px 15px 4px #F0833A;
 }
 
@@ -9924,7 +9924,7 @@ a {
 		font-size: 24px;
 		line-height: 106px;
 		margin-bottom: 20px;
-		text-shadow: 6px 3px 4px #FF8431;
+		text-shadow: 2px 2px 4px #FF8431;
 		box-shadow: 0px 0px 15px 4px #F0833A;
 	}
 	.wallet-address {
@@ -10448,7 +10448,7 @@ a {
 	}
 	/*钱包地址阴影*/
 	.radio span {
-		text-shadow: 4px 3px 3px #FF8431;
+		text-shadow: 2px 1px 2px #FF8431;
 		box-shadow: 0px 0px 15px 4px #F0833A;
 	}
 	.wallet-address {
@@ -10898,12 +10898,12 @@ a {
 	}
 	.s_5__timeline__label {
 		line-height: 21px;
-		font-size: 14px!important;
+		font-size: 12px!important;
 		font-weight: 300;
 		top: 0;
 		display: inline-block;
 		position: relative;
-		left: -56px;
+		left: -53px;
 	}
 	.s_5__timeline__table {
 		/*margin-right: -15px;*/
