@@ -1,0 +1,272 @@
+
+/*我要买、我要卖*/
+.findwuliu li a{
+  color: #1c7bd2;
+  font-size: 32px;
+  display: inline-block;
+  width: 100%;
+}
+.findwuliu li img{
+  width: 89px ;
+  height: 61px;
+  float: right;
+}
+.findwuliu li:nth-child(1){
+  border-right: 1px solid #E0E0E0;
+}
+.findwuliu li:nth-child(2){
+  width: 44%;
+}
+.findwuliu li:nth-child(2) a{
+  color: #ef7d40;
+}
+.findwuliu li{
+  width: 43%;
+  float: left;
+  line-height: 61px;
+  padding: 39px 3%;
+}
+.findwuliu{
+  background: #fff;
+  margin-top: 14px;
+}
+
+.classify{
+  background: #fff;
+  margin-top: 14px;
+  padding: 39px 0;
+}
+.classify li{
+  width: 25%;
+  text-align: center;
+  float: left;
+}
+.classify li img{
+  width: 103px;
+  height: 103px;
+  margin-bottom: 30px;
+}
+.classify li a{
+  color: #3b3b3b;
+  font-size: 30px;
+}
+
+.publish{
+  background: #00d3af;
+  color: #fff;
+  padding: 64px 0;
+  font-size: 30px;
+}
+.publish li{
+  float:left;
+  width: 50%;
+  text-align: center;
+}
+.publish li img{
+  width: 58px;
+  height: 58px;
+  margin-bottom: 42px;
+}
+
+.buy-search{
+  background: #00D3AF;
+  padding-top: 30px;
+}
+.buy-search a{
+  display: inline-block;
+  padding: 17px 116px 17px 96px;
+  border-radius: 10px;
+  font-size: 28px;
+  color: rgba(255,255,255,.6);
+  margin-left: 80px;
+  background-image: url('../../assets/img/sell_sousuokuang.png');
+  background-size: 29px 29px;
+  background-repeat: no-repeat;
+  background-position: 29px center;
+  background-color: rgba(0,0,0,0.1);
+}
+.buy-search span{
+  position: relative;
+  top: -9px;
+}
+.buy-search span img{
+  width: 47px;
+  height: 47px;
+  margin-left: 90px;
+}
+
+.advertising{
+  width: 100%;
+  margin-top: 14px;
+  position: relative;
+  text-align: center;
+}
+.advertising a{
+  display: inline-block;
+  width: 100%;
+}
+.advertising img.back{
+  width: 100%;
+}
+.advertising img.btn{
+  position: absolute;
+  bottom: 20px;
+  margin-left: -118px;
+  width: 236px;
+  height: 40px;
+}
+
+.ranking{
+  margin-top: 14px;
+  background: #fff;
+  padding-top: 32px;
+}
+.ranking>h3{
+  font-size: 36px;
+  color: #333;
+  padding: 0 30px;
+}
+.ranking-show{
+  padding: 38px 30px;
+  border-bottom: 1px solid #E0E0E0;
+}
+.ranking-show p{
+  display: inline;
+  font-size: 30px;
+  color: #333;
+}
+.ranking-show p span{
+  font-size: 34px;
+}
+.ranking-show p b{
+  font-size: 32px;
+  color: #ff5000;
+}
+.ranking-show a{
+  display: inline-block;
+  width: 156px;
+  height: 59px;
+  line-height: 59px;
+  text-align: center;
+  border: 1px solid #208df0;
+  border-radius: 10px;
+  font-size: 30px;
+  color: #208df0;
+  float: right;
+  position: relative;
+  top: -8px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.ranking-list li{
+  padding: 20px 30px;
+  border-bottom: 1px solid #E0E0E0;
+  overflow: hidden;
+}
+.ranking-list li>a{
+  display: inline-block;
+  width: 100%;
+}
+.ranking-list li div{
+  float: left;
+}
+.ranking-list .icon{
+  position: relative;
+  display: inline-block;
+  margin-right: 35px;
+  top: 26px;
+}
+.ranking-list .icon img:nth-child(1){
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+}
+.ranking-list .icon .num{
+  position: absolute;
+  bottom: -14px;
+  right: -10px;
+  width: 40px;
+  height: 40px;
+}
+.ranking-list .icon span{
+  position: absolute;
+  bottom: -10px;
+  right: 3px;
+  font-size: 24px;
+  color: #fff;
+}
+.ranking-list .name img{
+  width: 28px;
+}
+.ranking-list .name p b{
+  margin-right: 30px;
+  font-size: 32px;
+  color: #3b3b3b;
+  position: relative;
+  top: 5px;
+}
+.ranking-list .name img{
+  margin-right: 12px;
+}
+.ranking-list .name p{
+  font-size: 26px;
+  color: #999;
+  margin-bottom: 20px;
+}
+.ranking_name{
+  margin-top: 12px;
+}
+
+.around h3{
+  border-bottom: 1px solid #E0E0E0;
+  padding-bottom: 32px;
+}
+.around .ranking-list .icon{
+  top: 0;
+}
+.around .ranking-list .icon img:nth-child(1){
+  width: 140px;
+  height: 140px;
+}
+.around .ranking-list .name p{
+  margin-bottom: 25px;
+}
+
+/*我要买*/
+.current_news{
+  margin-top: 14px;
+  background: #fff;
+  overflow: hidden;
+  padding: 34px 30px;
+}
+.current_news>div{
+  float: left;
+  display: inline-block;
+}
+.current_news>div:nth-child(1) img{
+  width: 83px;
+  height: 91px;
+  margin-right: 40px;
+  position: relative;
+  top: 20px;
+}
+.current_news>div:nth-child(2){
+  width: 80%;
+}
+.news_swiper{
+  height: 156px;
+  overflow: hidden;
+}
+.current_news .swiper-slide{
+  font-size: 26px;
+  height: 52px!important;
+  color: #3b3b3b;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.adver_swiper .swiper-slide img{
+  width: 100%;
+}
+
+
