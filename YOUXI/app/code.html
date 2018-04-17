@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta http-equiv="Content-Type" content="text/html">
+		<meta name="full-screen" content="yes">
+		<meta name="x5-orientation" content="portrait">
+		<meta name="x5-fullscreen" content="true">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>输入验证码</title>
+		<link rel="stylesheet" href="../css/index.css" />
+		<script type="text/javascript">
+			(function() {
+				var html = document.documentElement;
+				var width = html.getBoundingClientRect().width;
+				html.style.fontSize = width / 18 + 'px';
+				rem = width / 18;
+				//1rem=60;					
+			})()
+		</script>
+	</head>
+
+	<body>
+		<div class="top">
+			<p class="logo"><img src="../img/hey-logo.png" /></p>
+			<p class="hey_info">在hey世界获得自己的虚拟土地，游戏中免费获得最有价值的数字货币，在这里读懂区块链</p>
+		</div>
+		<div class="input_content forget_content code_content">
+			<p class="code_tip">新用户注册需要短信验证码，六位数验证码已经以短信的形式发送至*******2353，请输入验证码</p>
+			<h2>60</h2>
+			<p id="code_box">
+				<input type="password" maxlength="1">
+				<input type="password"  maxlength="1">
+				<input type="password"  maxlength="1">
+				<input type="password"  maxlength="1">
+				<input type="password" maxlength="1">
+				<input type="password"  maxlength="1">
+			</p>
+		</div>
+		<div class="bottom code_bottom">
+			<p class="submit_btn next_btn"><button>下一步</button></p>
+		</div>
+		<script type="text/javascript">
+			document.querySelector('button').addEventListener('click', function() {
+				window.location.href = 'newpwd.html'
+			})
+		</script>
+	</body>
+
+</html>

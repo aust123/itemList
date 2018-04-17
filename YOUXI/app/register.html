@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta http-equiv="Content-Type" content="text/html">
+		<meta name="full-screen" content="yes">
+		<meta name="x5-orientation" content="portrait">
+		<meta name="x5-fullscreen" content="true">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>注册</title>
+		<link rel="stylesheet" href="../css/index.css" />
+		<script type="text/javascript">
+			(function() {
+				var html = document.documentElement;
+				var width = html.getBoundingClientRect().width;
+				html.style.fontSize = width / 18 + 'px';
+				rem = width / 18;
+				//1rem=60;					
+			})()
+		</script>
+	</head>
+	<body>
+		<div class="top">
+			<p class="logo"><img src="../img/hey-logo.png"/></p>
+			<p class="hey_info">在hey世界获得自己的虚拟土地，游戏中免费获得最有价值的数字货币，在这里读懂区块链</p>
+		</div>
+		<div class="input_content">
+			<p><span>昵称：</span><input type="text" name=""  value="" placeholder="请输入昵称"/></p>
+			<p><span>手机号：</span><input type="text" name=""  value="" placeholder="请输入手机号"/></p>
+			<p><span>密码：</span><input type="password" name=""  value="" placeholder="请输入密码"/></p>
+			<p id="wallet"><span>以太坊&nbsp;&nbsp;&nbsp;</br>钱包地址：</span><input type="text" name=""  value="" placeholder="请输入以太坊地址"/></p>
+			<p id="code"><span>校验码：</span><input type="text" name=""  value="" placeholder="请输入校验码"/><i id="check_code"><b>wldV33</b><em>看不清换一张</em></i></p>
+			<p id="agreement"><span class="circle"></span>我已经阅读并同意<a href="javascript:void(0);">服务条款</a></p>
+		</div>
+		<div class="bottom">
+			<p class="submit_btn"><button>注册</button></p>
+			<p class="login_tip"><a href="login.html">已有账号，直接登录</a></p>
+		</div>	
+	</body>
+
+</html>
