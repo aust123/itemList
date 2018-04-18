@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta http-equiv="Content-Type" content="text/html">
+		<meta name="full-screen" content="yes">
+		<meta name="x5-orientation" content="portrait">
+		<meta name="x5-fullscreen" content="true">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>忘记密码</title>
+		<link rel="stylesheet" href="../css/index.css" />
+		<script type="text/javascript">
+			(function() {
+				var html = document.documentElement;
+				var width = html.getBoundingClientRect().width;
+				html.style.fontSize = width / 18 + 'px';
+				rem = width / 18;
+				//1rem=60;					
+			})()
+		</script>
+	</head>
+	<body>
+		<div class="top">
+			<p class="logo"><img src="../img/hey-logo.png"/></p>
+			<p class="hey_info">在hey世界获得自己的虚拟土地，游戏中免费获得最有价值的数字货币，在这里读懂区块链</p>
+		</div>
+		<div class="input_content forget_content">			
+			<p><input type="text" name=""  value="" placeholder="请输入手机号"/></p>			
+		</div>
+		<div class="bottom forget_bottom">
+			<p class="submit_btn next_btn"><button>下一步</button></p>			
+		</div>
+		<!--弹出框-->
+		<div class="background"></div>
+		<div class="popupBox">
+			<div id="delete_box" class="confirm_box">
+				<div class="operate_tip">
+					<div class="text">请输入手机号</div>
+				</div>
+				<div class="buttons" id="sure">确定</div>
+			</div>
+		</div>
+		<script src="../js/zquery.js"></script>
+		<script>
+			/*document.querySelector('button').addEventListener('click',function(){
+				window.location.href='code.html';
+			})*/
+			$('.submit_btn button').click(function() {
+				$('.input_content input').each(function(i) {
+					if(!$(this).val()) {
+						console.log($(this).attr('placeholder'));
+						$('.text').html($(this).attr('placeholder'));
+						$(this).addClass('err_input')
+						$(".popupBox,.background").fadeIn(200);
+						$('#delete_box').addClass('show').addClass('show_in')
+					}else{
+						window.location.href='code.html';
+					}
+				})
+
+			})
+			
+			$('.popupBox').click(function(e) {
+				var ev = e ? e : window.event;
+				if(ev.target == $(".popupBox")[0] || ev.target == $('#sure')[0]) {
+					$(".popupBox,.background").fadeOut(200);
+					$('#delete_box').removeClass('show').removeClass('show_in')
+				}
+			})
+		</script>
+	</body>
+
+</html>

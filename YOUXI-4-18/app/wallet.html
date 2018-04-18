@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta http-equiv="Content-Type" content="text/html">
+		<meta name="full-screen" content="yes">
+		<meta name="x5-orientation" content="portrait">
+		<meta name="x5-fullscreen" content="true">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>我的钱包</title>
+		<link rel="stylesheet" href="../css/index.css" />
+		<script type="text/javascript">
+			(function() {
+				var html = document.documentElement;
+				var width = html.getBoundingClientRect().width;
+				html.style.fontSize = width / 18 + 'px';
+				rem = width / 18;
+				//1rem=60;					
+			})()
+		</script>
+	</head>
+
+	<body style="background: #f1f1f1;">
+		<div class="top wallet">
+			<p>估算钱包总资产</p>
+			<h2>0.0000</h2>
+			<p>CNY</p>
+			<div class="wallet_content input_content">
+				<a href="javascript:void(0);"><img src="../img/mywallet_icon_jiaoyi.png" />交易记录</a>
+				<a href="javascript:void(0);"><img src="../img/mywallet_icon_enter.png" />充币记录</a>
+				<a href="javascript:void(0);"><img src="../img/mywallet_icon_out.png" />提币记录</a>
+			</div>
+		</div>		
+		<div class="wallet_content_info">
+			<a href="javasvript:void(0);">
+				<img src="../img/mywallet_icon_btc.png" />
+				<span class="coin_name">BTC<i>(BitCoin)</i></span>
+				<span class="count">
+					<em>行情价：0.0713CNY</em></br>
+					<em>个数：0</em>
+				</span>
+				<img class="arrow" src="../img/jiantou_right.png" alt="" />
+			</a>
+			<a href="javasvript:void(0);">
+				<img src="../img/mywallet_icon_eth.png" />
+				<span class="coin_name">ETH<i>(Ethereum)</i></span>
+				<span class="count">
+					<em>行情价：0.0713CNY</em></br>
+					<em>个数：0</em>
+				</span>
+				<img class="arrow" src="../img/jiantou_right.png" alt="" />
+			</a>
+		</div>
+
+	</body>
+
+</html>
