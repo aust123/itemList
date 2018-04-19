@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>Get HEY coin</title>
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-title" content="Bubble Pop Adventures">
+		<meta name="application-name" content="Bubble Pop Adventures">
+		<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale=1.0001, minimum-scale=1.0001, maximum-scale=1.0001, user-scalable=no, minimal-ui" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<link rel="stylesheet" type="text/css" href="game.css">
+		<script type="text/javascript" src="game.js"></script>
+		<style type="text/css">
+			h2 {
+				color: #fff;
+			}
+			
+			#play {
+				color: #333;
+			}
+			
+			#over {
+				display: none;
+				position: absolute;
+				z-index: 9999999999999999;
+				color: red;
+				top: 0;
+				left: 0;
+				background-color: #fff;
+			}
+		</style>
+	</head>
+	<div class="gamecenter-activator"></div>
+
+	<body onLoad="">
+		<div id="ajaxbar">
+			<div id="game"><canvas id="canvas"></canvas><canvas id="bgcanvas" width=480 height=640></canvas>
+			</div>
+			<div id="orientate"><img src="media/graphics/orientate/landscape.png" /></div>
+			<!--	<div id="play" class="play" onClick=""><img src="media/graphics/splash/mobile/cover-start.png" /></div>-->
+			<div id="play" onClick="" class="play">开始按钮</div>
+		</div>
+
+		<div id="over">结束啦</div>
+		<script type="text/javascript">
+			localStorage.clear('levelBubble')
+			window.onload = function() {
+				//console.log(333);
+				//console.log(ig)
+				//ig.game.pressPlay();ig.soundHandler.staticSound.play();
+
+			}
+			/* window.onbeforeunload = onbeforeunload_handler;
+        window.onunload = onunload_handler;
+        function onbeforeunload_handler() {
+            var warning = "确认退出?";
+            alert('确认退出')
+            return warning;
+        }
+ 
+        function onunload_handler() {
+            var warning = "谢谢光临";
+            alert(warning);
+        }     */
+			var t = document.getElementsByTagName('title')[0];
+			document.addEventListener('visibilitychange', function() {
+				if(document.hidden) {
+					t.innerText = 'come back';
+					alert(sessionStorage.level)
+				} else {
+					t.innerText = 'tuboemily';
+				}
+				if(document.unloaded){
+					alert('真的要关闭吗')
+				}
+			})
+		</script>
+	</body>
+
+</html>
