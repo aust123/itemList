@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>Get HEY coin</title>
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-title" content="Bubble Pop Adventures">
+		<meta name="application-name" content="Bubble Pop Adventures">
+		<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale=1.0001, minimum-scale=1.0001, maximum-scale=1.0001, user-scalable=no, minimal-ui" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<link rel="stylesheet" type="text/css" href="game.css">
+		
+		<style type="text/css">
+			
+		</style>
+	</head>
+	<div class="gamecenter-activator"></div>
+
+	<body onLoad="">
+		<div id="ajaxbar">
+			<div id="game"><canvas id="canvas"></canvas><canvas id="bgcanvas" width=480 height=640></canvas>
+			</div>
+			<div id="orientate"><img src="media/graphics/orientate/landscape.png" /></div>
+			<!--	<div id="play" class="play" onClick=""><img src="media/graphics/splash/mobile/cover-start.png" /></div>-->
+			<div id="play" onClick="" class="play">开始按钮</div>
+		</div>
+
+		<!--弹出框-->
+		<div class="background"></div>
+		<div class="popupBox">
+			<div id="delete_box" class="confirm_box">
+				<div class="operate_tip">
+					<div class="text"></div>
+				</div>
+				<div class="buttons" id="sure">确定</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="game.js"></script>
+		<script src="../js/jquery-1.8.3.min.js"></script>
+		<script src="../js/md5.js"></script>
+		<script src="../js/main.js"></script>
+		
+		<script type="text/javascript">
+			localStorage.clear('levelBubble');
+			//playGameOver(1)
+			function playGameOver(_level){
+				var url='/api/api/play_game';
+				var params={
+					uid: sessionStorage.user_id,
+					play_style: 1
+				};
+				params.end_guanka=_level;
+				
+				Ajax(params,url,aa);
+			}
+			
+			function aa(data){
+				console.log(data);
+			}
+			/* window.onbeforeunload = onbeforeunload_handler;
+        window.onunload = onunload_handler;
+        function onbeforeunload_handler() {
+            var warning = "确认退出?";
+            alert('确认退出')
+            return warning;
+        }
+ 
+        function onunload_handler() {
+            var warning = "谢谢光临";
+            alert(warning);
+        }     */
+			var t = document.getElementsByTagName('title')[0];
+			document.addEventListener('visibilitychange', function() {
+				if(document.hidden) {
+					t.innerText = 'come back';
+					//alert(sessionStorage.level)
+				} else {
+					t.innerText = 'tuboemily';
+					//alert('在状态');
+					if(sessionStorage.start){
+						//alert('已玩过游戏') 
+					}
+					
+				}
+				if(document.unloaded){
+					alert('真的要关闭吗');
+					if(sessionStorage.start){
+						alert('以玩过游戏');
+						localStorage.close=1111
+					}
+				}
+			})
+			//分数记录
+			//分数名
+			//改为1
+			//左上角 EntityProceedBut
+			//过关时的repaly按钮已隐藏
+			//直接进入下一关
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta http-equiv="Content-Type" content="text/html">
+		<meta name="full-screen" content="yes">
+		<meta name="x5-orientation" content="portrait">
+		<meta name="x5-fullscreen" content="true">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>合作机构</title>
+		<link rel="stylesheet" href="../css/index.css" />
+		<script type="text/javascript">
+			(function() {
+				var html = document.documentElement;
+				var width = html.getBoundingClientRect().width;
+				html.style.fontSize = width / 18 + 'px';
+				rem = width / 18;
+				//1rem=60;					
+			})()
+		</script>
+	</head>
+
+	<body style="background-color: #f1f1f1;">
+		<div class="cooperator_content"></div>
+		<script type="text/html" id="co_tpl">
+			{{each data value}}
+			<div>
+				<p class="co_titile"><img src="../img/myparterner_logo.png" alt="" /><b>{{value.agency_name}}</b><span>行情价：{{value.price_api}}</span></p>
+				<p class="co_info">{{value.agency_introduce}}</p>
+				<a class="more" href="{{value.more_link}}">了解更多</a>
+			</div>
+			{{/each}}
+		</script>
+		<div class="no_data_tip">暂无数据</div>
+		<script src="../js/zquery.js"></script>
+		<script src="../js/main.js"></script>
+		<script src="../js/template-web.js"></script>
+		<script>
+			$(function() {
+				var url = '/api/api/get_co_agency';				
+				var params = {
+					pageNum:1,
+					size:10
+				}
+				Ajax(params,url,cooperatorInfo);
+			})
+			function cooperatorInfo(data){
+				console.log(data);
+				if(data.status_code==10000){
+					var html=template('co_tpl',data);
+					$('.cooperator_content').html(html);
+				}else if(data.status_code==10045){
+					$('.no_data_tip').addClass('show_tip');
+				}
+			}
+		</script>
+	</body>
+
+</html>
