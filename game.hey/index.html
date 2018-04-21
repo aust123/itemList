@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta http-equiv="Content-Type" content="text/html">
+		<meta name="full-screen" content="yes">
+		<meta name="x5-orientation" content="portrait">
+		<meta name="x5-fullscreen" content="true">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>个人中心</title>
+		<link rel="stylesheet" href="css/index.css" />
+		<script type="text/javascript">
+			(function() {
+				var html = document.documentElement;
+				var width = html.getBoundingClientRect().width;
+				html.style.fontSize = width / 18 + 'px';
+				rem = width / 18;
+				//1rem=60;					
+			})()
+		</script>
+	</head>
+
+	<body style="background: #f1f1f1;">
+		<div id="scroll">
+			<div class="top my_center"></div>
+			<div class="my_center_content input_content">
+				<p><img class="header_logo" src="img/my_icon_touxiang.png" /></p>
+				<p class="uname">David</p>
+			</div>
+			<div class="my_center_list">
+				<p>
+					<a href="app/wallet.html"><img src="img/my_icon_wallet.png" /><span>我的钱包</span></a>
+					<a href="app/cooperator.html"><img src="img/my_icon_paterner.png" /><span>合作机构</span></a>
+				</p>
+				<p>
+					<a href="app/about.html"><img src="img/my_icon_my.png" /><span>关于我们</span></a>
+					<a href="app/setting.html"><img src="img/my_icon_system.png" /><span>系统设置</span></a>
+				</p>
+			</div>
+		</div>
+		<footer>
+			<a href="game.html"><img src="img/index_icon_game_n.png" /><span>游戏</span></a>
+			<a href="javascript:void(0);" class="active"><img src="img/index_icon_my_p.png" /><span>我</span></a>
+		</footer>
+		<script src="js/zquery.js"></script>
+		<script src="js/md5.js"></script>
+		<script src="js/main.js"></script>
+		<script>
+			$(function() {
+				var url = '/api/api/get_personal_center';
+				var params = {};
+				if(sessionStorage.user_id) {
+					params.uid = sessionStorage.user_id;
+				}else{
+					window.location.href='app/login.html'
+				}
+				Ajax(params, url, getUserInfo);
+			})
+
+			function getUserInfo(data) {
+				//console.log(data);
+				if(data.status_code == 10000) {
+					if(data.data.headurl) {
+						$('.header_logo').attr('src', data.data.headurl);
+					}
+					if(data.data.username) {
+						$('.uname').html(data.data.username);
+					};
+					if(data.data.eth_address) {
+						localStorage.eth_address = data.data.eth_address;
+						sessionStorage.eth_address = data.data.eth_address;
+					}
+				}
+			}
+		</script>
+	</body>
+
+</html>
