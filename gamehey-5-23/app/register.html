@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta http-equiv="Content-Type" content="text/html">
+		<meta name="full-screen" content="yes">
+		<meta name="x5-orientation" content="portrait">
+		<meta name="x5-fullscreen" content="true">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>注册</title>
+		<link rel="stylesheet" href="../css/index.css" />
+		<script type="text/javascript">
+			(function() {
+				var html = document.documentElement;
+				var width = html.getBoundingClientRect().width;
+				html.style.fontSize = width / 18 + 'px';
+				rem = width / 18;
+				//1rem=60;					
+			})()
+		</script>
+	</head>
+
+	<body>
+		<div class="top">
+			<p class="logo"><img src="../img/hey-logo.png" /></p>
+			<p class="hey_info">在hey世界获得自己的虚拟土地，游戏中免费获得最有价值的数字货币，在这里读懂区块链</p>
+		</div>
+		<div class="input_content">
+			<p><span>昵称：</span><input type="text" class="uname" value=""  placeholder="请输入昵称" /></p>
+			<p><span>手机号：</span><input type="tel" class="mobile" value="" placeholder="请输入手机号" pattern="^1[345678][0-9]{9}$" required/></p>
+			<p><span>密码：</span><input type="password" class="pwd" value="" placeholder="请输入6-18位密码" required/></p>
+			<p id="wallet"><span>钱包地址：</span><input type="text" class="wallet_id" value="" placeholder="请输入以太坊地址" required/></p>
+			<p><span>邀请人：</span><input type="tel" class="invite_phone" value="" placeholder="请输入邀请人手机号" required/></p>
+			<p id="code"><span>校验码：</span><input type="text" class="jiaoyan" value="" placeholder="请输入校验码" />
+				<i id="check_code">
+				<b class="code"  onclick="createCode()">
+				<b id="fir"></b>
+				<b id="sec"></b>
+				<b id="thir"></b>
+				<b id="fouth"></b>
+				</b>
+				<em onclick="createCode()" class="refresh">看不清换一张</em>
+				</i>
+			</p>
+			<p id="agreement"><span class="circle "></span>我已经阅读并同意
+				<a href="javascript:void(0);">服务条款</a>
+			</p>
+		</div>
+		<div class="bottom">
+			<p class="submit_btn"><button>注册</button></p>
+			<p class="login_tip">
+				<a href="login.html">已有账号，直接登录</a>
+			</p>
+		</div>
+		<!--弹出框-->
+		<div class="background"></div>
+		<div class="popupBox">
+			<div id="delete_box" class="confirm_box">
+				<div class="operate_tip">
+					<div class="text">请输入手机号</div>
+				</div>
+				<div class="buttons" id="sure">确定</div>
+			</div>
+		</div>
+		<script src="../js/zquery.js"></script>		
+		<script src="../js/main.js"></script>
+		<script>
+			$(function(){
+				if(GetQueryString("id")){
+					$('.invite_phone').val(GetQueryString("id"));
+					$('.invite_phone').attr('disabled','disabled');					
+				}			
+			})
+			//表单验证
+			$('.submit_btn button').click(function() {
+				var arr = [];
+				$('.input_content input').each(function(i) {
+					if(!$(this).val()&&!$(this).hasClass('uname')&&!$(this).hasClass('invite_phone')) {
+						arr.push(i);
+						arr.length > 1 ? $('.text').html('请输入完整信息') : $('.text').html($(this).attr('placeholder'));
+						$(this).addClass('err_input');
+						Tips();
+					} else {
+						if(!$('.circle').hasClass("selected")) {
+							$('.text').html('未同意服务条款');
+							Tips();
+						}
+					}
+				});
+				if(arr.length == 0 && $('.circle').hasClass("selected")) {
+					if($('.jiaoyan').val().toUpperCase() != code.toUpperCase()) {
+						$('.text').html('校验码错误');
+						Tips();
+					}else if(!(/^1[34578]\d{9}$/.test($('.mobile').val()))){
+						$('.text').html('请输入正确的手机号码');
+						Tips();
+					} else {
+						var url = '/api/api/register';
+						var params = {
+							username: $('.uname').val(),
+							phone: $('.mobile').val(),
+							password: $('.pwd').val(),
+							eth_address: $('.wallet_id').val(),
+							yaoqingren:$('.invite_phone').val()
+						}
+						sessionStorage.params = JSON.stringify(params);
+						window.location.href = 'code.html?register=1';
+					}
+				}
+			})
+			/*是否同意条款*/
+			$('#agreement').click(function() {
+				$('.circle').toggleClass('selected');
+			});
+			
+		</script>
+	</body>
+
+</html>

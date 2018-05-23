@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>Get HEY coin</title>
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-title" content="Bubble Pop Adventures">
+		<meta name="application-name" content="Bubble Pop Adventures">
+		<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale=1.0001, minimum-scale=1.0001, maximum-scale=1.0001, user-scalable=no, minimal-ui" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<link rel="stylesheet" type="text/css" href="game.css">
+		<script type="text/javascript">
+			(function() {
+				var html = document.documentElement;
+				var width = html.getBoundingClientRect().width;
+				html.style.fontSize = width / 18 + 'px';
+				rem = width / 18;
+				//1rem=60;					
+			})()
+		</script>
+		<style type="text/css">
+			.award_content {
+				text-align: center;
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				z-index: 999999;
+				background-color: #fff;
+				display: none;
+			}
+			
+			.get_coin_logo {
+				margin-top: 3.66666666rem;
+				margin-bottom: 2.66666666rem;
+			}
+			
+			.get_coin_logo img {
+				width: 6.66666666rem;
+			}
+			
+			.award_content h2 {
+				font-size: 1.33333333rem;
+				color: #333;
+				font-weight: bold;
+			}
+			
+			.award_tip {
+				color: #303030;
+				font-size: 0.63333333rem;
+				margin-top: 1.66666666rem;
+				margin-bottom: 4rem;
+				padding: 0 2.16666666rem;
+			}
+			
+			.back a {
+				display: inline-block;
+				color: #fff;
+				background-color: #F0833A;
+				border-radius: 1.23333333rem;
+				text-align: center;
+				width: 10.81666666rem;
+				height: 1.96666666rem;
+				line-height: 1.96666666rem;
+				font-size: 0.6rem;
+				text-decoration: none;
+			}
+		</style>
+
+	</head>
+	<div class="gamecenter-activator"></div>
+
+	<body>
+		<!--奖励提示-->
+		<div class='award_content'>
+			<div class="get_coin_logo"><img style="width: 5.666667rem;" src="../img/award.png" /></div>
+			<h2><span class="coin_count">0.000</span><span class="coin_souxie" style="margin-left: 0.3rem;"></span></h2>
+			<p class="award_tip">恭喜，您获得了隐藏的宝藏<span class="coin_count">0.000</span><span class="coin_souxie"></span></p>
+			<p class="back">
+				<a href="javascript:void(0);" class="coin_sure_btn">确定</a>
+			</p>
+		</div>
+
+		<div id="ajaxbar">
+			<div id="game"><canvas id="canvas"></canvas><canvas id="bgcanvas" width=480 height=640></canvas>
+			</div>
+			<div id="orientate"><img src="media/graphics/orientate/landscape.png" /></div>
+			<!--	<div id="play" class="play" onClick=""><img src="media/graphics/splash/mobile/cover-start.png" /></div>-->
+			<div id="play" onClick="" class="play">开始按钮</div>
+		</div>
+		<script type="text/javascript" src="game.js"></script>
+		<script src="../js/zquery.js"></script>
+		<script src="../js/md5.js"></script>
+		<script src="../js/main.js"></script>
+		<script type="text/javascript">
+			//console.log(localStorage)
+			localStorage.removeItem('levelBubble');
+			function playGameOver(_level) {
+				var url = '/api/api/play_game';
+				var params = {					
+					play_style: 1
+				};
+				if(localStorage.user_id){
+					params.uid=localStorage.user_id;
+				}else if(sessionStorage.user_id){
+					params.uid=sessionStorage.user_id;
+				}				
+				params.end_guanka = _level;
+				Ajax(params, url, getCoin);
+			}
+
+			function getCoin(data) {
+				console.log(data);
+				if(data.status_code == 10000) {
+					$('.award_content').css('display', 'block');
+					$('.coin_souxie').html(data.coin_suoxie_name);
+					$('.coin_count').html(data.coin_count);
+					$('.get_coin_logo img').attr('src','http://admin.healthbeauty.io/data/upload/'+data.coin_logo);
+				}
+			}
+
+			$('.coin_sure_btn').click(function() {
+				window.location.href = '../game.html';
+			})
+			//分数记录
+			//分数名
+			//改为1
+			//左上角 EntityProceedBut
+			//过关时的repaly按钮已隐藏
+			//直接进入下一关
+		</script>
+	</body>
+
+</html>

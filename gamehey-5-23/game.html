@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta http-equiv="Content-Type" content="text/html">
+		<meta name="full-screen" content="yes">
+		<meta name="x5-orientation" content="portrait">
+		<meta name="x5-fullscreen" content="true">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>hey 宝藏</title>
+		<link rel="stylesheet" href="css/index.css" />
+		<script type="text/javascript">
+			(function() {
+				var html = document.documentElement;
+				var width = html.getBoundingClientRect().width;
+				html.style.fontSize = width / 18 + 'px';
+				rem = width / 18;
+				//1rem=60;					
+			})()
+		</script>
+	</head>
+
+	<body style="background: #f1f1f1;">
+		<!--直接开游戏提示-->
+		<div class='award_content'>
+			<div class="get_coin_logo"><img src="img/award.png" /></div>
+			<h2><span class="coin_count">0.000</span><span class="coin_souxie" style="margin-left: 0.3rem;"></span></h2>
+			<p class="award_tip">恭喜，您获得了隐藏的宝藏<span class="coin_count">0.000</span><span class="coin_souxie"></span></p>
+			<p class="back">
+				<a href="javascript:void(0);" class="coin_sure_btn">确定</a>
+			</p>
+		</div>
+		<div id="scroll">
+			<div class="top game">
+				<p class="logo"><img src="img/hey-logo.png" /></p>
+				<p class="hey_info">在hey世界里，埋藏着许许多多的数字货币金矿，快来试试你的运气吧！！</p>
+			</div>
+			<!--未抽奖或者玩游戏时显示-->
+			<div class="game_state_content" id="have_chance">
+				<div class="game_content">
+					<div class="game_img"><img src="img/index_img.png" /></div>
+					<div class="game_info_content">
+						<img id="game_logo" src="img/index_logo.png" />
+						<div class="game_info">
+							<p>拥有者：Hashworld</p>
+							<p>土地标价：2000</p>
+							<p><i>土地标语：</i><span>到过的地方,要在这里收藏</span></p>
+						</div>
+					</div>
+					<div class="option">
+						<div class="play_option">
+							<a class="play_btn" href="game/index.html">玩</a>
+							<p>Hey消砖块</p>
+							<p>靠实力赚币！</p>
+						</div>
+						<div class="open_option">
+							<a class="open_btn" href="javascript:void(0);" id="open">开</a>
+							<p>直接开启</p>
+							<p>靠运气赚币！</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--已经玩过游戏或者开过显示-->
+			<div class="game_state_content" id="no_chance">
+				<div class="game_content">
+					<div class="game_img"><img src="img/index_img.png" /></div>
+					<div class="game_info_content" style="height: 9.8rem;">
+						<img class="coin_logo" src="img/hey.png" />
+						<p class="coin_award">0</p>
+						<p class="get_coin_name">hey</p>
+					</div>
+				</div>
+			</div>
+			<p class="game_tip">您今天还有<span class="game_change">0</span>次抽奖机会<img src="img/index_icon_shuoming.png" alt="" /></p>
+		</div>
+
+		<!--弹出框-->
+		<div class="background"></div>
+		<div class="popupBox">
+			<div id="delete_box" class="confirm_box">
+				<div class="operate_tip">
+					<div class="text">请输入手机号</div>
+				</div>
+				<div class="buttons" id="sure">确定</div>
+			</div>
+		</div>
+
+		<footer>
+			<a href="javascript:void(0);" class="active"><img src="img/index_icon_game_p.png" /><span>游戏</span></a>
+			<a href="index.html"><img src="img/index_icon_my_n.png" /><span>我</span></a>
+		</footer>
+		<script src="js/zquery.js"></script>
+		<script src="js/md5.js"></script>
+		<script src="js/main.js"></script>
+		<script>
+			//获取当天游戏剩余次数
+			$(function() {
+				var url = '/api/api/get_left_game_chance';
+				var params = {};
+				params.uid = sessionStorage.user_id ? sessionStorage.user_id : localStorage.user_id;
+				Ajax(params, url, getCountInfo);
+			});
+			//判断是否已抽奖
+			function getCountInfo(data) {
+				//console.log(data)
+				if(data.status_code == 10000) {
+					if(data.data.count == 0) {
+						$('#no_chance').addClass('on');
+						$('.coin_award').html(data.data.game_info.coin_count);
+						$('.get_coin_name').html(data.data.game_info.coin_suoxie_name);
+						$('.coin_logo').attr('src', 'http://admin.healthbeauty.io/data/upload/' + data.data.game_info.coin_logo)
+					} else if(data.data.count == 1) {
+						$('#have_chance').addClass('on');
+					}
+					$('.game_change').html(data.data.count);
+				}
+			}
+			//玩游戏——直接开
+			$('#open').click(function() {
+				var url = '/api/api/play_game';
+				var params = {
+					play_style: 2
+				}
+				params.uid = sessionStorage.user_id ? sessionStorage.user_id : localStorage.user_id;
+				Ajax(params, url, directOpen);
+			});
+
+			function directOpen(data) {
+				if(data.status_code == 10000) {
+					$('.award_content').addClass('on');
+					$('.coin_souxie').html(data.coin_suoxie_name);
+					$('.coin_count').html(data.coin_count);
+					$('.get_coin_logo').attr('src', 'http://admin.healthbeauty.io/data/upload/' + data.coin_logo);
+
+				} else if(data.status_code == 10001) {
+					$('.text').html(data.msg);
+					Tips();
+				}
+			}
+			$('.coin_sure_btn').click(function() {
+				$('.award_content').removeClass('on');
+				window.location.reload(true);
+			})
+		</script>
+	</body>
+
+</html>

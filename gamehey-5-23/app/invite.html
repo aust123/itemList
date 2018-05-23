@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta http-equiv="Content-Type" content="text/html">
+		<meta name="full-screen" content="yes">
+		<meta name="x5-orientation" content="portrait">
+		<meta name="x5-fullscreen" content="true">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>邀请好友</title>
+		<link rel="stylesheet" href="../css/index.css" />
+		<script type="text/javascript">
+			(function() {
+				var html = document.documentElement;
+				var width = html.getBoundingClientRect().width;
+				html.style.fontSize = width / 18 + 'px';
+				rem = width / 18;
+				//1rem=60;					
+			})()
+		</script>
+	</head>
+
+	<body style="background-color: #f1f1f1;">
+		<div class="invite_content">
+			<h2 class="title">邀请好友</h2>
+			<p class="instruction">复制下方内容或一键分享链接，发送给好友或者群聊。</p>
+			<p class="instruction">每邀请一位好友可以获得20HEY，邀请好友最高可获得10000HEY</p>
+			<div class="invite_link">
+				<p id="foo">全球首个美丽全产业生态区块链开始挖矿，玩游戏抽奖均可获得HEY，注册即送29HEY，每邀请一位好友也可获得20HEY，邀请奖励上限10000HEY。HEY可用于在线兑换商品、合作医院消费、HEY女神投票等！！！[每天还有机会抽取BTC，ETH，EOS，等奖品]<span class="invite_url">http://game.healthbeauty.io/app/register</span></p>
+				<p class="copy_btn"><button class="btn" data-clipboard-action="copy" data-clipboard-target="#foo">复制</button></p>
+			</div>
+		</div>
+		<script src="../js/zquery.js"></script>
+		<script src="../js/clipboard.min.js"></script>
+		<script>
+			$(function() {
+				if(localStorage.phone_num) {
+					alert(localStorage.phone_num)
+					var url = 'http://game.healthbeauty.io/app/register?id=' + localStorage.phone_num;
+					$('.invite_url').html(url);
+				}
+			})
+
+			var clipboard = new ClipboardJS('.btn');
+			clipboard.on('success', function(e) {
+				e.clearSelection();
+				alert('复制成功')
+			});
+			clipboard.on('error', function(e) {
+				console.error('Action:', e.action);
+				console.error('Trigger:', e.trigger);
+			});
+		</script>
+	</body>
+
+</html>

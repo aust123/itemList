@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta http-equiv="Content-Type" content="text/html">
+		<meta name="full-screen" content="yes">
+		<meta name="x5-orientation" content="portrait">
+		<meta name="x5-fullscreen" content="true">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>我的钱包</title>
+		<link rel="stylesheet" href="../css/index.css" />
+		<script type="text/javascript">
+			(function() {
+				var html = document.documentElement;
+				var width = html.getBoundingClientRect().width;
+				html.style.fontSize = width / 18 + 'px';
+				rem = width / 18;
+				//1rem=60;					
+			})()
+		</script>
+	</head>
+
+	<body style="background: #f1f1f1;">
+		<div class="top wallet">
+			<p>估算钱包总资产</p>
+			<h2>0.0000</h2>
+			<p>CNY</p>
+			<div class="wallet_content input_content">
+				<a href="javascript:void(0);" class="trade_record current"><img src="../img/mywallet_icon_jiaoyi.png" />我的钱包</a>
+				<a href="javascript:void(0);" class="charging_record"><img src="../img/mywallet_icon_enter.png" />钱包地址</a>
+				<a href="javascript:void(0);" class="get_coin_record"><img src="../img/mywallet_icon_out.png" />我要提币</a>
+			</div>
+		</div>
+		<div class="wallet_content_info on" id="wallet_info_list">			
+			<!--<a href="javasvript:void(0);">
+				<img src="../img/mywallet_icon_eth.png" />
+				<span class="coin_name">ETH<i>(Ethereum)</i></span>
+				<span class="count">
+					<em>行情价：0.0713CNY</em></br>
+					<em>个数：0</em>
+				</span>
+				<img class="arrow" src="../img/jiantou_right.png" alt="" />
+			</a>-->
+		</div>
+		<div class="wallet_content_info">
+			<a href="javasvript:void(0);" style="padding-bottom: 0.93333333rem; border-top: 1px solid #cdcdcd;">
+				<img src="../img/wallet_logo.jpg" />
+				<span class="coin_name" style="width: auto;">钱包地址：</span>
+				<span class="eth_address" style="font-size: 0.63333333rem;">00000020202202020</span>
+			</a>
+		</div>
+		<!--弹出框-->
+		<div class="background"></div>
+		<div class="popupBox">
+			<div id="delete_box" class="confirm_box" style="height: 8rem;">
+				<div class="operate_tip">
+					<div class="text" style="padding: 0 0.3rem;">首批开放提币时间预计为2018年9月9日，具体开放提币时间可根据项目开发进程提前</div>
+				</div>
+				<div class="buttons" id="sure">确定</div>
+			</div>
+		</div>
+		<script type="text/html" id="wallet_info_tpl">
+			{{each data value}}
+				<a href="javasvript:void(0);">
+				<!--<img src="../img/mywallet_icon_btc.png"/>-->
+				{{if value.coin_logo}}
+				<img src="http://admin.healthbeauty.io/data/upload/{{value.coin_logo}}"/>
+				{{else}}
+				<img src="../img/mywallet_icon_btc.png"/>
+				{{/if}}
+				<span class="coin_name">{{value.coin_suoxie_name}}<i>({{value.coin_name_en}})</i></span>
+				<span class="count" style="margin-top: 0.1rem;">
+					<!--<em>行情价：0.0713CNY</em></br>-->
+					<em>个数：{{value.coin_all_count}}</em>
+				</span>
+				<img class="arrow" src="../img/jiantou_right.png" alt="" />
+			</a>
+			{{/each}}
+			
+		</script>
+		<script src="../js/zquery.js"></script>
+		<script src="../js/md5.js"></script>
+		<script src="../js/main.js"></script>
+		<script src="../js/template-web.js"></script>
+		<script>
+			$('.get_coin_record').click(function() {
+				$(".popupBox,.background").fadeIn(200);
+				$('#delete_box').addClass('show').addClass('show_in');
+			});
+			
+			$('.wallet_content a').each(function(i){
+				$(this).click(function(){
+					$(this).addClass('current').siblings().removeClass('current');
+					$('.wallet_content_info').eq(i).addClass('on').siblings().removeClass('on');
+				})
+				
+			})
+			
+			
+			$(function() {
+				//获取钱包地址
+				if(sessionStorage.eth_address) {
+					$('.eth_address').html(sessionStorage.eth_address);
+				}
+				//获取钱包信息
+				var url = '/api/api/get_wallet_info';
+				var params={};						
+				params.uid = sessionStorage.user_id?sessionStorage.user_id:localStorage.user_id;
+				Ajax(params,url,wlletInfo);
+			})
+
+			function wlletInfo(data) {				
+				if(data.status_code == 10000) {
+					var html=template('wallet_info_tpl',data);
+					$('#wallet_info_list').html(html)
+				} else if(data.status_code == 10045) {
+
+				}
+			};
+		</script>
+	</body>
+
+</html>

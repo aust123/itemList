@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta http-equiv="Content-Type" content="text/html">
+		<meta name="full-screen" content="yes">
+		<meta name="x5-orientation" content="portrait">
+		<meta name="x5-fullscreen" content="true">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>输入验证码</title>
+		<link rel="stylesheet" href="../css/index.css" />
+		<script type="text/javascript">
+			(function() {
+				var html = document.documentElement;
+				var width = html.getBoundingClientRect().width;
+				html.style.fontSize = width / 18 + 'px';
+				rem = width / 18;
+				//1rem=60;					
+			})()
+		</script>
+	</head>
+
+	<body>
+		<div class="top">
+			<p class="logo"><img src="../img/hey-logo.png" /></p>
+			<p class="hey_info">在hey世界获得自己的虚拟土地，游戏中免费获得最有价值的数字货币，在这里读懂区块链</p>
+		</div>
+		<div class="input_content forget_content code_content">
+			<p class="code_tip"><span class="new_user" style="width: auto;display: initial;">新用户注册需要短信验证码，</span>六位数验证码已经以短信的形式发送至*******<span class="last4">****</span>，请输入验证码</p>
+			<h2 class="second">90</h2>
+			<div id="code_box">
+				<input type="tel" class="realInput" pattern="[0-9]*" />
+				<div class="bogusInput">
+					<input type="tel" maxlength="6">
+					<input type="tel" maxlength="6">
+					<input type="tel" maxlength="6">
+					<input type="tel" maxlength="6">
+					<input type="tel" maxlength="6">
+					<input type="tel" maxlength="6">
+				</div>
+			</div>
+		</div>
+		<div class="bottom code_bottom">
+			<p class="submit_btn next_btn"><button>下一步</button></p>
+		</div>
+		<!--弹出框-->
+		<div class="background"></div>
+		<div class="popupBox">
+			<div id="delete_box" class="confirm_box">
+				<div class="operate_tip">
+					<div class="text"></div>
+				</div>
+				<div class="buttons" id="sure">确定</div>
+			</div>
+		</div>
+		<script src="../js/zquery.js"></script>
+		<script src="../js/md5.js"></script>
+		<script src="../js/main.js"></script>
+		<script type="text/javascript">
+			var udata;
+			$(function() {
+				if(!GetQueryString("register")) {
+					$('.new_user').html('')
+				}
+				getCode();
+			});
+			//获取验证码函数
+			function getCode() {
+				var url = '/api/api/send_code_func';
+				var params = {};
+				if(sessionStorage.params) {
+					udata = JSON.parse(sessionStorage.params);
+					$('.last4').html(udata.phone.substr(-4));
+					params.phone = udata.phone;
+
+				} else if(sessionStorage.phone_num) {
+					$('.last4').html(sessionStorage.phone_num.substr(-4));
+					params.phone = sessionStorage.phone_num;
+				}
+				Ajax(params, url, callBack);
+			}
+			//获取验证码成功后回调函数
+			function callBack(data) {
+				//console.log(data)
+				if(data.status_code == 10000) {
+					Timer();
+					localStorage.code_id = data.data.code_id;
+				} else if(data.status_code == 10006) {
+					$('.text').html(data.msg);
+					Tips();
+				}
+			}
+
+			//点击下一步判断执行哪一步
+			$('.submit_btn button').click(function() {
+				if(!boxInput.getBoxInputValue()) {
+					$('.text').html('请输入验证码');
+					Tips();
+				} else {
+					GetQueryString("register") ? toRegister() : changePwd();
+				}
+
+			});
+
+			//验证短信验证码是否正确
+			function changePwd() {
+				var url = '/api/api/is_correct_code';
+				var params = {
+					code: boxInput.getBoxInputValue(),
+					code_id: localStorage.code_id,
+					phone: sessionStorage.phone_num
+				}
+				if(sessionStorage.user_id) {
+					params.uid = sessionStorage.user_id;
+				};
+				console.log(params)
+				Ajax(params, url, judgmentCode);
+			}
+
+			function judgmentCode(data) {
+				if(data.status_code == 10000) {
+					window.location.href = 'newpwd.html';
+				} else if(data.status_code == 10043) {
+					$('.text').html(data.msg);
+					Tips();
+				}
+			}
+
+			//执行注册函数
+			function toRegister() {				
+				udata.code = boxInput.getBoxInputValue();
+				udata.code_id = localStorage.code_id;
+				var url = '/api/api/register';
+				console.log(udata);
+				Ajax(udata, url, Register)
+			}
+			//处理注册的函数
+			function Register(data) {
+				console.log(data)
+				if(data.status_code == 10000) {
+					$('.text').html('注册成功');
+					Tips();
+					setTimeout(function() {
+						window.location.href = 'login.html'
+					}, 1000)
+				} else if(data.status_code == 10043) {
+					$('.text').html(data.msg);
+					Tips();
+				} else {
+					$('.text').html(data.msg);
+					Tips();
+				}
+			}
+			//倒计时
+			function Timer() {
+				var sec = 90;
+				var timer = setInterval(function() {
+					sec--;
+					if(sec == 0) {
+						clearInterval(timer);
+					};
+					document.querySelector('.second').innerHTML = sec;
+				}, 1000);
+
+			}
+			(function() {
+				var container = document.getElementById("code_box");
+				boxInput = {
+					maxLength: "",
+					realInput: "",
+					bogusInput: "",
+					bogusInputArr: "",
+					callback: "",
+					init: function(fun) {
+						var that = this;
+						this.callback = fun;
+						that.realInput = container.children[0];
+						that.bogusInput = container.children[1];
+						that.bogusInputArr = that.bogusInput.children;
+						that.maxLength = that.bogusInputArr[0].getAttribute("maxlength");
+						that.realInput.oninput = function() {
+							that.setValue();
+						}
+						that.realInput.onpropertychange = function() {
+							that.setValue();
+						}
+					},
+					setValue: function() {
+						this.realInput.value = this.realInput.value.replace(/\D/g, "");
+						//console.log(this.realInput.value.replace(/\D/g, ""))
+						var real_str = this.realInput.value;
+						for(var i = 0; i < this.maxLength; i++) {
+							this.bogusInputArr[i].value = real_str[i] ? real_str[i] : "";
+						}
+						if(real_str.length >= this.maxLength) {
+							this.realInput.value = real_str.substring(0, 6);
+							this.callback();
+						}
+					},
+					getBoxInputValue: function() {
+						var realValue = "";
+						for(var i in this.bogusInputArr) {
+							if(!this.bogusInputArr[i].value) {
+								break;
+							}
+							realValue += this.bogusInputArr[i].value;
+						}
+						return realValue;
+					}
+				}
+			})()
+			boxInput.init(function() {
+				boxInput.getBoxInputValue();
+			});
+		</script>
+	</body>
+
+</html>
