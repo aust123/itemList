@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/chart.css" />
+		<script>
+			(function() {
+				var html = document.documentElement;
+				var width = html.getBoundingClientRect().width;
+				html.style.fontSize = width / 107 + 'px';
+				//1rem = 80;
+			})()
+		</script>
+
+		<script src="https://img.hcharts.cn/highcharts/highcharts.js"></script>
+		<!--<script src="https://img.hcharts.cn/highcharts/modules/exporting.js"></script>-->
+		<script src="https://img.hcharts.cn/highcharts-plugins/highcharts-zh_CN.js"></script>
+
+		<style type="text/css">
+			.highcharts-grid-line {
+				stroke-width: 0!important;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header>纸去哪了实时数据</header>
+		<div class="content">
+			<div class="left bg">
+				<h2 class="title">2018年年度用户注册量<span>（单位：/人）</span></h2>
+				<div class="left-count">
+					<div class="today-count">
+						<p>今日注册量</p>
+						<h3>232</h3>
+					</div>
+					<div class="history-count">
+						<p>历史注册量</p>
+						<h3>201000</h3>
+					</div>
+				</div>
+				<div id="map" style="height: 33.2875rem;"></div>
+			</div>
+			<div class="right">
+				<div class="right-up bg">
+					<h2 class="title">2018年年度订单分布</h2>
+					<!--扇形图-->
+					<div id="containerPie" style="height:19.2875rem;margin: 1.25rem 0;"></div>
+					<div class="right-up-bottom">
+						<p>
+							<span>订单总量<i>（单位：/笔）</i></span>
+							<b>888888</b>
+						</p>
+						<p>
+							<span>交易总额<i>（单位：/元）</i></span>
+							<b>88888</b>
+						</p>
+					</div>
+				</div>
+				<div class="right-down bg">
+					<h2 class="title">2018年05月订单统计<span>（单位：/笔）</span>
+						<div class="right-down-count">
+							<p><span>今日订单量:</span><b>8888<i>笔</i></b></p>
+							<p><span>今日交易额:</span><b>8888<i>元</i></b></p>
+						</div>						
+						<div id="containerColumn" style="height: 11.975rem;margin: 0;"></div>
+					</h2>
+				</div>
+			</div>
+		</div>
+		<!--	<script src="https://img.hcharts.cn/highmaps/highmaps.js"></script>-->
+		<script src="js/jquery.min.js"></script>
+		<script src="https://img.hcharts.cn/highmaps/modules/map.js"></script>
+		<script src="https://data.jianshukeji.com/geochina/china.js"></script>
+		<script type="text/javascript">
+			/*中国地图*/
+			/*$.getJSON('https://data.jianshukeji.com/jsonp?filename=geochina/china.json&callback=?', function(mapdata) {
+				var map = Highcharts.mapChart('map', {
+					series: [{
+						mapData: mapdata,
+						data: [{
+							name: '北京',
+							value: 2000,
+							rank: 1
+						}, {
+							name: '上海',
+							value: 1500,
+							rank: 2
+						}],
+						 joinBy: 'name'
+					}]
+				});
+			});*/
+			var data = [{
+				"name": "北京",
+				"value": 63
+			}, {
+				"name": "天津",
+				"value": 4
+			}, {
+				"name": "河北",
+				"value": 19
+			}, {
+				"name": "山西",
+				"value": 13
+			}, {
+				"name": "内蒙古",
+				"value": 83
+			}, {
+				"name": "辽宁",
+				"value": 55
+			}, {
+				"name": "吉林",
+				"value": 30
+			}, {
+				"name": "黑龙江",
+				"value": 94
+			}, {
+				"name": "上海",
+				"value": 3
+			}, {
+				"name": "江苏",
+				"value": 82
+			}, {
+				"name": "浙江",
+				"value": 71
+			}, {
+				"name": "安徽",
+				"value": 89
+			}, {
+				"name": "福建",
+				"value": 98
+			}, {
+				"name": "江西",
+				"value": 30
+			}, {
+				"name": "山东",
+				"value": 69
+			}, {
+				"name": "河南",
+				"value": 81
+			}, {
+				"name": "湖北",
+				"value": 17
+			}, {
+				"name": "湖南",
+				"value": 1
+			}, {
+				"name": "广东",
+				"value": 37
+			}, {
+				"name": "广西",
+				"value": 53
+			}, {
+				"name": "海南",
+				"value": 72
+			}, {
+				"name": "重庆",
+				"value": 64
+			}, {
+				"name": "四川",
+				"value": 95
+			}, {
+				"name": "贵州",
+				"value": 84
+			}, {
+				"name": "云南",
+				"value": 25
+			}, {
+				"name": "西藏",
+				"value": 15
+			}, {
+				"name": "陕西",
+				"value": 64
+			}, {
+				"name": "甘肃",
+				"value": 77
+			}, {
+				"name": "青海",
+				"value": 16
+			}, {
+				"name": "宁夏",
+				"value": 54
+			}, {
+				"name": "新疆",
+				"value": 56
+			}, {
+				"name": "台湾",
+				"value": 35
+			}, {
+				"name": "香港",
+				"value": 87
+			}, {
+				"name": "澳门",
+				"value": 1
+			}, {
+				"name": "南海诸岛",
+				"value": 88
+			}, {
+				"name": "南海诸岛",
+				"value": 61
+			}];
+			var map = new Highcharts.Map('map', {
+				title: {
+					text: ''
+				},
+				mapNavigation: {
+					enabled: true,
+					buttonOptions: {
+						verticalAlign: 'bottom'
+					}
+				},
+				chart: {
+					backgroundColor: 'rgba(0,0,0,0)'
+				},
+				tooltip: {
+					backgroundColor: 'none',
+					borderWidth: 0,
+					shadow: false,
+					useHTML: true,
+					padding: 0,
+					pointFormat: '<span class="f32"><span class="flag {point.flag}"></span></span>' +
+						' {point.name}: <b>{point.value}</b>/km²',
+					positioner: function() {
+						return {
+							x: 0,
+							y: 250
+						};
+					},
+					color:"#fff"
+				},
+				colorAxis: {
+					min: 0,
+					minColor: 'rgb(255,255,255)',
+					maxColor: '#006cee'
+				},
+				//去掉版权标签
+				credits: {
+					enabled: false
+				},
+				series: [{
+					data: data,
+					name: '随机数据',
+					mapData: Highcharts.maps['cn/china'],
+					joinBy: 'name' // 根据 name 属性进行关联
+				}]
+			});
+
+			Highcharts.setOptions({
+				colors: ['#64c8dd', '#f29422', '#f2cb05', '#298cfb', '#0367a6', '#64E572', '#FF9655', '#FFF263', '#6AF9C4']
+			});
+			/*扇形图*/
+			var chart = Highcharts.chart('containerPie', {
+				chart: {
+					type: 'pie',
+					plotBackgroundColor: 'transparent',
+					plotBorderWidth: null,
+					plotShadow: false,
+					backgroundColor: 'rgba(0,0,0,0)'
+				},
+				title: {
+					text: ''
+				},
+				//去掉版权标签
+				credits: {
+					enabled: false
+				},
+				/*显示图例*/
+				legend: {
+					enabled: true
+				},
+				tooltip: {
+					headerFormat: '{series.name}<br>',
+					pointFormat: '{point.name}: <b>{point.percentage:.1f}%</b>'
+				},
+				plotOptions: {
+					pie: {
+						allowPointSelect: true,
+						borderWidth: 0,
+						cursor: 'pointer',
+						dataLabels: {
+							enabled: true,
+							format: '<p>{point.name}</p><p>{point.percentage:.1f} %</p>',
+							style: {
+								color: '#fff',
+								fontSize: '14px'
+							}
+						},
+						states: {
+							hover: {
+								enabled: false
+							}
+						},
+						slicedOffset: 20, // 突出间距
+						point: { // 每个扇区是数据点对象，所以事件应该写在 point 下面
+							events: {
+								// 鼠标滑过是，突出当前扇区
+								mouseOver: function() {
+									this.slice();
+								},
+								// 鼠标移出时，收回突出显示
+								mouseOut: function() {
+									this.slice();
+								},
+								// 默认是点击突出，这里屏蔽掉
+								click: function() {
+									return false;
+								}
+							}
+						}
+					}
+				},
+				series: [{
+					type: 'pie',
+					name: '订单数',
+					data: [
+						['江苏', 45.0],
+						['安徽', 26.8],
+						{
+							name: '北京',
+							y: 12.8,
+							sliced: true, // 突出显示这个点（扇区），用于强调。
+						},
+						['浙江', 8.5],
+						['湖北', 6.2],
+						['上海', 0.7]
+					]
+				}]
+			});
+
+			/*柱形图*/
+			var colors = ['#00cee7', '#329ce8'];
+
+			var chart2 = Highcharts.chart('containerColumn', {
+					chart: {
+						type: 'column',
+						backgroundColor: 'rgba(0,0,0,0)'
+					},
+					title: {
+						text: ''
+					},
+					//去掉版权标签
+					credits: {
+						enabled: false
+					},
+					/*隐藏图例*/
+					legend: {
+						enabled: false
+					},
+					subtitle: {
+						/*text: '数据来源: WorldClimate.com'*/
+					},
+					xAxis: {
+						categories: [
+							'1日', '2日', '3日', '4日', '5日', '6日', '7日', '8日', '9日', '10日', '11日', '12日', '13日', '14日', '15日', '16日', '17日', '18日', '19日', '20日', '21日', '22日', '23日', '24日'
+						],
+						crosshair: true,
+						gridLineWidth: 0,
+						lineColor: '#42598f',
+						lineWidth: 2,
+						//次网格线
+						minorGridLineWidth: 2,
+						//次刻度线
+						minorTickWidth: 2,
+						labels: {
+							style: {
+								color: "#fff"
+							}
+						}
+
+					},
+					yAxis: {
+						min: 0,
+						title: {
+							text: ''
+						},
+						lineColor: '#42598f',
+						lineWidth: 2,
+						minorGridLineWidth: 0,
+						labels: {
+							style: {
+								color: "#fff"
+							}
+						}
+					},
+					tooltip: {
+						// head + 每个 point + footer 拼接成完整的 table
+						headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+						pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+							'<td style="padding:0"><b>{point.y:.1f}</b></td></tr>',
+						footerFormat: '</table>',
+						shared: true,
+						useHTML: true
+					},
+					plotOptions: {
+						column: {
+							borderWidth: 0,
+							pointPadding: 0
+						}
+					},
+					series: [{
+						name: '订单数',
+						colorByPoint: true,
+						data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4, 49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, {
+							y: 54.4,
+							color: 'red'
+						}]
+					}]
+				}
+				/*,
+								function(chart2) {
+									SetEveryOnePointColor(chart2);
+								}*/
+			);
+
+			function SetEveryOnePointColor(chart) {
+				//获得第一个序列的所有数据点  
+				var pointsList = chart.series[0].points;
+				console.log(chart.series[0])
+				//遍历设置每一个数据点颜色  
+				console.log(pointsList.length)
+				for(var i = 0; i < pointsList.length; i++) {
+					console.log(pointsList[i])
+					console.log(pointsList[3])
+					chart.series[0].points[i].update({
+						color: {
+							linearGradient: {
+								x1: 0,
+								y1: 0,
+								x2: 0,
+								y2: 1
+							}, //横向渐变效果 如果将x2和y2值交换将会变成纵向渐变效果  
+							stops: [
+								[0, Highcharts.Color(colors[i]).setOpacity(1).get('rgba')],
+								[1, '#329ce8']
+							]
+						}
+					});
+				}
+			}
+		</script>
+	</body>
+
+</html>
