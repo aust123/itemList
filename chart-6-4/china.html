@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://img.hcharts.cn/highmaps/highmaps.js"></script>
+		<script src="https://data.jianshukeji.com/geochina/china.js"></script>
+	</head>
+
+	<body>
+		<div id="container"></div>
+		<script src="js/jquery.min.js"></script>
+		<script>
+			var mapdata = Highcharts.maps['cn/china'];
+			$.getJSON('https://data.jianshukeji.com/jsonp?filename=geochina/china.json&callback=?', function(mapdata) {
+				var map = Highcharts.mapChart('container', {
+					series: [{
+						mapData: mapdata,
+						data: [{
+							name: '北京',
+							value: 2000,
+							rank: 1
+						}, {
+							name: '上海',
+							value: 1500,
+							rank: 2
+						}]
+					}]
+				});
+			});
+		</script>
+	</body>
+
+</html>
