@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>chart</title>
+		<link rel="stylesheet" type="text/css" href="css/chart.css" />
+		<script>
+			(function() {
+				var html = document.documentElement;
+				var width = html.getBoundingClientRect().width;
+				html.style.fontSize = width / 107 + 'px';
+				//1rem = 80;
+			})()
+		</script>
+
+		<script src="https://img.hcharts.cn/highcharts/highcharts.js"></script>
+		<!--<script src="https://img.hcharts.cn/highcharts/modules/exporting.js"></script>-->
+		<script src="https://img.hcharts.cn/highcharts-plugins/highcharts-zh_CN.js"></script>
+	</head>
+
+	<body>
+		<header>纸去哪了实时数据</header>
+		<div class="content">
+			<div class="left bg">
+				<h2 class="title"><span class="year">2018</span>年年度用户注册量<span>（单位：/人）</span></h2>
+				<div class="left-count">
+					<div class="today-count">
+						<p>今日注册量</p>
+						<h3 class="today_re_count"></h3>
+					</div>
+					<div class="history-count">
+						<p>历史注册量</p>
+						<h3 class="total_re_count"></h3>
+					</div>
+				</div>
+				<div id="map" style="height: 33.2875rem;"></div>
+			</div>
+			<div class="right">
+				<div class="right-up bg">
+					<h2 class="title"><span class="year">2018</span>年年度订单分布</h2>
+					<!--扇形图-->
+					<div id="containerPie" style="height:19.2875rem;margin: 1.25rem 0;"></div>
+					<div class="right-up-bottom">
+						<p>
+							<span>订单总量<i>（单位：/笔）</i></span>
+							<b class="order_count"></b>
+						</p>
+						<p>
+							<span>交易总量<i>（单位：/吨）</i></span>
+							<b class="trade_count"></b>
+						</p>
+					</div>
+				</div>
+				<div class="right-down bg">
+					<h2 class="title"><span class="year">2018</span>年<span class="month">6</span>月订单统计<span>（单位：/笔）</span>
+						<div class="right-down-count">
+							<p><span>今日订单量:</span><b class="totay_order_count"><i>笔</i></b></p>
+							<p><span>今日交易量:</span><b class="totay_trade_count"><i>吨</i></b></p>
+						</div>						
+						<div id="containerColumn" style="height: 11.975rem;margin: 0;"></div>
+					</h2>
+				</div>
+			</div>
+		</div>
+		<!--	<script src="https://img.hcharts.cn/highmaps/highmaps.js"></script>-->
+		<script src="js/jquery.min.js"></script>
+		<script src="https://img.hcharts.cn/highmaps/modules/map.js"></script>
+		<script src="https://data.jianshukeji.com/geochina/china.js"></script>
+
+		<script type="text/javascript">
+			//var data = [];
+			//请求接口
+			$(function() {
+				setInterval(function() {
+					var myDate = new Date();
+					$('.year').html(myDate.toLocaleDateString().split('/')[0]);
+					if(parseInt(myDate.toLocaleDateString().split('/')[1]) <= 9) {
+						$('.month').html('0' + myDate.toLocaleDateString().split('/')[1])
+					} else {
+						$('.month').html(myDate.toLocaleDateString().split('/')[1])
+					}
+				}, 1000)
+				/*var myDate = new Date();
+				$('.year').html(myDate.toLocaleDateString().split('/')[0]);
+				$('.month').html(myDate.toLocaleDateString().split('/')[1]);
+
+				if(parseInt(myDate.toLocaleDateString().split('/')[1]) <= 9) {
+					$('.month').html('0' + myDate.toLocaleDateString().split('/')[1])
+				} else {
+					$('.month').html(myDate.toLocaleDateString().split('/')[1])
+				}*/
+				$.ajax({
+					type: "get",
+					url: "https://two.zhiqunale.cn/paper/user/initialize_data",
+					async: true,
+					data: {},
+					success: function(data) {
+						console.log(data);
+						GetData(data);
+					}
+				});
+			})
+
+			//实时数据获取
+			var ws = new WebSocket('ws://122.152.200.29:1234');
+			ws.onopen = function() {
+				var key = 'Long chain protocol';
+				ws.send(key);
+			};
+			ws.onmessage = function(e) {
+				//console.log(typeof  e.data);
+				var str = e.data;
+				var obj = eval('(' + str + ')');
+
+				console.log(obj);
+				GetData(data);
+			};
+
+			function GetData(data) {
+				//console.log(data);
+				$('.total_re_count').html(data.user_all);
+				$('.today_re_count').html(data.user_today);
+				$('.order_count').html(data.o_all_num);
+				$('.trade_count').html(data.o_all_set);
+				$('.totay_order_count').html(data.o_today_num);
+				$('.totay_trade_count').html(data.o_today_set);
+				for(var i = 0; i < data.o_pros.length; i++) {
+					data.o_pros[i]['y'] = parseInt(data.o_pros[i]['val']);
+				}
+
+				for(var i = 0; i < data.user_pros.length; i++) {
+					if(!data.user_pros[i].path) {
+						data.user_pros[i]['value'] = parseInt(data.user_pros[i]['val']);
+						data.user_pros[i]['img'] = 'img/map_location.png';
+					}
+				}
+
+				//console.log(data.user_pros)
+				/*中国地图*/
+				/*$.getJSON('https://data.jianshukeji.com/jsonp?filename=geochina/china.json&callback=?', function(mapdata) {
+					console.log(mapdata)
+				});*/
+				var map = new Highcharts.Map('map', {
+					title: {
+						text: ''
+					},
+					mapNavigation: {
+						enabled: true,
+						buttonOptions: {
+							verticalAlign: 'bottom'
+						}
+					},
+					chart: {
+						map: 'cn/china',
+						backgroundColor: 'rgba(0,0,0,0)'
+					},
+
+					tooltip: {
+						borderWidth: 0,
+						backgroundColor: {
+							linearGradient: [0, 0, 80, 0],
+							stops: [
+								[0, '#27a1cb'],
+								[1, '#3ef3ff']
+							]
+						},
+						style: {
+							color: "#fff"
+						},
+						shadow: true,
+						useHTML: true,
+						//pointFormat:'{point.name}:<b style="color: {series.color};">{point.value}</b>',
+						pointFormatter: function() {
+							//console.log(this);
+							return this.name + ':<b style="color:red;font-weight:bolder">' + this.value + "</b>"
+						},
+						shared: true,
+						animation: true,
+
+						style: {
+							fontWeight: "600"
+						}
+					},
+					legend: {
+						enabled: false
+					},
+					colorAxis: {
+						min: 1,
+						minColor: '#2e2e5b', //#56deff  0054fa
+						maxColor: '#56deff', //#2e2e5b
+						type: 'logarithmic'
+					},
+					//去掉版权标签
+					credits: {
+						enabled: false
+					},
+					plotOptions: {
+						map: {
+							allowPointSelect: true,
+							borderWidth: 1,
+							borderColor: "#288df8", //45fdff
+							cursor: 'pointer',
+						},
+						series: {
+							dataLabels: {
+								useHTML: true,
+								enabled: true,
+								//format: '{point.name} {point.value}',
+								formatter: function() {
+									console.log(this)
+									if(this.point.value != null) {
+										return '<img src="' + this.point.name + '"/>' + this.point.name + ':' + '<span style="color:#fff;">' + this.point.value + '</span>';
+									}
+								},
+								rotation: '0',
+								y: 0,
+								style: {
+									color: '#48f8ff', //设置地图上字体颜色
+									fontSize: '14px'
+								},
+								shape: "circle",
+								backgroundColor: "red",
+							},
+
+							marker: {
+								symbol: 'url(https://img.hcharts.cn/highcharts/graphics/sun.png)',
+								width: 16,
+								height: 16
+							}
+						}
+					},
+					series: [{
+						data: data.user_pros,
+						name: '注册用户',
+						//mapData: Highcharts.maps['cn/china'],
+						joinBy: ['fullname', 'name'], // 根据 name 属性进行关联,
+						allAreas: true,
+						states: {
+							hover: {
+								//color: '#5af4f1' //地图越过时颜色显示
+							}
+						}
+					}]
+				});
+
+				Highcharts.setOptions({
+					colors: ['#64c8dd', '#f29422', '#f2cb05', '#298cfb', '#0367a6', '#64E572', '#FF9655', '#FFF263', '#6AF9C4']
+				});
+
+				Highcharts.getOptions().colors = Highcharts.map(Highcharts.getOptions().colors, function(color) {
+					return {
+						radialGradient: {
+							cx: 0.5,
+							cy: 0.5,
+							r: 0.5
+						},
+						stops: [
+							[0, color],
+							[1, Highcharts.Color(color).brighten(-0.3).get('rgb')] // darken
+						]
+					};
+				});
+
+				/*扇形图*/
+				var chart1 = Highcharts.chart('containerPie', {
+					chart: {
+						type: 'pie',
+						plotBackgroundColor: 'transparent',
+						plotBorderWidth: null,
+						plotShadow: false,
+						backgroundColor: 'rgba(0,0,0,0)'
+					},
+					title: {
+						text: ''
+					},
+					//去掉版权标签
+					credits: {
+						enabled: false
+					},
+					tooltip: {
+						borderWidth: 0,
+						//borderColor: '#3df3ff',
+						shadow: true,
+						animation: true,
+						backgroundColor: {
+							linearGradient: [0, 0, 80, 0],
+							stops: [
+								[0, '#27a1cb'],
+								[1, '#3ef3ff']
+							]
+						},
+						style: {
+							color: "#666"
+						}
+					},
+					/*显示图例*/
+					legend: {
+						enabled: true,
+						layout: 'vertical',
+						align: 'right',
+						verticalAlign: 'middle',
+						y: 10,
+						itemHoverStyle: {
+							color: '#00d3af'
+						},
+						itemStyle: {
+							color: '#fff',
+							fontWeight: 'bold'
+						},
+						symbolPadding: 10,
+						symbolRadius: 0,
+						symbolWidth: 12,
+						symbolHeight: 12,
+						labelFormatter: function() {
+							//console.log(this)
+							return this.val; //右侧导航值
+						}
+					},
+					plotOptions: {
+						pie: {
+							allowPointSelect: true,
+							borderWidth: 0,
+							cursor: 'pointer',
+							dataLabels: {
+								enabled: true,
+								formatter: function() {
+									//console.log(this)
+									//this 为当前的点（扇区）对象，可以通过  console.log(this) 来查看详细信息
+									return '<p style="color: ' + this.point.color + '">' + this.key + '</p>' + '<span style="color: #fff;">' + ' : ' + this.y + '</span>';
+								},
+								style: {
+									fontSize: '14px',
+									color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black',
+									color: '#fff'
+								}
+							},
+
+							states: {
+								hover: {
+									enabled: true
+								}
+							},
+							slicedOffset: 20, // 突出间距
+							point: { // 每个扇区是数据点对象，所以事件应该写在 point 下面
+								events: {
+									// 鼠标滑过是，突出当前扇区
+									mouseOver: function() {
+										this.slice();
+									},
+									// 鼠标移出时，收回突出显示
+									mouseOut: function() {
+										this.slice();
+									},
+									// 默认是点击突出，这里屏蔽掉
+									click: function() {
+										return false;
+									},
+									legendItemClick: function(e) {
+										return false; // 直接 return false 即可禁用图例点击事件
+									}
+								}
+							}
+						}
+					},
+					series: [{
+						name: '订单数',
+						data: data.o_pros,
+						showInLegend: true
+					}]
+				});
+
+				/*柱形图*/
+
+				Highcharts.getOptions().colors = Highcharts.map(Highcharts.getOptions().colors, function(color) {
+					return {
+						linearGradient: {
+							x1: 0,
+							x2: 0,
+							y1: 0,
+							y2: 1
+						},
+						stops: [
+							[0, "#45fdff"], //00cee7 //f2cb05 
+							[1, '#329ce8'] //329ce8 //f29422 
+						]
+					};
+				});
+				//#f2cb05 #f29422
+				var chart2 = Highcharts.chart('containerColumn', {
+					chart: {
+						type: 'column',
+						backgroundColor: 'rgba(0,0,0,0)',
+						zoomType: 'x',
+						resetZoomButton: {
+							position: {
+								x: -10,
+								y: 10
+							},
+							relativeTo: "chart",
+							theme: {
+								fill: "#41f8ff",
+								stroke: "#41f8ff",
+								r: 2,
+								states: {
+									hover: {
+										fill: "#41f8ff",
+										style: {
+											color: '#fff'
+										}
+									}
+								}
+							}
+						}
+					},
+					title: {
+						text: ''
+					},
+					//去掉版权标签
+					credits: {
+						enabled: false
+					},
+					/*隐藏图例*/
+					legend: {
+						enabled: false
+					},
+					subtitle: {
+						/*text: '数据来源: WorldClimate.com'*/
+					},
+					xAxis: {
+						title: {
+							text: ''
+						},
+						categories: data.month_data.day,
+						crosshair: true,
+						gridLineWidth: 0,
+						lineColor: '#42598f',
+						tickLength: 2, //刻度线长度默认是10
+						tickWidth: 1, //刻度线宽度
+						tickPosition: 'inside', //刻度线显示位置，默认是outside
+						tickInterval: 1, //刻度显示间距
+						//tickPixelInterval:100,//
+						lineWidth: 2,
+						//次网格线
+						minorGridLineWidth: 2,
+						//次刻度线
+						minorTickWidth: 2,
+						labels: {
+							style: {
+								color: "#fff"
+							},
+							step: 2,
+							padding: 0
+						}
+
+					},
+					yAxis: {
+						min: 0,
+						title: {
+							text: '',
+						},
+						gridLineWidth: 0, //网格线线宽度y轴默认是1
+						lineColor: '#42598f',
+						lineWidth: 2,
+						minorGridLineWidth: 0,
+						labels: {
+							style: {
+								color: "#fff"
+							}
+						},
+						//opposite: true//多轴是显示在左侧还是右侧
+					},
+					tooltip: {
+						// head + 每个 point + footer 拼接成完整的 table
+						headerFormat: '<span style="font-size:10px">日期：{point.key}</span><table>',
+						pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+							'<td style="padding:0;"><b style="color:red;font-weight: bolder;">{point.y}</b></td></tr>',
+						footerFormat: '</table>',
+						shared: true,
+						useHTML: true,
+						borderWidth: 0,
+						backgroundColor: {
+							linearGradient: [0, 0, 80, 0],
+							stops: [
+								[0, '#27a1cb'],
+								[1, '#3ef3ff']
+							]
+						},
+						style: {
+							color: "#666"
+						}
+					},
+
+					plotOptions: {
+						column: {
+							borderWidth: 0,
+							pointPadding: 0
+						}
+					},
+					series: [{
+						name: '订单数',
+						//colorByPoint: true,
+						data: data.month_data.val
+					}]
+				});
+
+			}
+		</script>
+	</body>
+
+</html>
