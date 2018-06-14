@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,user-scalable=no,intial-scale=1" />
+		<title>添加协议</title>
+		<link rel="stylesheet" href="css/main.css" />
+		<script>
+			var html = document.documentElement;
+			var width = html.getBoundingClientRect().width;
+			html.style.fontSize = width / 15 + "px"
+			//1rem=50px
+		</script>
+	</head>
+
+	<body>
+		<!--弹框-->
+		<div class="background"></div>
+		<div class="popupBox">
+			<div id="delete_box">
+				<div class="operate_tip">
+					<div class="text">
+						<h2>删除确认</h2>
+						<p>删除后无法恢复</p>
+						<p>确认删除磁条记录吗？</p>
+					</div>
+				</div>
+				<div class="buttons">
+					<span class="mui_btn" id="sure">确定</span>
+					<span class="mui_btn" id="cancle">取消</span>
+				</div>
+			</div>
+		</div>
+
+		<header>
+			<a class="back" href="javascript:history.go(-1);">返回</a>
+			<span>协议明细</span>
+		</header>
+		<h2 class="name none_line"><img src="img/my_touxiang.png" alt="" />合肥纸厂</h2>
+		<section class="general_data">
+			<h1>200%</h1>
+			<div class="left">
+				<span>已完成:<b>2200吨</b></span>
+				<span>服务费算法:<b>按吨数</b></span>
+
+			</div>
+			<div class="right">
+				<span>协议吨数:<b>2200吨</b></span>
+				<span>服务费:<b>￥1000</b></span>
+			</div>
+			<p class="clearfx">2017.5.16-2018.6-16</p>
+		</section>
+		<section class="detail_content scroll" style="bottom: 2.1rem;">
+			<div class="data_list">
+				<div class="detail_info">
+					<div>
+						<p>合肥纸厂</p>
+						<p class="date">2018.6.18</p>
+					</div>
+					<div>
+						<h3>200<span>吨</span></h3>
+						<h3><span>￥</span>20000</h3>
+					</div>
+					<img src="img/cancel.png" alt="" />
+				</div>
+				<div class="detail_info">
+					<div>
+						<p>合肥纸厂</p>
+						<p class="date">2018.6.18</p>
+					</div>
+					<div>
+						<h3>200<span>吨</span></h3>
+						<h3><span>￥</span>20000</h3>
+					</div>
+					<img src="img/cancel.png" alt="" />
+				</div>
+				
+			</div>
+		</section>
+		<div class="option">
+			<a href="entering.html">录单</a>
+			<a href="sure_detail.html">确认</a>
+		</div>
+
+		<script src="js/zepto.min.js"></script>
+		<script src="js/aninate.js"></script>
+		<script src="js/zepto.animate.alias.js"></script>
+		<script>
+			/*点击单出提示框*/
+			$(".detail_info img").click(function() {
+				$(".popupBox,.background").fadeIn(200);
+				$('#delete_box').addClass('show').addClass('show_in')
+			})
+			/*单击空白区域和 确定/删除按钮模态框消失*/
+			$('.popupBox').click(function(e) {
+				var ev = e ? e : window.event;
+				if(ev.target == $(".popupBox")[0] || ev.target == $('#sure')[0] || ev.target == $('#cancle')[0]) {
+					$(".popupBox,.background").fadeOut(200);
+					$('#delete_box').removeClass('show').removeClass('show_in')
+				}
+			})
+
+			$('.scroll').scroll(function() {
+				var windowH = $('.scroll').height(); //设备可见区域高度
+				var documentH = $('.data_list').height(); //整个网页的高度（包括未显示的部分）
+				var scrollH = $('.scroll').scrollTop(); //滚动条滚动上去的高度					 
+				if(windowH + scrollH >= documentH) {
+					console.log('到底了')
+				}
+			})
+		</script>
+	</body>
+
+</html>

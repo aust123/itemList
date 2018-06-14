@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,user-scalable=no,intial-scale=1" />
+		<title>添加协议</title>
+		<link rel="stylesheet" href="css/main.css" />
+		<link rel="stylesheet" href="css/mobiscroll.custom-2.5.0.min.css" />
+		<script>
+			var html = document.documentElement;
+			var width = html.getBoundingClientRect().width;
+			html.style.fontSize = width / 15 + "px"
+			//1rem=50px
+		</script>
+		<style type="text/css">
+			.ui-input-text {
+				display: inline-block !important;
+			}
+			
+			.ui-loader {
+				display: none;
+			}
+			
+			.item {
+				margin-left: 5rem;
+			}
+			
+			#delete_box.select label {
+				color: #333;
+				font-size: 0.7rem;
+				margin-left: 0.8rem;
+			}
+			
+			#delete_box.select {
+				height: 7.8rem;
+				width: 6rem;
+				padding-left: 1rem;
+			}
+			
+			#delete_box.select p {
+				margin-top: 1.8rem;
+				/*text-align: center;*/
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="background"></div>
+		<div class="popupBox">
+			<div id="delete_box" class="select">
+				<p id="chose_dun"><input type="radio" name="count" id="dun" value="1" /><label for="dun">按吨计</label></p>
+				<p id="chose_money"><input type="radio" name="count" id="money" value="2" /><label for="money">按金额计</label></p>
+			</div>
+		</div>
+
+		<header>
+			<a class="back" href="javascript:history.go(-1);">返回</a>
+			<span>添加协议</span>
+		</header>
+
+		<section class="add_content scroll">
+			<div><span>纸厂名称</span><input type="text" placeholder="请输入纸厂名称" /></div>
+			<div><span>合同编号</span><input type="text" placeholder="请输入合同编号" /></div>
+			<div><span>协议吨数</span><input type="text" placeholder="请输入协议吨数" /></div>
+
+			<div class="serve"><span>服务费计算</span><span class="item">请选择</span><span class="right">></span></div>
+
+			<div><span>服务费率</span><input type="text" placeholder="请输入协议中服务费率" /><span class="right unit">元/吨</span></div>
+			<div><span>协议开始日期</span><input type="text" class="start" placeholder="请选择" /><span class="right">></span></div>
+			<div><span>协议结束日期</span><input type="text" class="end" placeholder="请选择" /><span class="right">></span></div>
+			<div class="protocol">
+				<h3>协议原件</h3>
+				<ul class="list">
+					<li class="upload">
+						<input type="file" class="chose" accept="image/*" />
+						<img src="img/add.png" />
+					</li>
+				</ul>
+			</div>
+		</section>
+	
+		<div class="submit">提交</div>
+		<script src="js/zepto.min.js"></script>
+		<script src="js/public.js"></script>
+		<script src="js/jquery.min.js"></script>
+		<script src="js/jquery.mobile-1.3.1.min.js"></script>
+		<script src="js/mobiscroll.custom-2.5.0.min.js"></script>
+		<script>
+			//修改input样式
+			$("input").attr('data-role', 'none');
+			$("select").attr('data-role', 'none');
+
+			$(".serve").click(function() {
+				$(".popupBox,.background").fadeIn(200);
+				$('#delete_box').addClass('show').addClass('show_in')
+			})
+			/*获取费用计算*/
+			$('.popupBox').delegate('input', 'click', function(e) {
+				var val = $('input:radio[name="count"]:checked').val();
+				var texts = $('input:radio[name="count"]:checked').siblings('label').html();
+				if(val) {
+					$('.item').html(texts);
+					$('.item').attr('data-count', val);
+					setTimeout(function() {
+						$(".popupBox,.background").fadeOut(200);
+						$('#delete_box').removeClass('show').removeClass('show_in');
+					}, 80)
+				}
+			})
+
+			
+			var opt1 = {
+				preset: 'date', //日期，可选：date\datetime\time\tree_list\image_text\select
+				theme: 'android-ics', //皮肤样式，可选：default\android\android-ics light\android-ics\ios\jqm\sense-ui\wp light\wp
+				display: 'bottom', //显示方式 ，可选modal\inline\bubble\top\bottom
+				mode: 'scroller', //日期选择模式，可选：scroller\clickpick\mixed
+				lang: 'zh',
+				dateFormat: 'yyyy-mm-dd', // 面板日期格式
+				setText: '确认', //确认按钮名称
+				cancelText: '取消', //取消按钮名籍我
+				dateOrder: 'yyyymmdd', //面板中日期排列格式
+				dayText: '日',
+				monthText: '月',
+				yearText: '年', //面板中年月日文字
+				showNow: true,
+				nowText: "今天",							
+			};
+			
+			$(function() {
+				$('.start').mobiscroll().date(opt1);
+				$('.end').mobiscroll().date(opt1);
+				
+			});
+			$('.submit').click(function(){
+				console.log(DateToUnix($('.start').val()));
+			})
+		</script>
+	</body>
+
+</html>

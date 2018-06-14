@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,user-scalable=no,intial-scale=1" />
+		<title>添加协议</title>
+		<link rel="stylesheet" href="css/main.css" />
+		<script>
+			var html = document.documentElement;
+			var width = html.getBoundingClientRect().width;
+			html.style.fontSize = width / 15 + "px"
+			//1rem=50px
+		</script>
+	</head>
+
+	<body>
+		<header>
+			<a class="back" href="javascript:history.go(-1);">返回</a>
+			<span>交易录入</span>
+		</header>
+		<h2 class="name"><img src="img/my_touxiang.png" alt="" />合肥纸厂</h2>
+		<section class="add_content entring_content">
+			<div><span>卖方</span><input type="text" placeholder="请输入卖方名称" /></div>
+			<div><span>交易日期</span><input type="text" placeholder="请选择" /></div>
+			<div><span>结算吨数</span><input type="text" placeholder="请输入结算吨数" /></div>
+			<div><span>金额</span><input type="text" value="" placeholder="请输入结算金额" /></div>
+			<div class="protocol">
+				<h3>结算凭证</h3>
+				<ul class="list">
+					<li class="upload">
+						<input type="file" class="chose" accept="image/*" />
+						<img src="img/add.png" />
+					</li>
+				</ul>
+			</div>
+		</section>
+		<div class="submit">提交</div>
+		<script src="js/zepto.min.js"></script>		
+		<script src="js/public.js"></script>
+	</body>
+
+</html>
