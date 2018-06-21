@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,user-scalable=no,intial-scale=1" />
+		<title>demo</title>		
+		<link rel="stylesheet" href="css/swiper.min.css" />
+		<script>
+			var html = document.documentElement;
+			var width = html.getBoundingClientRect().width;
+			html.style.fontSize = width / 15 + "px"
+			//1rem=50px
+		</script>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			.swiperShow{
+				font-size: 0.6rem;
+				text-align: center;
+				background-color: #00D3AF;
+				height: 1.5rem;
+				line-height: 1.5rem;
+				color: #fff;
+			}
+			
+			.motai {
+				display: none;
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				top: 0;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				z-index: 11;
+				margin: auto;
+				background-color: rgba(0, 0, 0, 0.7);
+			}			
+			.items {
+				width: 100% !important;
+				height: 100% !important;
+			}			
+			.motai img {
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				margin: auto;
+				max-width: 100%;
+				max-height: 100%;
+				z-index: 99;
+			}			
+			.swiper-pagination {
+				display: inline-block;
+				height: 0.2rem;
+				top: 0.5rem;
+				font-size: 0.7rem;
+				color: #999;
+				text-align: center;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="swiperShow">查看协议</a></div >
+			
+		<div class="motai swiper-container">
+			<div class="swiper-wrapper">
+				<div class="swiper-slide items"><img src="img/a.jpg" alt="" /></div>
+				<div class="swiper-slide items"><img src="img/c.jpg" alt="" /></div>
+				<div class="swiper-slide items"><img src="img/d.jpg" alt="" /></div>
+				<div class="swiper-slide items"><img src="img/e.jpg" alt="" /></div>
+				<div class="swiper-slide items"><img src="img/f.jpg" alt="" /></div>
+				<div class="swiper-slide items"><img src="img/1.jpg" alt="" /></div>
+				<div class="swiper-slide items"><img src="img/2.jpg" alt="" /></div>
+				<div class="swiper-slide items"><img src="img/3.jpg" alt="" /></div>
+			</div>
+			<div class="swiper-pagination"></div>
+		</div>
+
+		<script src="js/zepto.min.js"></script>
+		<script src="js/aninate.js"></script>
+		<script src="js/zepto.animate.alias.js"></script>
+		<script src="js/swiper.min.js"></script>
+		<script>			
+			$('.swiperShow').click(function(){
+				$('.motai').fadeIn();
+			});
+			$('.motai').click(function(){
+				$(this).fadeOut();
+			});
+			var mySwiper = new Swiper('.swiper-container', {		
+					slidesPerView:1, //默认初始显示页面	
+					observer:true,//启动动态检查器,当改变swiper的样式（例如隐藏/显示）或者修改swiper的子元素时，自动初始化swiper					
+					touchRatio:0.5,//触摸比例。触摸距离与slide滑动距离的比率。默认为1
+					pagination: ".swiper-pagination",//启动分页器
+					paginationType : 'fraction'	//分页器类型			
+				
+				})
+		</script>
+	</body>
+
+</html>
