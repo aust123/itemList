@@ -1,0 +1,148 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta http-equiv="x-dns-prefetch-control" content="on" />
+		<meta name="applicable-device" content="mobile">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta content="telephone=no" name="format-detection">
+		<meta name="full-screen" content="yes">
+		<meta name="x5-fullscreen" content="true">
+		
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,minimal-ui,viewport-fit=cover">
+		
+		<title>日历</title>
+		<link rel="Stylesheet" href="css/main.css" />
+		<link rel="stylesheet" type="text/css" href="css/public.css"/>
+		<!--<script type="text/javascript">
+			
+			(function() {
+				if(!window.$_bf || !window.$_bf.loaded) {
+					var a = new Date,
+						b = "?v=" + a.getFullYear() + a.getMonth() + "_" + a.getDate(),
+						a = document.createElement("script");
+					a.setAttribute("crossorigin", "1");
+					a.type = "text/javascript";
+					a.charset = "utf-8";
+					a.async = !0;
+					a.src = "//webresource.c-ctrip.com/code/ubt/_mubt.min.js" + b;
+					b = document.getElementsByTagName("script")[0];
+					b.parentNode.insertBefore(a, b)
+				}
+			})();
+		</script>-->
+		<script type="text/javascript">
+			(function(doc, win) {
+				var docEl = doc.documentElement,
+					resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+					recalc = function() {
+						var clientWidth = docEl.clientWidth;
+						if(!clientWidth) return;
+						var fontSize = 17 * (clientWidth / 320);
+						fontSize = Math.round((fontSize > 27) ? 27 : fontSize);
+						docEl.style.fontSize = fontSize + 'px';
+						var dpi = window.devicePixelRatio;
+						//docEl.setAttribute('data-dpi', dpi);
+					};
+				recalc();
+				if(!doc.addEventListener) return;
+				win.addEventListener(resizeEvt, recalc, false);
+			})(document, window);
+		</script>
+		<script id="pageData">
+			var __HOTEL_COMMON_DATA__ = {
+				//"serverdate": "2018/06/28 09:45:44",
+				//"isMemberLogin": false,
+				//"imageHost": "https://dimg04.c-ctrip.com/images",
+				//"isLogin": false,
+				//"islanding": true,
+				//"clientId": "09031169211781526916",
+				//"requestId": "b9ff7b1a-9ddb-418e-868c-d40ffcd8ae1d",
+				"abtests": {
+					//"180125_hdh_tzgb": "A",
+					//"170509_hdh_test1": "A",
+					//"180116_hdh_cjzs": "A"
+				},
+				//"isHybrid": false,
+			//	"isNonMemberLogin": false,
+				//"pageid": "212092"
+			};
+			__HOTEL_COMMON_DATA__.localdate = new Date();
+			var __HOTEL_PAGE_DATA__ = {
+				//"safariLayerConfig": false,
+				//"forceJava": false,
+				//"adBannerSwitch": true,
+				//"utcOffSet": 0,
+				//"domesticUIAB": "A",
+				"urlParams": {
+					"atime": "20180628",
+					////"beijingNow": 1530150344738,
+					"canShowMorningSwitch": false,
+					"checkOutDate": "20180629",
+					//"cityId": 2,
+					//"citySeoName": "shanghai",
+					"days": 1,
+					//"destinationNow": 1530150344738,
+					////"districtId": 0,
+					////"highestPrice": 0,
+					//"lowestPrice": 0,
+					//"macaoTaiwanHK": false,
+				///	"morning": false,
+					//"otype": 0,
+				//	"oversea": false,
+					//"serverNow": 1530150344738,
+					"starList": []
+				}
+			};
+			var __HOTEL_CHANNEL_DATA__ = {};
+		</script>
+
+	</head>
+
+	<body>
+		<div id="header">
+			<div class="cm-header cm-header--no-right" style="">
+				<h1 class="cm-page-title">日历</h1>
+			</div>
+		</div>
+		<div id="content">
+			<article class="m">			
+				<ul class="t g-b">
+					<!--Star 入离店日期更改日历-->
+					<li class="g-tab g-tab-ab js_inoutday">
+						<p class="g-b star"><em class="g-fn1">6月28日</em>&nbsp;<em class="g-fn3">今天</em></p>
+						<p class="g-w"><i>&nbsp;</i><span class="ab-i js_days">1晚</span></p>
+						<p class="g-b g-t g-arr end">
+							<em class="g-fn1">6月29日</em>
+							<em class="g-fn3">&nbsp;周五&nbsp;</em>
+						</p>
+					</li>					
+				</ul>
+			</article>
+		</div>
+
+		<script>
+			window.onload = function() {
+				document.addEventListener('touchstart', function(event) {
+					if(event.touches.length > 1) {
+						event.preventDefault();
+					}
+				})
+				var lastTouchEnd = 0;
+				document.addEventListener('touchend', function(event) {
+					var now = (new Date()).getTime();
+					if(now - lastTouchEnd <= 300) {
+						event.preventDefault();
+					}
+					lastTouchEnd = now;
+				}, false);
+			}
+		</script>
+		<script type="text/javascript"  src="js/vendor.js" defer></script>
+		<script type="text/javascript"  src="js/commons.js" defer></script>
+		<script type="text/javascript"  src="js/main.js" defer></script>
+		
+	</body>
+
+</html>
