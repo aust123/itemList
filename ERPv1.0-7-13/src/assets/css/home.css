@@ -1,0 +1,154 @@
+
+/*入口文件*/
+.entrance{
+  height: 100%;
+  background: url('../imgs/enter_bg.png');
+  background-size: cover;
+  text-align: center;
+}
+.entrance_item{
+  display: inline-block;
+  margin: 124px auto 0;
+}
+.entrance_item a{
+  display: inline-block;
+  font-size: 36px;
+  color: #fff;
+}
+.entrance_item .lf{
+  margin-right: 86px;
+}
+.entrance_item img{
+  width: 249px;
+  height: 236px;
+  margin-top: 30px;
+}
+
+/*home首页*/
+.home{
+  background-color: #fff;
+}
+.personMsg{
+  width: 100%;
+  height: 286px;
+  background-image: url('../../assets/imgs/index_top_bg.png');
+  background-size: cover;
+  color: #fff;
+  text-align: center;
+  overflow: hidden;
+}
+.personMsg h2{
+  margin-top: 46px;
+  margin-bottom: 20px;
+  font-size: 36px;
+}
+.personMsg p{
+  font-size: 22px;
+}
+.billList{
+  width: 100%;
+  color: #333;
+  font-size: 0;
+  margin-top: 50px;
+}
+.billList a{
+  display: inline-block;
+  width: 25%;
+  text-align: center;
+  margin-bottom: 50px;
+  font-size: 24px;
+}
+.billList img{
+  width: 49px;
+  height: 54px;
+  margin-bottom: 22px;
+}
+.orderList{
+  width: 690px;
+  margin: 30px auto 0;
+  background: #EEEEEE;
+  overflow: hidden;
+}
+.orderList h3{
+  padding: 24px 20px;
+  border-radius: 10px;
+  color: #333;
+  border-bottom: 1px solid #d2d2d2;
+  font-size: 32px;
+}
+.orderList h3 img{
+  width: 15px;
+  height: 29px;
+  margin-left: 16px;
+}
+.orderList h3 a{
+  font-size: 28px;
+  color: #666;
+  float: right;
+}
+.orderList ul li{
+  padding: 30px 20px 0;
+  font-size: 28px;
+  margin-bottom: 30px;
+}
+.orderList li a{
+  color: #666;
+  display: block;
+  background-image: url('../../assets/imgs/jiantou_left.png');
+  background-position: right center;
+  background-repeat: no-repeat;
+  background-size: 15px 29px;
+}
+.orderList ul li span{
+  color: #333;
+}
+.orderList ul li b{
+  color: #0684f9;
+  margin-left: 40px;
+}
+
+/*成功跳转*/
+.jump{
+  text-align: center;
+}
+.jump img{
+  margin-top: 410px;
+  width: 171px;
+  height: 171px;
+}
+.jump h3{
+  font-size: 36px;
+  color: #333;
+  margin-top: 40px;
+  margin-bottom: 70px;
+}
+.jump p{
+  font-size: 28px;
+  color: #666;
+  letter-spacing: 3px;
+}
+.jump p span{
+  color: #ff5000;
+}
+.jump p b{
+  font-size: 36px;
+}
+.jump p a{
+  color: #0684f9;
+}
+
+/*失败跳转*/
+.jump h3{
+  margin-bottom: 120px;
+}
+.jump>a{
+  width: 566px;
+  background: #999;
+  border-radius: 10px;
+  height: 98px;
+  font-size: 36px;
+  color: #fff;
+  display: inline-block;
+  line-height: 98px;
+}
+
