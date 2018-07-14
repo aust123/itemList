@@ -1,0 +1,178 @@
+
+/*头部样式 */
+body {
+  background-color: #f1f1f1;
+}
+header {
+  font-size: 36px;
+  height: 88px;
+  line-height: 88px;
+  color: #333;
+  text-align: center;
+  padding: 0 30px;
+  box-sizing: border-box;
+  border-bottom: 1px solid #e0e0e0;
+  background-color: #fff;
+}
+header img {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.left {
+  float: left;
+}
+.right {
+  float: right;
+}
+header a {
+  height: 100%;
+  position: relative;
+}
+.back img {
+  width: 20px;
+  height: 38px;
+  left: 0;
+}
+.search img {
+  width: 40px;
+  height: 40px;
+  right: 0;
+}
+
+p,
+h3 {
+  padding: 0 30px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+section {
+  background-color: #fff;
+}
+table {
+  width: 100%;
+}
+table td {
+  border: 1px solid #e0e0e0;
+  height: 80px;
+  text-align: center;
+  font-size: 28px;
+}
+.table-title td {
+  color: #666;
+}
+.table-content td {
+  color: #333;
+}
+.table-end td {
+  color: #0684f9;
+}
+.title {
+  margin: 40px 0;
+  font-size: 32px;
+  color: #333;
+}
+.title > span {
+  position: absolute;
+  right: 30px;
+  font-size: 28px;
+  color: #666;
+}
+.order-list-title {
+  margin-top: 14px;
+  height: 120px;
+  font-size: 32px;
+  color: #333;
+  background-color: #fff;
+}
+.order-list-title img {
+  width: 36px;
+  height: 46px;
+  margin-right: 20px;
+}
+
+.status {
+  color: #0684f9;
+  position: absolute;
+  right: 30px;
+}
+.detail-info {
+  font-size: 30px;
+  color: #333;
+}
+.detail-info p {
+  margin-top: 20px;
+}
+.detail-info p:nth-last-child(1) {
+  padding-bottom: 22px;
+}
+p.order-list-info {
+  margin-top: 0;
+  height: 126px;
+  border-bottom: 1px solid #e0e0e0;
+}
+.order-list-info img {
+  width: 96px;
+  height: 96px;
+  margin-right: 20px;
+}
+.order-list-info b {
+  font-weight: normal;
+}
+.order-list-info b:nth-of-type(2) {
+  margin-left: 12px;
+}
+b.unit {
+  color: #666;
+  font-size: 24px;
+}
+.total {
+  color: #ff5000;
+}
+.order-list-info span {
+  position: absolute;
+  right: 30px;
+  color: #666;
+  font-size: 26px;
+}
+.settle-info p {
+  color: #333;
+  font-size: 30px;
+}
+.settle-info p:nth-of-type(1) {
+  padding-top: 20px;
+}
+.settle-info p:nth-of-type(2) {
+  margin-top: 24px;
+  padding-bottom: 23px;
+}
+.settle-info p:nth-of-type(2) span {
+  font-size: 34px;
+}
+.orderdetail-info {
+  padding: 24px 0px;
+}
+.orderdetail-info p {
+  font-size: 30px;
+  color: #333;
+  margin-top: 15px;
+}
+.detail-option {
+  height: 98px;
+  background-color: #fff;
+  margin-top: 14px;
+  justify-content: flex-end;
+}
+
+a.jiesuan {
+  width: 180px;
+  font-size: 28px;
+  color: #fff;
+  height: 56px;
+  line-height: 56px;
+  text-align: center;
+  border-radius: 10px;
+  background-color: #00d3af;
+}
