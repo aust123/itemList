@@ -1,0 +1,42 @@
+<template>
+  <div id="app">
+     <transition name="fade">
+      <keep-alive>
+        <router-view class="Router" v-if="$route.meta.keepAlive"></router-view>
+      </keep-alive>   
+    </transition>
+     <transition name="fade">
+     <router-view  class="Router" v-if="!$route.meta.keepAlive"></router-view>
+      </transition>
+  </div>
+</template>
+
+<script>
+export default {
+  name: "App",
+  watch: {
+    $route(to, from) {
+      document.body.scrollTop = '0';
+    }
+  },
+};
+</script>
+
+<style>
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .3s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
+.Router{
+  width: 100%;
+   height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0; 
+  bottom: 0;
+  right: 0;
+  overflow: hidden;
+}
+</style>
