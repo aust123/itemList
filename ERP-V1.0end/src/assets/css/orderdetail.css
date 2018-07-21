@@ -1,0 +1,163 @@
+.order-detail-content{
+  position: absolute;
+  top: 100px;
+  bottom:150px;
+  height: 90%;
+  left: 0;
+  right: 0;
+  overflow-y: scroll !important;
+  overflow-x:hidden !important;
+}
+.order-detail-content p,
+.order-detail-content h3 {
+  padding: 0 30px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+section {
+  background-color: #fff;
+}
+table {
+  width: 100%;
+}
+table td {
+  border: 1px solid #e0e0e0;
+  height: 80px;
+  line-height: 80px;
+  text-align: center;
+  font-size: 28px;
+}
+.table-title td {
+  color: #666;
+}
+.table-content td {
+  color: #333;
+}
+.table-end td {
+  color: #0684f9;
+}
+.table-end.send td {
+  color: #ff5000;
+}
+.item-title {
+  margin: 40px 0;
+  font-size: 32px;
+  color: #333;
+}
+.item-title > span {
+  position: absolute;
+  right: 30px;
+  font-size: 28px;
+  color: #666;
+}
+.order-list-title {
+  /* margin-top: 14px; */
+  height: 120px;
+  font-size: 32px;
+  color: #333;
+  background-color: #fff;
+}
+.order-list-title img {
+  width: 36px;
+  height: 46px;
+  margin-right: 20px;
+}
+
+.status {
+  color: #0684f9;
+  position: absolute;
+  right: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.detail-info {
+  font-size: 30px;
+  color: #333;
+}
+.detail-info p {
+  margin-top: 20px;
+}
+.detail-info p:nth-last-child(1) {
+  padding-bottom: 22px;
+}
+p.order-list-info {
+  margin-top: 0;
+  height: 126px;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 0 !important;
+}
+.order-list-info img {
+  width: 96px;
+  height: 96px;
+  margin-right: 20px;
+}
+.order-list-info b {
+  font-weight: normal;
+}
+.order-list-info b:nth-of-type(2) {
+  margin-left: 12px;
+}
+b.unit {
+  color: #666;
+  font-size: 24px;
+}
+.total {
+  color: #ff5000;
+}
+.order-list-info span {
+  position: absolute;
+  right: 30px;
+  color: #666;
+  font-size: 26px;
+}
+.settle-info p {
+  color: #333;
+  font-size: 30px;
+}
+.settle-info p:nth-of-type(1) {
+  padding-top: 20px;
+}
+.settle-info p:nth-of-type(2) {
+  margin-top: 24px;
+  padding-bottom: 23px;
+}
+.settle-info p:nth-of-type(2) span {
+  font-size: 34px;
+}
+.orderdetail-info {
+  padding: 24px 0px;
+}
+.orderdetail-info p {
+  font-size: 30px;
+  color: #333;
+  margin-top: 15px;
+}
+.detail-option {
+  height: 98px;
+  background-color: #fff;
+  margin-top: 14px;
+  justify-content: flex-end;
+}
+.detail-option a{
+  display: inline-block;
+  font-size: 28px;
+  color: #fff;
+  height: 56px;
+  width: 122px;
+  line-height: 56px;
+  text-align: center;
+  border-radius: 10px;
+  background-color: #00d3af;
+}
+a.cancel {
+ background-color: #b4b4b4;
+ margin-right: 22px;
+}
+a.jiesuan {
+  width: 180px;
+}
+.nodatatips{
+  font-size: 30px !important;
+}
